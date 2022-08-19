@@ -1,4 +1,4 @@
-#Taller de Programación 2022
+#Taller de Programacion 2022
 
 ## Tarea 1
 
