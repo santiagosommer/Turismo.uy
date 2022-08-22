@@ -7,15 +7,15 @@ public class DTInscripcion {
 	private int CantidadTuristas;
 	private float Costo;
 	private DTTurista Autor;
-	
 	private DTSalidaTuristica SalidaAsociada;
 	
 	
-	public DTInscripcion(LocalTime fecha, int cantidadTuristas, float costo, DTTurista autor) {
+	public DTInscripcion(LocalTime fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
 		Fecha = fecha;
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
 		Autor = autor;
+		SalidaAsociada = salidaAsociada;
 	}
 	
 	public int getCantidadTuristas() {
