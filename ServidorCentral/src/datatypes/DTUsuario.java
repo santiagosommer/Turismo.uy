@@ -11,6 +11,7 @@ public abstract class DTUsuario {
 	private String Apellido;
 	private String Email;
 	private LocalDate FechaNacimiento;
+	
 	public DTUsuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento) {
 		Nickname = nickname;
 		Nombre = nombre;
