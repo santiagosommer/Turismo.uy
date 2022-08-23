@@ -10,11 +10,13 @@ private String URL;
 private ArrayList<DTActividadTuristica> InfoActividades;
  
  
-public DTProveedor(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento, String descripcionGeneral,String url,ArrayList<DTActividadTuristica> actividades) {
+public DTProveedor(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento, String descripcionGeneral,String url) {
 		super(nickname, nombre, apellido, email, fechaNacimiento);
 		DescripcionGeneral = descripcionGeneral;
 		URL = url;
-		InfoActividades = actividades;		
+		InfoActividades = new ArrayList<DTActividadTuristica>();
+		
+		//InfoActividades = actividades;
 }
  
 public String getDescripcionGeneral() {
@@ -39,4 +41,10 @@ public void setActividades(ArrayList<DTActividadTuristica> actividades) {
 }
 	
 	
+}
+
+public void addInfoActividad(DTActividadTuristica actividad) {
+		InfoActividades.add(actividad);
+	
+}
 }

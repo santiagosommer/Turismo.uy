@@ -2,20 +2,22 @@ package datatypes;
 
 import java.util.ArrayList;
 
+import clases.Inscripcion;
+
 public class DTPaquete {
   private String Nombre;
   private String Descripcion;
   private int PeriodoValidez;
   private int Descuento;
-  private ArrayList<DTActividadTuristica> ActividadesTuristicas;
+  private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
  public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento, ArrayList<DTActividadTuristica> actividadesTuristicas) {
 	 Nombre = nombre;
 	 Descripcion = descripcion;
 	 PeriodoValidez = periodoValidez;
 	 Descuento = descuento;
-	 ActividadesTuristicas = actividadesTuristicas;
-	 
+	 ActividadesTuristicas = new ArrayList<DTActividadTuristica>();	
+	
  }
   
   
@@ -28,6 +30,7 @@ public class DTPaquete {
  public String getDescripcion() {
 	return Descripcion;
 }
+ 
  public void setDescripcion(String descripcion) {
 	Descripcion = descripcion;
 }

@@ -9,15 +9,17 @@ public class DTSalidaTuristica {
  private LocalDate FechaSalida;
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
- private ArrayList<DTInscripcion> Inscripciones;
+ private DTActividadTuristica ActividadTuristicaAsoc;
  
- public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaSalida,DTInfoSalida infoSalida,int cuposDisponibles, ArrayList<DTInscripcion> inscripciones) {
+ public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaSalida,DTInfoSalida infoSalida,
+		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
 	 Nombre = nombre;
 	 CantidadMaxTuristas = cantidadMaxTuristas;
 	 FechaSalida = fechaSalida;
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles;
-	 Inscripciones = inscripciones;
+	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
+	 
 	 
  }
 public String getNombre() {
@@ -50,13 +52,13 @@ public int getCuposDisponibles() {
 public void setCuposDisponibles(int cuposDisponibles) {
 	CuposDisponibles = cuposDisponibles;
 }
+public DTActividadTuristica getActividadTuristicaAsoc() {
+	return ActividadTuristicaAsoc;
+}
+public void setActividadTuristicaAsoc(DTActividadTuristica actividadTuristicaAsoc) {
+	ActividadTuristicaAsoc = actividadTuristicaAsoc;
+}
 
-public ArrayList<DTInscripcion> getInscripciones() {
-	return Inscripciones;
-}
-public void setInscripciones(ArrayList<DTInscripcion> inscripciones) {
-	Inscripciones = inscripciones;
-}
 	
 	
 }
