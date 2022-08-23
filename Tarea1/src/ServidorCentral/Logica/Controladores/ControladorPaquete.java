@@ -1,9 +1,13 @@
-package Controladores;
+package ServidorCentral.Logica.Controladores;
+
+import java.util.HashMap;
 
 import java.util.Map;
 import java.util.Set;
 
-import Interfaces.IPaquete;
+
+import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.Interfaces.IPaquete;
 
 public class ControladorPaquete implements IPaquete {
 
@@ -18,13 +22,13 @@ public class ControladorPaquete implements IPaquete {
 	}
 	
 	private ControladorPaquete() {
-		Paquetes = new HashMap<String,Paquete>();
+		setPaquetes(new HashMap<String,Paquete>());
 				
 	}
 	
 	@Override
 	public void crearPaquete(String nombrePaque, String descripcion, 
-			int periodoValidez,int Descuento){
+			int periodoValidez,int Descuento) {
 		
 	}
 	
@@ -54,6 +58,14 @@ public class ControladorPaquete implements IPaquete {
 		return null;
 		
 		
+	}
+
+	public Map<String, Paquete> getPaquetes() {
+		return Paquetes;
+	}
+
+	public void setPaquetes(Map<String, Paquete> paquetes) {
+		Paquetes = paquetes;
 	}
 
 	

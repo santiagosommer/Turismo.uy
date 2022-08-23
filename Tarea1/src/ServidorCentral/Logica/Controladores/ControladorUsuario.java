@@ -1,16 +1,18 @@
-package controladores;
+package ServidorCentral.Logica.Controladores;
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import ServidorCentral.Logica.Clases.Turista;
+import ServidorCentral.Logica.DataTypes.DTProveedor;
+import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Clases.Proveedor;
 
-import clases.ActividadTuristica;
-import clases.Proveedor;
-import clases.Turista;
-import datatypes.DTProveedor;
-import datatypes.DTSalidaTuristica;
-import datatypes.DTTurista;
-import interfaces.IUsuario;
+
+
 
 public class ControladorUsuario implements IUsuario {
 	
@@ -75,6 +77,7 @@ public class ControladorUsuario implements IUsuario {
 		
 	}
 	@Override
+	
 	public void crearInscripcion(String nombre, int cantidadMaxTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,
 	 int CuposDisponibles) {
 		// TODO Auto-generated method stub
@@ -99,6 +102,16 @@ public class ControladorUsuario implements IUsuario {
 	}
 	public void setProveedores(Map<String, Proveedor> proveedores) {
 		Proveedores = proveedores;
+	}
+	@Override
+	public ServidorCentral.Logica.Interfaces.DTTurista getDTTurista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServidorCentral.Logica.Interfaces.DTProveedor getDTProveedor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

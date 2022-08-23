@@ -1,4 +1,4 @@
-package datatypes;
+package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

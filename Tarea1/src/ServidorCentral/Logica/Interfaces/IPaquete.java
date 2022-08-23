@@ -1,4 +1,4 @@
-package Interfaces;
+package ServidorCentral.Logica.Interfaces;
 
 import java.util.Set;
 

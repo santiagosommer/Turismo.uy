@@ -1,4 +1,4 @@
-package clases;
+package ServidorCentral.Logica.Clases;
 
 import java.util.HashMap;
 import java.util.Map;

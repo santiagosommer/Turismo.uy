@@ -1,4 +1,4 @@
-package datatypes;
+package ServidorCentral.Logica.DataTypes;
 
 public class DTDepartamento {
 	

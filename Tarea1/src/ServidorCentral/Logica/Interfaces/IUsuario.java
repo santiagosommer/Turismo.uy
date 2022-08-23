@@ -1,11 +1,10 @@
-package interfaces;
+package ServidorCentral.Logica.Interfaces;
+import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTProveedor;
 
 import java.time.LocalDate;
 import java.util.Set;
 
-import datatypes.DTProveedor;
-import datatypes.DTSalidaTuristica;
-import datatypes.DTTurista;
 
 public interface IUsuario {
 

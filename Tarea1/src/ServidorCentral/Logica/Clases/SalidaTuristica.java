@@ -1,9 +1,8 @@
-package clases;
-
+package ServidorCentral.Logica.Clases;
+import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import java.time.LocalDate;
 import java.util.Map;
 
-import datatypes.DTInfoSalida;
 
 
 public class SalidaTuristica {
@@ -11,7 +10,7 @@ public class SalidaTuristica {
 	 private String Nombre;
 	 private int CantidadMaxTuristas;
 	 private LocalDate FechaSalida;
-	 private DTInfoSalida InfoSalida;
+	 private ServidorCentral.Logica.DataTypes.DTInfoSalida InfoSalida;
 	 private int CuposDisponibles;
 	 private ActividadTuristica ActividadTuristicaAsociada;
 
