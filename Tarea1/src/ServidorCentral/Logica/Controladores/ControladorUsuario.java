@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Clases.Proveedor;
+
 
 
 
@@ -56,11 +58,13 @@ public class ControladorUsuario implements IUsuario {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public DTTurista getDTTurista() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public DTProveedor getDTProveedor() {
 		// TODO Auto-generated method stub
@@ -103,16 +107,7 @@ public class ControladorUsuario implements IUsuario {
 	public void setProveedores(Map<String, Proveedor> proveedores) {
 		Proveedores = proveedores;
 	}
-	@Override
-	public ServidorCentral.Logica.Interfaces.DTTurista getDTTurista() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ServidorCentral.Logica.Interfaces.DTProveedor getDTProveedor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 	

@@ -1,5 +1,6 @@
 package ServidorCentral.Logica.Interfaces;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 
 import java.time.LocalDate;
