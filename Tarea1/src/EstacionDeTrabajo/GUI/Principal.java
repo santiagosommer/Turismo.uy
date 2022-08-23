@@ -1,4 +1,4 @@
-package GUI;
+package EstacionDeTrabajo.GUI;
 
 import java.awt.EventQueue;
 
