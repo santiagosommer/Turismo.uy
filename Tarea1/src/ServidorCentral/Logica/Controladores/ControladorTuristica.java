@@ -1,13 +1,11 @@
 package ServidorCentral.Logica.Controladores;
+
 import java.util.Map;
 import java.util.Set;
 
-import clases.ActividadTuristica;
-import clases.SalidaTuristica;
-import clases.Departamento;
-import datatypes.DTFecha;
-import datatypes.DTSalidaTuristica;
-import datatypes.DTActividadTuristica;
+import ServidorCentral.Logica.Interfaces.ITuristica;
+
+
 
 public class ControladorTuristica implements ITuristica {
 	
