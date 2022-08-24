@@ -1,5 +1,8 @@
 package ServidorCentral.Logica.Controladores;
+import ServidorCentral.Logica.Clases.*;
+import ServidorCentral.Logica.DataTypes.*;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,16 +35,40 @@ public class ControladorTuristica implements ITuristica {
 	public void seleccionarActividad(String actividad) {}
 	public void seleccionarSalida(String salida) {}
 	public void selecciionarDepartemento(String departemneto) {}
-	public DTActividadTuristica getDTActividadTuristica() {}
-	public DTSalidaTuristica getDTSalidaTuristica() {}
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, DTFecha fechaAlta, String ciudad, String departamento) {}
-	public Set<String> listarDepartamentos(){}
-	public Set<String> listarActividadesDeDepartamento(String departemento){}
-	public Set<DTSalidaTuristica> datosSalidasVigentes(String actividad) {}
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, DTFecha fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) {}
-	public Set<String> listarSalidasActividad(){}
-	public Boolean existeActividad(String actividad) {}
-	public Boolean existeSalida(String salida) {}
-	public Boolean existeDepartamento(String departamento) {}
+	public DTActividadTuristica getDTActividadTuristica() {
+		return null;
+	}
+	public DTSalidaTuristica getDTSalidaTuristica() {
+		return null;
+	}
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento) {}
+	public Set<String> listarDepartamentos(){
+		return null;
+	}
+	public Set<String> listarActividadesDeDepartamento(String departemento){
+		return null;
+	}
+	public Set<DTSalidaTuristica> datosSalidasVigentes(String actividad) {
+		return null;
+	}
+	
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) {}
+	public Set<String> listarSalidasActividad(){
+		return null;
+	}
+	public Boolean existeActividad(String actividad) {
+		return false;
+	}
+	public Boolean existeSalida(String salida) {
+		return false;
+	}
+	public Boolean existeDepartamento(String departamento) {
+		return false;
+	}
 	public void crearDepartamento(String nombre,String descripcion, String URL) {}
+	}
+
+	
+
+
 	

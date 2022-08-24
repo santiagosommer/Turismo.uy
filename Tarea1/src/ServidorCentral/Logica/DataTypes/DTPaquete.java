@@ -2,7 +2,7 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.util.ArrayList;
 
-import clases.Inscripcion;
+
 
 public class DTPaquete {
   private String Nombre;

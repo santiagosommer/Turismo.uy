@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import datatypes.DTDepartamento;
-import datatypes.DTPaquete;
-import datatypes.DTProveedor;
-import datatypes.DTSalidaTuristica;
+
 
 public class ActividadTuristica {
 	private String Nombre;

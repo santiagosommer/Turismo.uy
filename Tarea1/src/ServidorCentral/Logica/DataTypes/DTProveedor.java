@@ -41,7 +41,7 @@ public void setActividades(ArrayList<DTActividadTuristica> actividades) {
 }
 	
 	
-}
+
 
 public void addInfoActividad(DTActividadTuristica actividad) {
 		InfoActividades.add(actividad);

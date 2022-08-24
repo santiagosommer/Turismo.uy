@@ -1,13 +1,20 @@
 package EstacionDeTrabajo.GUI;
 
 import java.awt.EventQueue;
+import ServidorCentral.Logica.Controladores.*;
+import ServidorCentral.Logica.Interfaces.*;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import javax.swing.JFrame;
 
 public class Principal {
 
+	
+	
 	private JFrame frame;
-   // private IUsuario ICUsu;
+    private IUsuario ICUsu;
+    private ITuristica ICTuri;
+    private IPaquete ICP;
     //private AltaDeUsuario altaUsuarioIFrame;
 	//private ConsultaDeUsuario consultaUsuarioIFrame;
 	//	private ModificarDatosDeUsuario modificarDatosUsuarioIFrame;
@@ -42,6 +49,15 @@ public class Principal {
 	public Principal() {
 		initialize();
 		
+		Fabrica fabrica = new Fabrica(); //?
+		 ICUsu =   fabrica.getControladorUsuario();
+		 
+		 
+		 
+	//	ServidorCentral.Logica.Fabrica.Fabrica fabrica = Fabrica.Fabrica();
+		
+		
+	//	ICUsu = fabrica.getControladorUsuario();
 		
 		
 		

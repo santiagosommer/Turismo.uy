@@ -19,12 +19,16 @@ public class AltaDeUsuario extends JInternalFrame {
 
 	
 	private IUsuario controlUsr;
+	private JTextField textFieldNombre;
+    private JTextField textFieldApellido;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	
-	public AltaDeUsuario() {
-		 setResizable(true);
+	public AltaDeUsuario(IUsuario ctrlUsr) {
+		  
+		    controlUsr = ctrlUsr;
+		    setResizable(true);
 	        setIconifiable(true);
 	        setMaximizable(true);
 	        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -61,16 +65,17 @@ public class AltaDeUsuario extends JInternalFrame {
 	        JLabel lblNewLabel_1 = new JLabel("New label");
 	        panel.add(lblNewLabel_1, "2, 4, left, center");
 	        
-	        textField_1 = new JTextField();
-	        panel.add(textField_1, "4, 4, left, top");
-	        textField_1.setColumns(10);
+	        textFieldNombre = new JTextField();
+	        panel.add( textFieldNombre, "4, 4, left, top");
+	        textFieldNombre.setColumns(10);
 	        
 	        JLabel lblNewLabel_2 = new JLabel("New label");
 	        panel.add(lblNewLabel_2, "6, 4, left, center");
 	        
-	        textField_2 = new JTextField();
-	        panel.add(textField_2, "8, 4, left, top");
-	        textField_2.setColumns(10);
+	        textFieldApellido = new JTextField();
+	        panel.add(textFieldApellido, "8, 4, left, top");
+	        textFieldApellido.setColumns(10);
+	        
 
 	        
 	}
