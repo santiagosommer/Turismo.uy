@@ -40,7 +40,7 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public void seleccionarTurista(String Turista) {
-		// TODO Auto-generated method stub
+		turistaSeleccionado = Turistas.get(Turista);
 		
 	}
 	@Override
