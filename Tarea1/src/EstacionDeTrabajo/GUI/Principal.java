@@ -1,6 +1,9 @@
 package EstacionDeTrabajo.GUI;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import ServidorCentral.Logica.Controladores.*;
 import ServidorCentral.Logica.Interfaces.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -17,12 +20,11 @@ public class Principal {
 	
 	
 	private JFrame frmServidorcentral;
-	private AltaDeUsuario altaUsuarioInternalFrame;
     private IUsuario ICUsu;
     private ITuristica ICTuri;
     private IPaquete ICP;
-    //private AltaDeUsuario altaUsuarioIFrame;
-	//private ConsultaDeUsuario consultaUsuarioIFrame;
+    private AltaDeUsuario altaUsuarioIFrame;
+	private ConsultaDeUsuario consultaUsuarioIFrame;
 	//	private ModificarDatosDeUsuario modificarDatosUsuarioIFrame;
 		
 		//private ConsultadeActividadTurística consultaActividadTurísticaIFrame
@@ -56,16 +58,21 @@ public class Principal {
 		initialize();
 		
 		Fabrica fabrica = new Fabrica(); //?
-		 ICUsu =   fabrica.getControladorUsuario();
+		ICUsu =   fabrica.getControladorUsuario();
+		 ICTuri = fabrica.getControladorTuristica();
+		 ICP = fabrica.getControladorPaquete();
+		 
+		 altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
+		 altaUsuarioIFrame.setVisible(false);
+		 frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
 		 
 		 
+		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
+		 consultaUsuarioIFrame.setVisible(false);
+		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
+	
 		 
-	//	ServidorCentral.Logica.Fabrica.Fabrica fabrica = Fabrica.Fabrica();
-		
-		
-	//	ICUsu = fabrica.getControladorUsuario();
-		
-		
+			
 		
 	}
 
@@ -90,15 +97,32 @@ public class Principal {
 		JMenu menuUsuario = new JMenu("Usuario");
 		menuBar.add(menuUsuario);
 		
-		JMenuItem menuItemAltaDeUsuario = new JMenuItem("Alta de Ususario");
-		menuItemAltaDeUsuario.setSelected(true);
-		menuUsuario.add(menuItemAltaDeUsuario);
 		
-		altaUsuarioInternalFrame = new AltaDeUsuario(ICUsu);
-		altaUsuarioInternalFrame.setBounds(28, 37, 370, 123);
-		altaUsuarioInternalFrame.setVisible(false);
-		frmServidorcentral.getContentPane().setLayout(null);
-		frmServidorcentral.getContentPane().add(altaUsuarioInternalFrame);
+		JMenuItem mntmAltaDeUsuario = new JMenuItem("Alta de Usuario");
+		 mntmAltaDeUsuario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//AltaIFrame.limpiarFormulario();
+            	altaUsuarioIFrame.setVisible(true);
+            }
+        });
+		menuUsuario.add(mntmAltaDeUsuario);
+		
+		
+		JMenuItem mntmConsultaDeUsuario = new JMenuItem("Consulta de Usuario");
+		mntmConsultaDeUsuario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//consultaDePerPropInternalFrame.limpiarFormulario();
+            	consultaUsuarioIFrame.setVisible(true);
+            }
+        });
+		menuUsuario.add(mntmConsultaDeUsuario);
+		
+		
+	   // altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
+	 //   altaUsuarioIFrame.setBounds(28, 37, 370, 123);
+	//	altaUsuarioIFrame.setVisible(false);
+	//	frmServidorcentral.getContentPane().setLayout(null);
+		//frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
 	}
 
 }

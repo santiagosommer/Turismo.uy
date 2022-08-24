@@ -1,21 +1,21 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class DTSalidaTuristica {
  private String Nombre;
  private int CantidadMaxTuristas;
- private LocalDate FechaSalida;
+ private LocalDate FechaAlta;
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
  private DTActividadTuristica ActividadTuristicaAsoc;
  
- public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaSalida,DTInfoSalida infoSalida,
+ public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,
 		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
 	 Nombre = nombre;
 	 CantidadMaxTuristas = cantidadMaxTuristas;
-	 FechaSalida = fechaSalida;
+	 FechaAlta = fechaAltaSalida;
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles;
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
@@ -35,10 +35,10 @@ public void setCantidadMaxTuristas(int cantidadMaxTuristas) {
 	CantidadMaxTuristas = cantidadMaxTuristas;
 }
 public LocalDate getFechaSalida() {
-	return FechaSalida;
+	return FechaAlta;
 }
-public void setFechaSalida(LocalDate fechaSalida) {
-	FechaSalida = fechaSalida;
+public void setFechaSalida(LocalDate fechaAltaSalida) {
+	FechaAlta = fechaSalida;
 }
 public DTInfoSalida getInfoSalida() {
 	return InfoSalida;

@@ -1,7 +1,7 @@
 package ServidorCentral.Logica.Clases;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import java.time.LocalDate;
-import java.util.Map;
+//import java.util.Map;
 
 
 
@@ -9,17 +9,17 @@ public class SalidaTuristica {
 
 	 private String Nombre;
 	 private int CantidadMaxTuristas;
-	 private LocalDate FechaSalida;
+	 private LocalDate FechaAlta;
 	 private ServidorCentral.Logica.DataTypes.DTInfoSalida InfoSalida;
 	 private int CuposDisponibles;
 	 private ActividadTuristica ActividadTuristicaAsociada;
 
 	 
-	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaSalida,DTInfoSalida infoSalida,int cuposDisponibles 
+	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles 
 			) {
 		 Nombre = nombre;
 		 CantidadMaxTuristas = cantidadMaxTuristas;
-		 FechaSalida = fechaSalida;
+		 FechaAlta = fechaAltaSalida;
 		 InfoSalida = infoSalida;
 		 CuposDisponibles = cuposDisponibles;
 	     			 
@@ -38,10 +38,10 @@ public class SalidaTuristica {
 			CantidadMaxTuristas = cantidadMaxTuristas;
 		}
 		public LocalDate getFechaSalida() {
-			return FechaSalida;
+			return FechaAlta;
 		}
-		public void setFechaSalida(LocalDate fechaSalida) {
-			FechaSalida = fechaSalida;
+		public void setFechaSalida(LocalDate fechaAltaSalida) {
+			FechaAlta = fechaAltaSalida;
 		}
 		public DTInfoSalida getInfoSalida() {
 			return InfoSalida;
