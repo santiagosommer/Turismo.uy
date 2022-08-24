@@ -60,19 +60,23 @@ public class Principal {
 		ICUsu =   fabrica.getControladorUsuario();
 		 ICTuri = fabrica.getControladorTuristica();
 		 ICP = fabrica.getControladorPaquete();
+		 frmServidorcentral.getContentPane().setLayout(null);
 		 
-		 altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
-		 altaUsuarioIFrame.setVisible(false);
-		 frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
+		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
+		 modificarDatosUsuarioIFrame.setBounds(-57, 85, 350, 176);
+		 frmServidorcentral.getContentPane().add(modificarDatosUsuarioIFrame);
 		 
 		 
 		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
-		 consultaUsuarioIFrame.setVisible(false);
+		 consultaUsuarioIFrame.setBounds(94, 36, 450, 300);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
-		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
+		 altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
+		 altaUsuarioIFrame.setBounds(21, 10, 328, 132);
+		 frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
+		 altaUsuarioIFrame.setVisible(false);
+		 consultaUsuarioIFrame.setVisible(false);
 		 modificarDatosUsuarioIFrame.setVisible(false);
-		 frmServidorcentral.getContentPane().add(modificarDatosUsuarioIFrame);
 		 
 		 
 		 

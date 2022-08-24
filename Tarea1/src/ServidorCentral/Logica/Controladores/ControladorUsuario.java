@@ -86,8 +86,7 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public Boolean existeUsuario(String nickN) {
-		// TODO Auto-generated method stub
-		return null;
+		return Proveedores.containsKey(nickN) || Turistas.containsKey(nickN);
 	}
 	
 	

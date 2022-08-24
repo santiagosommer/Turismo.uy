@@ -1,0 +1,220 @@
+package EstacionDeTrabajo.GUI;
+
+import java.awt.EventQueue;
+
+import javax.swing.JInternalFrame;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import javax.swing.JTextField;
+import java.awt.Insets;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+
+public class AltaDeProveedor extends JInternalFrame {
+	private JTextField textFieldNickName;
+	private JTextField textFieldNombre;
+	private JTextField textFieldApellido;
+	private JTextField textFieldEmail;
+	private JTextField textFieldDescripccion;
+	private JTextField textFieldLinkWeb;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AltaDeProveedor frame = new AltaDeProveedor();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AltaDeProveedor() {
+		setBounds(100, 100, 493, 337);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 89, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		getContentPane().setLayout(gridBagLayout);
+		
+		JLabel lblNickName = new JLabel("NickName");
+		GridBagConstraints gbc_lblNickName = new GridBagConstraints();
+		gbc_lblNickName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNickName.gridx = 1;
+		gbc_lblNickName.gridy = 1;
+		getContentPane().add(lblNickName, gbc_lblNickName);
+		
+		textFieldNickName = new JTextField();
+		textFieldNickName.setColumns(10);
+		GridBagConstraints gbc_textFieldNickName = new GridBagConstraints();
+		gbc_textFieldNickName.gridwidth = 3;
+		gbc_textFieldNickName.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldNickName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldNickName.gridx = 2;
+		gbc_textFieldNickName.gridy = 1;
+		getContentPane().add(textFieldNickName, gbc_textFieldNickName);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNombre.gridx = 1;
+		gbc_lblNombre.gridy = 2;
+		getContentPane().add(lblNombre, gbc_lblNombre);
+		
+		textFieldNombre = new JTextField();
+		textFieldNombre.setColumns(10);
+		GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
+		gbc_textFieldNombre.gridwidth = 3;
+		gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldNombre.gridx = 2;
+		gbc_textFieldNombre.gridy = 2;
+		getContentPane().add(textFieldNombre, gbc_textFieldNombre);
+		
+		JLabel lblApellido = new JLabel("Apellido");
+		GridBagConstraints gbc_lblApellido = new GridBagConstraints();
+		gbc_lblApellido.insets = new Insets(0, 0, 5, 5);
+		gbc_lblApellido.gridx = 1;
+		gbc_lblApellido.gridy = 3;
+		getContentPane().add(lblApellido, gbc_lblApellido);
+		
+		textFieldApellido = new JTextField();
+		textFieldApellido.setColumns(10);
+		GridBagConstraints gbc_textFieldApellido = new GridBagConstraints();
+		gbc_textFieldApellido.gridwidth = 3;
+		gbc_textFieldApellido.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldApellido.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldApellido.gridx = 2;
+		gbc_textFieldApellido.gridy = 3;
+		getContentPane().add(textFieldApellido, gbc_textFieldApellido);
+		
+		JLabel lblEmail = new JLabel("Email");
+		GridBagConstraints gbc_lblEmail = new GridBagConstraints();
+		gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
+		gbc_lblEmail.gridx = 1;
+		gbc_lblEmail.gridy = 4;
+		getContentPane().add(lblEmail, gbc_lblEmail);
+		
+		textFieldEmail = new JTextField();
+		textFieldEmail.setColumns(10);
+		GridBagConstraints gbc_textFieldEmail = new GridBagConstraints();
+		gbc_textFieldEmail.gridwidth = 3;
+		gbc_textFieldEmail.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldEmail.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldEmail.gridx = 2;
+		gbc_textFieldEmail.gridy = 4;
+		getContentPane().add(textFieldEmail, gbc_textFieldEmail);
+		
+		JLabel lblDia = new JLabel("Dia");
+		GridBagConstraints gbc_lblDia = new GridBagConstraints();
+		gbc_lblDia.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDia.gridx = 2;
+		gbc_lblDia.gridy = 5;
+		getContentPane().add(lblDia, gbc_lblDia);
+		
+		JLabel lblMes = new JLabel("Mes");
+		GridBagConstraints gbc_lblMes = new GridBagConstraints();
+		gbc_lblMes.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMes.gridx = 3;
+		gbc_lblMes.gridy = 5;
+		getContentPane().add(lblMes, gbc_lblMes);
+		
+		JLabel lblAnio = new JLabel("Año");
+		GridBagConstraints gbc_lblAnio = new GridBagConstraints();
+		gbc_lblAnio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAnio.gridx = 4;
+		gbc_lblAnio.gridy = 5;
+		getContentPane().add(lblAnio, gbc_lblAnio);
+		
+		JLabel lblFecha = new JLabel("Fecha");
+		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
+		gbc_lblFecha.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFecha.gridx = 1;
+		gbc_lblFecha.gridy = 6;
+		getContentPane().add(lblFecha, gbc_lblFecha);
+		
+		JComboBox comboBoxDia = new JComboBox();
+		GridBagConstraints gbc_comboBoxDia = new GridBagConstraints();
+		gbc_comboBoxDia.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxDia.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxDia.gridx = 2;
+		gbc_comboBoxDia.gridy = 6;
+		getContentPane().add(comboBoxDia, gbc_comboBoxDia);
+		
+		JComboBox comboBoxMes = new JComboBox();
+		GridBagConstraints gbc_comboBoxMes = new GridBagConstraints();
+		gbc_comboBoxMes.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxMes.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxMes.gridx = 3;
+		gbc_comboBoxMes.gridy = 6;
+		getContentPane().add(comboBoxMes, gbc_comboBoxMes);
+		
+		JComboBox comboBoxAño = new JComboBox();
+		GridBagConstraints gbc_comboBoxAño = new GridBagConstraints();
+		gbc_comboBoxAño.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxAño.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxAño.gridx = 4;
+		gbc_comboBoxAño.gridy = 6;
+		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
+		
+		JLabel lblDescripccion = new JLabel("Descripccion");
+		GridBagConstraints gbc_lblDescripccion = new GridBagConstraints();
+		gbc_lblDescripccion.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDescripccion.gridx = 1;
+		gbc_lblDescripccion.gridy = 7;
+		getContentPane().add(lblDescripccion, gbc_lblDescripccion);
+		
+		textFieldDescripccion = new JTextField();
+		textFieldDescripccion.setColumns(10);
+		GridBagConstraints gbc_textFieldDescripccion = new GridBagConstraints();
+		gbc_textFieldDescripccion.gridwidth = 3;
+		gbc_textFieldDescripccion.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldDescripccion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldDescripccion.gridx = 2;
+		gbc_textFieldDescripccion.gridy = 7;
+		getContentPane().add(textFieldDescripccion, gbc_textFieldDescripccion);
+		
+		JLabel lblLinkWeb = new JLabel("Link Web");
+		GridBagConstraints gbc_lblLinkWeb = new GridBagConstraints();
+		gbc_lblLinkWeb.insets = new Insets(0, 0, 5, 5);
+		gbc_lblLinkWeb.gridx = 1;
+		gbc_lblLinkWeb.gridy = 8;
+		getContentPane().add(lblLinkWeb, gbc_lblLinkWeb);
+		
+		textFieldLinkWeb = new JTextField();
+		GridBagConstraints gbc_textFieldLinkWeb = new GridBagConstraints();
+		gbc_textFieldLinkWeb.gridwidth = 3;
+		gbc_textFieldLinkWeb.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldLinkWeb.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldLinkWeb.gridx = 2;
+		gbc_textFieldLinkWeb.gridy = 8;
+		getContentPane().add(textFieldLinkWeb, gbc_textFieldLinkWeb);
+		textFieldLinkWeb.setColumns(10);
+		
+		JButton btnAceptar = new JButton("Aceptar");
+		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
+		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAceptar.gridx = 2;
+		gbc_btnAceptar.gridy = 10;
+		getContentPane().add(btnAceptar, gbc_btnAceptar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCancelar.gridx = 4;
+		gbc_btnCancelar.gridy = 10;
+		getContentPane().add(btnCancelar, gbc_btnCancelar);
+
+	}
+
+}
