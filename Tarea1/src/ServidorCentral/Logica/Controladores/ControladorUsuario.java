@@ -45,7 +45,7 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public void seleccionarProveedor(String Proveedor) {
-		// TODO Auto-generated method stub
+		proveedorSeleccionado = Proveedores.get(Proveedor);
 		
 	}
 	@Override
