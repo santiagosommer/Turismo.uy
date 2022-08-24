@@ -25,15 +25,14 @@ public class Principal {
     private IPaquete ICP;
     private AltaDeUsuario altaUsuarioIFrame;
 	private ConsultaDeUsuario consultaUsuarioIFrame;
-	//	private ModificarDatosDeUsuario modificarDatosUsuarioIFrame;
-		
-		//private ConsultadeActividadTurística consultaActividadTurísticaIFrame
-		//private AltadeSalidaTurística altaSalidaTurísticaIFrame
-		//private ConsultadeSalidaTurística   consultaSalidaTurísticaIFrame
-		//private InscripciónaSalidaTurística  inscripciónSalidaTurísticaIFrame
-		//private CrearPaquetedeActividadesTurísticas  crearPaqueteActividadesTurísticasIFrame
-	    //private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
-		//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
+	private ModificarDatosDeUsuario modificarDatosUsuarioIFrame;
+	private ConsultaDeActividadTuristica consultaActividadTuristicaIFrame;
+	private AltaDeSalidaTuristica altaSalidaTuristicaIFrame;
+	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
+	private InscripcionASalidaTuristica  inscripciónSalidaTurísticaIFrame;
+	//private CrearPaquetedeActividadesTurísticas  crearPaqueteActividadesTuristicasIFrame
+	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
+	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
 
 	/**
 	 * Launch the application.
@@ -70,7 +69,14 @@ public class Principal {
 		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
 		 consultaUsuarioIFrame.setVisible(false);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
-	
+		 
+		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
+		 modificarDatosUsuarioIFrame.setVisible(false);
+		 frmServidorcentral.getContentPane().add(modificarDatosUsuarioIFrame);
+		 
+		 
+		 
+		 
 		 
 			
 		
@@ -118,11 +124,16 @@ public class Principal {
 		menuUsuario.add(mntmConsultaDeUsuario);
 		
 		
-	   // altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
-	 //   altaUsuarioIFrame.setBounds(28, 37, 370, 123);
-	//	altaUsuarioIFrame.setVisible(false);
-	//	frmServidorcentral.getContentPane().setLayout(null);
-		//frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
+		JMenuItem mntmModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		mntmModificarDatosDeUsuario.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//consultaDePerPropInternalFrame.limpiarFormulario();
+            	modificarDatosUsuarioIFrame.setVisible(true);
+            }
+        });
+		menuUsuario.add(mntmModificarDatosDeUsuario);
+		
+	   
 	}
 
 }

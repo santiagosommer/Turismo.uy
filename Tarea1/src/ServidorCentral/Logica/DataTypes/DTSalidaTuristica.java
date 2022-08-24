@@ -34,11 +34,11 @@ public int getCantidadMaxTuristas() {
 public void setCantidadMaxTuristas(int cantidadMaxTuristas) {
 	CantidadMaxTuristas = cantidadMaxTuristas;
 }
-public LocalDate getFechaSalida() {
+public LocalDate getFechaAlta() {
 	return FechaAlta;
 }
-public void setFechaSalida(LocalDate fechaAltaSalida) {
-	FechaAlta = fechaSalida;
+public void setFechaAlta(LocalDate fechaAltaSalida) {
+	FechaAlta = fechaAltaSalida;
 }
 public DTInfoSalida getInfoSalida() {
 	return InfoSalida;

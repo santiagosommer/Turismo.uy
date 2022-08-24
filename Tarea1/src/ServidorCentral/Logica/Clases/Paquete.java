@@ -16,7 +16,7 @@ public class Paquete {
 		 Descripcion = descripcion;
 		 PeriodoValidez = periodoValidez;
 		 Descuento = descuento;
-		 this.setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); //esto fue automatico 
+		 this.setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
 		 
 	 }
 	  

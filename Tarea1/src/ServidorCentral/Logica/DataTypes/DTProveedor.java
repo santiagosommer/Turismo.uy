@@ -16,7 +16,7 @@ public DTProveedor(String nickname, String nombre, String apellido, String email
 		URL = url;
 		InfoActividades = new ArrayList<DTActividadTuristica>();
 		
-		//InfoActividades = actividades;
+	
 }
  
 public String getDescripcionGeneral() {

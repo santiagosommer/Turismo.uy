@@ -13,14 +13,11 @@ import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Clases.Proveedor;
 
 
-
-
-
 public class ControladorUsuario implements IUsuario {
 	
 	private Map<String, Turista> Turistas;
 	private Map<String, Proveedor> Proveedores;
-	private Proveedor proveedorSeleccionado; //getters y setters?
+	private Proveedor proveedorSeleccionado; 
 	private Turista turistaSeleccionado;
 	
 	private static ControladorUsuario instancia = null;

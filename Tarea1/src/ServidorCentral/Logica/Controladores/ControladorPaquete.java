@@ -10,7 +10,7 @@ import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 
 public class ControladorPaquete implements IPaquete {
-
+    private Paquete PaqueteSeleccionado;
 	private Map<String, Paquete> Paquetes;
 	private static ControladorPaquete instancia = null;
 	
@@ -23,6 +23,7 @@ public class ControladorPaquete implements IPaquete {
 	
 	private ControladorPaquete() {
 		setPaquetes(new HashMap<String,Paquete>());
+		PaqueteSeleccionado = null;
 				
 	}
 	
@@ -66,6 +67,15 @@ public class ControladorPaquete implements IPaquete {
 
 	public void setPaquetes(Map<String, Paquete> paquetes) {
 		Paquetes = paquetes;
+	}
+
+	
+	public Paquete getPaqueteSeleccionado() {
+		return PaqueteSeleccionado;
+	}
+
+	public void setPaqueteSeleccionado(Paquete paqueteSeleccionado) {
+		PaqueteSeleccionado = paqueteSeleccionado;
 	}
 
 	
