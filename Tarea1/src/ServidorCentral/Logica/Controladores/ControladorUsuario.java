@@ -1,6 +1,6 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Interfaces.IUsuario;
-
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -88,17 +88,19 @@ public class ControladorUsuario implements IUsuario {
 		return Proveedores.containsKey(nickN) || Turistas.containsKey(nickN);
 	}
 	@Override
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url) {
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url) throws UsuarioRepetidoException {
 		if(existeUsuario(nickname)) {
 			// exception here
+			throw new UsuarioRepetidoException("El usuario " + nickname + " ya esta registrado");
 		}
 		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, descripcionGeneral, url);
 		Proveedores.put(nickname,p);
 	}
 	@Override
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) {
+	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws UsuarioRepetidoException {
 		if(existeUsuario(nickname)) {
 			// exception here
+			throw new UsuarioRepetidoException("El usuario " + nickname + " ya esta registrado");
 		}
 		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, nacionalidad);
 		Turistas.put(nickname,t);
