@@ -41,8 +41,16 @@ public class ControladorTuristica implements ITuristica {
 		return instancia;
 	}
 	
-	public void seleccionarActividad(String actividad) {}
-	public void seleccionarSalida(String salida) {}
+	public void seleccionarActividad(String actividad) {
+		actividadSeleccionada = ActividadesTuristicas.get(actividad);
+	}
+	public void seleccionarSalida(String salida) {
+		//previamente hay que seleccionar actividad.
+		if (actividadSeleccionada!= null) {
+		salidaSeleccionada = actividadSeleccionada.getSalidas().get(salida);
+		
+		}
+	}
 	public void seleccionarDepartemento(String departemneto) {}
 	public DTActividadTuristica getDTActividadTuristica() {
 		return null;

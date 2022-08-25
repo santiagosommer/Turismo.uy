@@ -40,7 +40,13 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 
 public class ConsultaDeSalidaTuristica extends JInternalFrame {
-
+	
+  private JComboBox<String> comboBoxDepartamentos;
+  private JLabel LugarLabel;
+  private JLabel HoraLabel;
+  private JLabel FechaLabel;
+  private JLabel NombreLabel;
+  
 	/**
 	 * Launch the application.
 	 */
@@ -74,27 +80,17 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
        
       
 
-       //esto agrega departamentos
-    //   Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
-    //   while(iterator.hasNext()) { 
-    //	   String setElement = iterator.next(); 
-    	//   comboBoxDepartamentos.addItem(setElement);
-    	   
+      //agrega departamentos
+	   if (!ctrl.listarDepartamentos().isEmpty()) {
+       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
+       while(iterator.hasNext()) { 
+    	   String setElement = iterator.next(); 
+    	   comboBoxDepartamentos.addItem(setElement);
+	   }
+	   }   
        
-      //  }
-       
-       
+              
        DefaultListModel<String> l1 = new DefaultListModel<>();
-       l1.addElement("elemPrueba");
-       l1.addElement("elemPrueba2");
-       l1.addElement("elemPrueba3");
-       l1.addElement("elemPrueba4");
-       l1.addElement("elemPrueba5");
-       l1.addElement("elemPrueba6");
-       l1.addElement("elemPrueba7");
-       l1.addElement("elemPrueba8");
-       
-       
        DefaultListModel<String> l2 = new DefaultListModel<>();
 		
 		JPanel panel = new JPanel();
@@ -122,7 +118,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(lblNewLabel, gbc_lblNewLabel);
 		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 10));
 		
-		JComboBox<String> comboBoxDepartamentos = new JComboBox<String>();
+		 comboBoxDepartamentos = new JComboBox<String>();
 		comboBoxDepartamentos.setBackground(new Color(245, 255, 250));
 		GridBagConstraints gbc_comboBoxDepartamentos = new GridBagConstraints();
 		gbc_comboBoxDepartamentos.anchor = GridBagConstraints.SOUTH;
@@ -215,21 +211,11 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	 			    	    l2.addElement(Salida);
     	            	}
     	           }
-    	            if (selectedActividad == "elemPrueba") {
-	            		l2.addElement("pruebaaa");
-	            	}
+    	           
     	      }
     	  }
     	});
       
-      
-   
-      
-      
-      
-	
-		
-		
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -262,7 +248,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_4.gridy = 1;
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
-		JLabel NombreLabel = new JLabel("");
+	    NombreLabel = new JLabel("");
 		NombreLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
 		gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
@@ -279,7 +265,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_5.gridy = 2;
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
-		JLabel FechaLabel = new JLabel("");
+		FechaLabel = new JLabel("");
 		FechaLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_81 = new GridBagConstraints();
 		gbc_lblNewLabel_81.insets = new Insets(0, 0, 5, 5);
@@ -295,7 +281,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_7.gridy = 2;
 		panel_1.add(lblNewLabel_7, gbc_lblNewLabel_7);
 		
-		JLabel HoraLabel = new JLabel("");
+		 HoraLabel = new JLabel("");
 		HoraLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_82 = new GridBagConstraints();
 		gbc_lblNewLabel_82.insets = new Insets(0, 0, 5, 0);
@@ -311,7 +297,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_6.gridy = 3;
 		panel_1.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
-		JLabel LugarLabel = new JLabel("");
+		 LugarLabel = new JLabel("");
 		LugarLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
 		gbc_lblNewLabel_9.anchor = GridBagConstraints.WEST;
@@ -329,10 +315,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 						JList<String> source = (JList)event.getSource();
 	    	            String selectedSalida = source.getSelectedValue().toString();
 	    	            
-	    	           if (selectedSalida=="pruebaaa") {
-	    	        	   LugarLabel.setText("lugar Prueba");
-	    	           }
-	    	           
 	    	           
 	    	           ctrl.seleccionarSalida(selectedSalida);
 	    	           NombreLabel.setText(selectedSalida);
@@ -349,12 +331,18 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	    	        }
 	    	    }
 	    	});
-		  
-		  
-		
-		
+	}
 	
-
+	void limpiarFormulario() {
+		comboBoxDepartamentos.setSelectedIndex(-1);
+		LugarLabel.setText("");
+		HoraLabel.setText("");
+		NombreLabel.setText("");
+		FechaLabel.setText("");
+		
+		
+		
+		
 	}
 
 }
