@@ -56,10 +56,10 @@ public class Principal {
 	public Principal() {
 		initialize();
 		
-		Fabrica fabrica = new Fabrica(); //?
+		Fabrica fabrica = Fabrica.getInstance();
 		ICUsu =   fabrica.getControladorUsuario();
-		 ICTuri = fabrica.getControladorTuristica();
-		 ICP = fabrica.getControladorPaquete();
+		ICTuri = fabrica.getControladorTuristica();
+		ICP = fabrica.getControladorPaquete();
 		 frmServidorcentral.getContentPane().setLayout(null);
 		 
 		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);

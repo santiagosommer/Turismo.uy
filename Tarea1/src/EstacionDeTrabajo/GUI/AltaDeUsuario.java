@@ -43,18 +43,18 @@ public class AltaDeUsuario extends JInternalFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args,IUsuario ctrl) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaDeUsuario frame = new AltaDeUsuario(ctrl);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args,IUsuario ctrl) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AltaDeUsuario frame = new AltaDeUsuario(ctrl);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -75,11 +75,11 @@ public class AltaDeUsuario extends JInternalFrame {
 	        setJMenuBar(menuBar);
 	        getContentPane().setLayout(null);
 	        
-	        AltaDeProveedor internalFrameAltaDeProveedor = new AltaDeProveedor();
+	        AltaDeProveedor internalFrameAltaDeProveedor = new AltaDeProveedor(controlUsr);
 	        internalFrameAltaDeProveedor.setBounds(10, 51, 177, 154);
 	        getContentPane().add(internalFrameAltaDeProveedor);
 	        
-	        AltaDeTurista internalFrameAltaDeTurista = new AltaDeTurista();
+	        AltaDeTurista internalFrameAltaDeTurista = new AltaDeTurista(controlUsr);
 	        internalFrameAltaDeTurista.setBounds(128, 111, 190, 174);
 	        getContentPane().add(internalFrameAltaDeTurista);
 	        internalFrameAltaDeTurista.setVisible(false);
@@ -103,23 +103,5 @@ public class AltaDeUsuario extends JInternalFrame {
 	        	}
 	        });
 	        mnSeleccionar.add(mntmTurista);
-	}
-
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }
