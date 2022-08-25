@@ -79,6 +79,12 @@ public class Principal {
 		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
 		 
+		 consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
+		 consultaSalidaTuristicaIFrame.setBounds(94, 36, 450, 300);
+		 frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
+		 consultaSalidaTuristicaIFrame.setVisible(false);
+		 
+		 
 		 
 		 
 		 
@@ -136,6 +142,22 @@ public class Principal {
             }
         });
 		menuUsuario.add(mntmModificarDatosDeUsuario);
+		
+		JMenu menuSalidas = new JMenu("Salidas Turisticas");
+		menuBar.add(menuSalidas);
+		
+		JMenuItem mntmConsultaDeSalida = new JMenuItem("Consulta de Salida Turistica");
+		mntmConsultaDeSalida.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//consultaDePerPropInternalFrame.limpiarFormulario();
+            	consultaSalidaTuristicaIFrame.setVisible(true);
+            }
+        });
+		menuSalidas.add(mntmConsultaDeSalida);
+		
+		
+		
+		
 		
 	   
 	}

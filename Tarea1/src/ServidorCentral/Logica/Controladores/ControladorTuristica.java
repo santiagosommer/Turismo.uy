@@ -3,6 +3,7 @@ import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +26,12 @@ public class ControladorTuristica implements ITuristica {
 	private Map<String, Departamento> Departamentos;
 	
 	private ControladorTuristica() {
-		
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();
+		Departamentos = new HashMap<String,Departamento>();
+		actividadSeleccionada = null;
+		salidaSeleccionada = null;
+		departamentoSeleccionado = null;
+				
 	}
 	
 	public static ControladorTuristica getInstancia() {
@@ -84,9 +90,9 @@ public Set<String> listarDepartamentos(){
 		return false;
 	}
 	public void crearDepartamento(String nombre,String descripcion, String URL) {}
-	}
 
-	
 
+
+}
 
 	

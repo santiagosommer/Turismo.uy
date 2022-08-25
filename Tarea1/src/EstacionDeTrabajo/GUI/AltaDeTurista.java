@@ -38,7 +38,7 @@ public class AltaDeTurista extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AltaDeTurista() {
-		setBounds(100, 100, 371, 300);
+		setBounds(100, 100, 371, 300);	
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 65, 0, 65, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
