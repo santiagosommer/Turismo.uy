@@ -21,7 +21,7 @@ public interface ITuristica {
 	public abstract Set<String> listarActividadesDeDepartamento(String departemento);
 	public abstract Set<DTSalidaTuristica> datosSalidasVigentes(String actividad);
 	public abstract void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles);
-	public abstract Set<String> listarSalidasActividad();
+	public abstract Set<String> listarSalidasActividad(String actividad);
 	public abstract Boolean existeActividad(String actividad);
 	public abstract Boolean existeSalida(String salida);
 	public abstract Boolean existeDepartamento(String departamento);

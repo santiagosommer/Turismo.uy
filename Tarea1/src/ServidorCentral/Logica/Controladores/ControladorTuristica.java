@@ -76,7 +76,7 @@ public Set<String> listarDepartamentos(){
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) {}
 	
-	public Set<String> listarSalidasActividad(){
+	public Set<String> listarSalidasActividad(String actividad){
 		return null;
 	}
 	

@@ -83,6 +83,8 @@ public class Principal {
 		 consultaSalidaTuristicaIFrame.setBounds(94, 36, 450, 300);
 		 frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
 		 consultaSalidaTuristicaIFrame.setVisible(false);
+		 consultaSalidaTuristicaIFrame.setClosable(true);
+		 
 		 
 		 
 		 
@@ -153,6 +155,8 @@ public class Principal {
             	consultaSalidaTuristicaIFrame.setVisible(true);
             }
         });
+		
+		
 		menuSalidas.add(mntmConsultaDeSalida);
 		
 		
