@@ -46,6 +46,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
   private JLabel HoraLabel;
   private JLabel FechaLabel;
   private JLabel NombreLabel;
+  private JLabel LabelMaxTuristas;
   
 	/**
 	 * Launch the application.
@@ -127,9 +128,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_comboBoxDepartamentos.gridx = 1;
 		gbc_comboBoxDepartamentos.gridy = 0;
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
-		//solo para pruebas
-		comboBoxDepartamentos.addItem("dep1");
-		comboBoxDepartamentos.addItem("dep2");
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
 		
@@ -196,6 +194,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		    }
      });
       
+      
+      //lista salidas
 		
       list.addListSelectionListener(new ListSelectionListener() {
     	    public void valueChanged(ListSelectionEvent event) {
@@ -276,6 +276,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		JLabel lblNewLabel_7 = new JLabel("Hora:");
 		lblNewLabel_7.setFont(new Font("SansSerif", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_7.gridx = 2;
 		gbc_lblNewLabel_7.gridy = 2;
@@ -306,6 +307,23 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_9.gridy = 3;
 		panel_1.add(LugarLabel, gbc_lblNewLabel_9);
 		
+		JLabel lblNewLabel_0 = new JLabel("Cantidad maxima turistas:");
+		lblNewLabel_0.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		GridBagConstraints gbc_lblNewLabel_83 = new GridBagConstraints();
+		gbc_lblNewLabel_83.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_83.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_83.gridx = 2;
+		gbc_lblNewLabel_83.gridy = 3;
+		panel_1.add(lblNewLabel_0, gbc_lblNewLabel_83);
+		
+	    LabelMaxTuristas = new JLabel("");
+	    LabelMaxTuristas.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		GridBagConstraints gbc_lblNewLabel_max = new GridBagConstraints();
+		gbc_lblNewLabel_max.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_max.gridx = 3;
+		gbc_lblNewLabel_max.gridy = 3;
+		panel_1.add(LabelMaxTuristas, gbc_lblNewLabel_max);
+		
 		
 		
 		  list_1.addListSelectionListener(new ListSelectionListener() {
@@ -320,6 +338,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	    	           NombreLabel.setText(selectedSalida);
 	    	           DTSalidaTuristica sal = ctrl.getDTSalidaTuristica();
 	    	           if (sal!= null) {
+	    	        	LabelMaxTuristas.setText(String.valueOf(sal.getCantidadMaxTuristas()));
 	    	           //lugar
 	    	           LugarLabel.setText(sal.getInfoSalida().getLugar());
 	    	           //Hora
@@ -339,6 +358,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		HoraLabel.setText("");
 		NombreLabel.setText("");
 		FechaLabel.setText("");
+		LabelMaxTuristas.setText("");
 		
 		
 		

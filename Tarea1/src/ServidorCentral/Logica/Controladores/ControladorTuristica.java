@@ -45,11 +45,7 @@ public class ControladorTuristica implements ITuristica {
 		actividadSeleccionada = ActividadesTuristicas.get(actividad);
 	}
 	public void seleccionarSalida(String salida) {
-		//previamente hay que seleccionar actividad.
-		if (actividadSeleccionada!= null) {
-		salidaSeleccionada = actividadSeleccionada.getSalidas().get(salida);
-		
-		}
+	
 	}
 	public void seleccionarDepartemento(String departemneto) {}
 	public DTActividadTuristica getDTActividadTuristica() {
