@@ -142,29 +142,38 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_lblFecha.gridy = 6;
 		getContentPane().add(lblFecha, gbc_lblFecha);
 		
-		JComboBox comboBoxDia = new JComboBox();
+		JComboBox<Integer> comboBoxDia = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxDia = new GridBagConstraints();
 		gbc_comboBoxDia.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxDia.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxDia.gridx = 2;
 		gbc_comboBoxDia.gridy = 6;
 		getContentPane().add(comboBoxDia, gbc_comboBoxDia);
+		for(int i = 1; i <= 31; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
-		JComboBox comboBoxMes = new JComboBox();
+		JComboBox<Integer> comboBoxMes = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxMes = new GridBagConstraints();
 		gbc_comboBoxMes.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxMes.gridx = 3;
 		gbc_comboBoxMes.gridy = 6;
 		getContentPane().add(comboBoxMes, gbc_comboBoxMes);
+		for(int i = 1; i <= 12; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
-		JComboBox comboBoxAño = new JComboBox();
+		JComboBox<Integer> comboBoxAño = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxAño = new GridBagConstraints();
 		gbc_comboBoxAño.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxAño.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxAño.gridx = 4;
 		gbc_comboBoxAño.gridy = 6;
 		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
+		for(int i = 1900; i <= 2030; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
 		GridBagConstraints gbc_lblNacionalidad = new GridBagConstraints();
