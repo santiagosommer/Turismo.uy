@@ -3,8 +3,11 @@ import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Iterator;
+
 
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
@@ -34,7 +37,7 @@ public class ControladorTuristica implements ITuristica {
 	
 	public void seleccionarActividad(String actividad) {}
 	public void seleccionarSalida(String salida) {}
-	public void selecciionarDepartemento(String departemneto) {}
+	public void seleccionarDepartemento(String departemneto) {}
 	public DTActividadTuristica getDTActividadTuristica() {
 		return null;
 	}
@@ -42,9 +45,22 @@ public class ControladorTuristica implements ITuristica {
 		return null;
 	}
 	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento) {}
-	public Set<String> listarDepartamentos(){
-		return null;
+	
+public Set<String> listarDepartamentos(){
+		
+		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, Departamento> departamentos = crTuristica.Departamentos;
+		String nombreDep;
+		Set<String> lista = new HashSet<String>();
+				
+		for (Iterator<Map.Entry<String, Departamento>> entries = departamentos.entrySet().iterator(); entries.hasNext(); ) {
+		    Map.Entry<String, Departamento> entry = entries.next();
+		    nombreDep = entry.getKey();
+		    lista.add(nombreDep);
+		}
+		return lista;
 	}
+
 	public Set<String> listarActividadesDeDepartamento(String departemento){
 		return null;
 	}
@@ -53,9 +69,11 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) {}
+	
 	public Set<String> listarSalidasActividad(){
 		return null;
 	}
+	
 	public Boolean existeActividad(String actividad) {
 		return false;
 	}

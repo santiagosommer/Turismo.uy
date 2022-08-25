@@ -13,7 +13,7 @@ public interface ITuristica {
 	
 	public abstract void seleccionarActividad(String actividad);
 	public abstract void seleccionarSalida(String salida);
-	public abstract void selecciionarDepartemento(String departemneto);
+	public abstract void seleccionarDepartemento(String departemneto);
 	public abstract DTActividadTuristica getDTActividadTuristica();
 	public abstract DTSalidaTuristica getDTSalidaTuristica();
 	public abstract void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento);
