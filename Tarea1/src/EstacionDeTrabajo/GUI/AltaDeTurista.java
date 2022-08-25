@@ -5,13 +5,28 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+
+//import excepciones.UsuarioRepetidoException;
+//import logica.IControladorUsuario;
+
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaDeTurista extends JInternalFrame {
+	
+	private IUsuario controlUsr;
+	
 	private JTextField textFieldNickName;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
@@ -21,23 +36,23 @@ public class AltaDeTurista extends JInternalFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaDeTurista frame = new AltaDeTurista();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AltaDeTurista frame = new AltaDeTurista();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AltaDeTurista() {
+	public AltaDeTurista(IUsuario controlUsr) {
 		setBounds(100, 100, 371, 300);	
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 65, 0, 65, 0, 0, 0};
@@ -194,6 +209,11 @@ public class AltaDeTurista extends JInternalFrame {
 		textFieldNacionalidad.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaTuristaActionPerformed();
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAceptar.gridx = 2;
@@ -201,6 +221,12 @@ public class AltaDeTurista extends JInternalFrame {
 		getContentPane().add(btnAceptar, gbc_btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+                setVisible(false);
+			}
+		});
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
 		gbc_btnCancelar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnCancelar.gridx = 4;
@@ -208,5 +234,57 @@ public class AltaDeTurista extends JInternalFrame {
 		getContentPane().add(btnCancelar, gbc_btnCancelar);
 
 	}
+	
+	protected void altaTuristaActionPerformed() {
+		String nickname = this.textFieldNickName.getText();
+		String nombre = this.textFieldNombre.getText();
+        String apellido = this.textFieldApellido.getText();
+        String email = this.textFieldEmail.getText();
+        String nacionalidad = this.textFieldNacionalidad.getText();
+        
+        if (checkFormulario()) {
+        	try {
+                controlUsr.altaTurista(nickname, nombre, apellido, email, null, nacionalidad);;
+
+                // Muestro éxito de la operación
+                JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (UsuarioRepetidoException e) {
+                // Muestro error de registro
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Limpio el internal frame antes de cerrar la ventana
+            limpiarFormulario();
+            setVisible(false);
+
+        }
+	}
+	
+	protected boolean checkFormulario(){
+		String nickname = this.textFieldNickName.getText();
+		String nombre = this.textFieldNombre.getText();
+        String apellido = this.textFieldApellido.getText();
+        String email = this.textFieldEmail.getText();
+        String nacionalidad = this.textFieldNacionalidad.getText();
+        
+        if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
+        	JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+        
+
+	}
+	
+	private void limpiarFormulario() {
+        textFieldNombre.setText("");
+        textFieldApellido.setText("");
+        textFieldNickName.setText("");
+        textFieldNacionalidad.setText("");
+        textFieldEmail.setText("");
+    }
 
 }

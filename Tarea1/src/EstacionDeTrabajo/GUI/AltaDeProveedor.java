@@ -5,40 +5,51 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
+
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
 import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaDeProveedor extends JInternalFrame {
+	
+	private IUsuario controlUsr;
+	
 	private JTextField textFieldNickName;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellido;
 	private JTextField textFieldEmail;
-	private JTextField textFieldDescripccion;
+	private JTextField textFieldDescripcion;
 	private JTextField textFieldLinkWeb;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaDeProveedor frame = new AltaDeProveedor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AltaDeProveedor frame = new AltaDeProveedor();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AltaDeProveedor() {
+	public AltaDeProveedor(IUsuario controlUsr) {
 		setBounds(100, 100, 493, 337);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 89, 0, 0, 0};
@@ -143,29 +154,38 @@ public class AltaDeProveedor extends JInternalFrame {
 		gbc_lblFecha.gridy = 6;
 		getContentPane().add(lblFecha, gbc_lblFecha);
 		
-		JComboBox comboBoxDia = new JComboBox();
+		JComboBox<Integer> comboBoxDia = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxDia = new GridBagConstraints();
 		gbc_comboBoxDia.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxDia.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxDia.gridx = 2;
 		gbc_comboBoxDia.gridy = 6;
 		getContentPane().add(comboBoxDia, gbc_comboBoxDia);
+		for(int i = 1; i <= 31; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
-		JComboBox comboBoxMes = new JComboBox();
+		JComboBox<Integer> comboBoxMes = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxMes = new GridBagConstraints();
 		gbc_comboBoxMes.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxMes.gridx = 3;
 		gbc_comboBoxMes.gridy = 6;
 		getContentPane().add(comboBoxMes, gbc_comboBoxMes);
+		for(int i = 1; i <= 12; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
-		JComboBox comboBoxAño = new JComboBox();
+		JComboBox<Integer> comboBoxAño = new JComboBox<Integer>();
 		GridBagConstraints gbc_comboBoxAño = new GridBagConstraints();
 		gbc_comboBoxAño.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxAño.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxAño.gridx = 4;
 		gbc_comboBoxAño.gridy = 6;
 		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
+		for(int i = 1900; i <= 2030; i++) {
+			comboBoxDia.addItem(i);
+		}
 		
 		JLabel lblDescripccion = new JLabel("Descripccion");
 		GridBagConstraints gbc_lblDescripccion = new GridBagConstraints();
@@ -174,15 +194,15 @@ public class AltaDeProveedor extends JInternalFrame {
 		gbc_lblDescripccion.gridy = 7;
 		getContentPane().add(lblDescripccion, gbc_lblDescripccion);
 		
-		textFieldDescripccion = new JTextField();
-		textFieldDescripccion.setColumns(10);
-		GridBagConstraints gbc_textFieldDescripccion = new GridBagConstraints();
-		gbc_textFieldDescripccion.gridwidth = 3;
-		gbc_textFieldDescripccion.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDescripccion.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldDescripccion.gridx = 2;
-		gbc_textFieldDescripccion.gridy = 7;
-		getContentPane().add(textFieldDescripccion, gbc_textFieldDescripccion);
+		textFieldDescripcion = new JTextField();
+		textFieldDescripcion.setColumns(10);
+		GridBagConstraints gbc_textFieldDescripcion = new GridBagConstraints();
+		gbc_textFieldDescripcion.gridwidth = 3;
+		gbc_textFieldDescripcion.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldDescripcion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldDescripcion.gridx = 2;
+		gbc_textFieldDescripcion.gridy = 7;
+		getContentPane().add(textFieldDescripcion, gbc_textFieldDescripcion);
 		
 		JLabel lblLinkWeb = new JLabel("Link Web");
 		GridBagConstraints gbc_lblLinkWeb = new GridBagConstraints();
@@ -202,6 +222,11 @@ public class AltaDeProveedor extends JInternalFrame {
 		textFieldLinkWeb.setColumns(10);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaProveedorActionPerformed();
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAceptar.gridx = 2;
@@ -209,6 +234,12 @@ public class AltaDeProveedor extends JInternalFrame {
 		getContentPane().add(btnAceptar, gbc_btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+                setVisible(false);
+			}
+		});
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
 		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnCancelar.gridx = 4;
@@ -216,5 +247,60 @@ public class AltaDeProveedor extends JInternalFrame {
 		getContentPane().add(btnCancelar, gbc_btnCancelar);
 
 	}
+	
+	protected void altaProveedorActionPerformed() {
+		String nickname = this.textFieldNickName.getText();
+		String nombre = this.textFieldNombre.getText();
+        String apellido = this.textFieldApellido.getText();
+        String email = this.textFieldEmail.getText();
+        String nacionalidad = this.textFieldDescripcion.getText();
+        String linkWeb = this.textFieldLinkWeb.getText();
+        
+        if (checkFormulario()) {
+        	try {
+                controlUsr.altaProveedor(nickname, nombre, apellido, email, null, nacionalidad, linkWeb);
+
+                // Muestro éxito de la operación
+                JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (UsuarioRepetidoException e) {
+                // Muestro error de registro
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Limpio el internal frame antes de cerrar la ventana
+            limpiarFormulario();
+            setVisible(false);
+
+        }
+	}
+	
+	protected boolean checkFormulario(){
+		String nickname = this.textFieldNickName.getText();
+		String nombre = this.textFieldNombre.getText();
+        String apellido = this.textFieldApellido.getText();
+        String email = this.textFieldEmail.getText();
+        String nacionalidad = this.textFieldDescripcion.getText();
+        
+        if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
+        	JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+        
+
+	}
+
+	
+	private void limpiarFormulario() {
+        textFieldNombre.setText("");
+        textFieldApellido.setText("");
+        textFieldNickName.setText("");
+        textFieldEmail.setText("");
+        textFieldDescripcion.setText("");
+        textFieldLinkWeb.setText("");
+    }
 
 }

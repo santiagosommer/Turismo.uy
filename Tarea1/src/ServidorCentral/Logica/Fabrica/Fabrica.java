@@ -8,16 +8,28 @@ import ServidorCentral.Logica.Controladores.ControladorUsuario;
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
 
 public class Fabrica {
-		public Fabrica(){}	
-	    public IUsuario getControladorUsuario() {
-	        return (IUsuario) ControladorUsuario.getInstancia() ;
-	    }	      
-	    
-	    public IPaquete getControladorPaquete() {
-	    	return (IPaquete) ControladorPaquete.getInstancia();
-	    }
-	    
-	    public ITuristica getControladorTuristica() {
-	    	return (ITuristica) ControladorTuristica.getInstancia();
-	    }
+		
+	private static Fabrica instancia;
+	
+	private Fabrica(){
+		
+	};
+	
+	public static Fabrica getInstance() {
+        if (instancia == null) {
+            instancia = new Fabrica();
+        }
+        return instancia;
+    }
+    public IUsuario getControladorUsuario() {
+        return (IUsuario) ControladorUsuario.getInstancia() ;
+    }	      
+    
+    public IPaquete getControladorPaquete() {
+    	return (IPaquete) ControladorPaquete.getInstancia();
+    }
+    
+    public ITuristica getControladorTuristica() {
+    	return (ITuristica) ControladorTuristica.getInstancia();
+    }
 }
