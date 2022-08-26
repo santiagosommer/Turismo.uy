@@ -31,7 +31,8 @@ public class ControladorTuristica implements ITuristica {
 	
 	private ControladorTuristica() {
 		setActividades(new HashMap<String,ActividadTuristica>());
-		setDepartamentos(new HashMap<String,Departamento>());
+		Departamentos = new HashMap<String,Departamento>();
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
 		departamentoSeleccionado = null;
@@ -115,15 +116,17 @@ public class ControladorTuristica implements ITuristica {
 	public Set<String> listarDepartamentos(){
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, Departamento> departamentos = crTuristica.Departamentos;
+				
 		String nombreDep;
 		Set<String> lista = new HashSet<String>();
-				
-		for (Iterator<Map.Entry<String, Departamento>> entries = departamentos.entrySet().iterator(); entries.hasNext(); ) {
+		
+		if ( !crTuristica.Departamentos.isEmpty()) {
+		for (Iterator<Map.Entry<String, Departamento>> entries = crTuristica.Departamentos.entrySet().iterator(); entries.hasNext(); ) {
 		    Map.Entry<String, Departamento> entry = entries.next();
 		    nombreDep = entry.getKey();
 		    lista.add(nombreDep);
 		}
+	}
 		return lista;
 	}
 	
