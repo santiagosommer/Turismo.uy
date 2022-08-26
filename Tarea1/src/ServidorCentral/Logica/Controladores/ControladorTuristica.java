@@ -2,6 +2,7 @@ package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import ServidorCentral.Logica.Interfaces.ITuristica;
+import ServidorCentral.Logica.Interfaces.IUsuario;
 
 
 
@@ -30,7 +32,6 @@ public class ControladorTuristica implements ITuristica {
 	private Map<String, Departamento> Departamentos;
 	
 	private ControladorTuristica() {
-		setActividades(new HashMap<String,ActividadTuristica>());
 		Departamentos = new HashMap<String,Departamento>();
 		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();
 		actividadSeleccionada = null;
@@ -40,16 +41,6 @@ public class ControladorTuristica implements ITuristica {
 	
 	//operaciones
 	
-	private void setDepartamentos(HashMap<String, Departamento> hashMap) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void setActividades(HashMap<String, ActividadTuristica> hashMap) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public static ControladorTuristica getInstancia() {
 		if (instancia == null) {
 			instancia = new ControladorTuristica();
@@ -81,35 +72,74 @@ public class ControladorTuristica implements ITuristica {
 		
 	}
 	
-	public void seleccionarDepartemento(String departamento) {
+	public void seleccionarDepartamento(String departamento) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, Departamento> departamentos = crTuristica.Departamentos;
 		Departamento departamentoSelec = departamentos.get(departamento);
 		departamentoSeleccionado = departamentoSelec;
 	}
 	
-	public DTActividadTuristica getDTActividadTuristica() {
-		return null;
+	public DTDepartamento getDTDepartamento() {
+		if (departamentoSeleccionado==null) {
+			return null;
+		}
+		else {
+		return new DTDepartamento(departamentoSeleccionado.getNombre(),departamentoSeleccionado.getDescripcion(),departamentoSeleccionado.getURL());
 	}
-	public DTSalidaTuristica getDTSalidaTuristica() {
-		return null;
 	}
 	
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento) {}
+	public DTActividadTuristica getDTActividadTuristica() {
+		
+		if (actividadSeleccionada!= null) {
+		seleccionarDepartamento(actividadSeleccionada.getInfoDepartamento().getNombre());
+		DTDepartamento dtdep = getDTDepartamento();
+		
+		Fabrica fabrica = Fabrica.getInstance(); 
+		IUsuario controladorUsr = fabrica.getControladorUsuario();
+		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); // por nickname o por email?
+		DTProveedor dtprov = controladorUsr.getDTProveedor();			
+		return new DTActividadTuristica(actividadSeleccionada.getNombre(),actividadSeleccionada.getDescripcion(),actividadSeleccionada.getDuracion(),
+				actividadSeleccionada.getCostoTurista(),actividadSeleccionada.getFechaAlta(),dtdep,dtprov,actividadSeleccionada.getCiudad());
+		} else {
+			return null;
+		}
+		
+	
+	}
+	public DTSalidaTuristica getDTSalidaTuristica() {
+		
+		if (actividadSeleccionada!= null) {
+		seleccionarActividad(salidaSeleccionada.getActividadTuristicaAsociada().getNombre());
+		DTActividadTuristica act = getDTActividadTuristica();
+		return  new DTSalidaTuristica(salidaSeleccionada.getNombre(),
+				salidaSeleccionada.getCantidadMaxTuristas(),salidaSeleccionada.getFechaAlta(),
+				salidaSeleccionada.getInfoSalida(),salidaSeleccionada.getCuposDisponibles(),act);
+		}else {
+			return null;
+		}
+	}
+	
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) {
+		
+	}
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) throws NombreSalidaRepetidoException {
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		
-		if (existeSalida(nombre,actividadSeleccionada.getNombre())){
+		if (existeSalida(nombre)){
 			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
 		}
+		
+		
 		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, cuposDisponibles);
+		if (actividadSeleccionada!=null) {
 		nuevaSalida.setActividadTuristicaAsociada(actividadSeleccionada);
 		Map<String,SalidaTuristica> salidasDeActividad = actividadSeleccionada.getSalidas();
 		salidasDeActividad.put(nombre,nuevaSalida);	
 		actividadSeleccionada.setSalidas(salidasDeActividad);
+		}
 	}
 
 	
@@ -121,6 +151,7 @@ public class ControladorTuristica implements ITuristica {
 		Set<String> lista = new HashSet<String>();
 		
 		if ( !crTuristica.Departamentos.isEmpty()) {
+
 		for (Iterator<Map.Entry<String, Departamento>> entries = crTuristica.Departamentos.entrySet().iterator(); entries.hasNext(); ) {
 		    Map.Entry<String, Departamento> entry = entries.next();
 		    nombreDep = entry.getKey();
@@ -225,15 +256,31 @@ public class ControladorTuristica implements ITuristica {
 		return existe;
 	}
 	
-	public void crearDepartamento(String nombre,String descripcion, String URL) {}
+	public void crearDepartamento(String nombre,String descripcion, String URL) {
+		
+	}
 
 	@Override
 	public Boolean existeSalida(String salida) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
+		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
+		    ActividadTuristica activ = entry.getValue();
+		    Map<String, SalidaTuristica> salidasActiv = activ.getSalidas();
+		    boolean existe = salidasActiv.containsKey(salida);
+		    if (existe) {
+		    	return existe;
+		    }	    
+		}
+		return false;
+		
+		
 	}
 	
 }
+
 
 
 	

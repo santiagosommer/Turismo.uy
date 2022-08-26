@@ -59,13 +59,20 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public DTTurista getDTTurista() {
 		// TODO Auto-generated method stub
-		return null;
+		if (turistaSeleccionado!= null) {
+		  return new DTTurista(turistaSeleccionado.getNickname(),turistaSeleccionado.getNombre(), turistaSeleccionado.getApellido(), turistaSeleccionado.getEmail(),turistaSeleccionado.getFechaNacimiento(), turistaSeleccionado.getNacionalidad());
+		}else {
+		  return null;
 	}
-	
+	}
 	@Override
 	public DTProveedor getDTProveedor() {
 		// TODO Auto-generated method stub
-		return null;
+		if (proveedorSeleccionado!=null) {
+		  return new DTProveedor(proveedorSeleccionado.getNickname(), proveedorSeleccionado.getNombre(), proveedorSeleccionado.getApellido(),proveedorSeleccionado.getEmail(),proveedorSeleccionado.getFechaNacimiento() , proveedorSeleccionado.getDescripcionGeneral() , proveedorSeleccionado.getURL());
+		} else {
+		  return null;
+	}
 	}
 	@Override
 	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {

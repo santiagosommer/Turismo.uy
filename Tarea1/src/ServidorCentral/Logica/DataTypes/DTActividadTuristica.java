@@ -16,18 +16,19 @@ public class DTActividadTuristica {
 	private String Ciudad;
 	
 	public DTActividadTuristica(String nombre,String descripcion,int duracion,float costoTurista,
-			LocalDate fechaAlta,DTDepartamento infoDepartamento,ArrayList<DTSalidaTuristica> salidas,
-			DTProveedor proveedor, ArrayList<DTPaquete> infoPaquetes,String ciudad) {
+			LocalDate fechaAlta,DTDepartamento infoDepartamento,
+			DTProveedor proveedor,String ciudad) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Duracion = duracion;
 		CostoTurista = costoTurista;
 		FechaAlta = fechaAlta;
 		InfoDepartamento = infoDepartamento;
-		InfoSalidas = salidas;
+		InfoSalidas = new ArrayList<DTSalidaTuristica>();
 		Proveedor = proveedor;
-		InfoPaquetes = infoPaquetes;
+		InfoPaquetes = new ArrayList<DTPaquete>();
 		Ciudad = ciudad;
+		
 		
 		
 	}

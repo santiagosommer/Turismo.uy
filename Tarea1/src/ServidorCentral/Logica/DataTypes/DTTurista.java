@@ -7,10 +7,10 @@ public class DTTurista extends DTUsuario {
 	private String Nacionalidad ;
 	private ArrayList<DTInscripcion> Inscripciones;
 	
-   public DTTurista(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento, String nacionalidad, ArrayList<DTInscripcion> inscripciones) {
+   public DTTurista(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento, String nacionalidad) {
 	   super(nickname,nombre,apellido,email,fechaNacimiento);
 	   Nacionalidad = nacionalidad;
-	   Inscripciones = inscripciones;
+	   Inscripciones = new ArrayList<DTInscripcion>();
        
    }
 

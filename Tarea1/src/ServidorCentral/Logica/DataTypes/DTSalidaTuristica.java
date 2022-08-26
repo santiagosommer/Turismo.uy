@@ -17,7 +17,7 @@ public class DTSalidaTuristica {
 	 CantidadMaxTuristas = cantidadMaxTuristas;
 	 FechaAlta = fechaAltaSalida;
 	 InfoSalida = infoSalida;
-	 CuposDisponibles = cuposDisponibles;
+	 CuposDisponibles = cuposDisponibles; 
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
 	 
 	 

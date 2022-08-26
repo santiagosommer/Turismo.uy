@@ -62,25 +62,25 @@ public class Principal {
 		ICP = fabrica.getControladorPaquete();
 		 frmServidorcentral.getContentPane().setLayout(null);
 		 
-		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
-		 modificarDatosUsuarioIFrame.setBounds(-57, 85, 350, 176);
-		 frmServidorcentral.getContentPane().add(modificarDatosUsuarioIFrame);
-		 
 		 
 		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
-		 consultaUsuarioIFrame.setBounds(94, 36, 450, 300);
+		 consultaUsuarioIFrame.setBounds(10, 0, 450, 300);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
+		 
+		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
+		 modificarDatosUsuarioIFrame.setBounds(50, 24, 350, 176);
+		 consultaUsuarioIFrame.getContentPane().add(modificarDatosUsuarioIFrame);
+		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
 		 altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
 		 altaUsuarioIFrame.setBounds(21, 10, 328, 132);
 		 frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
 		 altaUsuarioIFrame.setVisible(false);
 		 consultaUsuarioIFrame.setVisible(false);
-		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
 		 
 		 consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
-		 consultaSalidaTuristicaIFrame.setBounds(94, 36, 450, 300);
+		 consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
 		 frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
 		 consultaSalidaTuristicaIFrame.setVisible(false);
 		 consultaSalidaTuristicaIFrame.setClosable(true);
@@ -100,17 +100,25 @@ public class Principal {
 	private void initialize() {
 		frmServidorcentral = new JFrame();
 		frmServidorcentral.setTitle("Servidor Central");
-		frmServidorcentral.setBounds(100, 100, 450, 300);
+		frmServidorcentral.setBounds(100, 100, 847, 579);
 		frmServidorcentral.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
-		frmServidorcentral.setJMenuBar(menuBar);
 		
 		JMenu menuSistema = new JMenu("Sistema");
 		menuBar.add(menuSistema);
 		
 		JMenuItem menuItemSalir = new JMenuItem("Salir");
 		menuSistema.add(menuItemSalir);
+		
+		frmServidorcentral.setJMenuBar(menuBar);
+		  menuItemSalir.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent arg0) {
+	                // Salgo de la aplicación
+	            	frmServidorcentral.setVisible(false);
+	            	frmServidorcentral.dispose();
+	            }
+	        });
 		
 		JMenu menuUsuario = new JMenu("Usuario");
 		menuBar.add(menuUsuario);
