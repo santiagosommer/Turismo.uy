@@ -128,19 +128,19 @@ public class ControladorTuristica implements ITuristica {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		
-		if (existeSalida(nombre)){
+		if (existeSalida(nombre,actividadSeleccionada.getNombre())){
 			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
 		}
-		
-		
 		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, cuposDisponibles);
-		if (actividadSeleccionada!=null) {
 		nuevaSalida.setActividadTuristicaAsociada(actividadSeleccionada);
 		Map<String,SalidaTuristica> salidasDeActividad = actividadSeleccionada.getSalidas();
 		salidasDeActividad.put(nombre,nuevaSalida);	
 		actividadSeleccionada.setSalidas(salidasDeActividad);
-		}
 	}
+
+
+
+
 
 	
 	public Set<String> listarDepartamentos(){

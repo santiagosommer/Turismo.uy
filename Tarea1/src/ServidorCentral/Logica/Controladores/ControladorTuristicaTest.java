@@ -65,6 +65,7 @@ class ControladorTuristicaTest {
 	@Test
 	void testCrearSalidaTuristicaOK()  {
 		try {
+			//falta crear y seleccionar actividadturistica, etc
 	  LocalDate now = LocalDate.now();
 	 controlador.crearSalidaTuristica("nom", 4, now, validDt,4);
 	  
