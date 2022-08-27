@@ -1,16 +1,25 @@
 package ServidorCentral.Logica.Controladores;
+import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
+import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 
 public class ControladorUsuario implements IUsuario {
@@ -86,8 +95,45 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	
-	public void crearInscripcion(String nombre, int cantidadMaxTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,int CuposDisponibles) {
+	public void crearInscripcion(String nombre, int cantidadTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,int CuposDisponibles) throws YaExisteInscripcionTuristaSalida {
 		// TODO Auto-generated method stub
+		Fabrica fabrica = Fabrica.getInstance();
+		ITuristica ctrl = fabrica.getControladorTuristica();
+		ActividadTuristica act = ctrl.getActividadSeleccionada();
+		SalidaTuristica sal = ctrl.getSalidaSeleccionada();
+		Turista turi = turistaSeleccionado;
+		
+		//comprobar que turista no tiene una inscripcion a esa Salida
+		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
+		boolean tieneInsc = false;
+		if (!inscripciones.isEmpty()) {
+			Iterator it = inscripciones.iterator();
+			while (it.hasNext() && !tieneInsc) {
+				Inscripcion j = (Inscripcion) it.next();
+				if (j.getSalidaAsociada().getNombre() == sal.getNombre()) {
+					tieneInsc = true;
+				}	
+			}	
+		}
+		
+		if(tieneInsc) {
+		
+	    throw new YaExisteInscripcionTuristaSalida("El turista ya tiene una inscripcion a la salida de nombre" + sal.getNombre());
+			
+			
+		} else {
+		
+		  if (CuposDisponibles>= cantidadTuristas && sal!=null && act!=null && turi!= null) {
+	           //: calcular costo:
+	          float costo = cantidadTuristas * act.getCostoTurista();
+	          sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); //actualizo cupos disponibles
+	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal);
+	         //agregar a inscripciones de turista
+	          turi.agregarInscripcion(ins);   
+		   } else {}
+		  }
+		
+	
 		
 	}
 	@Override
@@ -126,6 +172,12 @@ public class ControladorUsuario implements IUsuario {
 	}
 	public void setProveedores(Map<String, Proveedor> proveedores) {
 		Proveedores = proveedores;
+	}
+	@Override
+	public Set<String> listarTuristas() {
+		
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

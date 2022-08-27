@@ -120,6 +120,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) {
+			
 		
 	}
 	
@@ -257,7 +258,11 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void crearDepartamento(String nombre,String descripcion, String URL) {
-		
+		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		if (!existeDepartamento(nombre)) {
+			Departamento dep = new Departamento(nombre,descripcion,URL);
+			crTuristica.Departamentos.put(nombre, dep);
+		}
 	}
 
 	@Override
@@ -277,6 +282,18 @@ public class ControladorTuristica implements ITuristica {
 		return false;
 		
 		
+	}
+
+	@Override
+	public ActividadTuristica getActividadSeleccionada() {
+		// TODO Auto-generated method stub
+		return actividadSeleccionada;
+	}
+
+	@Override
+	public SalidaTuristica getSalidaSeleccionada() {
+		// TODO Auto-generated method stub
+		return salidaSeleccionada;
 	}
 	
 }

@@ -81,15 +81,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
        
       
 
-      //agrega departamentos
-	   if (!ctrl.listarDepartamentos().isEmpty()) {
-       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
-       while(iterator.hasNext()) { 
-    	   String setElement = iterator.next(); 
-    	   comboBoxDepartamentos.addItem(setElement);
-	   }
-	   }   
-       
+      
+       //modelos listas
               
        DefaultListModel<String> l1 = new DefaultListModel<>();
        DefaultListModel<String> l2 = new DefaultListModel<>();
@@ -130,6 +123,14 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
+		//agrega departamentos
+		   if (!ctrl.listarDepartamentos().isEmpty()) {
+	         Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxDepartamentos.addItem(setElement);
+		     }
+		   }   
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -179,10 +180,14 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		    public void actionPerformed(ActionEvent e) {
 		 	   @SuppressWarnings("unchecked") //?
 			JComboBox<String> cb = (JComboBox<String>)e.getSource();
+		 	   
 		 	   String DepartamentoSelecc = (String)cb.getSelectedItem();
 		 	   if(ctrl.existeDepartamento(DepartamentoSelecc)) {
+		 		   ctrl.seleccionarDepartamento(DepartamentoSelecc);
 		 		   Set<String> actividades = ctrl.listarActividadesDeDepartamento(DepartamentoSelecc);
 		 		   Iterator<String> iterator = actividades.iterator();
+		 		   l1.removeAllElements(); //limpia las listas
+		 		   l2.removeAllElements();
 		 		   while(iterator.hasNext()) { 
 		 			    	   String Element = iterator.next(); 
 		 			    	    l1.addElement(Element);
@@ -204,8 +209,13 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 					JList<String> source = (JList)event.getSource();
     	            String selectedActividad = source.getSelectedValue().toString();
     	            Set<String> salidas = ctrl.listarSalidasActividad(selectedActividad);
+    	            if (ctrl.existeActividad(selectedActividad)) {
+    	            	ctrl.seleccionarActividad(selectedActividad);
+    	            }
+    	            l2.removeAllElements();
     	            if (salidas!= null) {
     	            	Iterator<String> iterator = salidas.iterator();
+    	            	
     	            	while(iterator.hasNext()) { 
 	 			    	    String Salida = iterator.next(); 
 	 			    	    l2.addElement(Salida);

@@ -29,7 +29,7 @@ public class Principal {
 	private ConsultaDeActividadTuristica consultaActividadTuristicaIFrame;
 	private AltaDeSalidaTuristica altaSalidaTuristicaIFrame;
 	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
-	private InscripcionASalidaTuristica  inscripciónSalidaTurísticaIFrame;
+	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
 	//private CrearPaquetedeActividadesTurísticas  crearPaqueteActividadesTuristicasIFrame
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
 	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
@@ -68,7 +68,7 @@ public class Principal {
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
 		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
-		 modificarDatosUsuarioIFrame.setBounds(50, 24, 350, 176);
+		 modificarDatosUsuarioIFrame.setBounds(0, 10, 350, 176);
 		 consultaUsuarioIFrame.getContentPane().add(modificarDatosUsuarioIFrame);
 		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
@@ -80,14 +80,19 @@ public class Principal {
 		 
 		 
 		 consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
-		 consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
+		 consultaSalidaTuristicaIFrame.setBounds(52, 0, 677, 411);
 		 frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
 		 consultaSalidaTuristicaIFrame.setVisible(false);
 		 consultaSalidaTuristicaIFrame.setClosable(true);
 		 
 		 
-		 
-		 
+		  inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
+		  inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
+		  consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
+		  frmServidorcentral.getContentPane().add(inscripcionSalidaTuristicaIFrame);
+	
+		  inscripcionSalidaTuristicaIFrame.setVisible(false);
+		  inscripcionSalidaTuristicaIFrame.setClosable(true);
 		 
 		 
 			
@@ -100,7 +105,7 @@ public class Principal {
 	private void initialize() {
 		frmServidorcentral = new JFrame();
 		frmServidorcentral.setTitle("Servidor Central");
-		frmServidorcentral.setBounds(100, 100, 847, 579);
+		frmServidorcentral.setBounds(100, 100, 890, 773);
 		frmServidorcentral.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -165,7 +170,23 @@ public class Principal {
         });
 		
 		
+		
 		menuSalidas.add(mntmConsultaDeSalida);
+		
+		
+		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");
+		mntmInscripcionASalida.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	//inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+            	inscripcionSalidaTuristicaIFrame.setVisible(true);
+            }
+        });
+		
+		
+		
+		menuSalidas.add(mntmInscripcionASalida);
+		
+		
 		
 		
 		
