@@ -231,9 +231,9 @@ public class ControladorTuristica implements ITuristica {
 		} else {
 			return null;	
 		}
-	
 	}
 
+	
 	public Boolean existeActividad(String actividad) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;

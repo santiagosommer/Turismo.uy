@@ -215,16 +215,16 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    	            @SuppressWarnings("unchecked")
 						JList<String> source = (JList)event.getSource();
 	    	            String selectedActividad = source.getSelectedValue().toString();
-	    	            Set<String> salidas = ctr.listarSalidasActividad(selectedActividad); //cambiar por listar salidas vigentes
 	    	            if (ctr.existeActividad(selectedActividad)) {
 	    	            	ctr.seleccionarActividad(selectedActividad);
 	    	            }
+	    	            Set<DTSalidaTuristica> salidas = ctr.datosSalidasVigentes(selectedActividad); 
 	    	            l2.removeAllElements();
 	    	            if (salidas!= null) {
-	    	            	Iterator<String> iterator = salidas.iterator();
+	    	            	Iterator<DTSalidaTuristica> iterator = salidas.iterator();
 	    	            	
 	    	            	while(iterator.hasNext()) { 
-		 			    	    String Salida = iterator.next(); 
+		 			    	    String Salida = iterator.next().getNombre(); 
 		 			    	    l2.addElement(Salida);
 	    	            	}
 	    	           }
