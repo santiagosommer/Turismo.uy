@@ -21,11 +21,12 @@ import ServidorCentral.Logica.Interfaces.IUsuario;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 
 public class AltaDeTurista extends JInternalFrame {
 	
-	private IUsuario controlUsr;
+	private IUsuario cu;
 	
 	private JTextField textFieldNickName;
 	private JTextField textFieldNombre;
@@ -53,6 +54,8 @@ public class AltaDeTurista extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AltaDeTurista(IUsuario controlUsr) {
+		cu = controlUsr;
+		
 		setBounds(100, 100, 371, 300);	
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 65, 0, 65, 0, 0, 0};
@@ -176,7 +179,7 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_comboBoxMes.gridy = 6;
 		getContentPane().add(comboBoxMes, gbc_comboBoxMes);
 		for(int i = 1; i <= 12; i++) {
-			comboBoxDia.addItem(i);
+			comboBoxMes.addItem(i);
 		}
 		
 		JComboBox<Integer> comboBoxAño = new JComboBox<Integer>();
@@ -187,7 +190,7 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_comboBoxAño.gridy = 6;
 		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
 		for(int i = 1900; i <= 2030; i++) {
-			comboBoxDia.addItem(i);
+			comboBoxAño.addItem(i);
 		}
 		
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
@@ -211,7 +214,10 @@ public class AltaDeTurista extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				altaTuristaActionPerformed();
+				try {
+					altaTuristaActionPerformed();
+				} catch (UsuarioRepetidoException ex) {
+                }
 			}
 		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
@@ -235,7 +241,7 @@ public class AltaDeTurista extends JInternalFrame {
 
 	}
 	
-	protected void altaTuristaActionPerformed() {
+	protected void altaTuristaActionPerformed() throws UsuarioRepetidoException {
 		String nickname = this.textFieldNickName.getText();
 		String nombre = this.textFieldNombre.getText();
         String apellido = this.textFieldApellido.getText();
@@ -243,20 +249,22 @@ public class AltaDeTurista extends JInternalFrame {
         String nacionalidad = this.textFieldNacionalidad.getText();
         
         if (checkFormulario()) {
-        	try {
-                controlUsr.altaTurista(nickname, nombre, apellido, email, null, nacionalidad);;
+        		try {
+            		LocalDate date = LocalDate.now();
+                    cu.altaTurista(nickname, nombre, apellido, email, date , nacionalidad);
 
-                // Muestro éxito de la operación
-                JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+                    // Muestro éxito de la operación
+                    JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    limpiarFormulario();
+                    setVisible(false);
 
-            } catch (UsuarioRepetidoException e) {
-                // Muestro error de registro
-                JOptionPane.showMessageDialog(this, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
-            }
+                } catch (UsuarioRepetidoException e) {
+                    // Muestro error de registro
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+                    throw new UsuarioRepetidoException("Es usuario esta Repetido");
 
-            // Limpio el internal frame antes de cerrar la ventana
-            limpiarFormulario();
-            setVisible(false);
+                }
 
         }
 	}
