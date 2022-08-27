@@ -10,6 +10,7 @@ import java.util.Set;
 
 public interface IUsuario {
 
+	public abstract Boolean esTurista(String nickname);
 	public abstract void seleccionarTurista(String Turista);
 	public abstract void seleccionarProveedor(String Proveedor);
 	public abstract Set<String> listarUsuarios(); 
