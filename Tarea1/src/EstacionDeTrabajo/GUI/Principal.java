@@ -199,9 +199,7 @@ public class Principal {
 		
 		menuSalidas.add(mntmConsultaDeSalida);
 		
-		JMenuItem mntmIncripcionASalida = new JMenuItem("Incripcion a Salida Turistica");
-		menuSalidas.add(mntmIncripcionASalida);
-		
+
 		JMenu mnPaquetes = new JMenu("Paquetes");
 		menuBar.add(mnPaquetes);
 		

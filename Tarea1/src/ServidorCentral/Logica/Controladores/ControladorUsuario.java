@@ -4,15 +4,11 @@ import ServidorCentral.Logica.Interfaces.IUsuario;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-<<<<<<< HEAD
 import java.util.Iterator;
-=======
 import java.util.HashSet;
->>>>>>> 6d4de73aebaa7414e1b1fcef2ca8740d6a8954c6
 import java.util.Map;
 import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
