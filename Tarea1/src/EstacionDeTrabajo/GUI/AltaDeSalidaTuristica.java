@@ -1,7 +1,7 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,10 +27,27 @@ import javax.swing.JTextField;
 public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	private ITuristica controlTur;
-	private JTextField textField;
-	private JTextField textField_1;
 	
-	public static void main(String[] args, ITuristica ctrl) {
+	private JLabel lblElijaDepartamento;
+	private JComboBox<String> comboBoxDepartamentos;
+	private JLabel lblElijaActividad;
+	private JComboBox<String> comboBoxActividades;
+	private JLabel lblNombre;
+	private JTextField textFieldNombre;
+	private JLabel lblFechaDeSalida;
+	private JLabel lblAnio;
+	private JComboBox<String> comboBoxAnio;
+	private JLabel lblMes;
+	private JComboBox comboBoxMes;
+	private JLabel lblDia;
+	private JComboBox<String> comboBoxDia;
+	private JLabel lblCantidadMaximaTur;
+	private JTextField textFieldCantMax;
+	private JButton btnAceptar;
+	private JButton btnCancelar;
+	
+	
+public static void main(String[] args, ITuristica ctrl) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,95 +67,100 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		setResizable(true);
 		setIconifiable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setClosable(true);
 		setTitle("Alta Salida Turistica");
 		setBounds(10, 40, 360, 300);
-		setClosable(true);
 		
 		getContentPane().setLayout(null);
 		
-		JLabel lblEli = new JLabel("Elija Departamento");
-		lblEli.setBounds(12, 12, 136, 15);
-		getContentPane().add(lblEli);
+		lblElijaDepartamento = new JLabel("Elija Departamento");
+		lblElijaDepartamento.setBounds(12, 12, 136, 15);
+		getContentPane().add(lblElijaDepartamento);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(166, 7, 172, 24);
-		getContentPane().add(comboBox);
+		comboBoxDepartamentos = new JComboBox();
+		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
+		getContentPane().add(comboBoxDepartamentos);
 		
-		JLabel lblElija = new JLabel("Elija Actividad");
-		lblElija.setBounds(12, 48, 136, 15);
-		getContentPane().add(lblElija);
+		lblElijaActividad = new JLabel("Elija Actividad");
+		lblElijaActividad.setBounds(12, 48, 136, 15);
+		getContentPane().add(lblElijaActividad);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(166, 43, 172, 24);
-		getContentPane().add(comboBox_1);
+		comboBoxActividades = new JComboBox();
+		comboBoxActividades.setBounds(166, 43, 172, 24);
+		getContentPane().add(comboBoxActividades);
 		
-		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
 		getContentPane().add(lblNombre);
 		
-		textField = new JTextField();
-		textField.setBounds(76, 86, 100, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(76, 86, 100, 19);
+		getContentPane().add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
-		JLabel lblFechaDeSalida = new JLabel("Fecha de salida:");
+		lblFechaDeSalida = new JLabel("Fecha de salida:");
 		lblFechaDeSalida.setBounds(12, 115, 116, 15);
 		getContentPane().add(lblFechaDeSalida);
 		
-		JLabel lblAnio = new JLabel("Anio");
+		lblAnio = new JLabel("Anio");
 		lblAnio.setBounds(136, 115, 42, 15);
 		getContentPane().add(lblAnio);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(178, 110, 80, 24);
-		getContentPane().add(comboBox_2);
+		comboBoxAnio = new JComboBox();
+		comboBoxAnio.setBounds(178, 110, 80, 24);
+		getContentPane().add(comboBoxAnio);
 		
-		JLabel lblMes = new JLabel("Mes");
+		lblMes = new JLabel("Mes");
 		lblMes.setBounds(136, 150, 70, 15);
 		getContentPane().add(lblMes);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(178, 145, 80, 24);
-		getContentPane().add(comboBox_3);
+		comboBoxMes = new JComboBox();
+		comboBoxMes.setBounds(178, 145, 80, 24);
+		getContentPane().add(comboBoxMes);
 		
-		JLabel lblDia = new JLabel("Dia");
+		lblDia = new JLabel("Dia");
 		lblDia.setBounds(136, 183, 70, 15);
 		getContentPane().add(lblDia);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setBounds(178, 178, 80, 24);
-		getContentPane().add(comboBox_4);
+		comboBoxDia = new JComboBox();
+		comboBoxDia.setBounds(178, 178, 80, 24);
+		getContentPane().add(comboBoxDia);
 		
-		JLabel lblCantidadMaximaDe = new JLabel("Cantidad maxima de turistas");
-		lblCantidadMaximaDe.setBounds(12, 210, 246, 15);
-		getContentPane().add(lblCantidadMaximaDe);
+		lblCantidadMaximaTur = new JLabel("Cantidad maxima de turistas");
+		lblCantidadMaximaTur.setBounds(12, 210, 246, 15);
+		getContentPane().add(lblCantidadMaximaTur);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(225, 208, 58, 19);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldCantMax = new JTextField();
+		textFieldCantMax.setBounds(225, 208, 58, 19);
+		getContentPane().add(textFieldCantMax);
+		textFieldCantMax.setColumns(10);
         
         
-        JButton btnNewButton = new JButton("Aceptar");
-        btnNewButton.setBounds(35, 231, 117, 25);
-        getContentPane().add(btnNewButton);
-        btnNewButton.addActionListener(new ActionListener() {
+        btnAceptar = new JButton("Aceptar");
+        btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//AltaSalidaTuristicaActionPerformed(e);
             }
         });
+        btnAceptar.setBounds(35, 231, 117, 25);
+        getContentPane().add(btnAceptar);
         
-        JButton btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(205, 231, 117, 25);
-        getContentPane().add(btnCancelar);
+        btnCancelar = new JButton("Cancelar");
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
               // limpiarFormulario();
                setVisible(false);
             }
         });
+        btnCancelar.setBounds(205, 231, 117, 25);
+        getContentPane().add(btnCancelar);
         
         
-        
+	}
+
+	public void limpiarFormulario() {
+		textFieldNombre.setText("");
+		textFieldCantMax.setText("");	
+		
 	}
 }

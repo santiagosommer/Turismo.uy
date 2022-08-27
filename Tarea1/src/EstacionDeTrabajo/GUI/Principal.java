@@ -153,6 +153,15 @@ public class Principal {
         });
 		menuUsuario.add(mntmModificarDatosDeUsuario);
 		
+		JMenu mnActividadesTuristicas = new JMenu("Actividades Turisticas");
+		menuBar.add(mnActividadesTuristicas);
+		
+		JMenuItem mntmAltaActividadTuristica = new JMenuItem("Alta Actividad Turistica");
+		mnActividadesTuristicas.add(mntmAltaActividadTuristica);
+		
+		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
+		mnActividadesTuristicas.add(mntmConsultaActividadTuristica);
+		
 		JMenu menuSalidas = new JMenu("Salidas Turisticas");
 		menuBar.add(menuSalidas);
 		
@@ -164,8 +173,32 @@ public class Principal {
             }
         });
 		
+		JMenuItem mntmAltaSalidaTuristica = new JMenuItem("Alta Salida Turistica");
+		mntmAltaSalidaTuristica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaSalidaTuristicaIFrame.limpiarFormulario();
+				altaSalidaTuristicaIFrame.setVisible(true);
+			}
+		});
+		menuSalidas.add(mntmAltaSalidaTuristica);
+		
 		
 		menuSalidas.add(mntmConsultaDeSalida);
+		
+		JMenuItem mntmIncripcionASalida = new JMenuItem("Incripcion a Salida Turistica");
+		menuSalidas.add(mntmIncripcionASalida);
+		
+		JMenu mnPaquetes = new JMenu("Paquetes");
+		menuBar.add(mnPaquetes);
+		
+		JMenuItem mntmCrearPaquete = new JMenuItem("Crear Paquete ");
+		mnPaquetes.add(mntmCrearPaquete);
+		
+		JMenuItem mntmAgregarActividadA = new JMenuItem("Agregar Actividad a Paquete");
+		mnPaquetes.add(mntmAgregarActividadA);
+		
+		JMenuItem mntmConsultaDePaquete = new JMenuItem("Consulta de Paquete");
+		mnPaquetes.add(mntmConsultaDePaquete);
 		
 		
 		
@@ -173,5 +206,4 @@ public class Principal {
 		
 	   
 	}
-
 }
