@@ -8,7 +8,11 @@ import ServidorCentral.Logica.Fabrica.Fabrica;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+<<<<<<< HEAD
 import java.util.Iterator;
+=======
+import java.util.HashSet;
+>>>>>>> 6d4de73aebaa7414e1b1fcef2ca8740d6a8954c6
 import java.util.Map;
 import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
@@ -45,6 +49,10 @@ public class ControladorUsuario implements IUsuario {
 		return instancia;
 	}
 	@Override
+	public Boolean esTurista(String nickname) {
+		return Turistas.containsKey(nickname);
+	}
+	@Override
 	public void seleccionarTurista(String Turista) {
 		turistaSeleccionado = Turistas.get(Turista);
 		
@@ -56,8 +64,10 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public Set<String> listarUsuarios() {
-		// TODO Auto-generated method stub
-		return null;
+		Set<String> res = new HashSet<String> ();
+		Turistas.forEach((k,v)->res.add(v.toString()));
+		Proveedores.forEach((k,v)->res.add(v.toString()));
+		return res;
 	}
 	@Override
 	public Set<String> listarProveedores() {
@@ -67,7 +77,6 @@ public class ControladorUsuario implements IUsuario {
 	
 	@Override
 	public DTTurista getDTTurista() {
-		// TODO Auto-generated method stub
 		if (turistaSeleccionado!= null) {
 		  return new DTTurista(turistaSeleccionado.getNickname(),turistaSeleccionado.getNombre(), turistaSeleccionado.getApellido(), turistaSeleccionado.getEmail(),turistaSeleccionado.getFechaNacimiento(), turistaSeleccionado.getNacionalidad());
 		}else {
@@ -76,7 +85,6 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public DTProveedor getDTProveedor() {
-		// TODO Auto-generated method stub
 		if (proveedorSeleccionado!=null) {
 		  return new DTProveedor(proveedorSeleccionado.getNickname(), proveedorSeleccionado.getNombre(), proveedorSeleccionado.getApellido(),proveedorSeleccionado.getEmail(),proveedorSeleccionado.getFechaNacimiento() , proveedorSeleccionado.getDescripcionGeneral() , proveedorSeleccionado.getURL());
 		} else {
