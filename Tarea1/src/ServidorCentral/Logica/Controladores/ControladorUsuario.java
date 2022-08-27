@@ -68,7 +68,10 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public Set<String> listarProveedores() {
 		// TODO Auto-generated method stub
-		return null;
+		Set<String> res = new HashSet<String> ();
+		Proveedores.forEach((k,v)->res.add(v.toString()));
+		
+		return res;
 	}
 	
 	@Override
@@ -179,9 +182,10 @@ public class ControladorUsuario implements IUsuario {
 	}
 	@Override
 	public Set<String> listarTuristas() {
-		
+		Set<String> res = new HashSet<String> ();
+		Turistas.forEach((k,v)->res.add(v.toString()));
 		// TODO Auto-generated method stub
-		return null;
+		return res;
 	}
 	
 	

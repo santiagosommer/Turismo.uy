@@ -243,9 +243,9 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{130, 131, 84, 124, 0};
-		gbl_panel_1.rowHeights = new int[]{26, 0, 0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{26, 0, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Informacion Salida");
@@ -301,7 +301,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		lblNewLabel_5.setFont(new Font("SansSerif", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 0;
 		gbc_lblNewLabel_5.gridy = 3;
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
@@ -309,7 +309,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		HoraLabel = new JLabel("");
 		HoraLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
-		gbc_lblNewLabel_7.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_7.gridx = 1;
 		gbc_lblNewLabel_7.gridy = 3;
 		panel_1.add(HoraLabel, gbc_lblNewLabel_7);
@@ -318,7 +318,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		lblNewLabel_9.setFont(new Font("SansSerif", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
 		gbc_lblNewLabel_9.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_9.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_9.gridx = 2;
 		gbc_lblNewLabel_9.gridy = 3;
 		panel_1.add(lblNewLabel_9, gbc_lblNewLabel_9);
@@ -326,9 +326,34 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		LugarLabel = new JLabel("");
 		LugarLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+		gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_11.gridx = 3;
 		gbc_lblNewLabel_11.gridy = 3;
 		panel_1.add(LugarLabel, gbc_lblNewLabel_11);
+		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_6.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_6.gridx = 0;
+		gbc_lblNewLabel_6.gridy = 4;
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_7.gridx = 1;
+		gbc_lblNewLabel_7.gridy = 4;
+		
+		JLabel lblNewLabel_6 = new JLabel("Cupos Disponibles:");
+		lblNewLabel_6.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		GridBagConstraints gbc_lblNewLabel_61 = new GridBagConstraints();
+		gbc_lblNewLabel_61.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_61.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_61.gridx = 0;
+		gbc_lblNewLabel_61.gridy = 4;
+		panel_1.add(lblNewLabel_6, gbc_lblNewLabel_61);
+		
+		JLabel CuposLabel = new JLabel("");
+		CuposLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		GridBagConstraints gbc_CuposLabel = new GridBagConstraints();
+		gbc_CuposLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_CuposLabel.gridx = 1;
+		gbc_CuposLabel.gridy = 4;
+		panel_1.add(CuposLabel, gbc_CuposLabel);
 		
 		//Al seleccionar salida
 		
@@ -351,6 +376,11 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     	           //Fecha
     	           FechaLabel.setText(sal.getInfoSalida().getFecha().toString());
     	           SalidaTuristica.setText(selectedSalida);
+    	           //Cupos
+    	           String cupos = String.valueOf(sal.getCuposDisponibles());
+    	           CuposLabel.setText(cupos);
+    	           
+    	          
     	           
     	           }
     	        }
