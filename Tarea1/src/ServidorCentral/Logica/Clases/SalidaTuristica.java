@@ -17,12 +17,8 @@ public class SalidaTuristica {
 	 private ArrayList<Inscripcion> InscripcionesAsociadas;
 
 	 
-<<<<<<< HEAD
 	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles
 	) {
-=======
-	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles) {
->>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 		 Nombre = nombre;
 		 CantidadMaxTuristas = cantidadMaxTuristas;
 		 FechaAlta = fechaAltaSalida;
@@ -61,21 +57,17 @@ public class SalidaTuristica {
 		 CuposDisponibles = cuposDisponibles;
 	 }
 
-<<<<<<< HEAD
-		public ArrayList<Inscripcion> getInscripcionesAsociadas() {
-			return InscripcionesAsociadas;
-		}
+	public ArrayList<Inscripcion> getInscripcionesAsociadas() {
+		return InscripcionesAsociadas;
+	}
 
-		public void setInscripcionesAsociadas(ArrayList<Inscripcion> inscripcionesAsociadas) {
-			InscripcionesAsociadas = inscripcionesAsociadas;
-		}
+	public void setInscripcionesAsociadas(ArrayList<Inscripcion> inscripcionesAsociadas) {
+		InscripcionesAsociadas = inscripcionesAsociadas;
+	}
 
-	
-=======
 	 public ActividadTuristica getActividadTuristicaAsociada() {
 		 return ActividadTuristicaAsociada;
 	 }
->>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 
 	 public void setActividadTuristicaAsociada(ActividadTuristica actividadTuristicaAsociada) {
 		 ActividadTuristicaAsociada = actividadTuristicaAsociada;

@@ -79,14 +79,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
        
-<<<<<<< HEAD
-       
-=======
-      
-
-      
        //modelos listas
->>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
               
        DefaultListModel<String> l1 = new DefaultListModel<>();
        DefaultListModel<String> l2 = new DefaultListModel<>();
@@ -127,7 +120,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
-<<<<<<< HEAD
 	      //agrega departamentos
 		   if (!ctrl.listarDepartamentos().isEmpty()) {
 	       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
@@ -136,17 +128,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	    	   comboBoxDepartamentos.addItem(setElement);
 		   }
 		   }   
-		
-=======
-		//agrega departamentos
-		   if (!ctrl.listarDepartamentos().isEmpty()) {
-	         Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
-		   }   
->>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
