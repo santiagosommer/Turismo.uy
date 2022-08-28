@@ -29,8 +29,8 @@ public class Principal {
 	private ConsultaDeActividadTuristica consultaActividadTuristicaIFrame;
 	private AltaDeSalidaTuristica altaSalidaTuristicaIFrame;
 	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
-	private InscripcionASalidaTuristica  inscripciónSalidaTurísticaIFrame;
-	//private CrearPaquetedeActividadesTurísticas  crearPaqueteActividadesTuristicasIFrame
+	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
+	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
 	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
 
@@ -68,7 +68,7 @@ public class Principal {
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
 		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
-		 modificarDatosUsuarioIFrame.setBounds(50, 24, 350, 176);
+		 modificarDatosUsuarioIFrame.setBounds(0, 10, 350, 176);
 		 consultaUsuarioIFrame.getContentPane().add(modificarDatosUsuarioIFrame);
 		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
@@ -80,13 +80,43 @@ public class Principal {
 		 
 		 
 		 consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
-		 consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
+		 consultaSalidaTuristicaIFrame.setBounds(52, 0, 677, 411);
 		 frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
 		 consultaSalidaTuristicaIFrame.setVisible(false);
 		 consultaSalidaTuristicaIFrame.setClosable(true);
 		 
+<<<<<<< HEAD
 		 consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP);
 		 frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
+=======
+		 altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
+		 altaSalidaTuristicaIFrame.setBounds(10, 40, 360, 300);
+		 frmServidorcentral.getContentPane().add(altaSalidaTuristicaIFrame);
+		 altaSalidaTuristicaIFrame.setVisible(false);
+		 altaSalidaTuristicaIFrame.setClosable(true);
+		 
+		 
+		 
+		 
+		  inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
+		  inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
+		  consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
+		  frmServidorcentral.getContentPane().add(inscripcionSalidaTuristicaIFrame);
+	
+		  inscripcionSalidaTuristicaIFrame.setVisible(false);
+		  inscripcionSalidaTuristicaIFrame.setClosable(true);
+		  
+		  crearPaqueteIFrame = new CrearPaqueteDeActividadesTuristicas(ICP);
+		  crearPaqueteIFrame.setBounds(52, 0, 677, 411);
+		  frmServidorcentral.getContentPane().add(crearPaqueteIFrame);
+		  crearPaqueteIFrame.setVisible(false);
+		  crearPaqueteIFrame.setClosable(true);
+		  
+		  
+		 
+		 
+			
+>>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 		
 	}
 
@@ -96,7 +126,7 @@ public class Principal {
 	private void initialize() {
 		frmServidorcentral = new JFrame();
 		frmServidorcentral.setTitle("Servidor Central");
-		frmServidorcentral.setBounds(100, 100, 847, 579);
+		frmServidorcentral.setBounds(100, 100, 890, 773);
 		frmServidorcentral.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -189,16 +219,25 @@ public class Principal {
 		menuSalidas.add(mntmAltaSalidaTuristica);
 		
 		
+		
 		menuSalidas.add(mntmConsultaDeSalida);
 		
-		JMenuItem mntmIncripcionASalida = new JMenuItem("Incripcion a Salida Turistica");
-		menuSalidas.add(mntmIncripcionASalida);
-		
+
 		JMenu mnPaquetes = new JMenu("Paquetes");
 		menuBar.add(mnPaquetes);
 		
 		JMenuItem mntmCrearPaquete = new JMenuItem("Crear Paquete ");
 		mnPaquetes.add(mntmCrearPaquete);
+		mntmCrearPaquete.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			crearPaqueteIFrame.limpiarFormulario();
+			crearPaqueteIFrame.setVisible(true);
+		}
+	});
+		
+	 //menuSalidas.add(mntmAltaSalidaTuristica);
+		
+		
 		
 		JMenuItem mntmAgregarActividadA = new JMenuItem("Agregar Actividad a Paquete");
 		mnPaquetes.add(mntmAgregarActividadA);
@@ -207,9 +246,20 @@ public class Principal {
 		mnPaquetes.add(mntmConsultaDePaquete);
 		
 		
+		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");
+		mntmInscripcionASalida.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+            	inscripcionSalidaTuristicaIFrame.setVisible(true);
+            }
+        });
 		
 		
+		
+		menuSalidas.add(mntmInscripcionASalida);
 		
 	   
 	}
+	
+	
 }

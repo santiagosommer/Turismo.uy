@@ -32,7 +32,10 @@ public class Turista extends Usuario{
 	public void setInscripciones(ArrayList<Inscripcion> inscripciones) {
 		Inscripciones = inscripciones;
 	}
-
+ 
+	public void agregarInscripcion(Inscripcion i) {
+		Inscripciones.add(i);
+	}
 	
 	
 	

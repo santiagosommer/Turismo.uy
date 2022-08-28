@@ -79,7 +79,14 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
        
+<<<<<<< HEAD
        
+=======
+      
+
+      
+       //modelos listas
+>>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
               
        DefaultListModel<String> l1 = new DefaultListModel<>();
        DefaultListModel<String> l2 = new DefaultListModel<>();
@@ -120,6 +127,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
+<<<<<<< HEAD
 	      //agrega departamentos
 		   if (!ctrl.listarDepartamentos().isEmpty()) {
 	       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
@@ -129,6 +137,16 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		   }
 		   }   
 		
+=======
+		//agrega departamentos
+		   if (!ctrl.listarDepartamentos().isEmpty()) {
+	         Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxDepartamentos.addItem(setElement);
+		     }
+		   }   
+>>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -178,10 +196,14 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		    public void actionPerformed(ActionEvent e) {
 		 	   @SuppressWarnings("unchecked") //?
 			JComboBox<String> cb = (JComboBox<String>)e.getSource();
+		 	   
 		 	   String DepartamentoSelecc = (String)cb.getSelectedItem();
 		 	   if(ctrl.existeDepartamento(DepartamentoSelecc)) {
+		 		   ctrl.seleccionarDepartamento(DepartamentoSelecc);
 		 		   Set<String> actividades = ctrl.listarActividadesDeDepartamento(DepartamentoSelecc);
 		 		   Iterator<String> iterator = actividades.iterator();
+		 		   l1.removeAllElements(); //limpia las listas
+		 		   l2.removeAllElements();
 		 		   while(iterator.hasNext()) { 
 		 			    	   String Element = iterator.next(); 
 		 			    	    l1.addElement(Element);
@@ -203,8 +225,13 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 					JList<String> source = (JList)event.getSource();
     	            String selectedActividad = source.getSelectedValue().toString();
     	            Set<String> salidas = ctrl.listarSalidasActividad(selectedActividad);
+    	            if (ctrl.existeActividad(selectedActividad)) {
+    	            	ctrl.seleccionarActividad(selectedActividad);
+    	            }
+    	            l2.removeAllElements();
     	            if (salidas!= null) {
     	            	Iterator<String> iterator = salidas.iterator();
+    	            	
     	            	while(iterator.hasNext()) { 
 	 			    	    String Salida = iterator.next(); 
 	 			    	    l2.addElement(Salida);

@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Interfaces;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 
@@ -15,11 +16,12 @@ public interface IUsuario {
 	public abstract void seleccionarProveedor(String Proveedor);
 	public abstract Set<String> listarUsuarios(); 
 	public abstract Set<String> listarProveedores();
+	public abstract Set<String> listarTuristas();
 	public abstract DTTurista getDTTurista();
 	public abstract DTProveedor getDTProveedor();
 	public abstract void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad);
 	public abstract void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url);
-	public abstract void crearInscripcion(String nombre, int cantidadMaxTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,int CuposDisponibles);
+	public abstract void crearInscripcion(String nombre, int cantidadMaxTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,int CuposDisponibles) throws YaExisteInscripcionTuristaSalida;
 	public abstract Boolean existeUsuario(String nickN);
 	public abstract void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url) throws UsuarioRepetidoException;
 	public abstract void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws UsuarioRepetidoException;

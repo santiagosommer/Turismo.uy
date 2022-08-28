@@ -1,5 +1,6 @@
 package ServidorCentral.Logica.Clases;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,14 +9,16 @@ public class Paquete {
 	  private String Descripcion;
 	  private int PeriodoValidez;
 	  private int Descuento;
+	  private LocalDate FechaAlta;
 	  private Map<String, ActividadTuristica> ActividadesTuristicas;
 	 
 	  
-	 public Paquete(String nombre,String descripcion,int periodoValidez,int descuento ) {
+	 public Paquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta ) {
 		 Nombre = nombre;
 		 Descripcion = descripcion;
 		 PeriodoValidez = periodoValidez;
 		 Descuento = descuento;
+		 FechaAlta = fechaAlta;
 		 this.setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
 		 
 	 }
@@ -54,6 +57,16 @@ public class Paquete {
 
 	public void setActividadesTuristicas(Map<String, ActividadTuristica> actividadesTuristicas) {
 		ActividadesTuristicas = actividadesTuristicas;
+	}
+
+
+	public LocalDate getFechaAlta() {
+		return FechaAlta;
+	}
+
+
+	public void setFechaAlta(LocalDate fechaAlta) {
+		FechaAlta = fechaAlta;
 	}
 	
 	
