@@ -26,6 +26,7 @@ import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
@@ -100,6 +101,19 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
 		getContentPane().add(comboBoxDepartamentos);
 		
+		Fabrica fabricaU = Fabrica.getInstance();
+		ITuristica ctr = fabricaU.getControladorTuristica();
+		
+		comboBoxDepartamentos.setSelectedIndex(-1);
+		//agrega departamentos
+		   if (!ctr.listarDepartamentos().isEmpty()) {
+	         Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxDepartamentos.addItem(setElement);
+		     }
+		   } 
+		
 		lblElijaActividad = new JLabel("Elija Actividad");
 		lblElijaActividad.setBounds(12, 48, 136, 15);
 		getContentPane().add(lblElijaActividad);
@@ -107,6 +121,16 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxActividades = new JComboBox<String>();
 		comboBoxActividades.setBounds(166, 43, 172, 24);
 		getContentPane().add(comboBoxActividades);
+		
+		comboBoxActividades.setSelectedIndex(-1);
+		//agrega departamentos
+		   if (!ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).isEmpty()) {
+	         Iterator<String> iterator = ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxActividades.addItem(setElement);
+		     }
+		   } 
 		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
@@ -212,7 +236,7 @@ public static void main(String[] args, ITuristica ctrl) {
         
     }    
 	
-	public void cargarDepartamentos() {
+	/*public void cargarDepartamentos() {
         	Vector<String> model = new Vector<String>();
         	Set<String> deps = controlTur.listarDepartamentos();
         	Iterator<String> it = deps.iterator();
@@ -222,9 +246,9 @@ public static void main(String[] args, ITuristica ctrl) {
             DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<String>(model) ;
             comboBoxDepartamentos.setModel(modelo);
             comboBoxDepartamentos.setSelectedIndex(-1);
-	}     
+	} */    
 	
-	public void cargarActividades() {
+	/*public void cargarActividades() {
 		String depSeleccionadoComboBox = (String)comboBoxDepartamentos.getSelectedItem();
     	Vector<String> model = new Vector<String>();
     	Set<String> acts = controlTur.listarActividadesDeDepartamento(depSeleccionadoComboBox);
@@ -235,7 +259,7 @@ public static void main(String[] args, ITuristica ctrl) {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<String>(model) ;
         comboBoxDepartamentos.setModel(modelo);
         comboBoxDepartamentos.setSelectedIndex(-1);
-	} 
+	} */
 	
 	protected void AltaSalidaActionPerformed(ActionEvent e) {
 		
@@ -315,13 +339,13 @@ public static void main(String[] args, ITuristica ctrl) {
 		textFieldNombre.setText("");
 		textFieldCantMax.setText("");	
 		textFieldLugar.setText("");
-		//comboBoxDepartamentos.setSelectedIndex(0);
-		//comboBoxActividades.setSelectedIndex(0);
-		comboBoxDia.setSelectedIndex(0);
-		comboBoxMes.setSelectedIndex(0);
-		comboBoxAnio.setSelectedIndex(0);
-		comboBoxHour.setSelectedIndex(0);
-		comboBoxMinute.setSelectedIndex(0);
+		//comboBoxDepartamentos.setSelectedIndex(-1);
+		//comboBoxActividades.setSelectedIndex(-1);
+		comboBoxDia.setSelectedIndex(-1);
+		comboBoxMes.setSelectedIndex(-1);
+		comboBoxAnio.setSelectedIndex(-1);
+		comboBoxHour.setSelectedIndex(-1);
+		comboBoxMinute.setSelectedIndex(-1);
 		
 	}
 	
