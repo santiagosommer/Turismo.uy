@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
@@ -18,6 +19,7 @@ import ServidorCentral.Logica.Interfaces.IPaquete;
 public class ControladorPaquete implements IPaquete {
     private Paquete PaqueteSeleccionado;
 	private Map<String, Paquete> Paquetes;
+	
 	private static ControladorPaquete instancia = null;
 	
 	public static ControladorPaquete getInstancia() {
@@ -80,10 +82,22 @@ public class ControladorPaquete implements IPaquete {
 	
 	
 	@Override
-	public Set<String>  listarActividadesAAgregar() {
-		return null;
+	public Set<String>  listarActividadesAAgregar(String departamento) { //segun departamento, que no formen parte de paquete
+		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Set<String> actividadesDepto = crTuristica.listarActividadesDeDepartamento(departamento);
 		
-	}
+		if (!actividadesDepto.isEmpty()) {
+			Set<String> lista = new HashSet<String>();
+			Map<String, Paquete> paquetes = instancia.Paquetes;
+			Map<String, ActividadTuristica> actividadesDePauete = PaqueteSeleccionado.getActividadesTuristicas();
+			for(String actividad: actividadesDepto) {
+				if (!actividadesDePauete.containsKey(actividad)) {
+					lista.add(actividad);
+				}
+			}
+			return lista;
+		} else 	return null;
+	 }
 
 	public Map<String, Paquete> getPaquetes() {
 		return Paquetes;
