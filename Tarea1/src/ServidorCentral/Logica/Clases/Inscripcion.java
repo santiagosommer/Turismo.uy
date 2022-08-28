@@ -5,18 +5,19 @@ import java.time.LocalDate;
 
 
 public class Inscripcion {
+
 	LocalDate Fecha;
 	private int CantidadTuristas;
 	private float Costo;
-	//private Turista turista;
+	private Turista turista;
 	private SalidaTuristica SalidaAsociada;
 	
 	
-	public Inscripcion(LocalDate fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada) { // Turista turista
+	public Inscripcion(LocalDate fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada, Turista turista) { //
 		Fecha = fecha;
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
-		//this.turista = turista;
+		this.turista = turista;
 		SalidaAsociada = salidaAsociada;
 	}
 	
@@ -40,13 +41,22 @@ public class Inscripcion {
 		SalidaAsociada = salidaAsociada;
 	}
 
-	//public Turista getTurista() {
-		//return turista;
-	//}
+	public LocalDate getFecha() {
+		return Fecha;
+	}
 
-	//public void setTurista(Turista turista) {
-		//this.turista = turista;
-	//}
+	public void setFecha(LocalDate fecha) {
+		Fecha = fecha;
+	}
+
+   public Turista getTurista() {
+		return turista;
+	}
+
+	public void setTurista(Turista turista) {
+		this.turista = turista;
+	}
+
 
 	
 }

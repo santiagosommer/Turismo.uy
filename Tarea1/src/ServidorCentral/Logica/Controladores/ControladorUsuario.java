@@ -134,7 +134,7 @@ public class ControladorUsuario implements IUsuario {
 	           //: calcular costo:
 	          float costo = cantidadTuristas * act.getCostoTurista();
 	          sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); //actualizo cupos disponibles
-	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal);
+	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal,turi);
 	         //agregar a inscripciones de turista
 	          turi.agregarInscripcion(ins);   
 		   } else {}

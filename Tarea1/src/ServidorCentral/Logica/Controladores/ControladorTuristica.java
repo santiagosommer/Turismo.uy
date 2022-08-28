@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Map;
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,9 +34,20 @@ public class ControladorTuristica implements ITuristica {
 	private Map<String, ActividadTuristica> ActividadesTuristicas;
 	private Map<String, Departamento> Departamentos;
 	
+	
 	private ControladorTuristica() {
 		Departamentos = new HashMap<String,Departamento>();
 		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();
+		Departamento Kenia = new Departamento("Kenia", "Descripcion", "No tengo URL");
+		Departamentos.put("Kenia", Kenia);
+		ActividadTuristica at = new ActividadTuristica("Corrida", "Corrida de patones", 30, 200, LocalDate.of(2010, 6, 29), Kenia, "Estambul", new Proveedor("Robertitio20", "Roberto", "Carlos", "Popito@papel.com", LocalDate.of(2000, 6, 7), "Hacemos corridas", "url de proveedor.com"));
+		Kenia.addActividadTuristica(at);
+		ActividadesTuristicas.put("Corrida", at);
+		
+		HashMap<String,SalidaTuristica> mapaSalidas = new HashMap<>();
+		mapaSalidas.put("En la maniana", new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2));
+		at.setSalidas(mapaSalidas);
+		
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
 		departamentoSeleccionado = null;
@@ -114,14 +126,28 @@ public class ControladorTuristica implements ITuristica {
 		if (actividadSeleccionada!= null) {
 		seleccionarActividad(salidaSeleccionada.getActividadTuristicaAsociada().getNombre());
 		DTActividadTuristica act = getDTActividadTuristica();
+		ArrayList<DTInscripcion> inscripciones = getDTInscripcionesDeSalida();
 		return  new DTSalidaTuristica(salidaSeleccionada.getNombre(),
 				salidaSeleccionada.getCantidadMaxTuristas(),salidaSeleccionada.getFechaAlta(),
 				salidaSeleccionada.getInfoSalida(),salidaSeleccionada.getCuposDisponibles(),act);
-		}else {
+		} else {
 			return null;
 		}
 	}
 	
+	public ArrayList<DTInscripcion> getDTInscripcionesDeSalida(){
+		ArrayList<Inscripcion> inscripciones = salidaSeleccionada.getInscripcionesAsociadas();
+		ArrayList<DTInscripcion> inscripcionesDT = new ArrayList<>();
+			
+		for (Inscripcion inscripcion : inscripciones) {
+			
+			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(), inscripcion.getTurista().getNacionalidad());
+			inscripcionesDT.add(new DTInscripcion(inscripcion.getFecha(), inscripcion.getCantidadTuristas(), inscripcion.getCosto(), turistaAutor, getDTSalidaTuristica()));
+		}
+		return inscripcionesDT;
+	}
+	
+
 	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
@@ -179,6 +205,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public Set<DTSalidaTuristica> datosSalidasVigentes(String actividad) {
+		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		boolean existe = actividades.containsKey(actividad);
@@ -193,13 +220,17 @@ public class ControladorTuristica implements ITuristica {
 				DTInfoSalida info = salida.getInfoSalida();
 				LocalDate fechaSalida = info.getFecha();
 				LocalDate fechaActual = LocalDate.now();
-				if (fechaSalida.compareTo(fechaActual) > 0){
-					DTSalidaTuristica dtSalida = new DTSalidaTuristica(salida.getNombre(),salida.getCantidadMaxTuristas(), salida.getFechaAlta(), info, salida.getCuposDisponibles(), null);
+				if (fechaSalida.compareTo(fechaActual) > 0) {
+					DTSalidaTuristica dtSalida = new DTSalidaTuristica(salida.getNombre(),salida.getCantidadMaxTuristas(), salida.getFechaAlta(), info, salida.getCuposDisponibles(),null);		//cambiar a actividad asociada?
 					dtSalidas.add(dtSalida);
 				}
-			}
-			return dtSalidas;
-		} else {
+			
+		   }
+				
+			
+			return dtSalidas;}
+		
+	  else {
 			return null;
 		}
 	}
@@ -223,7 +254,6 @@ public class ControladorTuristica implements ITuristica {
 			
 		} else {
 			return null;
-			
 		}
 	}
 	

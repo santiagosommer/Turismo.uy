@@ -1,5 +1,6 @@
 package ServidorCentral.Logica.Controladores;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -7,7 +8,9 @@ import java.util.Set;
 
 
 import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Interfaces.IPaquete;
+
 
 public class ControladorPaquete implements IPaquete {
     private Paquete PaqueteSeleccionado;
@@ -29,24 +32,34 @@ public class ControladorPaquete implements IPaquete {
 	
 	@Override
 	public void crearPaquete(String nombrePaque, String descripcion, 
-			int periodoValidez,int Descuento) {
+			int periodoValidez,int Descuento, LocalDate fechaAlta) throws NombrePaqueteRepetidoException {
+		if (Paquetes.containsKey(nombrePaque)) {
+			throw new NombrePaqueteRepetidoException("Ya existe un paquete con nombre" + nombrePaque);
+		}else {
+			Paquete nuevo = new Paquete(nombrePaque,descripcion, periodoValidez,Descuento,fechaAlta);
+			Paquetes.put(nombrePaque, nuevo);
+		}
+		
 		
 	}
 	
 	@Override
 	public void seleccionarPaquete(String paquete) {
-		
+		if (existePaquete(paquete)) {
+			PaqueteSeleccionado = Paquetes.get(paquete);
+		}
 		
 	}
 	
 	@Override
 	public boolean existePaquete(String paquete) {
 		
-		return true;
+		return Paquetes.containsKey(paquete);
 	}
 	
 	@Override
 	public Set<String> listarPaquetes() {
+		
 		
 		return null;
 		

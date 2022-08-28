@@ -2,6 +2,7 @@ package ServidorCentral.Logica.Clases;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import java.time.LocalDate;
 //import java.util.Map;
+import java.util.ArrayList;
 
 
 
@@ -13,15 +14,16 @@ public class SalidaTuristica {
 	 private ServidorCentral.Logica.DataTypes.DTInfoSalida InfoSalida;
 	 private int CuposDisponibles;
 	 private ActividadTuristica ActividadTuristicaAsociada;
+	 private ArrayList<Inscripcion> InscripcionesAsociadas;
 
 	 
-	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles) {
+	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles
+	) {
 		 Nombre = nombre;
 		 CantidadMaxTuristas = cantidadMaxTuristas;
 		 FechaAlta = fechaAltaSalida;
 		 InfoSalida = infoSalida;
 		 CuposDisponibles = cuposDisponibles;
-	     			 
 	 }	 
 	 
 	 public String getNombre() {
@@ -54,6 +56,14 @@ public class SalidaTuristica {
 	 public void setCuposDisponibles(int cuposDisponibles) {
 		 CuposDisponibles = cuposDisponibles;
 	 }
+
+	public ArrayList<Inscripcion> getInscripcionesAsociadas() {
+		return InscripcionesAsociadas;
+	}
+
+	public void setInscripcionesAsociadas(ArrayList<Inscripcion> inscripcionesAsociadas) {
+		InscripcionesAsociadas = inscripcionesAsociadas;
+	}
 
 	 public ActividadTuristica getActividadTuristicaAsociada() {
 		 return ActividadTuristicaAsociada;

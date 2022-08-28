@@ -79,9 +79,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
        
-      
-
-      
        //modelos listas
               
        DefaultListModel<String> l1 = new DefaultListModel<>();
@@ -123,13 +120,13 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
-		//agrega departamentos
+	      //agrega departamentos
 		   if (!ctrl.listarDepartamentos().isEmpty()) {
-	         Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
+	       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
+	       while(iterator.hasNext()) { 
+	    	   String setElement = iterator.next(); 
+	    	   comboBoxDepartamentos.addItem(setElement);
+		   }
 		   }   
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
