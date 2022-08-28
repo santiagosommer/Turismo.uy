@@ -148,7 +148,7 @@ public class ControladorTuristica implements ITuristica {
 		}
 		return inscripcionesDT;
 	}
-	
+
 
 	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
