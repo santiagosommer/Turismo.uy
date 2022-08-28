@@ -11,6 +11,7 @@ import java.util.Set;
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
@@ -80,8 +81,6 @@ public class ControladorPaquete implements IPaquete {
 		
 	}
 	
-	
-	@Override
 	public Set<String>  listarActividadesAAgregar(String departamento) { //segun departamento, que no formen parte de paquete
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Set<String> actividadesDepto = crTuristica.listarActividadesDeDepartamento(departamento);
@@ -116,11 +115,21 @@ public class ControladorPaquete implements IPaquete {
 		PaqueteSeleccionado = paqueteSeleccionado;
 	}
 
-	
-	
-	
-	
-	
-	
+	@Override
+	public void AgregarActividadPaquete(String paquete, String dep, String actividad) {
+		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		crTuristica.seleccionarActividad(actividad);
+		ActividadTuristica a = crTuristica.getActividadSeleccionada();	
+		seleccionarPaquete(paquete);
+		Paquete p = PaqueteSeleccionado;
+		
+		Map<String,Paquete> paquetesDeA = a.getPaquetes(); //link de a a p
+		paquetesDeA.put(paquete, p);
+		a.setPaquetes(paquetesDeA);
+		
+		Map<String,ActividadTuristica> actividadesDeP = p.getActividadesTuristicas(); //link de p a a
+		actividadesDeP.put(actividad, a);
+		p.setActividadesTuristicas(actividadesDeP);
+	}	
 	
 }
