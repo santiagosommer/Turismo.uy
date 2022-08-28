@@ -14,14 +14,14 @@ public class DTSalidaTuristica {
  private ArrayList<DTInscripcion> inscripcionesAsoc;
  
  public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,
-		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc, ArrayList<DTInscripcion> inscripciones) {
+		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
 	 Nombre = nombre;
 	 CantidadMaxTuristas = cantidadMaxTuristas;
 	 FechaAlta = fechaAltaSalida;
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles; 
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
-	 setInscripciones(inscripciones);
+	inscripcionesAsoc = new ArrayList<DTInscripcion>();
 	 
  }
 public String getNombre() {
