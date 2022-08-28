@@ -1,8 +1,10 @@
 package ServidorCentral.Logica.Interfaces;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Set;
 
+import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 
 public interface IPaquete {
@@ -15,6 +17,8 @@ public interface IPaquete {
 
 	public abstract Set<String> listarPaquetes();
 
+	
 	public abstract Set<String>  listarActividadesAAgregar();
+	public abstract  Map<String, Paquete> getPaquetes();
 	
 }
