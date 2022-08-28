@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
@@ -291,7 +292,7 @@ public static void main(String[] args, ITuristica ctrl) {
 				LocalTime horaSalida =  LocalTime.of(iHora, iMinuto);
 				
 				DTInfoSalida info = new DTInfoSalida(fechaSalida, horaSalida, lugar);
-				controlTur.crearSalidaTuristica(nombreSalida, cantMaxT,fechaActual, info, cantMaxT);
+				controlTur.crearSalidaTuristica(nombreSalida, cantMaxT,fechaActual, info, cantMaxT, actSeleccionadaComboBox);
 				
 				JOptionPane.showMessageDialog(this, "La actividad " + nombreSalida + " se ha creado con éxito", "Alta de Salida Turistica",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -300,6 +301,9 @@ public static void main(String[] args, ITuristica ctrl) {
 				setVisible(false);
 			} catch (NombreSalidaRepetidoException ex) {
 				JOptionPane.showMessageDialog(this, ex.getMessage(), "Alta de Salida Turistica", JOptionPane.ERROR_MESSAGE);
+			} catch (NoHayActividadConEseNombreException e1) {
+				JOptionPane.showMessageDialog(this, e1.getMessage(), "Alta de Salida Turistica", JOptionPane.ERROR_MESSAGE);
+				e1.printStackTrace();
 			}
 				
 		}

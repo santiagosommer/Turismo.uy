@@ -172,7 +172,7 @@ public class ControladorTuristica implements ITuristica {
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarActividad(actividad);
 		ActividadTuristica activ = actividadSeleccionada;
-		if (actividadSeleccionada == null) {
+		if (activ == null) {
 			throw new NoHayActividadConEseNombreException("No hay una Actividad Turistica con nombre" + actividad);
 		}
 		if (existeSalida(nombre)){
