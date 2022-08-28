@@ -64,7 +64,6 @@ public class Principal {
 		 
 		 
 		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
-		 consultaUsuarioIFrame.setClosable(true);
 		 consultaUsuarioIFrame.setBounds(10, 0, 768, 469);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
@@ -207,5 +206,11 @@ public class Principal {
 		
 		
 	   
+	}
+	public boolean getConsultaUsuarioIFrameClosable() {
+		return consultaUsuarioIFrame.isClosable();
+	}
+	public void setConsultaUsuarioIFrameClosable(boolean closable) {
+		consultaUsuarioIFrame.setClosable(closable);
 	}
 }

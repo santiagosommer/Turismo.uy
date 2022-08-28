@@ -1,6 +1,8 @@
 package EstacionDeTrabajo.GUI;
 
 import ServidorCentral.Logica.Interfaces.IUsuario;
+import ServidorCentral.Logica.DataTypes.DTProveedor;
+import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 
 import javax.swing.JInternalFrame;
@@ -17,10 +19,12 @@ import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ConsultaDeUsuario extends JInternalFrame {
 	
-	private IUsuario controladorUsuario;
+	private IUsuario cu;
 	
 	JComboBox<String> comboBoxListUsuarios;
 	private JTextField textFieldNickName;
@@ -30,27 +34,37 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	private JTextField textFieldFecha;
 	private JTextField textFieldDescripcionNacionalidad;
 	private JTextField textFieldLinkWeb;
+	private JLabel lblDescripcionNacionalidad;
+	private JLabel lblLinkWeb;
+	private JButton btnSalir;
+	
+	
 
-
-	public ConsultaDeUsuario(IUsuario cu) {
-		controladorUsuario = cu;
+	public ConsultaDeUsuario(IUsuario controladorUsuario) {
+		cu = controladorUsuario;
 		setBounds(100, 100, 462, 460);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 143, 266, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		comboBoxListUsuarios = new JComboBox<String>();
 		GridBagConstraints gbc_comboBoxListUsuarios = new GridBagConstraints();
 		gbc_comboBoxListUsuarios.gridwidth = 2;
 		gbc_comboBoxListUsuarios.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxListUsuarios.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxListUsuarios.gridx = 1;
 		gbc_comboBoxListUsuarios.gridy = 1;
 		getContentPane().add(comboBoxListUsuarios, gbc_comboBoxListUsuarios);
 		
 		JButton btnSeleccionarUsuario = new JButton("Seleccionar");
+		btnSeleccionarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listarDataUsuarioActionPerformed();
+			}
+		});
 		GridBagConstraints gbc_btnSeleccionarUsuario = new GridBagConstraints();
 		gbc_btnSeleccionarUsuario.gridwidth = 2;
 		gbc_btnSeleccionarUsuario.insets = new Insets(0, 0, 5, 5);
@@ -143,12 +157,13 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		getContentPane().add(textFieldFecha, gbc_textFieldFecha);
 		textFieldFecha.setColumns(10);
 		
-		JLabel lblDescripcionNacionalidad = new JLabel("DescripcionNacionalidad");
+		lblDescripcionNacionalidad = new JLabel("DescripcionNacionalidad");
 		GridBagConstraints gbc_lblDescripcionNacionalidad = new GridBagConstraints();
 		gbc_lblDescripcionNacionalidad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcionNacionalidad.gridx = 1;
 		gbc_lblDescripcionNacionalidad.gridy = 8;
 		getContentPane().add(lblDescripcionNacionalidad, gbc_lblDescripcionNacionalidad);
+		lblDescripcionNacionalidad.setVisible(false);
 		
 		textFieldDescripcionNacionalidad = new JTextField();
 		textFieldDescripcionNacionalidad.setEditable(false);
@@ -159,13 +174,15 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		gbc_textFieldDescripcionNacionalidad.gridy = 8;
 		getContentPane().add(textFieldDescripcionNacionalidad, gbc_textFieldDescripcionNacionalidad);
 		textFieldDescripcionNacionalidad.setColumns(10);
+		textFieldDescripcionNacionalidad.setVisible(false);
 		
-		JLabel lblLinkWeb = new JLabel("LinkWeb");
+		lblLinkWeb = new JLabel("LinkWeb");
 		GridBagConstraints gbc_lblLinkWeb = new GridBagConstraints();
 		gbc_lblLinkWeb.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLinkWeb.gridx = 1;
 		gbc_lblLinkWeb.gridy = 9;
 		getContentPane().add(lblLinkWeb, gbc_lblLinkWeb);
+		lblLinkWeb.setVisible(false);
 		
 		textFieldLinkWeb = new JTextField();
 		textFieldLinkWeb.setEditable(false);
@@ -176,6 +193,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		gbc_textFieldLinkWeb.gridy = 9;
 		getContentPane().add(textFieldLinkWeb, gbc_textFieldLinkWeb);
 		textFieldLinkWeb.setColumns(10);
+		textFieldLinkWeb.setVisible(false);
 		
 		JComboBox<String> comboBoxListaTuristicas = new JComboBox<String>();
 		GridBagConstraints gbc_comboBoxListaTuristicas = new GridBagConstraints();
@@ -189,16 +207,63 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		JButton btnConsultarExtra = new JButton("ConsultarExtra");
 		GridBagConstraints gbc_btnConsultarExtra = new GridBagConstraints();
 		gbc_btnConsultarExtra.gridwidth = 2;
-		gbc_btnConsultarExtra.insets = new Insets(0, 0, 0, 5);
+		gbc_btnConsultarExtra.insets = new Insets(0, 0, 5, 5);
 		gbc_btnConsultarExtra.gridx = 1;
 		gbc_btnConsultarExtra.gridy = 12;
 		getContentPane().add(btnConsultarExtra, gbc_btnConsultarExtra);
+		
+		btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cerrarConsultaUsuario();
+			}
+		});
+		GridBagConstraints gbc_btnSalir = new GridBagConstraints();
+		gbc_btnSalir.gridwidth = 2;
+		gbc_btnSalir.insets = new Insets(0, 0, 0, 5);
+		gbc_btnSalir.gridx = 1;
+		gbc_btnSalir.gridy = 13;
+		getContentPane().add(btnSalir, gbc_btnSalir);
 
+	}
+	
+	protected void listarDataUsuarioActionPerformed() {
+		String userSelected = comboBoxListUsuarios.getSelectedItem().toString();
+		if(cu.esTurista(userSelected)) {
+			cu.seleccionarTurista(userSelected);
+			DTTurista dtt = cu.getDTTurista();
+			textFieldNickName.setText(dtt.getNickname());
+			textFieldNombre.setText(dtt.getNombre());
+			textFieldApellido.setText(dtt.getApellido());
+			textFieldEmail.setText(dtt.getEmail());
+			textFieldFecha.setText(dtt.getFechaNacimiento().toString());
+			textFieldDescripcionNacionalidad.setText(dtt.getNacionalidad());
+			textFieldDescripcionNacionalidad.setVisible(true);
+			lblDescripcionNacionalidad.setText("Nacionalidad");
+			lblDescripcionNacionalidad.setVisible(true);
+			
+		}else {
+			cu.seleccionarProveedor(userSelected);
+			DTProveedor dtp = cu.getDTProveedor();
+			textFieldNickName.setText(dtp.getNickname());
+			textFieldNombre.setText(dtp.getNombre());
+			textFieldApellido.setText(dtp.getApellido());
+			textFieldEmail.setText(dtp.getEmail());
+			textFieldFecha.setText(dtp.getFechaNacimiento().toString());
+			textFieldDescripcionNacionalidad.setText(dtp.getDescripcionGeneral());
+			textFieldDescripcionNacionalidad.setVisible(true);
+			lblDescripcionNacionalidad.setText("Descripcion");
+			lblDescripcionNacionalidad.setVisible(true);
+			textFieldLinkWeb.setText(dtp.getURL());
+			lblLinkWeb.setVisible(true);
+			textFieldLinkWeb.setVisible(true);
+			
+		}
 	}
 	
 	public void cargarUsuarios() {
 		try {
-			Set<String> set = controladorUsuario.listarUsuarios();
+			Set<String> set = cu.listarUsuarios();
 			Iterator<String> itr = set.iterator();
 			while(itr.hasNext()) {
 				comboBoxListUsuarios.addItem(itr.next());
@@ -207,5 +272,21 @@ public class ConsultaDeUsuario extends JInternalFrame {
             // No se imprime mensaje de error sino que simplemente no se muestra ningún elemento
         }
 
+	}
+	
+	protected void cerrarConsultaUsuario(){
+		comboBoxListUsuarios.removeAllItems();
+		textFieldNickName.setText("");
+		textFieldNombre.setText("");
+		textFieldApellido.setText("");
+		textFieldEmail.setText("");
+		textFieldFecha.setText("");
+		textFieldDescripcionNacionalidad.setText("");
+		textFieldDescripcionNacionalidad.setVisible(false);
+		lblDescripcionNacionalidad.setVisible(false);
+		lblLinkWeb.setVisible(false);
+		textFieldLinkWeb.setVisible(false);
+		setVisible(false);
+		
 	}
 }
