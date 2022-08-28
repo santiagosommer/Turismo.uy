@@ -1,7 +1,7 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import ServidorCentral.Logica.Clases.Inscripcion;
 
 public class DTInscripcion {
 	private LocalDate Fecha;
@@ -17,6 +17,14 @@ public class DTInscripcion {
 		Costo = costo;
 		Autor = autor;
 		SalidaAsociada = salidaAsociada;
+	}
+	
+	public DTInscripcion(Inscripcion ins) {
+		Fecha = ins.getFecha();
+		CantidadTuristas = ins.getCantidadTuristas() ;
+		Costo = ins.getCosto();
+		SalidaAsociada = new DTSalidaTuristica(ins.getSalidaAsociada());
+
 	}
 	
 	public int getCantidadTuristas() {

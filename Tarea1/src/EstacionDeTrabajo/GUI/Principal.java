@@ -64,7 +64,7 @@ public class Principal {
 		 
 		 
 		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
-		 consultaUsuarioIFrame.setBounds(10, 0, 450, 300);
+		 consultaUsuarioIFrame.setBounds(10, 0, 768, 469);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
 		 modificarDatosUsuarioIFrame = new ModificarDatosDeUsuario(ICUsu);
@@ -73,7 +73,7 @@ public class Principal {
 		 modificarDatosUsuarioIFrame.setVisible(false);
 		 
 		 altaUsuarioIFrame = new AltaDeUsuario(ICUsu);
-		 altaUsuarioIFrame.setBounds(21, 10, 328, 132);
+		 altaUsuarioIFrame.setBounds(21, 10, 723, 441);
 		 frmServidorcentral.getContentPane().add(altaUsuarioIFrame);
 		 altaUsuarioIFrame.setVisible(false);
 		 consultaUsuarioIFrame.setVisible(false);
@@ -158,6 +158,7 @@ public class Principal {
 		mntmConsultaDeUsuario.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//consultaDePerPropInternalFrame.limpiarFormulario();
+            	consultaUsuarioIFrame.cargarUsuarios();
             	consultaUsuarioIFrame.setVisible(true);
             }
         });
@@ -254,6 +255,10 @@ public class Principal {
 		
 	   
 	}
-	
-	
+	public boolean getConsultaUsuarioIFrameClosable() {
+		return consultaUsuarioIFrame.isClosable();
+	}
+	public void setConsultaUsuarioIFrameClosable(boolean closable) {
+		consultaUsuarioIFrame.setClosable(closable);
+	}
 }

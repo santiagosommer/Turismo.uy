@@ -40,6 +40,9 @@ import java.awt.BorderLayout;
 public class AltaDeUsuario extends JInternalFrame {
 
 	private IUsuario controlUsr;
+	
+	AltaDeProveedor internalFrameAltaDeProveedor;
+	AltaDeTurista internalFrameAltaDeTurista;
 	/**
 	 * Launch the application.
 	 */
@@ -60,7 +63,7 @@ public class AltaDeUsuario extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AltaDeUsuario(IUsuario ctrlUsr) {
-		setBounds(100, 100, 360, 375);
+		setBounds(100, 100, 573, 482);
 		
 		  controlUsr = ctrlUsr;
 		    setResizable(true);
@@ -75,12 +78,12 @@ public class AltaDeUsuario extends JInternalFrame {
 	        setJMenuBar(menuBar);
 	        getContentPane().setLayout(null);
 	        
-	        AltaDeProveedor internalFrameAltaDeProveedor = new AltaDeProveedor(controlUsr);
-	        internalFrameAltaDeProveedor.setBounds(10, 51, 177, 154);
+	         internalFrameAltaDeProveedor = new AltaDeProveedor(controlUsr);
+	        internalFrameAltaDeProveedor.setBounds(10, 11, 324, 327);
 	        getContentPane().add(internalFrameAltaDeProveedor);
 	        
-	        AltaDeTurista internalFrameAltaDeTurista = new AltaDeTurista(controlUsr);
-	        internalFrameAltaDeTurista.setBounds(128, 111, 190, 174);
+	         internalFrameAltaDeTurista = new AltaDeTurista(controlUsr);
+	        internalFrameAltaDeTurista.setBounds(10, 11, 324, 327);
 	        getContentPane().add(internalFrameAltaDeTurista);
 	        internalFrameAltaDeTurista.setVisible(false);
 	        internalFrameAltaDeProveedor.setVisible(false);
@@ -103,5 +106,13 @@ public class AltaDeUsuario extends JInternalFrame {
 	        	}
 	        });
 	        mnSeleccionar.add(mntmTurista);
+	        
+	        JMenuItem mntmSalir = new JMenuItem("Salir");
+	        mntmSalir.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		setVisible(false);
+	        	}
+	        });
+	        mnSeleccionar.add(mntmSalir);
 	}
 }

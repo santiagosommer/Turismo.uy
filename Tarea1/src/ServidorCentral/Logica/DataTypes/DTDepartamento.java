@@ -1,5 +1,7 @@
 package ServidorCentral.Logica.DataTypes;
 
+import ServidorCentral.Logica.Clases.Departamento;
+
 public class DTDepartamento {
 	
 	private String Nombre;
@@ -12,6 +14,12 @@ public class DTDepartamento {
 		URL = url;
 	}
 	
+	public DTDepartamento(Departamento dep) {
+		Nombre = dep.getNombre();
+		Descripcion = dep.getDescripcion();
+		URL = dep.getURL();
+	}
+
 	public String getNombre() {
 		return Nombre;
 	}
