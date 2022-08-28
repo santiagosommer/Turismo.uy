@@ -218,6 +218,7 @@ public static void main(String[] args, ITuristica ctrl) {
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	//AltaSalidaTuristicaActionPerformed(e);
+            	 setVisible(false);
             }
         });
         btnAceptar.setBounds(35, 231, 117, 25);
@@ -234,32 +235,7 @@ public static void main(String[] args, ITuristica ctrl) {
         getContentPane().add(btnCancelar);
         
         
-    }    
-	
-	/*public void cargarDepartamentos() {
-        	Vector<String> model = new Vector<String>();
-        	Set<String> deps = controlTur.listarDepartamentos();
-        	Iterator<String> it = deps.iterator();
-        	while (it.hasNext()) {
-        		model.add(it.next());
-        	}
-            DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<String>(model) ;
-            comboBoxDepartamentos.setModel(modelo);
-            comboBoxDepartamentos.setSelectedIndex(-1);
-	} */    
-	
-	/*public void cargarActividades() {
-		String depSeleccionadoComboBox = (String)comboBoxDepartamentos.getSelectedItem();
-    	Vector<String> model = new Vector<String>();
-    	Set<String> acts = controlTur.listarActividadesDeDepartamento(depSeleccionadoComboBox);
-    	Iterator<String> it = acts.iterator();
-    	while (it.hasNext()) {
-    		model.add(it.next());
-    	}
-        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<String>(model) ;
-        comboBoxDepartamentos.setModel(modelo);
-        comboBoxDepartamentos.setSelectedIndex(-1);
-	} */
+    }
 	
 	protected void AltaSalidaActionPerformed(ActionEvent e) {
 		
@@ -339,8 +315,8 @@ public static void main(String[] args, ITuristica ctrl) {
 		textFieldNombre.setText("");
 		textFieldCantMax.setText("");	
 		textFieldLugar.setText("");
-		//comboBoxDepartamentos.setSelectedIndex(-1);
-		//comboBoxActividades.setSelectedIndex(-1);
+		comboBoxDepartamentos.setSelectedIndex(-1);
+		comboBoxActividades.setSelectedIndex(-1);
 		comboBoxDia.setSelectedIndex(-1);
 		comboBoxMes.setSelectedIndex(-1);
 		comboBoxAnio.setSelectedIndex(-1);
