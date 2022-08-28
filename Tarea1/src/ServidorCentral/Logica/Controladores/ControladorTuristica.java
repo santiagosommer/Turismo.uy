@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -44,8 +45,11 @@ public class ControladorTuristica implements ITuristica {
 		ActividadesTuristicas.put("Corrida", at);
 		
 		HashMap<String,SalidaTuristica> mapaSalidas = new HashMap<>();
-		mapaSalidas.put("En la maniana", new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2));
+		SalidaTuristica loDeTuMama = new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2);
+		mapaSalidas.put("En la maniana", loDeTuMama);
 		at.setSalidas(mapaSalidas);
+		loDeTuMama.setActividadTuristicaAsociada(at);
+		
 		
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
@@ -62,15 +66,15 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void seleccionarActividad(String actividad) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
 		ActividadTuristica actividadSelec = actividades.get(actividad);
 		actividadSeleccionada = actividadSelec;
 	}
 	
 	public void seleccionarSalida(String salida) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
 		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 		    ActividadTuristica activ = entry.getValue();
 		    Map<String, SalidaTuristica> salidasActiv = activ.getSalidas();
@@ -86,8 +90,8 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void seleccionarDepartamento(String departamento) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, Departamento> departamentos = crTuristica.Departamentos;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, Departamento> departamentos = instancia.Departamentos;
 		Departamento departamentoSelec = departamentos.get(departamento);
 		departamentoSeleccionado = departamentoSelec;
 	}
@@ -125,7 +129,6 @@ public class ControladorTuristica implements ITuristica {
 		if (actividadSeleccionada!= null) {
 		seleccionarActividad(salidaSeleccionada.getActividadTuristicaAsociada().getNombre());
 		DTActividadTuristica act = getDTActividadTuristica();
-		ArrayList<DTInscripcion> inscripciones = getDTInscripcionesDeSalida();
 		return  new DTSalidaTuristica(salidaSeleccionada.getNombre(),
 				salidaSeleccionada.getCantidadMaxTuristas(),salidaSeleccionada.getFechaAlta(),
 				salidaSeleccionada.getInfoSalida(),salidaSeleccionada.getCuposDisponibles(),act);
@@ -165,19 +168,24 @@ public class ControladorTuristica implements ITuristica {
 		dep.setActividadesTuristicas(actividadesDeDepartamento);
 	}
 	
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) throws NombreSalidaRepetidoException {
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
-		
+		seleccionarActividad(actividad);
+		ActividadTuristica activ = actividadSeleccionada;
+		if (activ == null) {
+			throw new NoHayActividadConEseNombreException("No hay una Actividad Turistica con nombre" + actividad);
+		}
 		if (existeSalida(nombre)){
 			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
 		}
 		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, cuposDisponibles);
-		nuevaSalida.setActividadTuristicaAsociada(actividadSeleccionada);
-		Map<String,SalidaTuristica> salidasDeActividad = actividadSeleccionada.getSalidas();
+		nuevaSalida.setActividadTuristicaAsociada(activ);
+		//falla test porq hay que crear Actividad primero
+		Map<String,SalidaTuristica> salidasDeActividad = activ.getSalidas();
 		salidasDeActividad.put(nombre,nuevaSalida);	
-		actividadSeleccionada.setSalidas(salidasDeActividad);
+		activ.setSalidas(salidasDeActividad);
 	}
 	
 	public Set<String> listarDepartamentos(){

@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
+import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -13,7 +14,6 @@ import java.util.Map;
 import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Clases.ActividadTuristica;
@@ -59,10 +59,12 @@ public class ControladorUsuario implements IUsuario {
 		
 	}
 	@Override
-	public Set<String> listarUsuarios() {
+	public Set<String> listarUsuarios() throws UsuarioNoExisteException {
 		Set<String> res = new HashSet<String> ();
-		Turistas.forEach((k,v)->res.add(v.toString()));
-		Proveedores.forEach((k,v)->res.add(v.toString()));
+		if (Turistas.isEmpty()&&Proveedores.isEmpty())
+			throw new UsuarioNoExisteException("No existen usuarios registrados");
+		Turistas.forEach((k,v)->res.add(v.getNickname()));
+		Proveedores.forEach((k,v)->res.add(v.getNickname()));
 		return res;
 	}
 	@Override
@@ -77,7 +79,7 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public DTTurista getDTTurista() {
 		if (turistaSeleccionado!= null) {
-		  return new DTTurista(turistaSeleccionado.getNickname(),turistaSeleccionado.getNombre(), turistaSeleccionado.getApellido(), turistaSeleccionado.getEmail(),turistaSeleccionado.getFechaNacimiento(), turistaSeleccionado.getNacionalidad());
+		  return new DTTurista(turistaSeleccionado);
 		}else {
 		  return null;
 	}
@@ -85,7 +87,7 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public DTProveedor getDTProveedor() {
 		if (proveedorSeleccionado!=null) {
-		  return new DTProveedor(proveedorSeleccionado.getNickname(), proveedorSeleccionado.getNombre(), proveedorSeleccionado.getApellido(),proveedorSeleccionado.getEmail(),proveedorSeleccionado.getFechaNacimiento() , proveedorSeleccionado.getDescripcionGeneral() , proveedorSeleccionado.getURL());
+		  return new DTProveedor(proveedorSeleccionado);
 		} else {
 		  return null;
 	}
@@ -148,10 +150,25 @@ public class ControladorUsuario implements IUsuario {
 		return Proveedores.containsKey(nickN) || Turistas.containsKey(nickN);
 	}
 	@Override
+	public Boolean existeUsuarioEmail(String email) {
+		for (Map.Entry<String,Turista> entry : Turistas.entrySet()) {
+			if (email.equals(entry.getValue().getEmail()))
+				return true;
+		}
+		for (Map.Entry<String,Proveedor> entry : Proveedores.entrySet()) {
+			if (email.equals(entry.getValue().getEmail()))
+				return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url) throws UsuarioRepetidoException {
 		if(existeUsuario(nickname)) {
-			// exception here
-			throw new UsuarioRepetidoException("El usuario " + nickname + " ya esta registrado");
+			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
+		}
+		if(existeUsuarioEmail(email)) {
+			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
 		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, descripcionGeneral, url);
 		Proveedores.put(nickname,p);
@@ -159,8 +176,10 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws UsuarioRepetidoException {
 		if(existeUsuario(nickname)) {
-			// exception here
-			throw new UsuarioRepetidoException("El usuario " + nickname + " ya esta registrado");
+			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
+		}
+		if(existeUsuarioEmail(email)) {
+			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
 		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, nacionalidad);
 		Turistas.put(nickname,t);

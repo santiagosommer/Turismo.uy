@@ -2,7 +2,8 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-//import java.util.ArrayList;
+
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 public class DTSalidaTuristica {
  private String Nombre;
@@ -23,6 +24,14 @@ public class DTSalidaTuristica {
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
 	inscripcionesAsoc = new ArrayList<DTInscripcion>();
 	 
+ }
+ 
+ public DTSalidaTuristica(SalidaTuristica sal) {
+	 Nombre = sal.getNombre();
+	 CantidadMaxTuristas = sal.getCantidadMaxTuristas();
+	 FechaAlta = sal.getFechaAlta();
+	 InfoSalida = sal.getInfoSalida();
+	 CuposDisponibles = sal.getCuposDisponibles();
  }
 public String getNombre() {
 	return Nombre;

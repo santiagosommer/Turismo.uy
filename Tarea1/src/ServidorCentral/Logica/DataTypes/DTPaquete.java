@@ -2,6 +2,8 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.util.ArrayList;
 
+import ServidorCentral.Logica.Clases.Paquete;
+
 
 
 public class DTPaquete {
@@ -21,7 +23,15 @@ public class DTPaquete {
  }
   
   
- public String getNombre() {
+ public DTPaquete(Paquete pa) {
+	 Nombre = pa.getNombre();
+	 Descripcion = pa.getDescripcion();
+	 PeriodoValidez = pa.getPeriodoValidez();
+	 Descuento = pa.getDescuento();
+}
+
+
+public String getNombre() {
 	return Nombre;
 }
  public void setNombre(String nombre) {

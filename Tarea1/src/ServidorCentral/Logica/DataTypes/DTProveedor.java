@@ -2,6 +2,10 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Map;
+
+import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Proveedor;
 
 public class DTProveedor extends DTUsuario {
  
@@ -16,6 +20,22 @@ public DTProveedor(String nickname, String nombre, String apellido, String email
 		URL = url;
 		InfoActividades = new ArrayList<DTActividadTuristica>();
 		
+	
+}
+
+public DTProveedor(Proveedor pro) {
+	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento());
+	DescripcionGeneral = pro.getDescripcionGeneral();
+	URL = pro.getURL();
+	InfoActividades = new ArrayList<DTActividadTuristica>();
+	
+	Map<String, ActividadTuristica> map = pro.getActividadesTuristicas();
+	
+	for(Map.Entry<String, ActividadTuristica> entry : map.entrySet()) {
+		DTActividadTuristica auxIAct = new DTActividadTuristica(entry.getValue());
+		InfoActividades.add(auxIAct);
+	}
+
 	
 }
  

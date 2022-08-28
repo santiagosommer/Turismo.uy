@@ -15,8 +15,10 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.List;
+import java.awt.PopupMenu;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -29,24 +31,43 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyVetoException;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 
 public class ConsultaDeActividadTuristica extends JInternalFrame {
+	
+	private JComboBox<Object> comboDepartamentos;
+	private JPanel panelActividades;
+	private JComboBox<Object> comboActividades;
+	private JPanel panelInfo;
+	private JComboBox<String> comboSalidas;
+	private JComboBox<String> comboPaquetes;
+	
+	public void limpiarFormulario() {
+		comboDepartamentos.setSelectedIndex(-1);
+		comboActividades.setSelectedIndex(-1);
+		comboSalidas.setSelectedIndex(-1);
+		comboPaquetes.setSelectedIndex(-1);
+		
+		panelActividades.setVisible(false);
+		panelInfo.setVisible(false);
+	}
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args, ITuristica InterfazTuristica, IPaquete InterfazPaquete) {
+	public static void main(String[] args, ITuristica InterfazTuristica, IPaquete InterfazPaquete, JFrame principal) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConsultaDeActividadTuristica frame = new ConsultaDeActividadTuristica(InterfazTuristica, InterfazPaquete);
+					ConsultaDeActividadTuristica frame = new ConsultaDeActividadTuristica(InterfazTuristica, InterfazPaquete, principal);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +76,8 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		});
 	}
 
-	public ConsultaDeActividadTuristica(ITuristica interfazTuristica, IPaquete interfazPaquete) {
+	public ConsultaDeActividadTuristica(ITuristica interfazTuristica, IPaquete interfazPaquete, JFrame principalFrame) {
+		setResizable(true);
 		setClosable(true);
 		setTitle("Consulta de Actividad Turistica");
 		setBounds(100, 100, 536, 344);
@@ -68,7 +90,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelBase.setLayout(null);
 		
 		JPanel panelDepartamentos = new JPanel();
-		panelDepartamentos.setBounds(0, 0, 502, 24);
+		panelDepartamentos.setBounds(0, 0, 502, 29);
 		panelBase.add(panelDepartamentos);
 		panelDepartamentos.setLayout(new BoxLayout(panelDepartamentos, BoxLayout.X_AXIS));
 		
@@ -78,13 +100,13 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		panelDepartamentos.add(Box.createRigidArea(new Dimension(10,0)));
 		
-		JComboBox<Object> comboDepartamentos = new JComboBox<>(interfazTuristica.listarDepartamentos().toArray());
+		comboDepartamentos = new JComboBox<>(interfazTuristica.listarDepartamentos().toArray());
 		comboDepartamentos.setMaximumRowCount(4);
 		comboDepartamentos.setSelectedIndex(-1);
 		panelDepartamentos.add(comboDepartamentos);
 		
-		JPanel panelActividades = new JPanel();
-		panelActividades.setBounds(0, 36, 502, 24);
+		panelActividades = new JPanel();
+		panelActividades.setBounds(0, 29, 502, 29);
 		panelBase.add(panelActividades);
 		panelActividades.setLayout(new BoxLayout(panelActividades, BoxLayout.X_AXIS));
 		panelActividades.setVisible(false);
@@ -96,11 +118,11 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		Component rigidArea = Box.createRigidArea(new Dimension(32, 0));
 		panelActividades.add(rigidArea);
 		
-		JComboBox<Object> comboActividades = new JComboBox<>();
+		comboActividades = new JComboBox<>();
 		panelActividades.add(comboActividades);
 		
-		JPanel panelInfo = new JPanel();
-		panelInfo.setBounds(0, 72, 502, 216);
+		panelInfo = new JPanel();
+		panelInfo.setBounds(0, 58, 502, 229);
 		panelBase.add(panelInfo);
 		panelInfo.setLayout(new GridLayout(0, 2, 0, 0));
 		panelInfo.setVisible(false);
@@ -154,15 +176,19 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelInfo.add(panelSalidas);
 		panelSalidas.setLayout(new BoxLayout(panelSalidas, BoxLayout.X_AXIS));
 		
-		JComboBox<String> comboSalidas = new JComboBox<String>();
+		comboSalidas = new JComboBox<>();
 		panelSalidas.add(comboSalidas);
 		
 		JButton btnInfo = new JButton("Info");
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboSalidas.getSelectedIndex() != -1) {
+					interfazTuristica.seleccionarActividad(comboActividades.getSelectedItem().toString());
 					interfazTuristica.seleccionarSalida(comboSalidas.getSelectedItem().toString());
-					JInternalFrame infoSalida = new InfoSalida(interfazTuristica.getDTSalidaTuristica());
+					InfoSalida popupSalida = new InfoSalida(interfazTuristica.getDTSalidaTuristica());
+					popupSalida.setBounds(0, 0, 400, 400);
+					principalFrame.getContentPane().add(popupSalida);
+					principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);
 				}
 			}
 		});
@@ -175,7 +201,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelInfo.add(panelPaquetes);
 		panelPaquetes.setLayout(new BoxLayout(panelPaquetes, BoxLayout.X_AXIS));
 		
-		JComboBox<String> comboPaquetes = new JComboBox<String>();
+		comboPaquetes = new JComboBox<>();
 		panelPaquetes.add(comboPaquetes);
 		
 		JButton btnInfo_1 = new JButton("Info");
@@ -191,13 +217,15 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		comboDepartamentos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panelActividades.setVisible(true);			
-				String dptoElegido = comboDepartamentos.getSelectedItem().toString();
-				interfazTuristica.seleccionarDepartamento(dptoElegido);
-				Set<String> actividadesDeDpto = interfazTuristica.listarActividadesDeDepartamento(dptoElegido);
-				comboActividades.removeAllItems();
-				for (String actividad : actividadesDeDpto) {
-					comboActividades.addItem(actividad);
+				if (comboDepartamentos.getSelectedIndex() != -1) {
+					panelActividades.setVisible(true);			
+					String dptoElegido = comboDepartamentos.getSelectedItem().toString();
+					interfazTuristica.seleccionarDepartamento(dptoElegido);
+					Set<String> actividadesDeDpto = interfazTuristica.listarActividadesDeDepartamento(dptoElegido);
+					comboActividades.removeAllItems();
+					for (String actividad : actividadesDeDpto) {
+						comboActividades.addItem(actividad);
+					}
 				}
 			}
 		});

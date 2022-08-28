@@ -2,6 +2,11 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Map;
+
+import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 public class DTActividadTuristica {
 	private String Nombre;
@@ -30,6 +35,33 @@ public class DTActividadTuristica {
 		Ciudad = ciudad;
 		
 		
+		
+	}
+	public DTActividadTuristica(ActividadTuristica at) {
+		Nombre = at.getNombre();
+		Descripcion = at.getDescripcion();
+		Duracion = at.getDuracion();
+		CostoTurista = at.getCostoTurista();
+		FechaAlta = at.getFechaAlta();
+		Ciudad = at.getCiudad();
+		InfoDepartamento = new DTDepartamento(at.getInfoDepartamento());
+		InfoSalidas = new ArrayList<DTSalidaTuristica>();
+		
+		Map<String,SalidaTuristica> map = at.getSalidas();
+		
+		for(Map.Entry<String, SalidaTuristica> entry : map.entrySet()) {
+			DTSalidaTuristica auxISal = new DTSalidaTuristica(entry.getValue());
+			InfoSalidas.add(auxISal);
+		}
+		
+		InfoPaquetes = new ArrayList<DTPaquete>();
+		
+		Map<String,Paquete> mapp = at.getPaquetes();
+		
+		for(Map.Entry<String, Paquete> entry : mapp.entrySet()) {
+			DTPaquete auxIPa = new DTPaquete(entry.getValue());
+			InfoPaquetes.add(auxIPa);
+		}
 		
 	}
 	public String getNombre() {
