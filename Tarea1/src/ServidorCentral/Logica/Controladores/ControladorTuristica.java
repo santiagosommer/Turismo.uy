@@ -63,15 +63,15 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void seleccionarActividad(String actividad) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
 		ActividadTuristica actividadSelec = actividades.get(actividad);
 		actividadSeleccionada = actividadSelec;
 	}
 	
 	public void seleccionarSalida(String salida) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
 		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 		    ActividadTuristica activ = entry.getValue();
 		    Map<String, SalidaTuristica> salidasActiv = activ.getSalidas();
@@ -87,8 +87,8 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public void seleccionarDepartamento(String departamento) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, Departamento> departamentos = crTuristica.Departamentos;
+		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Map<String, Departamento> departamentos = instancia.Departamentos;
 		Departamento departamentoSelec = departamentos.get(departamento);
 		departamentoSeleccionado = departamentoSelec;
 	}
