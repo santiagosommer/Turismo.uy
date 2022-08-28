@@ -85,10 +85,9 @@ public class Principal {
 		 consultaSalidaTuristicaIFrame.setVisible(false);
 		 consultaSalidaTuristicaIFrame.setClosable(true);
 		 
-<<<<<<< HEAD
 		 consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP);
 		 frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
-=======
+
 		 altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
 		 altaSalidaTuristicaIFrame.setBounds(10, 40, 360, 300);
 		 frmServidorcentral.getContentPane().add(altaSalidaTuristicaIFrame);
@@ -112,11 +111,6 @@ public class Principal {
 		  crearPaqueteIFrame.setVisible(false);
 		  crearPaqueteIFrame.setClosable(true);
 		  
-		  
-		 
-		 
-			
->>>>>>> 2667cee7121cb8aab80ca2b0dce9a2a9d19fb0ca
 		
 	}
 
