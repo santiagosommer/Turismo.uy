@@ -4,18 +4,18 @@ import java.time.LocalTime;
 
 
 public class Inscripcion {
-	LocalTime Fecha;
+	private LocalTime Fecha;
 	private int CantidadTuristas;
 	private float Costo;
-	//private Turista Autor;
+	private Turista Autor;
 	private SalidaTuristica SalidaAsociada;
 	
 	
-	public Inscripcion(LocalTime fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada) {
-		Fecha = fecha;
+	public Inscripcion(LocalTime fecha, int cantidadTuristas, float costo, Turista autor, SalidaTuristica salidaAsociada) {
+		setFecha(fecha);
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
-		//Autor = autor;
+		Autor = autor;
 		SalidaAsociada = salidaAsociada;
 	}
 	
@@ -39,12 +39,20 @@ public class Inscripcion {
 		SalidaAsociada = salidaAsociada;
 	}
 
-	//public Turista getAutor() {
-	//	return Autor;
-	//}
+	public LocalTime getFecha() {
+		return Fecha;
+	}
 
-	//public void setAutor(Turista autor) {
-		//Autor = autor;
-	//}
+	public void setFecha(LocalTime fecha) {
+		Fecha = fecha;
+	}
+
+	public Turista getAutor() {
+		return Autor;
+	}
+
+	public void setAutor(Turista autor) {
+		Autor = autor;
+	}
 	
 }

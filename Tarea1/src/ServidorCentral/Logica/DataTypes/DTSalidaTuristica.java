@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 //import java.util.ArrayList;
 
 public class DTSalidaTuristica {
@@ -10,16 +11,17 @@ public class DTSalidaTuristica {
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
  private DTActividadTuristica ActividadTuristicaAsoc;
+ private ArrayList<DTInscripcion> inscripcionesAsoc;
  
  public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,
-		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
+		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc, ArrayList<DTInscripcion> inscripciones) {
 	 Nombre = nombre;
 	 CantidadMaxTuristas = cantidadMaxTuristas;
 	 FechaAlta = fechaAltaSalida;
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles; 
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
-	 
+	 setInscripciones(inscripciones);
 	 
  }
 public String getNombre() {
@@ -58,7 +60,12 @@ public DTActividadTuristica getActividadTuristicaAsoc() {
 public void setActividadTuristicaAsoc(DTActividadTuristica actividadTuristicaAsoc) {
 	ActividadTuristicaAsoc = actividadTuristicaAsoc;
 }
+public ArrayList<DTInscripcion> getInscripciones() {
+	return inscripcionesAsoc;
+}
+public void setInscripciones(ArrayList<DTInscripcion> inscripcionesAsoc) {
+	this.inscripcionesAsoc = inscripcionesAsoc;
+}
 
-	
 	
 }

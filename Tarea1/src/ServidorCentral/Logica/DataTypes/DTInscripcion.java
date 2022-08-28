@@ -3,7 +3,7 @@ package ServidorCentral.Logica.DataTypes;
 import java.time.LocalTime;
 
 public class DTInscripcion {
-	LocalTime Fecha;
+	private LocalTime Fecha;
 	private int CantidadTuristas;
 	private float Costo;
 	private DTTurista Autor;
@@ -11,7 +11,7 @@ public class DTInscripcion {
 	
 	
 	public DTInscripcion(LocalTime fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
-		Fecha = fecha;
+		setFecha(fecha);
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
 		Autor = autor;
@@ -44,6 +44,14 @@ public class DTInscripcion {
 
 	public void setAutor(DTTurista autor) {
 		Autor = autor;
+	}
+
+	public LocalTime getFecha() {
+		return Fecha;
+	}
+
+	public void setFecha(LocalTime fecha) {
+		Fecha = fecha;
 	}
 	
 	
