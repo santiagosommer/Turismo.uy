@@ -188,6 +188,7 @@ public class Principal {
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaActividadTuristicaIFrame.limpiarFormulario();
 				consultaActividadTuristicaIFrame.setVisible(true);
 			}
 		});
