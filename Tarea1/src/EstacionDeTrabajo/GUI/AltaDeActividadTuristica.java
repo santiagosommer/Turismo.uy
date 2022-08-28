@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
@@ -12,9 +14,12 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToolBar;
+import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaDeActividadTuristica extends JInternalFrame {
-	private JTextField textField;
+	private JTextField NombreField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
@@ -56,15 +61,15 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		gbc_lblNombre.gridy = 1;
 		getContentPane().add(lblNombre, gbc_lblNombre);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 4;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 3;
-		gbc_textField.gridy = 1;
-		getContentPane().add(textField, gbc_textField);
-		textField.setColumns(10);
+		NombreField = new JTextField();
+		GridBagConstraints gbc_NombreField = new GridBagConstraints();
+		gbc_NombreField.gridwidth = 4;
+		gbc_NombreField.insets = new Insets(0, 0, 5, 5);
+		gbc_NombreField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_NombreField.gridx = 3;
+		gbc_NombreField.gridy = 1;
+		getContentPane().add(NombreField, gbc_NombreField);
+		NombreField.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		GridBagConstraints gbc_lblDescripcion = new GridBagConstraints();
@@ -178,8 +183,19 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		gbc_textField_5.gridx = 3;
 		gbc_textField_5.gridy = 7;
 		getContentPane().add(textField_5, gbc_textField_5);
+		JInternalFrame monturaFrame = this;
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (NombreField.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(monturaFrame, "Hay campos vacios");
+				}
+					
+					
+					
+			}
+		});
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAceptar.gridx = 3;

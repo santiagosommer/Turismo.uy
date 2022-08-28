@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JInternalFrame;
 import java.awt.BorderLayout;
 
@@ -31,6 +32,7 @@ public class Principal {
 	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
 	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
 	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
+	private AltaDeActividadTuristica crearActividadTuristicaIFrame;
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
 	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
 
@@ -180,7 +182,7 @@ public class Principal {
 		JMenuItem mntmAltaActividadTuristica = new JMenuItem("Alta Actividad Turistica");
 		mntmAltaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				consultaActividadTuristicaIFrame.setVisible(true);
+				crearActividadTuristicaIFrame.setVisible(true);
 			}
 		});
 		mnActividadesTuristicas.add(mntmAltaActividadTuristica);
