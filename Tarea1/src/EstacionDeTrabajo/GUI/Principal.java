@@ -85,7 +85,7 @@ public class Principal {
 		 consultaSalidaTuristicaIFrame.setVisible(false);
 		 consultaSalidaTuristicaIFrame.setClosable(true);
 		 
-		 consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP);
+		 consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP, frmServidorcentral);
 		 frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
 
 		 altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);

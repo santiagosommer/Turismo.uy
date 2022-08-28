@@ -45,8 +45,11 @@ public class ControladorTuristica implements ITuristica {
 		ActividadesTuristicas.put("Corrida", at);
 		
 		HashMap<String,SalidaTuristica> mapaSalidas = new HashMap<>();
-		mapaSalidas.put("En la maniana", new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2));
+		SalidaTuristica loDeTuMama = new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2);
+		mapaSalidas.put("En la maniana", loDeTuMama);
 		at.setSalidas(mapaSalidas);
+		loDeTuMama.setActividadTuristicaAsociada(at);
+		
 		
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
@@ -126,7 +129,6 @@ public class ControladorTuristica implements ITuristica {
 		if (actividadSeleccionada!= null) {
 		seleccionarActividad(salidaSeleccionada.getActividadTuristicaAsociada().getNombre());
 		DTActividadTuristica act = getDTActividadTuristica();
-		ArrayList<DTInscripcion> inscripciones = getDTInscripcionesDeSalida();
 		return  new DTSalidaTuristica(salidaSeleccionada.getNombre(),
 				salidaSeleccionada.getCantidadMaxTuristas(),salidaSeleccionada.getFechaAlta(),
 				salidaSeleccionada.getInfoSalida(),salidaSeleccionada.getCuposDisponibles(),act);
