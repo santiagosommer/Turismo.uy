@@ -2,6 +2,10 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import ServidorCentral.Logica.Clases.Inscripcion;
+import ServidorCentral.Logica.Clases.Turista;
 
 public class DTTurista extends DTUsuario {
 	private String Nacionalidad ;
@@ -12,6 +16,21 @@ public class DTTurista extends DTUsuario {
 	   Nacionalidad = nacionalidad;
 	   Inscripciones = new ArrayList<DTInscripcion>();
        
+   }
+   
+   public DTTurista(Turista turi) {
+	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento());
+	   Nacionalidad = turi.getNacionalidad();
+	   
+	   Inscripciones = new ArrayList<DTInscripcion>();
+	   ArrayList<Inscripcion> arrIns = turi.getInscripciones();
+	   Iterator<Inscripcion> iter = arrIns.iterator();
+	   
+	   while (iter.hasNext()) {
+		   DTInscripcion auxIns = new DTInscripcion(iter.next());
+		   Inscripciones.add(auxIns);
+	   }
+	   
    }
 
 	public String getNacionalidad() {

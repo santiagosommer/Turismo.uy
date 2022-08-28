@@ -1,7 +1,9 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
-//import java.util.ArrayList;
+import java.util.ArrayList;
+
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 public class DTSalidaTuristica {
  private String Nombre;
@@ -10,6 +12,7 @@ public class DTSalidaTuristica {
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
  private DTActividadTuristica ActividadTuristicaAsoc;
+ private ArrayList<DTInscripcion> inscripcionesAsoc;
  
  public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,
 		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
@@ -19,8 +22,16 @@ public class DTSalidaTuristica {
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles; 
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
+	inscripcionesAsoc = new ArrayList<DTInscripcion>();
 	 
-	 
+ }
+ 
+ public DTSalidaTuristica(SalidaTuristica sal) {
+	 Nombre = sal.getNombre();
+	 CantidadMaxTuristas = sal.getCantidadMaxTuristas();
+	 FechaAlta = sal.getFechaAlta();
+	 InfoSalida = sal.getInfoSalida();
+	 CuposDisponibles = sal.getCuposDisponibles();
  }
 public String getNombre() {
 	return Nombre;
@@ -58,7 +69,12 @@ public DTActividadTuristica getActividadTuristicaAsoc() {
 public void setActividadTuristicaAsoc(DTActividadTuristica actividadTuristicaAsoc) {
 	ActividadTuristicaAsoc = actividadTuristicaAsoc;
 }
+public ArrayList<DTInscripcion> getInscripciones() {
+	return inscripcionesAsoc;
+}
+public void setInscripciones(ArrayList<DTInscripcion> inscripcionesAsoc) {
+	this.inscripcionesAsoc = inscripcionesAsoc;
+}
 
-	
 	
 }

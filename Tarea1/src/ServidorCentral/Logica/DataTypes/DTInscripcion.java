@@ -1,21 +1,30 @@
 package ServidorCentral.Logica.DataTypes;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
+import ServidorCentral.Logica.Clases.Inscripcion;
 
 public class DTInscripcion {
-	LocalTime Fecha;
+	private LocalDate Fecha;
 	private int CantidadTuristas;
 	private float Costo;
 	private DTTurista Autor;
 	private DTSalidaTuristica SalidaAsociada;
 	
 	
-	public DTInscripcion(LocalTime fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
+	public DTInscripcion(LocalDate fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
 		Fecha = fecha;
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
 		Autor = autor;
 		SalidaAsociada = salidaAsociada;
+	}
+	
+	public DTInscripcion(Inscripcion ins) {
+		Fecha = ins.getFecha();
+		CantidadTuristas = ins.getCantidadTuristas() ;
+		Costo = ins.getCosto();
+		SalidaAsociada = new DTSalidaTuristica(ins.getSalidaAsociada());
+
 	}
 	
 	public int getCantidadTuristas() {
@@ -44,6 +53,14 @@ public class DTInscripcion {
 
 	public void setAutor(DTTurista autor) {
 		Autor = autor;
+	}
+
+	public LocalDate getFecha() {
+		return Fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		Fecha = fecha;
 	}
 	
 	

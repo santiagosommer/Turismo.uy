@@ -1,18 +1,18 @@
 package EstacionDeTrabajo.GUI;
 
 import ServidorCentral.Logica.Interfaces.IUsuario;
+import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
+import ServidorCentral.Logica.DataTypes.DTInscripcion;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 
 import javax.swing.JInternalFrame;
-import java.awt.FlowLayout;
 import javax.swing.JComboBox;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -37,6 +37,8 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	private JLabel lblDescripcionNacionalidad;
 	private JLabel lblLinkWeb;
 	private JButton btnSalir;
+	JComboBox<String> comboBoxListaTuristicas;
+	private JLabel lblTuristicas;
 	
 	
 
@@ -195,7 +197,16 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		textFieldLinkWeb.setColumns(10);
 		textFieldLinkWeb.setVisible(false);
 		
-		JComboBox<String> comboBoxListaTuristicas = new JComboBox<String>();
+		lblTuristicas = new JLabel("New label");
+		GridBagConstraints gbc_lblTuristicas = new GridBagConstraints();
+		gbc_lblTuristicas.gridwidth = 2;
+		gbc_lblTuristicas.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTuristicas.gridx = 1;
+		gbc_lblTuristicas.gridy = 10;
+		getContentPane().add(lblTuristicas, gbc_lblTuristicas);
+		lblTuristicas.setVisible(false);
+		
+		comboBoxListaTuristicas = new JComboBox<String>();
 		GridBagConstraints gbc_comboBoxListaTuristicas = new GridBagConstraints();
 		gbc_comboBoxListaTuristicas.gridwidth = 2;
 		gbc_comboBoxListaTuristicas.insets = new Insets(0, 0, 5, 5);
@@ -203,6 +214,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		gbc_comboBoxListaTuristicas.gridx = 1;
 		gbc_comboBoxListaTuristicas.gridy = 11;
 		getContentPane().add(comboBoxListaTuristicas, gbc_comboBoxListaTuristicas);
+		comboBoxListaTuristicas.setVisible(false);
 		
 		JButton btnConsultarExtra = new JButton("ConsultarExtra");
 		GridBagConstraints gbc_btnConsultarExtra = new GridBagConstraints();
@@ -242,6 +254,18 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			lblDescripcionNacionalidad.setText("Nacionalidad");
 			lblDescripcionNacionalidad.setVisible(true);
 			
+			ArrayList<DTInscripcion> ins = dtt.getInscripciones();
+			
+			Iterator<DTInscripcion> iter = ins.iterator();
+			while (iter.hasNext()) {
+				comboBoxListaTuristicas.addItem(iter.next().getSalidaAsociada().getNombre());
+			}
+			
+			comboBoxListaTuristicas.setVisible(true);
+			
+			lblTuristicas.setText("Salidas Inscripto");
+			lblTuristicas.setVisible(true);
+			
 		}else {
 			cu.seleccionarProveedor(userSelected);
 			DTProveedor dtp = cu.getDTProveedor();
@@ -257,6 +281,18 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			textFieldLinkWeb.setText(dtp.getURL());
 			lblLinkWeb.setVisible(true);
 			textFieldLinkWeb.setVisible(true);
+			
+			ArrayList<DTActividadTuristica> act = dtp.getActividades();
+			
+			Iterator<DTActividadTuristica> iter = act.iterator();
+			while (iter.hasNext()) {
+				comboBoxListaTuristicas.addItem(iter.next().getNombre());
+			}
+			
+			comboBoxListaTuristicas.setVisible(true);
+			
+			lblTuristicas.setText("Actividades que Provee");
+			lblTuristicas.setVisible(true);
 			
 		}
 	}

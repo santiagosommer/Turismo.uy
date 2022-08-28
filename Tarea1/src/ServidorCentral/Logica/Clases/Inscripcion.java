@@ -1,21 +1,23 @@
 package ServidorCentral.Logica.Clases;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
+//import java.time.LocalTime;
 
 
 public class Inscripcion {
-	LocalTime Fecha;
+
+	LocalDate Fecha;
 	private int CantidadTuristas;
 	private float Costo;
-	//private Turista Autor;
+	private Turista turista;
 	private SalidaTuristica SalidaAsociada;
 	
 	
-	public Inscripcion(LocalTime fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada) {
+	public Inscripcion(LocalDate fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada, Turista turista) { //
 		Fecha = fecha;
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
-		//Autor = autor;
+		this.turista = turista;
 		SalidaAsociada = salidaAsociada;
 	}
 	
@@ -39,12 +41,22 @@ public class Inscripcion {
 		SalidaAsociada = salidaAsociada;
 	}
 
-	//public Turista getAutor() {
-	//	return Autor;
-	//}
+	public LocalDate getFecha() {
+		return Fecha;
+	}
 
-	//public void setAutor(Turista autor) {
-		//Autor = autor;
-	//}
+	public void setFecha(LocalDate fecha) {
+		Fecha = fecha;
+	}
+
+   public Turista getTurista() {
+		return turista;
+	}
+
+	public void setTurista(Turista turista) {
+		this.turista = turista;
+	}
+
+
 	
 }
