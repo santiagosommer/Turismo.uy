@@ -582,6 +582,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 				controladorUsuario.crearInscripcion(selectedTurista,Integer.parseInt(cantTuristas), fechaInscripcion, null, controladorAct.getSalidaSeleccionada().getCuposDisponibles() );
                 // Muestro éxito de la operación
 				//String c = "costo";
+				
 				String x = "La inscripcion se ha creado con éxito";  //El costo de la misma es: $ " + c
                 JOptionPane.showMessageDialog(this, x, "Registrar Usuario",
                         JOptionPane.INFORMATION_MESSAGE);

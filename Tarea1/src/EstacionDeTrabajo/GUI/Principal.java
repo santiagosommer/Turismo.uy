@@ -32,7 +32,7 @@ public class Principal {
 	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
 	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
-	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
+	private ConsultaDePaqueteDeActividadesTuristicas  consultaPaqueteIFrame;
 
 	/**
 	 * Launch the application.
@@ -111,7 +111,11 @@ public class Principal {
 		  crearPaqueteIFrame.setVisible(false);
 		  crearPaqueteIFrame.setClosable(true);
 		  
-		
+		  consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP);
+		  consultaPaqueteIFrame.setBounds(52, 0, 639, 558);
+		  frmServidorcentral.getContentPane().add(consultaPaqueteIFrame);
+		  consultaPaqueteIFrame.setVisible(false);
+		  consultaPaqueteIFrame.setClosable(true);
 	}
 
 	/**
@@ -138,7 +142,7 @@ public class Principal {
 	            	frmServidorcentral.setVisible(false);
 	            	frmServidorcentral.dispose();
 	            }
-	        });
+	        }) ;
 		
 		JMenu menuUsuario = new JMenu("Usuario");
 		menuBar.add(menuUsuario);
@@ -238,6 +242,14 @@ public class Principal {
 		
 		JMenuItem mntmConsultaDePaquete = new JMenuItem("Consulta de Paquete");
 		mnPaquetes.add(mntmConsultaDePaquete);
+		
+		mntmConsultaDePaquete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//consultaPaqueteIFrame.limpiarFormulario();
+				consultaPaqueteIFrame.setVisible(true);
+			}
+		});
+		
 		
 		
 		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");

@@ -224,15 +224,21 @@ protected void CrearPaquete(ActionEvent arg0) {
 			String nom = this.textFieldNombre.getText();
 			controladorPaquete.crearPaquete(nom,descripcion,Integer.parseInt(validez),Integer.parseInt(descuento),fechaAlta);
             // Muestro éxito de la operación
-			
-			String x = "El paquete se ha creado con éxito"; 
-            JOptionPane.showMessageDialog(this, x, "Crear Paquete de Actividades Turisticas",
+			String x;
+			if (controladorPaquete.getPaquetes().isEmpty()) {
+				 x = "no funciona";
+			}
+			else {
+			 x = "El paquete se ha creado con éxito"; 
+			}
+			JOptionPane.showMessageDialog(this, x, "Crear Paquete de Actividades Turisticas",
             		JOptionPane.INFORMATION_MESSAGE);
 
        } catch (NombrePaqueteRepetidoException e) {
             // Muestro error 
            JOptionPane.showMessageDialog(this, e.getMessage(), "Crear Paquete De Actividades Turisticas", JOptionPane.ERROR_MESSAGE);
-      }
+      
+       }
 
 		 limpiarFormulario();
          setVisible(false);

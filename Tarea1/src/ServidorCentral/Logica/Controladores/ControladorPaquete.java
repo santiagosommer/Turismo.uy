@@ -2,13 +2,16 @@ package ServidorCentral.Logica.Controladores;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
-
+import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 
 
@@ -59,18 +62,29 @@ public class ControladorPaquete implements IPaquete {
 	
 	@Override
 	public Set<String> listarPaquetes() {
+		Fabrica fabric = Fabrica.getInstance();
+		IPaquete paq = fabric.getControladorPaquete();
+		String nombrePaq;
+		Set<String> lista = new HashSet<String>();
 		
 		
-		return null;
+		if ( !Paquetes.isEmpty()) {
+		 Iterator it = Paquetes.keySet().iterator();
+		 while (it.hasNext()) {
+			 lista.add(it.toString());
+		 }
+
+		}
+	
+		return lista;
+		//return null;
 		
 	}
 	
 	
 	@Override
 	public Set<String>  listarActividadesAAgregar() {
-		
 		return null;
-		
 		
 	}
 
