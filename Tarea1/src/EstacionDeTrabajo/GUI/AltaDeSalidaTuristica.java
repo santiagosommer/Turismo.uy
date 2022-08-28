@@ -250,8 +250,6 @@ public static void main(String[] args, ITuristica ctrl) {
 		String lugar = textFieldLugar.getText();
 		String cantMaxTS = textFieldCantMax.getText();
 		
-		
-		
 		if (checkFormulario()) {
 			int cantMaxT = Integer.parseInt(cantMaxTS);
 			int iDia = Integer.parseInt(dia);
@@ -294,7 +292,7 @@ public static void main(String[] args, ITuristica ctrl) {
 				DTInfoSalida info = new DTInfoSalida(fechaSalida, horaSalida, lugar);
 				controlTur.crearSalidaTuristica(nombreSalida, cantMaxT,fechaActual, info, cantMaxT, actSeleccionadaComboBox);
 				
-				JOptionPane.showMessageDialog(this, "La actividad " + nombreSalida + " se ha creado con éxito", "Alta de Salida Turistica",
+				JOptionPane.showMessageDialog(this, "La Salida " + nombreSalida + " se ha creado con éxito", "Alta de Salida Turistica",
                         JOptionPane.INFORMATION_MESSAGE);
 				
 				limpiarFormulario();

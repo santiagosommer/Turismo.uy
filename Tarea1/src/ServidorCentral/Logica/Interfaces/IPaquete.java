@@ -20,5 +20,7 @@ public interface IPaquete {
 	
 	public abstract Set<String>  listarActividadesAAgregar(String departamento);
 	public abstract  Map<String, Paquete> getPaquetes();
+
+	public abstract void AgregarActividadPaquete(String paqueteSelecBox, String depSelecBox, String actividadSelecBox);
 	
 }
