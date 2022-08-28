@@ -30,7 +30,7 @@ public class Principal {
 	private AltaDeSalidaTuristica altaSalidaTuristicaIFrame;
 	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
 	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
-	//private CrearPaquetedeActividadesTurísticas  crearPaqueteActividadesTuristicasIFrame
+	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
 	//private ConsultadePaquetedeActividadesTurísticas  consultaPaqueteActividadesTurísticasIFrame
 
@@ -101,6 +101,14 @@ public class Principal {
 	
 		  inscripcionSalidaTuristicaIFrame.setVisible(false);
 		  inscripcionSalidaTuristicaIFrame.setClosable(true);
+		  
+		  crearPaqueteIFrame = new CrearPaqueteDeActividadesTuristicas(ICP);
+		  crearPaqueteIFrame.setBounds(52, 0, 677, 411);
+		  frmServidorcentral.getContentPane().add(crearPaqueteIFrame);
+		  crearPaqueteIFrame.setVisible(false);
+		  crearPaqueteIFrame.setClosable(true);
+		  
+		  
 		 
 		 
 			
@@ -205,6 +213,16 @@ public class Principal {
 		
 		JMenuItem mntmCrearPaquete = new JMenuItem("Crear Paquete ");
 		mnPaquetes.add(mntmCrearPaquete);
+		mntmCrearPaquete.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			crearPaqueteIFrame.limpiarFormulario();
+			crearPaqueteIFrame.setVisible(true);
+		}
+	});
+		
+	 //menuSalidas.add(mntmAltaSalidaTuristica);
+		
+		
 		
 		JMenuItem mntmAgregarActividadA = new JMenuItem("Agregar Actividad a Paquete");
 		mnPaquetes.add(mntmAgregarActividadA);
@@ -216,7 +234,7 @@ public class Principal {
 		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+            	inscripcionSalidaTuristicaIFrame.limpiarFormulario();
             	inscripcionSalidaTuristicaIFrame.setVisible(true);
             }
         });
@@ -225,12 +243,8 @@ public class Principal {
 		
 		menuSalidas.add(mntmInscripcionASalida);
 		
-		
-		
-		
-		
-		
-		
 	   
 	}
+	
+	
 }

@@ -1,12 +1,15 @@
 package ServidorCentral.Logica.Interfaces;
 
+import java.time.LocalDate;
 import java.util.Set;
+
+import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 
 public interface IPaquete {
 	public abstract void seleccionarPaquete(String paquete);
 
 	public abstract void crearPaquete(String nombrePaque, String descripcion, 
-			int periodoValidez,int Descuento);
+			int periodoValidez,int Descuento, LocalDate fechaAlta) throws NombrePaqueteRepetidoException;
 	
 	public abstract boolean existePaquete(String paquete);
 
