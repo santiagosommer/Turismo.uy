@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -139,19 +140,24 @@ public class ControladorTuristica implements ITuristica {
 		dep.setActividadesTuristicas(actividadesDeDepartamento);
 	}
 	
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles) throws NombreSalidaRepetidoException {
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
-		
+		seleccionarActividad(actividad);
+		ActividadTuristica activ = actividadSeleccionada;
+		if (actividadSeleccionada == null) {
+			throw new NoHayActividadConEseNombreException("No hay una Actividad Turistica con nombre" + actividad);
+		}
 		if (existeSalida(nombre)){
 			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
 		}
 		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, cuposDisponibles);
-		nuevaSalida.setActividadTuristicaAsociada(actividadSeleccionada);
-		Map<String,SalidaTuristica> salidasDeActividad = actividadSeleccionada.getSalidas();
+		nuevaSalida.setActividadTuristicaAsociada(activ);
+		//falla test porq hay que crear Actividad primero
+		Map<String,SalidaTuristica> salidasDeActividad = activ.getSalidas();
 		salidasDeActividad.put(nombre,nuevaSalida);	
-		actividadSeleccionada.setSalidas(salidasDeActividad);
+		activ.setSalidas(salidasDeActividad);
 	}
 	
 	public Set<String> listarDepartamentos(){
