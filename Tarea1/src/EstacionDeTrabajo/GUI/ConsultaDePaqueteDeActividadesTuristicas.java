@@ -99,6 +99,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	    //	    l1.addElement(setElement);
 		//     }
 		   }   
+		 
 		 JList listaPaquetes = new JList<>(l1);
 		 scrollPane.setViewportView(listaPaquetes);
 		 

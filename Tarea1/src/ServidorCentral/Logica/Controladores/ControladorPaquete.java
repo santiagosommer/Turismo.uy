@@ -62,22 +62,19 @@ public class ControladorPaquete implements IPaquete {
 	
 	@Override
 	public Set<String> listarPaquetes() {
-		Fabrica fabric = Fabrica.getInstance();
-		IPaquete paq = fabric.getControladorPaquete();
-		String nombrePaq;
+		
 		Set<String> lista = new HashSet<String>();
 		
-		
 		if ( !Paquetes.isEmpty()) {
-		 Iterator it = Paquetes.keySet().iterator();
-		 while (it.hasNext()) {
-			 lista.add(it.toString());
-		 }
+			String paquete;
 
+		for (Iterator<Map.Entry<String, Paquete>> entries = Paquetes.entrySet().iterator(); entries.hasNext(); ) {
+		     Map.Entry<String, Paquete> entry = entries.next();
+		    paquete = entry.getKey();
+		    lista.add(paquete);
 		}
-	
+	}
 		return lista;
-		//return null;
 		
 	}
 	
