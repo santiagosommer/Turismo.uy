@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 
@@ -123,13 +124,18 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
 	      //agrega departamentos
-		   if (!ctrl.listarDepartamentos().isEmpty()) {
-	       Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
-	       while(iterator.hasNext()) { 
-	    	   String setElement = iterator.next(); 
-	    	   comboBoxDepartamentos.addItem(setElement);
-		   }
-		   }   
+		   try {
+			if (!ctrl.listarDepartamentos().isEmpty()) {
+			   Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
+			   while(iterator.hasNext()) { 
+				   String setElement = iterator.next(); 
+				   comboBoxDepartamentos.addItem(setElement);
+			   }
+			   }
+		} catch (DepartamentoNoExisteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}   
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
