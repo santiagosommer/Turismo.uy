@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Controladores.*;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -57,9 +58,10 @@ public class Principal {
 
 	/**
 	 * Create the application.
+	 * @throws DepartamentoNoExisteException 
 	 */
 	
-	public Principal() {
+	public Principal() throws DepartamentoNoExisteException {
 		initialize();
 		
 		Fabrica fabrica = Fabrica.getInstance();

@@ -17,13 +17,12 @@ public class SalidaTuristica {
 	 private ArrayList<Inscripcion> InscripcionesAsociadas;
 
 	 
-	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,int cuposDisponibles
-	) {
+	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida) {
 		 Nombre = nombre;
 		 CantidadMaxTuristas = cantidadMaxTuristas;
 		 FechaAlta = fechaAltaSalida;
 		 InfoSalida = infoSalida;
-		 CuposDisponibles = cuposDisponibles;
+		 CuposDisponibles = cantidadMaxTuristas;
 	 }	 
 	 
 	 public String getNombre() {

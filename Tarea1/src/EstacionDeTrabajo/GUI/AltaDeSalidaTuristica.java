@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -80,7 +81,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		});
 	}*/
 	
-	public AltaDeSalidaTuristica(ITuristica iCTuri) {
+	public AltaDeSalidaTuristica(ITuristica iCTuri) throws DepartamentoNoExisteException {
 		setBounds(10, 40, 400, 300);
 		
 		controlTur = iCTuri;
@@ -290,7 +291,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 				LocalTime horaSalida =  LocalTime.of(iHora, iMinuto);
 				
 				DTInfoSalida info = new DTInfoSalida(fechaSalida, horaSalida, lugar);
-				controlTur.crearSalidaTuristica(nombreSalida, cantMaxT,fechaActual, info, cantMaxT, actSeleccionadaComboBox);
+				controlTur.crearSalidaTuristica(nombreSalida, cantMaxT,fechaActual, info, actSeleccionadaComboBox);
 				
 				JOptionPane.showMessageDialog(this, "La Salida " + nombreSalida + " se ha creado con éxito", "Alta de Salida Turistica",
                         JOptionPane.INFORMATION_MESSAGE);
