@@ -169,7 +169,7 @@ public class ControladorTuristica implements ITuristica {
 		dep.setActividadesTuristicas(actividadesDeDepartamento);
 	}
 	
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
@@ -181,7 +181,7 @@ public class ControladorTuristica implements ITuristica {
 		if (existeSalida(nombre)){
 			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
 		}
-		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, cuposDisponibles);
+		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida);
 		nuevaSalida.setActividadTuristicaAsociada(activ);
 		//falla test porq hay que crear Actividad primero
 		Map<String,SalidaTuristica> salidasDeActividad = activ.getSalidas();

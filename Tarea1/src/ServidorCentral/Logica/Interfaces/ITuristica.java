@@ -32,7 +32,7 @@ public interface ITuristica {
 	public abstract Set<String> listarDepartamentos() throws DepartamentoNoExisteException;
 	public abstract Set<String> listarActividadesDeDepartamento(String departemento);
 	public abstract Set<DTSalidaTuristica> datosSalidasVigentes(String actividad);
-	public abstract void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, int cuposDisponibles, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException;
+	public abstract void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException;
 	public abstract Set<String> listarSalidasActividad(String actividad);
 	public abstract Boolean existeActividad(String actividad);
 	public abstract Boolean existeSalida(String salida);
