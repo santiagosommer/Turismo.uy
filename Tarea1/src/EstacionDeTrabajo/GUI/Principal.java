@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Controladores.*;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -60,7 +59,7 @@ public class Principal {
 	 * @throws DepartamentoNoExisteException
 	 */
 
-	public Principal() throws DepartamentoNoExisteException {
+	public Principal() {
 		initialize();
 
 		Fabrica fabrica = Fabrica.getInstance();
@@ -215,12 +214,8 @@ public class Principal {
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
 					consultaActividadTuristicaIFrame.limpiarFormulario();
-				} catch (DepartamentoNoExisteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
 				consultaActividadTuristicaIFrame.setVisible(true);
 			}
 		});
