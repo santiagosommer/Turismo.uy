@@ -128,7 +128,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	 	    	        	  validezLabel.setText(String.valueOf(paquete.getPeriodoValidez()));
 	 	    	        	  descripcionLabel.setText(paquete.getDescripcion());
 	 	    	        	  descuentoLabel.setText(String.valueOf(paquete.getDescuento()));
-	 	    	        	  Set<String> s = cu.listarActividadesAAgregar();
+	 	    	        	  Set<String> s = cu.listarActividadesPaquete();
 	 	    	        	  if (s!=null && !s.isEmpty()) { //listar actividades paquetes
 	 	    	        		 Iterator<String> itr = s.iterator();
 	 	    	    			 while(itr.hasNext()) {

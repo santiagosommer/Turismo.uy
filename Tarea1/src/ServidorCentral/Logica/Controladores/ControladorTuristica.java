@@ -113,7 +113,7 @@ public class ControladorTuristica implements ITuristica {
 		
 		Fabrica fabrica = Fabrica.getInstance(); 
 		IUsuario controladorUsr = fabrica.getControladorUsuario();
-		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); // por nickname o por email?
+		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); 
 		DTProveedor dtprov = controladorUsr.getDTProveedor();			
 		return new DTActividadTuristica(actividadSeleccionada.getNombre(),actividadSeleccionada.getDescripcion(),actividadSeleccionada.getDuracion(),
 				actividadSeleccionada.getCostoTurista(),actividadSeleccionada.getFechaAlta(),dtdep,dtprov,actividadSeleccionada.getCiudad());
@@ -148,7 +148,7 @@ public class ControladorTuristica implements ITuristica {
 		}
 		return inscripcionesDT;
 	}
-	
+
 
 	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
@@ -344,6 +344,8 @@ public class ControladorTuristica implements ITuristica {
 		// TODO Auto-generated method stub
 		return salidaSeleccionada;
 	}
+	
+	
 	
 }
 
