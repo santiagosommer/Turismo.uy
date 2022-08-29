@@ -16,7 +16,7 @@ public class DTActividadTuristica {
 	private LocalDate FechaAlta;
 	private DTDepartamento InfoDepartamento;
 	private ArrayList<DTSalidaTuristica> InfoSalidas;
-	private DTProveedor Proveedor;
+	private String Proveedor;
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
 	
@@ -30,12 +30,9 @@ public class DTActividadTuristica {
 		FechaAlta = fechaAlta;
 		InfoDepartamento = infoDepartamento;
 		InfoSalidas = new ArrayList<DTSalidaTuristica>();
-		Proveedor = proveedor;
+		Proveedor = proveedor.getNombre() + proveedor.getApellido();
 		InfoPaquetes = new ArrayList<DTPaquete>();
 		Ciudad = ciudad;
-		
-		
-		
 	}
 	public DTActividadTuristica(ActividadTuristica at) {
 		Nombre = at.getNombre();
@@ -46,6 +43,7 @@ public class DTActividadTuristica {
 		Ciudad = at.getCiudad();
 		InfoDepartamento = new DTDepartamento(at.getInfoDepartamento());
 		InfoSalidas = new ArrayList<DTSalidaTuristica>();
+		Proveedor = at.getProveedor().getNombre() + " " + at.getProveedor().getApellido();
 		
 		Map<String,SalidaTuristica> map = at.getSalidas();
 		
@@ -100,10 +98,10 @@ public class DTActividadTuristica {
 	public void setSalidas(ArrayList<DTSalidaTuristica> salidas) {
 		InfoSalidas = salidas;
 	}
-	public DTProveedor getProveedor() {
+	public String getProveedor() {
 		return Proveedor;
 	}
-	public void setProveedor(DTProveedor proveedor) {
+	public void setProveedor(String proveedor) {
 		Proveedor = proveedor;
 	}
 	public ArrayList<DTPaquete> getInfoPaquetes() {

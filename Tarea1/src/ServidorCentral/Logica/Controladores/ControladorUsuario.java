@@ -116,13 +116,13 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 
-	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida {
+	public void crearInscripcion(String nicknameTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida {
 		// TODO Auto-generated method stub
 		
 		Fabrica fabrica = Fabrica.getInstance();
 		ITuristica ctrl = fabrica.getControladorTuristica();
 		ctrl.seleccionarSalida(nombreSalida);
-		seleccionarTurista(nombreTurista);
+		seleccionarTurista(nicknameTurista);
 		SalidaTuristica sal = ctrl.getSalidaSeleccionada();
 		Turista turi = turistaSeleccionado;
 	

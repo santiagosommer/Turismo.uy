@@ -93,16 +93,8 @@ public class ControladorTuristica implements ITuristica {
 	
 	public DTActividadTuristica getDTActividadTuristica() {
 		
-		if (actividadSeleccionada!= null) {
-		seleccionarDepartamento(actividadSeleccionada.getInfoDepartamento().getNombre());
-		DTDepartamento dtdep = getDTDepartamento();
-		
-		Fabrica fabrica = Fabrica.getInstance(); 
-		IUsuario controladorUsr = fabrica.getControladorUsuario();
-		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); 
-		DTProveedor dtprov = controladorUsr.getDTProveedor();			
-		return new DTActividadTuristica(actividadSeleccionada.getNombre(),actividadSeleccionada.getDescripcion(),actividadSeleccionada.getDuracion(),
-				actividadSeleccionada.getCostoTurista(),actividadSeleccionada.getFechaAlta(),dtdep,dtprov,actividadSeleccionada.getCiudad());
+		if (actividadSeleccionada!= null) {		
+			return new DTActividadTuristica(actividadSeleccionada);
 		} else {
 			return null;
 		}
