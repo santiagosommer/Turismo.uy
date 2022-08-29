@@ -25,7 +25,6 @@ import javax.swing.event.ListSelectionListener;
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -673,7 +672,6 @@ public void cargarDatosDepartamentos() {
 	
 	Fabrica fabr =Fabrica.getInstance();
 	ITuristica cturistico = fabr.getControladorTuristica();
-	  try {
 			if (!cturistico.listarDepartamentos().isEmpty()) {
 			     Iterator<String> iterator = cturistico.listarDepartamentos().iterator(); 
 			     while(iterator.hasNext()) { 
@@ -681,10 +679,7 @@ public void cargarDatosDepartamentos() {
 				    comboBoxDepartamentos.addItem(setElement);
 			     }
 			   }
-		} catch (DepartamentoNoExisteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}   
+		
 }
 
 

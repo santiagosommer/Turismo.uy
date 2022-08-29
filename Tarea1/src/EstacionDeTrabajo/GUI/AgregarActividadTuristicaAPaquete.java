@@ -9,7 +9,6 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -34,20 +33,20 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	private JButton btnAceptar;
 	private JButton btnCancelar;
 	
-	public static void main(String[] args, IPaquete ctrl) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AgregarActividadTuristicaAPaquete frame = new AgregarActividadTuristicaAPaquete(ctrl);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args, IPaquete ctrl) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AgregarActividadTuristicaAPaquete frame = new AgregarActividadTuristicaAPaquete(ctrl);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
-	public AgregarActividadTuristicaAPaquete(IPaquete iCPaquete) throws DepartamentoNoExisteException {
+	public AgregarActividadTuristicaAPaquete(IPaquete iCPaquete) {
 		setBounds(10, 40, 400, 200);
 		
 		controlPaquete = iCPaquete;
@@ -212,15 +211,15 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	
 public void cargarDep() {
 		
-		try {
+
 			Fabrica fabricaU = Fabrica.getInstance();
 			ITuristica ctrT = fabricaU.getControladorTuristica();
 			Iterator<String> iterator = ctrT.listarDepartamentos().iterator(); 
 	         while(iterator.hasNext()) { 
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
-		} catch (DepartamentoNoExisteException ex) {}
+	    	 }
+
 	}
 	
 	public void cargarAct() {

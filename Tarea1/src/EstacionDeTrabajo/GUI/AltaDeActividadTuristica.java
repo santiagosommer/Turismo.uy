@@ -19,7 +19,6 @@ import javax.swing.JToolBar;
 
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
 import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
@@ -271,17 +270,12 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	}
 
 	public void cargarDatosDepartamentos() {
-		try {
 			Set<String> depas = iTur.listarDepartamentos();
 			Iterator<String> itr = depas.iterator();
 			while (itr.hasNext()) {
 				DepartamentoBox.addItem(itr.next());
 			}
 
-		} catch (DepartamentoNoExisteException ex) {
-			// // No se imprime mensaje de error sino que simplemente no se muestra ningún
-			// elemento
-		}
 	}
 	
 	public void cargarDatosProveedores() {
