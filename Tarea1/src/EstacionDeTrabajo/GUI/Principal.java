@@ -3,6 +3,7 @@ package EstacionDeTrabajo.GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Controladores.*;
 import ServidorCentral.Logica.Interfaces.*;
@@ -33,6 +34,7 @@ public class Principal {
 	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
 	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
 	private ConsultaDePaqueteDeActividadesTuristicas  consultaPaqueteIFrame;
+	private CargaDeDatos cargaDeDatos;
 
 	/**
 	 * Launch the application.
@@ -116,6 +118,13 @@ public class Principal {
 		  frmServidorcentral.getContentPane().add(consultaPaqueteIFrame);
 		  consultaPaqueteIFrame.setVisible(false);
 		  consultaPaqueteIFrame.setClosable(true);
+		  
+		  try {
+			cargaDeDatos = new CargaDeDatos(ICUsu, ICTuri, ICP);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -265,6 +274,17 @@ public class Principal {
 		
 		
 		menuSalidas.add(mntmInscripcionASalida);
+		
+		JMenu mnCargaDeDatos = new JMenu("Carga de Datos");
+		menuBar.add(mnCargaDeDatos);
+		
+		JMenuItem mntmCargarDatosIniciales = new JMenuItem("Cargar datos iniciales");
+		mntmCargarDatosIniciales.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cargaDeDatos.cargarDatos();
+			}
+		});
+		mnCargaDeDatos.add(mntmCargarDatosIniciales);
 		
 	   
 	}

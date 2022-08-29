@@ -299,17 +299,13 @@ public class ControladorTuristica implements ITuristica {
 	}*/
 	
 	public Boolean existeDepartamento(String departamento) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, Departamento> departamentos = crTuristica.Departamentos;
-		Boolean existe = departamentos.containsKey(departamento);
-		return existe;
+		return Departamentos.containsKey(departamento);
 	}
 	
 	public void crearDepartamento(String nombre,String descripcion, String URL) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		if (!existeDepartamento(nombre)) {
 			Departamento dep = new Departamento(nombre,descripcion,URL);
-			crTuristica.Departamentos.put(nombre, dep);
+			Departamentos.put(nombre, dep);
 		}
 	}
 

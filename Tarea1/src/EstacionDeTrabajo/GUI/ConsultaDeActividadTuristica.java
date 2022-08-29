@@ -43,6 +43,8 @@ import javax.swing.JScrollPane;
 
 public class ConsultaDeActividadTuristica extends JInternalFrame {
 	
+	private ITuristica interfazTuristica;
+	
 	private JComboBox<Object> comboDepartamentos;
 	private JPanel panelActividades;
 	private JComboBox<Object> comboActividades;
@@ -51,10 +53,21 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 	private JComboBox<String> comboPaquetes;
 	
 	public void limpiarFormulario() {
+		comboDepartamentos.removeAllItems();
+		comboActividades.removeAllItems();
+		comboSalidas.removeAllItems();
+		comboPaquetes.removeAllItems();
+		
 		comboDepartamentos.setSelectedIndex(-1);
 		comboActividades.setSelectedIndex(-1);
 		comboSalidas.setSelectedIndex(-1);
 		comboPaquetes.setSelectedIndex(-1);
+		
+		
+		Set<String> deps = interfazTuristica.listarDepartamentos();
+		for (String string : deps) {
+			comboDepartamentos.addItem(string);
+		}
 		
 		panelActividades.setVisible(false);
 		panelInfo.setVisible(false);
@@ -83,6 +96,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		setBounds(100, 100, 536, 344);
 		getContentPane().setLayout(null);
 		setVisible(false);
+		this.interfazTuristica = interfazTuristica;
 		
 		JPanel panelBase = new JPanel();
 		panelBase.setBounds(12, 12, 502, 288);
@@ -100,8 +114,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		panelDepartamentos.add(Box.createRigidArea(new Dimension(10,0)));
 		
-		comboDepartamentos = new JComboBox<>(interfazTuristica.listarDepartamentos().toArray());
-		comboDepartamentos.setMaximumRowCount(4);
+		comboDepartamentos = new JComboBox<>();
 		comboDepartamentos.setSelectedIndex(-1);
 		panelDepartamentos.add(comboDepartamentos);
 		
@@ -226,6 +239,8 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					for (String actividad : actividadesDeDpto) {
 						comboActividades.addItem(actividad);
 					}
+					comboActividades.setSelectedIndex(-1);
+					panelInfo.setVisible(false);
 				}
 			}
 		});
