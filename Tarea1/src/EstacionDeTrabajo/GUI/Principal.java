@@ -264,6 +264,7 @@ public class Principal {
 		mntmAgregarActividadAPaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
+				agregarActividadTurísticaAPaqueteIFrame.cargarDep();
 				agregarActividadTurísticaAPaqueteIFrame.limpiarFormulario();
 				agregarActividadTurísticaAPaqueteIFrame.CargarPaquetes();
 				agregarActividadTurísticaAPaqueteIFrame.setVisible(true);

@@ -200,6 +200,13 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		gbc_CancelarButton.gridx = 5;
 		gbc_CancelarButton.gridy = 8;
 		getContentPane().add(CancelarButton, gbc_CancelarButton);
+		
+		CancelarButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                limpiarFormulario();
+                setVisible(false);
+            }
+        });
 
 	}
 
