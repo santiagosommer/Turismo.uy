@@ -128,7 +128,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 
 
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNombre) throws NombreActividadRepetidoException {
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarDepartamento(departamento);
@@ -138,7 +138,7 @@ public class ControladorTuristica implements ITuristica {
 		}
 		ControladorUsuario crUsuario = ControladorUsuario.getInstancia();
 		Map<String,Proveedor> provsMap = crUsuario.getProveedores();
-		Proveedor proveedor = provsMap.get(proveedorNombre);
+		Proveedor proveedor = provsMap.get(proveedorNick);
 		ActividadTuristica nuevaActividad = new ActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, dep, ciudad, proveedor);
 		actividades.put(nombre, nuevaActividad);
 		Map<String, ActividadTuristica> actividadesDeProveedor = proveedor.getActividadesTuristicas();
