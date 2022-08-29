@@ -51,6 +51,8 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	  private JList listaActividades;
 	  private ITuristica controladorAct;
 	  private  DefaultListModel<String> l3;
+	  private  DefaultListModel<String> l1;
+	  private DefaultListModel<String> l2;
 	  
 	//JComboBox comboBoxDepartamentos;
 	/**
@@ -152,8 +154,8 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		//modelos listas
         
-	       DefaultListModel<String> l1 = new DefaultListModel<>(); //Actividades
-	       DefaultListModel<String> l2 = new DefaultListModel<>(); //Salidas
+	       l1 = new DefaultListModel<>(); //Actividades
+	        l2 = new DefaultListModel<>(); //Salidas
 	        l3 = new DefaultListModel<>(); //Turistas
 
 		
@@ -216,7 +218,9 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    	        if (!event.getValueIsAdjusting()){
 	    	            @SuppressWarnings("unchecked")
 						JList<String> source = (JList)event.getSource();
-	    	            String selectedActividad = source.getSelectedValue().toString();
+	    	            String selectedActividad = source.getSelectedValue();
+	    	            if (selectedActividad!=null) {
+	    	            
 	    	            if (ctr.existeActividad(selectedActividad)) {
 	    	            	ctr.seleccionarActividad(selectedActividad);
 	    	            }
@@ -233,6 +237,8 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    	           
 	    	      }
 	    	  }
+	    	    }
+	    	    
 	    	});
 	      
 		
@@ -559,6 +565,10 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		SalidaTuristica.setText("");
 		selectedTurista = null;
 		CantTuristasTextField.setText("");	
+		
+		l1.removeAllElements();
+		l2.removeAllElements();
+		l3.removeAllElements();
 		
 	}
 	

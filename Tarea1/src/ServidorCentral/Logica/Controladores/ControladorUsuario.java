@@ -113,6 +113,7 @@ public class ControladorUsuario implements IUsuario {
 		Turista turi = turistaSeleccionado;
 		
 		//comprobar que turista no tiene una inscripcion a esa Salida
+		if (turi!= null) {
 		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
 		boolean tieneInsc = false;
 		if (!inscripciones.isEmpty()) {
@@ -141,6 +142,7 @@ public class ControladorUsuario implements IUsuario {
 	          turi.agregarInscripcion(ins);   
 		   } else {}
 		  }
+		}
 		
 	
 		
