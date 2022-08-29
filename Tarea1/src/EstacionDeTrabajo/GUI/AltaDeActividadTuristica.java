@@ -205,8 +205,8 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) {
 
-		String depa = (String) DepartamentoBox.getSelectedItem();
-		String prov = (String) ProveedorBox.getSelectedItem();
+		String depa = DepartamentoBox.getSelectedItem().toString();
+		String prov = ProveedorBox.getSelectedItem().toString();
 		String nombre = this.NombreField.getText();
 		String descripcion = this.DescripcionField.getText();
 		String duracion = this.DuracionField.getText();
@@ -217,7 +217,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			try {
 
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
-						Float.valueOf(costoTurista), LocalDate.now(), depa, ciudad, prov);
+						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
 
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
 						JOptionPane.INFORMATION_MESSAGE);
@@ -231,7 +231,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	private boolean checkFormulario() {
 		String nombre = this.NombreField.getText();
 		String descripcion = this.DescripcionField.getText();
-		String duracion = this.CiudadField.getText();
+		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
 		String ciudad = CiudadField.getText();
 		DepartamentoBox.setSelectedIndex(-1);
@@ -245,7 +245,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		}
 
 		try {
-			 //Integer.parseInt(duracion);
+			 Integer.parseInt(duracion);
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(this, "La duracion debe ser un numero", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);

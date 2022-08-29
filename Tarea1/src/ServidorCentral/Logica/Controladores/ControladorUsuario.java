@@ -79,8 +79,7 @@ public class ControladorUsuario implements IUsuario {
 		Set<String> res = new HashSet<String>();
 		if (Proveedores.isEmpty())
 			throw new UsuarioNoExisteException("No existen proveedores registrados");
-		Proveedores.forEach((k, v) -> res.add(v.toString()));
-
+		Proveedores.forEach((k, v) -> res.add(k.toString()));
 		return res;
 	}
 
