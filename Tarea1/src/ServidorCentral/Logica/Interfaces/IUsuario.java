@@ -20,8 +20,8 @@ public interface IUsuario {
 	public abstract Set<String> listarTuristas();
 	public abstract DTTurista getDTTurista();
 	public abstract DTProveedor getDTProveedor();
-	public abstract void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad);
-	public abstract void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url);
+//	public abstract void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad);
+//	public abstract void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url);
 	public abstract void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida;
 	public abstract Boolean existeUsuario(String nickN);
 	public abstract Boolean existeUsuarioEmail(String email);

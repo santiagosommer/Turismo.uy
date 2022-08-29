@@ -92,17 +92,17 @@ public class ControladorUsuario implements IUsuario {
 		return new DTProveedor(proveedorSeleccionado);
 	}
 
-	@Override
-	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	@Override
 
@@ -121,7 +121,7 @@ public class ControladorUsuario implements IUsuario {
 		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
 		boolean tieneInsc = false;
 		if (!inscripciones.isEmpty()) {
-			Iterator it = inscripciones.iterator();
+			Iterator<Inscripcion> it = inscripciones.iterator();
 			while (it.hasNext() && !tieneInsc) {
 				Inscripcion j = (Inscripcion) it.next();
 				if (j.getSalidaAsociada().getNombre() == sal.getNombre()) {
