@@ -25,7 +25,6 @@ import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -69,20 +68,20 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	
 	
-public static void main(String[] args, ITuristica ctrl) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaDeSalidaTuristica frame = new AltaDeSalidaTuristica(ctrl);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//public static void main(String[] args, ITuristica ctrl) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					AltaDeSalidaTuristica frame = new AltaDeSalidaTuristica(ctrl);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
-	public AltaDeSalidaTuristica(ITuristica iCTuri) throws DepartamentoNoExisteException {
+	public AltaDeSalidaTuristica(ITuristica iCTuri) {
 		setBounds(10, 40, 400, 300);
 		
 		controlTur = iCTuri;
@@ -399,7 +398,7 @@ public static void main(String[] args, ITuristica ctrl) {
 	
 	public void cargarDep() {
 		//comboBoxDepartamentos.setSelectedIndex(-1);
-		try {
+		
 			Set<String> deps = controlTur.listarDepartamentos();
 			Iterator<String> iterator = deps.iterator(); 
 	         while(iterator.hasNext()) { 
@@ -407,7 +406,7 @@ public static void main(String[] args, ITuristica ctrl) {
 	    	    comboBoxDepartamentos.addItem(setElement);
 		     }
 	      
-		} catch (DepartamentoNoExisteException ex) {}
+		
 	}
 	
 	public void cargarAct() {

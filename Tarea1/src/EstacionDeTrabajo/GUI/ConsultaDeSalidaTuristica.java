@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
@@ -387,7 +386,6 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		
 		Fabrica fabr =Fabrica.getInstance();
 		ITuristica cturistico = fabr.getControladorTuristica();
-		  try {
 				if (!cturistico.listarDepartamentos().isEmpty()) {
 				     Iterator<String> iterator = cturistico.listarDepartamentos().iterator(); 
 				     while(iterator.hasNext()) { 
@@ -395,10 +393,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 					    comboBoxDepartamentos.addItem(setElement);
 				     }
 				   }
-			} catch (DepartamentoNoExisteException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}   
+			
 	}
 
 

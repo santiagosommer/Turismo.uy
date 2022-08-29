@@ -19,7 +19,6 @@ import EstacionDeTrabajo.GUI.CargaDeDatos;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
@@ -166,7 +165,7 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testListarDepartamentos() throws DepartamentoNoExisteException {
+	void testListarDepartamentos(){
 		
 		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
 		crTuri.crearDepartamento("Durazno", "grande", "www.dur.com");

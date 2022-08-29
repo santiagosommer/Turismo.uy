@@ -9,7 +9,6 @@ import javax.swing.JInternalFrame;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import java.awt.GridLayout;
@@ -53,7 +52,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 	private JComboBox<String> comboSalidas;
 	private JComboBox<String> comboPaquetes;
 	
-	public void limpiarFormulario() throws DepartamentoNoExisteException {
+	public void limpiarFormulario() {
 		comboDepartamentos.removeAllItems();
 		comboActividades.removeAllItems();
 		comboSalidas.removeAllItems();
