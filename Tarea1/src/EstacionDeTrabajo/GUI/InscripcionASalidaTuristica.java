@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -126,13 +127,18 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		//agrega departamentos
-		   if (!ctr.listarDepartamentos().isEmpty()) {
-	         Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
-		   }   
+		   try {
+			if (!ctr.listarDepartamentos().isEmpty()) {
+			     Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
+			     while(iterator.hasNext()) { 
+				    String setElement = iterator.next(); 
+				    comboBoxDepartamentos.addItem(setElement);
+			     }
+			   }
+		} catch (DepartamentoNoExisteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}   
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas:");
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 10));
