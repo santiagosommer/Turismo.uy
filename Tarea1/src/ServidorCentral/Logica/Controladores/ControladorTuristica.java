@@ -43,7 +43,7 @@ public class ControladorTuristica implements ITuristica {
 		ActividadesTuristicas.put("Corrida", at);
 		
 		HashMap<String,SalidaTuristica> mapaSalidas = new HashMap<>();
-		SalidaTuristica loDeTuMama = new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"), 2);
+		SalidaTuristica loDeTuMama = new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"));
 		mapaSalidas.put("En la maniana", loDeTuMama);
 		at.setSalidas(mapaSalidas);
 		loDeTuMama.setActividadTuristicaAsociada(at);
@@ -73,7 +73,7 @@ public class ControladorTuristica implements ITuristica {
 	public void seleccionarSalida(String salida) {
 		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
-		for (Map.Entry<String, DepartamentoNoExisteExceptionActividadTuristica> entry : actividades.entrySet()) {
+		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 		    ActividadTuristica activ = entry.getValue();
 		    Map<String, SalidaTuristica> salidasActiv = activ.getSalidas();
 		    boolean existe = salidasActiv.containsKey(salida);

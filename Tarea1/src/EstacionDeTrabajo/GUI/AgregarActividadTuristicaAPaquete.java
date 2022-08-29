@@ -8,6 +8,7 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -41,7 +42,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		});
 	}
 
-	public AgregarActividadTuristicaAPaquete(IPaquete iCPaquete) {
+	public AgregarActividadTuristicaAPaquete(IPaquete iCPaquete) throws DepartamentoNoExisteException {
 		setBounds(10, 40, 400, 200);
 		
 		controlPaquete = iCPaquete;
