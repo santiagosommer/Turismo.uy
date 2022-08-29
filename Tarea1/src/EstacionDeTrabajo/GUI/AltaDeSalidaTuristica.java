@@ -103,19 +103,14 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
 		getContentPane().add(comboBoxDepartamentos);
 		
-		/*Fabrica fabricaU = Fabrica.getInstance();
-		ITuristica ctr = fabricaU.getControladorTuristica();
+		comboBoxDepartamentos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	comboBoxActividades.removeAllItems();
+            	cargarAct();
+            		//setVisible(false);
+           }
+        });
 		
-		
-		comboBoxDepartamentos.setSelectedIndex(-1);
-		//agrega departamentos
-		   if (!ctr.listarDepartamentos().isEmpty()) {
-	         Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
-		   } */
 		
 		lblElijaActividad = new JLabel("Elija Actividad");
 		lblElijaActividad.setBounds(12, 48, 136, 15);
@@ -125,17 +120,6 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxActividades.setBounds(166, 43, 172, 24);
 		getContentPane().add(comboBoxActividades);
 		
-		/*comboBoxActividades.setSelectedIndex(-1);
-		//agrega departamentos
-		if (comboBoxDepartamentos.getSelectedItem() != null) {
-		   if (ctr.listarActividadesDeDepartamento(comboBoxDepartamentos.getSelectedItem().toString()) != null) {
-	         Iterator<String> iterator = ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxActividades.addItem(setElement);
-		     }
-		   } 
-		}*/
 		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
@@ -422,17 +406,20 @@ public static void main(String[] args, ITuristica ctrl) {
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxDepartamentos.addItem(setElement);
 		     }
+	      
 		} catch (DepartamentoNoExisteException ex) {}
 	}
 	
 	public void cargarAct() {
 		comboBoxActividades.setSelectedIndex(-1);
 			String dep = (String)comboBoxDepartamentos.getSelectedItem();
-			Iterator<String> iterator = controlTur.listarActividadesDeDepartamento(dep).iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxActividades.addItem(setElement);
-		     }
+			if(controlTur.listarActividadesDeDepartamento(dep)!= null) {
+				Iterator<String> iterator = controlTur.listarActividadesDeDepartamento(dep).iterator(); 
+				while(iterator.hasNext()) { 
+					String setElement = iterator.next(); 
+					comboBoxActividades.addItem(setElement);
+				}
+			}
 	}
 	
 }

@@ -12,8 +12,8 @@ public class Turista extends Usuario{
 	 
 	public Turista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) {
 		super(nickname, nombre, apellido, email, fechaNacimiento);
-		Nacionalidad = nacionalidad;
-		Inscripciones = new ArrayList<Inscripcion>();	
+		setNacionalidad(nacionalidad);
+		setInscripciones(new ArrayList<Inscripcion>());
 		
 	}
 

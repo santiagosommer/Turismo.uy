@@ -58,10 +58,12 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	private JLabel lblCiudadCantMax;
 	private JTextField textFieldFechaDeAlta;
 	private JLabel lblFechaDeAlta;
+	private JButton btnConsultarExtra;
 	
 	
 
 	public ConsultaDeUsuario(IUsuario controladorUsuario, ITuristica CTuri) {
+		setResizable(true);
 		cu = controladorUsuario;
 		ct = CTuri;
 		
@@ -85,6 +87,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		JButton btnSeleccionarUsuario = new JButton("Seleccionar");
 		btnSeleccionarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				resetearInfo();
 				listarDataUsuarioActionPerformed();
 			}
 		});
@@ -237,9 +240,10 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		getContentPane().add(comboBoxListaTuristicas, gbc_comboBoxListaTuristicas);
 		comboBoxListaTuristicas.setVisible(false);
 		
-		JButton btnConsultarExtra = new JButton("ConsultarExtra");
+		btnConsultarExtra = new JButton("ConsultarExtra");
 		btnConsultarExtra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				resetearInfoExtra();
 				listarDataTuristicaActionPerformed();
 			}
 		});
@@ -421,8 +425,10 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	
 	protected void listarDataTuristicaActionPerformed() {
 		String datoSeleccionado = comboBoxListaTuristicas.getSelectedItem().toString();
-		if (ct.existeActividad(datoSeleccionado)) {
-			ct.seleccionarActividad(datoSeleccionado);
+		String dato = datoSeleccionado.replace("Actividad: ", "");
+		dato = dato.replace("Salida: ", "");
+		if (ct.existeActividad(dato)) {
+			ct.seleccionarActividad(dato);
 			DTActividadTuristica dtat = ct.getDTActividadTuristica();
 			lblProveedor.setVisible(true);
 			lblDepartamento.setVisible(true);
@@ -454,7 +460,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			textFieldFechaDeAlta.setVisible(true);
 			
 		}else {
-			ct.seleccionarSalida(datoSeleccionado);
+			ct.seleccionarSalida(dato);
 			DTSalidaTuristica dtst = ct.getDTSalidaTuristica();
 			lblNombreTuristica.setVisible(true);
 			lblDescripcionFecha.setText("Fecha");
@@ -509,9 +515,12 @@ public class ConsultaDeUsuario extends JInternalFrame {
 				}
 				
 				comboBoxListaTuristicas.setVisible(true);
+				comboBoxListaTuristicas.setSelectedIndex(-1);
 				
 				lblTuristicas.setText("Salidas Inscripto");
 				lblTuristicas.setVisible(true);
+				
+				btnConsultarExtra.setVisible(true);
 			}else {
 				lblTuristicas.setText("No hay Salidas Inscripto");
 				lblTuristicas.setVisible(true);
@@ -545,9 +554,12 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			
 			if (!act.isEmpty()) {
 				comboBoxListaTuristicas.setVisible(true);
+				comboBoxListaTuristicas.setSelectedIndex(-1);
 				
 				lblTuristicas.setText("Actividades que Provee");
 				lblTuristicas.setVisible(true);
+				
+				btnConsultarExtra.setVisible(true);
 			}else {
 				lblTuristicas.setText("No hay Actividades que Provee");
 				lblTuristicas.setVisible(true);
@@ -563,6 +575,8 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			while(itr.hasNext()) {
 				comboBoxListUsuarios.addItem(itr.next());
 			}
+
+			comboBoxListUsuarios.setSelectedIndex(-1);
 		}catch (UsuarioNoExisteException e) {
             // No se imprime mensaje de error sino que simplemente no se muestra ningún elemento
         }
@@ -571,7 +585,9 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	
 	protected void cerrarConsultaUsuario(){
 		comboBoxListUsuarios.removeAllItems();
+		comboBoxListUsuarios.setSelectedIndex(-1);
 		comboBoxListaTuristicas.removeAllItems();
+		comboBoxListaTuristicas.setSelectedIndex(-1);
 		textFieldNickName.setText("");
 		textFieldNombre.setText("");
 		textFieldApellido.setText("");
@@ -599,9 +615,64 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		textFieldCostoLugar.setVisible(false);
 		textFieldCiudadCantMax.setVisible(false);
 		textFieldFechaDeAlta.setVisible(false);
-		
+		btnConsultarExtra.setVisible(false);
 		
 		setVisible(false);
+		
+	}
+	
+	protected void resetearInfo(){
+		comboBoxListaTuristicas.removeAllItems();
+		comboBoxListaTuristicas.setSelectedIndex(-1);
+		textFieldNickName.setText("");
+		textFieldNombre.setText("");
+		textFieldApellido.setText("");
+		textFieldEmail.setText("");
+		textFieldFecha.setText("");
+		textFieldDescripcionNacionalidad.setText("");
+		textFieldDescripcionNacionalidad.setVisible(false);
+		lblDescripcionNacionalidad.setVisible(false);
+		lblLinkWeb.setVisible(false);
+		textFieldLinkWeb.setVisible(false);
+		lblTuristicas.setVisible(false);
+		lblProveedor.setVisible(false);
+		lblDepartamento.setVisible(false);
+		lblNombreTuristica.setVisible(false);
+		lblDescripcionFecha.setVisible(false);
+		lblDuracionHora.setVisible(false);
+		lblCostoLugar.setVisible(false);
+		lblCiudadCantMax.setVisible(false);
+		lblFechaDeAlta.setVisible(false);
+		textFieldProveedor.setVisible(false);
+		textFieldDepartamento.setVisible(false);
+		textFieldNombreTuristica.setVisible(false);
+		textFieldDescripcionFecha.setVisible(false);
+		textFieldDuracionHora.setVisible(false);
+		textFieldCostoLugar.setVisible(false);
+		textFieldCiudadCantMax.setVisible(false);
+		textFieldFechaDeAlta.setVisible(false);
+		btnConsultarExtra.setVisible(false);
+		
+		
+	}
+	
+	protected void resetearInfoExtra(){
+		lblProveedor.setVisible(false);
+		lblDepartamento.setVisible(false);
+		lblNombreTuristica.setVisible(false);
+		lblDescripcionFecha.setVisible(false);
+		lblDuracionHora.setVisible(false);
+		lblCostoLugar.setVisible(false);
+		lblCiudadCantMax.setVisible(false);
+		lblFechaDeAlta.setVisible(false);
+		textFieldProveedor.setVisible(false);
+		textFieldDepartamento.setVisible(false);
+		textFieldNombreTuristica.setVisible(false);
+		textFieldDescripcionFecha.setVisible(false);
+		textFieldDuracionHora.setVisible(false);
+		textFieldCostoLugar.setVisible(false);
+		textFieldCiudadCantMax.setVisible(false);
+		textFieldFechaDeAlta.setVisible(false);
 		
 	}
 }

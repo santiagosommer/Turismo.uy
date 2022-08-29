@@ -11,10 +11,10 @@ public class Departamento {
 	private Map<String, ActividadTuristica> ActividadesTuristicas;
 	
 	public Departamento(String nombre, String descripcion, String url) {
-		NombreDepartamento = nombre;
-		Descripcion = descripcion;
-		URL = url;
-		ActividadesTuristicas = new HashMap<String, ActividadTuristica>();
+		setNombre(nombre);
+		setDescripcion(descripcion);
+		setURL(url);
+		setActividadesTuristicas(new HashMap<String, ActividadTuristica>());
 	}
 	
 	public String getNombre() {

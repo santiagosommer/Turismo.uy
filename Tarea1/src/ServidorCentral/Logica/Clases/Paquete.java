@@ -16,12 +16,12 @@ public class Paquete {
 	 
 	  
 	 public Paquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta ) {
-		 Nombre = nombre;
-		 Descripcion = descripcion;
-		 PeriodoValidez = periodoValidez;
-		 Descuento = descuento;
-		 FechaAlta = fechaAlta;
-		 this.setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
+		 setNombre(nombre);
+		 setDescripcion(descripcion);
+		 setPeriodoValidez(periodoValidez);
+		 setDescuento(descuento);
+		 setFechaAlta(fechaAlta);
+		 setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
 		 
 	 }
 	   

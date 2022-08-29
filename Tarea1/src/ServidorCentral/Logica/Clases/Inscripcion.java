@@ -14,11 +14,11 @@ public class Inscripcion {
 	
 	
 	public Inscripcion(LocalDate fecha, int cantidadTuristas, float costo, SalidaTuristica salidaAsociada, Turista turista) { //
-		Fecha = fecha;
-		CantidadTuristas = cantidadTuristas ;
-		Costo = costo;
-		this.turista = turista;
-		SalidaAsociada = salidaAsociada;
+		setFecha(fecha);
+		setCantidadTuristas(cantidadTuristas);
+		setCosto(costo);
+		setTurista(turista);
+		setSalidaAsociada(salidaAsociada);
 	}
 	
 	public int getCantidadTuristas() {

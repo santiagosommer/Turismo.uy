@@ -13,9 +13,9 @@ public class Proveedor extends Usuario {
 	
 	public Proveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url ) {
 		super(nickname, nombre, apellido, email, fechaNacimiento);
-		this.ActividadesTuristicas = new HashMap<String, ActividadTuristica>();
-		DescripcionGeneral = descripcionGeneral;
-		URL = url;
+		setActividadesTuristicas(new HashMap<String, ActividadTuristica>());
+		setDescripcionGeneral(descripcionGeneral);
+		setURL(url);
 		
 	}
 	public String getDescripcionGeneral() {

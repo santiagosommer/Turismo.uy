@@ -104,6 +104,7 @@ public class Principal {
 		frmServidorcentral.getContentPane().add(crearActividadTuristicaIFrame);
 		crearActividadTuristicaIFrame.setVisible(false);
 		crearActividadTuristicaIFrame.setClosable(true);
+		
 
 		inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
 		inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
