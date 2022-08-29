@@ -240,6 +240,8 @@ public class Principal {
 		JMenuItem mntmAltaSalidaTuristica = new JMenuItem("Alta Salida Turistica");
 		mntmAltaSalidaTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				altaSalidaTuristicaIFrame.cargarDep();
+				altaSalidaTuristicaIFrame.cargarAct();
 				altaSalidaTuristicaIFrame.limpiarFormulario();
 				altaSalidaTuristicaIFrame.setVisible(true);
 			}
