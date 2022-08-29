@@ -3,6 +3,7 @@ package EstacionDeTrabajo.GUI;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.Identity;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	private IPaquete controlPaquete;
 	private JLabel lblPaquetes;
 	private JComboBox<String> comboBoxPaquetes;
+    private	String paqueteseleccionado;
 	private JLabel lblDepartamentos;
 	private JComboBox<String> comboBoxDepartamentos;	
 	private JLabel lblActividadesFueraDel;
@@ -68,8 +70,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		
 		Fabrica fabricaU = Fabrica.getInstance();
 		IPaquete ctrP = fabricaU.getControladorPaquete();
-		
-		
+		ITuristica ctrT = fabricaU.getControladorTuristica();
 		
 		lblDepartamentos = new JLabel("Departamentos:");
 		lblDepartamentos.setBounds(12, 48, 132, 15);
@@ -78,8 +79,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		comboBoxDepartamentos = new JComboBox<String>();
 		comboBoxDepartamentos.setBounds(140, 43, 120, 24);
 		getContentPane().add(comboBoxDepartamentos);
-		   
-		ITuristica ctrT = fabricaU.getControladorTuristica();
+		
 		
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		 if (!ctrT.listarDepartamentos().isEmpty()) {
@@ -93,18 +93,48 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		lblActividadesFueraDel = new JLabel("Actividades Fuera Del Paquete:");
 		lblActividadesFueraDel.setBounds(12, 83, 258, 15);
 		getContentPane().add(lblActividadesFueraDel);
+		 paqueteseleccionado = null ;
+		 
+		
+		comboBoxPaquetes.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+			 	   @SuppressWarnings("unchecked") //?
+				JComboBox<String> cb = (JComboBox<String>)e.getSource();
+			 	  paqueteseleccionado = (String)cb.getSelectedItem();
+			 	  if(paqueteseleccionado!= null) {
+			 		  ctrP.seleccionarPaquete(paqueteseleccionado);
+			 	  }
+		    }   });
+		
 		
 		comboBoxActividadesFueraDePaquete = new JComboBox<String>();
 		comboBoxActividadesFueraDePaquete.setBounds(247, 78, 131, 24);
 		getContentPane().add(comboBoxActividadesFueraDePaquete);
 		comboBoxActividadesFueraDePaquete.setSelectedIndex(-1);
-		if (!ctrP.listarPaquetes().isEmpty()) {
-	         Iterator<String> iterator = ctrP.listarActividadesAAgregar((String)comboBoxDepartamentos.getSelectedItem()).iterator(); 
+		
+		comboBoxDepartamentos.addActionListener(new ActionListener() {
+			    public void actionPerformed(ActionEvent e) {
+			 	   @SuppressWarnings("unchecked") //?
+				JComboBox<String> cb = (JComboBox<String>)e.getSource();
+			 	  comboBoxActividadesFueraDePaquete.removeAllItems();
+			 	  String depseleccionado = (String)cb.getSelectedItem();
+			 	  ctrT.seleccionarDepartamento(depseleccionado);
+			 	  
+			 	 if (paqueteseleccionado!=null){
+			 		ctrP.seleccionarPaquete(paqueteseleccionado);
+			 	
+		   if (!ctrP.listarPaquetes().isEmpty()) {
+				
+			if(!ctrP.listarActividadesAAgregar(depseleccionado).isEmpty()) {
+				
+	         Iterator<String> iterator = ctrP.listarActividadesAAgregar(depseleccionado).iterator(); 
 	         while(iterator.hasNext()) { 
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxActividadesFueraDePaquete.addItem(setElement);
-		     }
-		}
+		     }}
+			
+		}}
+		} });
 		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
@@ -150,6 +180,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		comboBoxPaquetes.setSelectedIndex(-1);
 		comboBoxPaquetes.removeAllItems();
+		comboBoxActividadesFueraDePaquete.removeAllItems();
 	}
 	
 	private boolean checkFormulario() {

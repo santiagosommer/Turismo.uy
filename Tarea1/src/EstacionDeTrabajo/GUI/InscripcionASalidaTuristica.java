@@ -199,6 +199,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 					SalidaTuristica.setText("");
 					CantTuristasTextField.setText("");	
 					CuposLabel.setText("");
+					
 			 	   if(ctr.existeDepartamento(DepartamentoSelecc)) {
 			 		   ctr.seleccionarDepartamento(DepartamentoSelecc);
 			 		   Set<String> actividades = ctr.listarActividadesDeDepartamento(DepartamentoSelecc);

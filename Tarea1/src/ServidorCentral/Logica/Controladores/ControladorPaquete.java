@@ -16,6 +16,7 @@ import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
+import ServidorCentral.Logica.Interfaces.ITuristica;
 
 
 public class ControladorPaquete implements IPaquete {
@@ -74,20 +75,27 @@ public class ControladorPaquete implements IPaquete {
 	}
 	
 	public Set<String>  listarActividadesAAgregar(String departamento) { //segun departamento, que no formen parte de paquete
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
+		Fabrica fabrica  = Fabrica.getInstance();
+		ITuristica crTuristica = fabrica.getControladorTuristica();
 		Set<String> actividadesDepto = crTuristica.listarActividadesDeDepartamento(departamento);
 		
-		if (!actividadesDepto.isEmpty()) {
-			Set<String> lista = new HashSet<String>();
-			Map<String, Paquete> paquetes = instancia.Paquetes;
+		
+		Set<String> lista = new HashSet<String>();
+		if (actividadesDepto!= null && !actividadesDepto.isEmpty()) {
+			
+			Map<String, Paquete> paquetes = Paquetes;
 			Map<String, ActividadTuristica> actividadesDePauete = PaqueteSeleccionado.getActividadesTuristicas();
+			
+		
 			for(String actividad: actividadesDepto) {
 				if (!actividadesDePauete.containsKey(actividad)) {
 					lista.add(actividad);
-				}
 			}
+			}
+		}
+		
 			return lista;
-		} else 	return null;
+		
 	 }
 
 	public Map<String, Paquete> getPaquetes() {

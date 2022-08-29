@@ -227,7 +227,8 @@ public class ControladorTuristica implements ITuristica {
 			Map<String, ActividadTuristica> actividades = dep.getActividadesTuristicas();
 			
 			String nombreActividad;
-			Set<String> lista = new HashSet<String>();			
+			Set<String> lista = new HashSet<String>();
+			
 			for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 			    nombreActividad = entry.getKey();
 			    lista.add(nombreActividad);
