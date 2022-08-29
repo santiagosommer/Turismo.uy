@@ -305,7 +305,9 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		CiudadField.setText("");
 		CostoTuristaField.setText("");
 		DepartamentoBox.setSelectedIndex(-1);
+		DepartamentoBox.removeAllItems();
 		ProveedorBox.setSelectedIndex(-1);
+		DepartamentoBox.removeAllItems();
 		} 
 
 }

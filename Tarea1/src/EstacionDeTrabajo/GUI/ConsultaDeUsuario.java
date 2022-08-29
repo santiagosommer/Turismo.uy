@@ -515,6 +515,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 				}
 				
 				comboBoxListaTuristicas.setVisible(true);
+				comboBoxListaTuristicas.setSelectedIndex(-1);
 				
 				lblTuristicas.setText("Salidas Inscripto");
 				lblTuristicas.setVisible(true);
@@ -553,6 +554,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			
 			if (!act.isEmpty()) {
 				comboBoxListaTuristicas.setVisible(true);
+				comboBoxListaTuristicas.setSelectedIndex(-1);
 				
 				lblTuristicas.setText("Actividades que Provee");
 				lblTuristicas.setVisible(true);
@@ -573,6 +575,8 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			while(itr.hasNext()) {
 				comboBoxListUsuarios.addItem(itr.next());
 			}
+
+			comboBoxListUsuarios.setSelectedIndex(-1);
 		}catch (UsuarioNoExisteException e) {
             // No se imprime mensaje de error sino que simplemente no se muestra ningún elemento
         }
@@ -581,7 +585,9 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	
 	protected void cerrarConsultaUsuario(){
 		comboBoxListUsuarios.removeAllItems();
+		comboBoxListUsuarios.setSelectedIndex(-1);
 		comboBoxListaTuristicas.removeAllItems();
+		comboBoxListaTuristicas.setSelectedIndex(-1);
 		textFieldNickName.setText("");
 		textFieldNombre.setText("");
 		textFieldApellido.setText("");
@@ -617,6 +623,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	
 	protected void resetearInfo(){
 		comboBoxListaTuristicas.removeAllItems();
+		comboBoxListaTuristicas.setSelectedIndex(-1);
 		textFieldNickName.setText("");
 		textFieldNombre.setText("");
 		textFieldApellido.setText("");
