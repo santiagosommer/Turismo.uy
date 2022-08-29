@@ -94,13 +94,13 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		setResizable(true);
 		setClosable(true);
 		setTitle("Consulta de Actividad Turistica");
-		setBounds(100, 100, 618, 413);
+		setBounds(100, 100, 618, 446);
 		getContentPane().setLayout(null);
 		setVisible(false);
 		this.interfazTuristica = interfazTuristica;
 		
 		JPanel panelBase = new JPanel();
-		panelBase.setBounds(12, 12, 584, 357);
+		panelBase.setBounds(12, 12, 584, 390);
 		getContentPane().add(panelBase);
 		panelBase.setLayout(null);
 		
@@ -136,7 +136,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelActividades.add(comboActividades);
 		
 		panelInfo = new JPanel();
-		panelInfo.setBounds(0, 58, 584, 299);
+		panelInfo.setBounds(0, 58, 584, 332);
 		panelBase.add(panelInfo);
 		panelInfo.setLayout(new GridLayout(0, 2, 0, 0));
 		panelInfo.setVisible(false);
@@ -152,6 +152,12 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		JLabel lblDescripcionContent = new JLabel("\"Descripcion\"");
 		panelInfo.add(lblDescripcionContent);
+		
+		JLabel lblProveedor = new JLabel("Proveedor:");
+		panelInfo.add(lblProveedor);
+		
+		JLabel lblproveedor = new JLabel("\"Proveedor\"");
+		panelInfo.add(lblproveedor);
 		
 		JLabel lblDuracion = new JLabel("Duracion:");
 		panelInfo.add(lblDuracion);
@@ -258,6 +264,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					DTActividadTuristica actividadElegida = interfazTuristica.getDTActividadTuristica();
 					lblNombreContent.setText(actividadElegida.getNombre());		
 					lblDescripcionContent.setText("<html>" + actividadElegida.getDescripcion() + "</html>");
+					lblproveedor.setText(actividadElegida.getProveedor().getNombre() + actividadElegida.getProveedor().getApellido());
 					lblCiudadContent.setText(actividadElegida.getCiudad());
 					lblDuracionContent.setText(String.valueOf(actividadElegida.getDuracion()));
 					lblCostoPorTuristaContent.setText(String.valueOf(actividadElegida.getCostoTurista()));

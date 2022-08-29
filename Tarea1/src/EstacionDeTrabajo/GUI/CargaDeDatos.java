@@ -153,23 +153,24 @@ public class CargaDeDatos {
 			}
 			
 			//Caso Inscripciones
+			/*
 			try {
-				
+
 				interfazUsuario.crearInscripcion("Rosa Maria", "Degusta Agosto" , 3 , 2400 , LocalDate.of(2022, 8, 15));
 				interfazUsuario.crearInscripcion("Elvis", "Degusta Agosto" , 5 , 4000 , LocalDate.of(2022, 8, 16));
 				interfazUsuario.crearInscripcion("Rosa Maria", "Tour Colonia del Sacramento 18-09", 3 , 1200,  LocalDate.of(2022, 8, 18));
 				interfazUsuario.crearInscripcion("Elizabeth", "Tour Colonia del Sacramento 18-09", 1, 400, LocalDate.of(2022, 8, 19));
 				interfazUsuario.crearInscripcion("Johann Sebastian", "Almuerzo 2", 2, 1600 , LocalDate.of(2022, 8, 19));
-				interfazUsuario.crearInscripcion("Alvaro","Teatro con Sablores 1", 1, 500 , LocalDate.of(2022, 8, 19));
-				interfazUsuario.crearInscripcion("Alvaro", "Teatro con Sablores 2", 10, 5000 , LocalDate.of(2022, 8, 20));
-				interfazUsuario.crearInscripcion("Bob","Teatro con Sablores 2", 2, 1000 , LocalDate.of(2022, 8, 20));
-				interfazUsuario.crearInscripcion("Anibla","Teatro con Sablores 2", 1, 500 , LocalDate.of(2022, 8, 21));
+				interfazUsuario.crearInscripcion("Alvaro","Teatro con Sabores 1", 1, 500 , LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("Alvaro", "Teatro con Sabores 2", 10, 5000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("Bob","Teatro con Sabores 2", 2, 1000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("Anibla","Teatro con Sabores 2", 1, 500 , LocalDate.of(2022, 8, 21));
 				interfazUsuario.crearInscripcion("Antonio", "Degusta Setiembre" , 11, 8800 , LocalDate.of(2022, 8, 21));
-			
 			} catch (YaExisteInscripcionTuristaSalida e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 			
 			//Caso Paquetes
 			try {
@@ -181,9 +182,6 @@ public class CargaDeDatos {
 				interfazPaquetes.AgregarActividadPaquete("Un dia en Colonia", "Tour por Colonia del Sacramento");
 				interfazPaquetes.AgregarActividadPaquete("Un dia en Colonia", "Almuerzo en el Real de San Carlos");
 			} catch (NombrePaqueteRepetidoException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoHayActividadConEseNombreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
