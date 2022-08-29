@@ -103,6 +103,14 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
 		getContentPane().add(comboBoxDepartamentos);
 		
+		comboBoxDepartamentos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	comboBoxActividades.removeAllItems();
+            	cargarAct();
+            		//setVisible(false);
+           }
+        });
+		
 		/*Fabrica fabricaU = Fabrica.getInstance();
 		ITuristica ctr = fabricaU.getControladorTuristica();
 		
@@ -422,6 +430,7 @@ public static void main(String[] args, ITuristica ctrl) {
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxDepartamentos.addItem(setElement);
 		     }
+	      
 		} catch (DepartamentoNoExisteException ex) {}
 	}
 	
