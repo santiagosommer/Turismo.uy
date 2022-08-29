@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -15,7 +16,10 @@ import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Clases.Turista;
+import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
+import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
 
@@ -116,6 +120,25 @@ public class CargaDeDatos {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			//Caso Salidas Turisticas crearSalidaTuristica(String nombre, int cantMaxTuristas, LocalDate fechaAlta,
+			//											DTInfoSalida infoSalida, int cuposDisponibles, String actividad)
+			try {
+				interfazTuristica.crearSalidaTuristica("Degusta Agosto", 20, LocalDate.of(2022,7,21), new DTInfoSalida(LocalDate.of(2022,8,20), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), 20, "Degusta");
+				interfazTuristica.crearSalidaTuristica("Degusta Setiembre", 20, LocalDate.of(2022,7,22), new DTInfoSalida(LocalDate.of(2022,9,3), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), 20, "Degusta");
+				interfazTuristica.crearSalidaTuristica("Teatro con Sabores 1", 30, LocalDate.of(2022,7,23), new DTInfoSalida(LocalDate.of(2022,9,4), LocalTime.of(18,0), "Club Deportivo Unión"), 30, "Teatro con Sabores");
+				interfazTuristica.crearSalidaTuristica("Teatro con Sabores 2", 30, LocalDate.of(2022,7,23), new DTInfoSalida(LocalDate.of(2022,9,11), LocalTime.of(18,0), "Sociedad Agropecuaria de Rocha"), 30, "Degusta");
+				interfazTuristica.crearSalidaTuristica("Degusta Agosto", 20, LocalDate.of(2022,7,21), new DTInfoSalida(LocalDate.of(2022,8,20), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), 20, "Degusta");
+				interfazTuristica.crearSalidaTuristica("Degusta Agosto", 20, LocalDate.of(2022,7,21), new DTInfoSalida(LocalDate.of(2022,8,20), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), 20, "Degusta");
+			
+			} catch (NombreSalidaRepetidoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoHayActividadConEseNombreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			
 			
 			return true;
