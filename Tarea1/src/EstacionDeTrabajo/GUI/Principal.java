@@ -215,7 +215,12 @@ public class Principal {
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				consultaActividadTuristicaIFrame.limpiarFormulario();
+				try {
+					consultaActividadTuristicaIFrame.limpiarFormulario();
+				} catch (DepartamentoNoExisteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				consultaActividadTuristicaIFrame.setVisible(true);
 			}
 		});

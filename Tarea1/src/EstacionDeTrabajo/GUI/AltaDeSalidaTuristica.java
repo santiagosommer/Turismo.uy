@@ -125,14 +125,15 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		
 		comboBoxActividades.setSelectedIndex(-1);
 		//agrega departamentos
-		   if (!ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).isEmpty()) {
+		if (comboBoxDepartamentos.getSelectedItem() != null) {
+		   if (ctr.listarActividadesDeDepartamento(comboBoxDepartamentos.getSelectedItem().toString()) != null) {
 	         Iterator<String> iterator = ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).iterator(); 
 	         while(iterator.hasNext()) { 
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxActividades.addItem(setElement);
 		     }
 		   } 
-		
+		}
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
 		getContentPane().add(lblNombre);

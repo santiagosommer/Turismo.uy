@@ -97,7 +97,7 @@ public class CargaDeDatos {
 			interfazUsuario.altaTurista("isabelita","Elizabeth","Windsor", "isabelita@thecrown.co.uk",LocalDate.of(1926,04,21), "inglesa");
 			interfazUsuario.altaTurista("anibal","Aníbal","Lecter","anibal@fing.edu.uy",LocalDate.of(1937,12,31),"lituana");
 			interfazUsuario.altaTurista("waston","Emma", "Waston","e.waston@gmail.com", LocalDate.of(1990,4,15), "inglesa" );
-			interfazUsuario.altaTurista("elelvis","Elvis","Lacio","suavemente@hotmail.com", LocalDate.of(1971,7,1971), "estadounidense");
+			interfazUsuario.altaTurista("elelvis","Elvis","Lacio","suavemente@hotmail.com", LocalDate.of(1971,7,30), "estadounidense");
 			interfazUsuario.altaTurista("eleven11","Eleven","Once", "eleven11@gmail.com",LocalDate.of(2004,2,19),"española");
 			interfazUsuario.altaTurista("bobesponja","Bob","Esponja","bobesponja@nickelodeon.com",LocalDate.of(1999,5,1),"japonesa");
 			interfazUsuario.altaTurista("tony","Antonio","Pacheco","eltony@manya.org.uy", LocalDate.of(1976,4,11), "uruguaya");
@@ -129,7 +129,13 @@ public class CargaDeDatos {
 				interfazTuristica.crearSalidaTuristica("Teatro con Sabores 1", 30, LocalDate.of(2022,7,23), new DTInfoSalida(LocalDate.of(2022,9,4), LocalTime.of(18,0), "Club Deportivo Unión"), "Teatro con Sabores");
 				interfazTuristica.crearSalidaTuristica("Teatro con Sabores 2", 30, LocalDate.of(2022,7,23), new DTInfoSalida(LocalDate.of(2022,9,11), LocalTime.of(18,0), "Club Deportivo Unión"), "Teatro con Sabores");
 				interfazTuristica.crearSalidaTuristica("Tour Colonia del Sacramento 11-09", 5, LocalDate.of(2022,8,5), new DTInfoSalida(LocalDate.of(2022,9,11), LocalTime.of(10,0), "Encuentro en la base del Faro"), "Tour por Colonia del Sacramento");
-				interfazTuristica.crearSalidaTuristica("Tour Colonia del Sacramento 18-09", 5, LocalDate.of(2022,8,5), new DTInfoSalida(LocalDate.of(2022,8,20), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), "Tour por Colonia del Sacramento");
+				interfazTuristica.crearSalidaTuristica("Tour Colonia del Sacramento 18-09", 5, LocalDate.of(2022,8,5), new DTInfoSalida(LocalDate.of(2022,9,18), LocalTime.of(10,0), "Encuentro en la base del Faro"), "Tour por Colonia del Sacramento");
+				interfazTuristica.crearSalidaTuristica("Almuerzo 1", 5, LocalDate.of(2022,8,4), new DTInfoSalida(LocalDate.of(2022,9,18), LocalTime.of(12,0), "Restaurante de la Plaza de Toros"), "Almuerzo en el Real de San Carlos");
+				interfazTuristica.crearSalidaTuristica("Almuerzo 2", 5, LocalDate.of(2022,8,4), new DTInfoSalida(LocalDate.of(2022,9,25), LocalTime.of(12,0), "Restaurante de la Plaza de Toros"), "Almuerzo en el Real de San Carlos");
+				interfazTuristica.crearSalidaTuristica("Almuerzo 3", 4, LocalDate.of(2022,8,15), new DTInfoSalida(LocalDate.of(2022,9,10), LocalTime.of(12,0), "Posada Del Lunarejo"), "Almuerzo en Valle del Lunarejo");
+				interfazTuristica.crearSalidaTuristica("Almuerzo 4", 4, LocalDate.of(2022,8,15), new DTInfoSalida(LocalDate.of(2022,9,11), LocalTime.of(12,0), "Posada Del Lunarejo"), "Almuerzo en Valle del Lunarejo");
+				interfazTuristica.crearSalidaTuristica("Cabalgata 1", 4, LocalDate.of(2022,8,15), new DTInfoSalida(LocalDate.of(2022,9,10), LocalTime.of(16,0), "Posada Del Lunarejo"), "Cabalgata en Valle del Lunarejo");
+				interfazTuristica.crearSalidaTuristica("Cabalgata 2", 4, LocalDate.of(2022,8,15), new DTInfoSalida(LocalDate.of(2022,9,11), LocalTime.of(16,0), "Posada Del Lunarejo"), "Cabalgata en Valle del Lunarejo");
 			
 			} catch (NombreSalidaRepetidoException e) {
 				// TODO Auto-generated catch block
@@ -137,10 +143,7 @@ public class CargaDeDatos {
 			} catch (NoHayActividadConEseNombreException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			
-			
+			}			
 			return true;
 		}
 	}
