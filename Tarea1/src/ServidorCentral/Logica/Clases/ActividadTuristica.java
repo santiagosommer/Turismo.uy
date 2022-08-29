@@ -12,7 +12,7 @@ public class ActividadTuristica {
 	private LocalDate FechaAlta;
 	private Departamento Departamento;
 	private Map<String, SalidaTuristica> Salidas;
-	private String Proveedor;
+	private Proveedor Proveedor;
 	private Map<String, Paquete> Paquetes;
 	private String NombreCiudad;
 
