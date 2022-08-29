@@ -1,4 +1,5 @@
 package ServidorCentral.Logica.Controladores;
+
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
@@ -21,98 +22,110 @@ import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
-
 public class ControladorUsuario implements IUsuario {
-	
+
 	private Map<String, Turista> Turistas;
 	private Map<String, Proveedor> Proveedores;
-	private Proveedor proveedorSeleccionado; 
+	private Proveedor proveedorSeleccionado;
 	private Turista turistaSeleccionado;
-	
+
 	private static ControladorUsuario instancia = null;
-	
+
 	private ControladorUsuario() {
-		setTuristas(new HashMap<String,Turista >());
-		setProveedores(new HashMap<String,Proveedor >());
+		setTuristas(new HashMap<String, Turista>());
+		setProveedores(new HashMap<String, Proveedor>());
 		proveedorSeleccionado = null;
 		turistaSeleccionado = null;
-		
+
 	}
+
 	public static ControladorUsuario getInstancia() {
 		if (instancia == null) {
 			instancia = new ControladorUsuario();
 		}
 		return instancia;
 	}
+
 	@Override
 	public Boolean esTurista(String nickname) {
 		return Turistas.containsKey(nickname);
 	}
+
 	@Override
 	public void seleccionarTurista(String Turista) {
 		turistaSeleccionado = Turistas.get(Turista);
-		
+
 	}
+
 	@Override
 	public void seleccionarProveedor(String Proveedor) {
 		proveedorSeleccionado = Proveedores.get(Proveedor);
-		
+
 	}
+
 	@Override
 	public Set<String> listarUsuarios() throws UsuarioNoExisteException {
-		Set<String> res = new HashSet<String> ();
-		if (Turistas.isEmpty()&&Proveedores.isEmpty())
+		Set<String> res = new HashSet<String>();
+		if (Turistas.isEmpty() && Proveedores.isEmpty())
 			throw new UsuarioNoExisteException("No existen usuarios registrados");
-		Turistas.forEach((k,v)->res.add(v.getNickname()));
-		Proveedores.forEach((k,v)->res.add(v.getNickname()));
+		Turistas.forEach((k, v) -> res.add(v.getNickname()));
+		Proveedores.forEach((k, v) -> res.add(v.getNickname()));
 		return res;
 	}
+
 	@Override
-	public Set<String> listarProveedores() {
+	public Set<String> listarProveedores() throws UsuarioNoExisteException {
 		// TODO Auto-generated method stub
-		Set<String> res = new HashSet<String> ();
-		Proveedores.forEach((k,v)->res.add(v.toString()));
-		
+		Set<String> res = new HashSet<String>();
+		if (Proveedores.isEmpty())
+			throw new UsuarioNoExisteException("No existen proveedores registrados");
+		Proveedores.forEach((k, v) -> res.add(v.toString()));
+
 		return res;
 	}
-	
+
 	@Override
 	public DTTurista getDTTurista() {
-		if (turistaSeleccionado!= null) {
-		  return new DTTurista(turistaSeleccionado);
-		}else {
-		  return null;
+		if (turistaSeleccionado != null) {
+			return new DTTurista(turistaSeleccionado);
+		} else {
+			return null;
+		}
 	}
-	}
+
 	@Override
 	public DTProveedor getDTProveedor() {
-		if (proveedorSeleccionado!=null) {
-		  return new DTProveedor(proveedorSeleccionado);
+		if (proveedorSeleccionado != null) {
+			return new DTProveedor(proveedorSeleccionado);
 		} else {
-		  return null;
+			return null;
+		}
 	}
-	}
+
 	@Override
 	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
 	public void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	
-	public void crearInscripcion(String nombre, int cantidadTuristas, LocalDate fechaAlta,DTInfoSalida infoSalida,int CuposDisponibles) throws YaExisteInscripcionTuristaSalida {
+
+	public void crearInscripcion(String nombre, int cantidadTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida,
+			int CuposDisponibles) throws YaExisteInscripcionTuristaSalida {
 		// TODO Auto-generated method stub
 		Fabrica fabrica = Fabrica.getInstance();
 		ITuristica ctrl = fabrica.getControladorTuristica();
 		ActividadTuristica act = ctrl.getActividadSeleccionada();
 		SalidaTuristica sal = ctrl.getSalidaSeleccionada();
 		Turista turi = turistaSeleccionado;
-		
-		//comprobar que turista no tiene una inscripcion a esa Salida
+
+		// comprobar que turista no tiene una inscripcion a esa Salida
 		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
 		boolean tieneInsc = false;
 		if (!inscripciones.isEmpty()) {
@@ -121,93 +134,97 @@ public class ControladorUsuario implements IUsuario {
 				Inscripcion j = (Inscripcion) it.next();
 				if (j.getSalidaAsociada().getNombre() == sal.getNombre()) {
 					tieneInsc = true;
-				}	
-			}	
+				}
+			}
 		}
-		
-		if(tieneInsc) {
-		
-	    throw new YaExisteInscripcionTuristaSalida("El turista ya tiene una inscripcion a la salida de nombre" + sal.getNombre());
-			
-			
+
+		if (tieneInsc) {
+
+			throw new YaExisteInscripcionTuristaSalida(
+					"El turista ya tiene una inscripcion a la salida de nombre" + sal.getNombre());
+
 		} else {
-		
-		  if (CuposDisponibles>= cantidadTuristas && sal!=null && act!=null && turi!= null) {
-	           //: calcular costo:
-	          float costo = cantidadTuristas * act.getCostoTurista();
-	          sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); //actualizo cupos disponibles
-	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal,turi);
-	         //agregar a inscripciones de turista
-	          turi.agregarInscripcion(ins);   
-		   } else {}
-		  }
-		
-	
-		
+
+			if (CuposDisponibles >= cantidadTuristas && sal != null && act != null && turi != null) {
+				// : calcular costo:
+				float costo = cantidadTuristas * act.getCostoTurista();
+				sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); // actualizo cupos disponibles
+				Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas, costo, sal, turi);
+				// agregar a inscripciones de turista
+				turi.agregarInscripcion(ins);
+			} else {
+			}
+		}
+
 	}
+
 	@Override
 	public Boolean existeUsuario(String nickN) {
 		return Proveedores.containsKey(nickN) || Turistas.containsKey(nickN);
 	}
+
 	@Override
 	public Boolean existeUsuarioEmail(String email) {
-		for (Map.Entry<String,Turista> entry : Turistas.entrySet()) {
+		for (Map.Entry<String, Turista> entry : Turistas.entrySet()) {
 			if (email.equals(entry.getValue().getEmail()))
 				return true;
 		}
-		for (Map.Entry<String,Proveedor> entry : Proveedores.entrySet()) {
+		for (Map.Entry<String, Proveedor> entry : Proveedores.entrySet()) {
 			if (email.equals(entry.getValue().getEmail()))
 				return true;
 		}
 		return false;
 	}
-	
+
 	@Override
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String descripcionGeneral, String url) throws UsuarioRepetidoException {
-		if(existeUsuario(nickname)) {
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,
+			String descripcionGeneral, String url) throws UsuarioRepetidoException {
+		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
 		}
-		if(existeUsuarioEmail(email)) {
+		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
 		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, descripcionGeneral, url);
-		Proveedores.put(nickname,p);
+		Proveedores.put(nickname, p);
 	}
+
 	@Override
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws UsuarioRepetidoException {
-		if(existeUsuario(nickname)) {
+	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,
+			String nacionalidad) throws UsuarioRepetidoException {
+		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
 		}
-		if(existeUsuarioEmail(email)) {
+		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
 		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, nacionalidad);
-		Turistas.put(nickname,t);
+		Turistas.put(nickname, t);
 	}
-	
-	
-	// 
+
+	//
 	public Map<String, Turista> getTuristas() {
 		return Turistas;
 	}
+
 	public void setTuristas(Map<String, Turista> turistas) {
 		Turistas = turistas;
 	}
+
 	public Map<String, Proveedor> getProveedores() {
 		return Proveedores;
 	}
+
 	public void setProveedores(Map<String, Proveedor> proveedores) {
 		Proveedores = proveedores;
 	}
+
 	@Override
 	public Set<String> listarTuristas() {
-		Set<String> res = new HashSet<String> ();
-		Turistas.forEach((k,v)->res.add(v.toString()));
+		Set<String> res = new HashSet<String>();
+		Turistas.forEach((k, v) -> res.add(v.toString()));
 		// TODO Auto-generated method stub
 		return res;
 	}
-	
-	
-	
-	
+
 }

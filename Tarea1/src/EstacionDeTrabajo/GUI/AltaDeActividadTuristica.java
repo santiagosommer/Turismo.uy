@@ -1,5 +1,7 @@
 package EstacionDeTrabajo.GUI;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
@@ -14,17 +16,37 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToolBar;
+
+import ServidorCentral.Logica.Controladores.ControladorTuristica;
+import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
+import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
+import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
+import ServidorCentral.Logica.Interfaces.ITuristica;
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
 import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.Set;
 import java.awt.event.ActionEvent;
 
 public class AltaDeActividadTuristica extends JInternalFrame {
+	private IUsuario iUsu;
+	private ITuristica iTur;
 	private JTextField NombreField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField DescripcionField;
+	private JTextField DuracionField;
+	private JTextField CostoTuristaField;
+	private JTextField CiudadField;
+	private JButton AceptarButton;
+	private JButton CancelarButton;
+	private JComboBox DepartamentoBox;
+	private JLabel lblDepartamento;
+	private JLabel lblProveedor;
+	private JComboBox ProveedorBox;
 
 	/**
 	 * Launch the application.
@@ -45,171 +67,238 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AltaDeActividadTuristica() {
-		setBounds(100, 100, 533, 372);
+	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
+		iTur = interf;
+		iUsu = interfU;
+		setBounds(100, 100, 541, 321);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 75, 104, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 75, 104, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0,
+				Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				Double.MIN_VALUE };
 		getContentPane().setLayout(gridBagLayout);
-		
+
 		JLabel lblNombre = new JLabel("Nombre");
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombre.gridx = 1;
 		gbc_lblNombre.gridy = 1;
 		getContentPane().add(lblNombre, gbc_lblNombre);
-		
+
 		NombreField = new JTextField();
 		GridBagConstraints gbc_NombreField = new GridBagConstraints();
-		gbc_NombreField.gridwidth = 4;
+		gbc_NombreField.gridwidth = 5;
 		gbc_NombreField.insets = new Insets(0, 0, 5, 5);
 		gbc_NombreField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_NombreField.gridx = 3;
 		gbc_NombreField.gridy = 1;
 		getContentPane().add(NombreField, gbc_NombreField);
 		NombreField.setColumns(10);
-		
+
 		JLabel lblDescripcion = new JLabel("Descripcion");
 		GridBagConstraints gbc_lblDescripcion = new GridBagConstraints();
 		gbc_lblDescripcion.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcion.gridx = 1;
 		gbc_lblDescripcion.gridy = 2;
 		getContentPane().add(lblDescripcion, gbc_lblDescripcion);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 4;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 3;
-		gbc_textField_1.gridy = 2;
-		getContentPane().add(textField_1, gbc_textField_1);
-		
+
+		DescripcionField = new JTextField();
+		DescripcionField.setColumns(10);
+		GridBagConstraints gbc_DescripcionField = new GridBagConstraints();
+		gbc_DescripcionField.gridwidth = 5;
+		gbc_DescripcionField.insets = new Insets(0, 0, 5, 5);
+		gbc_DescripcionField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_DescripcionField.gridx = 3;
+		gbc_DescripcionField.gridy = 2;
+		getContentPane().add(DescripcionField, gbc_DescripcionField);
+
 		JLabel lblDuracion = new JLabel("Duracion");
 		GridBagConstraints gbc_lblDuracion = new GridBagConstraints();
 		gbc_lblDuracion.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDuracion.gridx = 1;
 		gbc_lblDuracion.gridy = 3;
 		getContentPane().add(lblDuracion, gbc_lblDuracion);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 4;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 3;
-		gbc_textField_2.gridy = 3;
-		getContentPane().add(textField_2, gbc_textField_2);
-		
+
+		DuracionField = new JTextField();
+		DuracionField.setColumns(10);
+		GridBagConstraints gbc_DuracionField = new GridBagConstraints();
+		gbc_DuracionField.gridwidth = 5;
+		gbc_DuracionField.insets = new Insets(0, 0, 5, 5);
+		gbc_DuracionField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_DuracionField.gridx = 3;
+		gbc_DuracionField.gridy = 3;
+		getContentPane().add(DuracionField, gbc_DuracionField);
+
 		JLabel lblCostoTurista = new JLabel("Costo Turista");
 		GridBagConstraints gbc_lblCostoTurista = new GridBagConstraints();
 		gbc_lblCostoTurista.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCostoTurista.gridx = 1;
 		gbc_lblCostoTurista.gridy = 4;
 		getContentPane().add(lblCostoTurista, gbc_lblCostoTurista);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 4;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 3;
-		gbc_textField_3.gridy = 4;
-		getContentPane().add(textField_3, gbc_textField_3);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 3;
-		gbc_comboBox.gridy = 5;
-		getContentPane().add(comboBox, gbc_comboBox);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}));
-		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 4;
-		gbc_comboBox_1.gridy = 5;
-		getContentPane().add(comboBox_1, gbc_comboBox_1);
-		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"2022", "2023", "2024", "2025"}));
-		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
-		gbc_comboBox_2.gridwidth = 2;
-		gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2.gridx = 5;
-		gbc_comboBox_2.gridy = 5;
-		getContentPane().add(comboBox_2, gbc_comboBox_2);
-		
-		JLabel lblFecha = new JLabel("Fecha");
-		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
-		gbc_lblFecha.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFecha.gridx = 1;
-		gbc_lblFecha.gridy = 6;
-		getContentPane().add(lblFecha, gbc_lblFecha);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 4;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 3;
-		gbc_textField_4.gridy = 6;
-		getContentPane().add(textField_4, gbc_textField_4);
-		
+
+		CostoTuristaField = new JTextField();
+		CostoTuristaField.setColumns(10);
+		GridBagConstraints gbc_CostoTuristaField = new GridBagConstraints();
+		gbc_CostoTuristaField.gridwidth = 5;
+		gbc_CostoTuristaField.insets = new Insets(0, 0, 5, 5);
+		gbc_CostoTuristaField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_CostoTuristaField.gridx = 3;
+		gbc_CostoTuristaField.gridy = 4;
+		getContentPane().add(CostoTuristaField, gbc_CostoTuristaField);
+
 		JLabel lblCiudad = new JLabel("Ciudad");
 		GridBagConstraints gbc_lblCiudad = new GridBagConstraints();
 		gbc_lblCiudad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCiudad.gridx = 1;
-		gbc_lblCiudad.gridy = 7;
+		gbc_lblCiudad.gridy = 5;
 		getContentPane().add(lblCiudad, gbc_lblCiudad);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.gridwidth = 4;
-		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_5.gridx = 3;
-		gbc_textField_5.gridy = 7;
-		getContentPane().add(textField_5, gbc_textField_5);
-		JInternalFrame monturaFrame = this;
-		
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (NombreField.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(monturaFrame, "Hay campos vacios");
-				}
-					
-					
-					
-			}
-		});
-		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
-		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAceptar.gridx = 3;
-		gbc_btnAceptar.gridy = 9;
-		getContentPane().add(btnAceptar, gbc_btnAceptar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
-		gbc_btnCancelar.gridwidth = 2;
-		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnCancelar.gridx = 5;
-		gbc_btnCancelar.gridy = 9;
-		getContentPane().add(btnCancelar, gbc_btnCancelar);
 
+		CiudadField = new JTextField();
+		CiudadField.setColumns(10);
+		GridBagConstraints gbc_CiudadField = new GridBagConstraints();
+		gbc_CiudadField.gridwidth = 5;
+		gbc_CiudadField.insets = new Insets(0, 0, 5, 5);
+		gbc_CiudadField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_CiudadField.gridx = 3;
+		gbc_CiudadField.gridy = 5;
+		getContentPane().add(CiudadField, gbc_CiudadField);
+		JInternalFrame monturaFrame = this;
+
+		AceptarButton = new JButton("Aceptar");
+		AceptarButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cmdAltaDeActividadTuristicaActionPerformed(e);
+			}
+
+		});
+
+		lblDepartamento = new JLabel("Departamento");
+		GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
+		gbc_lblDepartamento.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDepartamento.gridx = 1;
+		gbc_lblDepartamento.gridy = 6;
+		getContentPane().add(lblDepartamento, gbc_lblDepartamento);
+
+		DepartamentoBox = new JComboBox();
+		GridBagConstraints gbc_DepartamentoBox = new GridBagConstraints();
+		gbc_DepartamentoBox.gridwidth = 2;
+		gbc_DepartamentoBox.insets = new Insets(0, 0, 5, 5);
+		gbc_DepartamentoBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_DepartamentoBox.gridx = 3;
+		gbc_DepartamentoBox.gridy = 6;
+		getContentPane().add(DepartamentoBox, gbc_DepartamentoBox);
+
+		lblProveedor = new JLabel("Proveedor");
+		GridBagConstraints gbc_lblProveedor = new GridBagConstraints();
+		gbc_lblProveedor.insets = new Insets(0, 0, 5, 5);
+		gbc_lblProveedor.gridx = 1;
+		gbc_lblProveedor.gridy = 7;
+		getContentPane().add(lblProveedor, gbc_lblProveedor);
+
+		ProveedorBox = new JComboBox();
+		GridBagConstraints gbc_ProveedorBox = new GridBagConstraints();
+		gbc_ProveedorBox.gridwidth = 2;
+		gbc_ProveedorBox.insets = new Insets(0, 0, 5, 5);
+		gbc_ProveedorBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_ProveedorBox.gridx = 3;
+		gbc_ProveedorBox.gridy = 7;
+		getContentPane().add(ProveedorBox, gbc_ProveedorBox);
+		GridBagConstraints gbc_AceptarButton = new GridBagConstraints();
+		gbc_AceptarButton.insets = new Insets(0, 0, 5, 5);
+		gbc_AceptarButton.gridx = 3;
+		gbc_AceptarButton.gridy = 8;
+		getContentPane().add(AceptarButton, gbc_AceptarButton);
+
+		CancelarButton = new JButton("Cancelar");
+		GridBagConstraints gbc_CancelarButton = new GridBagConstraints();
+		gbc_CancelarButton.gridwidth = 3;
+		gbc_CancelarButton.insets = new Insets(0, 0, 5, 5);
+		gbc_CancelarButton.gridx = 5;
+		gbc_CancelarButton.gridy = 8;
+		getContentPane().add(CancelarButton, gbc_CancelarButton);
+
+	}
+
+	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) {
+
+		String depa = (String) DepartamentoBox.getSelectedItem();
+		String prov = (String) ProveedorBox.getSelectedItem();
+		String nombre = this.NombreField.getText();
+		String descripcion = this.DescripcionField.getText();
+		String duracion = this.CiudadField.getText();
+		String costoTurista = this.CostoTuristaField.getText();
+		String ciudad = CiudadField.getText();
+
+		if (checkFormulario()) {
+			try {
+
+				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
+						Float.valueOf(costoTurista), LocalDate.now(), depa, ciudad, prov);
+
+				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
+						JOptionPane.INFORMATION_MESSAGE);
+			} catch (NombreActividadRepetidoException ex) {
+				// TODO: handle exception
+			}
+		}
+
+	}
+
+	private boolean checkFormulario() {
+		String nombre = this.NombreField.getText();
+		String descripcion = this.DescripcionField.getText();
+		String duracion = this.CiudadField.getText();
+		String costoTurista = this.CostoTuristaField.getText();
+		String ciudad = CiudadField.getText();
+		DepartamentoBox.setSelectedIndex(-1);
+		ProveedorBox.setSelectedIndex(-1);
+
+		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
+				|| ciudad.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+
+		try {
+			// Integer.parseInt();
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this, "La CI debe ser un numero", "Registrar Usuario",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+
+		return true;
+	}
+
+	public void cargarDatosDepartamentos() {
+		try {
+			Set<String> depas = iTur.listarDepartamentos();
+			Iterator<String> itr = depas.iterator();
+			while (itr.hasNext()) {
+				DepartamentoBox.addItem(itr.next());
+			}
+
+		} catch (DepartamentoNoExisteException ex) {
+			// // No se imprime mensaje de error sino que simplemente no se muestra ningún
+			// elemento
+		}
+	}
+	
+	public void cargarDatosProveedores() {
+		try {
+			Set<String> provs = iUsu.listarProveedores();
+			Iterator<String> itr = provs.iterator();
+			while (itr.hasNext()) {
+				ProveedorBox.addItem(itr.next());
+			}
+
+		} catch (UsuarioNoExisteException ex) {
+			// // No se imprime mensaje de error sino que simplemente no se muestra ningún
+			// elemento
+		}
 	}
 
 }

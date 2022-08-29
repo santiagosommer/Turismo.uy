@@ -186,10 +186,13 @@ public class Principal {
 		JMenuItem mntmAltaActividadTuristica = new JMenuItem("Alta Actividad Turistica");
 		mntmAltaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				altaSalidaTuristicaIFrame.cargarDatosDepartamentos();
+				altaSalidaTuristicaIFrame.cargarDatosProveedores();
 				crearActividadTuristicaIFrame.setVisible(true);
 			}
 		});
 		mnActividadesTuristicas.add(mntmAltaActividadTuristica);
+		
 		
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
