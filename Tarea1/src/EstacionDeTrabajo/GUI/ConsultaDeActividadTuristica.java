@@ -232,7 +232,11 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		btnInfo_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboPaquetes.getSelectedIndex() != -1) {
-					System.out.println("Presionado boton de paquetes");
+					interfazPaquete.seleccionarPaquete(comboPaquetes.getSelectedItem().toString());
+					InfoPaquete popupSalida = new InfoPaquete(interfazPaquete.getDtPaquete());
+					popupSalida.setBounds(0, 0, 400, 400);
+					principalFrame.getContentPane().add(popupSalida);
+					principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);
 				}
 			}
 		});
