@@ -1,8 +1,6 @@
 package ServidorCentral.Logica.Clases;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import java.time.LocalDate;
-//import java.util.Map;
-import java.util.ArrayList;
 
 
 
@@ -11,18 +9,18 @@ public class SalidaTuristica {
 	 private String Nombre;
 	 private int CantidadMaxTuristas;
 	 private LocalDate FechaAlta;
-	 private ServidorCentral.Logica.DataTypes.DTInfoSalida InfoSalida;
+	 private DTInfoSalida InfoSalida;
 	 private int CuposDisponibles;
 	 private ActividadTuristica ActividadTuristicaAsociada;
-	 private ArrayList<Inscripcion> InscripcionesAsociadas;
+//	 private ArrayList<Inscripcion> InscripcionesAsociadas;
 
 	 
 	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida) {
-		 Nombre = nombre;
-		 CantidadMaxTuristas = cantidadMaxTuristas;
-		 FechaAlta = fechaAltaSalida;
-		 InfoSalida = infoSalida;
-		 CuposDisponibles = cantidadMaxTuristas;
+		 setNombre(nombre);
+		 setCantidadMaxTuristas(cantidadMaxTuristas);
+		 setFechaAlta(fechaAltaSalida);
+		 setInfoSalida(infoSalida);
+		 setCuposDisponibles(cantidadMaxTuristas);
 	 }	 
 	 
 	 public String getNombre() {
@@ -56,13 +54,13 @@ public class SalidaTuristica {
 		 CuposDisponibles = cuposDisponibles;
 	 }
 
-	public ArrayList<Inscripcion> getInscripcionesAsociadas() {
-		return InscripcionesAsociadas;
-	}
-
-	public void setInscripcionesAsociadas(ArrayList<Inscripcion> inscripcionesAsociadas) {
-		InscripcionesAsociadas = inscripcionesAsociadas;
-	}
+//	public ArrayList<Inscripcion> getInscripcionesAsociadas() {
+//		return InscripcionesAsociadas;
+//	}
+//
+//	public void setInscripcionesAsociadas(ArrayList<Inscripcion> inscripcionesAsociadas) {
+//		InscripcionesAsociadas = inscripcionesAsociadas;
+//	}
 
 	 public ActividadTuristica getActividadTuristicaAsociada() {
 		 return ActividadTuristicaAsociada;

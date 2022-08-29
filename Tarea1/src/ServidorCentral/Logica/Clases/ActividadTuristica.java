@@ -18,17 +18,16 @@ public class ActividadTuristica {
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
 			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
-		Nombre = nombre;
-		Descripcion = descripcion;
-		Duracion = duracion;
-		CostoTurista = costoTurista;
-		FechaAlta = fechaAlta;
-		Departamento = infoDepartamento;
-		Salidas = new HashMap<String, SalidaTuristica>();
-		Paquetes = new HashMap<String, Paquete>();
-		Proveedor = proveedor;
-
-		NombreCiudad = ciudad;
+		setNombre(nombre);
+		setDescripcion(descripcion);
+		setDuracion(duracion);
+		setCostoTurista(costoTurista);
+		setFechaAlta(fechaAlta);
+		setInfoDepartamento(infoDepartamento);
+		setSalidas(new HashMap<String, SalidaTuristica>());
+		setPaquetes(new HashMap<String, Paquete>());
+		setProveedor(proveedor);
+		setCiudad(ciudad);
 
 	}
 
