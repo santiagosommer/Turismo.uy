@@ -10,6 +10,7 @@ import java.util.Set;
 
 import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
@@ -63,18 +64,9 @@ public class ControladorPaquete implements IPaquete {
 	@Override
 	public Set<String> listarPaquetes() {
 		
-		Set<String> lista = new HashSet<String>();
-		
-		if ( !Paquetes.isEmpty()) {
-			String paquete;
-
-		for (Iterator<Map.Entry<String, Paquete>> entries = Paquetes.entrySet().iterator(); entries.hasNext(); ) {
-		     Map.Entry<String, Paquete> entry = entries.next();
-		    paquete = entry.getKey();
-		    lista.add(paquete);
-		}
-	}
-		return lista;
+		Set<String> res = new HashSet<String>();
+		Paquetes.forEach((k,v)->res.add(k)); //ver
+		return res;
 		
 	}
 	
@@ -102,6 +94,19 @@ public class ControladorPaquete implements IPaquete {
 		PaqueteSeleccionado = paqueteSeleccionado;
 	}
 
+	@Override
+	public DTPaquete getDtPaquete() {
+		// TODO Auto-generated method stub
+		if (PaqueteSeleccionado!= null) {
+			return new DTPaquete(PaqueteSeleccionado.getNombre(),PaqueteSeleccionado.getDescripcion(),PaqueteSeleccionado.getPeriodoValidez(),PaqueteSeleccionado.getDescuento());
+
+		}
+		else {
+		return null;
+		}
+	}
+
+	
 	
 	
 	

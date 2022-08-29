@@ -305,6 +305,7 @@ public class ControladorTuristica implements ITuristica {
 		return existe;
 	}
 	
+	
 	public void crearDepartamento(String nombre,String descripcion, String URL) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		if (!existeDepartamento(nombre)) {

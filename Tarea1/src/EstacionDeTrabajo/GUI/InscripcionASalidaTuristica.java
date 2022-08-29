@@ -50,6 +50,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	  private JList<String> listaSalidas;
 	  private JList listaActividades;
 	  private ITuristica controladorAct;
+	  private  DefaultListModel<String> l3;
 	  
 	//JComboBox comboBoxDepartamentos;
 	/**
@@ -153,7 +154,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
         
 	       DefaultListModel<String> l1 = new DefaultListModel<>(); //Actividades
 	       DefaultListModel<String> l2 = new DefaultListModel<>(); //Salidas
-	       DefaultListModel<String> l3 = new DefaultListModel<>(); //Turistas
+	        l3 = new DefaultListModel<>(); //Turistas
 
 		
 		listaActividades = new JList<>(l1);
@@ -188,6 +189,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 				JComboBox<String> cb = (JComboBox<String>)e.getSource();
 			 	   
 			 	   String DepartamentoSelecc = (String)cb.getSelectedItem();
+			 	   
 			 	   if(ctr.existeDepartamento(DepartamentoSelecc)) {
 			 		   ctr.seleccionarDepartamento(DepartamentoSelecc);
 			 		   Set<String> actividades = ctr.listarActividadesDeDepartamento(DepartamentoSelecc);
@@ -362,10 +364,12 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     	        if (!event.getValueIsAdjusting()){
     	            @SuppressWarnings("unchecked")
 					JList<String> source = (JList)event.getSource();
-    	            String selectedSalida = source.getSelectedValue().toString();
+    	            String selectedSalida = source.getSelectedValue();
+    	            if (selectedSalida!=null) {
     	            
     	           ctr.seleccionarSalida(selectedSalida);
     	           NombreLabel.setText(selectedSalida);
+    	          
     	           DTSalidaTuristica sal = ctr.getDTSalidaTuristica();
     	           if (sal!= null) {
     	        	
@@ -382,7 +386,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     	           
     	          
     	           
-    	           }
+    	           }}
     	        }
     	    }
     	});
@@ -423,16 +427,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    listaTuristas = new JList<>(l3);
 		scrollPane_2.setViewportView(listaTuristas);
 		
-		if (ctrl.listarTuristas() != null && !ctrl.listarTuristas().isEmpty()) {
 		
-			Iterator<String> it = ctrl.listarTuristas().iterator();
-        	
-        	while(it.hasNext()) { 
-		    	    String Turista = it.next(); 
-		    	    l3.addElement(Turista);
-        	}
-			
-		}
 		
 		
 		listaTuristas.addListSelectionListener(new ListSelectionListener() {
@@ -440,14 +435,12 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     	        if (!event.getValueIsAdjusting()){
     	            @SuppressWarnings("unchecked")
 					JList<String> source = (JList)event.getSource();
-    	            selectedTurista = source.getSelectedValue().toString();
-    	            
-    	           ctrl.seleccionarTurista(selectedTurista);
-    	        
-    	           
-    	           }
+    	            selectedTurista = source.getSelectedValue();
+    	            if (selectedTurista!= null) {
+    	            	 ctrl.seleccionarTurista(selectedTurista);
+    	            }
+    	          }
     	        }
-    	    
     	});
 		
 		
@@ -628,4 +621,24 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     
 		return true;
 	}
+
+
+
+public void ListarTuristas(){
+	
+	if (controladorUsuario.listarTuristas() != null && !controladorUsuario.listarTuristas().isEmpty()) {
+		
+		Iterator<String> it = controladorUsuario.listarTuristas().iterator();
+    	
+    	while(it.hasNext()) { 
+	    	    String Turista = it.next(); 
+	    	    l3.addElement(Turista);
+    	}
+		
+	}
+	
+}
+
+
+
 }

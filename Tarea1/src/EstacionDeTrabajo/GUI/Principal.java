@@ -53,6 +53,7 @@ public class Principal {
 	/**
 	 * Create the application.
 	 */
+	
 	public Principal() {
 		initialize();
 		
@@ -111,7 +112,7 @@ public class Principal {
 		  crearPaqueteIFrame.setVisible(false);
 		  crearPaqueteIFrame.setClosable(true);
 		  
-		  consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP);
+		  consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP,ICTuri);
 		  consultaPaqueteIFrame.setBounds(52, 0, 639, 558);
 		  frmServidorcentral.getContentPane().add(consultaPaqueteIFrame);
 		  consultaPaqueteIFrame.setVisible(false);
@@ -247,7 +248,8 @@ public class Principal {
 		
 		mntmConsultaDePaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//consultaPaqueteIFrame.limpiarFormulario();
+				consultaPaqueteIFrame.LimpiarFormulario();
+				consultaPaqueteIFrame.cargarPaquetes();
 				consultaPaqueteIFrame.setVisible(true);
 			}
 		});
@@ -258,6 +260,7 @@ public class Principal {
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+            	inscripcionSalidaTuristicaIFrame.ListarTuristas();
             	inscripcionSalidaTuristicaIFrame.setVisible(true);
             }
         });
