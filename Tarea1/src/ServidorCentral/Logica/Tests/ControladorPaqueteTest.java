@@ -146,12 +146,13 @@ class ControladorPaqueteTest {
 		
 		
 		
-		fail("Not yet implemented");
+	
 	}
 
 
 	@Test
 	void testAgregarActividadPaqueteOK() {
+		
 		
 		crTuri.crearDepartamento("Maldonado", "descripcion", "maldonado.com.uy");
 		LocalDate date = LocalDate.of(1992, 3, 5);
@@ -192,13 +193,14 @@ class ControladorPaqueteTest {
 		
 		
 		Iterator<DTActividadTuristica> iterator = crPaq.getDtPaquete().getActividadesTuristicas().iterator();
+		
 		DTActividadTuristica actividadTuristica = (DTActividadTuristica) iterator.next();
 		assertEquals( nombrePaque,actividadTuristica.getNombre());
 
 		
 		
 		
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
