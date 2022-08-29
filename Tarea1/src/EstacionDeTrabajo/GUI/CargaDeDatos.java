@@ -12,15 +12,19 @@ import java.util.Scanner;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Departamento;
+import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
+import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Interfaces.*;
 
 public class CargaDeDatos {
@@ -31,6 +35,7 @@ public class CargaDeDatos {
 	HashMap<String, ActividadTuristica> mapaActividades;
 	HashMap<String, SalidaTuristica> mapaSalidas;
 	HashMap<String, Paquete> mapaPaquetes;
+	HashMap<String, Inscripcion> mapaInscripciones;
 	
 	Scanner scUsuarios;
 	Scanner scProveedores;
@@ -58,6 +63,7 @@ public class CargaDeDatos {
 		mapaActividades = new HashMap<>();
 		mapaSalidas = new HashMap<>();
 		mapaPaquetes = new HashMap<>();
+		mapaInscripciones = new HashMap<>();
 		
 		File folder = new File(System.getProperty("user.dir")+"/src/EstacionDeTrabajo/GUI/Datos de Prueba/");
 		
@@ -110,7 +116,8 @@ public class CargaDeDatos {
 			//Caso Actividades Turisticas
 			
 			try {
-				interfazTuristica.crearActividadTuristica("Degusta","Festival gastronómico de productos locales en Rocha",3,800,LocalDate.of(2022, 7, 20),"Rocha","Rocha","washington");
+				
+			interfazTuristica.crearActividadTuristica("Degusta","Festival gastronómico de productos locales en Rocha",3,800,LocalDate.of(2022, 7, 20),"Rocha","Rocha","washington");
 			interfazTuristica.crearActividadTuristica("Teatro con Sabores","En el mes aniversario del Club Deportivo Unión de Rocha te invitamos a una merienda deliciosa.",3,500,LocalDate.of(2022,7,21),"Rocha","Rocha","washington");
 			interfazTuristica.crearActividadTuristica("Tour por Colonia del Sacramento","Con guía especializado y en varios idiomas. Varios circuitos posibles.",2,400,LocalDate.of(2022, 8, 1),"Colonia del Sacramento","Colonia","meche");
 			interfazTuristica.crearActividadTuristica("Almuerzo en el Real de San Carlos", "Restaurante en la renovada Plaza de Toros con menú internacional",2,800,LocalDate.of(2022, 8, 1),"Colonia del Sacramento","Colonia","meche");
@@ -139,7 +146,41 @@ public class CargaDeDatos {
 				e.printStackTrace();
 			}
 			
+			//Caso Inscripciones
+			try {
+				
+				interfazUsuario.crearInscripcion("Rosa Maria", "Degusta Agosto" , 3 , 2400 , LocalDate.of(2022, 8, 15));
+				interfazUsuario.crearInscripcion("Elvis", "Degusta Agosto" , 5 , 4000 , LocalDate.of(2022, 8, 16));
+				interfazUsuario.crearInscripcion("Rosa Maria", "Tour Colonia del Sacramento 18-09", 3 , 1200,  LocalDate.of(2022, 8, 18));
+				interfazUsuario.crearInscripcion("Elizabeth", "Tour Colonia del Sacramento 18-09", 1, 400, LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("Johann Sebastian", "Almuerzo 2", 2, 1600 , LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("Alvaro","Teatro con Sablores 1", 1, 500 , LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("Alvaro", "Teatro con Sablores 2", 10, 5000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("Bob","Teatro con Sablores 2", 2, 1000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("Anibla","Teatro con Sablores 2", 1, 500 , LocalDate.of(2022, 8, 21));
+				interfazUsuario.crearInscripcion("Antonio", "Degusta Setiembre" , 11, 8800 , LocalDate.of(2022, 8, 21));
 			
+			} catch (YaExisteInscripcionTuristaSalida e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//Caso Paquetes
+			try {
+				interfazPaquetes.crearPaquete("Disfrutar Rocha", "Actividades para hacer en familia y disfrutar arte y gastronomia", 60, 20, LocalDate.of(2022, 8, 10));
+				interfazPaquetes.crearPaquete("Un dia en Colonia", "Paseos por el casco historico y se puede terminar con Almuerzo en la Plaza de Toros", 45, 15, LocalDate.of(2022, 8, 1));
+				
+				interfazPaquetes.AgregarActividadPaquete("Disfrutar Rocha", "Degusta");
+				interfazPaquetes.AgregarActividadPaquete("Disfrutar Rocha", "Teatro con Sabores");
+				interfazPaquetes.AgregarActividadPaquete("Un dia en Colonia", "Tour por Colonia del Sacramento");
+				interfazPaquetes.AgregarActividadPaquete("Un dia en Colonia", "Almuerzo en el Real de San Carlos");
+			} catch (NombrePaqueteRepetidoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoHayActividadConEseNombreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			return true;
 		}

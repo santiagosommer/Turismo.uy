@@ -131,7 +131,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		String actividadSelecBox = (String)comboBoxActividadesFueraDePaquete.getSelectedItem();
 		
 		if (checkFormulario()) {
-				controlPaquete.AgregarActividadPaquete(paqueteSelecBox, depSelecBox, actividadSelecBox);
+				controlPaquete.AgregarActividadPaquete(paqueteSelecBox, actividadSelecBox);
 				
 				JOptionPane.showMessageDialog(this, "La actividad " + actividadSelecBox + " se ha agregado al Paquete", "Agregar Actividad A Paquete",
                         JOptionPane.INFORMATION_MESSAGE);
