@@ -22,7 +22,7 @@ public class DTActividadTuristica {
 	
 	public DTActividadTuristica(String nombre,String descripcion,int duracion,float costoTurista,
 			LocalDate fechaAlta,DTDepartamento infoDepartamento,
-			DTProveedor proveedor,String ciudad) {
+			String proveedor,String ciudad) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Duracion = duracion;
@@ -30,7 +30,7 @@ public class DTActividadTuristica {
 		FechaAlta = fechaAlta;
 		InfoDepartamento = infoDepartamento;
 		InfoSalidas = new ArrayList<DTSalidaTuristica>();
-		Proveedor = proveedor.getNombre() + proveedor.getApellido();
+		Proveedor = proveedor;
 		InfoPaquetes = new ArrayList<DTPaquete>();
 		Ciudad = ciudad;
 	}
