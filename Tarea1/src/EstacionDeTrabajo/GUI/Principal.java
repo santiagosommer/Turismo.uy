@@ -249,7 +249,9 @@ public class Principal {
 		JMenuItem mntmAgregarActividadAPaquete = new JMenuItem("Agregar Actividad a Paquete");
 		mntmAgregarActividadAPaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				agregarActividadTurísticaAPaqueteIFrame.limpiarFormulario();
+				agregarActividadTurísticaAPaqueteIFrame.CargarPaquetes();
 				agregarActividadTurísticaAPaqueteIFrame.setVisible(true);
 			}
 		});
