@@ -123,7 +123,7 @@ public class ControladorPaquete implements IPaquete {
 	
 	
 	
-	public void AgregarActividadPaquete(String paquete, String dep, String actividad) {
+	public void AgregarActividadPaquete(String paquete, String actividad) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		crTuristica.seleccionarActividad(actividad);
 		ActividadTuristica a = crTuristica.getActividadSeleccionada();	

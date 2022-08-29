@@ -48,25 +48,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	private JLabel lblProveedor;
 	private JComboBox ProveedorBox;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaDeActividadTuristica frame = new AltaDeActividadTuristica();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
 		iTur = interf;
 		iUsu = interfU;

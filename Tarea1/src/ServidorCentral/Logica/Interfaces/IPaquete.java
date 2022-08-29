@@ -24,7 +24,7 @@ public interface IPaquete {
 
 	public abstract DTPaquete getDtPaquete();
 
-	public abstract void AgregarActividadPaquete(String paqueteSelecBox, String depSelecBox, String actividadSelecBox);
+	public abstract void AgregarActividadPaquete(String paqueteSelecBox, String actividadSelecBox);
 	
 	public abstract Set<String> listarActividadesPaquete();
 
