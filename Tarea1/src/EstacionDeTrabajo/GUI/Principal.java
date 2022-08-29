@@ -285,6 +285,7 @@ public class Principal {
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+				inscripcionSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				inscripcionSalidaTuristicaIFrame.ListarTuristas();
 				inscripcionSalidaTuristicaIFrame.setVisible(true);
 			}

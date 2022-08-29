@@ -132,19 +132,8 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		
 		comboBoxDepartamentos.setSelectedIndex(-1);
-		//agrega departamentos
-		   try {
-			if (!ctr.listarDepartamentos().isEmpty()) {
-			     Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
-			     while(iterator.hasNext()) { 
-				    String setElement = iterator.next(); 
-				    comboBoxDepartamentos.addItem(setElement);
-			     }
-			   }
-		} catch (DepartamentoNoExisteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}   
+		
+		 
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas:");
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 10));
@@ -663,6 +652,24 @@ public void ListarTuristas(){
 		
 	}
 	
+}
+
+public void cargarDatosDepartamentos() {
+	
+	Fabrica fabr =Fabrica.getInstance();
+	ITuristica cturistico = fabr.getControladorTuristica();
+	  try {
+			if (!cturistico.listarDepartamentos().isEmpty()) {
+			     Iterator<String> iterator = cturistico.listarDepartamentos().iterator(); 
+			     while(iterator.hasNext()) { 
+				    String setElement = iterator.next(); 
+				    comboBoxDepartamentos.addItem(setElement);
+			     }
+			   }
+		} catch (DepartamentoNoExisteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}   
 }
 
 
