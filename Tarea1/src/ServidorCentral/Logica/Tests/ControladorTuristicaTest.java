@@ -72,7 +72,6 @@ class ControladorTuristicaTest {
 			crTuri.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fecha, ciudad, departamento, proveedor);
 			
 			crTuri.seleccionarActividad(nombre);
-	
 			DTActividadTuristica act = crTuri.getDTActividadTuristica();
 			
 			assertEquals(act.getNombre(), nombre);
@@ -139,6 +138,7 @@ class ControladorTuristicaTest {
 			e.printStackTrace();
 		}
 		assertThrows(NombreSalidaRepetidoException.class, () -> {crTuri.crearSalidaTuristica(nombre, cant, fecha, info, cupos);});
+		
 		
 	}
 

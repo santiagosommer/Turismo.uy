@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -103,15 +104,51 @@ class ControladorPaqueteTest {
 	@Test
 	void testListarActividadesAAgregar() {
 		
+		crTuri.crearDepartamento("Montevideo", "descripcion", "montevideo.com.uy");
+		LocalDate date = LocalDate.of(1992, 3, 5);
+		try {
+			crUsuario.altaProveedor("prove", "juan", "pedro", "email", date, "algo", "www.juan.org");
+		} catch (UsuarioRepetidoException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		crUsuario.seleccionarProveedor("prove");
+		String nombrePaque = "paq4";
+		String descripcion = "Esto es una descripcion";
+		int periodoValidez = 5;
+		
+		int Descuento = 20;
+		LocalDate fechaAlt = LocalDate.now();
+		try {
+			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, fechaAlt);
+		} catch (NombrePaqueteRepetidoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		try {
+			crTuri.crearActividadTuristica(nombrePaque, descripcion, 
+					periodoValidez, Descuento, fechaAlt, descripcion,
+					"Montevideo", "prove");
+		} catch (NombreActividadRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		crTuri.seleccionarDepartamento("Montevideo");
+		crPaq.seleccionarPaquete(nombrePaque);
+		Set<String> lstaSet =  crPaq.listarActividadesAAgregar("Montevideo");
+		Iterator<String> iterator = lstaSet.iterator();
+		String actividadTuristica = (String) iterator.next();
+		assertEquals( nombrePaque,actividadTuristica);
+		
 		
 		
 		fail("Not yet implemented");
 	}
 
-	@Test
-	void testGetDtPaquete() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	void testAgregarActividadPaqueteOK() {
@@ -147,6 +184,7 @@ class ControladorPaqueteTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		crTuri.seleccionarDepartamento("Maldonado");
 		crPaq.seleccionarPaquete(nombrePaque);
 		crPaq.AgregarActividadPaquete(nombrePaque, nombrePaque);
