@@ -75,7 +75,6 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 	public Set<String> listarProveedores() throws UsuarioNoExisteException {
-		// TODO Auto-generated method stub
 		Set<String> res = new HashSet<String>();
 		if (Proveedores.isEmpty())
 			throw new UsuarioNoExisteException("No existen proveedores registrados");
@@ -85,20 +84,12 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 	public DTTurista getDTTurista() {
-		if (turistaSeleccionado != null) {
-			return new DTTurista(turistaSeleccionado);
-		} else {
-			return null;
-		}
+		return new DTTurista(turistaSeleccionado);
 	}
 
 	@Override
 	public DTProveedor getDTProveedor() {
-		if (proveedorSeleccionado != null) {
-			return new DTProveedor(proveedorSeleccionado);
-		} else {
-			return null;
-		}
+		return new DTProveedor(proveedorSeleccionado);
 	}
 
 	@Override
@@ -204,7 +195,6 @@ public class ControladorUsuario implements IUsuario {
 		Turistas.put(nickname, t);
 	}
 
-	//
 	public Map<String, Turista> getTuristas() {
 		return Turistas;
 	}
@@ -225,7 +215,6 @@ public class ControladorUsuario implements IUsuario {
 	public Set<String> listarTuristas() {
 		Set<String> res = new HashSet<String>();
 		Turistas.forEach((k, v) -> res.add(k));
-		// TODO Auto-generated method stub
 		return res;
 	}
 
