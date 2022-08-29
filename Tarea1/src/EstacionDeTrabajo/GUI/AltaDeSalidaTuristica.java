@@ -111,19 +111,6 @@ public static void main(String[] args, ITuristica ctrl) {
            }
         });
 		
-		/*Fabrica fabricaU = Fabrica.getInstance();
-		ITuristica ctr = fabricaU.getControladorTuristica();
-		
-		
-		comboBoxDepartamentos.setSelectedIndex(-1);
-		//agrega departamentos
-		   if (!ctr.listarDepartamentos().isEmpty()) {
-	         Iterator<String> iterator = ctr.listarDepartamentos().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxDepartamentos.addItem(setElement);
-		     }
-		   } */
 		
 		lblElijaActividad = new JLabel("Elija Actividad");
 		lblElijaActividad.setBounds(12, 48, 136, 15);
@@ -133,17 +120,6 @@ public static void main(String[] args, ITuristica ctrl) {
 		comboBoxActividades.setBounds(166, 43, 172, 24);
 		getContentPane().add(comboBoxActividades);
 		
-		/*comboBoxActividades.setSelectedIndex(-1);
-		//agrega departamentos
-		if (comboBoxDepartamentos.getSelectedItem() != null) {
-		   if (ctr.listarActividadesDeDepartamento(comboBoxDepartamentos.getSelectedItem().toString()) != null) {
-	         Iterator<String> iterator = ctr.listarActividadesDeDepartamento((String)comboBoxDepartamentos.getSelectedItem()).iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxActividades.addItem(setElement);
-		     }
-		   } 
-		}*/
 		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
