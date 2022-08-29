@@ -3,16 +3,12 @@ package ServidorCentral.Logica.Controladores;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
