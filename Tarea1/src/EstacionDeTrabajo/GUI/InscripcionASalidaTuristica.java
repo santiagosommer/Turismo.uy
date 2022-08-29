@@ -192,7 +192,13 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 				JComboBox<String> cb = (JComboBox<String>)e.getSource();
 			 	   
 			 	   String DepartamentoSelecc = (String)cb.getSelectedItem();
-			 	   
+			 	   LugarLabel.setText("");
+					HoraLabel.setText("");
+					NombreLabel.setText("");
+					FechaLabel.setText("");
+					SalidaTuristica.setText("");
+					CantTuristasTextField.setText("");	
+					CuposLabel.setText("");
 			 	   if(ctr.existeDepartamento(DepartamentoSelecc)) {
 			 		   ctr.seleccionarDepartamento(DepartamentoSelecc);
 			 		   Set<String> actividades = ctr.listarActividadesDeDepartamento(DepartamentoSelecc);
@@ -222,6 +228,14 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    	            String selectedActividad = source.getSelectedValue();
 	    	            if (selectedActividad!=null) {
 	    	            
+	    	            	LugarLabel.setText("");
+	    					HoraLabel.setText("");
+	    					NombreLabel.setText("");
+	    					FechaLabel.setText("");
+	    					SalidaTuristica.setText("");
+	    					CantTuristasTextField.setText("");	
+	    					CuposLabel.setText("");
+	    					
 	    	            if (ctr.existeActividad(selectedActividad)) {
 	    	            	ctr.seleccionarActividad(selectedActividad);
 	    	            	actividad = ctr.getActividadSeleccionada();

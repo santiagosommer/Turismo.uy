@@ -67,7 +67,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		cu = ctr;
 		setBounds(100, 100, 516, 541);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 90, 369, 0};
+		gridBagLayout.columnWidths = new int[]{0, 97, 376, 0};
 		gridBagLayout.rowHeights = new int[]{77, 87, 84, 127, 68, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
@@ -120,8 +120,16 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 						JList<String> source = (JList)event.getSource();     
 	    	            String selectedPaquete = source.getSelectedValue();   
 	    	            if (selectedPaquete!= null) {
+	    	            	nomActLabel.setText("");
+	    	        		
+	    	        		FechaAltaLabel.setText("");
+	    	        		descripcionActLabel.setText("");
+	    	        		CostoActLabel.setText("");
+	    	        		DepartamentoLabel.setText("");
+	    	        	    DuracionActLabel.setText("") ;
+	    	        		CiudadActLabel.setText("");
 	    	            	ctr.seleccionarPaquete(selectedPaquete);
-	 	    	            
+	 	    	            l2.removeAllElements();
 	 	    	            nomPaqueteLabel.setText(selectedPaquete);
 	 	    	            DTPaquete paquete = cu.getDtPaquete();
 	 	    	            if (paquete!= null) {
@@ -162,8 +170,8 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{106, 213, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 43, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		
@@ -191,12 +199,16 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		gbc_lblNewLabel_2.gridy = 1;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
+		gbc_scrollPane_2.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_2.gridx = 1;
+		gbc_scrollPane_2.gridy = 1;
+		panel_1.add(scrollPane_2, gbc_scrollPane_2);
+		
 		descripcionLabel = new JLabel("");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNewLabel_3.gridx = 1;
-		gbc_lblNewLabel_3.gridy = 1;
-		panel_1.add(descripcionLabel, gbc_lblNewLabel_3);
+		scrollPane_2.setViewportView(descripcionLabel);
 		
 		JLabel lblNewLabel_4 = new JLabel("Periodo validez:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
