@@ -2,7 +2,9 @@ package ServidorCentral.Logica.Clases;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Paquete {
 	private String Nombre;
@@ -69,5 +71,13 @@ public class Paquete {
 		FechaAlta = fechaAlta;
 	}
 	
+	public Set<String> listarActividades(){
+		Set<String> res = new HashSet<>();
+		if (!ActividadesTuristicas.isEmpty()) {
+			ActividadesTuristicas.forEach((k,v)->res.add(k));	
+		} 
+			
+		return res;
 	
+	}
 }

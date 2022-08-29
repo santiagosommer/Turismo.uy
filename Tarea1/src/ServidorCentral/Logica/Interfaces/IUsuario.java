@@ -16,7 +16,7 @@ public interface IUsuario {
 	public abstract void seleccionarTurista(String Turista);
 	public abstract void seleccionarProveedor(String Proveedor);
 	public abstract Set<String> listarUsuarios() throws UsuarioNoExisteException; 
-	public abstract Set<String> listarProveedores();
+	public abstract Set<String> listarProveedores() throws UsuarioNoExisteException;
 	public abstract Set<String> listarTuristas();
 	public abstract DTTurista getDTTurista();
 	public abstract DTProveedor getDTProveedor();

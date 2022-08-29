@@ -1,9 +1,7 @@
 package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
-import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
-import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
-import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
+import ServidorCentral.Logica.Excepciones.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import java.time.LocalDate;
@@ -75,7 +73,7 @@ public class ControladorTuristica implements ITuristica {
 	public void seleccionarSalida(String salida) {
 		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
-		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
+		for (Map.Entry<String, DepartamentoNoExisteExceptionActividadTuristica> entry : actividades.entrySet()) {
 		    ActividadTuristica activ = entry.getValue();
 		    Map<String, SalidaTuristica> salidasActiv = activ.getSalidas();
 		    boolean existe = salidasActiv.containsKey(salida);
@@ -113,7 +111,7 @@ public class ControladorTuristica implements ITuristica {
 		
 		Fabrica fabrica = Fabrica.getInstance(); 
 		IUsuario controladorUsr = fabrica.getControladorUsuario();
-		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); // por nickname o por email?
+		controladorUsr.seleccionarProveedor(actividadSeleccionada.getProveedor().getNickname()); 
 		DTProveedor dtprov = controladorUsr.getDTProveedor();			
 		return new DTActividadTuristica(actividadSeleccionada.getNombre(),actividadSeleccionada.getDescripcion(),actividadSeleccionada.getDuracion(),
 				actividadSeleccionada.getCostoTurista(),actividadSeleccionada.getFechaAlta(),dtdep,dtprov,actividadSeleccionada.getCiudad());
@@ -148,9 +146,9 @@ public class ControladorTuristica implements ITuristica {
 		}
 		return inscripcionesDT;
 	}
-	
 
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,Proveedor proveedor) throws NombreActividadRepetidoException {
+
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNombre) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarDepartamento(departamento);
@@ -158,6 +156,9 @@ public class ControladorTuristica implements ITuristica {
 		if (existeActividad(nombre)){
 			throw new NombreActividadRepetidoException("La Actividad con nombre" + nombre + "ya existe");
 		}
+		ControladorUsuario crUsuario = ControladorUsuario.getInstancia();
+		Map<String,Proveedor> provsMap = crUsuario.getProveedores();
+		Proveedor proveedor = provsMap.get(proveedorNombre);
 		ActividadTuristica nuevaActividad = new ActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, dep, ciudad, proveedor);
 		actividades.put(nombre, nuevaActividad);
 		Map<String, ActividadTuristica> actividadesDeProveedor = proveedor.getActividadesTuristicas();
@@ -188,21 +189,22 @@ public class ControladorTuristica implements ITuristica {
 		activ.setSalidas(salidasDeActividad);
 	}
 	
-	public Set<String> listarDepartamentos(){
+	public Set<String> listarDepartamentos() throws DepartamentoNoExisteException {
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 				
 		String nombreDep;
 		Set<String> lista = new HashSet<String>();
 		
-		if ( !crTuristica.Departamentos.isEmpty()) {
+		if ( crTuristica.Departamentos.isEmpty()) 
+				throw new DepartamentoNoExisteException("No existen departamentos registrados");
 
 		for (Iterator<Map.Entry<String, Departamento>> entries = crTuristica.Departamentos.entrySet().iterator(); entries.hasNext(); ) {
 		    Map.Entry<String, Departamento> entry = entries.next();
 		    nombreDep = entry.getKey();
 		    lista.add(nombreDep);
 		}
-	}
+	
 		return lista;
 	}
 	
@@ -302,6 +304,7 @@ public class ControladorTuristica implements ITuristica {
 		return Departamentos.containsKey(departamento);
 	}
 	
+	
 	public void crearDepartamento(String nombre,String descripcion, String URL) {
 		if (!existeDepartamento(nombre)) {
 			Departamento dep = new Departamento(nombre,descripcion,URL);
@@ -339,6 +342,8 @@ public class ControladorTuristica implements ITuristica {
 		// TODO Auto-generated method stub
 		return salidaSeleccionada;
 	}
+	
+	
 	
 }
 

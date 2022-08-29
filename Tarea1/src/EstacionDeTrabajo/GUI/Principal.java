@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Controladores.*;
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JInternalFrame;
 import java.awt.BorderLayout;
 
@@ -32,7 +34,8 @@ public class Principal {
 	private ConsultaDeSalidaTuristica   consultaSalidaTuristicaIFrame;
 	private InscripcionASalidaTuristica  inscripcionSalidaTuristicaIFrame;
 	private CrearPaqueteDeActividadesTuristicas  crearPaqueteIFrame;
-	//private AgregarActividadTurísticaaPaquete  agregarActividadTurísticaPaqueteIFrame
+	private AltaDeActividadTuristica crearActividadTuristicaIFrame;
+	private AgregarActividadTuristicaAPaquete  agregarActividadTurísticaAPaqueteIFrame;
 	private ConsultaDePaqueteDeActividadesTuristicas  consultaPaqueteIFrame;
 	private CargaDeDatos cargaDeDatos;
 
@@ -55,6 +58,7 @@ public class Principal {
 	/**
 	 * Create the application.
 	 */
+	
 	public Principal() {
 		initialize();
 		
@@ -65,7 +69,7 @@ public class Principal {
 		 frmServidorcentral.getContentPane().setLayout(null);
 		 
 		 
-		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu);
+		 consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu,ICTuri);
 		 consultaUsuarioIFrame.setBounds(10, 0, 768, 469);
 		 frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		 
@@ -91,14 +95,11 @@ public class Principal {
 		 frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
 
 		 altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
-		 altaSalidaTuristicaIFrame.setBounds(10, 40, 360, 300);
+		 altaSalidaTuristicaIFrame.setBounds(10, 40, 400, 300);
 		 frmServidorcentral.getContentPane().add(altaSalidaTuristicaIFrame);
 		 altaSalidaTuristicaIFrame.setVisible(false);
 		 altaSalidaTuristicaIFrame.setClosable(true);
-		 
-		 
-		 
-		 
+		  
 		  inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
 		  inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
 		  consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
@@ -113,7 +114,14 @@ public class Principal {
 		  crearPaqueteIFrame.setVisible(false);
 		  crearPaqueteIFrame.setClosable(true);
 		  
-		  consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP);
+		 agregarActividadTurísticaAPaqueteIFrame = new AgregarActividadTuristicaAPaquete(ICP);
+		 agregarActividadTurísticaAPaqueteIFrame.setBounds(10, 40, 400, 200);
+		 frmServidorcentral.getContentPane().add(agregarActividadTurísticaAPaqueteIFrame);
+		 agregarActividadTurísticaAPaqueteIFrame.setVisible(false);
+		 agregarActividadTurísticaAPaqueteIFrame.setClosable(true);
+		 
+		  consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP,ICTuri);
+
 		  consultaPaqueteIFrame.setBounds(52, 0, 639, 558);
 		  frmServidorcentral.getContentPane().add(consultaPaqueteIFrame);
 		  consultaPaqueteIFrame.setVisible(false);
@@ -127,7 +135,8 @@ public class Principal {
 		}
 	}
 
-	/**
+	/**cargarDatosDepartamentos();
+				altaSalidaTuristicaIFrame.cargarDatosProvee
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
@@ -193,10 +202,13 @@ public class Principal {
 		JMenuItem mntmAltaActividadTuristica = new JMenuItem("Alta Actividad Turistica");
 		mntmAltaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				consultaActividadTuristicaIFrame.setVisible(true);
+				crearActividadTuristicaIFrame.cargarDatosDepartamentos();
+				crearActividadTuristicaIFrame.cargarDatosProveedores();
+				crearActividadTuristicaIFrame.setVisible(true);
 			}
 		});
 		mnActividadesTuristicas.add(mntmAltaActividadTuristica);
+		
 		
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
@@ -244,19 +256,26 @@ public class Principal {
 		}
 	});
 		
-	 //menuSalidas.add(mntmAltaSalidaTuristica);
 		
 		
-		
-		JMenuItem mntmAgregarActividadA = new JMenuItem("Agregar Actividad a Paquete");
-		mnPaquetes.add(mntmAgregarActividadA);
-		
+		JMenuItem mntmAgregarActividadAPaquete = new JMenuItem("Agregar Actividad a Paquete");
+		mntmAgregarActividadAPaquete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				agregarActividadTurísticaAPaqueteIFrame.limpiarFormulario();
+				agregarActividadTurísticaAPaqueteIFrame.CargarPaquetes();
+				agregarActividadTurísticaAPaqueteIFrame.setVisible(true);
+			}
+		});
+		mnPaquetes.add(mntmAgregarActividadAPaquete);
+	
 		JMenuItem mntmConsultaDePaquete = new JMenuItem("Consulta de Paquete");
 		mnPaquetes.add(mntmConsultaDePaquete);
 		
 		mntmConsultaDePaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//consultaPaqueteIFrame.limpiarFormulario();
+				consultaPaqueteIFrame.LimpiarFormulario();
+				consultaPaqueteIFrame.cargarPaquetes();
 				consultaPaqueteIFrame.setVisible(true);
 			}
 		});
@@ -267,6 +286,7 @@ public class Principal {
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	inscripcionSalidaTuristicaIFrame.limpiarFormulario();
+            	inscripcionSalidaTuristicaIFrame.ListarTuristas();
             	inscripcionSalidaTuristicaIFrame.setVisible(true);
             }
         });
@@ -281,7 +301,12 @@ public class Principal {
 		JMenuItem mntmCargarDatosIniciales = new JMenuItem("Cargar datos iniciales");
 		mntmCargarDatosIniciales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cargaDeDatos.cargarDatos();
+				try {
+					cargaDeDatos.cargarDatos();
+				} catch (UsuarioRepetidoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		mnCargaDeDatos.add(mntmCargarDatosIniciales);
