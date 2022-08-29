@@ -72,13 +72,6 @@ public class ActividadTuristica {
 		Departamento = departamento;
 	}
 
-	// public Proveedor getProveedor() {
-	// return Proveedor;
-	// }
-	// public void setProveedor(Proveedor proveedor) {
-	// Proveedor = proveedor;
-	// }
-
 	public String getCiudad() {
 		return NombreCiudad;
 	}
@@ -115,7 +108,7 @@ public class ActividadTuristica {
 		return Proveedor;
 	}
 
-	public void setProveedor(Proveedor proveedor) {
+	public void setProveedor(String proveedor) {
 		Proveedor = proveedor;
 	}
 
