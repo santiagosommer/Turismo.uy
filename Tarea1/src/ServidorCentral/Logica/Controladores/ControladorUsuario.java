@@ -16,8 +16,6 @@ import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
-import ServidorCentral.Logica.DataTypes.DTInfoSalida;
-import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
@@ -75,7 +73,6 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 	public Set<String> listarProveedores() throws UsuarioNoExisteException {
-		// TODO Auto-generated method stub
 		Set<String> res = new HashSet<String>();
 		if (Proveedores.isEmpty())
 			throw new UsuarioNoExisteException("No existen proveedores registrados");
@@ -85,33 +82,25 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 	public DTTurista getDTTurista() {
-		if (turistaSeleccionado != null) {
-			return new DTTurista(turistaSeleccionado);
-		} else {
-			return null;
-		}
+		return new DTTurista(turistaSeleccionado);
 	}
 
 	@Override
 	public DTProveedor getDTProveedor() {
-		if (proveedorSeleccionado != null) {
-			return new DTProveedor(proveedorSeleccionado);
-		} else {
-			return null;
-		}
+		return new DTProveedor(proveedorSeleccionado);
 	}
 
-	@Override
-	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void modificarDatosTurista(String nombre, String apellido, LocalDate fechaNac, String nacionalidad) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void modificarDatosProveedor(String nombre, String apellido, LocalDate fechaNac, String desc, String url) {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 	@Override
 
@@ -130,7 +119,7 @@ public class ControladorUsuario implements IUsuario {
 		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
 		boolean tieneInsc = false;
 		if (!inscripciones.isEmpty()) {
-			Iterator it = inscripciones.iterator();
+			Iterator<Inscripcion> it = inscripciones.iterator();
 			while (it.hasNext() && !tieneInsc) {
 				Inscripcion j = (Inscripcion) it.next();
 				if (j.getSalidaAsociada().getNombre() == sal.getNombre()) {
@@ -204,7 +193,6 @@ public class ControladorUsuario implements IUsuario {
 		Turistas.put(nickname, t);
 	}
 
-	//
 	public Map<String, Turista> getTuristas() {
 		return Turistas;
 	}
@@ -225,7 +213,6 @@ public class ControladorUsuario implements IUsuario {
 	public Set<String> listarTuristas() {
 		Set<String> res = new HashSet<String>();
 		Turistas.forEach((k, v) -> res.add(k));
-		// TODO Auto-generated method stub
 		return res;
 	}
 

@@ -5,12 +5,10 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
