@@ -22,15 +22,13 @@ public class DTTurista extends DTUsuario {
 	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento());
 	   Nacionalidad = turi.getNacionalidad();
 	   
-	   Inscripciones = new ArrayList<DTInscripcion>();
+	   this.Inscripciones = new ArrayList<DTInscripcion>();
 	   ArrayList<Inscripcion> arrIns = turi.getInscripciones();
-	   Iterator<Inscripcion> iter = arrIns.iterator();
 	   
-	   while (iter.hasNext()) {
-		   DTInscripcion auxIns = new DTInscripcion(iter.next());
-		   Inscripciones.add(auxIns);
-	   }
-	   
+	   for (Inscripcion inscripcion : arrIns) {
+		   DTInscripcion auxIns = new DTInscripcion(inscripcion);
+		   this.Inscripciones.add(auxIns);
+	   }	   
    }
 
 	public String getNacionalidad() {

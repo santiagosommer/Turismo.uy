@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
+import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 
@@ -123,19 +124,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel.add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		
-	      //agrega departamentos
-		   try {
-			if (!ctrl.listarDepartamentos().isEmpty()) {
-			   Iterator<String> iterator = ctrl.listarDepartamentos().iterator(); //ver
-			   while(iterator.hasNext()) { 
-				   String setElement = iterator.next(); 
-				   comboBoxDepartamentos.addItem(setElement);
-			   }
-			   }
-		} catch (DepartamentoNoExisteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}   
+	    
+		   
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -188,6 +178,12 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		 	   
 		 	   String DepartamentoSelecc = (String)cb.getSelectedItem();
 		 	   if(ctrl.existeDepartamento(DepartamentoSelecc)) {
+		 		  
+		 			LugarLabel.setText("");
+		 			HoraLabel.setText("");
+		 			NombreLabel.setText("");
+		 			FechaLabel.setText("");
+		 			LabelMaxTuristas.setText("");
 		 		   ctrl.seleccionarDepartamento(DepartamentoSelecc);
 		 		   Set<String> actividades = ctrl.listarActividadesDeDepartamento(DepartamentoSelecc);
 		 		   Iterator<String> iterator = actividades.iterator();
@@ -214,6 +210,11 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 					JList<String> source = (JList)event.getSource();
     	            String selectedActividad = source.getSelectedValue();
     	            if (selectedActividad!=null) {
+    	            	LugarLabel.setText("");
+    		 			HoraLabel.setText("");
+    		 			NombreLabel.setText("");
+    		 			FechaLabel.setText("");
+    		 			LabelMaxTuristas.setText("");
     	            Set<String> salidas = ctrl.listarSalidasActividad(selectedActividad);
     	            if (ctrl.existeActividad(selectedActividad)) {
     	            	ctrl.seleccionarActividad(selectedActividad);
@@ -382,5 +383,23 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		
 		
 	}
+	public void cargarDatosDepartamentos() {
+		
+		Fabrica fabr =Fabrica.getInstance();
+		ITuristica cturistico = fabr.getControladorTuristica();
+		  try {
+				if (!cturistico.listarDepartamentos().isEmpty()) {
+				     Iterator<String> iterator = cturistico.listarDepartamentos().iterator(); 
+				     while(iterator.hasNext()) { 
+					    String setElement = iterator.next(); 
+					    comboBoxDepartamentos.addItem(setElement);
+				     }
+				   }
+			} catch (DepartamentoNoExisteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}   
+	}
+
 
 }

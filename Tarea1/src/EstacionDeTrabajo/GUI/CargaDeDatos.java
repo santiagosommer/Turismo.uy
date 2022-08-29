@@ -153,24 +153,24 @@ public class CargaDeDatos {
 			}
 			
 			//Caso Inscripciones
-			/*
+			
+			//(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta)
 			try {
 
-				interfazUsuario.crearInscripcion("Rosa Maria", "Degusta Agosto" , 3 , 2400 , LocalDate.of(2022, 8, 15));
-				interfazUsuario.crearInscripcion("Elvis", "Degusta Agosto" , 5 , 4000 , LocalDate.of(2022, 8, 16));
-				interfazUsuario.crearInscripcion("Rosa Maria", "Tour Colonia del Sacramento 18-09", 3 , 1200,  LocalDate.of(2022, 8, 18));
-				interfazUsuario.crearInscripcion("Elizabeth", "Tour Colonia del Sacramento 18-09", 1, 400, LocalDate.of(2022, 8, 19));
-				interfazUsuario.crearInscripcion("Johann Sebastian", "Almuerzo 2", 2, 1600 , LocalDate.of(2022, 8, 19));
-				interfazUsuario.crearInscripcion("Alvaro","Teatro con Sabores 1", 1, 500 , LocalDate.of(2022, 8, 19));
-				interfazUsuario.crearInscripcion("Alvaro", "Teatro con Sabores 2", 10, 5000 , LocalDate.of(2022, 8, 20));
-				interfazUsuario.crearInscripcion("Bob","Teatro con Sabores 2", 2, 1000 , LocalDate.of(2022, 8, 20));
-				interfazUsuario.crearInscripcion("Anibla","Teatro con Sabores 2", 1, 500 , LocalDate.of(2022, 8, 21));
-				interfazUsuario.crearInscripcion("Antonio", "Degusta Setiembre" , 11, 8800 , LocalDate.of(2022, 8, 21));
+				interfazUsuario.crearInscripcion("lachiqui", "Degusta Agosto" , 3 , (float) 2400 , LocalDate.of(2022, 8, 15));
+				interfazUsuario.crearInscripcion("elelvis", "Degusta Agosto" , 5 , (float) 4000 , LocalDate.of(2022, 8, 16));
+				interfazUsuario.crearInscripcion("lachiqui", "Tour Colonia del Sacramento 18-09", 3 , (float) 1200,  LocalDate.of(2022, 8, 18));
+				interfazUsuario.crearInscripcion("isabelita", "Tour Colonia del Sacramento 18-09", 1, (float) 400, LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("mastropiero", "Almuerzo 2", 2, (float) 1600 , LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("chino","Teatro con Sabores 1", 1, (float) 500 , LocalDate.of(2022, 8, 19));
+				interfazUsuario.crearInscripcion("chino", "Teatro con Sabores 2", 10, (float) 5000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("bobesponja","Teatro con Sabores 2", 2, (float) 1000 , LocalDate.of(2022, 8, 20));
+				interfazUsuario.crearInscripcion("anibal","Teatro con Sabores 2", 1, (float) 500 , LocalDate.of(2022, 8, 21));
+				interfazUsuario.crearInscripcion("tony", "Degusta Setiembre" , 11, (float) 8800 , LocalDate.of(2022, 8, 21));
 			} catch (YaExisteInscripcionTuristaSalida e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			*/
 			
 			//Caso Paquetes
 			try {

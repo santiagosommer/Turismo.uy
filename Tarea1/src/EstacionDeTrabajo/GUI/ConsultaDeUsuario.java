@@ -436,7 +436,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			lblCiudadCantMax.setText("Ciudad");
 			lblCiudadCantMax.setVisible(true);
 			lblFechaDeAlta.setVisible(true);
-			textFieldProveedor.setText(dtat.getProveedor().getNombre() + " " + dtat.getProveedor().getApellido());
+			textFieldProveedor.setText(dtat.getProveedor());
 			textFieldProveedor.setVisible(true);
 			textFieldDepartamento.setText(dtat.getInfoDepartamento().getNombre());
 			textFieldDepartamento.setVisible(true);
@@ -485,6 +485,8 @@ public class ConsultaDeUsuario extends JInternalFrame {
 
 	protected void listarDataUsuarioActionPerformed() {
 		String userSelected = comboBoxListUsuarios.getSelectedItem().toString();
+		comboBoxListaTuristicas.removeAllItems();
+		comboBoxListaTuristicas.setVisible(false);
 		if(cu.esTurista(userSelected)) {
 			cu.seleccionarTurista(userSelected);
 			DTTurista dtt = cu.getDTTurista();
@@ -501,9 +503,9 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			ArrayList<DTInscripcion> ins = dtt.getInscripciones();
 			
 			if (!ins.isEmpty()) {
-				Iterator<DTInscripcion> iter = ins.iterator();
-				while (iter.hasNext()) {
-					comboBoxListaTuristicas.addItem(iter.next().getSalidaAsociada().getNombre());
+				
+				for (DTInscripcion dtInscripcion : ins) {
+					comboBoxListaTuristicas.addItem(dtInscripcion.getSalidaAsociada().getNombre());
 				}
 				
 				comboBoxListaTuristicas.setVisible(true);
@@ -533,22 +535,15 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			textFieldLinkWeb.setVisible(true);
 			
 			ArrayList<DTActividadTuristica> act = dtp.getActividades();
+			for (DTActividadTuristica dtAT : act) {
+				comboBoxListaTuristicas.addItem("Actividad: " + dtAT.getNombre());
+				ArrayList<DTSalidaTuristica> salidas = dtAT.getSalidas();
+				for (DTSalidaTuristica salida : salidas) {
+					comboBoxListaTuristicas.addItem("Salida: " + salida.getNombre());	
+				}
+			}
 			
 			if (!act.isEmpty()) {
-				Iterator<DTActividadTuristica> iter = act.iterator();
-				while (iter.hasNext()) {
-					
-					comboBoxListaTuristicas.addItem("Actividad: " + iter.next().getNombre());
-					
-					ArrayList<DTSalidaTuristica> sal = iter.next().getSalidas();
-					
-					Iterator<DTSalidaTuristica> iterSal = sal.iterator();
-					while (iterSal.hasNext()) {
-						comboBoxListaTuristicas.addItem("Salida: " + iter.next().getNombre());
-					}
-					
-				}
-				
 				comboBoxListaTuristicas.setVisible(true);
 				
 				lblTuristicas.setText("Actividades que Provee");

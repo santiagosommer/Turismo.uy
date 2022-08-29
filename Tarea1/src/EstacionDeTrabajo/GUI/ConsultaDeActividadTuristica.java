@@ -232,7 +232,11 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		btnInfo_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboPaquetes.getSelectedIndex() != -1) {
-					System.out.println("Presionado boton de paquetes");
+					interfazPaquete.seleccionarPaquete(comboPaquetes.getSelectedItem().toString());
+					InfoPaquete popupSalida = new InfoPaquete(interfazPaquete.getDtPaquete());
+					popupSalida.setBounds(0, 0, 400, 400);
+					principalFrame.getContentPane().add(popupSalida);
+					principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);
 				}
 			}
 		});
@@ -264,10 +268,10 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					DTActividadTuristica actividadElegida = interfazTuristica.getDTActividadTuristica();
 					lblNombreContent.setText(actividadElegida.getNombre());		
 					lblDescripcionContent.setText("<html>" + actividadElegida.getDescripcion() + "</html>");
-					lblproveedor.setText(actividadElegida.getProveedor().getNombre() + actividadElegida.getProveedor().getApellido());
+					lblproveedor.setText(actividadElegida.getProveedor());
 					lblCiudadContent.setText(actividadElegida.getCiudad());
 					lblDuracionContent.setText(String.valueOf(actividadElegida.getDuracion()));
-					lblCostoPorTuristaContent.setText(String.valueOf(actividadElegida.getCostoTurista()));
+					lblCostoPorTuristaContent.setText("$"+String.valueOf(actividadElegida.getCostoTurista()));
 					lblFechaDeAltaContent.setText(actividadElegida.getFechaAlta().toString());
 					lblDepartamentoContent.setText(actividadElegida.getInfoDepartamento().getNombre());
 					

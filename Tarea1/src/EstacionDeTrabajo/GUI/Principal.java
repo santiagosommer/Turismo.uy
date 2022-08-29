@@ -231,6 +231,7 @@ public class Principal {
 		JMenuItem mntmConsultaDeSalida = new JMenuItem("Consulta de Salida Turistica");
 		mntmConsultaDeSalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				consultaSalidaTuristicaIFrame.limpiarFormulario();
 				consultaSalidaTuristicaIFrame.setVisible(true);
 			}
@@ -284,6 +285,7 @@ public class Principal {
 		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				inscripcionSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				inscripcionSalidaTuristicaIFrame.limpiarFormulario();
 				inscripcionSalidaTuristicaIFrame.ListarTuristas();
 				inscripcionSalidaTuristicaIFrame.setVisible(true);
@@ -299,7 +301,12 @@ public class Principal {
 		mntmCargarDatosIniciales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					cargaDeDatos.cargarDatos();
+					if (cargaDeDatos.cargarDatos()) {
+						JOptionPane.showMessageDialog(frmServidorcentral, "La carga de datos fue exitosa!");
+					}
+					else {
+						JOptionPane.showMessageDialog(frmServidorcentral, "Los datos ya fueron cargados!");
+					}
 				} catch (UsuarioRepetidoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
