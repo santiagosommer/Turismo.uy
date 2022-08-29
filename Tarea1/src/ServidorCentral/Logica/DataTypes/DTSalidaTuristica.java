@@ -22,7 +22,7 @@ public class DTSalidaTuristica {
 	 InfoSalida = infoSalida;
 	 CuposDisponibles = cuposDisponibles; 
 	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
-	inscripcionesAsoc = new ArrayList<DTInscripcion>();
+	 inscripcionesAsoc = new ArrayList<DTInscripcion>();
 	 
  }
  

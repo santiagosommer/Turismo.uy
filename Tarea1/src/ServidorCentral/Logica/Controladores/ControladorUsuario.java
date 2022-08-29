@@ -116,15 +116,15 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 
-	public void crearInscripcion(String nombre, int cantidadTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida,
-			int CuposDisponibles) throws YaExisteInscripcionTuristaSalida {
+	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida {
 		// TODO Auto-generated method stub
+		
 		Fabrica fabrica = Fabrica.getInstance();
 		ITuristica ctrl = fabrica.getControladorTuristica();
-		ActividadTuristica act = ctrl.getActividadSeleccionada();
+		ctrl.seleccionarSalida(nombreSalida);
+		seleccionarTurista(nombreTurista);
 		SalidaTuristica sal = ctrl.getSalidaSeleccionada();
 		Turista turi = turistaSeleccionado;
-
 	
 		//comprobar que turista no tiene una inscripcion a esa Salida
 		if (turi!= null) {
@@ -148,14 +148,15 @@ public class ControladorUsuario implements IUsuario {
 		} else {
 
 		
-		  if (CuposDisponibles>= cantidadTuristas && sal!=null && act!=null && turi!= null) {
+		  if (sal.getCuposDisponibles()>= cantidadTuristas) {
 	           //: calcular costo:
-	          float costo = cantidadTuristas * act.getCostoTurista();
-	          sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); //actualizo cupos disponibles
-	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal,turi);
+	          float Costo = cantidadTuristas * costo;
+	          sal.setCuposDisponibles(sal.getCuposDisponibles() - cantidadTuristas); //actualizo cupos disponibles
+	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,Costo,sal,turi);
 	         //agregar a inscripciones de turista
 	          turi.agregarInscripcion(ins);   
 		   } else {}
+		  
 		  }
 		}
 	}
@@ -224,7 +225,7 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public Set<String> listarTuristas() {
 		Set<String> res = new HashSet<String>();
-		Turistas.forEach((k, v) -> res.add(v.toString()));
+		Turistas.forEach((k, v) -> res.add(k));
 		// TODO Auto-generated method stub
 		return res;
 	}
