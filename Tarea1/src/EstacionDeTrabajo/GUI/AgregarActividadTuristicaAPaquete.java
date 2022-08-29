@@ -113,8 +113,8 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//AgregarActividadAPaquetePerformed(e);
-            	 setVisible(false);
+            	AgregarActividadTuristicaAPaquetePerformed(e);
+            	setVisible(false);
             }
         });
 		btnAceptar.setBounds(44, 131, 117, 25);
@@ -123,7 +123,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              // limpiarFormulario();
+               limpiarFormulario();
                setVisible(false);
             }
         });

@@ -67,7 +67,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	
 	
-public static void main(String[] args, ITuristica ctrl) {
+/*public static void main(String[] args, ITuristica ctrl) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -78,7 +78,7 @@ public static void main(String[] args, ITuristica ctrl) {
 				}
 			}
 		});
-	}
+	}*/
 	
 	public AltaDeSalidaTuristica(ITuristica iCTuri) {
 		setBounds(10, 40, 400, 300);
@@ -217,9 +217,9 @@ public static void main(String[] args, ITuristica ctrl) {
         btnAceptar = new JButton("Aceptar");
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	//AltaSalidaTuristicaActionPerformed(e);
-            	 setVisible(false);
-            }
+            		AltaSalidaActionPerformed(e);
+            		setVisible(false);
+           }
         });
         btnAceptar.setBounds(35, 231, 117, 25);
         getContentPane().add(btnAceptar);
@@ -227,8 +227,8 @@ public static void main(String[] args, ITuristica ctrl) {
         btnCancelar = new JButton("Cancelar");
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-              // limpiarFormulario();
-               setVisible(false);
+            	limpiarFormulario();
+            	setVisible(false);
             }
         });
         btnCancelar.setBounds(205, 231, 117, 25);

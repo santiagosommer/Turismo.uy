@@ -47,6 +47,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
   private JLabel FechaLabel;
   private JLabel NombreLabel;
   private JLabel LabelMaxTuristas;
+  private DefaultListModel<String> l1;
+  private DefaultListModel<String> l2;
   
 	/**
 	 * Launch the application.
@@ -81,8 +83,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
        
        //modelos listas
               
-       DefaultListModel<String> l1 = new DefaultListModel<>();
-       DefaultListModel<String> l2 = new DefaultListModel<>();
+        l1 = new DefaultListModel<>();
+        l2 = new DefaultListModel<>();
 		
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -204,7 +206,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
     	        if (!event.getValueIsAdjusting()){
     	            @SuppressWarnings("unchecked")
 					JList<String> source = (JList)event.getSource();
-    	            String selectedActividad = source.getSelectedValue().toString();
+    	            String selectedActividad = source.getSelectedValue();
+    	            if (selectedActividad!=null) {
     	            Set<String> salidas = ctrl.listarSalidasActividad(selectedActividad);
     	            if (ctrl.existeActividad(selectedActividad)) {
     	            	ctrl.seleccionarActividad(selectedActividad);
@@ -219,7 +222,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
     	            	}
     	           }
     	           
-    	      }
+    	      }}
     	  }
     	});
       
@@ -338,7 +341,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	    	        if (!event.getValueIsAdjusting()){
 	    	            @SuppressWarnings("unchecked")
 						JList<String> source = (JList)event.getSource();
-	    	            String selectedSalida = source.getSelectedValue().toString();
+	    	            String selectedSalida = source.getSelectedValue();
+	    	            if(selectedSalida!=null) {
 	    	            
 	    	           
 	    	           ctrl.seleccionarSalida(selectedSalida);
@@ -354,7 +358,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	    	           FechaLabel.setText(sal.getInfoSalida().getFecha().toString());
 	    	           
 	    	           }
-	    	        }
+	    	        }}
 	    	    }
 	    	});
 	}
@@ -366,7 +370,8 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		NombreLabel.setText("");
 		FechaLabel.setText("");
 		LabelMaxTuristas.setText("");
-		
+		l1.removeAllElements();
+		l2.removeAllElements();
 		
 		
 		

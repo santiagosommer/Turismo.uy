@@ -13,7 +13,7 @@ public class DTPaquete {
   private int Descuento;
   private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
- public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento, ArrayList<DTActividadTuristica> actividadesTuristicas) {
+ public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento) {
 	 Nombre = nombre;
 	 Descripcion = descripcion;
 	 PeriodoValidez = periodoValidez;

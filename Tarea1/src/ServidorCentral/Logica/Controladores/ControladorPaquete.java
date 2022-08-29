@@ -11,6 +11,7 @@ import java.util.Set;
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
+import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -66,18 +67,9 @@ public class ControladorPaquete implements IPaquete {
 	@Override
 	public Set<String> listarPaquetes() {
 		
-		Set<String> lista = new HashSet<String>();
-		
-		if ( !Paquetes.isEmpty()) {
-			String paquete;
-
-		for (Iterator<Map.Entry<String, Paquete>> entries = Paquetes.entrySet().iterator(); entries.hasNext(); ) {
-		     Map.Entry<String, Paquete> entry = entries.next();
-		    paquete = entry.getKey();
-		    lista.add(paquete);
-		}
-	}
-		return lista;
+		Set<String> res = new HashSet<String>();
+		Paquetes.forEach((k,v)->res.add(k)); 
+		return res;
 		
 	}
 	
@@ -116,6 +108,21 @@ public class ControladorPaquete implements IPaquete {
 	}
 
 	@Override
+	public DTPaquete getDtPaquete() {
+		// TODO Auto-generated method stub
+		if (PaqueteSeleccionado!= null) {
+			return new DTPaquete(PaqueteSeleccionado.getNombre(),PaqueteSeleccionado.getDescripcion(),PaqueteSeleccionado.getPeriodoValidez(),PaqueteSeleccionado.getDescuento());
+
+		}
+		else {
+		return null;
+		}
+	}
+
+	
+	
+	
+	
 	public void AgregarActividadPaquete(String paquete, String dep, String actividad) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		crTuristica.seleccionarActividad(actividad);
@@ -130,6 +137,20 @@ public class ControladorPaquete implements IPaquete {
 		Map<String,ActividadTuristica> actividadesDeP = p.getActividadesTuristicas(); //link de p a a
 		actividadesDeP.put(actividad, a);
 		p.setActividadesTuristicas(actividadesDeP);
+	}
+
+	@Override
+	public Set<String> listarActividadesPaquete() {
+		if (PaqueteSeleccionado!= null)
+			return PaqueteSeleccionado.listarActividades();
+		else {
+			Set<String> res = new HashSet<String>();
+			return res;
+			
+		}
+		// TODO Auto-generated method stub
+		
 	}	
+
 	
 }
