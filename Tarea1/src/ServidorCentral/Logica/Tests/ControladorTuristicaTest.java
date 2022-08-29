@@ -17,8 +17,12 @@ import EstacionDeTrabajo.GUI.AltaDeProveedor;
 import EstacionDeTrabajo.GUI.CargaDeDatos;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+
 import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
+
+import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
+
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
@@ -70,7 +74,37 @@ class ControladorTuristicaTest {
 
 	@Test
 	void testCrearActividadTuristica() {
-		//fail("Not yet implemented");
+
+		String nombre = "Degusta";
+		String descripcion = "Festival gastronomico de productos locales en Rocha";
+		int duracion = 3;
+		float costoTurista = 800;
+		String ciudad = "Rocha";
+		String departamento = "Rocha";
+		String proveedor = "washington";
+		LocalDate fecha = LocalDate.of(2022, 7, 20);
+		
+		try {
+			crTuri.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fecha, ciudad, departamento, proveedor);
+			
+			crTuri.seleccionarActividad(nombre);
+			DTActividadTuristica act = crTuri.getDTActividadTuristica();
+			
+			assertEquals(act.getNombre(), nombre);
+			assertEquals(act.getDescripcion(), descripcion);
+			assertEquals(act.getDuracion(), duracion);
+			assertEquals(act.getCostoTurista(), costoTurista);
+			assertEquals(act.getCiudad(), ciudad);
+			assertEquals(act.getInfoDepartamento().getNombre(), departamento);
+			assertEquals(act.getProveedor(), proveedor);
+			assertEquals(act.getFechaAlta(), fecha);
+		}
+		catch (NombreActividadRepetidoException e) {
+			fail(e.getMessage());
+			e.printStackTrace();
+			
+		}
+
 	}
 
 	@Test
@@ -138,6 +172,7 @@ class ControladorTuristicaTest {
 			e.printStackTrace();
 		}
 		assertThrows(NombreSalidaRepetidoException.class, () -> {crTuri.crearSalidaTuristica(nombre, cant, fecha, info, actividad);});
+		
 		
 	}
 

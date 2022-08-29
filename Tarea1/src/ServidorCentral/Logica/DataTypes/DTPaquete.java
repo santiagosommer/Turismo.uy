@@ -1,5 +1,6 @@
 package ServidorCentral.Logica.DataTypes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ServidorCentral.Logica.Clases.Paquete;
@@ -11,14 +12,16 @@ public class DTPaquete {
   private String Descripcion;
   private int PeriodoValidez;
   private int Descuento;
+  private LocalDate FechaAlta;
   private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
- public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento) {
+ public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta) {
 	 Nombre = nombre;
 	 Descripcion = descripcion;
 	 PeriodoValidez = periodoValidez;
 	 Descuento = descuento;
 	 ActividadesTuristicas = new ArrayList<DTActividadTuristica>();	
+	 FechaAlta = fechaAlta;
 	
  }
   
@@ -61,5 +64,15 @@ public String getNombre() {
 }
  public void setActividadesTuristicas(ArrayList<DTActividadTuristica> actividadesTuristicas) {
 	ActividadesTuristicas = actividadesTuristicas;
+}
+
+
+public LocalDate getFechaAlta() {
+	return FechaAlta;
+}
+
+
+public void setFechaAlta(LocalDate fechaAlta) {
+	FechaAlta = fechaAlta;
 }
 }

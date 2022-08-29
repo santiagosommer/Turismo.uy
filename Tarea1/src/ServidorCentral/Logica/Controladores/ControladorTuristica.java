@@ -134,7 +134,7 @@ public class ControladorTuristica implements ITuristica {
 		seleccionarDepartamento(departamento);
 		Departamento dep = departamentoSeleccionado;
 		if (existeActividad(nombre)){
-			throw new NombreActividadRepetidoException("La Actividad con nombre" + nombre + "ya existe");
+			throw new NombreActividadRepetidoException("La Actividad con nombre " + nombre + " ya existe");
 		}
 		ControladorUsuario crUsuario = ControladorUsuario.getInstancia();
 		Map<String,Proveedor> provsMap = crUsuario.getProveedores();
@@ -156,10 +156,10 @@ public class ControladorTuristica implements ITuristica {
 		seleccionarActividad(actividad);
 		ActividadTuristica activ = actividadSeleccionada;
 		if (activ == null) {
-			throw new NoHayActividadConEseNombreException("No hay una Actividad Turistica con nombre" + actividad);
+			throw new NoHayActividadConEseNombreException("No hay una Actividad Turistica con nombre " + actividad);
 		}
 		if (existeSalida(nombre)){
-			throw new NombreSalidaRepetidoException("La Salida con nombre" + nombre + "ya existe");
+			throw new NombreSalidaRepetidoException("La Salida con nombre " + nombre + " ya existe");
 		}
 		SalidaTuristica nuevaSalida = new SalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida);
 		nuevaSalida.setActividadTuristicaAsociada(activ);

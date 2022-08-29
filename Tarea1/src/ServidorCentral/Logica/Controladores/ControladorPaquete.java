@@ -3,16 +3,12 @@ package ServidorCentral.Logica.Controladores;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Departamento;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
@@ -47,6 +43,7 @@ public class ControladorPaquete implements IPaquete {
 			Paquete nuevo = new Paquete(nombrePaque,descripcion, periodoValidez,Descuento,fechaAlta);
 			Paquetes.put(nombrePaque, nuevo);
 		}
+		
 		
 		
 	}
@@ -119,7 +116,9 @@ public class ControladorPaquete implements IPaquete {
 	public DTPaquete getDtPaquete() {
 		// TODO Auto-generated method stub
 		if (PaqueteSeleccionado!= null) {
-			return new DTPaquete(PaqueteSeleccionado.getNombre(),PaqueteSeleccionado.getDescripcion(),PaqueteSeleccionado.getPeriodoValidez(),PaqueteSeleccionado.getDescuento());
+			return new DTPaquete(PaqueteSeleccionado.getNombre(),PaqueteSeleccionado.getDescripcion(),
+					PaqueteSeleccionado.getPeriodoValidez(),PaqueteSeleccionado.getDescuento(),
+					PaqueteSeleccionado.getFechaAlta());
 
 		}
 		else {

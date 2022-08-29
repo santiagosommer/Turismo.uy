@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +22,6 @@ import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
 class ControladorUsuarioTest {
