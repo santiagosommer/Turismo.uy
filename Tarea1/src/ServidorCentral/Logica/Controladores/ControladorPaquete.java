@@ -132,11 +132,9 @@ public class ControladorPaquete implements IPaquete {
 		
 		Map<String,Paquete> paquetesDeA = a.getPaquetes(); //link de a a p
 		paquetesDeA.put(paquete, p);
-		a.setPaquetes(paquetesDeA);
 		
 		Map<String,ActividadTuristica> actividadesDeP = p.getActividadesTuristicas(); //link de p a a
 		actividadesDeP.put(actividad, a);
-		p.setActividadesTuristicas(actividadesDeP);
 	}
 
 	@Override

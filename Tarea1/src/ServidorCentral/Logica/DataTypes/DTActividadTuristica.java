@@ -54,13 +54,13 @@ public class DTActividadTuristica {
 			InfoSalidas.add(auxISal);
 		}
 		
-		InfoPaquetes = new ArrayList<DTPaquete>();
+		this.InfoPaquetes = new ArrayList<DTPaquete>();
 		
 		Map<String,Paquete> mapp = at.getPaquetes();
 		
 		for(Map.Entry<String, Paquete> entry : mapp.entrySet()) {
 			DTPaquete auxIPa = new DTPaquete(entry.getValue());
-			InfoPaquetes.add(auxIPa);
+			this.InfoPaquetes.add(auxIPa);
 		}
 		
 	}
