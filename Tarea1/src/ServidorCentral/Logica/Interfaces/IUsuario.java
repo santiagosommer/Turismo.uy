@@ -3,7 +3,6 @@ import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
-import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 
 import java.time.LocalDate;
