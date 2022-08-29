@@ -24,7 +24,7 @@ public class Paquete {
 		 this.setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
 		 
 	 }
-	  
+	   
 	  
 	 public String getNombre() {
 		return Nombre;
