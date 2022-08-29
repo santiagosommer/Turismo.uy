@@ -69,7 +69,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	
 	
-/*public static void main(String[] args, ITuristica ctrl) {
+public static void main(String[] args, ITuristica ctrl) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -80,7 +80,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 				}
 			}
 		});
-	}*/
+	}
 	
 	public AltaDeSalidaTuristica(ITuristica iCTuri) throws DepartamentoNoExisteException {
 		setBounds(10, 40, 400, 300);
@@ -103,8 +103,9 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
 		getContentPane().add(comboBoxDepartamentos);
 		
-		Fabrica fabricaU = Fabrica.getInstance();
+		/*Fabrica fabricaU = Fabrica.getInstance();
 		ITuristica ctr = fabricaU.getControladorTuristica();
+		
 		
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		//agrega departamentos
@@ -114,7 +115,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxDepartamentos.addItem(setElement);
 		     }
-		   } 
+		   } */
 		
 		lblElijaActividad = new JLabel("Elija Actividad");
 		lblElijaActividad.setBounds(12, 48, 136, 15);
@@ -124,7 +125,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		comboBoxActividades.setBounds(166, 43, 172, 24);
 		getContentPane().add(comboBoxActividades);
 		
-		comboBoxActividades.setSelectedIndex(-1);
+		/*comboBoxActividades.setSelectedIndex(-1);
 		//agrega departamentos
 		if (comboBoxDepartamentos.getSelectedItem() != null) {
 		   if (ctr.listarActividadesDeDepartamento(comboBoxDepartamentos.getSelectedItem().toString()) != null) {
@@ -134,7 +135,8 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	    	    comboBoxActividades.addItem(setElement);
 		     }
 		   } 
-		}
+		}*/
+		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(12, 88, 70, 15);
 		getContentPane().add(lblNombre);
@@ -412,9 +414,10 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	}
 	
 	public void cargarDep() {
-		comboBoxDepartamentos.setSelectedIndex(-1);
+		//comboBoxDepartamentos.setSelectedIndex(-1);
 		try {
-			Iterator<String> iterator = controlTur.listarDepartamentos().iterator(); 
+			Set<String> deps = controlTur.listarDepartamentos();
+			Iterator<String> iterator = deps.iterator(); 
 	         while(iterator.hasNext()) { 
 	    	    String setElement = iterator.next(); 
 	    	    comboBoxDepartamentos.addItem(setElement);
