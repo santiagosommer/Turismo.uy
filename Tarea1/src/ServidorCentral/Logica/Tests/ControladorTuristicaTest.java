@@ -42,7 +42,7 @@ class ControladorTuristicaTest {
 		crUsu = fabrica.getControladorUsuario();
 	}
 
-	@Test
+	/*@Test
 	void testSeleccionarActividad() {
 		//fail("Not yet implemented");
 	}
@@ -70,7 +70,7 @@ class ControladorTuristicaTest {
 	@Test
 	void testGetDTSalidaTuristica() {
 		//fail("Not yet implemented");
-	}
+	}*/
 
 	@Test
 	void testCrearActividadTuristicaOk() throws UsuarioRepetidoException {
@@ -185,8 +185,27 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testDatosSalidasVigentes() {
-		//fail("Not yet implemented");
+	void testDatosSalidasVigentesOk() throws UsuarioRepetidoException, NombreActividadRepetidoException, NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
+		
+		crUsu.altaProveedor("Lola", "Lorena", "Paz", "lp.com", LocalDate.of(1999, 10, 1), "rubia", "www.l.com");
+		crTuri.crearActividadTuristica("shopping", "con gift card", 15, (float) 1000, LocalDate.of(2022, 8, 28), "punta carretas", "Montevideo", "Lola");
+		LocalDate fechaS = LocalDate.of(2022,10, 12);
+		LocalTime horaS = LocalTime.of(10, 40);
+		String lugar = "puerta shopping";
+		DTInfoSalida info = new DTInfoSalida(fechaS, horaS, lugar);
+		crTuri.crearSalidaTuristica("zara", 10, LocalDate.of(2022, 8, 28), info, "shopping");
+		
+		//crTuri.datosSalidasVigentes("shopping");
+		
+		crTuri.seleccionarSalida("zara");
+		Set<DTSalidaTuristica> datos = crTuri.datosSalidasVigentes("shopping");
+		
+		Set<DTSalidaTuristica> datosOk = new HashSet<DTSalidaTuristica>();
+		crTuri.seleccionarSalida("zara");
+		DTSalidaTuristica salida = crTuri.getDTSalidaTuristica();
+		datosOk.add(salida);
+		
+		assertEquals(datos, datosOk);
 	}
 
 	@Test

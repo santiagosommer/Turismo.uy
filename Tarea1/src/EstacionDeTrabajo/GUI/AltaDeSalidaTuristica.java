@@ -428,11 +428,13 @@ public static void main(String[] args, ITuristica ctrl) {
 	public void cargarAct() {
 		comboBoxActividades.setSelectedIndex(-1);
 			String dep = (String)comboBoxDepartamentos.getSelectedItem();
-			Iterator<String> iterator = controlTur.listarActividadesDeDepartamento(dep).iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxActividades.addItem(setElement);
-		     }
+			if(controlTur.listarActividadesDeDepartamento(dep)!= null) {
+				Iterator<String> iterator = controlTur.listarActividadesDeDepartamento(dep).iterator(); 
+				while(iterator.hasNext()) { 
+					String setElement = iterator.next(); 
+					comboBoxActividades.addItem(setElement);
+				}
+			}
 	}
 	
 }
