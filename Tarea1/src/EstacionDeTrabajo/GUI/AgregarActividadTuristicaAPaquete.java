@@ -12,8 +12,11 @@ import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.IconUIResource;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
@@ -131,7 +134,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		String actividadSelecBox = (String)comboBoxActividadesFueraDePaquete.getSelectedItem();
 		
 		if (checkFormulario()) {
-				controlPaquete.AgregarActividadPaquete(paqueteSelecBox, depSelecBox, actividadSelecBox);
+				controlPaquete.AgregarActividadPaquete(paqueteSelecBox, actividadSelecBox);
 				
 				JOptionPane.showMessageDialog(this, "La actividad " + actividadSelecBox + " se ha agregado al Paquete", "Agregar Actividad A Paquete",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -173,7 +176,31 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	    	    comboBoxPaquetes.addItem(setElement);
 		     }
 		   }
+
+	}
+	
+public void cargarDep() {
 		
-		
+		try {
+			Fabrica fabricaU = Fabrica.getInstance();
+			ITuristica ctrT = fabricaU.getControladorTuristica();
+			Iterator<String> iterator = ctrT.listarDepartamentos().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxDepartamentos.addItem(setElement);
+		     }
+		} catch (DepartamentoNoExisteException ex) {}
+	}
+	
+	public void cargarAct() {
+		Fabrica fabricaU = Fabrica.getInstance();
+		ITuristica ctrT = fabricaU.getControladorTuristica();
+		IPaquete ctrP = fabricaU.getControladorPaquete();
+			String dep = (String)comboBoxDepartamentos.getSelectedItem();
+			Iterator<String> iterator = ctrP.listarActividadesAAgregar(dep).iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxActividadesFueraDePaquete.addItem(setElement);
+		     }
 	}
 }

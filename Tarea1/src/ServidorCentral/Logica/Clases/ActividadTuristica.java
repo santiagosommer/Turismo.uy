@@ -12,12 +12,12 @@ public class ActividadTuristica {
 	private LocalDate FechaAlta;
 	private Departamento Departamento;
 	private Map<String, SalidaTuristica> Salidas;
-	private Proveedor Proveedor;
+	private String Proveedor;
 	private Map<String, Paquete> Paquetes;
 	private String NombreCiudad;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
-			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
+			Departamento infoDepartamento, String ciudad, String proveedor) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Duracion = duracion;
@@ -72,13 +72,6 @@ public class ActividadTuristica {
 		Departamento = departamento;
 	}
 
-	// public Proveedor getProveedor() {
-	// return Proveedor;
-	// }
-	// public void setProveedor(Proveedor proveedor) {
-	// Proveedor = proveedor;
-	// }
-
 	public String getCiudad() {
 		return NombreCiudad;
 	}
@@ -111,11 +104,11 @@ public class ActividadTuristica {
 		Paquetes = paquetes;
 	}
 
-	public Proveedor getProveedor() {
+	public String getProveedor() {
 		return Proveedor;
 	}
 
-	public void setProveedor(Proveedor proveedor) {
+	public void setProveedor(String proveedor) {
 		Proveedor = proveedor;
 	}
 

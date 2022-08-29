@@ -9,6 +9,7 @@ import javax.swing.JInternalFrame;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import java.awt.GridLayout;
@@ -52,22 +53,22 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 	private JComboBox<String> comboSalidas;
 	private JComboBox<String> comboPaquetes;
 	
-	public void limpiarFormulario() {
+	public void limpiarFormulario() throws DepartamentoNoExisteException {
 		comboDepartamentos.removeAllItems();
 		comboActividades.removeAllItems();
 		comboSalidas.removeAllItems();
 		comboPaquetes.removeAllItems();
+		
+		Set<String> deps = interfazTuristica.listarDepartamentos();
+		for (String string : deps) {
+			comboDepartamentos.addItem(string);
+		}
 		
 		comboDepartamentos.setSelectedIndex(-1);
 		comboActividades.setSelectedIndex(-1);
 		comboSalidas.setSelectedIndex(-1);
 		comboPaquetes.setSelectedIndex(-1);
 		
-		
-		Set<String> deps = interfazTuristica.listarDepartamentos();
-		for (String string : deps) {
-			comboDepartamentos.addItem(string);
-		}
 		
 		panelActividades.setVisible(false);
 		panelInfo.setVisible(false);
@@ -93,18 +94,18 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		setResizable(true);
 		setClosable(true);
 		setTitle("Consulta de Actividad Turistica");
-		setBounds(100, 100, 536, 344);
+		setBounds(100, 100, 618, 413);
 		getContentPane().setLayout(null);
 		setVisible(false);
 		this.interfazTuristica = interfazTuristica;
 		
 		JPanel panelBase = new JPanel();
-		panelBase.setBounds(12, 12, 502, 288);
+		panelBase.setBounds(12, 12, 584, 357);
 		getContentPane().add(panelBase);
 		panelBase.setLayout(null);
 		
 		JPanel panelDepartamentos = new JPanel();
-		panelDepartamentos.setBounds(0, 0, 502, 29);
+		panelDepartamentos.setBounds(0, 0, 584, 29);
 		panelBase.add(panelDepartamentos);
 		panelDepartamentos.setLayout(new BoxLayout(panelDepartamentos, BoxLayout.X_AXIS));
 		
@@ -119,7 +120,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelDepartamentos.add(comboDepartamentos);
 		
 		panelActividades = new JPanel();
-		panelActividades.setBounds(0, 29, 502, 29);
+		panelActividades.setBounds(0, 29, 584, 29);
 		panelBase.add(panelActividades);
 		panelActividades.setLayout(new BoxLayout(panelActividades, BoxLayout.X_AXIS));
 		panelActividades.setVisible(false);
@@ -135,7 +136,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		panelActividades.add(comboActividades);
 		
 		panelInfo = new JPanel();
-		panelInfo.setBounds(0, 58, 502, 229);
+		panelInfo.setBounds(0, 58, 584, 299);
 		panelBase.add(panelInfo);
 		panelInfo.setLayout(new GridLayout(0, 2, 0, 0));
 		panelInfo.setVisible(false);
@@ -187,12 +188,14 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		JPanel panelSalidas = new JPanel();
 		panelInfo.add(panelSalidas);
-		panelSalidas.setLayout(new BoxLayout(panelSalidas, BoxLayout.X_AXIS));
+		panelSalidas.setLayout(null);
 		
 		comboSalidas = new JComboBox<>();
+		comboSalidas.setBounds(0, 0, 231, 33);
 		panelSalidas.add(comboSalidas);
 		
 		JButton btnInfo = new JButton("Info");
+		btnInfo.setBounds(231, 1, 61, 32);
 		btnInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboSalidas.getSelectedIndex() != -1) {
@@ -212,12 +215,14 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		
 		JPanel panelPaquetes = new JPanel();
 		panelInfo.add(panelPaquetes);
-		panelPaquetes.setLayout(new BoxLayout(panelPaquetes, BoxLayout.X_AXIS));
+		panelPaquetes.setLayout(null);
 		
 		comboPaquetes = new JComboBox<>();
+		comboPaquetes.setBounds(0, 0, 231, 33);
 		panelPaquetes.add(comboPaquetes);
 		
 		JButton btnInfo_1 = new JButton("Info");
+		btnInfo_1.setBounds(231, 0, 61, 34);
 		btnInfo_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboPaquetes.getSelectedIndex() != -1) {
@@ -252,7 +257,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					interfazTuristica.seleccionarActividad(comboActividades.getSelectedItem().toString());		
 					DTActividadTuristica actividadElegida = interfazTuristica.getDTActividadTuristica();
 					lblNombreContent.setText(actividadElegida.getNombre());		
-					lblDescripcionContent.setText(actividadElegida.getDescripcion());
+					lblDescripcionContent.setText("<html>" + actividadElegida.getDescripcion() + "</html>");
 					lblCiudadContent.setText(actividadElegida.getCiudad());
 					lblDuracionContent.setText(String.valueOf(actividadElegida.getDuracion()));
 					lblCostoPorTuristaContent.setText(String.valueOf(actividadElegida.getCostoTurista()));

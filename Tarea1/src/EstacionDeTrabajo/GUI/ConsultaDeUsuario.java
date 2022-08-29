@@ -249,6 +249,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		gbc_btnConsultarExtra.gridx = 1;
 		gbc_btnConsultarExtra.gridy = 12;
 		getContentPane().add(btnConsultarExtra, gbc_btnConsultarExtra);
+		btnConsultarExtra.setVisible(false);
 		
 		btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
@@ -499,15 +500,21 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			
 			ArrayList<DTInscripcion> ins = dtt.getInscripciones();
 			
-			Iterator<DTInscripcion> iter = ins.iterator();
-			while (iter.hasNext()) {
-				comboBoxListaTuristicas.addItem(iter.next().getSalidaAsociada().getNombre());
+			if (!ins.isEmpty()) {
+				Iterator<DTInscripcion> iter = ins.iterator();
+				while (iter.hasNext()) {
+					comboBoxListaTuristicas.addItem(iter.next().getSalidaAsociada().getNombre());
+				}
+				
+				comboBoxListaTuristicas.setVisible(true);
+				
+				lblTuristicas.setText("Salidas Inscripto");
+				lblTuristicas.setVisible(true);
+			}else {
+				lblTuristicas.setText("No hay Salidas Inscripto");
+				lblTuristicas.setVisible(true);
 			}
 			
-			comboBoxListaTuristicas.setVisible(true);
-			
-			lblTuristicas.setText("Salidas Inscripto");
-			lblTuristicas.setVisible(true);
 			
 		}else {
 			cu.seleccionarProveedor(userSelected);
@@ -527,24 +534,29 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			
 			ArrayList<DTActividadTuristica> act = dtp.getActividades();
 			
-			Iterator<DTActividadTuristica> iter = act.iterator();
-			while (iter.hasNext()) {
-				
-				comboBoxListaTuristicas.addItem("Actividad: " + iter.next().getNombre());
-				
-				ArrayList<DTSalidaTuristica> sal = iter.next().getSalidas();
-				
-				Iterator<DTSalidaTuristica> iterSal = sal.iterator();
-				while (iterSal.hasNext()) {
-					comboBoxListaTuristicas.addItem("Salida: " + iter.next().getNombre());
+			if (!act.isEmpty()) {
+				Iterator<DTActividadTuristica> iter = act.iterator();
+				while (iter.hasNext()) {
+					
+					comboBoxListaTuristicas.addItem("Actividad: " + iter.next().getNombre());
+					
+					ArrayList<DTSalidaTuristica> sal = iter.next().getSalidas();
+					
+					Iterator<DTSalidaTuristica> iterSal = sal.iterator();
+					while (iterSal.hasNext()) {
+						comboBoxListaTuristicas.addItem("Salida: " + iter.next().getNombre());
+					}
+					
 				}
 				
+				comboBoxListaTuristicas.setVisible(true);
+				
+				lblTuristicas.setText("Actividades que Provee");
+				lblTuristicas.setVisible(true);
+			}else {
+				lblTuristicas.setText("No hay Actividades que Provee");
+				lblTuristicas.setVisible(true);
 			}
-			
-			comboBoxListaTuristicas.setVisible(true);
-			
-			lblTuristicas.setText("Actividades que Provee");
-			lblTuristicas.setVisible(true);
 			
 		}
 	}

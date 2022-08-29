@@ -35,20 +35,7 @@ public class ControladorTuristica implements ITuristica {
 	
 	private ControladorTuristica() {
 		Departamentos = new HashMap<String,Departamento>();
-		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();
-		Departamento Kenia = new Departamento("Kenia", "Descripcion", "No tengo URL");
-		Departamentos.put("Kenia", Kenia);
-		ActividadTuristica at = new ActividadTuristica("Corrida", "Corrida de patones", 30, 200, LocalDate.of(2010, 6, 29), Kenia, "Estambul", new Proveedor("Robertitio20", "Roberto", "Carlos", "Popito@papel.com", LocalDate.of(2000, 6, 7), "Hacemos corridas", "url de proveedor.com"));
-		Kenia.addActividadTuristica(at);
-		ActividadesTuristicas.put("Corrida", at);
-		
-		HashMap<String,SalidaTuristica> mapaSalidas = new HashMap<>();
-		SalidaTuristica loDeTuMama = new SalidaTuristica("En la maniana", 4, LocalDate.of(2022, 2, 2), new DTInfoSalida(LocalDate.now(), LocalTime.now(), "Lo de tu mama"));
-		mapaSalidas.put("En la maniana", loDeTuMama);
-		at.setSalidas(mapaSalidas);
-		loDeTuMama.setActividadTuristicaAsociada(at);
-		
-		
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();		
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
 		departamentoSeleccionado = null;
@@ -80,6 +67,7 @@ public class ControladorTuristica implements ITuristica {
 		    if (existe) {
 		    	SalidaTuristica salidaSelec = salidasActiv.get(salida);
 		    	salidaSeleccionada = salidaSelec;
+		    	return;
 		    } else {
 		    	salidaSeleccionada = null;
 		    }
@@ -189,15 +177,13 @@ public class ControladorTuristica implements ITuristica {
 		activ.setSalidas(salidasDeActividad);
 	}
 	
-	public Set<String> listarDepartamentos() throws DepartamentoNoExisteException {
+	public Set<String> listarDepartamentos(){
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 				
 		String nombreDep;
 		Set<String> lista = new HashSet<String>();
 		
-		if ( crTuristica.Departamentos.isEmpty()) 
-				throw new DepartamentoNoExisteException("No existen departamentos registrados");
 
 		for (Iterator<Map.Entry<String, Departamento>> entries = crTuristica.Departamentos.entrySet().iterator(); entries.hasNext(); ) {
 		    Map.Entry<String, Departamento> entry = entries.next();
