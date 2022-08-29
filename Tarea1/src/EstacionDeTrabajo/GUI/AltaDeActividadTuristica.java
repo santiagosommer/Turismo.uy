@@ -209,7 +209,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String prov = (String) ProveedorBox.getSelectedItem();
 		String nombre = this.NombreField.getText();
 		String descripcion = this.DescripcionField.getText();
-		String duracion = this.CiudadField.getText();
+		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
 		String ciudad = CiudadField.getText();
 
@@ -245,9 +245,9 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		}
 
 		try {
-			// Integer.parseInt();
+			 //Integer.parseInt(duracion);
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(this, "La CI debe ser un numero", "Registrar Usuario",
+			JOptionPane.showMessageDialog(this, "La duracion debe ser un numero", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
