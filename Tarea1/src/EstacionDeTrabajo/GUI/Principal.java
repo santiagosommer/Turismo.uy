@@ -231,6 +231,7 @@ public class Principal {
 		JMenuItem mntmConsultaDeSalida = new JMenuItem("Consulta de Salida Turistica");
 		mntmConsultaDeSalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				consultaSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				consultaSalidaTuristicaIFrame.limpiarFormulario();
 				consultaSalidaTuristicaIFrame.setVisible(true);
 			}
@@ -284,6 +285,7 @@ public class Principal {
 		JMenuItem mntmInscripcionASalida = new JMenuItem("Inscripcion a Salida Turistica");
 		mntmInscripcionASalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				inscripcionSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				inscripcionSalidaTuristicaIFrame.limpiarFormulario();
 				inscripcionSalidaTuristicaIFrame.ListarTuristas();
 				inscripcionSalidaTuristicaIFrame.setVisible(true);
