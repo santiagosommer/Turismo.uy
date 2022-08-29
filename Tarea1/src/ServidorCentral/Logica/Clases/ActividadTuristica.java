@@ -17,7 +17,7 @@ public class ActividadTuristica {
 	private String NombreCiudad;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
-			Departamento infoDepartamento, String ciudad, String proveedor) {
+			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Duracion = duracion;
@@ -26,7 +26,7 @@ public class ActividadTuristica {
 		Departamento = infoDepartamento;
 		Salidas = new HashMap<String, SalidaTuristica>();
 		Paquetes = new HashMap<String, Paquete>();
-		Proveedor = proveedor; // cambio, por requisito caso de uso!!!!!!!!!!
+		Proveedor = proveedor;
 
 		NombreCiudad = ciudad;
 
@@ -104,11 +104,11 @@ public class ActividadTuristica {
 		Paquetes = paquetes;
 	}
 
-	public String getProveedor() {
+	public Proveedor getProveedor() {
 		return Proveedor;
 	}
 
-	public void setProveedor(String proveedor) {
+	public void setProveedor(Proveedor proveedor) {
 		Proveedor = proveedor;
 	}
 
