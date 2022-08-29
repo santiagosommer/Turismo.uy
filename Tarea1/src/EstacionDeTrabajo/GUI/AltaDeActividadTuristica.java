@@ -282,5 +282,15 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			// elemento
 		}
 	}
+	
+	public void limpiarFormulario(){
+		NombreField.setText("");
+		DescripcionField.setText("");	
+		DuracionField.setText("");
+		CiudadField.setText("");
+		CostoTuristaField.setText("");
+		DepartamentoBox.setSelectedIndex(-1);
+		ProveedorBox.setSelectedIndex(-1);
+		} 
 
 }
