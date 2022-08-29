@@ -125,7 +125,9 @@ public class ControladorUsuario implements IUsuario {
 		SalidaTuristica sal = ctrl.getSalidaSeleccionada();
 		Turista turi = turistaSeleccionado;
 
-		// comprobar que turista no tiene una inscripcion a esa Salida
+	
+		//comprobar que turista no tiene una inscripcion a esa Salida
+		if (turi!= null) {
 		ArrayList<Inscripcion> inscripciones = turi.getInscripciones();
 		boolean tieneInsc = false;
 		if (!inscripciones.isEmpty()) {
@@ -145,17 +147,17 @@ public class ControladorUsuario implements IUsuario {
 
 		} else {
 
-			if (CuposDisponibles >= cantidadTuristas && sal != null && act != null && turi != null) {
-				// : calcular costo:
-				float costo = cantidadTuristas * act.getCostoTurista();
-				sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); // actualizo cupos disponibles
-				Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas, costo, sal, turi);
-				// agregar a inscripciones de turista
-				turi.agregarInscripcion(ins);
-			} else {
-			}
+		
+		  if (CuposDisponibles>= cantidadTuristas && sal!=null && act!=null && turi!= null) {
+	           //: calcular costo:
+	          float costo = cantidadTuristas * act.getCostoTurista();
+	          sal.setCuposDisponibles(CuposDisponibles - cantidadTuristas); //actualizo cupos disponibles
+	          Inscripcion ins = new Inscripcion(fechaAlta, cantidadTuristas,costo,sal,turi);
+	         //agregar a inscripciones de turista
+	          turi.agregarInscripcion(ins);   
+		   } else {}
+		  }
 		}
-
 	}
 
 	@Override

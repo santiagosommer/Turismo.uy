@@ -19,7 +19,6 @@ import javax.swing.JButton;
 public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	
 	private IPaquete controlPaquete;
-	
 	private JLabel lblPaquetes;
 	private JComboBox<String> comboBoxPaquetes;
 	private JLabel lblDepartamentos;
@@ -66,14 +65,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		Fabrica fabricaU = Fabrica.getInstance();
 		IPaquete ctrP = fabricaU.getControladorPaquete();
 		
-		comboBoxPaquetes.setSelectedIndex(-1);
-		if (!ctrP.listarPaquetes().isEmpty()) {
-	         Iterator<String> iterator = ctrP.listarPaquetes().iterator(); 
-	         while(iterator.hasNext()) { 
-	    	    String setElement = iterator.next(); 
-	    	    comboBoxPaquetes.addItem(setElement);
-		     }
-		   }
+		
 		
 		lblDepartamentos = new JLabel("Departamentos:");
 		lblDepartamentos.setBounds(12, 48, 132, 15);
@@ -153,6 +145,7 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		comboBoxActividadesFueraDePaquete.setSelectedIndex(-1);
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		comboBoxPaquetes.setSelectedIndex(-1);
+		comboBoxPaquetes.removeAllItems();
 	}
 	
 	private boolean checkFormulario() {
@@ -169,4 +162,17 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		return true;
 	}
 	
+
+	public void CargarPaquetes() {
+		comboBoxPaquetes.setSelectedIndex(-1);
+		if (!controlPaquete.listarPaquetes().isEmpty()) {
+	         Iterator<String> iterator = controlPaquete.listarPaquetes().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxPaquetes.addItem(setElement);
+		     }
+		   }
+		
+		
+	}
 }
