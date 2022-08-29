@@ -6,6 +6,7 @@ import java.security.cert.TrustAnchor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -202,10 +203,21 @@ class ControladorTuristicaTest {
 		
 		Set<DTSalidaTuristica> datosOk = new HashSet<DTSalidaTuristica>();
 		crTuri.seleccionarSalida("zara");
-		DTSalidaTuristica salida = crTuri.getDTSalidaTuristica();
-		datosOk.add(salida);
+		DTSalidaTuristica salidaPrueba = crTuri.getDTSalidaTuristica();
+		datosOk.add(salidaPrueba);
 		
-		assertEquals(datos, datosOk);
+		Iterator<DTSalidaTuristica> i = datos.iterator();
+		Iterator<DTSalidaTuristica> j = datosOk.iterator();
+		while (i.hasNext()) {
+			DTSalidaTuristica salida = i.next();
+			DTSalidaTuristica salidaOk = j.next();
+			assertEquals(salidaOk.getNombre(), salida.getNombre());
+			assertEquals(salidaOk.getCantidadMaxTuristas(), salida.getCantidadMaxTuristas());
+			assertEquals(salidaOk.getFechaAlta(), salida.getFechaAlta());
+			assertEquals(salidaOk.getInfoSalida(), salida.getInfoSalida());
+			assertEquals(salidaOk.getCuposDisponibles(), salida.getCuposDisponibles());
+		}
+			
 	}
 
 	@Test
