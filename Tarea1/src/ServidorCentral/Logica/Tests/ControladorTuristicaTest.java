@@ -73,31 +73,25 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testCrearActividadTuristica() {
-
-		String nombre = "Degusta";
-		String descripcion = "Festival gastronomico de productos locales en Rocha";
-		int duracion = 3;
-		float costoTurista = 800;
-		String ciudad = "Rocha";
-		String departamento = "Rocha";
-		String proveedor = "washington";
-		LocalDate fecha = LocalDate.of(2022, 7, 20);
+	void testCrearActividadTuristicaOk() throws UsuarioRepetidoException {
+			
+		crTuri.crearDepartamento("Rocha", "mediano", "www.rch.com");
+		crUsu.altaProveedor("washi", "Washington", "Gomez", "WG.com", LocalDate.of(1989, 10, 1), "alto", "www.w.com");
 		
 		try {
-			crTuri.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fecha, ciudad, departamento, proveedor);
+			crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi");
 			
-			crTuri.seleccionarActividad(nombre);
+			crTuri.seleccionarActividad("Degusta");
 			DTActividadTuristica act = crTuri.getDTActividadTuristica();
 			
-			assertEquals(act.getNombre(), nombre);
-			assertEquals(act.getDescripcion(), descripcion);
-			assertEquals(act.getDuracion(), duracion);
-			assertEquals(act.getCostoTurista(), costoTurista);
-			assertEquals(act.getCiudad(), ciudad);
-			assertEquals(act.getInfoDepartamento().getNombre(), departamento);
-			assertEquals(act.getProveedor(), proveedor);
-			assertEquals(act.getFechaAlta(), fecha);
+			assertEquals(act.getNombre(), "Degusta");
+			assertEquals(act.getDescripcion(), "Festival gastronomico de productos locales en Rocha");
+			assertEquals(act.getDuracion(), 3);
+			assertEquals(act.getCostoTurista(), (float)800);
+			assertEquals(act.getCiudad(), "Rocha");
+			assertEquals(act.getInfoDepartamento().getNombre(), "Rocha");
+			assertEquals(act.getProveedor(), "Washington" + " " + "Gomez");
+			assertEquals(act.getFechaAlta(), LocalDate.of(2022, 7, 20));
 		}
 		catch (NombreActividadRepetidoException e) {
 			fail(e.getMessage());
@@ -109,26 +103,20 @@ class ControladorTuristicaTest {
 
 	@Test
 	void testCrearSalidaTuristicaOk() {
-		String nombre = "campamento";
-		int cant = 10;
-		String lugar = "bosque";
-		String actividad = "paseo";
-		LocalDate fecha = LocalDate.of(2022, 8, 27);
-		LocalDate fechaS = LocalDate.of(2022,10, 11);
-		LocalTime horaS = LocalTime.of(10, 30);
-		DTInfoSalida info = new DTInfoSalida(fechaS, horaS, lugar);
 		
 		try {
-			crTuri.crearSalidaTuristica(nombre, cant, fecha, info, actividad);
 			
-			crTuri.seleccionarSalida(nombre);
+			DTInfoSalida info = new DTInfoSalida(LocalDate.of(2022,10, 11), LocalTime.of(10, 30), "bosque");
+			crTuri.crearSalidaTuristica("campamento", 10, LocalDate.of(2022, 8, 27), info, "paseo");
+			
+			crTuri.seleccionarSalida("campamento");
 			DTSalidaTuristica salida = crTuri.getDTSalidaTuristica();
 			
-			assertEquals(salida.getNombre(), nombre);
-			assertEquals(salida.getCantidadMaxTuristas(),cant);
-			assertEquals(salida.getFechaAlta(), fecha);
+			assertEquals(salida.getNombre(), "campamento");
+			assertEquals(salida.getCantidadMaxTuristas(),10);
+			assertEquals(salida.getFechaAlta(), LocalDate.of(2022, 8, 27));
 			assertEquals(salida.getInfoSalida(), info);
-			assertEquals(salida.getActividadTuristicaAsoc().getNombre(), actividad );
+			assertEquals(salida.getActividadTuristicaAsoc().getNombre(), "paseo" );
 			
 		} catch (NombreSalidaRepetidoException e) {
 			fail(e.getMessage());
@@ -182,12 +170,16 @@ class ControladorTuristicaTest {
 		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
 		crTuri.crearDepartamento("Durazno", "grande", "www.dur.com");
 		crTuri.crearDepartamento("Salto", "mediano", "www.sto.com");
+		crTuri.crearDepartamento("Cerro Largo", "mediano", "www.cl.com");
+		crTuri.crearDepartamento("Rocha", "mediano", "www.rch.com");
 		
 		Set<String> departamentos = crTuri.listarDepartamentos();
 		Set<String> depOk = new HashSet<String>();
 		depOk.add("Montevideo");
 		depOk.add("Durazno");
 		depOk.add("Salto");
+		depOk.add("Cerro Largo");
+		depOk.add("Rocha");
 		
 		assertEquals(departamentos, depOk);
 	}
@@ -218,8 +210,30 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testListarSalidasActividad() {
-		//fail("Not yet implemented");
+	void testListarSalidasActividadOk() throws UsuarioRepetidoException, NombreActividadRepetidoException {
+		
+		crTuri.crearDepartamento("Cerro Largo", "mediano", "www.cl.com");
+		crUsu.altaProveedor("Lolo", "Lorenzo", "Lopez", "llopez.com", LocalDate.of(2005, 11, 12), "alto", "www.lolo.com");
+		crTuri.crearActividadTuristica("restoran", "amplio", 50, (float)300, LocalDate.of(2022, 8, 2), "pocitos", "Cerro Largo", "Lolo");
+		
+		DTInfoSalida info = new DTInfoSalida(LocalDate.of(2022, 10, 25), LocalTime.of(12, 30), "parada");
+		try {
+			crTuri.crearSalidaTuristica("cena", 6, LocalDate.of(2022, 9, 25), info, "restoran");
+			crTuri.crearSalidaTuristica("almuerzo", 10, LocalDate.of(2022, 8, 28), info, "restoran");
+			
+			Set<String> salidasDeActiv = crTuri.listarSalidasActividad("restoran");
+			Set<String> salidasDeActivOk = new HashSet<String>();
+			
+			salidasDeActivOk.add("cena");
+			salidasDeActivOk.add("almuerzo");
+			
+			assertEquals(salidasDeActiv, salidasDeActivOk);
+			
+		} catch (NombreSalidaRepetidoException | NoHayActividadConEseNombreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
 	}
 
 	@Test
