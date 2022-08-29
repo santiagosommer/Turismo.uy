@@ -23,6 +23,7 @@ import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
@@ -151,7 +152,10 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		AceptarButton = new JButton("Aceptar");
 		AceptarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cmdAltaDeActividadTuristicaActionPerformed(e);
+				try {
+					cmdAltaDeActividadTuristicaActionPerformed(e);
+				} catch (NombreActividadRepetidoException e1) {
+				}
 			}
 
 		});
@@ -210,7 +214,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 	}
 
-	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) {
+	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) throws NombreActividadRepetidoException {
 
 		String depa = DepartamentoBox.getSelectedItem().toString();
 		String prov = ProveedorBox.getSelectedItem().toString();
@@ -228,8 +232,12 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
 						JOptionPane.INFORMATION_MESSAGE);
+				
+				limpiarFormulario();
+				setVisible(false);
 			} catch (NombreActividadRepetidoException ex) {
-				// TODO: handle exception
+				JOptionPane.showMessageDialog(this, ex.getMessage(), "Crear Actividad", JOptionPane.ERROR_MESSAGE);
+                throw new NombreActividadRepetidoException("La actividad ya esta registrada");
 			}
 		}
 
