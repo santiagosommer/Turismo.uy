@@ -24,6 +24,7 @@ import javax.swing.SwingConstants;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
@@ -409,4 +410,26 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 
 		return true;
 	}
+	
+	public void cargarDep() {
+		comboBoxDepartamentos.setSelectedIndex(-1);
+		try {
+			Iterator<String> iterator = controlTur.listarDepartamentos().iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxDepartamentos.addItem(setElement);
+		     }
+		} catch (DepartamentoNoExisteException ex) {}
+	}
+	
+	public void cargarAct() {
+		comboBoxActividades.setSelectedIndex(-1);
+			String dep = (String)comboBoxDepartamentos.getSelectedItem();
+			Iterator<String> iterator = controlTur.listarActividadesDeDepartamento(dep).iterator(); 
+	         while(iterator.hasNext()) { 
+	    	    String setElement = iterator.next(); 
+	    	    comboBoxActividades.addItem(setElement);
+		     }
+	}
+	
 }

@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.Excepciones.DepartamentoNoExisteException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
@@ -37,7 +39,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class InscripcionASalidaTuristica extends JInternalFrame {
-	 
+	
+	 private DTSalidaTuristica sal;
+	 private ActividadTuristica actividad;
 	  private IUsuario controladorUsuario;
 	  private JTextField CantTuristasTextField;
 	  private JComboBox<String> comboBoxDepartamentos;
@@ -54,6 +58,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	  private  DefaultListModel<String> l3;
 	  private  DefaultListModel<String> l1;
 	  private DefaultListModel<String> l2;
+	  private JLabel CuposLabel;
 	  
 	//JComboBox comboBoxDepartamentos;
 	/**
@@ -80,6 +85,9 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	public InscripcionASalidaTuristica(IUsuario ctrl) {
 		
 		controladorUsuario = ctrl;
+		Fabrica fabricaU = Fabrica.getInstance();
+		ITuristica ctr = fabricaU.getControladorTuristica();
+		
 		
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 708, 787);
@@ -122,8 +130,6 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		gbc_comboBox.gridy = 0;
 		panel.add(comboBoxDepartamentos, gbc_comboBox);
 		
-		Fabrica fabricaU = Fabrica.getInstance();
-		ITuristica ctr = fabricaU.getControladorTuristica();
 		
 		comboBoxDepartamentos.setSelectedIndex(-1);
 		//agrega departamentos
@@ -160,7 +166,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		//modelos listas
         
-	       l1 = new DefaultListModel<>(); //Actividades
+	        l1 = new DefaultListModel<>(); //Actividades
 	        l2 = new DefaultListModel<>(); //Salidas
 	        l3 = new DefaultListModel<>(); //Turistas
 
@@ -229,7 +235,10 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    	            
 	    	            if (ctr.existeActividad(selectedActividad)) {
 	    	            	ctr.seleccionarActividad(selectedActividad);
+	    	            	actividad = ctr.getActividadSeleccionada();
+	    	            	
 	    	            }
+	    	            
 	    	            Set<DTSalidaTuristica> salidas = ctr.datosSalidasVigentes(selectedActividad); 
 	    	            l2.removeAllElements();
 	    	            if (salidas!= null) {
@@ -361,7 +370,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_61.gridy = 4;
 		panel_1.add(lblNewLabel_6, gbc_lblNewLabel_61);
 		
-		JLabel CuposLabel = new JLabel("");
+		 CuposLabel = new JLabel("");
 		CuposLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
 		GridBagConstraints gbc_CuposLabel = new GridBagConstraints();
 		gbc_CuposLabel.insets = new Insets(0, 0, 0, 5);
@@ -378,25 +387,22 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 					JList<String> source = (JList)event.getSource();
     	            String selectedSalida = source.getSelectedValue();
     	            if (selectedSalida!=null) {
-    	            
-    	           ctr.seleccionarSalida(selectedSalida);
-    	           NombreLabel.setText(selectedSalida);
-    	          
-    	           DTSalidaTuristica sal = ctr.getDTSalidaTuristica();
-    	           if (sal!= null) {
+    	             ctr.seleccionarSalida(selectedSalida);
+    	             NombreLabel.setText(selectedSalida);
+    	             SalidaTuristica salidaTuri = ctr.getSalidaSeleccionada();
+    	             sal = ctr.getDTSalidaTuristica();
+    	             if (sal!= null) {
     	        	
-    	           //lugar
-    	           LugarLabel.setText(sal.getInfoSalida().getLugar());
-    	           //Hora
-    	           HoraLabel.setText(sal.getInfoSalida().getHora().toString());	    	           
-    	           //Fecha
-    	           FechaLabel.setText(sal.getInfoSalida().getFecha().toString());
-    	           SalidaTuristica.setText(selectedSalida);
-    	           //Cupos
-    	           String cupos = String.valueOf(sal.getCuposDisponibles());
-    	           CuposLabel.setText(cupos);
-    	           
-    	          
+    	            	 //lugar
+    	            	 LugarLabel.setText(sal.getInfoSalida().getLugar());
+    	            	 //Hora
+    	            	 HoraLabel.setText(sal.getInfoSalida().getHora().toString());	    	           
+    	            	 //Fecha
+    	            	 FechaLabel.setText(sal.getInfoSalida().getFecha().toString());
+    	            	 SalidaTuristica.setText(selectedSalida);
+    	            	 //Cupos
+    	            	 String cupos = String.valueOf(salidaTuri.getCuposDisponibles());
+    	            	 CuposLabel.setText(cupos); 
     	           
     	           }}
     	        }
@@ -538,7 +544,10 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                InscribirASalida(arg0);
+            	
+            		 InscribirASalida(arg0);
+            	
+               
             }
         });
 
@@ -571,6 +580,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		SalidaTuristica.setText("");
 		selectedTurista = null;
 		CantTuristasTextField.setText("");	
+		CuposLabel.setText("");
 		
 		l1.removeAllElements();
 		l2.removeAllElements();
@@ -586,11 +596,11 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 			
 				LocalDate fechaInscripcion = LocalDate.now();
 				String cantTuristas = this.CantTuristasTextField.getText();
-			//	controladorUsuario.crearInscripcion(selectedTurista, ALLBITS, fechaInscripcion, null, ABORT);
+	
               
-				controladorUsuario.crearInscripcion(selectedTurista,Integer.parseInt(cantTuristas), fechaInscripcion, null, controladorAct.getSalidaSeleccionada().getCuposDisponibles() );
+				controladorUsuario.crearInscripcion(selectedTurista,sal.getNombre(),Integer.valueOf(cantTuristas),actividad.getCostoTurista(),fechaInscripcion);
                 // Muestro éxito de la operación
-				//String c = "costo";
+				//String c = "costo";,
 				
 				String x = "La inscripcion se ha creado con éxito";  //El costo de la misma es: $ " + c
                 JOptionPane.showMessageDialog(this, x, "Registrar Usuario",
@@ -619,7 +629,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		Fabrica fabrica = Fabrica.getInstance();
 	    controladorAct = fabrica.getControladorTuristica();
 		if (controladorAct.getSalidaSeleccionada()!= null) {
-		 if (Integer.parseInt(cantTuristas) > controladorAct.getSalidaSeleccionada().getCantidadMaxTuristas() ) {
+		 if (Integer.parseInt(cantTuristas) > sal.getCuposDisponibles())  {
 			 JOptionPane.showMessageDialog(this, "No hay suficientes cupos en " + controladorAct.getSalidaSeleccionada().getNombre() , "Inscripcion a Salida Turistica",
 	                    JOptionPane.ERROR_MESSAGE);
 			return false;
