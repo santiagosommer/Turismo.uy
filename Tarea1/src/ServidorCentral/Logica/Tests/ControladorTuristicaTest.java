@@ -57,6 +57,7 @@ class ControladorTuristicaTest {
 	@Test
 	void testCrearActividadTuristica() {
 		//fail("Not yet implemented");
+		
 	}
 
 	@Test
