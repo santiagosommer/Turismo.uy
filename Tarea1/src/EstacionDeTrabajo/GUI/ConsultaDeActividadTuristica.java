@@ -264,10 +264,10 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					DTActividadTuristica actividadElegida = interfazTuristica.getDTActividadTuristica();
 					lblNombreContent.setText(actividadElegida.getNombre());		
 					lblDescripcionContent.setText("<html>" + actividadElegida.getDescripcion() + "</html>");
-					lblproveedor.setText(actividadElegida.getProveedor().getNombre() + actividadElegida.getProveedor().getApellido());
+					lblproveedor.setText(actividadElegida.getProveedor().getNombre() +" "+ actividadElegida.getProveedor().getApellido());
 					lblCiudadContent.setText(actividadElegida.getCiudad());
 					lblDuracionContent.setText(String.valueOf(actividadElegida.getDuracion()));
-					lblCostoPorTuristaContent.setText(String.valueOf(actividadElegida.getCostoTurista()));
+					lblCostoPorTuristaContent.setText("$"+String.valueOf(actividadElegida.getCostoTurista()));
 					lblFechaDeAltaContent.setText(actividadElegida.getFechaAlta().toString());
 					lblDepartamentoContent.setText(actividadElegida.getInfoDepartamento().getNombre());
 					
