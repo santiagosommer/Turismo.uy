@@ -98,15 +98,17 @@ class ControladorTuristicaTest {
 			e.printStackTrace();
 			
 		}
+		
+		assertThrows(NombreActividadRepetidoException.class, () -> {crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi");});
 
 	}
 
 	@Test
 	void testCrearSalidaTuristicaOk() {
+		DTInfoSalida info = new DTInfoSalida(LocalDate.of(2022,10, 11), LocalTime.of(10, 30), "bosque");
 		
 		try {
 			
-			DTInfoSalida info = new DTInfoSalida(LocalDate.of(2022,10, 11), LocalTime.of(10, 30), "bosque");
 			crTuri.crearSalidaTuristica("campamento", 10, LocalDate.of(2022, 8, 27), info, "paseo");
 			
 			crTuri.seleccionarSalida("campamento");
@@ -125,6 +127,9 @@ class ControladorTuristicaTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		
+		assertThrows(NoHayActividadConEseNombreException.class, () -> {crTuri.crearSalidaTuristica("campamento2", 10, LocalDate.of(2022, 8, 27), info, "a");});
+		
 	}
 	
 	@Test

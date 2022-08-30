@@ -18,7 +18,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JToolBar;
 
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
-import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;

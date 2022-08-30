@@ -18,7 +18,6 @@ import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
-import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;

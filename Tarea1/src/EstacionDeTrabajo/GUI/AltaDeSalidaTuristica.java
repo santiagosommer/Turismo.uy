@@ -24,7 +24,6 @@ import javax.swing.SwingConstants;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
-import ServidorCentral.Logica.Excepciones.ActividadNoExisteException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
