@@ -16,12 +16,12 @@ public class DTSalidaTuristica {
  
  public  DTSalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida,
 		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
-	 Nombre = nombre;
-	 CantidadMaxTuristas = cantidadMaxTuristas;
-	 FechaAlta = fechaAltaSalida;
-	 InfoSalida = infoSalida;
-	 CuposDisponibles = cuposDisponibles; 
-	 ActividadTuristicaAsoc =  actividadTuristicaAsoc;
+	 setNombre(nombre);
+	 setCantidadMaxTuristas(cantidadMaxTuristas);
+	 setFechaAlta(fechaAltaSalida);
+	 setInfoSalida(infoSalida);
+	 setCuposDisponibles(cuposDisponibles); 
+	 setActividadTuristicaAsoc(actividadTuristicaAsoc);
 	 inscripcionesAsoc = new ArrayList<DTInscripcion>();
 	 
  }
