@@ -16,12 +16,12 @@ public class DTPaquete {
   private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
  public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta) {
-	 Nombre = nombre;
-	 Descripcion = descripcion;
-	 PeriodoValidez = periodoValidez;
-	 Descuento = descuento;
-	 ActividadesTuristicas = new ArrayList<DTActividadTuristica>();	
-	 FechaAlta = fechaAlta;
+	 setNombre(nombre);
+	 setDescripcion(descripcion);
+	 setPeriodoValidez(periodoValidez);
+	 setDescuento(descuento);
+	 setActividadesTuristicas(new ArrayList<DTActividadTuristica>());	
+	 setFechaAlta(fechaAlta);
 	
  }
   

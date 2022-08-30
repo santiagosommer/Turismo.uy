@@ -10,9 +10,9 @@ public class DTInfoSalida {
  private String Lugar;
  
  public DTInfoSalida(LocalDate fecha, LocalTime hora, String lugar) {
-	 Fecha = fecha;
-	 Hora = hora;
-	 Lugar = lugar;
+	 setFecha(fecha);
+	 setHora(hora);
+	 setLugar(lugar);
  }
  
 public LocalDate getFecha() {
