@@ -273,7 +273,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 			try {
 				
 				LocalDate fechaActual = LocalDate.now();
-				LocalDate fechaSalida = LocalDate.of(iAnio,iMes,iDia);
+				LocalDate fechaSalida = LocalDate.of(iAnio,iMes+1,iDia);
 				LocalTime horaSalida =  LocalTime.of(iHora, iMinuto);
 				
 				DTInfoSalida info = new DTInfoSalida(fechaSalida, horaSalida, lugar);
