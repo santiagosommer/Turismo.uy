@@ -47,7 +47,6 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	private JLabel lblProveedor;
 	private JComboBox ProveedorBox;
 
-
 	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
 		setTitle("Alta de Actividad Turistica");
 		iTur = interf;
@@ -204,13 +203,13 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		gbc_CancelarButton.gridx = 5;
 		gbc_CancelarButton.gridy = 8;
 		getContentPane().add(CancelarButton, gbc_CancelarButton);
-		
+
 		CancelarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                limpiarFormulario();
-                setVisible(false);
-            }
-        });
+			public void actionPerformed(ActionEvent e) {
+				limpiarFormulario();
+				setVisible(false);
+			}
+		});
 
 	}
 
@@ -232,12 +231,12 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
 						JOptionPane.INFORMATION_MESSAGE);
-				
+
 				limpiarFormulario();
 				setVisible(false);
 			} catch (NombreActividadRepetidoException ex) {
 				JOptionPane.showMessageDialog(this, ex.getMessage(), "Crear Actividad", JOptionPane.ERROR_MESSAGE);
-                throw new NombreActividadRepetidoException("La actividad ya esta registrada");
+				throw new NombreActividadRepetidoException("La actividad ya esta registrada");
 			}
 		}
 
@@ -260,7 +259,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		}
 
 		try {
-			 Integer.parseInt(duracion);
+			Integer.parseInt(duracion);
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(this, "La duracion debe ser un numero", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
@@ -271,14 +270,15 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	}
 
 	public void cargarDatosDepartamentos() {
-			Set<String> depas = iTur.listarDepartamentos();
-			Iterator<String> itr = depas.iterator();
-			while (itr.hasNext()) {
-				DepartamentoBox.addItem(itr.next());
-			}
+
+		Set<String> depas = iTur.listarDepartamentos();
+		Iterator<String> itr = depas.iterator();
+		while (itr.hasNext()) {
+			DepartamentoBox.addItem(itr.next());
+		}
 
 	}
-	
+
 	public void cargarDatosProveedores() {
 		try {
 			Set<String> provs = iUsu.listarProveedores();
@@ -292,17 +292,17 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			// elemento
 		}
 	}
-	
-	public void limpiarFormulario(){
+
+	public void limpiarFormulario() {
 		NombreField.setText("");
-		DescripcionField.setText("");	
+		DescripcionField.setText("");
 		DuracionField.setText("");
 		CiudadField.setText("");
 		CostoTuristaField.setText("");
 		DepartamentoBox.setSelectedIndex(-1);
 		DepartamentoBox.removeAllItems();
 		ProveedorBox.setSelectedIndex(-1);
-		DepartamentoBox.removeAllItems();
-		} 
+		ProveedorBox.removeAllItems();
+	}
 
 }

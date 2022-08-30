@@ -372,6 +372,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	
 	void limpiarFormulario() {
 		comboBoxDepartamentos.setSelectedIndex(-1);
+		comboBoxDepartamentos.removeAllItems();
 		LugarLabel.setText("");
 		HoraLabel.setText("");
 		NombreLabel.setText("");
