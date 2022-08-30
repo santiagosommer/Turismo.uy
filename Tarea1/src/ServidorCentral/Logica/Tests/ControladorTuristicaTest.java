@@ -69,6 +69,10 @@ class ControladorTuristicaTest {
 	@Test
 	void testGetDTDepartamento() {
 		
+		ControladorTuristica ct = ControladorTuristica.getInstancia();
+		
+		ct.limpiarDepartamentos();
+		
 		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
 		crTuri.seleccionarDepartamento("Montevideo");
 		DTDepartamento dep = crTuri.getDTDepartamento();
