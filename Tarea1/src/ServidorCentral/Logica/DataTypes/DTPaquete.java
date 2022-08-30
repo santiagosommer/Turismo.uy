@@ -27,10 +27,10 @@ public class DTPaquete {
   
   
  public DTPaquete(Paquete pa) {
-	 Nombre = pa.getNombre();
-	 Descripcion = pa.getDescripcion();
-	 PeriodoValidez = pa.getPeriodoValidez();
-	 Descuento = pa.getDescuento();
+	 setNombre(pa.getNombre());
+	 setDescripcion(pa.getDescripcion());
+	 setPeriodoValidez(pa.getPeriodoValidez());
+	 setDescuento(pa.getDescuento());
 }
 
 
