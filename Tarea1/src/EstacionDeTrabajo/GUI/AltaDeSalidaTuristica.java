@@ -352,29 +352,29 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		int iMinuto = Integer.parseInt(minuto);
 		int iMes;
 		if (mes.equals("Enero")) {
-			iMes = 1;
+			iMes = 0;
 		} else if (mes.equals("Febrero")) {
-			iMes = 2;
+			iMes = 1;
 		} else if (mes.equals("Marzo")) {
-			iMes = 3;
+			iMes = 2;
 		} else if (mes.equals("Abril")) {
-			iMes = 4;
+			iMes = 3;
 		} else if (mes.equals("Mayo")) {
-			iMes = 5;
+			iMes = 4;
 		} else if (mes.equals("Junio")) {
-			iMes = 6;
+			iMes = 5;
 		} else if (mes.equals("Julio")) {
-			iMes = 7;
+			iMes = 6;
 		} else if (mes.equals("Agosto")) {
-			iMes = 8;
+			iMes = 7;
 		} else if (mes.equals("Setiembre")) {
-			iMes = 9;
+			iMes = 8;
 		} else if (mes.equals("Octubre")) {
-			iMes = 10;
+			iMes = 9;
 		} else if (mes.equals("Noviembre")) {
-			iMes = 11;
+			iMes = 10;
 		} else {
-			iMes = 12;
+			iMes = 11;
 		}
 		
 		if ((iMes == 3) || (iMes == 5) || (iMes == 8) || (iMes == 10)) {
