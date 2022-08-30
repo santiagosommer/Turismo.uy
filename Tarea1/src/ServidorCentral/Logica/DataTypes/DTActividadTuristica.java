@@ -35,15 +35,15 @@ public class DTActividadTuristica {
 		Ciudad = ciudad;
 	}
 	public DTActividadTuristica(ActividadTuristica at) {
-		Nombre = at.getNombre();
-		Descripcion = at.getDescripcion();
-		Duracion = at.getDuracion();
-		CostoTurista = at.getCostoTurista();
-		FechaAlta = at.getFechaAlta();
-		Ciudad = at.getCiudad();
-		InfoDepartamento = new DTDepartamento(at.getInfoDepartamento());
-		InfoSalidas = new ArrayList<DTSalidaTuristica>();
-		Proveedor = at.getProveedor().getNombre() + " " + at.getProveedor().getApellido();
+		setNombre(at.getNombre());
+		setDescripcion(at.getDescripcion());
+		setDuracion(at.getDuracion());
+		setCostoTurista(at.getCostoTurista());
+		setFechaAlta(at.getFechaAlta());
+		setCiudad(at.getCiudad());
+		setInfoDepartamento(new DTDepartamento(at.getInfoDepartamento()));
+		setSalidas(new ArrayList<DTSalidaTuristica>());
+		setProveedor(at.getProveedor().getNombre() + " " + at.getProveedor().getApellido());
 		
 		Map<String,SalidaTuristica> map = at.getSalidas();
 		

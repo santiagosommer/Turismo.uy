@@ -15,9 +15,9 @@ public class DTDepartamento {
 	}
 	
 	public DTDepartamento(Departamento dep) {
-		Nombre = dep.getNombre();
-		Descripcion = dep.getDescripcion();
-		URL = dep.getURL();
+		setNombre(dep.getNombre());
+		setDescripcion(dep.getDescripcion());
+		setURL(dep.getURL());
 	}
 
 	public String getNombre() {

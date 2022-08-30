@@ -20,10 +20,10 @@ public class DTInscripcion {
 	}
 	
 	public DTInscripcion(Inscripcion ins) {
-		Fecha = ins.getFecha();
-		CantidadTuristas = ins.getCantidadTuristas() ;
-		Costo = ins.getCosto();
-		SalidaAsociada = new DTSalidaTuristica(ins.getSalidaAsociada());
+		setFecha(ins.getFecha());
+		setCantidadTuristas(ins.getCantidadTuristas());
+		setCosto(ins.getCosto());
+		setSalidaAsociada(new DTSalidaTuristica(ins.getSalidaAsociada()));
 
 	}
 	

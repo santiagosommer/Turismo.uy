@@ -25,9 +25,9 @@ public DTProveedor(String nickname, String nombre, String apellido, String email
 
 public DTProveedor(Proveedor pro) {
 	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento());
-	DescripcionGeneral = pro.getDescripcionGeneral();
-	URL = pro.getURL();
-	InfoActividades = new ArrayList<DTActividadTuristica>();
+	setDescripcionGeneral(pro.getDescripcionGeneral());
+	setURL(pro.getURL());
+	setActividades(new ArrayList<DTActividadTuristica>());
 	
 	Map<String, ActividadTuristica> map = pro.getActividadesTuristicas();
 	
