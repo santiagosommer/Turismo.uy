@@ -82,7 +82,7 @@ class ControladorPaqueteTest {
 		try {
 			
 			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, fechaAlt);
-			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, 5, fechaAlt);
+//			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, 5, fechaAlt);
 		
 					
 		} catch (NombrePaqueteRepetidoException e) {
