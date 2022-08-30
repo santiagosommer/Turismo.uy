@@ -9,9 +9,9 @@ public class DTDepartamento {
 	private String URL;
 	
 	public DTDepartamento(String nombre, String descripcion, String url) {
-		Nombre = nombre;
-		Descripcion = descripcion;
-		URL = url;
+		setNombre(nombre);
+		setDescripcion(descripcion);
+		setURL(url);
 	}
 	
 	public DTDepartamento(Departamento dep) {
