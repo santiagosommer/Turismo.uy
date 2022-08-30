@@ -1,5 +1,6 @@
 package ServidorCentral.Logica.Tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.cert.TrustAnchor;
@@ -21,8 +22,9 @@ import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
+import ServidorCentral.Logica.Controladores.ControladorUsuario;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
-
+import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
@@ -41,6 +43,13 @@ class ControladorTuristicaTest {
 		crTuri = fabrica.getControladorTuristica();
 		crUsu = fabrica.getControladorUsuario();
 	}
+	
+	@Test
+	void testGetInstancia() {
+		ControladorTuristica ct = ControladorTuristica.getInstancia();
+		ControladorTuristica ctr = ControladorTuristica.getInstancia();
+		assertEquals(ct,ctr);
+	}
 
 	/*@Test
 	void testSeleccionarActividad() {
@@ -55,11 +64,20 @@ class ControladorTuristicaTest {
 	@Test
 	void testSeleccionarDepartamento() {
 		//fail("Not yet implemented");
-	}
+	}*/
 
 	@Test
 	void testGetDTDepartamento() {
-		//fail("Not yet implemented");
+		
+		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
+		crTuri.seleccionarDepartamento("Montevideo");
+		DTDepartamento dep = crTuri.getDTDepartamento();
+		DTDepartamento depOk = new DTDepartamento("Montevideo", "pequenio", "www.mvd.com");
+		
+		assertEquals(dep.getNombre(), depOk.getNombre());
+		assertEquals(dep.getDescripcion(), depOk.getDescripcion());
+		assertEquals(dep.getURL(), depOk.getURL());
+		
 	}
 
 	@Test
@@ -70,7 +88,7 @@ class ControladorTuristicaTest {
 	@Test
 	void testGetDTSalidaTuristica() {
 		//fail("Not yet implemented");
-	}*/
+	}
 
 	@Test
 	void testCrearActividadTuristicaOk() throws UsuarioRepetidoException {
@@ -87,7 +105,8 @@ class ControladorTuristicaTest {
 			assertEquals(act.getNombre(), "Degusta");
 			assertEquals(act.getDescripcion(), "Festival gastronomico de productos locales en Rocha");
 			assertEquals(act.getDuracion(), 3);
-			assertEquals(act.getCostoTurista(), (float)800);
+			boolean costoIgual = (act.getCostoTurista() == (float) 800);
+			assert(costoIgual);
 			assertEquals(act.getCiudad(), "Rocha");
 			assertEquals(act.getInfoDepartamento().getNombre(), "Rocha");
 			assertEquals(act.getProveedor(), "Washington" + " " + "Gomez");
