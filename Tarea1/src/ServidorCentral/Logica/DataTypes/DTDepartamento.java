@@ -8,12 +8,6 @@ public class DTDepartamento {
 	private String Descripcion;
 	private String URL;
 	
-	public DTDepartamento(String nombre, String descripcion, String url) {
-		setNombre(nombre);
-		setDescripcion(descripcion);
-		setURL(url);
-	}
-	
 	public DTDepartamento(Departamento dep) {
 		setNombre(dep.getNombre());
 		setDescripcion(dep.getDescripcion());
