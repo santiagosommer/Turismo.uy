@@ -301,7 +301,9 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		textFieldCantMax.setText("");	
 		textFieldLugar.setText("");
 		comboBoxDepartamentos.setSelectedIndex(-1);
+		comboBoxDepartamentos.removeAllItems();
 		comboBoxActividades.setSelectedIndex(-1);
+		comboBoxActividades.removeAllItems();
 		comboBoxDia.setSelectedIndex(-1);
 		comboBoxMes.setSelectedIndex(-1);
 		comboBoxAnio.setSelectedIndex(-1);
