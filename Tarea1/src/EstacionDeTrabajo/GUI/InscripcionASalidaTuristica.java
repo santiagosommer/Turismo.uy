@@ -82,6 +82,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public InscripcionASalidaTuristica(IUsuario ctrl) {
+		setTitle("Inscripcion a Salida Turistica");
 		
 		controladorUsuario = ctrl;
 		Fabrica fabricaU = Fabrica.getInstance();

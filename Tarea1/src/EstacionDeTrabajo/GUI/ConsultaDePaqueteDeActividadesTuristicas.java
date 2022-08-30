@@ -64,6 +64,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ConsultaDePaqueteDeActividadesTuristicas(IPaquete ctr,ITuristica turi) {
+		setTitle("Consulta de Paquete");
 		cu = ctr;
 		setBounds(100, 100, 516, 541);
 		GridBagLayout gridBagLayout = new GridBagLayout();

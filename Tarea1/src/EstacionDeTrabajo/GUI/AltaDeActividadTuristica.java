@@ -49,9 +49,11 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 
 	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
+		setTitle("Alta de Actividad Turistica");
 		iTur = interf;
 		iUsu = interfU;
 		setBounds(100, 100, 541, 321);
+		setClosable(true);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 75, 104, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };

@@ -52,6 +52,7 @@ public class CrearPaqueteDeActividadesTuristicas extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public CrearPaqueteDeActividadesTuristicas(IPaquete ctrl) {
+		setTitle("Crear Paquete");
 		
 		controladorPaquete = ctrl;
 		

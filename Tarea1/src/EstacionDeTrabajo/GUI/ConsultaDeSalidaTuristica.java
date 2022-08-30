@@ -71,9 +71,10 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ConsultaDeSalidaTuristica(ITuristica ctrl) {
+		setTitle("Consulta de Salida Turistica");
 		
 		
-		
+		setClosable(true);
 		setBounds(100, 100, 450, 300);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{116, 145, 140, 0, 0};
