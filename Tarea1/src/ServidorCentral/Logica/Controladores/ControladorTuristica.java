@@ -50,6 +50,10 @@ public class ControladorTuristica implements ITuristica {
 		return instancia;
 	}
 	
+	public void limpiarDepartamentos(){
+		Departamentos.clear();
+	}
+	
 	public void seleccionarActividad(String actividad) {
 		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
@@ -269,15 +273,7 @@ public class ControladorTuristica implements ITuristica {
 		Boolean existe = actividades.containsKey(actividad);
 		return existe;
 	}
-	
-	/*public Boolean existeSalida(String salida, String actividad) {
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
-		ActividadTuristica activ = actividades.get(actividad);
-		Map<String, SalidaTuristica> salidas = activ.getSalidas();	
-		Boolean existe = salidas.containsKey(salida);
-		return existe;
-	}*/
+
 	
 	public Boolean existeDepartamento(String departamento) {
 		return Departamentos.containsKey(departamento);
