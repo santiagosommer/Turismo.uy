@@ -20,20 +20,6 @@ public class DTActividadTuristica {
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
 	
-	public DTActividadTuristica(String nombre,String descripcion,int duracion,float costoTurista,
-			LocalDate fechaAlta,DTDepartamento infoDepartamento,
-			String proveedor,String ciudad) {
-		Nombre = nombre;
-		Descripcion = descripcion;
-		Duracion = duracion;
-		CostoTurista = costoTurista;
-		FechaAlta = fechaAlta;
-		InfoDepartamento = infoDepartamento;
-		InfoSalidas = new ArrayList<DTSalidaTuristica>();
-		Proveedor = proveedor;
-		InfoPaquetes = new ArrayList<DTPaquete>();
-		Ciudad = ciudad;
-	}
 	public DTActividadTuristica(ActividadTuristica at) {
 		setNombre(at.getNombre());
 		setDescripcion(at.getDescripcion());
