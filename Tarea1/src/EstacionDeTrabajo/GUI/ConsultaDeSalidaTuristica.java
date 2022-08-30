@@ -42,6 +42,7 @@ import java.awt.Color;
 
 public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	
+	
   private JComboBox<String> comboBoxDepartamentos;
   private JLabel LugarLabel;
   private JLabel HoraLabel;

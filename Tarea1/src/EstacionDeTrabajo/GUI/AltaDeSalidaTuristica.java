@@ -179,7 +179,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
         comboBoxHour = new JComboBox<String>();
         comboBoxHour.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "Hora","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
-						"17", "18", "19", "20", "21", "22", "23", "24" }));
+						"17", "18", "19", "20", "21", "22", "23" }));
         comboBoxHour.setBounds(290, 117, 48, 24);
         getContentPane().add(comboBoxHour);
         
@@ -188,7 +188,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 				new String[] { "Minuto","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28","29", "30", "31", "32", "33", 
 						"34","35", "36", "37", "38","39", "40", "41","42", "43","44","45", "46","47", "48", "49", "50","51",
-						"52", "53","54","55", "56","57", "58", "59", "60"}));
+						"52", "53","54","55", "56","57", "58", "59"}));
         comboBoxMinute.setBounds(346, 117, 44, 24);
         getContentPane().add(comboBoxMinute);
         
@@ -384,7 +384,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 				return false;
 			}
 		}
-		if ((iMes==1) && (iDia > 28)){
+		if ((iMes==1) && (iDia > 29)){
 			return false;
 		}
 		if ((iHora > 24 )){
@@ -402,8 +402,10 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		
 			Set<String> deps = controlTur.listarDepartamentos();
 			Iterator<String> iterator = deps.iterator(); 
+			comboBoxDepartamentos.removeAllItems();
 	         while(iterator.hasNext()) { 
 	    	    String setElement = iterator.next(); 
+	    	    
 	    	    comboBoxDepartamentos.addItem(setElement);
 		     }
 	      
