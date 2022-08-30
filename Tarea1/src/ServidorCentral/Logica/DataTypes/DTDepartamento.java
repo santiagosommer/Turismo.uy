@@ -14,6 +14,12 @@ public class DTDepartamento {
 		setURL(dep.getURL());
 	}
 
+	public DTDepartamento(String nombre2, String descripcion2, String url2) {
+		setNombre(nombre2);
+		setDescripcion(descripcion2);
+		setURL(url2);
+	}
+
 	public String getNombre() {
 		return Nombre;
 	}
