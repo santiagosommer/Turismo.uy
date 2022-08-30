@@ -20,7 +20,7 @@ import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
-
+import ServidorCentral.Logica.Controladores.ControladorTuristica;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
@@ -171,6 +171,10 @@ class ControladorTuristicaTest {
 
 	@Test
 	void testListarDepartamentos(){
+		
+		ControladorTuristica ct = ControladorTuristica.getInstancia();
+		
+		ct.limpiarDepartamentos();
 		
 		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
 		crTuri.crearDepartamento("Durazno", "grande", "www.dur.com");

@@ -50,6 +50,10 @@ public class ControladorTuristica implements ITuristica {
 		return instancia;
 	}
 	
+	public void limpiarDepartamentos(){
+		Departamentos.clear();
+	}
+	
 	public void seleccionarActividad(String actividad) {
 		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = instancia.ActividadesTuristicas;
