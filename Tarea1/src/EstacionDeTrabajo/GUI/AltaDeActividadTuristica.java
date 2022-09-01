@@ -230,13 +230,13 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
 						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
 
-				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
+				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Registrar actividad",
 						JOptionPane.INFORMATION_MESSAGE);
 
 				limpiarFormulario();
 				setVisible(false);
 			} catch (NombreActividadRepetidoException ex) {
-				JOptionPane.showMessageDialog(this, ex.getMessage(), "Crear Actividad", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, ex.getMessage(), "Registrar actividad", JOptionPane.ERROR_MESSAGE);
 				throw new NombreActividadRepetidoException("La actividad ya esta registrada");
 			}
 		}
@@ -254,7 +254,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
 				|| ciudad.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
