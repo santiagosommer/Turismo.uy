@@ -201,7 +201,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				setVisible(false);
 			}
 		});
-		
+
 		AceptarButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -226,7 +226,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 		if (checkFormulario()) {
 			try {
-
+				System.out.println(DepartamentoBox.getSelectedItem());
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
 						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
 
@@ -249,8 +249,6 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
 		String ciudad = CiudadField.getText();
-		DepartamentoBox.setSelectedIndex(-1);
-		ProveedorBox.setSelectedIndex(-1);
 
 		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
 				|| ciudad.isEmpty()) {
