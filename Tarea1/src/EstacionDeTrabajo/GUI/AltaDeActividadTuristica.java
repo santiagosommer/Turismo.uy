@@ -149,15 +149,6 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		JInternalFrame monturaFrame = this;
 
 		AceptarButton = new JButton("Aceptar");
-		AceptarButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					cmdAltaDeActividadTuristicaActionPerformed(e);
-				} catch (NombreActividadRepetidoException e1) {
-				}
-			}
-
-		});
 
 		lblDepartamento = new JLabel("Departamento");
 		GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
@@ -211,6 +202,16 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			}
 		});
 
+		AceptarButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cmdAltaDeActividadTuristicaActionPerformed(e);
+				} catch (NombreActividadRepetidoException e1) {
+				}
+			}
+
+		});
+
 	}
 
 	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) throws NombreActividadRepetidoException {
@@ -225,17 +226,17 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 		if (checkFormulario()) {
 			try {
-
+				System.out.println(DepartamentoBox.getSelectedItem());
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
 						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
 
-				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Crear actividad",
+				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Registrar actividad",
 						JOptionPane.INFORMATION_MESSAGE);
 
 				limpiarFormulario();
 				setVisible(false);
 			} catch (NombreActividadRepetidoException ex) {
-				JOptionPane.showMessageDialog(this, ex.getMessage(), "Crear Actividad", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, ex.getMessage(), "Registrar actividad", JOptionPane.ERROR_MESSAGE);
 				throw new NombreActividadRepetidoException("La actividad ya esta registrada");
 			}
 		}
@@ -248,12 +249,10 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
 		String ciudad = CiudadField.getText();
-		DepartamentoBox.setSelectedIndex(-1);
-		ProveedorBox.setSelectedIndex(-1);
 
 		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
 				|| ciudad.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -262,6 +261,13 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			Integer.parseInt(duracion);
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(this, "La duracion debe ser un numero", "Registrar actividad",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		try {
+			Integer.parseInt(costoTurista);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this, "El costo debe ser un numero", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
