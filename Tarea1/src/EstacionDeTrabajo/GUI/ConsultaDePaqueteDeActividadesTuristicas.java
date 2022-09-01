@@ -43,6 +43,8 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	private JLabel DepartamentoLabel;
 	private JLabel DuracionActLabel ;
 	private JLabel CiudadActLabel;
+	private JLabel FechaAltaPaqueteLabel;
+	
 	
 	/**
 	 * Launch the application.
@@ -69,7 +71,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		setBounds(100, 100, 516, 541);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 97, 376, 0};
-		gridBagLayout.rowHeights = new int[]{77, 87, 84, 127, 68, 0};
+		gridBagLayout.rowHeights = new int[]{77, 126, 103, 127, 68, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
@@ -123,12 +125,13 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	    	            if (selectedPaquete!= null) {
 	    	            	nomActLabel.setText("");
 	    	        		
-	    	        		FechaAltaLabel.setText("");
+	    	        		FechaAltaPaqueteLabel.setText("");
 	    	        		descripcionActLabel.setText("");
 	    	        		CostoActLabel.setText("");
 	    	        		DepartamentoLabel.setText("");
 	    	        	    DuracionActLabel.setText("") ;
 	    	        		CiudadActLabel.setText("");
+	    	        		
 	    	            	ctr.seleccionarPaquete(selectedPaquete);
 	 	    	            l2.removeAllElements();
 	 	    	            nomPaqueteLabel.setText(selectedPaquete);
@@ -137,6 +140,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	 	    	        	  validezLabel.setText(String.valueOf(paquete.getPeriodoValidez()));
 	 	    	        	  descripcionLabel.setText(paquete.getDescripcion());
 	 	    	        	  descuentoLabel.setText(String.valueOf(paquete.getDescuento()));
+	 	    	        	 FechaAltaPaqueteLabel.setText(paquete.getFechaAlta().toString());
 	 	    	        	  Set<String> s = cu.listarActividadesPaquete();
 	 	    	        	  if (s!=null && !s.isEmpty()) { //listar actividades paquetes
 	 	    	        		 Iterator<String> itr = s.iterator();
@@ -170,9 +174,9 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{106, 213, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 43, 0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 43, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		
@@ -211,31 +215,45 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		descripcionLabel = new JLabel("");
 		scrollPane_2.setViewportView(descripcionLabel);
 		
+		JLabel lblNewLabel_3 = new JLabel("Fecha Alta:");
+		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_3.gridx = 0;
+		gbc_lblNewLabel_3.gridy = 2;
+		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
+		
+		FechaAltaPaqueteLabel = new JLabel("New label");
+		GridBagConstraints gbc_lblNewLabel_65 = new GridBagConstraints();
+		gbc_lblNewLabel_65.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_65.gridx = 1;
+		gbc_lblNewLabel_65.gridy = 2;
+		panel_1.add(FechaAltaPaqueteLabel, gbc_lblNewLabel_65);
+		
 		JLabel lblNewLabel_4 = new JLabel("Periodo validez:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.gridx = 0;
-		gbc_lblNewLabel_4.gridy = 2;
+		gbc_lblNewLabel_4.gridy = 3;
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 		validezLabel = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_6.gridx = 1;
-		gbc_lblNewLabel_6.gridy = 2;
+		gbc_lblNewLabel_6.gridy = 3;
 		panel_1.add(validezLabel, gbc_lblNewLabel_6);
 		
 		JLabel lblNewLabel_5 = new JLabel("Descuento:");
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_5.gridx = 0;
-		gbc_lblNewLabel_5.gridy = 3;
+		gbc_lblNewLabel_5.gridy = 4;
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		 descuentoLabel = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 		gbc_lblNewLabel_7.gridx = 1;
-		gbc_lblNewLabel_7.gridy = 3;
+		gbc_lblNewLabel_7.gridy = 4;
 		panel_1.add(descuentoLabel, gbc_lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("     Actividades Turisticas");
@@ -457,7 +475,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		validezLabel.setText("");
 		descuentoLabel.setText("");
 		nomActLabel.setText("");
-		
+		FechaAltaPaqueteLabel.setText("");
 		FechaAltaLabel.setText("");
 		descripcionActLabel.setText("");
 		CostoActLabel.setText("");

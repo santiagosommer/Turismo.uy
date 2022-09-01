@@ -187,6 +187,11 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 		String depSelecBox = (String)comboBoxDepartamentos.getSelectedItem();
 		String actividadSelecBox = (String)comboBoxActividadesFueraDePaquete.getSelectedItem();
 		
+		if (comboBoxDepartamentos.getSelectedIndex() == -1 || comboBoxPaquetes.getSelectedIndex() == -1  || comboBoxActividadesFueraDePaquete.getSelectedIndex() == -1 ) {
+			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Inscripcion a Salida Turistica",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+		}
 		
 		if (depSelecBox.equals("Departamento")|| actividadSelecBox.equals("Actividad") || paqueteSelecBox.equals("Paquete")) {
 			JOptionPane.showMessageDialog(this, "Rellene los campos (*)", "Agregar Actividad A Paquete",

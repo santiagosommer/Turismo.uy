@@ -643,7 +643,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		 try {
 	            Integer.parseInt(cantTuristas);
-	        } catch (NumberFormatException e) {
+	        } catch (NumberFormatException e) { 
 	            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Inscripcion a Salida Turistica",
 	                    JOptionPane.ERROR_MESSAGE);
 	            return false;

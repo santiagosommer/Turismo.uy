@@ -227,7 +227,7 @@ protected void CrearPaquete(ActionEvent arg0) {
             // Muestro éxito de la operación
 			String x;
 			if (controladorPaquete.getPaquetes().isEmpty()) {
-				 x = "no funciona";
+				 x = "No Hay Paquetes";
 			}
 			else {
 			 x = "El paquete se ha creado con éxito"; 
