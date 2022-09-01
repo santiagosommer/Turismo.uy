@@ -46,6 +46,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	  private JComboBox<String> comboBoxDepartamentos;
 	  private JLabel LugarLabel;
 	  private JLabel HoraLabel;
+	  private JLabel FechaAltaLabel;
 	  private JLabel FechaLabel;
 	  private JLabel NombreLabel;
 	  private JLabel SalidaTuristica;
@@ -199,7 +200,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 					SalidaTuristica.setText("");
 					CantTuristasTextField.setText("");	
 					CuposLabel.setText("");
-					
+					FechaAltaLabel.setText("");
 			 	   if(ctr.existeDepartamento(DepartamentoSelecc)) {
 			 		   ctr.seleccionarDepartamento(DepartamentoSelecc);
 			 		   Set<String> actividades = ctr.listarActividadesDeDepartamento(DepartamentoSelecc);
@@ -236,6 +237,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    					SalidaTuristica.setText("");
 	    					CantTuristasTextField.setText("");	
 	    					CuposLabel.setText("");
+	    					FechaAltaLabel.setText("");
 	    					
 	    	            if (ctr.existeActividad(selectedActividad)) {
 	    	            	ctr.seleccionarActividad(selectedActividad);
@@ -382,6 +384,22 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		gbc_CuposLabel.gridy = 4;
 		panel_1.add(CuposLabel, gbc_CuposLabel);
 		
+		JLabel fech = new JLabel("Fecha Alta:");
+		fech.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		GridBagConstraints fechg = new GridBagConstraints();
+		fechg.anchor = GridBagConstraints.EAST;
+		fechg.insets = new Insets(0, 0, 0, 5);
+		fechg.gridx = 2;
+		fechg.gridy = 4;
+		panel_1.add(fech, fechg);
+		
+		FechaAltaLabel = new JLabel("");
+		FechaAltaLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		GridBagConstraints fechaA = new GridBagConstraints();
+		fechaA.gridx = 3;
+		fechaA.gridy = 4;
+		panel_1.add(FechaAltaLabel,fechaA);
+		
 		//Al seleccionar salida
 		
 		listaSalidas.addListSelectionListener(new ListSelectionListener() {
@@ -406,7 +424,9 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
     	            	 SalidaTuristica.setText(selectedSalida);
     	            	 //Cupos
     	            	 String cupos = String.valueOf(salidaTuri.getCuposDisponibles());
+    	            	 
     	            	 CuposLabel.setText(cupos); 
+    	            	 FechaAltaLabel.setText(sal.getFechaAlta().toString());
     	           
     	           }}
     	        }
@@ -585,6 +605,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		selectedTurista = null;
 		CantTuristasTextField.setText("");	
 		CuposLabel.setText("");
+		FechaAltaLabel.setText("");
 		
 		l1.removeAllElements();
 		l2.removeAllElements();
