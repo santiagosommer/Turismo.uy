@@ -149,15 +149,6 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		JInternalFrame monturaFrame = this;
 
 		AceptarButton = new JButton("Aceptar");
-		AceptarButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					cmdAltaDeActividadTuristicaActionPerformed(e);
-				} catch (NombreActividadRepetidoException e1) {
-				}
-			}
-
-		});
 
 		lblDepartamento = new JLabel("Departamento");
 		GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
@@ -209,6 +200,16 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				limpiarFormulario();
 				setVisible(false);
 			}
+		});
+		
+		AceptarButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					cmdAltaDeActividadTuristicaActionPerformed(e);
+				} catch (NombreActividadRepetidoException e1) {
+				}
+			}
+
 		});
 
 	}
