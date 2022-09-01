@@ -266,6 +266,13 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
+		try {
+			Integer.parseInt(costoTurista);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this, "El costo debe ser un numero", "Registrar actividad",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
 
 		return true;
 	}
