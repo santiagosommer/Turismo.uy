@@ -314,19 +314,20 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	private boolean checkFormulario() {
 		
-		String depSeleccionadoComboBox = (String)comboBoxDepartamentos.getSelectedItem();
-		String actSeleccionadaComboBox = (String)comboBoxActividades.getSelectedItem();
+	//	String depSeleccionadoComboBox = (String)comboBoxDepartamentos.getSelectedItem();
+	// String actSeleccionadaComboBox = (String)comboBoxActividades.getSelectedItem();
 		String nombreSalida = textFieldNombre.getText();
-		String dia = (String)comboBoxDia.getSelectedItem();
-		String mes = (String)comboBoxMes.getSelectedItem();
-		String anio = (String)comboBoxAnio.getSelectedItem();
-		String hora = (String)comboBoxHour.getSelectedItem();
-		String minuto = (String)comboBoxMinute.getSelectedItem();
+	//	String dia = (String)comboBoxDia.getSelectedItem();
+	//	String mes = (String)comboBoxMes.getSelectedItem();
+	//	String anio = (String)comboBoxAnio.getSelectedItem();
+	//	String hora = (String)comboBoxHour.getSelectedItem();
+	//	String minuto = (String)comboBoxMinute.getSelectedItem();
 		String lugar = textFieldLugar.getText();
 		String cantMaxTS = textFieldCantMax.getText();
 		
-		if ( nombreSalida.isEmpty() || lugar.isEmpty()|| cantMaxTS.isEmpty() || dia.equals("Dia") ||
-				mes.equals("Mes") || anio.equals("Año") || hora.equals("Hora")|| minuto.equals("Minuto") || depSeleccionadoComboBox.equals("Departamento")|| actSeleccionadaComboBox.equals("Actividad")) {
+		if ( nombreSalida.isEmpty() || lugar.isEmpty()|| cantMaxTS.isEmpty() || comboBoxDia.getSelectedIndex() == -1|| comboBoxHour.getSelectedIndex() == -1||
+				comboBoxAnio.getSelectedIndex() == -1 || comboBoxMinute.getSelectedIndex() == -1 || comboBoxMes.getSelectedIndex() == -1 || 
+			comboBoxActividades.getSelectedIndex() == -1 || comboBoxDepartamentos.getSelectedIndex() == -1 ) {
 			JOptionPane.showMessageDialog(this, "Rellene los campos (*)", "Alta de Salida Turistica",
                     JOptionPane.ERROR_MESSAGE);
 		return false;
