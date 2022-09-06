@@ -233,8 +233,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Registrar actividad",
 						JOptionPane.INFORMATION_MESSAGE);
 
-				limpiarFormulario();
-				setVisible(false);
+				//limpiarFormulario();
 			} catch (NombreActividadRepetidoException ex) {
 				JOptionPane.showMessageDialog(this, ex.getMessage(), "Registrar actividad", JOptionPane.ERROR_MESSAGE);
 				throw new NombreActividadRepetidoException("La actividad ya esta registrada");
