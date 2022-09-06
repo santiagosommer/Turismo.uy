@@ -247,7 +247,6 @@ public class AltaDeTurista extends JInternalFrame {
 							JOptionPane.INFORMATION_MESSAGE);
 
 					limpiarFormulario();
-					setVisible(false);
 				} catch (DateTimeException e) {
 					JOptionPane.showMessageDialog(this, "Ingrese fecha valida", "Registrar Usuario",
 							JOptionPane.ERROR_MESSAGE);
