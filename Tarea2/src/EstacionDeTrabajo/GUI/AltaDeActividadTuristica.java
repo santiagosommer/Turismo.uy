@@ -263,6 +263,11 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
+		if (Integer.parseInt(duracion) < 0 ||  Integer.parseInt(costoTurista) < 0) {
+			JOptionPane.showMessageDialog(this, "Ingrese un numero valido", "Registrar actividad",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
 
 		try {
 			Integer.parseInt(duracion);
