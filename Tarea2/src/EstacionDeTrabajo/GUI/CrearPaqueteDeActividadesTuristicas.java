@@ -242,7 +242,6 @@ protected void CrearPaquete(ActionEvent arg0) {
        }
 
 		 limpiarFormulario();
-         setVisible(false);
 	}
 		
 }
