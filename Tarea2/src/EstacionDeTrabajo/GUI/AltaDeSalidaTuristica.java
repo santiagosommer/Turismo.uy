@@ -205,7 +205,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
         btnAceptar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             		AltaSalidaActionPerformed(e);
-            		setVisible(false);
+            		//setVisible(false);
            }
         });
         btnAceptar.setBounds(35, 231, 117, 25);
@@ -283,7 +283,6 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
                         JOptionPane.INFORMATION_MESSAGE);
 				
 				limpiarFormulario();
-				setVisible(false);
 			} catch (NombreSalidaRepetidoException ex) {
 				JOptionPane.showMessageDialog(this, ex.getMessage(), "Alta de Salida Turistica", JOptionPane.ERROR_MESSAGE);
 			} catch (NoHayActividadConEseNombreException e1) {
@@ -301,9 +300,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		textFieldCantMax.setText("");	
 		textFieldLugar.setText("");
 		comboBoxDepartamentos.setSelectedIndex(-1);
-		comboBoxDepartamentos.removeAllItems();
 		comboBoxActividades.setSelectedIndex(-1);
-		comboBoxActividades.removeAllItems();
 		comboBoxDia.setSelectedIndex(-1);
 		comboBoxMes.setSelectedIndex(-1);
 		comboBoxAnio.setSelectedIndex(-1);

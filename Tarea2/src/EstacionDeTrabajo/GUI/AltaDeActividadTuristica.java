@@ -235,7 +235,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Registrar actividad",
 						JOptionPane.INFORMATION_MESSAGE);
 
-				//limpiarFormulario();
+				limpiarFormulario();
 			} catch (NombreActividadRepetidoException ex) {
 				JOptionPane.showMessageDialog(this, ex.getMessage(), "Registrar actividad", JOptionPane.ERROR_MESSAGE);
 				throw new NombreActividadRepetidoException("La actividad ya esta registrada");
@@ -280,6 +280,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 		Set<String> depas = iTur.listarDepartamentos();
 		Iterator<String> itr = depas.iterator();
+		DepartamentoBox.removeAllItems();
 		while (itr.hasNext()) {
 			DepartamentoBox.addItem(itr.next());
 		}
@@ -290,6 +291,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		try {
 			Set<String> provs = iUsu.listarProveedores();
 			Iterator<String> itr = provs.iterator();
+			ProveedorBox.removeAllItems();
 			while (itr.hasNext()) {
 				ProveedorBox.addItem(itr.next());
 			}
@@ -307,9 +309,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		CiudadField.setText("");
 		CostoTuristaField.setText("");
 		DepartamentoBox.setSelectedIndex(-1);
-		DepartamentoBox.removeAllItems();
 		ProveedorBox.setSelectedIndex(-1);
-		ProveedorBox.removeAllItems();
 	}
 
 }
