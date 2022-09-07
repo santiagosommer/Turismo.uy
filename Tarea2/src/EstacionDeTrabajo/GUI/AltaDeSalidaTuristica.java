@@ -330,11 +330,6 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	                    JOptionPane.ERROR_MESSAGE);
 	            return false;
 	     }
-		 if (Integer.parseInt(cantMaxTS) < 0) {
-			 JOptionPane.showMessageDialog(this, "Ingrese una cantidad positiva", "Alta de Salida Turistica",
-	                    JOptionPane.ERROR_MESSAGE);
-				return false;
-		 }
 		}
 		
 		if ( nombreSalida.isEmpty() || lugar.isEmpty()|| cantMaxTS.isEmpty() || comboBoxDia.getSelectedIndex() == -1|| comboBoxHour.getSelectedIndex() == -1||
