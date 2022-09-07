@@ -354,6 +354,11 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
                     JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
+		if (Integer.parseInt(cantMaxTS) < 0) {
+			JOptionPane.showMessageDialog(this, "Ingrese un numero valido", "Alta de Salida Turistica",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
 		return true;
 	}
 	
