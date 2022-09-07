@@ -217,9 +217,15 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	}
 
 	public void cmdAltaDeActividadTuristicaActionPerformed(ActionEvent e) throws NombreActividadRepetidoException {
-
-		String depa = DepartamentoBox.getSelectedItem().toString();
-		String prov = ProveedorBox.getSelectedItem().toString();
+		
+		String depa = "-1";
+		String prov = "-1";
+		if (this.DepartamentoBox.getSelectedIndex() != -1){
+			depa = DepartamentoBox.getSelectedItem().toString();
+		}
+		if (this.ProveedorBox.getSelectedIndex() != -1) {
+			prov = ProveedorBox.getSelectedItem().toString();
+		}
 		String nombre = this.NombreField.getText();
 		String descripcion = this.DescripcionField.getText();
 		String duracion = this.DuracionField.getText();
@@ -228,7 +234,6 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 
 		if (checkFormulario()) {
 			try {
-				System.out.println(DepartamentoBox.getSelectedItem());
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
 						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
 
@@ -252,7 +257,8 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String ciudad = CiudadField.getText();
 
 		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
-				|| ciudad.isEmpty()) {
+				|| ciudad.isEmpty() || this.DepartamentoBox.getSelectedIndex() == -1
+				|| this.ProveedorBox.getSelectedIndex() == -1) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar actividad",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
