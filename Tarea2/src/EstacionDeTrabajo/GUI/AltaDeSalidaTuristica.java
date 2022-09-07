@@ -322,14 +322,20 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		String lugar = textFieldLugar.getText();
 		String cantMaxTS = textFieldCantMax.getText();
 		
+		if (!cantMaxTS.isEmpty()) {
 		 try {
 	            Integer.parseInt(cantMaxTS);
 	        } catch (NumberFormatException e) { 
 	            JOptionPane.showMessageDialog(this, "La cantidad debe ser un numero", "Inscripcion a Salida Turistica",
 	                    JOptionPane.ERROR_MESSAGE);
 	            return false;
-	        }
-
+	     }
+		 if (Integer.parseInt(cantMaxTS) < 0) {
+			 JOptionPane.showMessageDialog(this, "Ingrese una cantidad positiva", "Alta de Salida Turistica",
+	                    JOptionPane.ERROR_MESSAGE);
+				return false;
+		 }
+		}
 		
 		if ( nombreSalida.isEmpty() || lugar.isEmpty()|| cantMaxTS.isEmpty() || comboBoxDia.getSelectedIndex() == -1|| comboBoxHour.getSelectedIndex() == -1||
 				comboBoxAnio.getSelectedIndex() == -1 || comboBoxMinute.getSelectedIndex() == -1 || comboBoxMes.getSelectedIndex() == -1 || 
