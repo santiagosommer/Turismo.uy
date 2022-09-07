@@ -138,7 +138,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		getContentPane().add(lblAnio);
 		
 		comboBoxAnio = new JComboBox<String>();
-		comboBoxAnio.setModel(new DefaultComboBoxModel<String>(new String[] {"Año","2022","2023","2024","2025"}));
+		comboBoxAnio.setModel(new DefaultComboBoxModel<String>(new String[] { "2022","2023","2024","2025"}));
 		comboBoxAnio.setBounds(166, 117, 80, 24);
 		getContentPane().add(comboBoxAnio);
 		
@@ -147,7 +147,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		getContentPane().add(lblMes);
 		
 		comboBoxMes = new JComboBox<String>();
-		comboBoxMes.setModel(new DefaultComboBoxModel<String>(new String[] { "Mes", "Enero", "Febrero", "Marzo",
+		comboBoxMes.setModel(new DefaultComboBoxModel<String>(new String[] { "Enero", "Febrero", "Marzo",
 				"Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" }));
 		comboBoxMes.setBounds(166, 145, 80, 24);
 		getContentPane().add(comboBoxMes);
@@ -158,7 +158,7 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 		
 		comboBoxDia = new JComboBox<String>();
 		comboBoxDia.setModel(new DefaultComboBoxModel<String>(
-				new String[] { "Dia", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
+				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 		comboBoxDia.setBounds(166, 177, 80, 24);
 		getContentPane().add(comboBoxDia);
@@ -178,14 +178,14 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
         
         comboBoxHour = new JComboBox<String>();
         comboBoxHour.setModel(new DefaultComboBoxModel<String>(
-				new String[] { "Hora","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
+				new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23" }));
         comboBoxHour.setBounds(290, 117, 48, 24);
         getContentPane().add(comboBoxHour);
         
         comboBoxMinute = new JComboBox<String>();
         comboBoxMinute.setModel(new DefaultComboBoxModel<String>(
-				new String[] { "Minuto","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
+				new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28","29", "30", "31", "32", "33", 
 						"34","35", "36", "37", "38","39", "40", "41","42", "43","44","45", "46","47", "48", "49", "50","51",
 						"52", "53","54","55", "56","57", "58", "59"}));
