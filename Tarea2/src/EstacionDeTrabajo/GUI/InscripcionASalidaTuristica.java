@@ -114,7 +114,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblNewLabel = new JLabel("Departamentos:");
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -137,7 +137,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		 
 		
 		JLabel lblNewLabel_1 = new JLabel("Actividades Turisticas:");
-		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -165,7 +165,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		scrollPane.setViewportView(listaActividades);
 		
 		JLabel lblNewLabel_2 = new JLabel("Salidas Turisticas vigentes:");
-		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
@@ -278,7 +278,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Informacion Salida");
-		lblNewLabel_3.setFont(new Font("SansSerif", Font.BOLD, 10));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 0;
@@ -293,7 +293,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(separator, gbc_separator);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nombre:");
-		lblNewLabel_4.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
@@ -302,7 +302,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 		NombreLabel = new JLabel("");
-		NombreLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		NombreLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_6.gridx = 1;
@@ -310,7 +310,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(NombreLabel, gbc_lblNewLabel_6);
 		
 		JLabel lblNewLabel_8 = new JLabel("Fecha:");
-		lblNewLabel_8.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
 		gbc_lblNewLabel_8.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
@@ -319,7 +319,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_8, gbc_lblNewLabel_8);
 		
 		FechaLabel = new JLabel("");
-		FechaLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		FechaLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
 		gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_10.gridx = 3;
@@ -327,7 +327,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(FechaLabel, gbc_lblNewLabel_10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Hora:");
-		lblNewLabel_5.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
@@ -336,7 +336,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		HoraLabel = new JLabel("");
-		HoraLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		HoraLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_7.gridx = 1;
@@ -344,7 +344,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(HoraLabel, gbc_lblNewLabel_7);
 		
 		JLabel lblNewLabel_9 = new JLabel("Lugar:");
-		lblNewLabel_9.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
 		gbc_lblNewLabel_9.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
@@ -353,7 +353,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_9, gbc_lblNewLabel_9);
 		
 		LugarLabel = new JLabel("");
-		LugarLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		LugarLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
 		gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_11.gridx = 3;
@@ -368,7 +368,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_7.gridy = 4;
 		
 		JLabel lblNewLabel_6 = new JLabel("Cupos Disponibles:");
-		lblNewLabel_6.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_61 = new GridBagConstraints();
 		gbc_lblNewLabel_61.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_61.insets = new Insets(0, 0, 0, 5);
@@ -377,7 +377,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_6, gbc_lblNewLabel_61);
 		
 		 CuposLabel = new JLabel("");
-		CuposLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		CuposLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_CuposLabel = new GridBagConstraints();
 		gbc_CuposLabel.insets = new Insets(0, 0, 0, 5);
 		gbc_CuposLabel.gridx = 1;
@@ -385,7 +385,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(CuposLabel, gbc_CuposLabel);
 		
 		JLabel fech = new JLabel("Fecha Alta:");
-		fech.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		fech.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints fechg = new GridBagConstraints();
 		fechg.anchor = GridBagConstraints.EAST;
 		fechg.insets = new Insets(0, 0, 0, 5);
@@ -394,7 +394,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_1.add(fech, fechg);
 		
 		FechaAltaLabel = new JLabel("");
-		FechaAltaLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		FechaAltaLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints fechaA = new GridBagConstraints();
 		fechaA.gridx = 3;
 		fechaA.gridy = 4;
@@ -449,7 +449,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_2.setLayout(gbl_panel_2);
 		
 		JLabel lblNewLabel_12 = new JLabel("      Turistas");
-		lblNewLabel_12.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_12 = new GridBagConstraints();
 		gbc_lblNewLabel_12.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNewLabel_12.gridx = 0;
@@ -501,7 +501,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_3.setLayout(gbl_panel_3);
 		
 		JLabel lblNewLabel_13 = new JLabel("Salida Turistica:");
-		lblNewLabel_13.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_13 = new GridBagConstraints();
 		gbc_lblNewLabel_13.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_13.insets = new Insets(0, 0, 5, 5);
@@ -510,7 +510,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_3.add(lblNewLabel_13, gbc_lblNewLabel_13);
 		
 	    SalidaTuristica = new JLabel("");
-		SalidaTuristica.setFont(new Font("SansSerif", Font.BOLD, 10));
+		SalidaTuristica.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_16 = new GridBagConstraints();
 		gbc_lblNewLabel_16.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_16.gridx = 1;
@@ -518,7 +518,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_3.add(SalidaTuristica, gbc_lblNewLabel_16);
 		
 		JLabel lblNewLabel_14 = new JLabel("Cantidad turistas:");
-		lblNewLabel_14.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_14.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_14 = new GridBagConstraints();
 		gbc_lblNewLabel_14.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_14.insets = new Insets(0, 0, 5, 5);
@@ -558,7 +558,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		panel_4.add(lblNewLabel_15, gbc_lblNewLabel_15);
 		
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setFont(new Font("SansSerif", Font.BOLD, 10));
+		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
@@ -578,7 +578,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 		
 		//Cancelar
 		JButton BotonCancelar = new JButton("Cancelar");
-		BotonCancelar.setFont(new Font("SansSerif", Font.BOLD, 10));
+		BotonCancelar.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton_1.gridx = 4;

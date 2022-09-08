@@ -79,7 +79,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		setBounds(100, 100, 450, 300);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{116, 145, 140, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 23, 0, 59, 62, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 23, 48, 59, 6, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
@@ -100,7 +100,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		getContentPane().add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{129, 137, 0, 0};
-		gbl_panel.rowHeights = new int[]{44, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{35, 39, 20, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
@@ -112,7 +112,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 0;
 		panel.add(lblNewLabel, gbc_lblNewLabel);
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		 comboBoxDepartamentos = new JComboBox<String>();
 		comboBoxDepartamentos.setBackground(new Color(245, 255, 250));
@@ -135,7 +135,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 1;
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
-		lblNewLabel_1.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -156,7 +156,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 3;
 		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
-		lblNewLabel_2.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
@@ -245,21 +245,22 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{107, 114, 83, 104, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 23, 0, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{57, 0, 35, 34, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Informacion");
-		lblNewLabel_3.setFont(new Font("SansSerif", Font.BOLD, 10));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.SOUTH;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 0;
 		gbc_lblNewLabel_3.gridy = 0;
 		panel_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nombre:");
-		lblNewLabel_4.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.gridx = 0;
@@ -267,7 +268,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 	    NombreLabel = new JLabel("");
-		NombreLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		NombreLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
 		gbc_lblNewLabel_8.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
@@ -276,7 +277,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(NombreLabel, gbc_lblNewLabel_8);
 		
 		JLabel lblNewLabel_5 = new JLabel("Fecha:");
-		lblNewLabel_5.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 0;
@@ -284,7 +285,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		FechaLabel = new JLabel("");
-		FechaLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		FechaLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_81 = new GridBagConstraints();
 		gbc_lblNewLabel_81.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_81.gridx = 1;
@@ -292,7 +293,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(FechaLabel, gbc_lblNewLabel_81);
 		
 		JLabel lblNewLabel_7 = new JLabel("Hora:");
-		lblNewLabel_7.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
@@ -301,7 +302,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_7, gbc_lblNewLabel_7);
 		
 		 HoraLabel = new JLabel("");
-		HoraLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		HoraLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_82 = new GridBagConstraints();
 		gbc_lblNewLabel_82.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_82.gridx = 3;
@@ -309,7 +310,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(HoraLabel, gbc_lblNewLabel_82);
 		
 		JLabel lblNewLabel_6 = new JLabel("Lugar:");
-		lblNewLabel_6.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_6.gridx = 0;
@@ -317,7 +318,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
 		 LugarLabel = new JLabel("");
-		LugarLabel.setFont(new Font("SansSerif", Font.BOLD, 10));
+		LugarLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
 		gbc_lblNewLabel_9.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
@@ -326,7 +327,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(LugarLabel, gbc_lblNewLabel_9);
 		
 		JLabel lblNewLabel_0 = new JLabel("Cantidad maxima turistas:");
-		lblNewLabel_0.setFont(new Font("SansSerif", Font.PLAIN, 10));
+		lblNewLabel_0.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_83 = new GridBagConstraints();
 		gbc_lblNewLabel_83.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_83.insets = new Insets(0, 0, 5, 5);
@@ -335,7 +336,7 @@ public class ConsultaDeSalidaTuristica extends JInternalFrame {
 		panel_1.add(lblNewLabel_0, gbc_lblNewLabel_83);
 		
 	    LabelMaxTuristas = new JLabel("");
-	    LabelMaxTuristas.setFont(new Font("SansSerif", Font.PLAIN, 10));
+	    LabelMaxTuristas.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_lblNewLabel_max = new GridBagConstraints();
 		gbc_lblNewLabel_max.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel_max.gridx = 3;
