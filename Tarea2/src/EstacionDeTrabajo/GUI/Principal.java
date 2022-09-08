@@ -130,7 +130,7 @@ public class Principal {
 		crearPaqueteIFrame.setClosable(true);
 
 		agregarActividadTurísticaAPaqueteIFrame = new AgregarActividadTuristicaAPaquete(ICP);
-		agregarActividadTurísticaAPaqueteIFrame.setBounds(10, 40, 400, 200);
+		agregarActividadTurísticaAPaqueteIFrame.setBounds(10, 40, 552, 280);
 		frmServidorcentral.getContentPane().add(agregarActividadTurísticaAPaqueteIFrame);
 		agregarActividadTurísticaAPaqueteIFrame.setVisible(false);
 		agregarActividadTurísticaAPaqueteIFrame.setClosable(true);
