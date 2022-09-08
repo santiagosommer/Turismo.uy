@@ -39,6 +39,7 @@ public class AltaDeTurista extends JInternalFrame {
 	JComboBox<Integer> comboBoxAño;
 
 	public AltaDeTurista(IUsuario controlUsr) {
+		setResizable(true);
 		setMaximizable(true);
 		setClosable(true);
 		setTitle("Alta de Turista");

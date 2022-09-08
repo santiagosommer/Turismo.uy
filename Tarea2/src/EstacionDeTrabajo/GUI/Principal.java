@@ -86,29 +86,34 @@ public class Principal {
 		modificarDatosUsuarioIFrame.setVisible(false);
 
 		consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
+		consultaSalidaTuristicaIFrame.setResizable(true);
+		consultaSalidaTuristicaIFrame.setMaximizable(true);
 		consultaSalidaTuristicaIFrame.setBounds(52, 0, 677, 411);
 		frmServidorcentral.getContentPane().add(consultaSalidaTuristicaIFrame);
 		consultaSalidaTuristicaIFrame.setVisible(false);
 		consultaSalidaTuristicaIFrame.setClosable(true);
 
 		consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP, frmServidorcentral);
+		consultaActividadTuristicaIFrame.setMaximizable(true);
 		consultaActividadTuristicaIFrame.setBounds(52, 0, 800, 560);
 		frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
 
 		altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
-		altaSalidaTuristicaIFrame.setBounds(10, 40, 400, 300);
+		altaSalidaTuristicaIFrame.setBounds(10, 40, 768, 596);
 		frmServidorcentral.getContentPane().add(altaSalidaTuristicaIFrame);
 		altaSalidaTuristicaIFrame.setVisible(false);
 		altaSalidaTuristicaIFrame.setClosable(true);
 		
 		crearActividadTuristicaIFrame = new AltaDeActividadTuristica(ICTuri, ICUsu);
-		crearActividadTuristicaIFrame.setBounds(10, 40, 400, 300);
+		crearActividadTuristicaIFrame.setBounds(10, 40, 733, 560);
 		frmServidorcentral.getContentPane().add(crearActividadTuristicaIFrame);
 		crearActividadTuristicaIFrame.setVisible(false);
 		crearActividadTuristicaIFrame.setClosable(true);
 		
 
 		inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
+		inscripcionSalidaTuristicaIFrame.setResizable(true);
+		inscripcionSalidaTuristicaIFrame.setMaximizable(true);
 		inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
 		consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
 		frmServidorcentral.getContentPane().add(inscripcionSalidaTuristicaIFrame);
@@ -117,6 +122,8 @@ public class Principal {
 		inscripcionSalidaTuristicaIFrame.setClosable(true);
 
 		crearPaqueteIFrame = new CrearPaqueteDeActividadesTuristicas(ICP);
+		crearPaqueteIFrame.setResizable(true);
+		crearPaqueteIFrame.setMaximizable(true);
 		crearPaqueteIFrame.setBounds(52, 0, 677, 411);
 		frmServidorcentral.getContentPane().add(crearPaqueteIFrame);
 		crearPaqueteIFrame.setVisible(false);
@@ -129,6 +136,8 @@ public class Principal {
 		agregarActividadTurísticaAPaqueteIFrame.setClosable(true);
 
 		consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP, ICTuri);
+		consultaPaqueteIFrame.setResizable(true);
+		consultaPaqueteIFrame.setMaximizable(true);
 
 		consultaPaqueteIFrame.setBounds(52, 0, 639, 558);
 		frmServidorcentral.getContentPane().add(consultaPaqueteIFrame);
