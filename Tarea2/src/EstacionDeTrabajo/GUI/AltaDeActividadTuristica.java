@@ -53,166 +53,165 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		setTitle("Alta de Actividad Turistica");
 		iTur = interf;
 		iUsu = interfU;
-		setBounds(100, 100, 541, 321);
+		setBounds(100, 100, 692, 402);
 		setClosable(true);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 75, 104, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0,
+		gridBagLayout.columnWidths = new int[] {-27, 30, 104, 30, 0, 0};
+		gridBagLayout.rowHeights = new int[] { 30, 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0,
 				Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0,
 				Double.MIN_VALUE };
 		getContentPane().setLayout(gridBagLayout);
-
-		JLabel lblNombre = new JLabel("Nombre");
-		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
-		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNombre.gridx = 1;
-		gbc_lblNombre.gridy = 1;
-		getContentPane().add(lblNombre, gbc_lblNombre);
-
-		NombreField = new JTextField();
-		GridBagConstraints gbc_NombreField = new GridBagConstraints();
-		gbc_NombreField.gridwidth = 5;
-		gbc_NombreField.insets = new Insets(0, 0, 5, 5);
-		gbc_NombreField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_NombreField.gridx = 3;
-		gbc_NombreField.gridy = 1;
-		getContentPane().add(NombreField, gbc_NombreField);
-		NombreField.setColumns(10);
-
-		JLabel lblDescripcion = new JLabel("Descripcion");
-		GridBagConstraints gbc_lblDescripcion = new GridBagConstraints();
-		gbc_lblDescripcion.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDescripcion.gridx = 1;
-		gbc_lblDescripcion.gridy = 2;
-		getContentPane().add(lblDescripcion, gbc_lblDescripcion);
+				
+						JLabel lblNombre = new JLabel("Nombre");
+						GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+						gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+						gbc_lblNombre.gridx = 1;
+						gbc_lblNombre.gridy = 1;
+						getContentPane().add(lblNombre, gbc_lblNombre);
+		
+				NombreField = new JTextField();
+				GridBagConstraints gbc_NombreField = new GridBagConstraints();
+				gbc_NombreField.gridwidth = 2;
+				gbc_NombreField.insets = new Insets(0, 0, 5, 5);
+				gbc_NombreField.fill = GridBagConstraints.HORIZONTAL;
+				gbc_NombreField.gridx = 2;
+				gbc_NombreField.gridy = 1;
+				getContentPane().add(NombreField, gbc_NombreField);
+				NombreField.setColumns(10);
+		
+				JLabel lblDescripcion = new JLabel("Descripcion");
+				GridBagConstraints gbc_lblDescripcion = new GridBagConstraints();
+				gbc_lblDescripcion.insets = new Insets(0, 0, 5, 5);
+				gbc_lblDescripcion.gridx = 1;
+				gbc_lblDescripcion.gridy = 2;
+				getContentPane().add(lblDescripcion, gbc_lblDescripcion);
 
 		DescripcionField = new JTextField();
 		DescripcionField.setColumns(10);
 		GridBagConstraints gbc_DescripcionField = new GridBagConstraints();
-		gbc_DescripcionField.gridwidth = 5;
+		gbc_DescripcionField.gridwidth = 2;
 		gbc_DescripcionField.insets = new Insets(0, 0, 5, 5);
 		gbc_DescripcionField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DescripcionField.gridx = 3;
+		gbc_DescripcionField.gridx = 2;
 		gbc_DescripcionField.gridy = 2;
 		getContentPane().add(DescripcionField, gbc_DescripcionField);
-
-		JLabel lblDuracion = new JLabel("Duracion");
-		GridBagConstraints gbc_lblDuracion = new GridBagConstraints();
-		gbc_lblDuracion.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDuracion.gridx = 1;
-		gbc_lblDuracion.gridy = 3;
-		getContentPane().add(lblDuracion, gbc_lblDuracion);
+		
+				JLabel lblDuracion = new JLabel("Duracion");
+				GridBagConstraints gbc_lblDuracion = new GridBagConstraints();
+				gbc_lblDuracion.insets = new Insets(0, 0, 5, 5);
+				gbc_lblDuracion.gridx = 1;
+				gbc_lblDuracion.gridy = 3;
+				getContentPane().add(lblDuracion, gbc_lblDuracion);
 
 		DuracionField = new JTextField();
 		DuracionField.setColumns(10);
 		GridBagConstraints gbc_DuracionField = new GridBagConstraints();
-		gbc_DuracionField.gridwidth = 5;
+		gbc_DuracionField.gridwidth = 2;
 		gbc_DuracionField.insets = new Insets(0, 0, 5, 5);
 		gbc_DuracionField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DuracionField.gridx = 3;
+		gbc_DuracionField.gridx = 2;
 		gbc_DuracionField.gridy = 3;
 		getContentPane().add(DuracionField, gbc_DuracionField);
-
-		JLabel lblCostoTurista = new JLabel("Costo Turista");
-		GridBagConstraints gbc_lblCostoTurista = new GridBagConstraints();
-		gbc_lblCostoTurista.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCostoTurista.gridx = 1;
-		gbc_lblCostoTurista.gridy = 4;
-		getContentPane().add(lblCostoTurista, gbc_lblCostoTurista);
+		
+				JLabel lblCostoTurista = new JLabel("Costo por Turista");
+				GridBagConstraints gbc_lblCostoTurista = new GridBagConstraints();
+				gbc_lblCostoTurista.insets = new Insets(0, 0, 5, 5);
+				gbc_lblCostoTurista.gridx = 1;
+				gbc_lblCostoTurista.gridy = 4;
+				getContentPane().add(lblCostoTurista, gbc_lblCostoTurista);
 
 		CostoTuristaField = new JTextField();
 		CostoTuristaField.setColumns(10);
 		GridBagConstraints gbc_CostoTuristaField = new GridBagConstraints();
-		gbc_CostoTuristaField.gridwidth = 5;
+		gbc_CostoTuristaField.gridwidth = 2;
 		gbc_CostoTuristaField.insets = new Insets(0, 0, 5, 5);
 		gbc_CostoTuristaField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_CostoTuristaField.gridx = 3;
+		gbc_CostoTuristaField.gridx = 2;
 		gbc_CostoTuristaField.gridy = 4;
 		getContentPane().add(CostoTuristaField, gbc_CostoTuristaField);
-
-		JLabel lblCiudad = new JLabel("Ciudad");
-		GridBagConstraints gbc_lblCiudad = new GridBagConstraints();
-		gbc_lblCiudad.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCiudad.gridx = 1;
-		gbc_lblCiudad.gridy = 5;
-		getContentPane().add(lblCiudad, gbc_lblCiudad);
+		
+				JLabel lblCiudad = new JLabel("Ciudad");
+				GridBagConstraints gbc_lblCiudad = new GridBagConstraints();
+				gbc_lblCiudad.insets = new Insets(0, 0, 5, 5);
+				gbc_lblCiudad.gridx = 1;
+				gbc_lblCiudad.gridy = 5;
+				getContentPane().add(lblCiudad, gbc_lblCiudad);
 
 		CiudadField = new JTextField();
 		CiudadField.setColumns(10);
 		GridBagConstraints gbc_CiudadField = new GridBagConstraints();
-		gbc_CiudadField.gridwidth = 5;
+		gbc_CiudadField.gridwidth = 2;
 		gbc_CiudadField.insets = new Insets(0, 0, 5, 5);
 		gbc_CiudadField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_CiudadField.gridx = 3;
+		gbc_CiudadField.gridx = 2;
 		gbc_CiudadField.gridy = 5;
 		getContentPane().add(CiudadField, gbc_CiudadField);
 		JInternalFrame monturaFrame = this;
-
-		AceptarButton = new JButton("Aceptar");
-
-		lblDepartamento = new JLabel("Departamento");
-		GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
-		gbc_lblDepartamento.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDepartamento.gridx = 1;
-		gbc_lblDepartamento.gridy = 6;
-		getContentPane().add(lblDepartamento, gbc_lblDepartamento);
-
-		DepartamentoBox = new JComboBox();
-		GridBagConstraints gbc_DepartamentoBox = new GridBagConstraints();
-		gbc_DepartamentoBox.gridwidth = 2;
-		gbc_DepartamentoBox.insets = new Insets(0, 0, 5, 5);
-		gbc_DepartamentoBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DepartamentoBox.gridx = 3;
-		gbc_DepartamentoBox.gridy = 6;
-		getContentPane().add(DepartamentoBox, gbc_DepartamentoBox);
-
-		lblProveedor = new JLabel("Proveedor");
-		GridBagConstraints gbc_lblProveedor = new GridBagConstraints();
-		gbc_lblProveedor.insets = new Insets(0, 0, 5, 5);
-		gbc_lblProveedor.gridx = 1;
-		gbc_lblProveedor.gridy = 7;
-		getContentPane().add(lblProveedor, gbc_lblProveedor);
-
-		ProveedorBox = new JComboBox();
-		GridBagConstraints gbc_ProveedorBox = new GridBagConstraints();
-		gbc_ProveedorBox.gridwidth = 2;
-		gbc_ProveedorBox.insets = new Insets(0, 0, 5, 5);
-		gbc_ProveedorBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_ProveedorBox.gridx = 3;
-		gbc_ProveedorBox.gridy = 7;
-		getContentPane().add(ProveedorBox, gbc_ProveedorBox);
-		GridBagConstraints gbc_AceptarButton = new GridBagConstraints();
-		gbc_AceptarButton.insets = new Insets(0, 0, 5, 5);
-		gbc_AceptarButton.gridx = 3;
-		gbc_AceptarButton.gridy = 8;
-		getContentPane().add(AceptarButton, gbc_AceptarButton);
-
-		CancelarButton = new JButton("Cancelar");
-		GridBagConstraints gbc_CancelarButton = new GridBagConstraints();
-		gbc_CancelarButton.gridwidth = 3;
-		gbc_CancelarButton.insets = new Insets(0, 0, 5, 5);
-		gbc_CancelarButton.gridx = 5;
-		gbc_CancelarButton.gridy = 8;
-		getContentPane().add(CancelarButton, gbc_CancelarButton);
-
-		CancelarButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-				setVisible(false);
-			}
-		});
-
-		AceptarButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					cmdAltaDeActividadTuristicaActionPerformed(e);
-				} catch (NombreActividadRepetidoException e1) {
-				}
-			}
-
-		});
+				
+						lblDepartamento = new JLabel("Departamento");
+						GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
+						gbc_lblDepartamento.insets = new Insets(0, 0, 5, 5);
+						gbc_lblDepartamento.gridx = 1;
+						gbc_lblDepartamento.gridy = 6;
+						getContentPane().add(lblDepartamento, gbc_lblDepartamento);
+		
+				DepartamentoBox = new JComboBox();
+				GridBagConstraints gbc_DepartamentoBox = new GridBagConstraints();
+				gbc_DepartamentoBox.gridwidth = 2;
+				gbc_DepartamentoBox.insets = new Insets(0, 0, 5, 5);
+				gbc_DepartamentoBox.fill = GridBagConstraints.HORIZONTAL;
+				gbc_DepartamentoBox.gridx = 2;
+				gbc_DepartamentoBox.gridy = 6;
+				getContentPane().add(DepartamentoBox, gbc_DepartamentoBox);
+				
+						lblProveedor = new JLabel("Proveedor");
+						GridBagConstraints gbc_lblProveedor = new GridBagConstraints();
+						gbc_lblProveedor.insets = new Insets(0, 0, 5, 5);
+						gbc_lblProveedor.gridx = 1;
+						gbc_lblProveedor.gridy = 7;
+						getContentPane().add(lblProveedor, gbc_lblProveedor);
+		
+				ProveedorBox = new JComboBox();
+				GridBagConstraints gbc_ProveedorBox = new GridBagConstraints();
+				gbc_ProveedorBox.gridwidth = 2;
+				gbc_ProveedorBox.insets = new Insets(0, 0, 5, 5);
+				gbc_ProveedorBox.fill = GridBagConstraints.HORIZONTAL;
+				gbc_ProveedorBox.gridx = 2;
+				gbc_ProveedorBox.gridy = 7;
+				getContentPane().add(ProveedorBox, gbc_ProveedorBox);
+																				
+																						AceptarButton = new JButton("Aceptar");
+																						GridBagConstraints gbc_AceptarButton = new GridBagConstraints();
+																						gbc_AceptarButton.insets = new Insets(0, 0, 5, 5);
+																						gbc_AceptarButton.gridx = 2;
+																						gbc_AceptarButton.gridy = 8;
+																						getContentPane().add(AceptarButton, gbc_AceptarButton);
+																						
+																								AceptarButton.addActionListener(new ActionListener() {
+																									public void actionPerformed(ActionEvent e) {
+																										try {
+																											cmdAltaDeActividadTuristicaActionPerformed(e);
+																										} catch (NombreActividadRepetidoException e1) {
+																										}
+																									}
+																						
+																								});
+																		
+																				CancelarButton = new JButton("Cancelar");
+																				GridBagConstraints gbc_CancelarButton = new GridBagConstraints();
+																				gbc_CancelarButton.insets = new Insets(0, 0, 5, 5);
+																				gbc_CancelarButton.gridx = 3;
+																				gbc_CancelarButton.gridy = 8;
+																				getContentPane().add(CancelarButton, gbc_CancelarButton);
+												
+														CancelarButton.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+																limpiarFormulario();
+																setVisible(false);
+															}
+														});
 
 	}
 
@@ -295,6 +294,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		while (itr.hasNext()) {
 			DepartamentoBox.addItem(itr.next());
 		}
+		DepartamentoBox.setSelectedIndex(-1);
 
 	}
 
@@ -306,7 +306,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			while (itr.hasNext()) {
 				ProveedorBox.addItem(itr.next());
 			}
-
+			ProveedorBox.setSelectedIndex(-1);
 		} catch (UsuarioNoExisteException ex) {
 			// // No se imprime mensaje de error sino que simplemente no se muestra ningún
 			// elemento

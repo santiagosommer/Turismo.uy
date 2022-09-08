@@ -92,6 +92,7 @@ public class Principal {
 		consultaSalidaTuristicaIFrame.setClosable(true);
 
 		consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP, frmServidorcentral);
+		consultaActividadTuristicaIFrame.setBounds(52, 0, 800, 560);
 		frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
 
 		altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
@@ -227,8 +228,7 @@ public class Principal {
 		JMenuItem mntmConsultaActividadTuristica = new JMenuItem("Consulta Actividad Turistica");
 		mntmConsultaActividadTuristica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					consultaActividadTuristicaIFrame.limpiarFormulario();
-
+				consultaActividadTuristicaIFrame.limpiarFormulario();
 				consultaActividadTuristicaIFrame.setVisible(true);
 			}
 		});

@@ -63,11 +63,14 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	
 
 	public ConsultaDeUsuario(IUsuario controladorUsuario, ITuristica CTuri) {
+		setTitle("Consulta de Usuario");
+		setMaximizable(true);
+		setClosable(true);
 		setResizable(true);
 		cu = controladorUsuario;
 		ct = CTuri;
 		
-		setBounds(100, 100, 462, 688);
+		setBounds(100, 100, 777, 688);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 143, 266, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};

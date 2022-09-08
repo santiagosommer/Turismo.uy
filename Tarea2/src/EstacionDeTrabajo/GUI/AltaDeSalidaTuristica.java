@@ -36,6 +36,9 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import java.awt.FlowLayout;
 import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class AltaDeSalidaTuristica extends JInternalFrame {
 	
@@ -47,12 +50,9 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	private JComboBox<String> comboBoxActividades;
 	private JLabel lblNombre;
 	private JTextField textFieldNombre;
-	private JLabel lblFechaDeSalida;
-	private JLabel lblAnio;
+	private JLabel lblFecha;
 	private JComboBox<String> comboBoxAnio;
-	private JLabel lblMes;
 	private JComboBox<String> comboBoxMes;
-	private JLabel lblDia;
 	private JComboBox<String> comboBoxDia;
 	private JLabel lblCantidadMaximaTur;
 	private JTextField textFieldCantMax;
@@ -81,25 +81,36 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 //	}
 	
 	public AltaDeSalidaTuristica(ITuristica iCTuri) {
-		setBounds(10, 40, 400, 300);
+		setMaximizable(true);
 		
 		controlTur = iCTuri;
 		setResizable(true);
-		setIconifiable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setClosable(true);
-		setTitle("Alta Salida Turistica");
-		setBounds(10, 40, 400, 300);
+		setTitle("Alta de Salida Turistica");
+		setBounds(10, 40, 828, 394);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[] {50, 50, 30, 91, 31, 30};
+		gridBagLayout.rowHeights = new int[] {30, 30, 30, 30, 30, 30, 30, 30, 0, 0, 30, };
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 1.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+		getContentPane().setLayout(gridBagLayout);
 		
-		getContentPane().setLayout(null);
-		
-		lblElijaDepartamento = new JLabel("Elija Departamento");
-		lblElijaDepartamento.setBounds(12, 12, 136, 15);
-		getContentPane().add(lblElijaDepartamento);
+		lblElijaDepartamento = new JLabel("Departamento");
+		GridBagConstraints gbc_lblElijaDepartamento = new GridBagConstraints();
+		gbc_lblElijaDepartamento.insets = new Insets(0, 0, 5, 5);
+		gbc_lblElijaDepartamento.gridx = 1;
+		gbc_lblElijaDepartamento.gridy = 1;
+		getContentPane().add(lblElijaDepartamento, gbc_lblElijaDepartamento);
 		
 		comboBoxDepartamentos = new JComboBox<String>();
-		comboBoxDepartamentos.setBounds(166, 7, 172, 24);
-		getContentPane().add(comboBoxDepartamentos);
+		GridBagConstraints gbc_comboBoxDepartamentos = new GridBagConstraints();
+		gbc_comboBoxDepartamentos.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxDepartamentos.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxDepartamentos.gridwidth = 3;
+		gbc_comboBoxDepartamentos.gridx = 2;
+		gbc_comboBoxDepartamentos.gridy = 1;
+		getContentPane().add(comboBoxDepartamentos, gbc_comboBoxDepartamentos);
 		
 		comboBoxDepartamentos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -110,116 +121,167 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
         });
 		
 		
-		lblElijaActividad = new JLabel("Elija Actividad");
-		lblElijaActividad.setBounds(12, 48, 136, 15);
-		getContentPane().add(lblElijaActividad);
+		lblElijaActividad = new JLabel("Actividad Turistica");
+		GridBagConstraints gbc_lblElijaActividad = new GridBagConstraints();
+		gbc_lblElijaActividad.insets = new Insets(0, 0, 5, 5);
+		gbc_lblElijaActividad.gridx = 1;
+		gbc_lblElijaActividad.gridy = 2;
+		getContentPane().add(lblElijaActividad, gbc_lblElijaActividad);
 		
 		comboBoxActividades = new JComboBox<String>();
-		comboBoxActividades.setBounds(166, 43, 172, 24);
-		getContentPane().add(comboBoxActividades);
+		GridBagConstraints gbc_comboBoxActividades = new GridBagConstraints();
+		gbc_comboBoxActividades.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxActividades.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxActividades.gridwidth = 3;
+		gbc_comboBoxActividades.gridx = 2;
+		gbc_comboBoxActividades.gridy = 2;
+		getContentPane().add(comboBoxActividades, gbc_comboBoxActividades);
+        
+        
+        lblNombre = new JLabel("Nombre");
+        GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+        gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNombre.gridx = 1;
+        gbc_lblNombre.gridy = 3;
+        getContentPane().add(lblNombre, gbc_lblNombre);
+        
+        textFieldNombre = new JTextField();
+        GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
+        gbc_textFieldNombre.gridwidth = 3;
+        gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
+        gbc_textFieldNombre.gridx = 2;
+        gbc_textFieldNombre.gridy = 3;
+        getContentPane().add(textFieldNombre, gbc_textFieldNombre);
+        textFieldNombre.setColumns(10);
 		
-		
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(12, 88, 70, 15);
-		getContentPane().add(lblNombre);
-		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(76, 86, 100, 19);
-		getContentPane().add(textFieldNombre);
-		textFieldNombre.setColumns(10);
-		
-		lblFechaDeSalida = new JLabel("Info de salida:");
-		lblFechaDeSalida.setBounds(12, 115, 116, 15);
-		getContentPane().add(lblFechaDeSalida);
-		
-		lblAnio = new JLabel("Anio");
-		
-		lblAnio.setBounds(124, 122, 42, 15);
-		getContentPane().add(lblAnio);
-		
-		comboBoxAnio = new JComboBox<String>();
-		comboBoxAnio.setModel(new DefaultComboBoxModel<String>(new String[] { "2022","2023","2024","2025"}));
-		comboBoxAnio.setBounds(166, 117, 80, 24);
-		getContentPane().add(comboBoxAnio);
-		
-		lblMes = new JLabel("Mes");
-		lblMes.setBounds(124, 150, 70, 15);
-		getContentPane().add(lblMes);
-		
-		comboBoxMes = new JComboBox<String>();
-		comboBoxMes.setModel(new DefaultComboBoxModel<String>(new String[] { "Enero", "Febrero", "Marzo",
-				"Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre" }));
-		comboBoxMes.setBounds(166, 145, 80, 24);
-		getContentPane().add(comboBoxMes);
-		
-		lblDia = new JLabel("Dia");
-		lblDia.setBounds(124, 183, 70, 15);
-		getContentPane().add(lblDia);
+		lblFecha = new JLabel("Fecha");
+		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
+		gbc_lblFecha.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFecha.gridx = 1;
+		gbc_lblFecha.gridy = 4;
+		getContentPane().add(lblFecha, gbc_lblFecha);
 		
 		comboBoxDia = new JComboBox<String>();
 		comboBoxDia.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-		comboBoxDia.setBounds(166, 177, 80, 24);
-		getContentPane().add(comboBoxDia);
+		GridBagConstraints gbc_comboBoxDia = new GridBagConstraints();
+		gbc_comboBoxDia.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxDia.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxDia.gridx = 2;
+		gbc_comboBoxDia.gridy = 4;
+		getContentPane().add(comboBoxDia, gbc_comboBoxDia);
 		
-		lblCantidadMaximaTur = new JLabel("Cantidad maxima de turistas");
-		lblCantidadMaximaTur.setBounds(12, 210, 246, 15);
-		getContentPane().add(lblCantidadMaximaTur);
+		comboBoxMes = new JComboBox<String>();
+		comboBoxMes.setModel(new DefaultComboBoxModel<String>(new String[] { "1", "2", "3",
+				"4", "5", "6", "7", "8", "9", "10", "1", "12" }));
+		GridBagConstraints gbc_comboBoxMes = new GridBagConstraints();
+		gbc_comboBoxMes.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxMes.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxMes.gridx = 3;
+		gbc_comboBoxMes.gridy = 4;
+		getContentPane().add(comboBoxMes, gbc_comboBoxMes);
 		
-		textFieldCantMax = new JTextField();
-		textFieldCantMax.setBounds(225, 208, 58, 19);
-		getContentPane().add(textFieldCantMax);
-		textFieldCantMax.setColumns(10);
+		comboBoxAnio = new JComboBox<String>();
+		comboBoxAnio.setModel(new DefaultComboBoxModel<String>(new String[] { "2022","2023","2024","2025"}));
+		GridBagConstraints gbc_comboBoxAnio = new GridBagConstraints();
+		gbc_comboBoxAnio.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxAnio.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxAnio.gridx = 4;
+		gbc_comboBoxAnio.gridy = 4;
+		getContentPane().add(comboBoxAnio, gbc_comboBoxAnio);
 		
         lblHora = new JLabel("Hora");
-        lblHora.setBounds(253, 122, 70, 15);
-        getContentPane().add(lblHora);
-        
-        comboBoxHour = new JComboBox<String>();
-        comboBoxHour.setModel(new DefaultComboBoxModel<String>(
+        GridBagConstraints gbc_lblHora = new GridBagConstraints();
+        gbc_lblHora.insets = new Insets(0, 0, 5, 5);
+        gbc_lblHora.gridx = 1;
+        gbc_lblHora.gridy = 5;
+        getContentPane().add(lblHora, gbc_lblHora);
+		
+		comboBoxHour = new JComboBox<String>();
+		comboBoxHour.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23" }));
-        comboBoxHour.setBounds(290, 117, 48, 24);
-        getContentPane().add(comboBoxHour);
-        
-        comboBoxMinute = new JComboBox<String>();
-        comboBoxMinute.setModel(new DefaultComboBoxModel<String>(
+		GridBagConstraints gbc_comboBoxHour = new GridBagConstraints();
+		gbc_comboBoxHour.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxHour.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxHour.gridx = 2;
+		gbc_comboBoxHour.gridy = 5;
+		getContentPane().add(comboBoxHour, gbc_comboBoxHour);
+		
+		comboBoxMinute = new JComboBox<String>();
+		comboBoxMinute.setModel(new DefaultComboBoxModel<String>(
 				new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "12", "13", "14", "15", "16",
 						"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28","29", "30", "31", "32", "33", 
 						"34","35", "36", "37", "38","39", "40", "41","42", "43","44","45", "46","47", "48", "49", "50","51",
 						"52", "53","54","55", "56","57", "58", "59"}));
-        comboBoxMinute.setBounds(346, 117, 44, 24);
-        getContentPane().add(comboBoxMinute);
-        
-        lblLugar = new JLabel("Lugar");
-        lblLugar.setBounds(252, 150, 70, 15);
-        getContentPane().add(lblLugar);
-        
-        textFieldLugar = new JTextField();
-        textFieldLugar.setBounds(300, 148, 78, 19);
-        getContentPane().add(textFieldLugar);
-        textFieldLugar.setColumns(10);
-        
-        btnAceptar = new JButton("Aceptar");
-        btnAceptar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            		AltaSalidaActionPerformed(e);
-            		//setVisible(false);
-           }
-        });
-        btnAceptar.setBounds(35, 231, 117, 25);
-        getContentPane().add(btnAceptar);
-        
-        btnCancelar = new JButton("Cancelar");
-        btnCancelar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	limpiarFormulario();
-            	setVisible(false);
-            }
-        });
-        btnCancelar.setBounds(205, 231, 117, 25);
-        getContentPane().add(btnCancelar);
+		GridBagConstraints gbc_comboBoxMinute = new GridBagConstraints();
+		gbc_comboBoxMinute.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxMinute.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxMinute.gridx = 3;
+		gbc_comboBoxMinute.gridy = 5;
+		getContentPane().add(comboBoxMinute, gbc_comboBoxMinute);
+		
+		lblLugar = new JLabel("Lugar");
+		GridBagConstraints gbc_lblLugar = new GridBagConstraints();
+		gbc_lblLugar.insets = new Insets(0, 0, 5, 5);
+		gbc_lblLugar.gridx = 1;
+		gbc_lblLugar.gridy = 6;
+		getContentPane().add(lblLugar, gbc_lblLugar);
+		
+		textFieldLugar = new JTextField();
+		GridBagConstraints gbc_textFieldLugar = new GridBagConstraints();
+		gbc_textFieldLugar.gridwidth = 3;
+		gbc_textFieldLugar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldLugar.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldLugar.gridx = 2;
+		gbc_textFieldLugar.gridy = 6;
+		getContentPane().add(textFieldLugar, gbc_textFieldLugar);
+		textFieldLugar.setColumns(10);
+		
+		lblCantidadMaximaTur = new JLabel("Cupos Maximos");
+		GridBagConstraints gbc_lblCantidadMaximaTur = new GridBagConstraints();
+		gbc_lblCantidadMaximaTur.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCantidadMaximaTur.gridx = 1;
+		gbc_lblCantidadMaximaTur.gridy = 7;
+		getContentPane().add(lblCantidadMaximaTur, gbc_lblCantidadMaximaTur);
+		
+		textFieldCantMax = new JTextField();
+		GridBagConstraints gbc_textFieldCantMax = new GridBagConstraints();
+		gbc_textFieldCantMax.gridwidth = 3;
+		gbc_textFieldCantMax.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldCantMax.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldCantMax.gridx = 2;
+		gbc_textFieldCantMax.gridy = 7;
+		getContentPane().add(textFieldCantMax, gbc_textFieldCantMax);
+		textFieldCantMax.setColumns(10);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    		AltaSalidaActionPerformed(e);
+		    		//setVisible(false);
+		   }
+		});
+		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
+		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAceptar.gridx = 2;
+		gbc_btnAceptar.gridy = 9;
+		getContentPane().add(btnAceptar, gbc_btnAceptar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	limpiarFormulario();
+		    	setVisible(false);
+		    }
+		});
+		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCancelar.gridx = 4;
+		gbc_btnCancelar.gridy = 9;
+		getContentPane().add(btnCancelar, gbc_btnCancelar);
         
         
     }
