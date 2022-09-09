@@ -205,7 +205,11 @@ public class Principal {
 		mntmConsultaDeUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// consultaDePerPropInternalFrame.limpiarFormulario();
+//				consultaUsuarioIFrame.resetearInfo();
+//				consultaUsuarioIFrame.resetearInfoExtra();
+				consultaUsuarioIFrame.cerrarConsultaUsuario();
 				consultaUsuarioIFrame.cargarUsuarios();
+				consultaUsuarioIFrame.comboBoxListaTuristicas.setVisible(false);
 				consultaUsuarioIFrame.setVisible(true);
 			}
 		});

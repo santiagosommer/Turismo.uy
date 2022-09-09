@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class ConsultaDeUsuario extends JInternalFrame {
 	
@@ -30,35 +31,34 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	private ITuristica ct;
 	
 	JComboBox<String> comboBoxListUsuarios;
-	private JTextField textFieldNickName;
-	private JTextField textFieldNombre;
-	private JTextField textFieldApellido;
-	private JTextField textFieldEmail;
-	private JTextField textFieldFecha;
-	private JTextField textFieldDescripcionNacionalidad;
-	private JTextField textFieldLinkWeb;
 	private JLabel lblDescripcionNacionalidad;
 	private JLabel lblLinkWeb;
-	private JButton btnSalir;
 	JComboBox<String> comboBoxListaTuristicas;
 	private JLabel lblTuristicas;
 	private JLabel lblProveedor;
-	private JTextField textFieldProveedor;
-	private JTextField textFieldDepartamento;
-	private JTextField textFieldNombreTuristica;
-	private JTextField textFieldDescripcionFecha;
-	private JTextField textFieldDuracionHora;
-	private JTextField textFieldCostoLugar;
-	private JTextField textFieldCiudadCantMax;
 	private JLabel lblDepartamento;
 	private JLabel lblNombreTuristica;
 	private JLabel lblDescripcionFecha;
 	private JLabel lblDuracionHora;
 	private JLabel lblCostoLugar;
 	private JLabel lblCiudadCantMax;
-	private JTextField textFieldFechaDeAlta;
 	private JLabel lblFechaDeAlta;
-	private JButton btnConsultarExtra;
+	private JLabel lblUsuarios;
+	private JLabel textFieldNickName;
+	private JLabel textFieldNombre;
+	private JLabel textFieldApellido;
+	private JLabel textFieldEmail;
+	private JLabel textFieldFecha;
+	private JLabel textFieldDescripcionNacionalidad;
+	private JLabel textFieldLinkWeb;
+	private JLabel textFieldProveedor;
+	private JLabel textFieldDepartamento;
+	private JLabel textFieldNombreTuristica;
+	private JLabel textFieldDescripcionFecha;
+	private JLabel textFieldDuracionHora;
+	private JLabel textFieldCostoLugar;
+	private JLabel textFieldCiudadCantMax;
+	private JLabel textFieldFechaDeAlta;
 	
 	
 
@@ -72,361 +72,295 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		
 		setBounds(100, 100, 777, 688);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 143, 266, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{37, 143, 266, 33, 0};
+		gridBagLayout.rowHeights = new int[]{32, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		comboBoxListUsuarios = new JComboBox<String>();
-		GridBagConstraints gbc_comboBoxListUsuarios = new GridBagConstraints();
-		gbc_comboBoxListUsuarios.gridwidth = 2;
-		gbc_comboBoxListUsuarios.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxListUsuarios.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxListUsuarios.gridx = 1;
-		gbc_comboBoxListUsuarios.gridy = 1;
-		getContentPane().add(comboBoxListUsuarios, gbc_comboBoxListUsuarios);
-		
-		JButton btnSeleccionarUsuario = new JButton("Seleccionar");
-		btnSeleccionarUsuario.addActionListener(new ActionListener() {
+		comboBoxListUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				resetearInfo();
 				listarDataUsuarioActionPerformed();
 			}
 		});
-		GridBagConstraints gbc_btnSeleccionarUsuario = new GridBagConstraints();
-		gbc_btnSeleccionarUsuario.gridwidth = 2;
-		gbc_btnSeleccionarUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSeleccionarUsuario.gridx = 1;
-		gbc_btnSeleccionarUsuario.gridy = 2;
-		getContentPane().add(btnSeleccionarUsuario, gbc_btnSeleccionarUsuario);
+		
+		lblUsuarios = new JLabel("Usuarios (NickNames)");
+		GridBagConstraints gbc_lblUsuarios = new GridBagConstraints();
+		gbc_lblUsuarios.insets = new Insets(0, 0, 5, 5);
+		gbc_lblUsuarios.gridx = 1;
+		gbc_lblUsuarios.gridy = 1;
+		getContentPane().add(lblUsuarios, gbc_lblUsuarios);
+		GridBagConstraints gbc_comboBoxListUsuarios = new GridBagConstraints();
+		gbc_comboBoxListUsuarios.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxListUsuarios.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxListUsuarios.gridx = 2;
+		gbc_comboBoxListUsuarios.gridy = 1;
+		getContentPane().add(comboBoxListUsuarios, gbc_comboBoxListUsuarios);
 		
 		JLabel lblNickName = new JLabel("NickName");
 		GridBagConstraints gbc_lblNickName = new GridBagConstraints();
 		gbc_lblNickName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNickName.gridx = 1;
-		gbc_lblNickName.gridy = 3;
+		gbc_lblNickName.gridy = 2;
 		getContentPane().add(lblNickName, gbc_lblNickName);
 		
-		textFieldNickName = new JTextField();
-		textFieldNickName.setEditable(false);
+		textFieldNickName = new JLabel("New label");
+		textFieldNickName.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldNickName = new GridBagConstraints();
 		gbc_textFieldNickName.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldNickName.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldNickName.gridx = 2;
-		gbc_textFieldNickName.gridy = 3;
+		gbc_textFieldNickName.gridy = 2;
 		getContentPane().add(textFieldNickName, gbc_textFieldNickName);
-		textFieldNickName.setColumns(10);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombre.gridx = 1;
-		gbc_lblNombre.gridy = 4;
+		gbc_lblNombre.gridy = 3;
 		getContentPane().add(lblNombre, gbc_lblNombre);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setEditable(false);
+		textFieldNombre = new JLabel("New label");
+		textFieldNombre.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
 		gbc_textFieldNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldNombre.gridx = 2;
-		gbc_textFieldNombre.gridy = 4;
+		gbc_textFieldNombre.gridy = 3;
 		getContentPane().add(textFieldNombre, gbc_textFieldNombre);
-		textFieldNombre.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido");
 		GridBagConstraints gbc_lblApellido = new GridBagConstraints();
 		gbc_lblApellido.insets = new Insets(0, 0, 5, 5);
 		gbc_lblApellido.gridx = 1;
-		gbc_lblApellido.gridy = 5;
+		gbc_lblApellido.gridy = 4;
 		getContentPane().add(lblApellido, gbc_lblApellido);
 		
-		textFieldApellido = new JTextField();
-		textFieldApellido.setEditable(false);
+		textFieldApellido = new JLabel("New label");
+		textFieldApellido.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldApellido = new GridBagConstraints();
 		gbc_textFieldApellido.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldApellido.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldApellido.gridx = 2;
-		gbc_textFieldApellido.gridy = 5;
+		gbc_textFieldApellido.gridy = 4;
 		getContentPane().add(textFieldApellido, gbc_textFieldApellido);
-		textFieldApellido.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email");
 		GridBagConstraints gbc_lblEmail = new GridBagConstraints();
 		gbc_lblEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEmail.gridx = 1;
-		gbc_lblEmail.gridy = 6;
+		gbc_lblEmail.gridy = 5;
 		getContentPane().add(lblEmail, gbc_lblEmail);
 		
-		textFieldEmail = new JTextField();
-		textFieldEmail.setEditable(false);
+		textFieldEmail = new JLabel("New label");
+		textFieldEmail.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldEmail = new GridBagConstraints();
 		gbc_textFieldEmail.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldEmail.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldEmail.gridx = 2;
-		gbc_textFieldEmail.gridy = 6;
+		gbc_textFieldEmail.gridy = 5;
 		getContentPane().add(textFieldEmail, gbc_textFieldEmail);
-		textFieldEmail.setColumns(10);
 		
 		JLabel lblFecha = new JLabel("Fecha");
 		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
 		gbc_lblFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFecha.gridx = 1;
-		gbc_lblFecha.gridy = 7;
+		gbc_lblFecha.gridy = 6;
 		getContentPane().add(lblFecha, gbc_lblFecha);
 		
-		textFieldFecha = new JTextField();
-		textFieldFecha.setEditable(false);
+		textFieldFecha = new JLabel("New label");
+		textFieldFecha.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldFecha = new GridBagConstraints();
 		gbc_textFieldFecha.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldFecha.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldFecha.gridx = 2;
-		gbc_textFieldFecha.gridy = 7;
+		gbc_textFieldFecha.gridy = 6;
 		getContentPane().add(textFieldFecha, gbc_textFieldFecha);
-		textFieldFecha.setColumns(10);
 		
 		lblDescripcionNacionalidad = new JLabel("DescripcionNacionalidad");
 		GridBagConstraints gbc_lblDescripcionNacionalidad = new GridBagConstraints();
 		gbc_lblDescripcionNacionalidad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcionNacionalidad.gridx = 1;
-		gbc_lblDescripcionNacionalidad.gridy = 8;
+		gbc_lblDescripcionNacionalidad.gridy = 7;
 		getContentPane().add(lblDescripcionNacionalidad, gbc_lblDescripcionNacionalidad);
 		lblDescripcionNacionalidad.setVisible(false);
 		
-		textFieldDescripcionNacionalidad = new JTextField();
-		textFieldDescripcionNacionalidad.setEditable(false);
+		textFieldDescripcionNacionalidad = new JLabel("New label");
+		textFieldDescripcionNacionalidad.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldDescripcionNacionalidad = new GridBagConstraints();
 		gbc_textFieldDescripcionNacionalidad.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDescripcionNacionalidad.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldDescripcionNacionalidad.gridx = 2;
-		gbc_textFieldDescripcionNacionalidad.gridy = 8;
+		gbc_textFieldDescripcionNacionalidad.gridy = 7;
 		getContentPane().add(textFieldDescripcionNacionalidad, gbc_textFieldDescripcionNacionalidad);
-		textFieldDescripcionNacionalidad.setColumns(10);
-		textFieldDescripcionNacionalidad.setVisible(false);
 		
 		lblLinkWeb = new JLabel("LinkWeb");
 		GridBagConstraints gbc_lblLinkWeb = new GridBagConstraints();
 		gbc_lblLinkWeb.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLinkWeb.gridx = 1;
-		gbc_lblLinkWeb.gridy = 9;
+		gbc_lblLinkWeb.gridy = 8;
 		getContentPane().add(lblLinkWeb, gbc_lblLinkWeb);
 		lblLinkWeb.setVisible(false);
 		
-		textFieldLinkWeb = new JTextField();
-		textFieldLinkWeb.setEditable(false);
-		GridBagConstraints gbc_textFieldLinkWeb = new GridBagConstraints();
-		gbc_textFieldLinkWeb.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldLinkWeb.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldLinkWeb.gridx = 2;
-		gbc_textFieldLinkWeb.gridy = 9;
-		getContentPane().add(textFieldLinkWeb, gbc_textFieldLinkWeb);
-		textFieldLinkWeb.setColumns(10);
-		textFieldLinkWeb.setVisible(false);
-		
-		lblTuristicas = new JLabel("New label");
-		GridBagConstraints gbc_lblTuristicas = new GridBagConstraints();
-		gbc_lblTuristicas.gridwidth = 2;
-		gbc_lblTuristicas.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTuristicas.gridx = 1;
-		gbc_lblTuristicas.gridy = 10;
-		getContentPane().add(lblTuristicas, gbc_lblTuristicas);
-		lblTuristicas.setVisible(false);
-		
 		comboBoxListaTuristicas = new JComboBox<String>();
-		GridBagConstraints gbc_comboBoxListaTuristicas = new GridBagConstraints();
-		gbc_comboBoxListaTuristicas.gridwidth = 2;
-		gbc_comboBoxListaTuristicas.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxListaTuristicas.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxListaTuristicas.gridx = 1;
-		gbc_comboBoxListaTuristicas.gridy = 11;
-		getContentPane().add(comboBoxListaTuristicas, gbc_comboBoxListaTuristicas);
-		comboBoxListaTuristicas.setVisible(false);
-		
-		btnConsultarExtra = new JButton("ConsultarExtra");
-		btnConsultarExtra.addActionListener(new ActionListener() {
+		comboBoxListaTuristicas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				resetearInfoExtra();
 				listarDataTuristicaActionPerformed();
 			}
 		});
-		GridBagConstraints gbc_btnConsultarExtra = new GridBagConstraints();
-		gbc_btnConsultarExtra.gridwidth = 2;
-		gbc_btnConsultarExtra.insets = new Insets(0, 0, 5, 5);
-		gbc_btnConsultarExtra.gridx = 1;
-		gbc_btnConsultarExtra.gridy = 12;
-		getContentPane().add(btnConsultarExtra, gbc_btnConsultarExtra);
-		btnConsultarExtra.setVisible(false);
 		
-		btnSalir = new JButton("Salir");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cerrarConsultaUsuario();
-			}
-		});
+		textFieldLinkWeb = new JLabel("New label");
+		textFieldLinkWeb.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		GridBagConstraints gbc_textFieldLinkWeb = new GridBagConstraints();
+		gbc_textFieldLinkWeb.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldLinkWeb.gridx = 2;
+		gbc_textFieldLinkWeb.gridy = 8;
+		getContentPane().add(textFieldLinkWeb, gbc_textFieldLinkWeb);
+		
+		lblTuristicas = new JLabel("New label");
+		GridBagConstraints gbc_lblTuristicas = new GridBagConstraints();
+		gbc_lblTuristicas.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTuristicas.gridx = 1;
+		gbc_lblTuristicas.gridy = 9;
+		getContentPane().add(lblTuristicas, gbc_lblTuristicas);
+		lblTuristicas.setVisible(false);
+		GridBagConstraints gbc_comboBoxListaTuristicas = new GridBagConstraints();
+		gbc_comboBoxListaTuristicas.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxListaTuristicas.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxListaTuristicas.gridx = 2;
+		gbc_comboBoxListaTuristicas.gridy = 9;
+		getContentPane().add(comboBoxListaTuristicas, gbc_comboBoxListaTuristicas);
+		comboBoxListaTuristicas.setVisible(false);
 		
 		lblProveedor = new JLabel("Proveedor");
 		GridBagConstraints gbc_lblProveedor = new GridBagConstraints();
 		gbc_lblProveedor.insets = new Insets(0, 0, 5, 5);
 		gbc_lblProveedor.gridx = 1;
-		gbc_lblProveedor.gridy = 13;
+		gbc_lblProveedor.gridy = 10;
 		getContentPane().add(lblProveedor, gbc_lblProveedor);
 		lblProveedor.setVisible(false);
 		
-		textFieldProveedor = new JTextField();
-		textFieldProveedor.setEditable(false);
+		textFieldProveedor = new JLabel("New label");
+		textFieldProveedor.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldProveedor = new GridBagConstraints();
 		gbc_textFieldProveedor.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldProveedor.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldProveedor.gridx = 2;
-		gbc_textFieldProveedor.gridy = 13;
+		gbc_textFieldProveedor.gridy = 10;
 		getContentPane().add(textFieldProveedor, gbc_textFieldProveedor);
-		textFieldProveedor.setColumns(10);
-		textFieldProveedor.setVisible(false);
 		
 		lblDepartamento = new JLabel("Departamento");
 		GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
 		gbc_lblDepartamento.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDepartamento.gridx = 1;
-		gbc_lblDepartamento.gridy = 14;
+		gbc_lblDepartamento.gridy = 11;
 		getContentPane().add(lblDepartamento, gbc_lblDepartamento);
 		lblDepartamento.setVisible(false);
 		
-		textFieldDepartamento = new JTextField();
-		textFieldDepartamento.setEditable(false);
+		textFieldDepartamento = new JLabel("New label");
+		textFieldDepartamento.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldDepartamento = new GridBagConstraints();
 		gbc_textFieldDepartamento.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDepartamento.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldDepartamento.gridx = 2;
-		gbc_textFieldDepartamento.gridy = 14;
+		gbc_textFieldDepartamento.gridy = 11;
 		getContentPane().add(textFieldDepartamento, gbc_textFieldDepartamento);
-		textFieldDepartamento.setColumns(10);
-		textFieldDepartamento.setVisible(false);
 		
 		lblNombreTuristica = new JLabel("Nombre");
 		GridBagConstraints gbc_lblNombreTuristica = new GridBagConstraints();
 		gbc_lblNombreTuristica.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombreTuristica.gridx = 1;
-		gbc_lblNombreTuristica.gridy = 15;
+		gbc_lblNombreTuristica.gridy = 12;
 		getContentPane().add(lblNombreTuristica, gbc_lblNombreTuristica);
 		lblNombreTuristica.setVisible(false);
 		
-		textFieldNombreTuristica = new JTextField();
-		textFieldNombreTuristica.setEditable(false);
+		textFieldNombreTuristica = new JLabel("New label");
+		textFieldNombreTuristica.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldNombreTuristica = new GridBagConstraints();
 		gbc_textFieldNombreTuristica.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldNombreTuristica.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldNombreTuristica.gridx = 2;
-		gbc_textFieldNombreTuristica.gridy = 15;
+		gbc_textFieldNombreTuristica.gridy = 12;
 		getContentPane().add(textFieldNombreTuristica, gbc_textFieldNombreTuristica);
-		textFieldNombreTuristica.setColumns(10);
-		textFieldNombreTuristica.setVisible(false);
 		
 		lblDescripcionFecha = new JLabel("Descripcion\\Fecha");
 		GridBagConstraints gbc_lblDescripcionFecha = new GridBagConstraints();
 		gbc_lblDescripcionFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcionFecha.gridx = 1;
-		gbc_lblDescripcionFecha.gridy = 16;
+		gbc_lblDescripcionFecha.gridy = 13;
 		getContentPane().add(lblDescripcionFecha, gbc_lblDescripcionFecha);
 		lblDescripcionFecha.setVisible(false);
 		
-		textFieldDescripcionFecha = new JTextField();
-		textFieldDescripcionFecha.setEditable(false);
+		textFieldDescripcionFecha = new JLabel("New label");
+		textFieldDescripcionFecha.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldDescripcionFecha = new GridBagConstraints();
 		gbc_textFieldDescripcionFecha.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDescripcionFecha.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldDescripcionFecha.gridx = 2;
-		gbc_textFieldDescripcionFecha.gridy = 16;
+		gbc_textFieldDescripcionFecha.gridy = 13;
 		getContentPane().add(textFieldDescripcionFecha, gbc_textFieldDescripcionFecha);
-		textFieldDescripcionFecha.setColumns(10);
-		textFieldDescripcionFecha.setVisible(false);
 		
 		lblDuracionHora = new JLabel("Duracion\\Hora");
 		GridBagConstraints gbc_lblDuracionHora = new GridBagConstraints();
 		gbc_lblDuracionHora.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDuracionHora.gridx = 1;
-		gbc_lblDuracionHora.gridy = 17;
+		gbc_lblDuracionHora.gridy = 14;
 		getContentPane().add(lblDuracionHora, gbc_lblDuracionHora);
 		lblDuracionHora.setVisible(false);
 		
-		textFieldDuracionHora = new JTextField();
-		textFieldDuracionHora.setEditable(false);
+		textFieldDuracionHora = new JLabel("New label");
+		textFieldDuracionHora.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldDuracionHora = new GridBagConstraints();
 		gbc_textFieldDuracionHora.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldDuracionHora.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldDuracionHora.gridx = 2;
-		gbc_textFieldDuracionHora.gridy = 17;
+		gbc_textFieldDuracionHora.gridy = 14;
 		getContentPane().add(textFieldDuracionHora, gbc_textFieldDuracionHora);
-		textFieldDuracionHora.setColumns(10);
-		textFieldDuracionHora.setVisible(false);
 		
 		lblCostoLugar = new JLabel("Costo\\Lugar");
 		GridBagConstraints gbc_lblCostoLugar = new GridBagConstraints();
 		gbc_lblCostoLugar.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCostoLugar.gridx = 1;
-		gbc_lblCostoLugar.gridy = 18;
+		gbc_lblCostoLugar.gridy = 15;
 		getContentPane().add(lblCostoLugar, gbc_lblCostoLugar);
 		lblCostoLugar.setVisible(false);
 		
-		textFieldCostoLugar = new JTextField();
-		textFieldCostoLugar.setEditable(false);
+		textFieldCostoLugar = new JLabel("New label");
+		textFieldCostoLugar.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldCostoLugar = new GridBagConstraints();
 		gbc_textFieldCostoLugar.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldCostoLugar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldCostoLugar.gridx = 2;
-		gbc_textFieldCostoLugar.gridy = 18;
+		gbc_textFieldCostoLugar.gridy = 15;
 		getContentPane().add(textFieldCostoLugar, gbc_textFieldCostoLugar);
-		textFieldCostoLugar.setColumns(10);
-		textFieldCostoLugar.setVisible(false);
 		
 		lblCiudadCantMax = new JLabel("Ciudad\\CantMax");
 		GridBagConstraints gbc_lblCiudadCantMax = new GridBagConstraints();
 		gbc_lblCiudadCantMax.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCiudadCantMax.gridx = 1;
-		gbc_lblCiudadCantMax.gridy = 19;
+		gbc_lblCiudadCantMax.gridy = 16;
 		getContentPane().add(lblCiudadCantMax, gbc_lblCiudadCantMax);
 		lblCiudadCantMax.setVisible(false);
 		
-		textFieldCiudadCantMax = new JTextField();
-		textFieldCiudadCantMax.setEditable(false);
+		textFieldCiudadCantMax = new JLabel("New label");
+		textFieldCiudadCantMax.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldCiudadCantMax = new GridBagConstraints();
 		gbc_textFieldCiudadCantMax.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldCiudadCantMax.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldCiudadCantMax.gridx = 2;
-		gbc_textFieldCiudadCantMax.gridy = 19;
+		gbc_textFieldCiudadCantMax.gridy = 16;
 		getContentPane().add(textFieldCiudadCantMax, gbc_textFieldCiudadCantMax);
-		textFieldCiudadCantMax.setColumns(10);
-		textFieldCiudadCantMax.setVisible(false);
 		
 		lblFechaDeAlta = new JLabel("FechaDeAlta");
 		GridBagConstraints gbc_lblFechaDeAlta = new GridBagConstraints();
 		gbc_lblFechaDeAlta.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFechaDeAlta.gridx = 1;
-		gbc_lblFechaDeAlta.gridy = 20;
+		gbc_lblFechaDeAlta.gridy = 17;
 		getContentPane().add(lblFechaDeAlta, gbc_lblFechaDeAlta);
-		lblFechaDeAlta.setVisible(false);
 		
-		textFieldFechaDeAlta = new JTextField();
-		textFieldFechaDeAlta.setEditable(false);
+		textFieldFechaDeAlta = new JLabel("New label");
+		textFieldFechaDeAlta.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		GridBagConstraints gbc_textFieldFechaDeAlta = new GridBagConstraints();
 		gbc_textFieldFechaDeAlta.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldFechaDeAlta.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textFieldFechaDeAlta.gridx = 2;
-		gbc_textFieldFechaDeAlta.gridy = 20;
+		gbc_textFieldFechaDeAlta.gridy = 17;
 		getContentPane().add(textFieldFechaDeAlta, gbc_textFieldFechaDeAlta);
-		textFieldFechaDeAlta.setVisible(false);
-		
-		textFieldFechaDeAlta.setColumns(10);
-		GridBagConstraints gbc_btnSalir = new GridBagConstraints();
-		gbc_btnSalir.gridwidth = 2;
-		gbc_btnSalir.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSalir.gridx = 1;
-		gbc_btnSalir.gridy = 21;
-		getContentPane().add(btnSalir, gbc_btnSalir);
+		lblFechaDeAlta.setVisible(false);
 
 	}
 	
 	protected void listarDataTuristicaActionPerformed() {
+		if(comboBoxListaTuristicas.getSelectedIndex() == -1) return;
 		String datoSeleccionado = comboBoxListaTuristicas.getSelectedItem().toString();
 		String dato = datoSeleccionado.replace("Actividad: ", "");
 		dato = dato.replace("Salida: ", "");
@@ -493,6 +427,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 	}
 
 	protected void listarDataUsuarioActionPerformed() {
+		if (comboBoxListUsuarios.getSelectedIndex() == -1)return;
 		String userSelected = comboBoxListUsuarios.getSelectedItem().toString();
 		comboBoxListaTuristicas.removeAllItems();
 		comboBoxListaTuristicas.setVisible(false);
@@ -523,7 +458,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 				lblTuristicas.setText("Salidas Inscripto");
 				lblTuristicas.setVisible(true);
 				
-				btnConsultarExtra.setVisible(true);
+//				btnConsultarExtra.setVisible(true);
 			}else {
 				lblTuristicas.setText("No hay Salidas Inscripto");
 				lblTuristicas.setVisible(true);
@@ -562,7 +497,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 				lblTuristicas.setText("Actividades que Provee");
 				lblTuristicas.setVisible(true);
 				
-				btnConsultarExtra.setVisible(true);
+//				btnConsultarExtra.setVisible(true);
 			}else {
 				lblTuristicas.setText("No hay Actividades que Provee");
 				lblTuristicas.setVisible(true);
@@ -591,6 +526,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		comboBoxListUsuarios.setSelectedIndex(-1);
 		comboBoxListaTuristicas.removeAllItems();
 		comboBoxListaTuristicas.setSelectedIndex(-1);
+		comboBoxListaTuristicas.setVisible(false);
 		textFieldNickName.setText("");
 		textFieldNombre.setText("");
 		textFieldApellido.setText("");
@@ -618,7 +554,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		textFieldCostoLugar.setVisible(false);
 		textFieldCiudadCantMax.setVisible(false);
 		textFieldFechaDeAlta.setVisible(false);
-		btnConsultarExtra.setVisible(false);
+//		btnConsultarExtra.setVisible(false);
 		
 		setVisible(false);
 		
@@ -654,7 +590,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		textFieldCostoLugar.setVisible(false);
 		textFieldCiudadCantMax.setVisible(false);
 		textFieldFechaDeAlta.setVisible(false);
-		btnConsultarExtra.setVisible(false);
+//		btnConsultarExtra.setVisible(false);
 		
 		
 	}
