@@ -296,7 +296,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 							interfazTuristica.seleccionarActividad(comboActividades.getSelectedItem().toString());
 							interfazTuristica.seleccionarSalida(comboSalidas.getSelectedItem().toString());
 							InfoSalida popupSalida = new InfoSalida(interfazTuristica.getDTSalidaTuristica());
-							popupSalida.setBounds(0, 0, 400, 400);
+							popupSalida.setBounds(0, 0, 660, 180);
 							principalFrame.getContentPane().add(popupSalida);
 							principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);
 						}
@@ -329,7 +329,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 						if (comboPaquetes.getSelectedIndex() != -1) {
 							interfazPaquete.seleccionarPaquete(comboPaquetes.getSelectedItem().toString());
 							InfoPaquete popupSalida = new InfoPaquete(interfazPaquete.getDtPaquete());
-							popupSalida.setBounds(0, 0, 400, 400);
+							popupSalida.setBounds(0, 0, 660, 180);
 							principalFrame.getContentPane().add(popupSalida);
 							principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);
 						}

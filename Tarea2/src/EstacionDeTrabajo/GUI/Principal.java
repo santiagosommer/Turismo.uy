@@ -69,7 +69,7 @@ public class Principal {
 		ICP = fabrica.getControladorPaquete();
 		frmServidorcentral.getContentPane().setLayout(null);
 
-		consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu, ICTuri);
+		consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu, ICTuri, frmServidorcentral);
 		consultaUsuarioIFrame.setBounds(10, 0, 768, 469);
 		frmServidorcentral.getContentPane().add(consultaUsuarioIFrame);
 		
