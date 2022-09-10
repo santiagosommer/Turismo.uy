@@ -42,46 +42,41 @@ public class InfoSalida extends JInternalFrame{
 		setClosable(true);
 		setVisible(true);
 		setTitle("Informacion de Salida Turistica");
-		getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 594, 286);
-		getContentPane().add(panel);
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		panel.add(lblNombre);
+		getContentPane().add(lblNombre);
 		
 		JLabel lblNombrecontent = new JLabel("NombreContent");
-		panel.add(lblNombrecontent);
-		lblNombrecontent.setText(salida.getNombre());
+		getContentPane().add(lblNombrecontent);
+		lblNombrecontent.setText("Nombre");
 		
 		JLabel lblCantidadMaximaDe = new JLabel("Cantidad  Maxima de Turistas: ");
-		panel.add(lblCantidadMaximaDe);
+		getContentPane().add(lblCantidadMaximaDe);
 		
 		JLabel lblCantidadMaximaDe_1 = new JLabel("Cantidad Maxima de Turistas Content");
-		panel.add(lblCantidadMaximaDe_1);
+		getContentPane().add(lblCantidadMaximaDe_1);
 		lblCantidadMaximaDe_1.setText(String.valueOf(salida.getCantidadMaxTuristas()));
 		
 		JLabel lblFechaDeAlta = new JLabel("Fecha de Alta: ");
-		panel.add(lblFechaDeAlta);
+		getContentPane().add(lblFechaDeAlta);
 		
 		JLabel lblFechaDeAlta_1 = new JLabel("Fecha de Alta Content");
-		panel.add(lblFechaDeAlta_1);
-		lblFechaDeAlta_1.setText(salida.getFechaAlta().toString());
+		getContentPane().add(lblFechaDeAlta_1);
+		lblFechaDeAlta_1.setText("2001-01-01");
 		
 		JLabel lblFechaDeSalida = new JLabel("Fecha de Salida: ");
-		panel.add(lblFechaDeSalida);
+		getContentPane().add(lblFechaDeSalida);
 		
 		JLabel lblFechaDeSalida_1 = new JLabel("Fecha de Salida Content");
-		panel.add(lblFechaDeSalida_1);
-		lblFechaDeSalida_1.setText(salida.getInfoSalida().getFecha().toString());
+		getContentPane().add(lblFechaDeSalida_1);
+		lblFechaDeSalida_1.setText("2001-01-01");
 		
 		JLabel lblCuposDisponibles = new JLabel("Cupos Disponibles:");
-		panel.add(lblCuposDisponibles);
+		getContentPane().add(lblCuposDisponibles);
 		
 		JLabel lblCuposDisponiblesContent = new JLabel("Cupos Disponibles Content");
-		panel.add(lblCuposDisponiblesContent);
+		getContentPane().add(lblCuposDisponiblesContent);
 		lblCuposDisponiblesContent.setText(String.valueOf(salida.getCuposDisponibles()));
 		
 		

@@ -209,7 +209,6 @@ public class Principal {
 //				consultaUsuarioIFrame.resetearInfoExtra();
 				consultaUsuarioIFrame.cerrarConsultaUsuario();
 				consultaUsuarioIFrame.cargarUsuarios();
-				consultaUsuarioIFrame.comboBoxListaTuristicas.setVisible(false);
 				consultaUsuarioIFrame.setVisible(true);
 			}
 		});

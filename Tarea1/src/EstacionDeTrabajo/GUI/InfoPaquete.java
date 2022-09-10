@@ -43,41 +43,36 @@ public class InfoPaquete extends JInternalFrame{
 		setClosable(true);
 		setVisible(true);
 		setTitle("Informacion de Paquete");
-		getContentPane().setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 598, 294);
-		getContentPane().add(panel);
-		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		panel.add(lblNombre);
+		getContentPane().add(lblNombre);
 		
 		JLabel lblNombrecontent = new JLabel("NombreContent");
-		panel.add(lblNombrecontent);
-		lblNombrecontent.setText(paquete.getNombre());
+		getContentPane().add(lblNombrecontent);
+		lblNombrecontent.setText("Nombre");
 		
 		JLabel lblDescripcion = new JLabel("Descripcion: ");
-		panel.add(lblDescripcion);
+		getContentPane().add(lblDescripcion);
 		
 		JLabel lblDescripcionContent = new JLabel("Descripcion Content");
-		panel.add(lblDescripcionContent);
-		lblDescripcionContent.setText("<html>"+String.valueOf(paquete.getDescripcion()+"</html>"));
+		getContentPane().add(lblDescripcionContent);
+		lblDescripcionContent.setText("Descripcion");
 		
 		JLabel lblPeriodoValidez = new JLabel("Periodo de Validez:");
+		getContentPane().add(lblPeriodoValidez);
 		lblPeriodoValidez.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(lblPeriodoValidez);
 		
 		JLabel lblPeriodoDeValidezContent = new JLabel("Periodo de validez content");
-		panel.add(lblPeriodoDeValidezContent);
+		getContentPane().add(lblPeriodoDeValidezContent);
 		lblPeriodoDeValidezContent.setText(String.valueOf(paquete.getPeriodoValidez()) + " dia/dias");
 		
 		JLabel lblDescuento = new JLabel("Descuento:");
+		getContentPane().add(lblDescuento);
 		lblDescuento.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(lblDescuento);
 		
 		JLabel lblDescuentoContent = new JLabel("Descuento Content");
-		panel.add(lblDescuentoContent);
+		getContentPane().add(lblDescuentoContent);
 		lblDescuentoContent.setText(String.valueOf(paquete.getDescuento()) + "%");
 		
 		
