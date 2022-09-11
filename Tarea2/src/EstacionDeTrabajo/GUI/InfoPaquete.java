@@ -44,12 +44,13 @@ public class InfoPaquete extends JInternalFrame{
 	}
 	
 	public InfoPaquete(DTPaquete paquete) {
-		setIconifiable(true);
 		setMaximizable(true);
 		setResizable(true);
 		setClosable(true);
 		setVisible(true);
 		setTitle("Informacion de Paquete");
+		setBounds(0, 0, 550, 400);
+		
 		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblNombre = new JLabel("Nombre:");

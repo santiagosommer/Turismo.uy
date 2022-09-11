@@ -20,6 +20,7 @@ public class InfoActividad extends JInternalFrame{
 		setClosable(true);
 		setVisible(true);
 		setTitle("Informacion de Salida Turistica");
+		setBounds(0, 0, 550, 400);
 		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblNombre = new JLabel("Nombre:");

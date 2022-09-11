@@ -203,9 +203,9 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 //				resetearInfoExtra();
 //				listarDataTuristicaActionPerformed();
+				comboBoxSalidas.removeAllItems();
 				if (comboBoxActividades.getSelectedIndex() != -1) 
 				{
-					comboBoxSalidas.removeAllItems();
 					CTuri.seleccionarActividad(comboBoxActividades.getSelectedItem().toString());
 					DTActividadTuristica dtAct = CTuri.getDTActividadTuristica();
 					
@@ -299,9 +299,8 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			ct.seleccionarActividad(dato);
 			DTActividadTuristica dtat = ct.getDTActividadTuristica();
 			InfoActividad popupActividad = new InfoActividad(dtat);
-			popupActividad.setBounds(0, 0, 660, 200);
 			principalFrame.getContentPane().add(popupActividad);
-			principalFrame.getContentPane().setComponentZOrder(popupActividad, 0);
+			principalFrame.getContentPane().setComponentZOrder(popupActividad, 2);
 		}
 	}
 
@@ -312,15 +311,14 @@ public class ConsultaDeUsuario extends JInternalFrame {
 		DTSalidaTuristica dtst = ct.getDTSalidaTuristica();
 		
 		InfoSalida popupSalida = new InfoSalida(dtst);
-		popupSalida.setBounds(0, 0, 660, 180);
 		principalFrame.getContentPane().add(popupSalida);
-		principalFrame.getContentPane().setComponentZOrder(popupSalida, 0);		
+		principalFrame.getContentPane().setComponentZOrder(popupSalida, 2);		
 	}
 
 	protected void listarDataUsuarioActionPerformed() {
+		comboBoxActividades.removeAllItems();
 		if (comboBoxListUsuarios.getSelectedIndex() == -1) return;
 		String userSelected = comboBoxListUsuarios.getSelectedItem().toString();
-		comboBoxActividades.removeAllItems();
 		comboBoxActividades.setVisible(false);
 		btnInfoAT.setVisible(false);
 		

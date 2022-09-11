@@ -85,7 +85,7 @@ public class Principal {
 		consultaUsuarioIFrame.getContentPane().add(modificarDatosUsuarioIFrame);
 		modificarDatosUsuarioIFrame.setVisible(false);
 
-		consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri);
+		consultaSalidaTuristicaIFrame = new ConsultaDeSalidaTuristica(ICTuri, frmServidorcentral);
 		consultaSalidaTuristicaIFrame.setResizable(true);
 		consultaSalidaTuristicaIFrame.setMaximizable(true);
 		consultaSalidaTuristicaIFrame.setBounds(52, 0, 677, 411);
@@ -115,7 +115,6 @@ public class Principal {
 		inscripcionSalidaTuristicaIFrame.setResizable(true);
 		inscripcionSalidaTuristicaIFrame.setMaximizable(true);
 		inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
-		consultaSalidaTuristicaIFrame.setBounds(10, 0, 677, 411);
 		frmServidorcentral.getContentPane().add(inscripcionSalidaTuristicaIFrame);
 
 		inscripcionSalidaTuristicaIFrame.setVisible(false);
