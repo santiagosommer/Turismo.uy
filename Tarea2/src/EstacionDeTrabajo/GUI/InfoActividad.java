@@ -19,7 +19,7 @@ public class InfoActividad extends JInternalFrame{
 		setResizable(true);
 		setClosable(true);
 		setVisible(true);
-		setTitle("Informacion de Salida Turistica");
+		setTitle("Informacion de Actividad Turistica");
 		setBounds(0, 0, 550, 400);
 		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		

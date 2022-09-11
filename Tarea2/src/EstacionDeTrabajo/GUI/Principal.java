@@ -111,7 +111,7 @@ public class Principal {
 		crearActividadTuristicaIFrame.setClosable(true);
 		
 
-		inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu);
+		inscripcionSalidaTuristicaIFrame = new InscripcionASalidaTuristica(ICUsu, ICTuri, frmServidorcentral);
 		inscripcionSalidaTuristicaIFrame.setResizable(true);
 		inscripcionSalidaTuristicaIFrame.setMaximizable(true);
 		inscripcionSalidaTuristicaIFrame.setLocation(-21, 0);
@@ -134,7 +134,7 @@ public class Principal {
 		agregarActividadTurísticaAPaqueteIFrame.setVisible(false);
 		agregarActividadTurísticaAPaqueteIFrame.setClosable(true);
 
-		consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP, ICTuri);
+		consultaPaqueteIFrame = new ConsultaDePaqueteDeActividadesTuristicas(ICP, ICTuri, frmServidorcentral);
 		consultaPaqueteIFrame.setResizable(true);
 		consultaPaqueteIFrame.setMaximizable(true);
 
@@ -309,7 +309,6 @@ public class Principal {
 			public void actionPerformed(ActionEvent e) {
 				inscripcionSalidaTuristicaIFrame.cargarDatosDepartamentos();
 				inscripcionSalidaTuristicaIFrame.limpiarFormulario();
-				inscripcionSalidaTuristicaIFrame.ListarTuristas();
 				inscripcionSalidaTuristicaIFrame.setVisible(true);
 			}
 		});
