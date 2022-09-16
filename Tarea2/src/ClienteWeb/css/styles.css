@@ -146,3 +146,7 @@ a{
 .dropdown-content a:last-child{
     border-bottom: none;
 }
+
+div .titles{
+    text-align: center;
+}
