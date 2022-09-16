@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Registro Usuario</title>
+    <title>TurisUY</title>
 </head>
 <body>
     <div class="top-bar">
@@ -35,24 +35,20 @@
     </div>
 
     <div class="content">
-        <div class="titles">
-            <h1>¿Quién eres?</h1>
-        </div>
-
-        <div class="altaUsuario">
-            <a href="#">   
-                <figure>
-                    <img src="./icons/plane.svg" alt="" class="img-altaUsuario">
-                    <figcaption>Turista</figcaption>
-                </figure>
-            </a>
-            <a href="#">
-                <figure>
-                    <img src="./icons/ticket.svg" alt="" class="img-altaUsuario">
-                    <figcaption>Proveedor</figcaption>
-                </figure>
-            </a>
-        </div>
+        <section class="form-register">
+            <h4>Registrarse</h4>
+            <input class="controls" type="text" name="nickname" id="nickname" placeholder="Nickname">
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input class="controls" type="text" name="apellido" id="apellido" placeholder="apellido">
+            <input class="controls" type="email" name="email" id="email" placeholder="E-mail">
+            <input class="controls" type="date" name="bDate" id="bDate" placeholder="Fecha de nacimiento">
+            <input class="controls" type="password" name="password" id="password" placeholder="Contraseña">
+            <input class="controls" type="password" name="confirmPasword" id="confirmPasword" placeholder="Confirmar contraseña">
+            <input class="controls" type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad">
+            <input class="controls" type="image" name="img" id="imgRegistro" placeholder="img">
+            <input class="boton" type="submit" value="Registrar">
+            <input class="boton" type="submit" value="Cancelar">
+        </section>
     </div>
 
     <script src="./main.js"></script>
