@@ -26,6 +26,10 @@ y luego cambia los textos de los placeholders de los tipo input a Morrison.*/
 body{
     margin: 0;
     font-family: 'Morrison', sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1 1 1;
 }
 
 .bus-icon{
@@ -43,7 +47,7 @@ a{
     position: sticky;
 
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 0 1;
     justify-content: space-between;
     align-items: center;
 
