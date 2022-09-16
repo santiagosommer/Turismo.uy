@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="#" class="links selected">Principal</a>
+                <a href="#" class="links">Actividades</a>
+                <a href="#" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="#"><img src="./icons/group.svg" class="larger-icon"></a>
+            <div class="dropdown">
+                <img src="./icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a href="#">Iniciar Sesion</a>
+                    <a href="#">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <section class="form-register">
+            <h4>Registrarse</h4>
+            <input class="controls" type="text" name="nickname" id="nickname" placeholder="Nickname">
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input class="controls" type="text" name="apellido" id="apellido" placeholder="apellido">
+            <input class="controls" type="email" name="email" id="email" placeholder="E-mail">
+            <input class="controls" type="date" name="bDate" id="bDate" placeholder="Fecha de nacimiento">
+            <input class="controls" type="password" name="password" id="password" placeholder="Contraseña">
+            <input class="controls" type="password" name="confirmPasword" id="confirmPasword" placeholder="Confirmar contraseña">
+            <input class="controls" type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad">
+            <input class="controls" type="image" name="img" id="imgRegistro" placeholder="img">
+            <input class="boton" type="submit" value="Registrar">
+            <input class="boton" type="submit" value="Cancelar">
+        </section>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
