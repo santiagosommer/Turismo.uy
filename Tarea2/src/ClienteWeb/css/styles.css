@@ -150,3 +150,14 @@ a{
 div .titles{
     text-align: center;
 }
+
+.altaUsuario{
+    text-align: center;
+    display: flex; 
+    justify-content: center; 
+    width: 100%;
+}
+
+.img-altaUsuario{
+    height: 200px;
+}
