@@ -7,6 +7,7 @@
     font-style: normal;
 }
 
+
 ::-webkit-input-placeholder {
     font-family: 'Morrison', sans-serif;
 }
@@ -40,6 +41,18 @@ body{
 a{
     text-decoration: none;
     color: black;
+}
+
+h1{
+    font-size: 96px;
+}
+
+h2{
+    font-size: 48px;
+}
+
+h3{
+    font-size: 24px;
 }
 
 
@@ -145,4 +158,26 @@ a{
 
 .dropdown-content a:last-child{
     border-bottom: none;
+}
+
+
+.content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.recommendations{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommendation-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
