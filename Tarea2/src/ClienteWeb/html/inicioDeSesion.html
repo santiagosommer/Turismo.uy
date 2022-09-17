@@ -13,7 +13,7 @@
         <div class="top-bar-left">
             <img src="./../icons/bus.svg" class="bus-icon">
             <div class="top-bar-links">
-                <a href="#" class="links selected">Principal</a>
+                <a href="./../index.html" class="links selected">Principal</a>
                 <a href="#" class="links">Actividades</a>
                 <a href="#" class="links">Paquetes</a>
             </div>
@@ -41,21 +41,20 @@
             <div class="input-container">
                 <div class="input-outer">
                     <img src="./../icons/avatar.svg" class="icon">
-                    <input type="text" id="nickname-input" class="input-style" size="40" placeholder="Nickname" name="search-bar-content">
+                    <input type="text" id="id-input" class="input-style" size="30" placeholder="Nickname or E-mail" name="email-or-nickname-content">
                 </div>
-                <div style="display: flex; gap: 5px;">
-                    <div class="input-outer">
-                        <img src="./../icons/avatar.svg" class="icon">
-                        <input type="text" id="nickname-input" class="input-style" size="20" placeholder="Nombre" name="search-bar-content">
-                    </div>
-                    <div class="input-outer">
-                        <img src="./../icons/avatar.svg" class="icon">
-                        <input type="text" id="nickname-input" class="input-style" size="20" placeholder="Apellido" name="search-bar-content">
-                    </div>
+                <div class="input-outer">
+                    <img src="./../icons/lock.svg" class="icon">
+                    <input type="password" id="password-input" class="input-style" size="30" placeholder="Password" name="password-content">
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <button type="button" id="iniciarButton">Iniciar Sesion</button>
+                    <button type="button" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="./../js/inicioDeSesion.js"></script>
 </body>
 </html>

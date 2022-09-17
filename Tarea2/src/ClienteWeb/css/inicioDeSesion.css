@@ -1,8 +1,10 @@
 .input-outer{
     display:flex;
     align-items: center;
-    border: solid 2px #82888e;
+    border: solid 1px #82888e;
     border-radius: 5px;
+
+    background-color: white;
 }
 
 .input-outer > .icon{
@@ -13,6 +15,8 @@
     height: 18pt;
     padding: 5px;
     border: none;
+
+    font-size: 16px;
 }
 
 input:focus{
@@ -22,5 +26,24 @@ input:focus{
 .input-container{
     display:flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
+
+    background: rgb(178, 172, 250);
+    border: solid 2px;
+    border-color: #6558F5;
+
+    padding: 100px;
+}
+
+button{
+    width: 45%;
+    background: #6558F5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+
 }
