@@ -40,7 +40,7 @@ body{
     margin-left: 10px;
 }
 
-a{
+.top-bar a{
     text-decoration: none;
     color: black;
 }
@@ -90,7 +90,7 @@ h3{
     align-items: center;
 }
 
-.selected{
+.top-bar .selected{
     color: #6558F5;
     border-bottom: solid 4px #6558F5;
     padding-top: 10px;
