@@ -282,3 +282,7 @@ div .titles{
 .descripcion2{
     width: 600px;
 }
+
+.filtro select{
+    padding: 15px;
+}
