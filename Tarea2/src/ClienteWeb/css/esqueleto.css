@@ -59,6 +59,7 @@ h3{
 
 .top-bar{
     position: sticky;
+    top: 0px;
 
     display: flex;
     flex: 1 0 1;
