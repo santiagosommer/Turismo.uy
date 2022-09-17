@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="./../css/altaSalidaTuristica.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="#" class="links selected">Principal</a>
+                <a href="#" class="links">Actividades</a>
+                <a href="#" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="#"><img src="./icons/group.svg" class="larger-icon"></a>
+            <div class="dropdown">
+                <img src="./icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a href="#">Iniciar Sesion</a>
+                    <a href="#">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        
+        <section class="form-titulo-salida">
+            <h2> + Agregar Salida Turistica: </h2>
+        </section>
+       
+
+        <section class="form-salida">  
+            <form action="#">
+                <label for="lang">Departamentos</label>
+                <select name="Departamentos" id="lang">
+                  <option value="rocha">Rocha</option>
+                </select>
+             </form>
+            <form action="#">
+                <label for="lang">Actividades</label>
+                <select name="Actividades" id="lang">
+                    <option value="degusta">Degusta</option>
+                    <option value="teatroConSablores">Teatro con Sabores</option>
+                </select>
+            </form>
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre Salida">
+            <input class="controls" type="datetime-local" name="dateNHour" id="dateNHour" placeholder="Fecha y Hora de salida">
+            <input class="controls" type="text" name="lugar" id="lugar" placeholder="Lugar de salida">
+            <input Class="controls" type="number" name="cuposMax" id="cuposMax" placeholder="CuposMaximos">
+            <h5>Seleccione una foto</h5>
+            <input class="controls" type="file" name="img" id="imgRegistro" placeholder="img">
+            <input class="boton" type="submit" value="Confirmar">
+            <input class="boton" type="submit" value="Cancelar">
+        </section>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
