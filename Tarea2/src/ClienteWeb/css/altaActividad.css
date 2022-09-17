@@ -240,7 +240,27 @@ div .titles{
 
 }
 
-.dropbuttons {
+.filtros{
+   
+    display: grid;
+    height: 650px;
+    grid-template-columns: auto;   
+    padding: 50px;
+}
+
+.content{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+*
+
+
+
+   /*        
+            .dropbuttons {
     display: grid;
     column-gap: 20px;
     grid-template-columns: auto;
