@@ -261,39 +261,3 @@ div .titles{
     background-color: #e41919;
 
 }
-
-
-
-   /*        
-            .dropbuttons {
-    display: grid;
-    column-gap: 20px;
-    grid-template-columns: auto;
-    padding: 10px;
-  }
-
-.grid-item1 {
- 
-    padding: 20px;
-    font-size: 30px;
-    text-align: left;
-  }
-  .grid-item2 {
-   
-    padding: 20px;
-    font-size: 30px;
-    text-align: left;
-  }
-
-  .grid-containerD {
-    display: grid;
-    column-gap: 20px;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-  }
-  
-  .grid-itemD {
-    padding: 20px;
-    font-size: 30px;
-    text-align: left;
-  }
