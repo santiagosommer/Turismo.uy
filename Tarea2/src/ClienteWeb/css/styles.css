@@ -10,15 +10,19 @@
 
 ::-webkit-input-placeholder {
     font-family: 'Morrison', sans-serif;
+    color:#C4D0DA;
 }
 :-moz-placeholder {
     font-family: 'Morrison', sans-serif;
+    color: #C4D0DA;
 }
 ::-moz-placeholder {
     font-family: 'Morrison', sans-serif;
+    color: #C4D0DA;
 }
 :-ms-input-placeholder {
     font-family: 'Morrison', sans-serif;
+    color: #C4D0DA;
 }
 
 /*Lo de arriba importa la font, lo pone en la font family Morrison,
@@ -127,8 +131,8 @@ h3{
 
 .avatar{
     padding: 10px;
-    background-color: lightgray;
-    border: solid 2px gray;
+    background-color: #DFE6ED;
+    border: solid 2px #9EADBA;
     border-radius: 100%;
 }
 
