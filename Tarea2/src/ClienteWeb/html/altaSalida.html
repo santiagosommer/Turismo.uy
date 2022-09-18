@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/esqueleto.css">
+    <link rel="stylesheet" href="./../css/altaSalida.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./../icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="#" class="links selected">Principal</a>
+                <a href="#" class="links">Actividades</a>
+                <a href="#" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div class="dropdown">
+                <img src="./../icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a href="#">Iniciar Sesion</a>
+                    <a href="#">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="imagen">
+            <img src="../icons/plus.svg">
+        </div>
+        <div class="texto">
+            <h2>Agregar Salida Turistica</h2>
+        </div>
+        <div class="formulario ">
+            <div class="container2">
+                <div class="departamentoycategorias">
+                    
+                        <div class="img1"> <img src="./../icons/location2.svg" class="iconop" ></div>
+                        <div class="s1">  <select class ="controls" name="departamento" id="cars">
+                            <option value="volvo">Rocha</option>
+                            
+                          </select></div>
+                        <div class="img2"> <img src="./../icons/tag.svg" class="iconop" > </div>
+                        <div class="s2">  <select name="categorias" class ="controls" id="cars">
+                            <option value="gastronomia">Gastronomia</option>
+                            
+                          </select> </div>
+
+                    
+
+                </div>
+                <div class="c2">
+                    <img src="./../icons/reservation.svg" class="iconop" > <input type="text" name="nombre" class ="controls"  placeholder="Nombre de la Salida" required>
+                </div>
+                <div class="c3">
+                    <img src="./../icons/clock.svg" class="iconop" >  
+                    <input class="controls" type="datetime-local" name="dateNHour" id="dateNHour" placeholder="Fecha y Hora de salida">
+                </div>
+                <div class="c4">
+                    <img src="./../icons/location.svg" class="iconop" > <input type="text" name="lugarsalida" class ="controls"  placeholder="Lugar de salida" >
+                </div>
+                <div class="c5">
+                    <div class="Costo"> <img src="./../icons/cuposMax.svg" class="iconop" > <input type="text" name="maxcupos"  placeholder="Cupos maximos" class ="controls" > </div>
+                </div>
+                <div class="c6">
+                    <img src="./../icons/image.svg" class="iconop"  > <input class ="controls" type="file" name="img" id="img" placeholder="Seleccionar imagen">
+                </div>
+                <div class="c7">
+                    <input class="boton" type="submit" value="Confirmar">
+                    <input class="boton2" type="submit" value="Cancelar">
+                </div>
+              </div>
+         
+        </div>
+       
+        
+    </div>
+
+    
+   
+    <script src="./../main.js"></script>
+</body>
+</html>
