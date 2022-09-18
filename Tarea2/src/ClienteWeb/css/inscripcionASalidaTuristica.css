@@ -1,0 +1,132 @@
+.container {  display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 0.3fr 2.5fr 0.6fr 1.1fr;
+    gap: 5px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "h1"
+      "CantidadTuristas"
+      "tabs"
+      "botones"
+      ".";
+  }
+  
+  .h1 { grid-area: h1; }
+  
+  .CantidadTuristas { grid-area: CantidadTuristas; }
+  
+  .botones { grid-area: botones;
+    text-align: center;
+  
+}
+  
+  .tabs { grid-area: tabs; 
+ }
+  
+
+  .input-container{
+    display:flex;
+    flex-direction: column;
+
+    
+}
+.input-outer{
+    display:flex;
+    align-items: center;
+    border: solid 1px #82888e;
+    border-radius: 5px;
+
+    background-color: white;
+}
+
+.input-outer > .icon{
+    filter: invert(54%) sepia(27%) saturate(224%) hue-rotate(166deg) brightness(91%) contrast(90%);
+}
+
+.input-style{
+    height: 20pt;
+    padding: 5px;
+    border: none;
+
+    font-size: 16px;
+}
+
+
+button{
+    
+    width: 15%;
+    background: #6558F5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center
+
+}
+
+/* tabs*/
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: white;
+    color:#cecafb;
+    border: 2px solid #cecafb;
+    float: left;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    min-width: 60px;
+    
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #b2acfa;
+    color: whitesmoke;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    color: #6558F5;
+    border: 2px solid #6558F5;
+    
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+  }
+
+
+  /* para select */
+
+  .controls{
+    width: 378px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    border: solid 1px #ada3a3;
+    font-family: 'Morrison', sans-serif;
+    font-size: 16px;
+  }
+
+  .tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

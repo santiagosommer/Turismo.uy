@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/esqueleto.css">
+    <link rel="stylesheet" href="./../css/inscripcionASalidaTuristica.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./../icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="#" class="links selected">Principal</a>
+                <a href="#" class="links">Actividades</a>
+                <a href="#" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div class="dropdown">
+                <img src="./../icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a href="#">Iniciar Sesion</a>
+                    <a href="#">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="h1">
+                <h2>Inscribirse a Salida Turistica</h2>
+            </div>
+            <div class="CantidadTuristas">
+                <div class="input-container">
+                    <div class="input-outer">
+                        <img src="./../icons/avatar.svg" class="icon">
+                        <input type="text" id="id-input" class="input-style" size="30" placeholder="Cantidad Turistas" name="cantidad-turistas" required>
+                    </div>
+            </div>
+           
+            <div class="tabs">
+
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'General')">General</button>
+                    <button class="tablinks" onclick="openCity(event, 'Paquete')">Paquete</button>
+                  </div>
+                  
+                  
+                  <div id="General" class="tabcontent">
+                    
+                    <p><b>Costo:</b> $0.00 </p>
+                  </div>
+                  
+                  <div id="Paquete" class="tabcontent">
+                    <p> <b> Descuento:  </b> %0.00</p> <br>
+                    <select name="paquetes" class ="controls" id="Paquete">
+                        <option value="gastronomia"> Paquetes Disponibles </option>
+        
+                      </select>
+                    <p> <b> Costo:</b> $0.00</p>
+                  </div>
+
+
+            </div>
+            <div class="botones">
+                <button type="button" id="iniciarButton">Inscribirse</button>
+                <button type="button" id="iniciarButton">Cancelar</button>
+            </div>
+        </div>
+
+          
+    </div>
+
+    <script src="./../main.js"></script>
+    <script src="./../js/inscripcionASalidaTuristica.js"></script>
+</body>
+</html>
