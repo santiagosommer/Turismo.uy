@@ -13,7 +13,7 @@
         <div class="top-bar-left">
             <img src="./../icons/bus.svg" class="bus-icon">
             <div class="top-bar-links">
-                <a href="#" class="links selected">Principal</a>
+                <a href="index.html" class="links selected">Principal</a>
                 <a href="#" class="links">Actividades</a>
                 <a href="#" class="links">Paquetes</a>
             </div>
@@ -24,21 +24,24 @@
                 <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
                 <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
             </div>
-            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
-            <div class="dropdown">
-                <img src="./../icons/avatar.svg" class="avatar icon">
-                <div class="dropdown-content">
-                    <a href="#">Iniciar Sesion</a>
-                    <a href="#">Registrarse</a>
+            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div style="display: flex; flex-direction: column;">
-        <di style="display:flex; align-items: center; gap: 20px; justify-content: center;">
+        <div style="display:flex; align-items: center; gap: 20px; justify-content: center;">
             <img src="./../icons/user-search.svg" style="height:96px; " alt="">
-            <h1 style="text-align: center;">Consultar Usuarios</h1>
+            <h1 style="text-align: center;">Consultar usuarios</h1>
         </div>
         <div class="content">
             <div class="filtros">
@@ -57,7 +60,7 @@
                     </div>
                     <h3>Rosa Maria Martinez</h3>
                     <h5>lachiqui / mirtha.legrand.ok@hotmail.com.ar</h5>
-                    <p><a href="./consultaUsuarioHardcoded.html" class="links selected">Leer mas.</a></p>
+                    <p><a href="./consultaUsuarioHardcoded.html" class="links">Leer mas.</a></p>
                 </div>
                 <hr>
                 <div class="container-consulta">
@@ -66,7 +69,7 @@
                     </div>
                     <h3>Elizabeth Windsor</h3>
                     <h5>isabelita / isabelita@thecrown.co.uk</h5>
-                    <p><a href="#" class="links selected">Leer mas.</a></p>
+                    <p><a href="#" class="links">Leer mas.</a></p>
                 </div>
                 <hr>
                 <div class="container-consulta">
@@ -75,7 +78,7 @@
                     </div>
                     <h3>Anibal Martinez</h3>
                     <h5>anibal / anibal@fing.edu.uy</h5>
-                    <p><a href="#" class="links selected">Leer mas.</a></p>
+                    <p><a href="#" class="links">Leer mas.</a></p>
                 </div>
                 <hr>
                 <div class="container-consulta">
@@ -84,7 +87,7 @@
                     </div>
                     <h3>Washington Rocha</h3>
                     <h5>washington / washington@turismorocha.gub.uy</h5>
-                    <p><a href="#" class="links selected">Leer mas.</a></p>
+                    <p><a href="#" class="links">Leer mas.</a></p>
                 </div>
                 <hr>
                 <div class="container-consulta">
@@ -93,7 +96,7 @@
                     </div>
                     <h3>Pablo Bengoechea</h3>
                     <h5>eldiez / eldiez@socfomturriv.org.uy</h5>
-                    <p><a href="#" class="links selected">Leer mas.</a></p>
+                    <p><a href="#" class="links">Leer mas.</a></p>
                 </div>
                 <hr>
                 <div class="container-consulta">
@@ -102,11 +105,12 @@
                     </div>
                     <h3>Mercedes Venn</h3>
                     <h5>meche / meche@colonia.gub.uy</h5>
-                    <p><a href="#" class="links selected">Leer mas.</a></p>
+                    <p><a href="#" class="links">Leer mas.</a></p>
                 </div>
-                <hr>
             </div>
         </div>
     </div>
+
+    <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>

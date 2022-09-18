@@ -28,9 +28,6 @@
 /*Lo de arriba importa la font, lo pone en la font family Morrison,
 y luego cambia los textos de los placeholders de los tipo input a Morrison.*/
 
-
-
-
 body{
     margin: 0;
     font-family: 'Morrison', sans-serif;

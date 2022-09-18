@@ -12,6 +12,11 @@
 
 .Consultas{
     width: 1200px;
+    border: solid 2px grey;
+    border-radius: 10px;
+    padding: 20px;
+
+    box-shadow: -5px 10px 10px 0 lightgray;
 }
 
 .container-consulta{
@@ -34,4 +39,22 @@
 
 .filtro select{
     padding: 15px;
+}
+
+.Salida {
+    display: flex;
+    gap: 10px;
+}
+
+.imagenSalida{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 150px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.imagenSalida img{
+    height: 100px;
 }
