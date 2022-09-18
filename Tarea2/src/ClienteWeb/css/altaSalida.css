@@ -15,19 +15,19 @@
   }
   
   .imagen { grid-area: imagen;
-    background-color: #d6b1b1;
+    background-color: rgb(144, 188, 179);
     padding: 10px;
-    border-top: 1px solid red;
-    border-bottom: 1px solid red;
-    border-left:  1px solid red ;
+    border-top: 1px solid rgb(32, 120, 104);
+    border-bottom: 1px solid rgb(32, 120, 104);
+    border-left:  1px solid rgb(32, 120, 104) ;
      }
   
   .texto { grid-area: texto;
-          background-color: #d6b1b1;
+          background-color: rgb(144, 188, 179);
           color: whitesmoke;
-          border-top: 1px solid red;
-          border-bottom: 1px solid red;
-          border-right:  1px solid red;  
+          border-top: 1px solid rgb(32, 120, 104);
+          border-bottom: 1px solid rgb(32, 120, 104);
+          border-right:  1px solid rgb(32, 120, 104);  
         }
   
   .formulario { grid-area:  formulario; 
@@ -45,7 +45,7 @@
   text-align: center ;
   border-radius: 4px;
   color: rgb(255, 255, 255);
-  background-color:rgb(172, 99, 99)
+  background-color:rgb(32, 120, 104)
 
 }
 
@@ -66,7 +66,7 @@
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 12px;
-  border: solid 1px #d6b1b1;
+  border: solid 1px rgba(46, 161, 140, 0.5);
   font-family: 'Morrison', sans-serif;
   font-size: 16px;
 }
@@ -144,19 +144,13 @@ img{
   
   .c7 { grid-area: c7; 
     place-self: center;}
-  
-  .c8 { grid-area: c8;
-    place-self: center; }
 
   .boton:hover{
-    background-color: rgb(126, 73, 73);
+    background-color: rgb(20, 75, 65);
   }
-
   .boton2:hover{
     background-color:rgb(161, 172, 180);
   }
-
-  
 
     
 
