@@ -1,0 +1,37 @@
+.filtros{
+    display: grid;
+    height: 650px;
+    grid-template-columns: auto;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.Consultas{
+    width: 1200px;
+}
+
+.container-consulta{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(3, auto);
+    column-gap: 20px;
+    text-align: start;
+}
+
+.img-container{
+    display:flex;
+    height: 200px;
+    width: 300px;
+    grid-row: 1 / span 3;
+    justify-content: center;
+
+    overflow: hidden; /*Se cortan las fotos si son muy anchas*/
+}
+
+.filtro select{
+    padding: 15px;
+}

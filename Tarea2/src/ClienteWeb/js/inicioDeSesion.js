@@ -21,7 +21,7 @@ let baseDeUsuarios = [
         "apellido": "Martınez",
         "email": "mirtha.legrand.ok@hotmail.com.ar",
         "password": "rosita",
-        "imageURL": "./../photos/rosita.jpg"
+        "imageURL": "./../photos/lachiqui.jpg"
     },
     {
         "nickname": "washington",
