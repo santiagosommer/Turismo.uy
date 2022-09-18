@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./../css/styles.css">
     <title>TurisUY</title>
 </head>
 <body>
     <div class="top-bar">
         <div class="top-bar-left">
-            <img src="./icons/bus.svg" class="bus-icon">
+            <img src="./../icons/bus.svg" class="bus-icon">
             <div class="top-bar-links">
                 <a href="index.html" class="links selected">Principal</a>
                 <a href="#" class="links">Actividades</a>
@@ -21,14 +21,17 @@
             <div class="search-bar">
                 <label for="search-bar-input"></label>
                 <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
-                <a href="#"><img src="./icons/zoom.svg" class="icon"></a>
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
             </div>
-            <a href="#"><img src="./icons/group.svg" class="larger-icon"></a>
-            <div class="dropdown">
-                <img src="./icons/avatar.svg" class="avatar icon">
-                <div class="dropdown-content">
-                    <a href="./html/inicioDeSesion.html">Iniciar Sesion</a>
-                    <a href="./html/altaUsuario.html">Registrarse</a>
+            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,21 +45,21 @@
         <div style="display:flex; flex: 1 0 1; width: 100%; justify-content: space-between;">
             <div class="recommendations">
                 <div class="recommendation-item">
-                    <img src="./icons/avatar.svg" class="recommendation-icon">
-                    <h3><a href="./html/altaUsuario.html">Registra</a> una cuenta o <a href="">entra con una cuenta</a> ya existente </h3>
+                    <img src="./../icons/avatar.svg" class="recommendation-icon">
+                    <h3><a href="./altaUsuario.html">Registra</a> una cuenta o <a href="">entra con una cuenta</a> ya existente </h3>
                 </div>
                 <div class="recommendation-item">
-                    <img src="./icons/wind-surfing.svg" class="recommendation-icon">
+                    <img src="./../icons/wind-surfing.svg" class="recommendation-icon">
                     <h3>Revisa las nuevas e innovadoras <a href="#">actividades</a> que tenemos para ti!</h3>
                 </div>
                 <div class="recommendation-item">
-                    <img src="./icons/money.svg" class="recommendation-icon">
+                    <img src="./../icons/money.svg" class="recommendation-icon">
                     <h3>Los mejores <a href="#">paquetes</a> de actividades para tu mayor ahorro!</h3>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="./js/main.js"></script>
+    <script src="./../js/main.js"></script>
 </body>
 </html>

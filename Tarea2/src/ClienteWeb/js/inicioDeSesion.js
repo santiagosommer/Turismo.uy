@@ -3,30 +3,7 @@ function GoToPreviousPage(){
 }
 
 function GoToIndex(){
-    window.location.href = "./../index.html";
-}
-
-function setCookie(name,value,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-function eraseCookie(name) {
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location.href = "./index.html";
 }
 
 let cancelButton = document.getElementById("cancelButton");
@@ -44,7 +21,7 @@ let baseDeUsuarios = [
         "apellido": "Martınez",
         "email": "mirtha.legrand.ok@hotmail.com.ar",
         "password": "rosita",
-        "imageURL": "./../icons/bus.svg"
+        "imageURL": "./../photos/rosita.jpg"
     },
     {
         "nickname": "washington",
@@ -52,7 +29,7 @@ let baseDeUsuarios = [
         "apellido": "Rocha",
         "email": "washington@turismorocha.gub.uy",
         "password": "washi123",
-        "imageURL": "./../icons/bus.svg"
+        "imageURL": "./../photos/washington.jpg"
     }
 ];
 
@@ -66,11 +43,11 @@ iniciarButton.addEventListener("click", () => {
         if (element.nickname == idContent || element.email == idContent){
             foundId = true;
             if (element.password == passwordContent){
-                setCookie("nickname",element.nickname,1);
-                setCookie("nombre",element.nombre,1);
-                setCookie("apellido",element.apellido,1);
-                setCookie("imageURL",element.imageURL,1);
-                console.log(getCookie());
+                sessionStorage.nickname = element.nickname;
+                sessionStorage.nombre = element.nombre;
+                sessionStorage.apellido = element.apellido;
+                sessionStorage.imageURL = element.imageURL;
+
                 correctPassword = true;
                 userLogged = element;
                 return false;
@@ -80,7 +57,7 @@ iniciarButton.addEventListener("click", () => {
     });
     if (foundId){
         if (correctPassword){
-            /*GoToIndex()*/;
+            GoToIndex();
         }
         else{
             alert("Password incorrecto.")
