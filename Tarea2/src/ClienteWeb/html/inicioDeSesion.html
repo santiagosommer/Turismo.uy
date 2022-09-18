@@ -38,20 +38,22 @@
     <div class="content">
         <div>
             <h2 style="text-align:center;">Registrarse</h2>
-            <div class="input-container">
-                <div class="input-outer">
-                    <img src="./../icons/avatar.svg" class="icon">
-                    <input type="text" id="id-input" class="input-style" size="30" placeholder="Nickname or E-mail" name="email-or-nickname-content">
+            <form method="post">
+                <div class="input-container">
+                        <div class="input-outer">
+                            <img src="./../icons/avatar.svg" class="icon">
+                            <input type="text" id="id-input" class="input-style" size="30" placeholder="Nickname or E-mail" name="email-or-nickname-content" required>
+                        </div>
+                        <div class="input-outer">
+                            <img src="./../icons/lock.svg" class="icon">
+                            <input type="password" id="password-input" class="input-style" size="30" placeholder="Password" name="password-content" required>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <button type="button" id="iniciarButton"">Iniciar Sesion</button>
+                            <button type="button" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                        </div>
                 </div>
-                <div class="input-outer">
-                    <img src="./../icons/lock.svg" class="icon">
-                    <input type="password" id="password-input" class="input-style" size="30" placeholder="Password" name="password-content">
-                </div>
-                <div style="display:flex; justify-content:space-between;">
-                    <button type="button" id="iniciarButton">Iniciar Sesion</button>
-                    <button type="button" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
