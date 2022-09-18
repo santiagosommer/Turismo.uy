@@ -35,15 +35,29 @@
 
 
 .boton{
-  width: 45%;
+  
   border: none;
-  padding: 15px;
+  padding: 15px 55px;
   margin: 16px 0;
-  font-size: 20px;
+  font-size: 1em;
   margin: auto;
   text-align: center ;
   border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background-color:rgb(172, 99, 99)
 
+}
+
+.boton2{
+  border: none;
+  padding: 15px 55px;
+  margin: 16px 0;
+  font-size: 1em;
+  margin: auto;
+  text-align: center ;
+  border-radius: 4px;
+  color: rgb(97, 111, 123);
+  background-color:rgb(195, 207, 217)
 }
 
 .controls{
@@ -133,6 +147,7 @@ img{
   .c8 { grid-area: c8;
     place-self: center; }
 
+  
 
     
 
