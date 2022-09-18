@@ -17,7 +17,7 @@
     width: 1200px;
 }
 
-.conjuntoConsulta1{
+.conjuntoConsulta{
    
     display: grid;
     height: 250px;
@@ -25,19 +25,8 @@
     padding: 50px;
 }
 
-.conjuntoConsulta2{
-   
-    display: grid;
-    height: 250px;
-    grid-template-columns: auto auto;   
-    padding: 50px;
-}
 
-.descripcion1{
-    width: 600px;
-}
-
-.descripcion2{
+.descripcion{
     width: 600px;
 }
 
