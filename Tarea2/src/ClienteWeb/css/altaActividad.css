@@ -14,14 +14,14 @@
   }
   
   .imagen { grid-area: imagen;
-    background-color: pink;
+    background-color: #d6b1b1;
 padding: 10px;
 border-top: 1px solid red;
 border-bottom: 1px solid red;
 border-left:  1px solid red ; }
   
   .texto { grid-area: texto;
-    background-color: pink;
+    background-color: #d6b1b1;
 color: whitesmoke;
  border-top: 1px solid red;
  border-bottom: 1px solid red;
@@ -34,7 +34,27 @@ img{
     height: 90px;
 }
 
+.boton{
+  width: 45%;
+  border: none;
+  padding: 15px;
+  margin: 16px 0;
+  font-size: 20px;
+  margin: auto;
+  text-align: center ;
+  border-radius: 4px;
 
+}
+
+.controls{
+  width: 378px;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  border: solid 1px #d6b1b1;
+  font-family: 'Morrison', sans-serif;
+  font-size: 16px;
+}
   
 
 /* iconos */
