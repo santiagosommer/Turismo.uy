@@ -76,7 +76,8 @@ h3{
     border-bottom: solid 2px #6558F5;
     z-index: 10;
     
-    min-width: 1000px;
+    min-width: 1000px; 
+    width: 100%;
 }
 
 .top-bar-left{
