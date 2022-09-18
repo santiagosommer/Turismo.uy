@@ -1,27 +1,31 @@
 .filtros{
-   
+
     display: grid;
     height: 650px;
-    grid-template-columns: auto;   
+    grid-template-columns: auto;
     padding: 50px;
 }
 
 .content{
-    align-items: stretch;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .Consultas{
     width: 1200px;
+    border: solid 2px grey;
+    border-radius: 10px;
+    padding: 20px;
+
+    box-shadow: -5px 10px 10px 0 lightgray;
 }
 
 .conjuntoConsulta{
-   
+
     display: grid;
     height: 250px;
-    grid-template-columns: auto auto;   
+    grid-template-columns: auto auto;
     padding: 50px;
 }
 
