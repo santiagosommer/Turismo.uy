@@ -9,6 +9,9 @@
 
 .input-outer > .icon{
     filter: invert(54%) sepia(27%) saturate(224%) hue-rotate(166deg) brightness(91%) contrast(90%);
+    width: 38px;
+    height: 38px;
+    margin: 5px;
 }
 
 .input-style{

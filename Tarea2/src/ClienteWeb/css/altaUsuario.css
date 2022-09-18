@@ -44,7 +44,7 @@
     font-size: 16px;
 }
 
-.form-register .boton{
+button{
     width: 45%;
     background: #6558F5;
     border: none;
@@ -52,6 +52,36 @@
     color: white;
     margin: 16px 0;
     font-size: 16px;
-
+    font-weight: bold;
     border-radius: 4px;
+
+}
+
+.input-outer{
+    display:flex;
+    align-items: center;
+    border: solid 1px #82888e;
+    border-radius: 5px;
+
+    background-color: white;
+    margin-bottom: 12px;
+}
+
+.input-outer > .icon{
+    filter: invert(54%) sepia(27%) saturate(224%) hue-rotate(166deg) brightness(91%) contrast(90%);
+    width: 35px;
+    height: 35px;
+    margin: 5px;
+}
+
+.input-style{
+    height: 18pt;
+    padding: 5px;
+    border: none;
+
+    font-size: 16px;
+}
+
+input:focus{
+    outline: none;
 }

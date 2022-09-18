@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/styles.css">
     <link rel="stylesheet" href="./../css/altaUsuario.css">
-    <title>TurisUY</title>
+    <title>Registro Turista</title>
 </head>
 <body>
     <body>
@@ -39,18 +39,47 @@
     <div class="content">
         <section class="form-register">
             <h4>Registrarse</h4>
-            <input class="controls" type="text" name="nickname" id="nickname" placeholder="Nickname">
-            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre">
-            <input class="controls" type="text" name="apellido" id="apellido" placeholder="apellido">
-            <input class="controls" type="email" name="email" id="email" placeholder="E-mail">
-            <input class="controls" type="date" name="bDate" id="bDate" placeholder="Fecha de nacimiento">
-            <input class="controls" type="password" name="password" id="password" placeholder="Contraseña">
-            <input class="controls" type="password" name="confirmPasword" id="confirmPasword" placeholder="Confirmar contraseña">
-            <input class="controls" type="text" name="nacionalidad" id="nacionalidad" placeholder="Nacionalidad">
+            <div class="input-outer">
+                <img src="./../icons/avatar.svg" class="icon">
+                <input type="text" class="input-style" placeholder="Nickname" name="nickname" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/avatar.svg" class="icon">
+                <input type="text" class="input-style" placeholder="Nombre" name="nombre" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/avatar.svg" class="icon">
+                <input type="text" class="input-style" placeholder="Apellido" name="apellido" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/email.svg" class="icon">
+                <input type="email" class="input-style" placeholder="E-mail" name="email" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/date.svg" class="icon">
+                <input type="date" class="input-style" placeholder="Fecha de nacimiento" name="bDate" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/lock.svg" class="icon">
+                <input type="password" class="input-style" placeholder="Contraseña" name="password" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/lock.svg" class="icon">
+                <input type="password" class="input-style" placeholder="Confirmar contraseña" name="confirmPasword" required>
+            </div>
+            <div class="input-outer">
+                <img src="./../icons/location2.svg" class="icon">
+                <input type="text" class="input-style" placeholder="Nacionalidad" name="nacionalidad" required>
+            </div>
             <h5>Seleccione una foto de perfil</h5>
-            <input class="controls" type="file" name="img" id="imgRegistro" placeholder="img">
-            <input class="boton" type="submit" value="Registrar">
-            <input class="boton" type="submit" value="Cancelar">
+            <div class="input-outer">
+                <img src="./../icons/image.svg" class="icon">
+                <input type="file" class="input-style" placeholder="img" name="img" required>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+                <button type="button" id="registrarButton">Registrar</button>
+                <button type="button" id="cancelarButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+            </div>
         </section>
     </div>
 
