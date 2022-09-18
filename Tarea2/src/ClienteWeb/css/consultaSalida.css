@@ -71,7 +71,8 @@ img {
     padding: 20px; }
   
     .boton{
-        width: 45%;
+      min-width: 45%;
+        
         background: #6558F5;
         border: none;
         padding: 12px;

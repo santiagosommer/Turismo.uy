@@ -7,6 +7,7 @@
     grid-template-rows: 0.4fr 2.2fr 0.4fr;
     gap: 2px 0px;
     grid-auto-flow: row;
+    min-width: 1000px;
     grid-template-areas:
       "imagen texto"
       "formulario formulario"
@@ -14,28 +15,52 @@
   }
   
   .imagen { grid-area: imagen;
-    background-color: pink;
-padding: 10px;
-border-top: 1px solid red;
-border-bottom: 1px solid red;
-border-left:  1px solid red ; }
+    background-color: #d6b1b1;
+    padding: 10px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-left:  1px solid red ;
+     }
   
   .texto { grid-area: texto;
-    background-color: pink;
-color: whitesmoke;
- border-top: 1px solid red;
- border-bottom: 1px solid red;
- border-right:  1px solid red;  }
+          background-color: #d6b1b1;
+          color: whitesmoke;
+          border-top: 1px solid red;
+          border-bottom: 1px solid red;
+          border-right:  1px solid red;  }
   
   .formulario { grid-area:  formulario; 
+  }
+  
+
+
+.boton{
+  width: 45%;
+  border: none;
+  padding: 15px;
+  margin: 16px 0;
+  font-size: 20px;
+  margin: auto;
+  text-align: center ;
+  border-radius: 4px;
+
+}
+
+.controls{
+  width: 378px;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  border: solid 1px #d6b1b1;
+  font-family: 'Morrison', sans-serif;
+  font-size: 16px;
 }
   
 img{
-    height: 90px;
+  height: 90px;
+  position:relative;
+  margin-top: 10px;
 }
-
-
-  
 
 /* iconos */
   
@@ -43,9 +68,8 @@ img{
     height: 70px ;
     float:left;
     margin-right: 9px;
+    z-index: 5;
 }
-
-/* flex */
 
 .container2 {  display: grid;
     grid-template-columns: 0.01fr 1.8fr;
@@ -68,7 +92,7 @@ img{
   
   .departamentoycategorias{ grid-area: departamentoycategorias;
     display: grid; 
-    grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr; 
+    grid-template-columns: 0.5fr 1.2fr 0.5fr 1.2fr; 
     grid-template-rows: 1fr; 
     gap: 0px 0px; 
     place-self: center;
@@ -76,11 +100,15 @@ img{
       "img1 s1 img2 s2"
        }
 
-.img1 { grid-area: img1;    place-self: center;}
-.s1 { grid-area: s1;   place-self: center; }
-.img2 { grid-area: img2; 
-    place-self: center;}
-.s2 { grid-area: s2;
+  .img1 { grid-area: img1;  
+      place-self: center end;}
+  .s1 { grid-area: s1;  
+     place-self: center; }
+
+
+  .img2 { grid-area: img2; 
+    place-self: center end;}
+  .s2 { grid-area: s2;
     place-self: center; }
 
   

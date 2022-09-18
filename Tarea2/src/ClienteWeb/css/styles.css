@@ -28,6 +28,9 @@
 /*Lo de arriba importa la font, lo pone en la font family Morrison,
 y luego cambia los textos de los placeholders de los tipo input a Morrison.*/
 
+
+
+
 body{
     margin: 0;
     font-family: 'Morrison', sans-serif;
@@ -37,6 +40,7 @@ body{
     flex-direction: column;
     height: 100vh;
     flex: 1 1 1;
+    width: 100%;
 }
 
 .bus-icon{
@@ -80,11 +84,15 @@ h3{
 
     border-top: solid 1px #6558F5;
     border-bottom: solid 2px #6558F5;
+    min-width: 1000px;
+    
+    width: 100%;
 }
 
 .top-bar-left{
     display: flex;
     gap: 100px;
+    width: 100%;
 }
 
 .top-bar-links{
