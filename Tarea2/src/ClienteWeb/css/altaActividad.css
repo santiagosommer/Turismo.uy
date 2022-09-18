@@ -15,24 +15,22 @@
   
   .imagen { grid-area: imagen;
     background-color: #d6b1b1;
-padding: 10px;
-border-top: 1px solid red;
-border-bottom: 1px solid red;
-border-left:  1px solid red ; }
+    padding: 10px;
+    border-top: 1px solid red;
+    border-bottom: 1px solid red;
+    border-left:  1px solid red ; }
   
   .texto { grid-area: texto;
-    background-color: #d6b1b1;
-color: whitesmoke;
- border-top: 1px solid red;
- border-bottom: 1px solid red;
- border-right:  1px solid red;  }
+          background-color: #d6b1b1;
+          color: whitesmoke;
+          border-top: 1px solid red;
+          border-bottom: 1px solid red;
+          border-right:  1px solid red;  }
   
   .formulario { grid-area:  formulario; 
-}
+  }
   
-img{
-    height: 90px;
-}
+
 
 .boton{
   width: 45%;
@@ -56,6 +54,9 @@ img{
   font-size: 16px;
 }
   
+img{
+  height: 90px;
+}
 
 /* iconos */
   
@@ -64,8 +65,6 @@ img{
     float:left;
     margin-right: 9px;
 }
-
-/* flex */
 
 .container2 {  display: grid;
     grid-template-columns: 0.01fr 1.8fr;
@@ -88,7 +87,7 @@ img{
   
   .departamentoycategorias{ grid-area: departamentoycategorias;
     display: grid; 
-    grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr; 
+    grid-template-columns: 0.5fr 1.2fr 0.5fr 1.2fr; 
     grid-template-rows: 1fr; 
     gap: 0px 0px; 
     place-self: center;
@@ -96,11 +95,15 @@ img{
       "img1 s1 img2 s2"
        }
 
-.img1 { grid-area: img1;    place-self: center;}
-.s1 { grid-area: s1;   place-self: center; }
-.img2 { grid-area: img2; 
-    place-self: center;}
-.s2 { grid-area: s2;
+  .img1 { grid-area: img1;  
+      place-self: center end;}
+  .s1 { grid-area: s1;  
+     place-self: center; }
+
+
+  .img2 { grid-area: img2; 
+    place-self: center end;}
+  .s2 { grid-area: s2;
     place-self: center; }
 
   
