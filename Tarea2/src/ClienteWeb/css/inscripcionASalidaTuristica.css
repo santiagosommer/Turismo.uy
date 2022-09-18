@@ -13,7 +13,8 @@
   
   .h1 { grid-area: h1; }
   
-  .CantidadTuristas { grid-area: CantidadTuristas; }
+  .CantidadTuristas { grid-area: CantidadTuristas;
+ }
   
   .botones { grid-area: botones;
     text-align: center;
@@ -71,6 +72,7 @@ button{
 /* Style the tab */
 .tab {
     overflow: hidden;
+    
     
   }
   
