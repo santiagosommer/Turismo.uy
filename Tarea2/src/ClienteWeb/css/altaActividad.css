@@ -148,6 +148,14 @@ img{
   .c8 { grid-area: c8;
     place-self: center; }
 
+  .boton:hover{
+    background-color: rgb(126, 73, 73);
+  }
+
+  .boton2:hover{
+    background-color:rgb(161, 172, 180);
+  }
+
   
 
     
