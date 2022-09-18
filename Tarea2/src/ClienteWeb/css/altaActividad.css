@@ -1,0 +1,110 @@
+
+
+.container {  
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 0.1fr 2.7fr;
+    grid-template-rows: 0.4fr 2.2fr 0.4fr;
+    gap: 2px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "imagen texto"
+      "formulario formulario"
+      ". .";
+  }
+  
+  .imagen { grid-area: imagen;
+    background-color: pink;
+padding: 10px;
+border-top: 1px solid red;
+border-bottom: 1px solid red;
+border-left:  1px solid red ; }
+  
+  .texto { grid-area: texto;
+    background-color: pink;
+color: whitesmoke;
+ border-top: 1px solid red;
+ border-bottom: 1px solid red;
+ border-right:  1px solid red;  }
+  
+  .formulario { grid-area:  formulario; 
+}
+  
+img{
+    height: 90px;
+}
+
+
+  
+
+/* iconos */
+  
+.iconop{
+    height: 70px ;
+    float:left;
+    margin-right: 9px;
+}
+
+/* flex */
+
+.container2 {  display: grid;
+    grid-template-columns: 0.01fr 1.8fr;
+    grid-template-rows: 0.6fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.4fr;
+    gap: 2px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". ."
+      ". departamentoycategorias"
+      ". c2"
+      ". c3"
+      ". c4"
+      ". c5"
+      ". c6"
+      ". c7"
+      ". c8"
+      ". .";
+    
+  }
+  
+  .departamentoycategorias{ grid-area: departamentoycategorias;
+    display: grid; 
+    grid-template-columns: 0.8fr 1.2fr 0.8fr 1.2fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    place-self: center;
+    grid-template-areas: 
+      "img1 s1 img2 s2"
+       }
+
+.img1 { grid-area: img1;    place-self: center;}
+.s1 { grid-area: s1;   place-self: center; }
+.img2 { grid-area: img2; 
+    place-self: center;}
+.s2 { grid-area: s2;
+    place-self: center; }
+
+  
+  .c2 { grid-area: c2;
+    place-self: center; }
+  
+  .c3 { grid-area: c3; 
+    place-self: center;}
+  
+  .c4 { grid-area: c4;
+    place-self: center; }
+  
+  .c5 { grid-area: c5; 
+    place-self: center;}
+  
+  .c6 { grid-area: c6;
+    place-self: center; }
+  
+  .c7 { grid-area: c7; 
+    place-self: center;}
+  
+  .c8 { grid-area: c8;
+    place-self: center; }
+
+
+    
+
