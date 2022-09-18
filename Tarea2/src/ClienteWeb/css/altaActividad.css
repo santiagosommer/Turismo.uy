@@ -7,6 +7,7 @@
     grid-template-rows: 0.4fr 2.2fr 0.4fr;
     gap: 2px 0px;
     grid-auto-flow: row;
+    min-width: 1000px;
     grid-template-areas:
       "imagen texto"
       "formulario formulario"
@@ -18,7 +19,8 @@
     padding: 10px;
     border-top: 1px solid red;
     border-bottom: 1px solid red;
-    border-left:  1px solid red ; }
+    border-left:  1px solid red ;
+     }
   
   .texto { grid-area: texto;
           background-color: #d6b1b1;
@@ -56,6 +58,8 @@
   
 img{
   height: 90px;
+  position:relative;
+  margin-top: 10px;
 }
 
 /* iconos */
@@ -64,6 +68,7 @@ img{
     height: 70px ;
     float:left;
     margin-right: 9px;
+    z-index: 5;
 }
 
 .container2 {  display: grid;
