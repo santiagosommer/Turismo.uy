@@ -18,5 +18,10 @@ if (sessionStorage.imageURL != null){
 
         secondDropdown.href = "./cerrarSesion.html";
         secondDropdown.textContent = "Cerrar Sesion";
+
+        let menuProveedor = document.getElementById("menu-proveedor");
+        if (sessionStorage.esProveedor == "true"){
+            menuProveedor.style.display = "block";
+        }
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/esqueleto.css">
+    <link rel="stylesheet" href="./../css/styles.css">
     <link rel="stylesheet" href="./../css/altaSalida.css">
     <title>TurisUY</title>
 </head>
@@ -13,9 +13,9 @@
         <div class="top-bar-left">
             <img src="./../icons/bus.svg" class="bus-icon">
             <div class="top-bar-links">
-                <a href="#" class="links selected">Principal</a>
-                <a href="#" class="links">Actividades</a>
-                <a href="#" class="links">Paquetes</a>
+                <a href="./index.html" class="links selected">Principal</a>
+                <a href="./consultaActIndex.html" class="links">Actividades</a>
+                <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
             </div>
         </div>
         <div class="top-bar-right">
@@ -24,12 +24,22 @@
                 <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
                 <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
             </div>
-            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
-            <div class="dropdown">
-                <img src="./../icons/avatar.svg" class="avatar icon">
+            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div id="menu-proveedor" class="dropdown" style="display: none;">
+                <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
                 <div class="dropdown-content">
-                    <a href="#">Iniciar Sesion</a>
-                    <a href="#">Registrarse</a>
+                    <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                    <a href="./altaSalida.html">Alta de Salida Turistica</a>
+                </div>
+            </div>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,40 +55,40 @@
         <div class="formulario ">
             <div class="container2">
                 <div class="departamentoycategorias">
-                    
+
                         <div class="img1"> <img src="./../icons/location2.svg" class="iconop" ></div>
                         <div class="s1">  <select class ="controls" name="departamento" id="cars">
                             <option value="volvo">Rocha</option>
-                            
+
                           </select></div>
                         <div class="img2"> <img src="./../icons/tag.svg" class="iconop" > </div>
                         <div class="s2">  <select name="actividades" class ="controls" id="cars">
                             <option value="degusta">Degusta</option>
-                            
+
                           </select> </div>
 
-                    
+
 
                 </div>
                 <div class="c2">
-                    <img src="./../icons/reservation.svg" class="iconop" > 
+                    <img src="./../icons/reservation.svg" class="iconop" >
                     <input type="text" name="nombre" class ="controls"  placeholder="Nombre de la Salida" required>
                 </div>
                 <div class="c3">
-                    <img src="./../icons/clock.svg" class="iconop" >  
+                    <img src="./../icons/clock.svg" class="iconop" >
                     <input class="controls" type="datetime-local" name="dateNHour" id="dateNHour" placeholder="Fecha y Hora de salida" required>
                 </div>
                 <div class="c4">
-                    <img src="./../icons/location.svg" class="iconop" > 
+                    <img src="./../icons/location.svg" class="iconop" >
                     <input type="text" name="lugarsalida" class ="controls"  placeholder="Lugar de salida" required>
                 </div>
                 <div class="c5">
-                    <div class="Costo"> <img src="./../icons/cuposMax.svg" class="iconop" > 
-                        <input type="text" name="maxcupos"  placeholder="Cupos maximos" class ="controls" required> 
+                    <div class="Costo"> <img src="./../icons/cuposMax.svg" class="iconop" >
+                        <input type="text" name="maxcupos"  placeholder="Cupos maximos" class ="controls" required>
                     </div>
                 </div>
                 <div class="c6">
-                    <img src="./../icons/image.svg" class="iconop"  > 
+                    <img src="./../icons/image.svg" class="iconop"  >
                     <input class ="controls" type="file" name="img" id="img" placeholder="Seleccionar imagen" required>
                 </div>
                 <div class="c7">
@@ -86,14 +96,14 @@
                     <input class="boton2" type="submit" value="Cancelar">
                 </div>
               </div>
-         
+
         </div>
-       
-        
+
+
     </div>
 
-    
-   
+
+    <script src="./../js/mantenerSesion.js"></script>
     <script src="./../main.js"></script>
 </body>
 </html>

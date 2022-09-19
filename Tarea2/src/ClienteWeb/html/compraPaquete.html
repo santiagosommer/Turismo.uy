@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/esqueleto.css">
+    <link rel="stylesheet" href="./../css/styles.css">
     <link rel="stylesheet" href="./../css/compraPaquete.css">
     <title>TurisUY</title>
 </head>
@@ -13,9 +13,9 @@
         <div class="top-bar-left">
             <img src="./../icons/bus.svg" class="bus-icon">
             <div class="top-bar-links">
-                <a href="#" class="links">Principal</a>
-                <a href="#" class="links">Actividades</a>
-                <a href="#" class="links selected">Paquetes</a>
+                <a href="./index.html" class="links selected">Principal</a>
+                <a href="./consultaActIndex.html" class="links">Actividades</a>
+                <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
             </div>
         </div>
         <div class="top-bar-right">
@@ -24,12 +24,22 @@
                 <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
                 <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
             </div>
-            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
-            <div class="dropdown">
-                <img src="./../icons/avatar.svg" class="avatar icon">
+            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div id="menu-proveedor" class="dropdown" style="display: none;">
+                <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
                 <div class="dropdown-content">
-                    <a href="#">Iniciar Sesion</a>
-                    <a href="#">Registrarse</a>
+                    <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                    <a href="./altaSalida.html">Alta de Salida Turistica</a>
+                </div>
+            </div>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,32 +50,33 @@
             <div class="h1">
                 <h2>Comprar Paquete</h2>
             </div>
-            
+
                 <div class="paquetes">
                         <div class="s2" >  <select name="paquetes" class ="controls" id="cars">
-                            <option value="disfrutarRocha">Disfrutar Rocha</option>                            
+                            <option value="disfrutarRocha">Disfrutar Rocha</option>
                           </select> </div>
-                </div>     
+                </div>
            <div class="conteiner2"></div>
                 <div class="info">
                     <center><b>Costo:</b>  $0.00 </center>
                     <hr>
                     <center><b>Cantidad de Turistas:</b>  00 </center>
                     <hr>
-                    <center><b>Vencimiento</b>  00/00/00 </center>  
+                    <center><b>Vencimiento</b>  00/00/00 </center>
                 </div>
-            </div>   
+            </div>
                     <div class="botones">
                         <button type="button" id="iniciarButton">Comprar</button>
                         <button type="button" id="iniciarButton">Cancelar</button>
                     </div>
-            
+
         </div>
 
-          
+
     </div>
 
     <script src="./../main.js"></script>
+    <script src="./../js/mantenerSesion.js"></script>
     <script src="./../js/compraPaquete.js"></script>
 </body>
 </html>
