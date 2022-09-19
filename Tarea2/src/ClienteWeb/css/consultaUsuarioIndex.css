@@ -44,6 +44,11 @@
 .Salida {
     display: flex;
     gap: 10px;
+    box-shadow: -5px 10px 10px 0 lightgray;
+    border: solid 2px grey;
+    border-radius: 10px;
+
+    margin-bottom: 20px;
 }
 
 .imagenSalida{
@@ -56,5 +61,28 @@
 }
 
 .imagenSalida img{
+    height: 100px;
+}
+.Actividad {
+    display: flex;
+    gap: 10px;
+    box-shadow: -5px 10px 10px 0 lightgray;
+    border: solid 2px grey;
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+}
+
+.imagenActividad{
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 150px;
+    overflow: hidden;
+    margin: 10px;
+    padding: 20px;
+}
+
+.imagenActividad img{
     height: 100px;
 }

@@ -13,7 +13,7 @@ if (sessionStorage.imageURL != null){
         let firstDropdown = document.getElementById("dropdown-1");
         let secondDropdown = document.getElementById("dropdown-2");
 
-        firstDropdown.href = "./consultaDeUsuario.html";
+        firstDropdown.href = "./consultaUsuarioPropio.html";
         firstDropdown.textContent = "Ver Perfil";
 
         secondDropdown.href = "./cerrarSesion.html";
