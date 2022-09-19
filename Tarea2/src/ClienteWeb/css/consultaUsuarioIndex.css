@@ -113,3 +113,10 @@
 .imagenPaquete img{
     height: 100px;
 }
+
+.imagenSalidaDegusta{
+    display: flex;
+    justify-content: center;    
+    overflow: hidden;    
+    padding: 20px;
+}

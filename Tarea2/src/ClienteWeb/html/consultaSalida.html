@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../css/styles.css">
-    <link rel="stylesheet" href="./../css/consultaSalida.css">
+    <link rel="stylesheet" href="./../css/consultaUsuarioIndex.css">
+    <link rel="stylesheet" href="./../css/consultaUsuario.css">
     <title>TurisUY</title>
 </head>
 <body>
@@ -45,45 +46,33 @@
         </div>
     </div>
 
-    <div class="content">
-
-        <div class="filtros">
-            <div class="filtro">
-               
+<div class="content">
+        <div class="Consultas">
+            <div class="container-consulta">
+                <div class="img-container">
+                    <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" class="imagenSalidaDegusta">
+                </div>
+                <h3>Degusta Setiembre</h3>
             </div>
-            <div class="filtro">
-                    
+            <div class="top-bar-links">
+                <div class="tab">
+                    <div class="tablinks" id="Perfil-tab" onclick="openTab(event, 'Perfil')">
+                        Info
+                    </div>
+                </div>                
             </div>
-
-
+            <div class="tab-contents">
+                <div id="Perfil" class="tabcontent">
+                    <p><b>Fecha:</b> 03/09/2022</p>
+                    <p><b>Hora:</b> 17hs</p>
+                    <p><b>Cupos Disponibles:</b> 20</p>
+                    <p><b>Lugar:</b> Sociedad Agropecuaria de Rocha</p>
+                </div>                
+            </div>
         </div>
+</div>
 
-
-        <div class="container">
-            <div class="Salida">
-              <div class="imagen">
-                <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" class="imagenSalida">
-              </div>
-              <div class="nombreSal">
-                <h2>Degusta Setiembre</h2>
-              </div>
-              <div class="inscribirse">
-                <button class="boton" onclick="location.href='InscripcionASalidaTuristica.html'">Inscribirse a Salida </button>
-              </div>
-            </div>
-            <div class="infoSal">
-                <p> <b>  Degusta Setiembre  </b> <br>
-                    <b>Fecha: </b>   03/09/2022  <br>
-                   <b> Hora:   </b>  17hs <br>
-                <b>  Cupos Disponibles:  </b> 20 <br>
-            <b>Lugar: </b>   Sociedad
-            Agropecuaria
-            de Rocha </p>
-            </div>
-          </div>
-
-    </div>
-
+    <script src="./../js/consultaDeUsuario.js"></script>
     <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>
