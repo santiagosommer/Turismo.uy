@@ -28,4 +28,8 @@
 .tab:hover{
     font-weight: bold;
     transition: font-weight 0.2s;
+    cursor:pointer;
+   
+        
+    
 }

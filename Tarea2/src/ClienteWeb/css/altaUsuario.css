@@ -85,3 +85,9 @@ button{
 input:focus{
     outline: none;
 }
+
+button:hover{
+    background: #5046c0;
+    cursor:pointer;
+
+  }

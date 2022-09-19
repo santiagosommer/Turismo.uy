@@ -50,3 +50,9 @@ button{
     border-radius: 4px;
 
 }
+
+
+button:hover{
+    cursor:pointer;
+    background: #5046c0;
+}

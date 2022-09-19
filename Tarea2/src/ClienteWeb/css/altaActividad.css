@@ -152,10 +152,12 @@ img{
 
   .boton:hover{
     background-color: rgb(126, 73, 73);
+    cursor:pointer;
   }
 
   .boton2:hover{
     background-color:rgb(161, 172, 180);
+    cursor:pointer;
   }
 
   
