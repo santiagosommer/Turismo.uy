@@ -14,9 +14,9 @@
             <div class="top-bar-left">
                 <img src="./../icons/bus.svg" class="bus-icon">
                 <div class="top-bar-links">
-                    <a href="#" class="links selected">Principal</a>
-                    <a href="#" class="links">Actividades</a>
-                    <a href="#" class="links">Paquetes</a>
+                    <a href="./index.html" class="links selected">Principal</a>
+                    <a href="./consultaActIndex.html" class="links">Actividades</a>
+                    <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
                 </div>
             </div>
             <div class="top-bar-right">
@@ -25,12 +25,22 @@
                     <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
                     <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
                 </div>
-                <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
-                <div class="dropdown">
-                    <img src="./../icons/avatar.svg" class="avatar icon">
+                <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+                <div id="menu-proveedor" class="dropdown" style="display: none;">
+                    <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
                     <div class="dropdown-content">
-                        <a href="#">Iniciar Sesion</a>
-                        <a href="#">Registrarse</a>
+                        <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                        <a href="./altaSalida.html">Alta de Salida Turistica</a>
+                    </div>
+                </div>
+                <div style="display:flex; align-items: center; gap: 5px;">
+                    <h3 id="user-name"></h3>
+                    <div class="dropdown">
+                        <img src="./../icons/avatar.svg" class="avatar icon">
+                        <div class="dropdown-content">
+                            <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                            <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,6 +93,7 @@
         </section>
     </div>
 
+    <script src="./../js/mantenerSesion.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
