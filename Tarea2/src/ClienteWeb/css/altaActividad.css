@@ -66,8 +66,7 @@
   width: 378px;
   padding: 10px;
   border-radius: 4px;
-  margin-top: 25px;
-  margin-bottom: 5px;
+  margin: 12.5px;
   border: solid 1px #d6b1b1;
   font-family: 'Morrison', sans-serif;
   font-size: 16px;
@@ -158,6 +157,13 @@ img{
   .boton2:hover{
     background-color:rgb(161, 172, 180);
     cursor:pointer;
+  }
+
+  .iconop{
+    filter: invert(54%) sepia(27%) saturate(224%) hue-rotate(166deg) brightness(91%) contrast(90%);
+    width: 55px;
+    height: 55px;
+    margin: 5px;
   }
 
   

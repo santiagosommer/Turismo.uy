@@ -39,6 +39,8 @@
 
 .filtro select{
     padding: 15px;
+    font-family: 'Morrison', sans-serif;
+    font-size: 16px;
 }
 
 .Salida {
