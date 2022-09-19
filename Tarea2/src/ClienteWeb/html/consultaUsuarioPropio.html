@@ -43,49 +43,51 @@
         <div class="Consultas">
             <div class="container-consulta">
                 <div class="img-container">
-                    <img src="https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small" height="200">
+                    <img id="img-perfil" src="" height="200">
                 </div>
-                <h3>Rosa Maria Martinez</h3>
-                <h5>lachiqui / mirtha.legrand.ok@hotmail.com.ar</h5>
-            </div>
+                <h3 id="title-nombre"></h3>
+                <h5 id="title-nickname-email"></h5>
+                </div>
             <div class="top-bar-links">
                 <div class="tab">
                     <div class="tablinks" id="Perfil-tab" onclick="openTab(event, 'Perfil')">
                         Perfil
                     </div>
                 </div>
-                <div class="tab">
+                <div class="tab" id="Actividades-tab-container">
+                    <div class="tablinks" id="Actividades-tab" onclick="openTab(event, 'Actividades')">
+                        Actividades
+                    </div>
+                </div>
+                <div class="tab" id="Salidas-tab-container">
                     <div class="tablinks" id="Salidas-tab" onclick="openTab(event, 'Salidas')">
                         Salidas
+                    </div>
+                </div>
+                <div class="tab" id="Paquetes-tab-container">
+                    <div class="tablinks" id="Paquetes-tab" onclick="openTab(event, 'Paquetes')">
+                        Paquetes
                     </div>
                 </div>
             </div>
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
-                    <p><b>Nickname:</b> lachiqui</p>
-                    <p><b>Nombre:</b> Rosa Maria</p>
-                    <p><b>Apellido:</b> Martinez</p>
-                    <p><b>E-mail:</b> mirtha.legrand.ok@hotmail.com.ar</p>
-                    <p><b>Fecha de Nacimiento:</b> 23/2/1927</p>
-                    <p><b>Nacionalidad:</b> Argentina </p>
+                </div>
+                <div id="Actividades" class="tabcontent">
                 </div>
                 <div id="Salidas" class="tabcontent">
                     <div class="Salida">
                         <div class="imagenSalida">
-                            <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
                         </div>
                         <div class="Salida-text">
-                            <h3>Degusta Agosto</h3>
-                            <p><a href="#" class="links">Leer mas.</a></p>
                         </div>
                     </div>
-                    <div class="Salida">
-                        <div class="imagenSalida">
-                            <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG">
+                </div>
+                <div id="Paquetes" class="tabcontent">
+                    <div class="Paquete">
+                        <div class="imagenPaquete">
                         </div>
-                        <div class="Salida-text">
-                            <h3>Degusta Setiembre</h3>
-                            <p><a href="#" class="links">Leer mas.</a></p>
+                        <div class="Paquete-text">
                         </div>
                     </div>
                 </div>
@@ -95,5 +97,6 @@
 
     <script src="./../js/consultaDeUsuario.js"></script>
     <script src="./../js/mantenerSesion.js"></script>
+    <script src="./../js/consultaUsuarioPropio.js"></script>
 </body>
 </html>

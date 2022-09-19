@@ -1,0 +1,213 @@
+let baseDeProveedores = [
+    {
+        "nickname": "washington",
+        "nombre": "Washington",
+        "apellido": "Rocha",
+        "email": "washington@turismorocha.gub.uy",
+        "fechaNacimiento": "14/09/1970",
+        "descripcion": "Hola! me llamo Washington y soy el encargado del portal de turismo del departamento de Rocha - Uruguay",
+        "url": "http://turismorocha.gub.uy/",
+        "imageURL": "https://c.wallhere.com/photos/55/39/safe_house_cia_agent_tobin_frost_denzel_washington-584127.jpg!d",
+        "actividades": [
+            {
+                "nombre": "Degusta",
+                "duracion": 3,
+                "costo": 800,
+                "ciudad": "Rocha",
+                "departamento": "Rocha",
+                "fechaAlta": "20/7/2022",
+                "imageURL": "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg",
+                "confirmacion": "Confirmada"
+            },
+            {
+                "nombre": "Teatro con Sabores",
+                "duracion": 3,
+                "costo": 500,
+                "ciudad": "Rocha",
+                "departamento": "Rocha",
+                "fechaAlta": "21/7/2022",
+                "imageURL": "https://s3.amazonaws.com/turismorocha/eventos/2579/cover/teatro-con-sabores-008950900-1659638152.jpg",
+                "confirmacion": "Confirmada"
+            }
+        ]
+    }
+];
+
+let baseDeTuristas = [
+    {
+        "nickname": "lachiqui",
+        "nombre": "Rosa Maria",
+        "apellido": "Martinez",
+        "email": "mirtha.legrand.ok@hotmail.com.ar",
+        "fechaNacimiento": "23/2/1927",
+        "nacionalidad": "Argentina",
+        "imageURL": "https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small",
+        "inscripciones":[
+        ]
+    }
+]
+
+const divPerfil = document.getElementById("Perfil");
+const titleNombre = document.getElementById("title-nombre");
+const titleNicknameEmail = document.getElementById("title-nickname-email");
+const imgPerfil = document.getElementById("img-perfil");
+
+let nicknameLogged = sessionStorage.nickname;
+if (nicknameLogged == null){
+    alert("No hay usuario loggeado.");
+}
+let isProveedor = true;
+let userFound = false;
+let userData = {};
+
+baseDeProveedores.every( proveedor =>
+    {
+        if(proveedor.nickname == nicknameLogged)
+        {
+            userFound = true;
+            userData = proveedor;
+            return false;
+        }
+        return true;
+    }
+);
+
+if (userFound){
+    console.log("Es proveedor, populando pagina...");
+    populateWebProveedor();
+}
+else{
+    isProveedor = false;
+    baseDeTuristas.every( turista =>
+        {
+            if(turista.nickname == nicknameLogged)
+            {
+                userData = turista;
+                userFound = true;
+                return false;
+            }
+            return true;
+        }
+    );
+    if (userFound){
+        console.log("Es turista, populando pagina...");
+        populateWebTurista();
+    }
+    else{
+        alert("No se encontro usuario en BD");
+    }
+}
+
+function populateWebTurista(){
+    imgPerfil.src = userData.imageURL;
+    titleNombre.textContent = userData.nombre + " " + userData.apellido;
+    titleNicknameEmail.textContent = userData.nickname + " / " + userData.email;
+
+    const nickname = document.createElement("p");
+    const nombre = document.createElement("p");
+    const apellido = document.createElement("p");
+    const email = document.createElement("p");
+    const fechaNacimiento = document.createElement("p");
+    const nacionalidad = document.createElement("p");
+
+    nickname.innerHTML = "<b>" + "Nickname: " + "</b> " + userData.nickname;
+    nombre.innerHTML = "<b>" + "Nombre: " + "</b> " + userData.nombre;
+    apellido.innerHTML = "<b>" + "Apellido: " + "</b> " + userData.apellido;
+    email.innerHTML = "<b>" + "E-mail: " + "</b> " + userData.email;
+    fechaNacimiento.innerHTML = "<b>" + "Fecha de Nacimiento: " + "</b> " + userData.fechaNacimiento;
+    nacionalidad.innerHTML = "<b>" + "Descripcion: " + "</b> " + userData.nacionalidad;
+
+    divPerfil.appendChild(nickname);
+    divPerfil.appendChild(nombre);
+    divPerfil.appendChild(apellido);
+    divPerfil.appendChild(email);
+    divPerfil.appendChild(fechaNacimiento);
+    divPerfil.appendChild(nacionalidad);
+
+    const tabActividades = document.getElementById("Actividades-tab-container");
+    tabActividades.style.display = "none";
+};
+
+function populateWebProveedor(){
+    //Popular top del recuadro y foto
+    imgPerfil.src = userData.imageURL;
+    titleNombre.textContent = userData.nombre + " " + userData.apellido;
+    titleNicknameEmail.textContent = userData.nickname + " / " + userData.email;
+
+    //Popular Perfil
+    const nickname = document.createElement("p");
+    const nombre = document.createElement("p");
+    const apellido = document.createElement("p");
+    const email = document.createElement("p");
+    const fechaNacimiento = document.createElement("p");
+    const descripcion = document.createElement("p");
+    const url = document.createElement("p");
+
+    nickname.innerHTML = "<b>" + "Nickname: " + "</b> " + userData.nickname;
+    nombre.innerHTML = "<b>" + "Nombre: " + "</b> " + userData.nombre;
+    apellido.innerHTML = "<b>" + "Apellido: " + "</b> " + userData.apellido;
+    email.innerHTML = "<b>" + "E-mail: " + "</b> " + userData.email;
+    fechaNacimiento.innerHTML = "<b>" + "Fecha de Nacimiento: " + "</b> " + userData.fechaNacimiento;
+    descripcion.innerHTML = "<b>" + "Descripcion: " + "</b> " + userData.descripcion;
+    url.innerHTML = "<b>" + "URL: " + "</b> " + userData.url;
+
+    divPerfil.appendChild(nickname);
+    divPerfil.appendChild(nombre);
+    divPerfil.appendChild(apellido);
+    divPerfil.appendChild(email);
+    divPerfil.appendChild(fechaNacimiento);
+    divPerfil.appendChild(descripcion);
+    divPerfil.appendChild(url);
+
+    //Esconder tabs de turista
+    const tabSalidas = document.getElementById("Salidas-tab-container");
+    const tabPaquetes = document.getElementById("Paquetes-tab-container");
+
+    tabSalidas.style.display = "none";
+    tabPaquetes.style.display = "none";
+
+    const divActividades = document.getElementById("Actividades");
+
+    //Popular Tab Actividades
+    userData.actividades.forEach(actividad => {
+        let divActividad = document.createElement("div");
+        divActividad.classList = "Actividad";
+
+
+        let divImagenActividad = document.createElement("div")
+        divImagenActividad.classList = "imagenActividad";
+        let img = document.createElement("img");
+        img.src = actividad.imageURL;
+        divImagenActividad.append(img);
+
+        let divActividadText = document.createElement("div");
+        divActividadText.classList = "Actividad-text";
+        let actividadNombre = document.createElement("h3");
+        actividadNombre.textContent = actividad.nombre;
+        let actividadConfirmacion = document.createElement("h6");
+        actividadConfirmacion.textContent = "Estado: " + actividad.confirmacion;
+        let actividadCiudad = document.createElement("h5");
+        actividadCiudad.textContent = "Ciudad: " + actividad.ciudad;
+        let actividadDpto = document.createElement("h5");
+        actividadDpto.textContent = "Departamento: " + actividad.departamento;
+        let actividadDuracion = document.createElement("h5");
+        actividadDuracion.textContent = "Duracion: " + actividad.duracion;
+        let actividadFechaAlta = document.createElement("h5");
+        actividadFechaAlta.textContent = "Fecha de Alta: " + actividad.fechaAlta;
+
+
+
+        divActividadText.append(actividadNombre);
+        divActividadText.append(actividadConfirmacion);
+        divActividadText.append(actividadCiudad);
+        divActividadText.append(actividadDpto);
+        divActividadText.append(actividadDuracion);
+        divActividadText.append(actividadFechaAlta);
+
+
+        divActividad.append(divImagenActividad);
+        divActividad.append(divActividadText);
+
+        divActividades.append(divActividad);
+    });
+};

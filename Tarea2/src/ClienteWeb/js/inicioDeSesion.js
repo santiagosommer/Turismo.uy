@@ -21,7 +21,8 @@ let baseDeUsuarios = [
         "apellido": "Martınez",
         "email": "mirtha.legrand.ok@hotmail.com.ar",
         "password": "rosita",
-        "imageURL": "./../photos/lachiqui.jpg"
+        "imageURL": "./../photos/lachiqui.jpg",
+        "esProveedor": false
     },
     {
         "nickname": "washington",
@@ -29,7 +30,8 @@ let baseDeUsuarios = [
         "apellido": "Rocha",
         "email": "washington@turismorocha.gub.uy",
         "password": "washi123",
-        "imageURL": "./../photos/washington.jpg"
+        "imageURL": "./../photos/washington.jpg",
+        "esProveedor": true
     }
 ];
 
@@ -47,6 +49,7 @@ iniciarButton.addEventListener("click", () => {
                 sessionStorage.nombre = element.nombre;
                 sessionStorage.apellido = element.apellido;
                 sessionStorage.imageURL = element.imageURL;
+                sessionStorage.esProveedor = element.esProveedor;
 
                 correctPassword = true;
                 userLogged = element;

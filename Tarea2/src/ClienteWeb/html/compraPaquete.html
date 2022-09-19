@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/esqueleto.css">
+    <link rel="stylesheet" href="./../css/compraPaquete.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./../icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="#" class="links">Principal</a>
+                <a href="#" class="links">Actividades</a>
+                <a href="#" class="links selected">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="#"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div class="dropdown">
+                <img src="./../icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a href="#">Iniciar Sesion</a>
+                    <a href="#">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="h1">
+                <h2>Comprar Paquete</h2>
+            </div>
+            
+                <div class="paquetes">
+                        <div class="s2" >  <select name="paquetes" class ="controls" id="cars">
+                            <option value="disfrutarRocha">Disfrutar Rocha</option>                            
+                          </select> </div>
+                </div>     
+           <div class="conteiner2"></div>
+                <div class="info">
+                    <center><b>Costo:</b>  $0.00 </center>
+                    <hr>
+                    <center><b>Cantidad de Turistas:</b>  00 </center>
+                    <hr>
+                    <center><b>Vencimiento</b>  00/00/00 </center>  
+                </div>
+            </div>   
+                    <div class="botones">
+                        <button type="button" id="iniciarButton">Comprar</button>
+                        <button type="button" id="iniciarButton">Cancelar</button>
+                    </div>
+            
+        </div>
+
+          
+    </div>
+
+    <script src="./../main.js"></script>
+    <script src="./../js/compraPaquete.js"></script>
+</body>
+</html>
