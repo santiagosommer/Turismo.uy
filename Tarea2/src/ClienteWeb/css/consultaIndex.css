@@ -37,3 +37,7 @@
 .filtro select{
     padding: 15px;
 }
+
+.nombre{
+    font-weight: bold;
+}

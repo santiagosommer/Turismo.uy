@@ -25,7 +25,7 @@
   margin-bottom: 22px;}
   
   .nombreAct { grid-area: nombreAct;
-    
+    text-align: center;
     place-self: center;
    }
   .nombreAct h1{
@@ -142,3 +142,25 @@
       font-size: 20px;
 
     }
+
+
+    .boton{
+      min-width: 45%;
+        
+        background: #6558F5;
+        border: none;
+        padding: 12px;
+        color: white;
+        margin-bottom: 5px;
+        font-size: 16px;
+       
+        text-align: center ;
+        border-radius: 4px;
+    }
+
+
+  button:hover{
+    background: #5046c0;
+    cursor:pointer;
+
+  }
