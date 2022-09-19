@@ -43,6 +43,36 @@ let baseDeTuristas = [
         "nacionalidad": "Argentina",
         "imageURL": "https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small",
         "inscripciones":[
+            {
+                "tipo": "General",
+                "cantidadTuristas": 3,
+                "costo": 2400,
+                "salidaNombre": "Degusta Agosto",
+                "fechaInscripcion": "15/8/2022",
+                "imageURL": "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg"
+            },
+            {
+                "tipo": "General",
+                "cantidadTuristas": 3,
+                "costo": 1200,
+                "salidaNombre": "Degusta Setiembre",
+                "fechaInscripcion": "18/8/2022",
+                "imageURL": "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG"
+            }
+        ],
+        "paquetes":[
+            {
+                "nombre": "Disfrutar Rocha",
+                "cantidadTuristas": 2,
+                "fechaCompra": "15/8/2022",
+                "imageURL": "https://sites.google.com/site/areasprotegidasenuruguay/_/rsrc/1411660757953/algunas-de-las-areas-ingresadas-por-el-snap/laguna-de-rocha/Mapa_Rocha_BLOG.jpg?height=280&width=400"
+            },
+            {
+                "nombre": "Un dia en Colonia",
+                "cantidadTuristas": 5,
+                "fechaCompra": "20/8/2022",
+                "imageURL": "https://www.lr21.com.uy/wp-content/uploads/2021/12/plaza-toros-colonia.jpg"
+            }
         ]
     }
 ]
@@ -126,6 +156,76 @@ function populateWebTurista(){
 
     const tabActividades = document.getElementById("Actividades-tab-container");
     tabActividades.style.display = "none";
+
+    const divInscripciones = document.getElementById("Salidas");
+
+    userData.inscripciones.forEach(inscripcion => {
+        let divInscripcion = document.createElement("div");
+        divInscripcion.classList = "Salida";
+
+        let divImagenInscripcion = document.createElement("div")
+        divImagenInscripcion.classList = "imagenSalida";
+        let img = document.createElement("img");
+        img.src = inscripcion.imageURL;
+        divImagenInscripcion.append(img);
+
+        let divInscripcionText = document.createElement("div");
+        divInscripcionText.classList = "Salida-text";
+        let inscripcionTipo = document.createElement("h5");
+        inscripcionTipo.textContent = inscripcion.tipo;
+        let inscripcionCantTuristas = document.createElement("h6");
+        inscripcionCantTuristas.textContent = "Cantidad Turistas: " + inscripcion.cantidadTuristas;
+        let inscripcionFechaInscripcion = document.createElement("h5");
+        inscripcionFechaInscripcion.textContent = "Fecha de Inscripcion: " + inscripcion.fechaInscripcion;
+        let inscripcionSalidaNombre = document.createElement("h3");
+        inscripcionSalidaNombre.textContent = inscripcion.salidaNombre;
+
+
+        divInscripcionText.append(inscripcionSalidaNombre);
+        divInscripcionText.append(inscripcionTipo);
+        divInscripcionText.append(inscripcionCantTuristas);
+        divInscripcionText.append(inscripcionFechaInscripcion);
+
+
+
+        divInscripcion.append(divImagenInscripcion);
+        divInscripcion.append(divInscripcionText);
+
+        divInscripciones.append(divInscripcion);
+    });
+
+    const divPaquetes = document.getElementById("Paquetes");
+
+    userData.paquetes.forEach(paquetes => {
+        let divPaquete = document.createElement("div");
+        divPaquete.classList = "Paquete";
+
+        let divImagenPaquete = document.createElement("div")
+        divImagenPaquete.classList = "imagenPaquete";
+        let img = document.createElement("img");
+        img.src = paquetes.imageURL;
+        divImagenPaquete.append(img);
+
+        let divPaqueteText = document.createElement("div");
+        divPaqueteText.classList = "Paquete-text";
+        let paqueteNombre = document.createElement("h3");
+        paqueteNombre.textContent = paquetes.nombre;
+        let inscripcionCantTuristas = document.createElement("h6");
+        inscripcionCantTuristas.textContent = "Cantidad Turistas: " + paquetes.cantidadTuristas;
+        let paqueteFechaCompra = document.createElement("h5");
+        paqueteFechaCompra.textContent = "Fecha de Compra: " + paquetes.fechaCompra;
+
+
+
+        divPaqueteText.append(paqueteNombre);
+        divPaqueteText.append(inscripcionCantTuristas);
+        divPaqueteText.append(paqueteFechaCompra);
+
+        divPaquete.append(divImagenPaquete);
+        divPaquete.append(divPaqueteText);
+
+        divPaquetes.append(divPaquete);
+    })
 };
 
 function populateWebProveedor(){
