@@ -13,17 +13,13 @@
     justify-content: flex-start;
 }
 
-/*.Salida{
-    width: 1200px;
-} */
-
 
 .filtro select{
     padding: 15px;
 }
 
 img {
-    /* max-width: 100%; */
+   
     width: auto;
      max-height: 100%;
      object-fit: contain;
@@ -85,30 +81,8 @@ img {
     }
 
 
-    /*
+  button:hover{
+    background: #5046c0;
+    cursor:pointer;
 
-.Salida {  
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    grid-template-rows: 0.3fr 0.9fr 2.3fr 0.5fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      ". ."
-      "imagenSalidaC nombreSalida"
-      "infoSalida; infoSalida"
-      ". .";
-    grid-area: Salida;
   }
-  
-  .imagenSalidaC { grid-area: imagenSalidaC; 
-    height: 200px; }
-  
-  .nombreSalida { grid-area: nombreSalida; }
-  
-  .infoSalida { grid-area: infoSalida; 
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    padding: 20px;}
-    */
