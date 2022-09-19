@@ -21,7 +21,8 @@
   
 }
   
-  .tabs { grid-area: tabs; 
+  .tabs { 
+    grid-area: tabs; 
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -62,9 +63,15 @@
   cursor:pointer;
 }
 
+.botones{
+  width: 400px;
+  display:flex; 
+  justify-content:space-between;
+}
+
 button{
     
-    width: 15%;
+    width: 45%;
     background: #6558F5;
     border: none;
     padding: 12px;
@@ -74,7 +81,7 @@ button{
     font-weight: bold;
     border-radius: 4px;
     text-align: center;
-    min-width: 100px;
+    /* min-width: 100px; */
 
 }
 
@@ -82,7 +89,8 @@ button{
 /* Style the tab */
 .tab {
     overflow: hidden;
-    
+    display: flex;
+    justify-content:space-between;
     
   }
   
@@ -97,8 +105,7 @@ button{
     padding: 14px 16px;
     transition: 0.3s;
     min-width: 100px;
-    
-    margin-left:15px;
+    margin: 10px;
     
   }
 
@@ -149,4 +156,8 @@ button{
 
 .h1{
   text-align: center;
+}
+
+#cancelarButton{
+  background: white; color: black; border: 2px solid #968EF8;
 }
