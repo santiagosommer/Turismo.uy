@@ -26,9 +26,6 @@
     font-weight: bold;
     transition: font-weight 0.2s;
     cursor:pointer;
-   
-        
-    
 }
 
 #botonComprarPaquete{
@@ -40,7 +37,7 @@
     margin-bottom: 5px;
     font-size: 16px;
     font-family: 'Morrison', sans-serif;
-    
+
     text-align: center ;
     border-radius: 4px;
 }

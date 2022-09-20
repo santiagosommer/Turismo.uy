@@ -116,7 +116,12 @@
 
 .imagenSalidaDegusta{
     display: flex;
-    justify-content: center;    
-    overflow: hidden;    
+    justify-content: center;
+    overflow: hidden;
     padding: 20px;
+}
+
+button:hover{
+    cursor:pointer;
+    background: #5046c0;
 }

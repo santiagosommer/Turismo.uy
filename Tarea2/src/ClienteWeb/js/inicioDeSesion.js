@@ -20,7 +20,7 @@ let baseDeUsuarios = [
         "nombre": "Rosa Maria",
         "apellido": "Martınez",
         "email": "mirtha.legrand.ok@hotmail.com.ar",
-        "password": "rosita",
+        "password": "awdrg543",
         "imageURL": "./../photos/lachiqui.jpg",
         "esProveedor": false
     },
@@ -29,7 +29,7 @@ let baseDeUsuarios = [
         "nombre": "Washington",
         "apellido": "Rocha",
         "email": "washington@turismorocha.gub.uy",
-        "password": "washi123",
+        "password": "asdfg654",
         "imageURL": "./../photos/washington.jpg",
         "esProveedor": true
     }
