@@ -15,6 +15,7 @@ public class ActividadTuristica {
 	private Proveedor Proveedor;
 	private Map<String, Paquete> Paquetes;
 	private String NombreCiudad;
+	private Map<String, Categoria> Categorias;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
 			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
@@ -28,6 +29,7 @@ public class ActividadTuristica {
 		setPaquetes(new HashMap<String, Paquete>());
 		setProveedor(proveedor);
 		setCiudad(ciudad);
+		Categorias = new HashMap<String, Categoria>();
 
 	}
 
@@ -111,4 +113,13 @@ public class ActividadTuristica {
 		Proveedor = proveedor;
 	}
 
+	public Map<String, Categoria> getCategorias() {
+		return Categorias;
+	}
+
+	public void setCategorias(Map<String, Categoria> categorias) {
+		Categorias = categorias;
+	}
+	
+	
 }

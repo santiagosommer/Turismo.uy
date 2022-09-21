@@ -37,6 +37,8 @@ public class Principal {
 	private AgregarActividadTuristicaAPaquete agregarActividadTurísticaAPaqueteIFrame;
 	private ConsultaDePaqueteDeActividadesTuristicas consultaPaqueteIFrame;
 	private CargaDeDatos cargaDeDatos;
+	//nuevos
+	private AltaDeCategoria altaDeCategoriaIFrame;
 
 	/**
 	 * Launch the application.
@@ -68,6 +70,16 @@ public class Principal {
 		ICTuri = fabrica.getControladorTuristica();
 		ICP = fabrica.getControladorPaquete();
 		frmServidorcentral.getContentPane().setLayout(null);
+		
+		
+		
+		
+		//nuevos 
+		altaDeCategoriaIFrame = new AltaDeCategoria(ICTuri);
+		frmServidorcentral.getContentPane().add(altaDeCategoriaIFrame);
+		altaDeCategoriaIFrame.setResizable(true);
+		altaDeCategoriaIFrame.setVisible(false);
+		altaDeCategoriaIFrame.setClosable(true);
 
 		consultaUsuarioIFrame = new ConsultaDeUsuario(ICUsu, ICTuri, frmServidorcentral);
 		consultaUsuarioIFrame.setBounds(10, 0, 768, 469);
@@ -269,6 +281,19 @@ public class Principal {
 		menuSalidas.add(mntmAltaSalidaTuristica);
 
 		menuSalidas.add(mntmConsultaDeSalida);
+		
+		JMenu mnCategorias = new JMenu("Categorias");
+		menuBar.add(mnCategorias);
+		JMenuItem mntmCrearCategoria = new JMenuItem("Alta de Categoria ");
+		mnCategorias.add(mntmCrearCategoria);
+		mntmCrearCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				altaDeCategoriaIFrame.limpiarFormulario();
+				altaDeCategoriaIFrame.setVisible(true);
+			}
+		});
+		
+		
 
 		JMenu mnPaquetes = new JMenu("Paquetes");
 		menuBar.add(mnPaquetes);

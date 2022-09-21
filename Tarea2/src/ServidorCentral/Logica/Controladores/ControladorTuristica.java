@@ -28,20 +28,48 @@ public class ControladorTuristica implements ITuristica {
 	private ActividadTuristica actividadSeleccionada;
 	private SalidaTuristica salidaSeleccionada;
 	private Departamento departamentoSeleccionado;
-	
+	private Categoria categoriaSeleccionada;
 	private Map<String, ActividadTuristica> ActividadesTuristicas;
 	private Map<String, Departamento> Departamentos;
-	
+	private Map<String,Categoria> Categorias;
 	
 	private ControladorTuristica() {
 		Departamentos = new HashMap<String,Departamento>();
-		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();		
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();	
+		Categorias = new HashMap<String, Categoria>();
 		actividadSeleccionada = null;
 		salidaSeleccionada = null;
 		departamentoSeleccionado = null;
+		categoriaSeleccionada = null;
+		
 	}
 	
+	
 	//operaciones
+	
+	//nuevas:
+	
+	public void crearCategoria(String nombre) throws CategoriaRepetidaException {
+		
+		if (existeCategoria(nombre)){
+			throw new CategoriaRepetidaException("La Categoria con nombre " + nombre + " ya existe");
+		} else {
+			Categoria nueva = new Categoria(nombre);
+			Categorias.put(nombre, nueva);
+		}
+	
+		
+		
+		
+	}
+	
+	public Boolean existeCategoria(String nombre) {
+		Boolean existe = Categorias.containsKey(nombre);
+		return existe;
+
+	}
+	
+	
 	
 	public static ControladorTuristica getInstancia() {
 		if (instancia == null) {
@@ -53,6 +81,10 @@ public class ControladorTuristica implements ITuristica {
 	public void limpiarDepartamentos(){
 		Departamentos.clear();
 	}
+	
+	
+	
+	
 	
 	public void seleccionarActividad(String actividad) {
 		//ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
@@ -316,6 +348,16 @@ public class ControladorTuristica implements ITuristica {
 	public SalidaTuristica getSalidaSeleccionada() {
 		// TODO Auto-generated method stub
 		return salidaSeleccionada;
+	}
+
+
+	public Categoria getCategoriaSeleccionada() {
+		return categoriaSeleccionada;
+	}
+
+
+	public void setCategoriaSeleccionada(Categoria categoriaSeleccionada) {
+		this.categoriaSeleccionada = categoriaSeleccionada;
 	}
 	
 	

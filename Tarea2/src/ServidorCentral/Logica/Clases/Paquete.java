@@ -13,7 +13,7 @@ public class Paquete {
 	  private int Descuento;
 	  private LocalDate FechaAlta;
 	  private Map<String, ActividadTuristica> ActividadesTuristicas;
-	 
+	 private Map<String,Categoria> Categorias;
 	  
 	 public Paquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta ) {
 		 setNombre(nombre);
@@ -22,6 +22,7 @@ public class Paquete {
 		 setDescuento(descuento);
 		 setFechaAlta(fechaAlta);
 		 setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
+		 
 		 
 	 }
 	   
@@ -79,5 +80,15 @@ public class Paquete {
 			
 		return res;
 	
+	}
+
+
+	public Map<String,Categoria> getCategorias() {
+		return Categorias;
+	}
+
+
+	public void setCategorias(Map<String,Categoria> categorias) {
+		Categorias = categorias;
 	}
 }

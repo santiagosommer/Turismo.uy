@@ -9,6 +9,7 @@ import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+import ServidorCentral.Logica.Excepciones.CategoriaRepetidaException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
@@ -17,6 +18,7 @@ import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 
 public interface ITuristica {
 	
+	public abstract void crearCategoria(String nombre) throws CategoriaRepetidaException;
 	public abstract void seleccionarActividad(String actividad);
 	public abstract ActividadTuristica getActividadSeleccionada();
 	public abstract void seleccionarSalida(String salida);
