@@ -107,7 +107,7 @@ public class Principal {
 
 		consultaActividadTuristicaIFrame = new ConsultaDeActividadTuristica(ICTuri, ICP, frmServidorcentral);
 		consultaActividadTuristicaIFrame.setMaximizable(true);
-		consultaActividadTuristicaIFrame.setBounds(52, 0, 800, 560);
+		consultaActividadTuristicaIFrame.setBounds(10, 0, 798, 704);
 		frmServidorcentral.getContentPane().add(consultaActividadTuristicaIFrame);
 
 		altaSalidaTuristicaIFrame = new AltaDeSalidaTuristica(ICTuri);
@@ -243,6 +243,7 @@ public class Principal {
 				crearActividadTuristicaIFrame.limpiarFormulario();
 				crearActividadTuristicaIFrame.cargarDatosDepartamentos();
 				crearActividadTuristicaIFrame.cargarDatosProveedores();
+				crearActividadTuristicaIFrame.cargarCategorias();
 				crearActividadTuristicaIFrame.setVisible(true);
 			}
 		});

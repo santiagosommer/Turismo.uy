@@ -43,6 +43,7 @@ import javax.swing.JScrollPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.JTextField;
 
 public class ConsultaDeActividadTuristica extends JInternalFrame {
 	
@@ -52,6 +53,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 	private JComboBox<Object> comboActividades;
 	private JComboBox<String> comboSalidas;
 	private JComboBox<String> comboPaquetes;
+	private JComboBox comboCategorias;
 	
 	private JLabel lblActividades;
 	
@@ -86,6 +88,8 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 	private JButton btnInfo_1;
 	
 	private JScrollPane scrollPane;
+	private JLabel lblNewLabel_1;
+	
 
 	
 	public void limpiarFormulario() {
@@ -93,6 +97,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		comboActividades.removeAllItems();
 		comboSalidas.removeAllItems();
 		comboPaquetes.removeAllItems();
+		comboCategorias.removeAllItems();
 		
 		Set<String> deps = interfazTuristica.listarDepartamentos();
 		for (String string : deps) {
@@ -103,9 +108,12 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		comboActividades.setSelectedIndex(-1);
 		comboSalidas.setSelectedIndex(-1);
 		comboPaquetes.setSelectedIndex(-1);
+		comboCategorias.setSelectedIndex(-1);
 		
 		comboActividades.setVisible(false);
 		lblActividades.setVisible(false);
+		comboCategorias.setVisible(false);
+		lblNewLabel_1.setVisible(false);
 		
 		toggleInfoContentVisibility(false);
 		
@@ -146,6 +154,8 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		btnInfo_1.setVisible(state);
 		
 		scrollPane.setVisible(state);		
+		comboCategorias.setVisible(state);
+		lblNewLabel_1.setVisible(state);
 	}
 
 	/**
@@ -173,9 +183,9 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		this.interfazTuristica = interfazTuristica;
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 156, 488, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[] {30, 30, 30, 30, 30, 65, 30, 30, 30, 30, 30, 30, 0, 30, 30, 30};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+		gridBagLayout.rowHeights = new int[] {30, 30, 30, 30, 30, 65, 30, 30, 30, 30, 30, 30, 0, 30, 30, 0, 30};
+		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		getContentPane().setLayout(gridBagLayout);
 				
 		JLabel lblNewLabel = new JLabel("Departamento");
@@ -404,6 +414,22 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		gbc_btnInfo_1.gridx = 3;
 		gbc_btnInfo_1.gridy = 14;
 		getContentPane().add(btnInfo_1, gbc_btnInfo_1);
+		
+		lblNewLabel_1 = new JLabel("Categorias:");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridy = 15;
+		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		comboCategorias = new JComboBox();
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 15;
+		getContentPane().add(comboCategorias, gbc_comboBox);
+		
 		btnInfo_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboPaquetes.getSelectedIndex() != -1) {
@@ -445,6 +471,15 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 						comboPaquetes.addItem(paquete.getNombre());
 					}
 					comboPaquetes.setSelectedIndex(-1);
+					
+					comboCategorias.removeAllItems();
+					Set<String> listaCategorias = interfazTuristica.listarCategoriasActividad(actividadElegida.getNombre());
+					for (String categoria : listaCategorias) {
+						comboCategorias.addItem(categoria);
+					}
+					comboCategorias.setSelectedIndex(-1);
+					
+					
 					
 				}
 			}

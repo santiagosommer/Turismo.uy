@@ -8,6 +8,7 @@ public abstract class Usuario {
 	private String Nombre;
 	private String Apellido;
 	private String Email;
+	private String Contraseña;
 	private LocalDate FechaNacimiento;
 	
 
@@ -18,7 +19,7 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 	setApellido(apellido);
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
-	
+
 }
 
 
@@ -76,6 +77,20 @@ public void setFechaNacimiento(LocalDate fechaNacimiento) {
 
 public String toString() {
     return getNombre() + " " + getApellido() + " - NickName: " + getNickname();
+}
+
+
+
+
+public String getContraseña() {
+	return Contraseña;
+}
+
+
+
+
+public void setContraseña(String contraseña) {
+	Contraseña = contraseña;
 }
 
 }

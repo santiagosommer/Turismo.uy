@@ -37,6 +37,8 @@ public class AltaDeTurista extends JInternalFrame {
 	JComboBox<Integer> comboBoxDia;
 	JComboBox<Integer> comboBoxMes;
 	JComboBox<Integer> comboBoxAño;
+	private JTextField textFieldContraseña;
+	private JTextField textFieldConfirmacionContraseña;
 
 	public AltaDeTurista(IUsuario controlUsr) {
 		setResizable(true);
@@ -48,9 +50,9 @@ public class AltaDeTurista extends JInternalFrame {
 		setBounds(100, 100, 733, 436);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 88, 78, 80, 88, 93, 91, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 24, 23, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		getContentPane().setLayout(gridBagLayout);
 
 		JLabel lblNickName = new JLabel("NickName");
@@ -184,7 +186,6 @@ public class AltaDeTurista extends JInternalFrame {
 
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
 		GridBagConstraints gbc_lblNacionalidad = new GridBagConstraints();
-		gbc_lblNacionalidad.anchor = GridBagConstraints.EAST;
 		gbc_lblNacionalidad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNacionalidad.gridx = 1;
 		gbc_lblNacionalidad.gridy = 7;
@@ -209,24 +210,59 @@ public class AltaDeTurista extends JInternalFrame {
 				}
 			}
 		});
+		
+		JLabel lblNewLabel = new JLabel("Contraseña:");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridy = 8;
+		getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+		
+		textFieldContraseña = new JTextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 3;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 2;
+		gbc_textField.gridy = 8;
+		getContentPane().add(textFieldContraseña, gbc_textField);
+		textFieldContraseña.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Confirmacion Contraseña");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridy = 9;
+		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		textFieldConfirmacionContraseña = new JTextField();
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.gridwidth = 3;
+		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.gridx = 2;
+		gbc_textField_1.gridy = 9;
+		getContentPane().add(textFieldConfirmacionContraseña, gbc_textField_1);
+		textFieldConfirmacionContraseña.setColumns(10);
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAceptar.gridx = 2;
-		gbc_btnAceptar.gridy = 9;
+		gbc_btnAceptar.gridy = 11;
 		getContentPane().add(btnAceptar, gbc_btnAceptar);
-
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				limpiarFormulario();
-				setVisible(false);
-			}
-		});
-		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
-		gbc_btnCancelar.insets = new Insets(0, 0, 0, 5);
-		gbc_btnCancelar.gridx = 4;
-		gbc_btnCancelar.gridy = 9;
-		getContentPane().add(btnCancelar, gbc_btnCancelar);
+		
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						limpiarFormulario();
+						setVisible(false);
+					}
+				});
+				GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+				gbc_btnCancelar.insets = new Insets(0, 0, 0, 5);
+				gbc_btnCancelar.gridx = 3;
+				gbc_btnCancelar.gridy = 11;
+				getContentPane().add(btnCancelar, gbc_btnCancelar);
 
 	}
 
@@ -236,7 +272,7 @@ public class AltaDeTurista extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldNacionalidad.getText();
-
+		String contraseña = this.textFieldContraseña.getText(); 
 		if (checkFormulario()) {
 			try {
 				int dia = (int) comboBoxDia.getSelectedItem();
@@ -273,9 +309,17 @@ public class AltaDeTurista extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldNacionalidad.getText();
+		String contraseña = this.textFieldContraseña.getText();
+		String confirmacionContraseña = this.textFieldConfirmacionContraseña.getText();
 
-		if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
+		if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty() || contraseña.isEmpty() || confirmacionContraseña.isEmpty() ) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
+					JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		if (!contraseña.equals(confirmacionContraseña)) {
+			JOptionPane.showMessageDialog(this, "No coinciden los campos Contraseña y Confirmacion de Contraseña", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -290,6 +334,8 @@ public class AltaDeTurista extends JInternalFrame {
 		textFieldNickName.setText("");
 		textFieldNacionalidad.setText("");
 		textFieldEmail.setText("");
+		textFieldContraseña.setText("");
+		textFieldConfirmacionContraseña.setText("");
 	}
 
 }

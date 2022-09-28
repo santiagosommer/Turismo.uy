@@ -18,6 +18,8 @@ import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 
 public interface ITuristica {
 	
+	public abstract Set<String> listarCategorias();
+	public abstract Set<String> listarCategoriasActividad(String actividad);
 	public abstract void crearCategoria(String nombre) throws CategoriaRepetidaException;
 	public abstract void seleccionarActividad(String actividad);
 	public abstract ActividadTuristica getActividadSeleccionada();

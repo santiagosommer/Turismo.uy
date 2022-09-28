@@ -69,7 +69,40 @@ public class ControladorTuristica implements ITuristica {
 
 	}
 	
+	public Set<String> listarCategorias(){
+		
+		String nombreCat;
+		Set<String> lista = new HashSet<String>();
+		
+
+		for (Iterator<Map.Entry<String, Categoria>> entries = Categorias.entrySet().iterator(); entries.hasNext(); ) {
+		    Map.Entry<String, Categoria> entry = entries.next();
+		    nombreCat = entry.getKey();
+		    lista.add(nombreCat);
+		}
 	
+		return lista;
+		
+	}
+	
+	public Set<String> listarCategoriasActividad(String actividad){
+		
+		Set<String> lista = new HashSet<String>();
+		
+		boolean existe = ActividadesTuristicas.containsKey(actividad);
+		if (existe) {
+			ActividadTuristica activ = ActividadesTuristicas.get(actividad);
+			Map<String, Categoria> categorias = activ.getCategorias();
+			
+			String nombreCategoria;	
+			for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {	
+				nombreCategoria = entry.getKey();
+			    lista.add(nombreCategoria);
+			}
+			
+		} 
+		return lista;
+	}
 	
 	public static ControladorTuristica getInstancia() {
 		if (instancia == null) {

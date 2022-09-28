@@ -15,7 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JToolBar;
+import javax.swing.ListSelectionModel;
 
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
@@ -31,6 +33,7 @@ import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.Set;
 import java.awt.event.ActionEvent;
+import javax.swing.JList;
 
 public class AltaDeActividadTuristica extends JInternalFrame {
 	private IUsuario iUsu;
@@ -46,8 +49,15 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	private JLabel lblDepartamento;
 	private JLabel lblProveedor;
 	private JComboBox ProveedorBox;
+	private JLabel lblNewLabel;
+	private JList listaCategorias;
+	private DefaultListModel<String> listModel;
 
 	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
+		listModel =new DefaultListModel();
+		
+		
+		
 		setResizable(true);
 		setMaximizable(true);
 		setTitle("Alta de Actividad Turistica");
@@ -57,10 +67,10 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		setClosable(true);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] {-27, 30, 104, 30, 0, 0};
-		gridBagLayout.rowHeights = new int[] { 30, 0, 0, 0, 0, 0, 0, 0, 52, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 30, 0, 0, 0, 0, 0, 0, 0, 24, 52, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0,
 				Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0,
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0,
 				Double.MIN_VALUE };
 		getContentPane().setLayout(gridBagLayout);
 				
@@ -181,37 +191,59 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				gbc_ProveedorBox.gridx = 2;
 				gbc_ProveedorBox.gridy = 7;
 				getContentPane().add(ProveedorBox, gbc_ProveedorBox);
+																						
+			   lblNewLabel = new JLabel("Categoria:");
+			   GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+				gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel.gridx = 1;
+				gbc_lblNewLabel.gridy = 8;
+				getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+				
+				listaCategorias = new JList(listModel);
+				GridBagConstraints gbc_list = new GridBagConstraints();
+				gbc_list.gridwidth = 2;
+				gbc_list.insets = new Insets(0, 0, 5, 5);
+				gbc_list.fill = GridBagConstraints.BOTH;
+				gbc_list.gridx = 2;
+				gbc_list.gridy = 8;
+				getContentPane().add(listaCategorias, gbc_list);
+				listaCategorias.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION); //permite seleccionar mas de un elemento
+				
+				
+				
+				
+				
 																				
-																						AceptarButton = new JButton("Aceptar");
-																						GridBagConstraints gbc_AceptarButton = new GridBagConstraints();
-																						gbc_AceptarButton.insets = new Insets(0, 0, 5, 5);
-																						gbc_AceptarButton.gridx = 2;
-																						gbc_AceptarButton.gridy = 8;
-																						getContentPane().add(AceptarButton, gbc_AceptarButton);
+				AceptarButton = new JButton("Aceptar");
+				GridBagConstraints gbc_AceptarButton = new GridBagConstraints();
+				gbc_AceptarButton.insets = new Insets(0, 0, 5, 5);
+				gbc_AceptarButton.gridx = 2;
+				gbc_AceptarButton.gridy = 9;
+				getContentPane().add(AceptarButton, gbc_AceptarButton);
 																						
-																								AceptarButton.addActionListener(new ActionListener() {
-																									public void actionPerformed(ActionEvent e) {
-																										try {
-																											cmdAltaDeActividadTuristicaActionPerformed(e);
-																										} catch (NombreActividadRepetidoException e1) {
-																										}
-																									}
+				AceptarButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							cmdAltaDeActividadTuristicaActionPerformed(e);
+						} catch (NombreActividadRepetidoException e1) {
+					}
+			}
 																						
-																								});
+			});
 																		
-																				CancelarButton = new JButton("Cancelar");
-																				GridBagConstraints gbc_CancelarButton = new GridBagConstraints();
-																				gbc_CancelarButton.insets = new Insets(0, 0, 5, 5);
-																				gbc_CancelarButton.gridx = 3;
-																				gbc_CancelarButton.gridy = 8;
-																				getContentPane().add(CancelarButton, gbc_CancelarButton);
+					CancelarButton = new JButton("Cancelar");
+					GridBagConstraints gbc_CancelarButton = new GridBagConstraints();
+					gbc_CancelarButton.insets = new Insets(0, 0, 5, 5);
+					gbc_CancelarButton.gridx = 3;
+					gbc_CancelarButton.gridy = 9;
+					getContentPane().add(CancelarButton, gbc_CancelarButton);
 												
-														CancelarButton.addActionListener(new ActionListener() {
-															public void actionPerformed(ActionEvent e) {
-																limpiarFormulario();
-																setVisible(false);
-															}
-														});
+					CancelarButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							limpiarFormulario();
+							setVisible(false);
+						}
+					});
 
 	}
 
@@ -321,6 +353,20 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 			// // No se imprime mensaje de error sino que simplemente no se muestra ningún
 			// elemento
 		}
+	}
+	
+	public void cargarCategorias() {
+		
+		listModel.removeAllElements();	
+		Set<String> cats = iTur.listarCategorias();
+		Iterator<String> itr = cats.iterator();
+		
+		
+		while (itr.hasNext()) {
+			listModel.addElement(itr.next());
+		}
+		
+		
 	}
 
 	public void limpiarFormulario() {
