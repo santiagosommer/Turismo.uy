@@ -39,7 +39,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	private DefaultComboBoxModel<String> l2;
 	private JComboBox<String> listaActividades;
 	private JComboBox<String> listaPaquetes;
-
+	private JComboBox listaCategorias;
 	/**
 	 * Create the frame.
 	 */
@@ -52,9 +52,9 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		setBounds(100, 100, 872, 183);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 97, 376, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 35, 35, 68, 0};
+		gridBagLayout.rowHeights = new int[]{0, 35, 35, 22, 68, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		//Modelos
@@ -135,6 +135,21 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		gbc_btnInfoATs.gridy = 2;
 		getContentPane().add(btnInfoATs, gbc_btnInfoATs);
 		
+		JLabel lblNewLabel_1 = new JLabel("Categorias");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridy = 3;
+		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		listaCategorias = new JComboBox();
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 3;
+		getContentPane().add(listaCategorias, gbc_comboBox);
+		
 		listaPaquetes.addActionListener(new ActionListener() {
 	 	 	public void actionPerformed(ActionEvent e) {
 	 	 		listaActividades.setSelectedIndex(-1);
@@ -148,10 +163,19 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 	     	            l2.removeAllElements();
 	     	            DTPaquete paquete = cu.getDtPaquete();
 	     	            if (paquete!= null) {
+	     	            	
 		     	        	Set<String> s = cu.listarActividadesPaquete();
 		     	        	if (s!=null && !s.isEmpty()) { //listar actividades paquetes
 		     	        		 Iterator<String> itr = s.iterator();
 		     	    			 while(itr.hasNext()) { l2.addElement(itr.next()); }
+		     	    			 
+		     	    			 //listar categorias paquete.
+		     	    			listaCategorias.removeAllItems();
+		    					Set<String> Categorias = cu.listarCategoriasPaquete(selectedPaquete);
+		    					for (String categoria : Categorias) {
+		    						listaCategorias.addItem(categoria);
+		    					}
+		    					listaCategorias.setSelectedIndex(-1);
 		     	        	}
 	     	            }
 	 	            }
@@ -198,10 +222,12 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 
 
 	public void LimpiarFormulario() {
+		listaCategorias.setSelectedIndex(-1);
 		l1.removeAllElements();
 		l2.removeAllElements();
 		listaActividades.setSelectedIndex(-1);
 		listaPaquetes.setSelectedIndex(-1);
+		
 	}	
 	
 }

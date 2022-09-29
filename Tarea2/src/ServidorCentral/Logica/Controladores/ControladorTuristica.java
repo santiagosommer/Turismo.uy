@@ -104,6 +104,7 @@ public class ControladorTuristica implements ITuristica {
 		return lista;
 	}
 	
+	
 	public static ControladorTuristica getInstancia() {
 		if (instancia == null) {
 			instancia = new ControladorTuristica();

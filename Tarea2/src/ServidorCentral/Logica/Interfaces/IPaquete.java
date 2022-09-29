@@ -9,6 +9,8 @@ import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 
 public interface IPaquete {
+	
+	public abstract Set<String> listarCategoriasPaquete(String paquete);
 	public abstract void seleccionarPaquete(String paquete);
 
 	public abstract void crearPaquete(String nombrePaque, String descripcion, 

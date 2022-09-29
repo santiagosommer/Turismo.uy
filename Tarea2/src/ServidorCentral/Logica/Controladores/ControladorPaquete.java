@@ -3,10 +3,12 @@ package ServidorCentral.Logica.Controladores;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
@@ -33,6 +35,28 @@ public class ControladorPaquete implements IPaquete {
 		PaqueteSeleccionado = null;
 				
 	}
+	
+	
+	
+public Set<String> listarCategoriasPaquete(String paquete){
+		
+		Set<String> lista = new HashSet<String>();
+		
+		boolean existe = Paquetes.containsKey(paquete);
+		if (existe) {
+			Paquete paq = Paquetes.get(paquete);
+			Map<String, Categoria> categorias = paq.getCategorias();
+			
+			String nombreCategoria;	
+			for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {	
+				nombreCategoria = entry.getKey();
+			    lista.add(nombreCategoria);
+			}
+			
+		} 
+		return lista;
+	}
+
 	
 	@Override
 	public void crearPaquete(String nombrePaque, String descripcion, 
@@ -127,18 +151,27 @@ public class ControladorPaquete implements IPaquete {
 	}
 
 	
-	
-	
-	
 	public void AgregarActividadPaquete(String paquete, String actividad) {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		crTuristica.seleccionarActividad(actividad);
-		ActividadTuristica a = crTuristica.getActividadSeleccionada();	
 		seleccionarPaquete(paquete);
 		Paquete p = PaqueteSeleccionado;
 		
+		ActividadTuristica a = crTuristica.getActividadSeleccionada();	
+		Map<String,Categoria> categorias = a.getCategorias(); //agregar categorias a paquete
+		for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {
+			
+			
+			Map<String,Categoria> c =  p.getCategorias();
+			if (!c.containsKey(entry.getKey())){ 
+				c.put(entry.getKey(), entry.getValue());
+			}
+			
+		}
+		
 		Map<String,Paquete> paquetesDeA = a.getPaquetes(); //link de a a p
 		paquetesDeA.put(paquete, p);
+		
 		
 		Map<String,ActividadTuristica> actividadesDeP = p.getActividadesTuristicas(); //link de p a a
 		actividadesDeP.put(actividad, a);
