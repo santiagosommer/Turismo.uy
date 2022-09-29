@@ -287,6 +287,7 @@ public class AltaDeProveedor extends JInternalFrame {
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldDescripcion.getText();
 		String linkWeb = this.textFieldLinkWeb.getText();
+		String contraseña = this.textFieldContraseña.getText();
 
 		if (checkFormulario()) {
 			try {
@@ -295,7 +296,7 @@ public class AltaDeProveedor extends JInternalFrame {
 				int anio = (int) comboBoxAño.getSelectedItem();
 				try {
 					LocalDate date = LocalDate.of(anio, mes, dia);
-					cu.altaProveedor(nickname, nombre, apellido, email, date, nacionalidad, linkWeb);
+					cu.altaProveedor(nickname, nombre, apellido, email, date,contraseña, nacionalidad, linkWeb);
 
 					// Muestro éxito de la operación
 					JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario",

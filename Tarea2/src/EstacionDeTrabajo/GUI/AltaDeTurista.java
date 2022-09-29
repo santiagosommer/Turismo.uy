@@ -280,7 +280,7 @@ public class AltaDeTurista extends JInternalFrame {
 				int anio = (int) comboBoxAño.getSelectedItem();
 				try {
 					LocalDate date = LocalDate.of(anio, mes, dia);
-					cu.altaTurista(nickname, nombre, apellido, email, date, nacionalidad);
+					cu.altaTurista(nickname, nombre, apellido, email, date,  contraseña, nacionalidad);
 
 					// Muestro éxito de la operación
 					JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario",
