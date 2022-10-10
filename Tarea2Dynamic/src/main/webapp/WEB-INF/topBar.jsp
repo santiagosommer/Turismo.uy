@@ -16,7 +16,7 @@
               <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
               <a href="#"><img src="media/icons/zoom.svg" class="icon"></a>
           </div>
-          <a href="./consultaUsuarioIndex.html"><img src="media/icons/group.svg" class="larger-icon"></a>
+          <a href="#"><img src="media/icons/group.svg" class="larger-icon"></a>
           <div id="menu-proveedor" class="dropdown" style="display: none;">
             <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
             <div class="dropdown-content">

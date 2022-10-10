@@ -1,12 +1,7 @@
 package ServidorCentral.Logica.Interfaces;
 
-import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashMap;
-
-import ServidorCentral.Logica.Clases.Paquete;
-import ServidorCentral.Logica.Controladores.ControladorPaquete;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
