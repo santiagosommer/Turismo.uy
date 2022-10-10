@@ -5,7 +5,7 @@
       <div class="top-bar-left">
           <img src="media/icons/bus.svg" class="bus-icon">
           <div class="top-bar-links">
-              <a href="#" class="links selected">Principal</a>
+              <a href="/Tarea2Dynamic/Home" class="links selected">Principal</a>
               <a href="#" class="links">Actividades</a>
               <a href="#" class="links">Paquetes</a>
           </div>
@@ -29,7 +29,7 @@
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
-                    <a id="dropdown-1" href="#">Iniciar Sesion</a>
+                    <a id="dropdown-1" href="/Tarea2Dynamic/IniciarSesion">Iniciar Sesion</a>
                     <a id="dropdown-2" href="#">Registrarse</a>
                 </div>
             </div>
