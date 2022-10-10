@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="./../css/inicioDeSesion.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./../icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="./index.html" class="links selected">Principal</a>
+                <a href="./consultaActIndex.html" class="links">Actividades</a>
+                <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div id="menu-proveedor" class="dropdown" style="display: none;">
+                <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
+                <div class="dropdown-content">
+                    <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                    <a href="./altaSalida.html">Alta de Salida Turistica</a>
+                </div>
+            </div>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div>
+            <h2 style="text-align:center;">Iniciar Sesion</h2>
+            <form method="post">
+                <div class="input-container">
+                        <div class="input-outer">
+                            <img src="./../icons/avatar.svg" class="icon">
+                            <input type="text" id="id-input" class="input-style" size="30" placeholder="Nickname or E-mail" name="email-or-nickname-content" required>
+                        </div>
+                        <div class="input-outer">
+                            <img src="./../icons/lock.svg" class="icon">
+                            <input type="password" id="password-input" class="input-style" size="30" placeholder="Password" name="password-content" required>
+                        </div>
+                        <div style="display:flex; justify-content:space-between;">
+                            <button type="button" id="iniciarButton">Iniciar Sesion</button>
+                            <button type="button" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./../js/inicioDeSesion.js"></script>
+</body>
+</html>

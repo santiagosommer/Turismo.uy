@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="./../css/consultaUsuarioIndex.css">
+    <link rel="stylesheet" href="./../css/consultaUsuario.css">
+    <title>TurisUY</title>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-left">
+        <img src="./../icons/bus.svg" class="bus-icon">
+        <div class="top-bar-links">
+            <a href="./index.html" class="links">Principal</a>
+            <a href="./consultaActIndex.html" class="links selected">Actividades</a>
+            <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
+        </div>
+    </div>
+    <div class="top-bar-right">
+        <div class="search-bar">
+            <label for="search-bar-input"></label>
+            <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+            <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+        </div>
+        <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+        <div id="menu-proveedor" class="dropdown" style="display: none;">
+            <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
+            <div class="dropdown-content">
+                <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                <a href="./altaSalida.html">Alta de Salida Turistica</a>
+            </div>
+        </div>
+        <div style="display:flex; align-items: center; gap: 5px;">
+            <h3 id="user-name"></h3>
+            <div class="dropdown">
+                <img src="./../icons/avatar.svg" class="avatar icon">
+                <div class="dropdown-content">
+                    <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                    <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="content">
+        <div class="Consultas">
+          <div class="container-consulta">
+            <div class="img-container">
+              <img src="https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg" height="200">
+            </div>
+            <h3>Degusta</h3>
+          </div>
+          <div class="top-bar-links">
+            <div class="tab">
+              <div class="tablinks" id="Info-tab" onclick="openTab(event, 'Info')">
+                Info
+              </div>
+            </div>
+            <div class="tab">
+              <div class="tablinks" id="Salidas-tab" onclick="openTab(event, 'Salidas')">
+                Salidas
+              </div>
+            </div>
+            <div class="tab">
+              <div class="tablinks" id="Paquetes-tab" onclick="openTab(event, 'Paquetes')">
+                Paquetes
+              </div>
+            </div>
+          </div>
+          <div class="tab-contents">
+            <div id="Info" class="tabcontent">
+              <p><b>Duración:</b> 3 dias</p>
+              <p><b>Costo:</b> $800</p>
+              <p><b>Ciudad:</b> Rocha</p>
+              <p><b>Fecha Alta:</b> 20/7/2022</p>
+              <p><b>Categoría:</b> Gastronomia</p>
+              <p><b>Descripcion:</b> Festival gastronómico de productos locales en Rocha</p>
+            </div>
+            <div id="Salidas" class="tabcontent">
+              <div class="Salida">
+                <div class="imagenSalida">
+                  <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg" height="200">
+                </div>
+                <div class="Salida-text">
+                  <h3>Degusta Agosto</h3>
+                  <p><a href="#" class="links">Leer mas.</a></p>
+                </div>
+              </div>
+              <hr>
+              <div class="Salida">
+                <div class="imagenSalida">
+                  <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" height="200">
+                </div>
+                <div class="Salida-text">
+                  <h3>Degusta Setiembre</h3>
+                  <p><a href="./consultaSalida.html" class="links">Leer mas.</a></p>
+                </div>
+              </div>
+            </div>
+            <div id="Paquetes" class="tabcontent">
+              <div class="Paquete">
+                <div class="imagenPaquete">
+                  <img src = "https://sites.google.com/site/areasprotegidasenuruguay/_/rsrc/1411660757953/algunas-de-las-areas-ingresadas-por-el-snap/laguna-de-rocha/Mapa_Rocha_BLOG.jpg?height=280&width=400">
+                </div>
+                <div class="Paquete-text">
+                  <h3>Disfrutar Rocha</h3>
+                  <p><a href="./ConsultaPaquete.html" class="links">Leer mas.</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="./../js/consultaDeUsuario.js"></script>
+     <script src="./../js/mantenerSesion.js"></script>
+</body>
+</html>

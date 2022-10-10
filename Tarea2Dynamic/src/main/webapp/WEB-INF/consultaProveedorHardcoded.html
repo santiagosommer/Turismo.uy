@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="./../css/consultaUsuarioIndex.css">
+    <link rel="stylesheet" href="./../css/consultaUsuario.css">
+    <title>TurisUY</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <img src="./../icons/bus.svg" class="bus-icon">
+            <div class="top-bar-links">
+                <a href="./index.html" class="links selected">Principal</a>
+                <a href="./consultaActIndex.html" class="links">Actividades</a>
+                <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
+            </div>
+        </div>
+        <div class="top-bar-right">
+            <div class="search-bar">
+                <label for="search-bar-input"></label>
+                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
+                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
+            </div>
+            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
+            <div id="menu-proveedor" class="dropdown" style="display: none;">
+                <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
+                <div class="dropdown-content">
+                    <a href="./altaActividad.html">Alta de Actividad Turistica</a>
+                    <a href="./altaSalida.html">Alta de Salida Turistica</a>
+                </div>
+            </div>
+            <div style="display:flex; align-items: center; gap: 5px;">
+                <h3 id="user-name"></h3>
+                <div class="dropdown">
+                    <img src="./../icons/avatar.svg" class="avatar icon">
+                    <div class="dropdown-content">
+                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
+                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="Consultas">
+            <div class="container-consulta">
+                <div class="img-container">
+                    <img src="https://c.wallhere.com/photos/55/39/safe_house_cia_agent_tobin_frost_denzel_washington-584127.jpg!d" height="200">
+                </div>
+                <h3>Washington Rocha</h3>
+                <h5>washington / washington@turismorocha.gub.uy</h5>
+                </div>
+            <div class="top-bar-links">
+                <div class="tab">
+                    <div class="tablinks" id="Perfil-tab" onclick="openTab(event, 'Perfil')">
+                        Perfil
+                    </div>
+                </div>
+                <div class="tab">
+                    <div class="tablinks" id="Actividades-tab" onclick="openTab(event, 'Actividades')">
+                        Actividades
+                    </div>
+                </div>
+            </div>
+            <div class="tab-contents">
+                <div id="Perfil" class="tabcontent">
+                    <p><b>Nickname:</b> washington</p>
+                    <p><b>Nombre:</b> Washington</p>
+                    <p><b>Apellido:</b> Rocha</p>
+                    <p><b>E-mail:</b> washington@turismorocha.gub.uy</p>
+                    <p><b>Fecha de Nacimiento:</b> 14/09/1970</p>
+                    <p><b>Descripcion:</b> "Hola! me llamo Washington y soy el encargado
+                        del portal de turismo del departamento de Rocha -
+                        Uruguay"</p>
+                    <p><b>URL:</b> http://turismorocha.gub.uy/</p>
+                </div>
+                <div id="Actividades" class="tabcontent">
+                    <div class="Actividad">
+                        <div class="imagenActividad">
+                            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg">
+                        </div>
+                        <div class="Actividad-text">
+                            <h3>Degusta</h3>
+                            <p><a href="./consultaActividad1.html" class="links">Leer mas.</a></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="Actividad">
+                        <div class="imagenActividad">
+                            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2579/cover/teatro-con-sabores-008950900-1659638152.jpg">
+                        </div>
+                        <div class="Actividad-text">
+                            <h3>Teatro con Sabores</h3>
+                            <p><a href="#" class="links">Leer mas.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../js/consultaDeUsuario.js"></script>
+    <script src="./../js/mantenerSesion.js"></script>
+</body>
+</html>
