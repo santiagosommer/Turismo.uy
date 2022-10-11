@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
 
 /**
@@ -26,6 +27,11 @@ public class IniciarSesion extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    public static EstadoError getEstadoError (HttpServletRequest request)
+    {
+    	return (EstadoError) request.getSession().getAttribute("estado_error");
+    }
+    
     public static EstadoSesion getEstado(HttpServletRequest request)
 	{
 		return (EstadoSesion) request.getSession().getAttribute("estado_sesion");
@@ -37,22 +43,18 @@ public class IniciarSesion extends HttpServlet {
     	switch(getEstado(request)){
 		case NO_LOGIN:
 			// hace que se ejecute el jsp sin cambiar la url
-			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").
-					forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
 			break;
-		case LOGIN_INCORRECTO:
-			// hace que se ejecute el jsp sin cambiar la url
-			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").
-					forward(request, response);
-			break;
-		case LOGIN_CORRECTO:
+		case LOGIN_PROVEEDOR:
 			// manda una redirección a otra URL (cambia la URL)
 			response.sendRedirect("/WEB-INF/index.jsp");
 			break;
-	}
+		case LOGIN_TURISTA:
+			// manda una redirección a otra URL (cambia la URL)
+			response.sendRedirect("/WEB-INF/index.jsp");
+			break;
+    	}
     	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**
