@@ -8,7 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import ServidorCentral.Logica.DataTypes.EstadoSesion;
 
 /**
  * Servlet implementation class IniciarSesion
@@ -25,8 +26,31 @@ public class IniciarSesion extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    public static EstadoSesion getEstado(HttpServletRequest request)
+	{
+		return (EstadoSesion) request.getSession().getAttribute("estado_sesion");
+	}
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+    	
+    	switch(getEstado(request)){
+		case NO_LOGIN:
+			// hace que se ejecute el jsp sin cambiar la url
+			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").
+					forward(request, response);
+			break;
+		case LOGIN_INCORRECTO:
+			// hace que se ejecute el jsp sin cambiar la url
+			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").
+					forward(request, response);
+			break;
+		case LOGIN_CORRECTO:
+			// manda una redirección a otra URL (cambia la URL)
+			response.sendRedirect("/WEB-INF/index.jsp");
+			break;
+	}
+    	
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp");
 		dispatcher.forward(request, response);
 	}

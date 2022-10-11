@@ -33,7 +33,7 @@ public class Home extends HttpServlet {
 	 * @param request 
 	 */
     
-    private void cargarDatos() {
+    private static void cargarDatos() {
     	
     	CargaDeDatos carga = CargaDeDatos.getInstancia();
     	
@@ -60,38 +60,14 @@ public class Home extends HttpServlet {
 			session.setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
 		}
 	}
-	
-	/**
-	 * Devuelve el estado de la sesión
-	 * @param request
-	 * @return 
-	 */
-	public static EstadoSesion getEstado(HttpServletRequest request)
-	{
-		return (EstadoSesion) request.getSession().getAttribute("estado_sesion");
-	}
 
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		cargarDatos();
 		initSession(req);
 		
-		switch(getEstado(req)){
-			case NO_LOGIN:
-				// hace que se ejecute el jsp sin cambiar la url
-				req.getRequestDispatcher("/WEB-INF/index.jsp").
-						forward(req, resp);
-				break;
-			case LOGIN_INCORRECTO:
-				// hace que se ejecute el jsp sin cambiar la url
-				req.getRequestDispatcher("/WEB-INF/index.jsp").
-						forward(req, resp);
-				break;
-			case LOGIN_CORRECTO:
-				// manda una redirección a otra URL (cambia la URL)
-				resp.sendRedirect("/WEB-INF/index.jsp");
-				break;
-		}
+		req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+		
 	}
 
 	/**

@@ -1,50 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/styles.css">
-    <link rel="stylesheet" href="./../css/consultaUsuarioIndex.css">
-    <link rel="stylesheet" href="./../css/consultaUsuario.css">
-    <title>TurisUY</title>
+    <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
+    <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
+    <style><%@include file="./../media/css/consultaUsuario.css"%></style>
+    <title>Consulta Actividad</title>
 </head>
 <body>
-  <div class="top-bar">
-    <div class="top-bar-left">
-        <img src="./../icons/bus.svg" class="bus-icon">
-        <div class="top-bar-links">
-            <a href="./index.html" class="links">Principal</a>
-            <a href="./consultaActIndex.html" class="links selected">Actividades</a>
-            <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
-        </div>
-    </div>
-    <div class="top-bar-right">
-        <div class="search-bar">
-            <label for="search-bar-input"></label>
-            <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
-            <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
-        </div>
-        <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
-        <div id="menu-proveedor" class="dropdown" style="display: none;">
-            <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
-            <div class="dropdown-content">
-                <a href="./altaActividad.html">Alta de Actividad Turistica</a>
-                <a href="./altaSalida.html">Alta de Salida Turistica</a>
-            </div>
-        </div>
-        <div style="display:flex; align-items: center; gap: 5px;">
-            <h3 id="user-name"></h3>
-            <div class="dropdown">
-                <img src="./../icons/avatar.svg" class="avatar icon">
-                <div class="dropdown-content">
-                    <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
-                    <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+    <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
 
 
     <div class="content">
@@ -74,12 +40,12 @@
           </div>
           <div class="tab-contents">
             <div id="Info" class="tabcontent">
-              <p><b>DuraciÃ³n:</b> 3 dias</p>
+              <p><b>Duración:</b> 3 dias</p>
               <p><b>Costo:</b> $800</p>
               <p><b>Ciudad:</b> Rocha</p>
               <p><b>Fecha Alta:</b> 20/7/2022</p>
-              <p><b>CategorÃ­a:</b> Gastronomia</p>
-              <p><b>Descripcion:</b> Festival gastronÃ³mico de productos locales en Rocha</p>
+              <p><b>Categoría:</b> Gastronomia</p>
+              <p><b>Descripcion:</b> Festival gastronómico de productos locales en Rocha</p>
             </div>
             <div id="Salidas" class="tabcontent">
               <div class="Salida">

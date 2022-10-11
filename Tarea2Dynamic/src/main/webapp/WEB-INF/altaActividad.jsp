@@ -1,49 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/styles.css">
-    <link rel="stylesheet" href="./../css/altaActividad.css">
-    <title>TurisUY</title>
+    <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
+    <style><%@include file="./../media/css/altaActividad.css"%></style>
+    <title>Alta Actividad</title>
 </head>
 <body>
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <img src="./../icons/bus.svg" class="bus-icon">
-            <div class="top-bar-links">
-                <a href="./index.html" class="links selected">Principal</a>
-                <a href="./consultaActIndex.html" class="links">Actividades</a>
-                <a href="./consultaPaqIndex.html" class="links">Paquetes</a>
-            </div>
-        </div>
-        <div class="top-bar-right">
-            <div class="search-bar">
-                <label for="search-bar-input"></label>
-                <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
-                <a href="#"><img src="./../icons/zoom.svg" class="icon"></a>
-            </div>
-            <a href="./consultaUsuarioIndex.html"><img src="./../icons/group.svg" class="larger-icon"></a>
-            <div id="menu-proveedor" class="dropdown" style="display: none;">
-                <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
-                <div class="dropdown-content">
-                    <a href="./altaActividad.html">Alta de Actividad Turistica</a>
-                    <a href="./altaSalida.html">Alta de Salida Turistica</a>
-                </div>
-            </div>
-            <div style="display:flex; align-items: center; gap: 5px;">
-                <h3 id="user-name"></h3>
-                <div class="dropdown">
-                    <img src="./../icons/avatar.svg" class="avatar icon">
-                    <div class="dropdown-content">
-                        <a id="dropdown-1" href="./inicioDeSesion.html">Iniciar Sesion</a>
-                        <a id="dropdown-2" href="./altaUsuario.html">Registrarse</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
 
     <div class="container">
         <div class="imagen">
@@ -76,7 +42,7 @@
                 </div>
                 <div class="c3">
                     <img src="./../icons/write.svg" class="iconop" >
-                    <input  type="text" name="descripcion" id="descripcion" class ="controls"  placeholder="DescripciÃ³n" required>
+                    <input  type="text" name="descripcion" id="descripcion" class ="controls"  placeholder="Descripción" required>
                 </div>
                 <div class="c4">
                     <img src="./../icons/clock.svg" class="iconop" >
