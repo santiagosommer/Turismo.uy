@@ -228,7 +228,7 @@ public class ControladorUsuario implements IUsuario {
 	}
 
 	@Override
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,String contrasenia,
 			String descripcionGeneral, String url) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -236,12 +236,12 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, descripcionGeneral, url);
+		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento,contrasenia, descripcionGeneral, url);
 		Proveedores.put(nickname, p);
 	}
 
 	@Override
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,
+	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,String contrasenia,
 			String nacionalidad) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -249,7 +249,7 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, nacionalidad);
+		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, contrasenia,nacionalidad);
 		Turistas.put(nickname, t);
 	}
 

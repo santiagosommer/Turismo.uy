@@ -13,12 +13,13 @@ public abstract class Usuario {
 	
 
 
-public Usuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento) {
+public Usuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento,String contrasenia) {
 	setNickname(nickname);
 	setNombre(nombre);
 	setApellido(apellido);
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
+	Contraseña = contrasenia;
 
 }
 

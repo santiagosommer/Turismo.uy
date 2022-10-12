@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
@@ -19,6 +20,7 @@ public class DTActividadTuristica {
 	private String Proveedor;
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
+	private ArrayList<DTCategoria> InfoCategorias;
 	
 	public DTActividadTuristica(ActividadTuristica at) {
 		setNombre(at.getNombre());
@@ -46,6 +48,13 @@ public class DTActividadTuristica {
 			DTPaquete auxIPa = new DTPaquete(entry.getValue());
 			this.InfoPaquetes.add(auxIPa);
 		}
+		this.InfoCategorias = new ArrayList<DTCategoria>();
+		Map<String,Categoria> categorias = at.getCategorias();
+		for(Map.Entry<String, Categoria> entry : categorias.entrySet()) {
+			DTCategoria auxIPa = new DTCategoria(entry.getValue());
+			this.InfoCategorias.add(auxIPa);
+		}
+		
 		
 	}
 	public String getNombre() {
