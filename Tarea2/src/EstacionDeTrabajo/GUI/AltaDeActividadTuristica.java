@@ -192,7 +192,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				gbc_ProveedorBox.gridy = 7;
 				getContentPane().add(ProveedorBox, gbc_ProveedorBox);
 																						
-			   lblNewLabel = new JLabel("Categoria:");
+			   lblNewLabel = new JLabel("Categorias:");
 			   GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 				gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 				gbc_lblNewLabel.gridx = 1;

@@ -159,15 +159,22 @@ public Set<String> listarCategoriasPaquete(String paquete){
 		
 		ActividadTuristica a = crTuristica.getActividadSeleccionada();	
 		Map<String,Categoria> categorias = a.getCategorias(); //agregar categorias a paquete
-		for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {
+		for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {	
 			
+			Map<String,Categoria> categoriasPaq =  p.getCategorias();
 			
-			Map<String,Categoria> c =  p.getCategorias();
-			if (!c.containsKey(entry.getKey())){ 
-				c.put(entry.getKey(), entry.getValue());
+			if (!categoriasPaq .containsKey(entry.getKey())){ 
+				categoriasPaq .put(entry.getKey(), entry.getValue());
+			}
+			
+			//Agrego el link entre el paquete y la categoria
+			Map<String,Paquete> paquetesCategoria = entry.getValue().getPaquetes();
+			if (!paquetesCategoria.containsKey(paquete)) {
+				paquetesCategoria.put(paquete, p); 
 			}
 			
 		}
+		
 		
 		Map<String,Paquete> paquetesDeA = a.getPaquetes(); //link de a a p
 		paquetesDeA.put(paquete, p);
