@@ -38,7 +38,7 @@ input:focus{
     padding: 100px;
 }
 
-button{
+.button{
     width: 45%;
     background: #6558F5;
     border: none;
@@ -52,7 +52,7 @@ button{
 }
 
 
-button:hover{
+.button:hover{
     cursor:pointer;
     background: #5046c0;
 }

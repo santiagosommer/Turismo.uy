@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
+import ServidorCentral.Logica.Fabrica.Fabrica;
+import ServidorCentral.Logica.Interfaces.IUsuario;
 
 /**
  * Servlet implementation class IniciarSesion
@@ -27,32 +28,35 @@ public class IniciarSesion extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public static EstadoError getEstadoError (HttpServletRequest request)
-    {
-    	return (EstadoError) request.getSession().getAttribute("estado_error");
-    }
-    
-    public static EstadoSesion getEstado(HttpServletRequest request)
-	{
-		return (EstadoSesion) request.getSession().getAttribute("estado_sesion");
-	}
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	
-    	switch(getEstado(request)){
-		case NO_LOGIN:
-			// hace que se ejecute el jsp sin cambiar la url
-			request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
-			break;
-		case LOGIN_PROVEEDOR:
-			// manda una redirección a otra URL (cambia la URL)
-			response.sendRedirect("/WEB-INF/index.jsp");
-			break;
-		case LOGIN_TURISTA:
-			// manda una redirección a otra URL (cambia la URL)
-			response.sendRedirect("/WEB-INF/index.jsp");
-			break;
+    	String nick_or_email = request.getParameter("email-or-nickname-content");
+    	String passw = request.getParameter("password-content");
+    	
+    	if (nick_or_email == null && passw == null) {
+    		request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
+    	}
+    	
+    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+    	
+    	EstadoError nuevoEstado = cu.iniciarSesion(nick_or_email,passw);
+    	
+    	request.setAttribute("estado_error", nuevoEstado);
+    	
+    	if (nuevoEstado == EstadoError.EXITO_PROVEEDOR || nuevoEstado == EstadoError.EXITO_TURISTA) {
+    		if(nuevoEstado == EstadoError.EXITO_PROVEEDOR) {
+    			request.setAttribute("estado_sesion", EstadoSesion.LOGIN_PROVEEDOR);
+    			request.setAttribute("usuario_proveedor", cu.getDTProveedor());
+    		}else {
+    			request.setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
+    			request.setAttribute("usuario_turista", cu.getDTTurista());
+    		}
+    		
+    		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    	}else {
+    		request.setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
+    		request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
     	}
     	
 	}
