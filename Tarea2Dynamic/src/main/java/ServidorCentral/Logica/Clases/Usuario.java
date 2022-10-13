@@ -8,7 +8,7 @@ public abstract class Usuario {
 	private String Nombre;
 	private String Apellido;
 	private String Email;
-	private String Contraseña;
+	private String Contrasenia;
 	private LocalDate FechaNacimiento;
 	
 
@@ -19,7 +19,7 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 	setApellido(apellido);
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
-	Contraseña = contrasenia;
+	Contrasenia = contrasenia;
 
 }
 
@@ -83,15 +83,15 @@ public String toString() {
 
 
 
-public String getContraseña() {
-	return Contraseña;
+public String getContrasenia() {
+	return Contrasenia;
 }
 
 
 
 
-public void setContraseña(String contraseña) {
-	Contraseña = contraseña;
+public void setContrasenia(String contraseña) {
+	Contrasenia = contraseña;
 }
 
 }

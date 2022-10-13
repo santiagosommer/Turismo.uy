@@ -71,31 +71,32 @@ public class ControladorUsuario implements IUsuario {
     		if (existeUsuario(nick_or_email)) { // nick_or_email es nickname
     			if (esTurista(nick_or_email)) { // nick_or_email es de un turista
     				seleccionarTurista(nick_or_email);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else { // nick_or_email es de un proveedor
     				seleccionarProveedor(nick_or_email);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
+    					
     				}
     			}
     		}else { // nick_or_email es email
     			String nickname = getNickname(nick_or_email);
     			if (esTurista(nickname)) {
     				seleccionarTurista(nickname);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else {
     				seleccionarProveedor(nickname);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;

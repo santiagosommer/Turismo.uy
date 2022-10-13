@@ -34,8 +34,9 @@ public class IniciarSesion extends HttpServlet {
     	String nick_or_email = request.getParameter("email-or-nickname-content");
     	String passw = request.getParameter("password-content");
     	
-    	if (nick_or_email == null && passw == null) {
+    	if (nick_or_email == null || passw == null) {
     		request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
+    		return;
     	}
     	
     	IUsuario cu = Fabrica.getInstance().getControladorUsuario();

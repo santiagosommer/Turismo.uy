@@ -53,6 +53,9 @@ public class Home extends HttpServlet {
     
 	public static void initSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		
+		request.setAttribute("estado_error", null);
+		
 		if (session.getAttribute("paginas_navegadas") == null) {
 			session.setAttribute("paginas_navegadas", 0);
 		}
@@ -61,12 +64,12 @@ public class Home extends HttpServlet {
 		}
 	}
 
-	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
+	private void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		cargarDatos();
-		initSession(req);
+		initSession(request);
 		
-		req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req, resp);
+		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 		
 	}
 
