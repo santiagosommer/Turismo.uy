@@ -1,35 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
-    <style><%@include file="./../media/css/altaUsuario.css"%></style>
-    <title>Registro Usuario</title>
-</head>
-<body>
+package servlets;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class AltaUsuario
+ */
+@WebServlet("/AltaUsuario")
+public class AltaUsuario extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public AltaUsuario() {
+        super();
+    }
     
-    <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+    	request.getRequestDispatcher("/WEB-INF/altaUsuario.jsp").forward(request, response);
+    	
+    	//adquirimos la info
+    	//guardamos la info para enviarla(request.setatributte)
+    	
+    	//nos comunicamos con el jsp
+    	//requestdispatcher elem = request.getreqdisp(/jsp)
+    	
+    	//enviamos la info con elem.forward(req, resp)
+		
+	}
 
-    <div class="content">
-        <div class="titles">
-            <h1>¿Quién eres?</h1>
-        </div>
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		processRequest(request,response);
+	}
 
-        <div class="altaUsuario">
-            <a href="/WEB-INF/altaTurista">
-                <figure>
-                    <img src="./../icons/plane.svg" alt="" class="img-altaUsuario">
-                    <figcaption>Turista</figcaption>
-                </figure>
-            </a>
-            <a href="/WEB-INF/altaProveedor">
-                <figure>
-                    <img src="./../icons/ticket.svg" alt="" class="img-altaUsuario">
-                    <figcaption>Proveedor</figcaption>
-                </figure>
-            </a>
-        </div>
-    </div>
-</body>
-</html>
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		processRequest(request,response);
+	}
+
+}
