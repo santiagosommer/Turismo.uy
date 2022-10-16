@@ -18,8 +18,21 @@ public class AltaUsuario extends HttpServlet {
      * Default constructor. 
      */
     public AltaUsuario() {
-        // TODO Auto-generated constructor stub
+        super();
     }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+    	//adquirimos la info
+    	//guardamos la info para enviarla(request.setatributte)
+    	
+    	//nos comunicamos con el jsp
+    	//requestdispatcher elem = request.getreqdisp(/jsp)
+    	
+    	//enviamos la info con elem.forward(req, resp)
+		
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
