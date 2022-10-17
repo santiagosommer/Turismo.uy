@@ -13,17 +13,17 @@
 
     <div class="content">
         <div class="titles">
-            <h1>¿Quién eres?</h1>
+            <h1>Â¿QuiÃ©n eres?</h1>
         </div>
 
         <div class="altaUsuario">
-            <a href="./altaTurista.html">
+            <a href="/WEB-INF/altaTurista">
                 <figure>
                     <img src="./../icons/plane.svg" alt="" class="img-altaUsuario">
                     <figcaption>Turista</figcaption>
                 </figure>
             </a>
-            <a href="./altaProveedor.html">
+            <a href="/WEB-INF/altaProveedor">
                 <figure>
                     <img src="./../icons/ticket.svg" alt="" class="img-altaUsuario">
                     <figcaption>Proveedor</figcaption>
@@ -31,6 +31,5 @@
             </a>
         </div>
     </div>
-    <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>
