@@ -36,11 +36,11 @@
             </div>
             <div class="input-outer">
                 <img src="./../icons/lock.svg" class="icon">
-                <input type="password" class="input-style" placeholder="Contraseña" name="password" required>
+                <input type="password" class="input-style" placeholder="Contraseï¿½a" name="password" required>
             </div>
             <div class="input-outer">
                 <img src="./../icons/lock.svg" class="icon">
-                <input type="password" class="input-style" placeholder="Confirmar contraseña" name="confirmPasword" required>
+                <input type="password" class="input-style" placeholder="Confirmar contraseï¿½a" name="confirmPasword" required>
             </div>
             <div class="input-outer">
                 <img src="./../icons/location2.svg" class="icon">
@@ -57,7 +57,5 @@
             </div>
         </section>
     </div>
-
-    <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>
