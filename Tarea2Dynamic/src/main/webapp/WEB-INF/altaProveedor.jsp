@@ -77,7 +77,7 @@
             </div>
             <div style="display:flex; justify-content:space-between;">
                 <input type="submit" class="button" id="registrarButton" value="Registrar">
-                <button class="button" type="button" id="cancelarButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                <button class="button" type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Dynamic/Home';" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
             </div>
         </form>
     </div>
