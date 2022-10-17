@@ -8,40 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AltaUsuario
+ * Servlet implementation class AltaTurista
  */
-@WebServlet("/AltaUsuario")
-public class AltaUsuario extends HttpServlet {
+@WebServlet("/AltaTurista")
+public class AltaTurista extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public AltaUsuario() {
-        super();
+    public AltaTurista() {
+        // TODO Auto-generated constructor stub
     }
-    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-    	request.getRequestDispatcher("/WEB-INF/altaUsuario.jsp").forward(request, response);
-    	
-    	//adquirimos la info
-    	//guardamos la info para enviarla(request.setatributte)
-    	
-    	//nos comunicamos con el jsp
-    	//requestdispatcher elem = request.getreqdisp(/jsp)
-    	
-    	//enviamos la info con elem.forward(req, resp)
-		
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,7 +34,7 @@ public class AltaUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		doGet(request, response);
 	}
 
 }
