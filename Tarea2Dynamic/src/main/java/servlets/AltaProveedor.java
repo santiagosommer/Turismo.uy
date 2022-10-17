@@ -97,16 +97,7 @@ public class AltaProveedor extends HttpServlet {
     	cu.seleccionarProveedor(nickname);
 		request.getSession().setAttribute("usuario_dt", cu.getDTProveedor());
 		
-    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
-    	
-    	//adquirimos la info
-    	//guardamos la info para enviarla(request.setatributte)
-    	
-    	//nos comunicamos con el jsp
-    	//requestdispatcher elem = request.getreqdisp(/jsp)
-    	
-    	//enviamos la info con elem.forward(req, resp)
-		
+    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);		
 	}
 
 	/**
