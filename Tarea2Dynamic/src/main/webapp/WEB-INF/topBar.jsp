@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="ServidorCentral.Logica.DataTypes.EstadoSesion"%>
+<%@page import="ServidorCentral.Logica.DataTypes.DTTurista"%>
+<%@page import="ServidorCentral.Logica.DataTypes.DTProveedor"%>
 
 <div class="top-bar">
 	<div class="top-bar-left">
@@ -28,12 +30,9 @@
             </div>
 		</div>
 		
-		<% } %>
-		
-		<% if (request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR || request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
-		
 		<div style="display:flex; align-items: center; gap: 5px;">
-            <h3 id="user-name"></h3>
+		<% DTProveedor prov =(DTProveedor) request.getAttribute("usuario_dt"); %>
+            <h3 id="user-name"><%= prov.getNombre() %></h3>
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
@@ -42,20 +41,37 @@
                 </div>
             </div>
         </div>
-		
+        
 		<% }else{ %>
 		
-        <div style="display:flex; align-items: center; gap: 5px;">
-            <h3 id="user-name"></h3>
-            <div class="dropdown">
-                <img src="media/icons/avatar.svg" class="avatar icon">
-                <div class="dropdown-content">
-                    <a id="dropdown-1" href="/Tarea2Dynamic/IniciarSesion">Iniciar Sesion</a>
-                    <a id="dropdown-2" href="#">Registrarse</a>
-                </div>
-            </div>
-        </div>
-        
+			<% if (request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
+			
+			<div style="display:flex; align-items: center; gap: 5px;">
+			<% DTTurista turi =(DTTurista) request.getAttribute("usuario_dt"); %>
+	            <h3 id="user-name"><%= turi.getNombre() %></h3>
+	            <div class="dropdown">
+	                <img src="media/icons/avatar.svg" class="avatar icon">
+	                <div class="dropdown-content">
+	                    <a id="dropdown-1" href="#">Ver Perfil</a>
+	                    <a id="dropdown-2" href="/Tarea2Dynamic/CerrarSesion">Cerrar Sesion</a>
+	                </div>
+	            </div>
+	        </div>
+			
+			<% }else{ %>
+			
+	        <div style="display:flex; align-items: center; gap: 5px;">
+	            <h3 id="user-name"></h3>
+	            <div class="dropdown">
+	                <img src="media/icons/avatar.svg" class="avatar icon">
+	                <div class="dropdown-content">
+	                    <a id="dropdown-1" href="/Tarea2Dynamic/IniciarSesion">Iniciar Sesion</a>
+	                    <a id="dropdown-2" href="/Tarea2Dynamic/AltaUsuario">Registrarse</a>
+	                </div>
+	            </div>
+	        </div>
+	        
+	        <% } %>
         <% } %>
     </div>
 </div>

@@ -44,7 +44,7 @@
     font-size: 16px;
 }
 
-button{
+.button{
     width: 45%;
     background: #6558F5;
     border: none;
@@ -86,8 +86,23 @@ input:focus{
     outline: none;
 }
 
-button:hover{
+.button:hover{
     background: #5046c0;
     cursor:pointer;
 
-  }
+}
+  
+.error-frame{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background: #FFB3B3;
+    border: solid 2px;
+    border-color: #FF0000;
+
+    padding: 25px;
+    
+    text-align:center;
+    margin-bottom: 12px;
+}

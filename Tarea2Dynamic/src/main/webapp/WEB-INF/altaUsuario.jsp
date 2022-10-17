@@ -13,19 +13,19 @@
 
     <div class="content">
         <div class="titles">
-            <h1>Â¿QuiÃ©n eres?</h1>
+            <h1>¿Quién eres?</h1>
         </div>
 
         <div class="altaUsuario">
-            <a href="/WEB-INF/altaTurista">
+            <a href="/Tarea2Dynamic/AltaTurista">
                 <figure>
-                    <img src="./../icons/plane.svg" alt="" class="img-altaUsuario">
+                    <img src="media/icons/plane.svg" alt="" class="img-altaUsuario">
                     <figcaption>Turista</figcaption>
                 </figure>
             </a>
-            <a href="/WEB-INF/altaProveedor">
+            <a href="/Tarea2Dynamic/AltaProveedor">
                 <figure>
-                    <img src="./../icons/ticket.svg" alt="" class="img-altaUsuario">
+                    <img src="media/icons/ticket.svg" alt="" class="img-altaUsuario">
                     <figcaption>Proveedor</figcaption>
                 </figure>
             </a>
