@@ -19,7 +19,7 @@
             <div class="recommendations">
                 <div class="recommendation-item">
                     <img src="media/icons/avatar.svg" class="recommendation-icon">
-                    <h3><a href="#">Registra</a> una cuenta o <a href="/Tarea2Dynamic/IniciarSesion">entra con una cuenta</a> ya existente </h3>
+                    <h3><a href="/Tarea2Dynamic/AltaUsuario">Registra</a> una cuenta o <a href="/Tarea2Dynamic/IniciarSesion">entra con una cuenta</a> ya existente </h3>
                 </div>
                 <div class="recommendation-item">
                     <img src="media/icons/wind-surfing.svg" class="recommendation-icon">
