@@ -20,7 +20,7 @@
         </div>
         <a href="/Tarea2Dynamic/ConsultaUsuario"><img src="media/icons/group.svg" class="larger-icon"></a>
 		
-		<% if (request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) { %>
+		<% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) { %>
 		
 		<div id="menu-proveedor" class="dropdown">
             <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
@@ -31,7 +31,7 @@
 		</div>
 		
 		<div style="display:flex; align-items: center; gap: 5px;">
-		<% DTProveedor prov =(DTProveedor) request.getAttribute("usuario_dt"); %>
+		<% DTProveedor prov =(DTProveedor) request.getSession().getAttribute("usuario_dt"); %>
             <h3 id="user-name"><%= prov.getNombre() %></h3>
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
@@ -44,10 +44,10 @@
         
 		<% }else{ %>
 		
-			<% if (request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
+			<% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
 			
 			<div style="display:flex; align-items: center; gap: 5px;">
-			<% DTTurista turi =(DTTurista) request.getAttribute("usuario_dt"); %>
+			<% DTTurista turi =(DTTurista) request.getSession().getAttribute("usuario_dt"); %>
 	            <h3 id="user-name"><%= turi.getNombre() %></h3>
 	            <div class="dropdown">
 	                <img src="media/icons/avatar.svg" class="avatar icon">

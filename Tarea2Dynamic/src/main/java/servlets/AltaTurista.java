@@ -88,9 +88,9 @@ public class AltaTurista extends HttpServlet {
 			e.printStackTrace();
 		}
     	
-    	request.setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
+    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
     	cu.seleccionarTurista(nickname);
-		request.setAttribute("usuario_dt", cu.getDTTurista());
+		request.getSession().setAttribute("usuario_dt", cu.getDTTurista());
 		
     	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     	

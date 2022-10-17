@@ -31,6 +31,8 @@ public class IniciarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	
+    	request.setAttribute("estado_error", null);
+    	
     	String nick_or_email = request.getParameter("email-or-nickname-content");
     	String passw = request.getParameter("password-content");
     	
@@ -47,16 +49,16 @@ public class IniciarSesion extends HttpServlet {
     	
     	if (nuevoEstado == EstadoError.EXITO_PROVEEDOR || nuevoEstado == EstadoError.EXITO_TURISTA) {
     		if(nuevoEstado == EstadoError.EXITO_PROVEEDOR) {
-    			request.setAttribute("estado_sesion", EstadoSesion.LOGIN_PROVEEDOR);
-    			request.setAttribute("usuario_dt", cu.getDTProveedor());
+    			request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_PROVEEDOR);
+    			request.getSession().setAttribute("usuario_dt", cu.getDTProveedor());
     		}else {
-    			request.setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
-    			request.setAttribute("usuario_dt", cu.getDTTurista());
+    			request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
+    			request.getSession().setAttribute("usuario_dt", cu.getDTTurista());
     		}
     		
     		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     	}else {
-    		request.setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
+    		request.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
     		request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
     	}
     	
