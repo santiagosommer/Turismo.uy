@@ -16,7 +16,7 @@
             <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
             <a href="#"><img src="media/icons/zoom.svg" class="icon"></a>
         </div>
-        <a href="#"><img src="media/icons/group.svg" class="larger-icon"></a>
+        <a href="/Tarea2Dynamic/ConsultaUsuario"><img src="media/icons/group.svg" class="larger-icon"></a>
 		
 		<% if (request.getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) { %>
 		

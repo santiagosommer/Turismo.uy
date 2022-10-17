@@ -16,6 +16,7 @@ import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTUsuario;
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
@@ -277,4 +278,24 @@ public class ControladorUsuario implements IUsuario {
 		return res;
 	}
 
+	
+	//nueva
+	public Set<DTUsuario> getDTSUsuarios() {
+		
+		Set<DTUsuario> dts = new HashSet<>();	
+		for (Map.Entry<String, Turista> entry : Turistas.entrySet()) {
+			seleccionarTurista(entry.getKey());
+			DTTurista t = getDTTurista();
+			dts.add(t);
+		}
+		
+		for (Map.Entry<String, Proveedor> entry : Proveedores.entrySet()) {
+			seleccionarProveedor(entry.getKey());
+			DTProveedor p = getDTProveedor();
+			dts.add(p);
+		}
+		
+		
+		return dts;
+	}
 }
