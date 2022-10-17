@@ -18,7 +18,7 @@ public class ActividadTuristica {
 	private Map<String, Categoria> Categorias;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
-			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
+			Departamento infoDepartamento, String ciudad, Proveedor proveedor,Map<String, Categoria> categorias) {
 		setNombre(nombre);
 		setDescripcion(descripcion);
 		setDuracion(duracion);
@@ -29,7 +29,7 @@ public class ActividadTuristica {
 		setPaquetes(new HashMap<String, Paquete>());
 		setProveedor(proveedor);
 		setCiudad(ciudad);
-		Categorias = new HashMap<String, Categoria>();
+		setCategorias(categorias);
 
 	}
 

@@ -22,6 +22,7 @@ public class Paquete {
 		 setDescuento(descuento);
 		 setFechaAlta(fechaAlta);
 		 setActividadesTuristicas(new HashMap<String, ActividadTuristica>()); 
+		 setCategorias(new HashMap<String, Categoria>());
 		 
 		 
 	 }

@@ -2,11 +2,7 @@ package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 import ServidorCentral.Logica.Excepciones.*;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
@@ -15,7 +11,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
 
 
 
@@ -198,7 +193,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 
 
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick) throws NombreActividadRepetidoException {
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick, Set<String> categorias) throws NombreActividadRepetidoException {
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarDepartamento(departamento);
@@ -209,7 +204,17 @@ public class ControladorTuristica implements ITuristica {
 		ControladorUsuario crUsuario = ControladorUsuario.getInstancia();
 		Map<String,Proveedor> provsMap = crUsuario.getProveedores();
 		Proveedor proveedor = provsMap.get(proveedorNick);
-		ActividadTuristica nuevaActividad = new ActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, dep, ciudad, proveedor);
+		
+		Map<String, Categoria> categoriasMap = new HashMap<String, Categoria>();
+		
+		Iterator<String> itr = categorias.iterator();
+		
+		while(itr.hasNext()) {
+			String cat = itr.next();
+			categoriasMap.put(cat, Categorias.get(cat));
+		}
+		
+		ActividadTuristica nuevaActividad = new ActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, dep, ciudad, proveedor, categoriasMap);
 		actividades.put(nombre, nuevaActividad);
 		Map<String, ActividadTuristica> actividadesDeProveedor = proveedor.getActividadesTuristicas();
 		actividadesDeProveedor.put(nombre, nuevaActividad);
@@ -217,6 +222,11 @@ public class ControladorTuristica implements ITuristica {
 		Map<String, ActividadTuristica> actividadesDeDepartamento = dep.getActividadesTuristicas(); 
 		actividadesDeDepartamento.put(nombre, nuevaActividad);
 		dep.setActividadesTuristicas(actividadesDeDepartamento);
+		itr = categorias.iterator();
+		while(itr.hasNext()) {
+			Categorias.get(itr.next()).getActividadesTuristicas().put(nombre, nuevaActividad);
+		}
+		
 	}
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
@@ -355,7 +365,6 @@ public class ControladorTuristica implements ITuristica {
 
 	@Override
 	public Boolean existeSalida(String salida) {
-		// TODO Auto-generated method stub
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
@@ -374,13 +383,11 @@ public class ControladorTuristica implements ITuristica {
 
 	@Override
 	public ActividadTuristica getActividadSeleccionada() {
-		// TODO Auto-generated method stub
 		return actividadSeleccionada;
 	}
 
 	@Override
 	public SalidaTuristica getSalidaSeleccionada() {
-		// TODO Auto-generated method stub
 		return salidaSeleccionada;
 	}
 

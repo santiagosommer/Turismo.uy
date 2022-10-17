@@ -30,7 +30,10 @@ import ServidorCentral.Logica.Interfaces.IUsuario;
 import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
@@ -262,11 +265,23 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
 		String ciudad = CiudadField.getText();
+		
+		
+		List<String> selectedCategorias = listaCategorias.getSelectedValuesList();
+		
+		ListIterator<String> itr = selectedCategorias.listIterator();
+		
+		Set<String> categoriasSeleccionadas = new HashSet<String>();
+		
+		while(itr.hasNext()) {
+			categoriasSeleccionadas.add(itr.next());
+		}
+		
 
 		if (checkFormulario()) {
 			try {
 				iTur.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion),
-						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov);
+						Float.valueOf(costoTurista), LocalDate.now(), ciudad, depa, prov, categoriasSeleccionadas);
 
 				JOptionPane.showMessageDialog(this, "La actividad se ha creado con éxito", "Registrar actividad",
 						JOptionPane.INFORMATION_MESSAGE);
