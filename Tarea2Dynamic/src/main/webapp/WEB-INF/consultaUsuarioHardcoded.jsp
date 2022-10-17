@@ -4,22 +4,54 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
+    <%@page import="java.util.Set"%>
+    <%@page import="java.util.Iterator"%>
+    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
+    
+    
     <title>Consulta Usuario</title>
 </head>
 <body>
 
     <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
 
+
     <div class="content">
         <div class="Consultas">
+      
+           <% 
+         String nombre ="";
+         String nickName ="";
+         String email ="";
+         String fechaN = "";
+         String desc ="";
+         String url = "";
+         String nacionalidad = "";
+       
+       
+        if (request.getAttribute("InfoTurista") != null) {
+           DTTurista t = (DTTurista) request.getAttribute("InfoTurista") ;
+            nombre = t.getNombre();
+            nickName = t.getNickname();
+            email = t.getEmail();
+            fechaN = t.getFechaNacimiento().toString();
+            nacionalidad = t.getNacionalidad();
+            
+            //seguir con las Salidas
+            
+            
+            
+       }
+            	%>	
+    
             <div class="container-consulta">
                 <div class="img-container">
                     <img src="https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small" height="200">
                 </div>
-                <h3>Rosa Maria Martinez</h3>
-                <h5>lachiqui / mirtha.legrand.ok@hotmail.com.ar</h5>
+                <h3> <%= nombre %>	</h3>
+                <h5> <%= nickName %> / <%= email %> </h5>
             </div>
             <div class="top-bar-links">
                 <div class="tab">
@@ -35,12 +67,11 @@
             </div>
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
-                    <p><b>Nickname:</b> lachiqui</p>
-                    <p><b>Nombre:</b> Rosa Maria</p>
-                    <p><b>Apellido:</b> Martinez</p>
-                    <p><b>E-mail:</b> mirtha.legrand.ok@hotmail.com.ar</p>
-                    <p><b>Fecha de Nacimiento:</b> 23/2/1927</p>
-                    <p><b>Nacionalidad:</b> Argentina </p>
+                    <p><b>Nickname:</b>  <%= nickName %> </p>
+                    <p><b>Nombre:</b> <%= nombre %> </p>
+                    <p><b>E-mail:</b>  <%= email %> </p>
+                    <p><b>Fecha de Nacimiento:</b>  <%= fechaN %> </p>
+                    <p><b>Nacionalidad:</b> <%= nacionalidad %> </p>
                 </div>
                 <div id="Salidas" class="tabcontent">
                     <div class="Salida">
