@@ -400,6 +400,37 @@ public class ControladorTuristica implements ITuristica {
 	public void setCategoriaSeleccionada(Categoria categoriaSeleccionada) {
 		this.categoriaSeleccionada = categoriaSeleccionada;
 	}
+
+
+	@Override
+	public Set<String> listarActividadesAgregadas() {
+		Set<String> lista = new HashSet<String>();
+		
+		Map<String, ActividadTuristica> actividades = ActividadesTuristicas;
+		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
+		   if (entry.getValue().getEstado() == EstadoActividad.Agregada) {
+			   lista.add(entry.getKey());
+			   
+		   }
+		}
+		return lista;
+	}
+
+
+	@Override
+	public void AceptarActividad(String actividad) {
+		ActividadTuristica act = ActividadesTuristicas.get(actividad);
+		act.setEstado(EstadoActividad.Confirmada);
+		
+	}
+
+
+	@Override
+	public void RechazarActividad(String actividad) {
+		ActividadTuristica act = ActividadesTuristicas.get(actividad);
+		act.setEstado(EstadoActividad.Rechazada);
+		
+	}
 	
 	
 	

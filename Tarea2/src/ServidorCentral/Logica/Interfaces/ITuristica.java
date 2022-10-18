@@ -39,6 +39,10 @@ public interface ITuristica {
 	public abstract Boolean existeSalida(String salida);
 	public abstract Boolean existeDepartamento(String departamento);
 	public abstract void crearDepartamento(String nombre,String descripcion, String URL);
+	public abstract Set<String> listarActividadesAgregadas();
+	public abstract void AceptarActividad(String actividad);
+	public abstract void RechazarActividad(String actividad);
+	
 	
 
 }

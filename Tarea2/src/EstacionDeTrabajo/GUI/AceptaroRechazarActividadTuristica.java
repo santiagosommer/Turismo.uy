@@ -13,6 +13,7 @@ import ServidorCentral.Logica.Interfaces.ITuristica;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -98,6 +99,12 @@ public class AceptaroRechazarActividadTuristica extends JInternalFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//cambia el estado
+				if (comboBoxActividades.getSelectedIndex()!= -1) {
+					String act = (String) comboBoxActividades.getSelectedItem();
+					interfazTuristica.AceptarActividad(act);
+					setVisible(false);
+				}
+				
 			}
 		});
 		
@@ -114,6 +121,12 @@ public class AceptaroRechazarActividadTuristica extends JInternalFrame {
 		btnRechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//cambiar estado
+				if (comboBoxActividades.getSelectedIndex()!= -1) {
+					String act = (String) comboBoxActividades.getSelectedItem();
+					interfazTuristica.RechazarActividad(act);
+					setVisible(false);
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
@@ -124,13 +137,16 @@ public class AceptaroRechazarActividadTuristica extends JInternalFrame {
 
 	}
 	public void cargarAct() {
+		//setSelectedIndex(-1);
+		comboBoxActividades.removeAllItems();
 		Fabrica fabricaU = Fabrica.getInstance();
 		ITuristica ctrT = fabricaU.getControladorTuristica();
-		//	Iterator<String> iterator = ctrT.listarActividadesAgregadas()
-	    //     while(iterator.hasNext()) { 
-	    	//    String setElement = iterator.next(); 
-	    //	    comboBoxActividades.addItem(setElement);
-		 //    }
+		Set<String> s = ctrT.listarActividadesAgregadas();
+		Iterator<String> iterator = s.iterator();
+		while(iterator.hasNext()) { 
+	      String setElement = iterator.next(); 
+	      comboBoxActividades.addItem(setElement);
+		}
 	}
 
 }
