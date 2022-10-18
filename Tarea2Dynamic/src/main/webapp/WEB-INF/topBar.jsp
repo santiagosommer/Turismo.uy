@@ -25,8 +25,8 @@
 		<div id="menu-proveedor" class="dropdown">
             <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
             <div class="dropdown-content">
-                <a href="#">Alta de Actividad Turistica</a>
-                <a href="#">Alta de Salida Turistica</a>
+                <a href="/Tarea2Dynamic/AltaActividad">Alta de Actividad Turistica</a>
+                <a href="/Tarea2Dynamic/AltaSalida">Alta de Salida Turistica</a>
             </div>
 		</div>
 		
