@@ -36,7 +36,7 @@
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
-                    <a id="dropdown-1" href="#">Ver Perfil</a>
+                    <a id="dropdown-1" href="/Tarea2Dynamic/ConsultaUsuarioPropio">Ver Perfil</a>
                     <a id="dropdown-2" href="/Tarea2Dynamic/CerrarSesion">Cerrar Sesion</a>
                 </div>
             </div>
@@ -47,12 +47,16 @@
 			<% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
 			
 			<div style="display:flex; align-items: center; gap: 5px;">
-			<% DTTurista turi =(DTTurista) request.getSession().getAttribute("usuario_dt"); %>
-	            <h3 id="user-name"><%= turi.getNombre() %></h3>
+			<% DTTurista turista =(DTTurista) request.getSession().getAttribute("usuario_dt"); 
+			if (turista!= null){%>
+			
+			 <h3 id="user-name"><%= turista.getNombre() %></h3>
+			 
+			 <% } %>
 	            <div class="dropdown">
 	                <img src="media/icons/avatar.svg" class="avatar icon">
 	                <div class="dropdown-content">
-	                    <a id="dropdown-1" href="#">Ver Perfil</a>
+	                    <a id="dropdown-1" href="/Tarea2Dynamic/ConsultaUsuarioPropio">Ver Perfil</a>
 	                    <a id="dropdown-2" href="/Tarea2Dynamic/CerrarSesion">Cerrar Sesion</a>
 	                </div>
 	            </div>
@@ -73,5 +77,6 @@
 	        
 	        <% } %>
         <% } %>
+
     </div>
 </div>

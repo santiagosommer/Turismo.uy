@@ -1,8 +1,14 @@
 package ServidorCentral.Logica.Clases;
 
 import java.time.LocalDate;
+
 import java.util.HashMap;
 import java.util.Map;
+
+enum EstadoActividad{
+	   Agregada,Confirmada, Rechazada;
+	}
+
 
 public class ActividadTuristica {
 	private String Nombre;
@@ -16,6 +22,7 @@ public class ActividadTuristica {
 	private Map<String, Paquete> Paquetes;
 	private String NombreCiudad;
 	private Map<String, Categoria> Categorias;
+	private EstadoActividad Estado;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
 			Departamento infoDepartamento, String ciudad, Proveedor proveedor) {
@@ -30,6 +37,7 @@ public class ActividadTuristica {
 		setProveedor(proveedor);
 		setCiudad(ciudad);
 		Categorias = new HashMap<String, Categoria>();
+		setEstado(EstadoActividad.Agregada);
 
 	}
 
@@ -119,6 +127,14 @@ public class ActividadTuristica {
 
 	public void setCategorias(Map<String, Categoria> categorias) {
 		Categorias = categorias;
+	}
+
+	public EstadoActividad getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(EstadoActividad estado) {
+		Estado = estado;
 	}
 	
 	

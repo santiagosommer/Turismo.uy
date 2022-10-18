@@ -4,7 +4,9 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
+    <script src="/js/consultaDeUsuario.js" type="text/javascript"></script>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
+   
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Proveedor</title>
@@ -29,8 +31,9 @@
          String url = "";
        
        
-        if (request.getAttribute("InfoProveedor") != null) {
-           DTProveedor p = (DTProveedor) request.getAttribute("InfoProveedor") ;
+        if (request.getSession().getAttribute("prov_dt") != null) {
+           DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
+        		//   request.getAttribute("InfoProveedor") ;
             nombre = p.getNombre();
             nickName = p.getNickname();
             email = p.getEmail();

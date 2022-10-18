@@ -43,32 +43,34 @@ public class ConsultaUsuario extends HttpServlet {
     	IUsuario ctrlUsr = fab.getControladorUsuario();
     	
     	Set<DTUsuario> usrs = ctrlUsr.getDTSUsuarios();
-    	request.setAttribute("usuarios", usrs);
+    	request.setAttribute("Usuarios", usrs);
     	 RequestDispatcher dispatcher = request.getRequestDispatcher(
     	          "/WEB-INF/consultaUsuarioIndex.jsp");
     	        dispatcher.forward(request, response);
     	
     	//Consulta Proveedor
-    	        String ID = request.getParameter("paramP");
-    	        if (ID != null) {
-    	        	ctrlUsr.seleccionarProveedor(ID);
-    	        	DTProveedor prov = ctrlUsr.getDTProveedor();
-    	            request.setAttribute("InfoProveedor", prov);
-    	            RequestDispatcher dispatcher2 = request.getRequestDispatcher(
-    	      	          "/WEB-INF/consultaProveedorHardcoded.jsp"); 
-    	      	        dispatcher.forward(request, response);
-    	        }
+    	       // String ID = request.getParameter("paramP");
+    	        // if (ID != null) {
+    	        //	ctrlUsr.seleccionarProveedor(ID);
+    	        //	DTProveedor prov = ctrlUsr.getDTProveedor();
+    	        //   request.setAttribute("InfoProveedor", prov);
+    	            //   request.getSession().setAttribute("prov_dt", prov);
+    	        //   RequestDispatcher dispatcher2 = request.getRequestDispatcher(
+    	        //          "/WEB-INF/consultaProveedorHardcoded.jsp"); 
+    	        //       dispatcher2.forward(request, response);
+    	        // }
     	        
     	        
-    	        String IDTuri = request.getParameter("paramT");
-    	        if (IDTuri != null) {
-    	        	ctrlUsr.seleccionarTurista(IDTuri);
-    	        	DTTurista turi = ctrlUsr.getDTTurista(); 	          
-    	            request.setAttribute("InfoTurista", turi);
-    	            RequestDispatcher dispatcher3 = request.getRequestDispatcher(
-    	      	          "/WEB-INF/consultaUsuarioHardcoded.jsp"); 
-    	      	        dispatcher.forward(request, response);
-    	        }
+    	       // String IDTuri = request.getParameter("paramT");
+    	        //if (IDTuri != null) {
+    	        //	ctrlUsr.seleccionarTurista(IDTuri);
+    	        //	DTTurista turi = ctrlUsr.getDTTurista(); 
+    	        	//request.getSession().setAttribute("turi_dt", turi);
+    	            //request.setAttribute("InfoTurista", turi);
+    	            //RequestDispatcher dispatcher3 = request.getRequestDispatcher(
+    	      	      //    "/WEB-INF/consultaUsuarioHardcoded.jsp"); 
+    	      	        //dispatcher3.forward(request, response);
+    	        //}
 
     	        
     	        

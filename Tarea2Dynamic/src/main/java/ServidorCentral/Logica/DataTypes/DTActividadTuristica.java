@@ -9,7 +9,14 @@ import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
+
+
 public class DTActividadTuristica {
+	
+	enum EstadoActividad{
+		   Agregada,Confirmada, Rechazada;
+		}
+	
 	private String Nombre;
 	private String Descripcion;
 	private int Duracion;
@@ -21,6 +28,9 @@ public class DTActividadTuristica {
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
 	private ArrayList<DTCategoria> InfoCategorias;
+	private EstadoActividad Estado;
+	
+	
 	
 	public DTActividadTuristica(ActividadTuristica at) {
 		setNombre(at.getNombre());
@@ -32,6 +42,7 @@ public class DTActividadTuristica {
 		setInfoDepartamento(new DTDepartamento(at.getInfoDepartamento()));
 		setSalidas(new ArrayList<DTSalidaTuristica>());
 		setProveedor(at.getProveedor().getNombre() + " " + at.getProveedor().getApellido());
+		setEstado(EstadoActividad.Agregada);
 		
 		Map<String,SalidaTuristica> map = at.getSalidas();
 		
@@ -116,6 +127,14 @@ public class DTActividadTuristica {
 	}
 	public void setFechaAlta(LocalDate fechaAlta) {
 		FechaAlta = fechaAlta;
+	}
+	
+	public EstadoActividad getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(EstadoActividad estado) {
+		Estado = estado;
 	}
 	
 }

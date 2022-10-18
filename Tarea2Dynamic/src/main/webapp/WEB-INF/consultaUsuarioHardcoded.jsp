@@ -7,6 +7,7 @@
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+      <script src="/js/consultaDeUsuario.js" type="text/javascript"></script>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     
@@ -31,8 +32,8 @@
          String nacionalidad = "";
        
        
-        if (request.getAttribute("InfoTurista") != null) {
-           DTTurista t = (DTTurista) request.getAttribute("InfoTurista") ;
+        if (request.getSession().getAttribute("turi_dt") != null) {
+           DTTurista t = (DTTurista) request.getSession().getAttribute("turi_dt") ;
             nombre = t.getNombre();
             nickName = t.getNickname();
             email = t.getEmail();
@@ -97,7 +98,7 @@
         </div>
     </div>
 
-    <script src="./../js/consultaDeUsuario.js"></script>
-    <script src="./../js/mantenerSesion.js"></script>
+    <script src="./../media/js/consultaDeUsuario.js"></script>
+    <script src="./../media/js/mantenerSesion.js"></script>
 </body>
 </html>

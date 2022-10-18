@@ -48,32 +48,40 @@
                     <h5> <%= nick%> / <%= item.getEmail()%></h5>
                     <%   if (item instanceof DTProveedor) {
                     	%>
-                    	<p><a href="./consultaProveedorHardcoded.jsp?paramP=<%=nick%>" class="links">Leer mas.</a></p>
+                    	<p><a href="/Tarea2Dynamic/ConsultaProveedor?paramP=<%=nick%>" class="links">Leer mas.</a></p>
                     	
                     <%	}
                     	%>
                     	
                     	 <%   if (item instanceof DTTurista) {
                     	%>
-                    	<p><a href="./consultaUsuarioHardcodedHardcoded.jsp?paramT=<%=nick%>" class="links">Leer mas.</a></p>
+                    	<p><a href="/Tarea2Dynamic/ConsultaTurista?paramT=<%=nick%>" class="links">Leer mas.</a></p>
                     	
-                    <%	}
+                    
+                     <%	}
                     	%>
-                   
                    
                 </div>
                 <hr>
-        
-           <%
+                
+              
+        <%
 
            }             
         }
     %>
+           
                
                
           
         </div>
+       
     </div>
+    
+     
+    </div>
+    
+    
 
     <script src="./../js/mantenerSesion.js"></script>
 </body>
