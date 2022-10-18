@@ -298,6 +298,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public Set<String> listarActividadesDeDepartamento(String departamento){
+		//(Confirmadas)
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, Departamento> departamentos = crTuristica.Departamentos;
@@ -311,7 +312,10 @@ public class ControladorTuristica implements ITuristica {
 			
 			for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 			    nombreActividad = entry.getKey();
-			    lista.add(nombreActividad);
+			    if(entry.getValue().getEstado() == EstadoActividad.Confirmada) { //nuevo
+			    	lista.add(nombreActividad);
+			    }
+			    
 			}
 			return lista;
 			
