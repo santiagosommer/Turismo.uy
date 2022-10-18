@@ -10,31 +10,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
-import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
+import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
 /**
- * Servlet implementation class AltaTurista
+ * Servlet implementation class AltaSalida
  */
-@WebServlet("/AltaTurista")
-public class AltaTurista extends HttpServlet {
+@WebServlet("/AltaSalida")
+public class AltaSalida extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public AltaTurista() {
+    public AltaSalida() {
         // TODO Auto-generated constructor stub
     }
     
     protected boolean checkFormulario(HttpServletRequest request) {
     	
-    	String nickname = request.getParameter("nickname");
-    	String email = request.getParameter("email");
-    	String password = request.getParameter("password");
-    	String confirmPasword = request.getParameter("confirmPasword");
-    	
+    	String nombre = request.getParameter("nombre");
+    	String descripcion = request.getParameter("descripcion");
+        String duracion = request.getParameter("duracion");
+        String costo = request.getParameter("costo");
+        String ciudad = request.getParameter("ciudad");
+
+
     	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
     	
     	if (cu.existeUsuario(nickname)) {
@@ -62,12 +64,12 @@ public class AltaTurista extends HttpServlet {
     	request.setAttribute("estado_error", null);
     	
     	if (request.getParameter("nickname")==null) {
-    		request.getRequestDispatcher("/WEB-INF/altaTurista.jsp").forward(request, response);
+    		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
     		return;
     	}
     	
     	if (!checkFormulario(request)) {
-    		request.getRequestDispatcher("/WEB-INF/altaTurista.jsp").forward(request, response);
+    		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
     		return;
     	}
     	
@@ -83,25 +85,16 @@ public class AltaTurista extends HttpServlet {
     	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
     	
     	try {
-			cu.altaTurista(nickname, nombre, apellido, email, date, password, nacionalidad);
+			cu.altaSalida(nickname, nombre, apellido, email, date, password, nacionalidad);
 		} catch (UsuarioRepetidoException e) {
 			e.printStackTrace();
 		}
     	
-    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
-    	cu.seleccionarTurista(nickname);
-		request.getSession().setAttribute("usuario_dt", cu.getDTTurista());
+    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_Salida);
+    	cu.seleccionarSalida(nickname);
+		request.getSession().setAttribute("usuario_dt", cu.getDTSalida());
 		
-    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
-    	
-    	//adquirimos la info
-    	//guardamos la info para enviarla(request.setatributte)
-    	
-    	//nos comunicamos con el jsp
-    	//requestdispatcher elem = request.getreqdisp(/jsp)
-    	
-    	//enviamos la info con elem.forward(req, resp)
-		
+    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);		
 	}
 
 	/**

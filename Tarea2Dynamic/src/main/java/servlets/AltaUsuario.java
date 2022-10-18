@@ -25,14 +25,6 @@ public class AltaUsuario extends HttpServlet {
 			throws ServletException, IOException {
 		
     	request.getRequestDispatcher("/WEB-INF/altaUsuario.jsp").forward(request, response);
-    	
-    	//adquirimos la info
-    	//guardamos la info para enviarla(request.setatributte)
-    	
-    	//nos comunicamos con el jsp
-    	//requestdispatcher elem = request.getreqdisp(/jsp)
-    	
-    	//enviamos la info con elem.forward(req, resp)
 		
 	}
 

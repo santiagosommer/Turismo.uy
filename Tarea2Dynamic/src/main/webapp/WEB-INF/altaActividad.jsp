@@ -23,8 +23,8 @@
                 <div class="departamentoycategorias">
 
                         <div class="img1"> <img src="./../icons/location2.svg" class="iconop" ></div>
-                        <div class="s1">  <select class ="controls" name="departamento" id="cars">
-                            <option value="volvo">Rocha</option>
+                        <div class="s1">  <select class ="controls" name="departamento" id="depas">
+                            <option value="rocha">Rocha</option>
 
                           </select></div>
                         <div class="img2"> <img src="./../icons/tag.svg" class="iconop" > </div>
@@ -32,9 +32,6 @@
                             <option value="gastronomia">Gastronomia</option>
 
                           </select> </div>
-
-
-
                 </div>
                 <div class="c2">
                     <img src="./../icons/reservation.svg" class="iconop" >
@@ -42,7 +39,7 @@
                 </div>
                 <div class="c3">
                     <img src="./../icons/write.svg" class="iconop" >
-                    <input  type="text" name="descripcion" id="descripcion" class ="controls"  placeholder="Descripción" required>
+                    <input  type="text" name="descripcion" id="descripcion" class ="controls"  placeholder="Descripciï¿½n" required>
                 </div>
                 <div class="c4">
                     <img src="./../icons/clock.svg" class="iconop" >
@@ -69,13 +66,7 @@
                     <input class="boton2" type="submit" value="Cancelar">
                 </div>
               </div>
-
         </div>
-
-
     </div>
-
-
-    <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>
