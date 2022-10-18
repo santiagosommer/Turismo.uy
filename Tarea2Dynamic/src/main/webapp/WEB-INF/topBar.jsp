@@ -32,7 +32,9 @@
 		
 		<div style="display:flex; align-items: center; gap: 5px;">
 		<% DTProveedor prov =(DTProveedor) request.getSession().getAttribute("usuario_dt"); %>
+		<% if (prov!= null){ %>
             <h3 id="user-name"><%= prov.getNombre() %></h3>
+            <%} %> 
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
