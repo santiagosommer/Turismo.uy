@@ -24,6 +24,7 @@ public class Principal {
 	private IUsuario ICUsu;
 	private ITuristica ICTuri;
 	private IPaquete ICP;
+	private AceptaroRechazarActividadTuristica aceptarORechazarActividadIFrame;
 	private AltaDeProveedor altaProveedorIFrame;
 	private AltaDeTurista altaTuristaIFrame;
 	private ConsultaDeUsuario consultaUsuarioIFrame;
@@ -75,6 +76,12 @@ public class Principal {
 		
 		
 		//nuevos 
+		aceptarORechazarActividadIFrame = new  AceptaroRechazarActividadTuristica(ICTuri);
+		frmServidorcentral.getContentPane().add(aceptarORechazarActividadIFrame);
+		aceptarORechazarActividadIFrame.setResizable(true);
+		aceptarORechazarActividadIFrame.setVisible(false);
+		aceptarORechazarActividadIFrame.setClosable(true);
+		
 		altaDeCategoriaIFrame = new AltaDeCategoria(ICTuri);
 		frmServidorcentral.getContentPane().add(altaDeCategoriaIFrame);
 		altaDeCategoriaIFrame.setResizable(true);
@@ -257,6 +264,16 @@ public class Principal {
 			}
 		});
 		mnActividadesTuristicas.add(mntmConsultaActividadTuristica);
+		
+		
+		JMenuItem mntmAceptaroRechazarActividadTuristica = new JMenuItem("Aceptar/Rechazar Actividad Turistica");
+		mntmAceptaroRechazarActividadTuristica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aceptarORechazarActividadIFrame.setVisible(true);
+				aceptarORechazarActividadIFrame.cargarAct();
+			}
+		});
+		mnActividadesTuristicas.add(mntmAceptaroRechazarActividadTuristica);
 
 		JMenu menuSalidas = new JMenu("Salidas Turisticas");
 		menuBar.add(menuSalidas);
