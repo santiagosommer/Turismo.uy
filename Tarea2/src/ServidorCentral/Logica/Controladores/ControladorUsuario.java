@@ -16,6 +16,8 @@ import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTUsuario;
+import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
@@ -47,6 +49,66 @@ public class ControladorUsuario implements IUsuario {
 	@Override
 	public Boolean esTurista(String nickname) {
 		return Turistas.containsKey(nickname);
+	}
+	
+	@Override
+	public String getNickname(String email) {
+		for (Map.Entry<String, Turista> entry : Turistas.entrySet()) {
+			if (email.equals(entry.getValue().getEmail()))
+				return entry.getValue().getNickname();
+		}
+		for (Map.Entry<String, Proveedor> entry : Proveedores.entrySet()) {
+			if (email.equals(entry.getValue().getEmail()))
+				return entry.getValue().getNickname();
+		}
+		return null;
+	}
+	
+	@Override
+	public EstadoError iniciarSesion(String nick_or_email, String passw) {
+		EstadoError nuevoEstado;
+		
+		if (existeUsuario(nick_or_email) || existeUsuarioEmail(nick_or_email)) {
+    		if (existeUsuario(nick_or_email)) { // nick_or_email es nickname
+    			if (esTurista(nick_or_email)) { // nick_or_email es de un turista
+    				seleccionarTurista(nick_or_email);
+    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    					nuevoEstado = EstadoError.EXITO_TURISTA;
+    				}else {
+    					nuevoEstado = EstadoError.ERROR_CONTRA;
+    				}
+    			}else { // nick_or_email es de un proveedor
+    				seleccionarProveedor(nick_or_email);
+    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
+    					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
+    				}else {
+    					nuevoEstado = EstadoError.ERROR_CONTRA;
+    					
+    				}
+    			}
+    		}else { // nick_or_email es email
+    			String nickname = getNickname(nick_or_email);
+    			if (esTurista(nickname)) {
+    				seleccionarTurista(nickname);
+    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    					nuevoEstado = EstadoError.EXITO_TURISTA;
+    				}else {
+    					nuevoEstado = EstadoError.ERROR_CONTRA;
+    				}
+    			}else {
+    				seleccionarProveedor(nickname);
+    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
+    					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
+    				}else {
+    					nuevoEstado = EstadoError.ERROR_CONTRA;
+    				}
+    			}
+    		}
+    	}else {
+    		nuevoEstado = EstadoError.ERROR_NICK_OR_EMAIL;
+    	}
+		
+		return nuevoEstado;
 	}
 
 	@Override
@@ -214,6 +276,26 @@ public class ControladorUsuario implements IUsuario {
 		Set<String> res = new HashSet<String>();
 		Turistas.forEach((k, v) -> res.add(k));
 		return res;
+	}
+	
+	//nueva
+	public Set<DTUsuario> getDTSUsuarios() {
+		
+		Set<DTUsuario> dts = new HashSet<>();	
+		for (Map.Entry<String, Turista> entry : Turistas.entrySet()) {
+			seleccionarTurista(entry.getKey());
+			DTTurista t = getDTTurista();
+			dts.add(t);
+		}
+		
+		for (Map.Entry<String, Proveedor> entry : Proveedores.entrySet()) {
+			seleccionarProveedor(entry.getKey());
+			DTProveedor p = getDTProveedor();
+			dts.add(p);
+		}
+		
+		
+		return dts;
 	}
 
 }

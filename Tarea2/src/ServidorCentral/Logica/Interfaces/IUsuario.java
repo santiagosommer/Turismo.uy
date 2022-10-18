@@ -1,5 +1,7 @@
 package ServidorCentral.Logica.Interfaces;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.DTUsuario;
+import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
@@ -26,4 +28,7 @@ public interface IUsuario {
 	public abstract Boolean existeUsuarioEmail(String email);
 	public abstract void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException;
 	public abstract void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException;
+	public abstract String getNickname(String email);
+	public abstract EstadoError iniciarSesion(String nick_or_email, String passw);
+	public abstract Set<DTUsuario> getDTSUsuarios();
 }
