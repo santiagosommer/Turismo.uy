@@ -1,17 +1,23 @@
+
 package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
+import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
+import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
 /**
@@ -30,32 +36,22 @@ public class AltaSalida extends HttpServlet {
     
     protected boolean checkFormulario(HttpServletRequest request) {
     	
+    	String departamento = request.getParameter("departamento");
+    	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
-    	String descripcion = request.getParameter("descripcion");
-        String duracion = request.getParameter("duracion");
-        String costo = request.getParameter("costo");
-        String ciudad = request.getParameter("ciudad");
+    	String fecha = request.getParameter("fecha");
+    	String hora = request.getParameter("hora");
+    	String lugar = request.getParameter("lugar");
+    	String cuposMax = request.getParameter("cuposMax");
+    	
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	
+    	if (ct.existeSalida(nombre)) {
+    		// nombre repetido
+    		request.setAttribute("estado_error", EstadoError.ERROR_SALIDA);
+    		return false;
+    	}
 
-
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
-    	
-    	if (cu.existeUsuario(nickname)) {
-    		// nickname repetido
-    		request.setAttribute("estado_error", EstadoError.ERROR_NICK_OR_EMAIL);
-    		return false;
-    	}
-    	if (cu.existeUsuarioEmail(email)) {
-    		// email repetido
-    		request.setAttribute("estado_error", EstadoError.ERROR_EMAIL);
-    		return false;
-    	}
-    	if (confirmPasword == password) {
-    		// contraseñas distintas
-    		request.setAttribute("estado_error", EstadoError.ERROR_CONTRA);
-    		return false;
-    	}
-    	
-    	
     	return true;
     }
     
@@ -63,7 +59,7 @@ public class AltaSalida extends HttpServlet {
 			throws ServletException, IOException {
     	request.setAttribute("estado_error", null);
     	
-    	if (request.getParameter("nickname")==null) {
+    	if (request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
     		return;
     	}
@@ -73,28 +69,30 @@ public class AltaSalida extends HttpServlet {
     		return;
     	}
     	
-    	String nickname = request.getParameter("nickname");
+    	String departamento = request.getParameter("departamento");
+    	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
-    	String apellido = request.getParameter("apellido");
-    	String email = request.getParameter("email");
-    	String bDate = (String) request.getParameter("bDate");
-		LocalDate date = LocalDate.parse(bDate);
-    	String password = request.getParameter("password");
-    	String nacionalidad = request.getParameter("nacionalidad");
+    	String fechaS = request.getParameter("fecha");
+    	String horaS = request.getParameter("hora");
+    	String lugar = request.getParameter("lugar");
+    	String cuposMaxS = request.getParameter("cuposMax");
     	
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+    	LocalDate fecha = LocalDate.parse(fecha);
+    	LocalTime hora = LocalTime.parse(hora);
+    	int cuposMax = Integer.parseInt(cuposMaxS);
+    	
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
-			cu.altaSalida(nickname, nombre, apellido, email, date, password, nacionalidad);
-		} catch (UsuarioRepetidoException e) {
+    		LocalDate actual = LocalDate.now();
+    		DTInfoSalida info = new DTInfoSalida(fecha,hora,lugar);
+			ct.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
+		} catch (NombreSalidaRepetidoException e) {
 			e.printStackTrace();
 		}
     	
-    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_Salida);
-    	cu.seleccionarSalida(nickname);
-		request.getSession().setAttribute("usuario_dt", cu.getDTSalida());
-		
-    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);		
+    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+
 	}
 
 	/**
