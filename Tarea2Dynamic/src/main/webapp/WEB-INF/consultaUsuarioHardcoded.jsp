@@ -37,7 +37,7 @@
        
        </script>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
-    <style><%@include file="./../media/css/consultaUsuario.css"%></style>
+    
     <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
     
@@ -124,6 +124,8 @@
                     </div>
                     
                     <%} %>
+                    <script>window.onload=openTab(event, 'Perfil');</script>
+                    
                     
                 </div>
             </div>

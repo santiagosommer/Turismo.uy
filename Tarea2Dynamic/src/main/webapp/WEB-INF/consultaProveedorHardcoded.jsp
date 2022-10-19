@@ -40,7 +40,6 @@
      <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
      
-    <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Proveedor</title>
 </head>
 <body>
@@ -122,6 +121,7 @@
                     </div>
                     <hr>
                     <%} %>
+                    <script>window.onload=openTab(event, 'Perfil');</script>
                    
                 </div>
             </div>
