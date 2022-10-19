@@ -38,6 +38,8 @@
        </script>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
+    <%@page import=" java.util.ArrayList"%>
+     <%@page import= "java.util.Iterator"%>
     
     
     <title>Consulta Usuario</title>
@@ -58,7 +60,8 @@
          String desc ="";
          String url = "";
          String nacionalidad = "";
-       
+         
+         ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
        
         if (request.getSession().getAttribute("turi_dt") != null) {
            DTTurista t = (DTTurista) request.getSession().getAttribute("turi_dt") ;
@@ -67,7 +70,7 @@
             email = t.getEmail();
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
-            
+            InscSal = t.getInscripciones();
             //seguir con las Salidas
             
             
@@ -103,6 +106,11 @@
                     <p><b>Nacionalidad:</b> <%= nacionalidad %> </p>
                 </div>
                 <div id="Salidas" class="tabcontent">
+                
+                 <% for (int i=0; i< InscSal.size();i++) {
+                    
+                     %>
+                
                     <div class="Salida">
                     
                 
@@ -110,10 +118,12 @@
                             <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
                         </div>
                         <div class="Salida-text">
-                            <h3>Degusta Agosto</h3>
+                            <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
                             <p><a href="#" class="links">Leer mas.</a></p>
                         </div>
                     </div>
+                    
+                    <%} %>
                     
                 </div>
             </div>
