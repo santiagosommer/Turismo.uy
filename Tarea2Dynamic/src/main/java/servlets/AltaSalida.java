@@ -3,6 +3,7 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
+import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -56,7 +58,7 @@ public class AltaSalida extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, NoHayActividadConEseNombreException {
     	request.setAttribute("estado_error", null);
     	
     	if (request.getParameter("nombre")==null) {
@@ -72,18 +74,17 @@ public class AltaSalida extends HttpServlet {
     	String departamento = request.getParameter("departamento");
     	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
-    	String fechaS = request.getParameter("fecha");
-    	String horaS = request.getParameter("hora");
+    	LocalDateTime date = LocalDateTime.parse("fechaYhora");
     	String lugar = request.getParameter("lugar");
     	String cuposMaxS = request.getParameter("cuposMax");
     	
-    	LocalDate fecha = LocalDate.parse(fecha);
-    	LocalTime hora = LocalTime.parse(hora);
     	int cuposMax = Integer.parseInt(cuposMaxS);
     	
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
+    		LocalDate fecha = date.toLocalDate();
+    		LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
     		DTInfoSalida info = new DTInfoSalida(fecha,hora,lugar);
 			ct.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
@@ -100,7 +101,12 @@ public class AltaSalida extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException | IOException | NoHayActividadConEseNombreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -108,7 +114,12 @@ public class AltaSalida extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException | IOException | NoHayActividadConEseNombreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
