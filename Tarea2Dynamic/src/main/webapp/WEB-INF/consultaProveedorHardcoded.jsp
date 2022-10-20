@@ -34,13 +34,12 @@
         document.getElementById(tabName+"-tab").classList += " selected";
     }
     </script>
-    <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
+    <style> <%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
    
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
      <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
      
-    <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Proveedor</title>
 </head>
 <body>
@@ -125,7 +124,7 @@
                         </div>
                     </div>
                     <hr>
-                    <%}} %>
+                    <%} %>
                    
                 </div>
             </div>
