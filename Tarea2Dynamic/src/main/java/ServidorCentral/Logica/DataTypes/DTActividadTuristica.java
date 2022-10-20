@@ -13,9 +13,7 @@ import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 public class DTActividadTuristica {
 	
-	enum EstadoActividad{
-		   Agregada,Confirmada, Rechazada;
-		}
+	
 	
 	private String Nombre;
 	private String Descripcion;

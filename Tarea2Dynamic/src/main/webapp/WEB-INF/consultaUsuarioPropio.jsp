@@ -5,6 +5,7 @@
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
+    <%@page import=" java.util.ArrayList"%>
     <script type="text/javascript">
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -54,17 +55,17 @@
          String fechaN = "";
          String desc ="";
          String url = "";
-         
+         String apellido = "";
          if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
         	 
         	   if (request.getSession().getAttribute("usuario_dt") != null) {
-        		           DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
-        		           nombre = t.getNombre();
-        		           nickName = t.getNickname();
-        		           email = t.getEmail();
-        		           fechaN = t.getFechaNacimiento().toString();
-        		           String nacionalidad = "";
-        		           nacionalidad = t.getNacionalidad();
+        		   DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
+ 		             nombre = t.getNombre();
+ 		             nickName = t.getNickname();
+ 		             apellido = t.getApellido();
+ 		             email = t.getEmail();
+        		   
+        		          
        		  }
          }
         
@@ -81,12 +82,7 @@
  
              }
         	   }
-     
-            //seguir con las Salidas
-            
-            
-            
-       
+         
             	%>	
             	
     
@@ -102,11 +98,24 @@
                         Perfil
                     </div>
                 </div>
+                
+                <%    if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                 	 
+             	   if (request.getSession().getAttribute("usuario_dt") != null) {
+                %>
                 <div class="tab" id="Actividades-tab-container">
                     <div class="tablinks" id="Actividades-tab" onclick="openTab(event, 'Actividades')">
                         Actividades
                     </div>
                 </div>
+                
+                <% }} %>
+                <% 
+                  if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+                	  if (request.getSession().getAttribute("usuario_dt") != null) {
+                	  
+                	  %>
+                  
                 <div class="tab" id="Salidas-tab-container">
                     <div class="tablinks" id="Salidas-tab" onclick="openTab(event, 'Salidas')">
                         Salidas
@@ -117,15 +126,125 @@
                         Paquetes
                     </div>
                 </div>
+                
+                <% } } %>
             </div>
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
+                
+                <%	   if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                	  DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
+            		           nombre = p.getNombre();
+            		           nickName = p.getNickname();
+            		           email = p.getEmail();
+            		           fechaN = p.getFechaNacimiento().toString();
+            		          url = p.getURL();
+            		          desc = p.getDescripcionGeneral();
+            		           %>
+                
+                
+                 <p><b>Nickname:</b> <%= nickName%></p>
+                    <p><b>Nombre: </b> <%= nombre%></p>
+                    <p><b>Apellido: </b> <%= apellido%></p>
+                    <p><b>E-mail:</b> email </p>
+                    <p><b>Fecha de Nacimiento:</b> <%= fechaN %></p>
+                    <p><b>Descripcion:</b> <%= desc %> </p>
+                    <p><b>URL:</b>  <%= url %> </p>
+                    
+                <%} %>
+                	
+                 <% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+                	 DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
+   		             nombre = t.getNombre();
+   		             nickName = t.getNickname();
+   		             apellido = t.getApellido();
+   		             email = t.getEmail();
+   		             fechaN = t.getFechaNacimiento().toString();
+                     String nacionalidad = "";
+        		     nacionalidad = t.getNacionalidad();%>    
+                    
+                    <p><b>Nickname:</b>  <%= nickName %> </p>
+                    <p><b>Nombre:</b> <%= nombre %> </p>
+                    <p><b>Apellido: </b> <%= apellido%></p>
+                    <p><b>E-mail:</b>  <%= email %> </p>
+                    <p><b>Fecha de Nacimiento:</b>  <%= fechaN %> </p>
+                    <p><b>Nacionalidad:</b> <%= nacionalidad %> </p>
+                <%
+                } %>
                 </div>
+                
+                
+                
                 <div id="Actividades" class="tabcontent">
+                
+                <%   
+                ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
+                if (request.getSession().getAttribute("prov_dt") != null) {
+                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
+                   act = p.getActividades();
+
+                for (int i=0; i < act.size();i++) {
+                    
+                     %>
+                    <div class="Actividad">
+                        <div class="imagenActividad">
+                            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg">
+                        </div>
+                        <div class="Actividad-text">
+						
+                            <h3> <%= act.get(i).getNombre() %> </h3>
+                            <p>Estado: <%= act.get(i).getEstado() %></p>
+                            <p><a href="./consultaActividad1.html" class="links">Leer más.</a></p>
+                        </div>
+                    </div>
+                    <hr>     
+                    
+      <%     }  } %>        
+                    
                 </div>
                 <div id="Salidas" class="tabcontent">
+                
+                <%ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
+                if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+					 DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
+					 InscSal = t.getInscripciones();
+					 for (int i=0; i< InscSal.size();i++) {
+               
+                %>
+                
+                
+                  <div class="Salida">
+                    
+                
+                        <div class="imagenSalida">
+                            <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
+                        </div>
+                        <div class="Salida-text">
+                            <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
+                            <p> Fecha Inscripcion:<%= InscSal.get(i).getFecha().toString() %> </p>
+                            <p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
+                            <p> Costo: <%= InscSal.get(i).getCosto() %> </p>
+                            <p><a href="#" class="links">Leer mas.</a></p>
+                        </div>
+                    </div>
+                    
+                
+                
+                <%
+                } }
+                %>
+                
+                
                 </div>
                 <div id="Paquetes" class="tabcontent">
+                <%
+                ArrayList<DTPaquete> paquetes = new ArrayList<DTPaquete>();
+                
+                %>
+                
+                
+                
+                
                 </div>
             </div>
         </div>

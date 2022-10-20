@@ -61,22 +61,23 @@
          String fechaN = "";
          String desc ="";
          String url = "";
+         String apellido = "";
        
          
          ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
         if (request.getSession().getAttribute("prov_dt") != null) {
            DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
-        		//   request.getAttribute("InfoProveedor") ;
+     
             nombre = p.getNombre();
             nickName = p.getNickname();
             email = p.getEmail();
             fechaN = p.getFechaNacimiento().toString();
             desc =  p.getDescripcionGeneral();
             url = p.getURL();
-            
+            apellido = p.getApellido();
              act = p.getActividades();
-          //  Iterator<DTActividadTuristica> it = act.iterator();
-            //seguir con las actividades   
+             
+         
         }
 %>	
                 <div class="img-container">
@@ -100,7 +101,8 @@
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
                     <p><b>Nickname:</b> <%= nickName%></p>
-                    <p><b>Nombre Completo:</b> <%= nombre%></p>
+                    <p><b>Nombre: </b> <%= nombre%></p>
+                    <p><b>Apellido: </b> <%= apellido%></p>
                     <p><b>E-mail:</b> email </p>
                     <p><b>Fecha de Nacimiento:</b> <%= fechaN %></p>
                     <p><b>Descripcion:</b> <%= desc %> </p>
@@ -109,6 +111,8 @@
                 <div id="Actividades" class="tabcontent">
                 
                 <% for (int i=0; i< act.size();i++) {
+                	
+                	if (act.get(i).getEstado() == EstadoActividad.Confirmada) {
                     
                      %>
                     <div class="Actividad">
@@ -121,7 +125,7 @@
                         </div>
                     </div>
                     <hr>
-                    <%} %>
+                    <%}} %>
                    
                 </div>
             </div>

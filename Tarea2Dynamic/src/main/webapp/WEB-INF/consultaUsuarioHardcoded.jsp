@@ -60,6 +60,7 @@
          String desc ="";
          String url = "";
          String nacionalidad = "";
+         String apellido = "";
          
          ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
        
@@ -67,6 +68,7 @@
            DTTurista t = (DTTurista) request.getSession().getAttribute("turi_dt") ;
             nombre = t.getNombre();
             nickName = t.getNickname();
+            apellido = t.getApellido();
             email = t.getEmail();
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
@@ -82,7 +84,7 @@
                 <div class="img-container">
                     <img src="https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small" height="200">
                 </div>
-                <h3> <%= nombre %>	</h3>
+                <h3> <%= nombre %> 	 <%=apellido  %> </h3>
                 <h5> <%= nickName %> / <%= email %> </h5>
             </div>
             <div class="top-bar-links">
@@ -101,6 +103,7 @@
                 <div id="Perfil" class="tabcontent">
                     <p><b>Nickname:</b>  <%= nickName %> </p>
                     <p><b>Nombre:</b> <%= nombre %> </p>
+                    <p><b>Apellido: </b> <%= apellido%></p>
                     <p><b>E-mail:</b>  <%= email %> </p>
                     <p><b>Fecha de Nacimiento:</b>  <%= fechaN %> </p>
                     <p><b>Nacionalidad:</b> <%= nacionalidad %> </p>
