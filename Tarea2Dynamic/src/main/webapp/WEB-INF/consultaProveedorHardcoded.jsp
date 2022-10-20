@@ -125,6 +125,8 @@
                     </div>
                     <hr>
                     <%} %>
+                <%} %>
+                <script>window.onload=openTab(event, 'Perfil');</script>
                    
                 </div>
             </div>
