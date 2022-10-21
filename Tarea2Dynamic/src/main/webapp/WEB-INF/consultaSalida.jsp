@@ -6,6 +6,7 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
+    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
     <title>Consulta Salida</title>
 </head>
 <body>
@@ -14,11 +15,25 @@
 
 <div class="content">
         <div class="Consultas">
+        
+        <% String fecha = "";
+           String hora = "";
+           String cupos = "";
+           String lugar = "";
+           String nombre = "";
+           if (request.getSession().getAttribute("salida_dt") != null) {
+        	   DTSalidaTuristica s = (DTSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
+        	   nombre = s.getNombre();
+        	   fecha = s.getInfoSalida().getFecha().toString();
+        	   hora = s.getInfoSalida().getHora().toString();
+        	   lugar = s.getInfoSalida().getLugar();
+        	   cupos = String.valueOf(s.getCuposDisponibles());
+           }%>
             <div class="container-consulta">
                 <div class="img-container">
                     <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" class="imagenSalidaDegusta">
                 </div>
-                <h3>Degusta Setiembre</h3>
+                <h3> <%= nombre %> </h3>
                 <button id="botonInscripcionSalida" onclick="location.href='inscripcionASalidaTuristica.html'">Inscribirse</button>
             </div>
             <div class="top-bar-links">
@@ -30,10 +45,10 @@
             </div>
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
-                    <p><b>Fecha:</b> 03/09/2022</p>
-                    <p><b>Hora:</b> 17hs</p>
-                    <p><b>Cupos Disponibles:</b> 20</p>
-                    <p><b>Lugar:</b> Sociedad Agropecuaria de Rocha</p>
+                    <p><b>Fecha:</b> <%= fecha  %></p>
+                    <p><b>Hora:</b> <%= hora  %> </p>
+                    <p><b>Cupos Disponibles:</b> <%= cupos  %></p>
+                    <p><b>Lugar:</b>  <%= lugar %></p>
                 </div>                
             </div>
         </div>
