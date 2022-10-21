@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,9 +42,17 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     	
     	
     	LocalDate now = LocalDate.now();
-    	String nomSal = request.getParameter("nombreSalida"); //pasar con el link en el boton de inscribirse
-    	String Cant = request.getParameter("cantidad-turistas");	
-    	if (Cant!= null && nomSal!=null) {
+    	String nomSal = request.getParameter("nombreSalida"); 
+ 
+    	if ( nomSal!=null) {
+    		
+    		RequestDispatcher dispatcher = request.getRequestDispatcher(
+      	          "/WEB-INF/inscripcionASalidaTuristica.jsp"); 
+      	        dispatcher.forward(request, response); //ver donde va
+      	        
+      	        
+      	     String Cant = request.getParameter("cantidad-turistas");
+      	   if (Cant!=null) {
     		int cantidadTuristas = Integer.parseInt(Cant);
     		ct.seleccionarSalida(nomSal);
     		int cupos = ct.getDTSalidaTuristica().getCuposDisponibles();
@@ -75,6 +84,8 @@ public class InscripcionASalidaTuristica extends HttpServlet {
               }
 
     	}
+		   
+   	   }
 
     }
 	/**

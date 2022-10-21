@@ -34,7 +34,11 @@
                     <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" class="imagenSalidaDegusta">
                 </div>
                 <h3> <%= nombre %> </h3>
-                <button id="botonInscripcionSalida" onclick="location.href='inscripcionASalidaTuristica.html'">Inscribirse</button>
+                
+                <%        if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
+             <a href = "/Tarea2Dynamic/InscripcionASalidaTuristica?nombreSalida=<%=nombre%>"> <button id="botonInscripcionSalida">Inscribirse</button>
+             </a>   
+             <%} %>
             </div>
             <div class="top-bar-links">
                 <div class="tab">
