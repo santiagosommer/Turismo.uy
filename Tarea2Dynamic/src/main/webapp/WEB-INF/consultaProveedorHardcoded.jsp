@@ -34,7 +34,7 @@
         document.getElementById(tabName+"-tab").classList += " selected";
     }
     </script>
-    <style> <%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
+    <style> <%@include file="./../media/css/consultaUsuarioIndex.css"%> </style>
    
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
      <%@page import=" java.util.ArrayList"%>
@@ -124,7 +124,8 @@
                         </div>
                     </div>
                     <hr>
-                    <%} %>
+                    <% }} %>
+                    <script>window.onload=openTab(event, 'Perfil');</script>
                    
                 </div>
             </div>
