@@ -32,12 +32,24 @@
 
             <div class="tabs">
                 <div class="tab">
-                    <button class="tablinks" onclick="openCity(event, 'General')">General</button>
-                    <button class="tablinks" onclick="openCity(event, 'Paquete')">Paquete</button>
+                <% //https://stackoverflow.com/questions/36304847/to-pass-a-parameter-form-one-jsp-page-to-another-using-onclick
+                //forma1   %>
+               	  <a href="/Tarea2Dynamic/InscripcionASalidaTuristica?param=general"> <button class="tablinks" onclick="openCity(event, 'General')">  General </button> </a>
+              	  <a href="/Tarea2Dynamic/InscripcionASalidaTuristica?param=paquete"> <button class="tablinks" onclick="openCity(event, 'Paquete')">Paquete </button> </a>       
                 </div>
                   <div id="General" class="tabcontent">
-
-                    <p><b>Costo:</b> $0.00 </p>
+						<%  float costo = 0;
+							if (request.getSession().getAttribute("costo")!= null){
+								if (request.getParameter("cantidad-turistas")!=null	){
+									costo = (float) request.getSession().getAttribute("costo");
+									String cant = request.getParameter("cantidad-turistas");	
+									int cantidadt =  Integer.parseInt(cant);
+									costo = costo* cantidadt;
+								}
+						
+							}%>
+						
+                    <p><b>Costo:</b> $<%= costo %> </p>
                   </div>
 
                   <div id="Paquete" class="tabcontent">
