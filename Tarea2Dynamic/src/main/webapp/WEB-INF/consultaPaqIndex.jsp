@@ -13,7 +13,7 @@
     
     <div style="display: flex; flex-direction: column;">
         <div style="display:flex; align-items: center; gap: 20px; justify-content: center;">
-            <img src="./../icons/money.svg" style="height:96px; " alt="">
+            <img src="media/icons/money.svg" style="height:96px; " alt="">
             <h1 style="text-align: center;">Consultar paquetes</h1>
         </div>
         <div class="content">

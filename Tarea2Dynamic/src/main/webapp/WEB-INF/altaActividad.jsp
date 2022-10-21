@@ -22,43 +22,43 @@
             <div class="container2">
                 <div class="departamentoycategorias">
 
-                        <div class="img1"> <img src="./../icons/location2.svg" class="iconop" ></div>
+                        <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         <div class="s1">  <select class ="controls" name="departamento" id="depas">
                             <option value="rocha">Rocha</option>
 
                           </select></div>
-                        <div class="img2"> <img src="./../icons/tag.svg" class="iconop" > </div>
+                        <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         <div class="s2">  <select name="categorias" class ="controls" id="categ">
                             <option value="gastronomia">Gastronomia</option>
 
                           </select> </div>
                 </div>
                 <div class="c2">
-                    <img src="./../icons/reservation.svg" class="iconop" >
+                    <img src="media/icons/reservation.svg" class="iconop" >
                     <input type="text" name="nombre" class ="controls"  placeholder="Nombre de la Actividad" required>
                 </div>
                 <div class="c3">
-                    <img src="./../icons/write.svg" class="iconop" >
+                    <img src="media/icons/write.svg" class="iconop" >
                     <input  type="text" name="descripcion" id="descripcion" class ="controls"  placeholder="Descripci�n" required>
                 </div>
                 <div class="c4">
-                    <img src="./../icons/clock.svg" class="iconop" >
+                    <img src="media/icons/clock.svg" class="iconop" >
                     <input type="text" name="duracion" class ="controls"  placeholder="Duracion hh" required>
                 </div>
                 <div class="c5">
                     <div class="Costo ">
-                        <img src="./../icons/money2.svg" class="iconop" >
+                        <img src="media/icons/money2.svg" class="iconop" >
                         <input type="text" name="costo"  placeholder="Costo" class ="controls" required>
                     </div>
                 </div>
                 <div class="c6">
                     <div class="ciudad ">
-                        <img src="./../icons/location.svg" class="iconop" >
+                        <img src="media/icons/location.svg" class="iconop" >
                         <input type="text" name="ciudad"  placeholder="Ciudad" class ="controls" required>
                     </div>
                 </div>
                 <div class="c7">
-                    <img src="./../icons/image.svg" class="iconop"  >
+                    <img src="media/icons/image.svg" class="iconop"  >
                     <input class ="controls" type="file" name="img" id="img" placeholder="Seleccionar imagen" required>
                 </div>
                 <div class="c8">
