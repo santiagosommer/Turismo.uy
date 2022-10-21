@@ -120,7 +120,7 @@
                         </div>
                         <div class="Actividad-text">
                             <h3><%= act.get(i).getNombre() %></h3>
-                            <p><a href="./consultaActividad1.html" class="links">Leer mas.</a></p>
+                            <p><a href="/Tarea2Dynamic/ConsultaActividadIndividual?paramAct=<%=act.get(i).getNombre() %>" class="links">Leer mas.</a></p>
                         </div>
                     </div>
                     <hr>

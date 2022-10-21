@@ -51,8 +51,7 @@
 
     <div class="content">
         <div class="Consultas">
-      
-           <% 
+         <% 
          String nombre ="";
          String nickName ="";
          String email ="";
@@ -73,12 +72,8 @@
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
             InscSal = t.getInscripciones();
-            //seguir con las Salidas
-            
-            
-            
-       }
-            	%>	
+		 }
+         %>	
     
             <div class="container-consulta">
                 <div class="img-container">
@@ -115,21 +110,18 @@
                      %>
                 
                     <div class="Salida">
-                    
-                
-                        <div class="imagenSalida">
+						 <div class="imagenSalida">
                             <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
                         </div>
                         <div class="Salida-text">
                             <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
-                            <p><a href="#" class="links">Leer mas.</a></p>
+                            <p><a href="/Tarea2Dynamic/ConsultaSalida?paramS=<%=InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
                         </div>
                     </div>
                     
                     <%} %>
                     <script>window.onload=openTab(event, 'Perfil');</script>
-                    
-                    
+
                 </div>
             </div>
         </div>

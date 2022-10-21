@@ -224,7 +224,7 @@
                             <p> Fecha Inscripcion:<%= InscSal.get(i).getFecha().toString() %> </p>
                             <p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
                             <p> Costo: <%= InscSal.get(i).getCosto() %> </p>
-                            <p><a href="#" class="links">Leer mas.</a></p>
+                            <p><a href="/Tarea2Dynamic/ConsultaSalida?paramS=<%= InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
                         </div>
                     </div>
                     
