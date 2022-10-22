@@ -3,7 +3,6 @@ package ServidorCentral.Logica.Controladores;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,9 +35,14 @@ public class ControladorPaquete implements IPaquete {
 				
 	}
 	
+	public void reset() {
+		setPaquetes(new HashMap<String,Paquete>());
+		PaqueteSeleccionado = null;
+	}
 	
 	
-public Set<String> listarCategoriasPaquete(String paquete){
+	
+	public Set<String> listarCategoriasPaquete(String paquete){
 		
 		Set<String> lista = new HashSet<String>();
 		
@@ -104,7 +108,6 @@ public Set<String> listarCategoriasPaquete(String paquete){
 		Set<String> lista = new HashSet<String>();
 		if (actividadesDepto!= null && !actividadesDepto.isEmpty()) {
 			
-			Map<String, Paquete> paquetes = Paquetes;
 			Map<String, ActividadTuristica> actividadesDePauete = PaqueteSeleccionado.getActividadesTuristicas();
 			
 		
@@ -159,15 +162,22 @@ public Set<String> listarCategoriasPaquete(String paquete){
 		
 		ActividadTuristica a = crTuristica.getActividadSeleccionada();	
 		Map<String,Categoria> categorias = a.getCategorias(); //agregar categorias a paquete
-		for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {
+		for (Map.Entry<String, Categoria> entry : categorias.entrySet()) {	
 			
+			Map<String,Categoria> categoriasPaq =  p.getCategorias();
 			
-			Map<String,Categoria> c =  p.getCategorias();
-			if (!c.containsKey(entry.getKey())){ 
-				c.put(entry.getKey(), entry.getValue());
+			if (!categoriasPaq .containsKey(entry.getKey())){ 
+				categoriasPaq .put(entry.getKey(), entry.getValue());
+			}
+			
+			//Agrego el link entre el paquete y la categoria
+			Map<String,Paquete> paquetesCategoria = entry.getValue().getPaquetes();
+			if (!paquetesCategoria.containsKey(paquete)) {
+				paquetesCategoria.put(paquete, p); 
 			}
 			
 		}
+		
 		
 		Map<String,Paquete> paquetesDeA = a.getPaquetes(); //link de a a p
 		paquetesDeA.put(paquete, p);

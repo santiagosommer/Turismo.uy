@@ -11,15 +11,15 @@ public abstract class DTUsuario {
 	private String Apellido;
 	private String Email;
 	private LocalDate FechaNacimiento;
-	private String Contrasenia;
+	private String contra;
 	
-	public DTUsuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento, String contrasenia) {
+	public DTUsuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento,String contra) {
 		setNickname(nickname);
 		setNombre(nombre);
 		setApellido(apellido);
 		setEmail(email);
 		setFechaNacimiento(fechaNacimiento);
-		setContrasenia(contrasenia);
+		setContra(contra);
 		
 	}
 	public String getNickname() {
@@ -52,10 +52,10 @@ public abstract class DTUsuario {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		FechaNacimiento = fechaNacimiento;
 	}
-	public String getContrasenia() {
-		return Contrasenia;
+	public String getContra() {
+		return contra;
 	}
-	public void setContrasenia(String contrasenia) {
-		Contrasenia = contrasenia;
+	public void setContra(String contra) {
+		this.contra = contra;
 	}
 }

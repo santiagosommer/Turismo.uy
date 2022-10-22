@@ -14,8 +14,8 @@ private String URL;
 private ArrayList<DTActividadTuristica> InfoActividades;
  
  
-public DTProveedor(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento,String contrasenia, String descripcionGeneral,String url) {
-		super(nickname, nombre, apellido, email, fechaNacimiento,contrasenia);
+public DTProveedor(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento,String contra, String descripcionGeneral,String url) {
+		super(nickname, nombre, apellido, email, fechaNacimiento, contra);
 		DescripcionGeneral = descripcionGeneral;
 		URL = url;
 		InfoActividades = new ArrayList<DTActividadTuristica>();
@@ -24,7 +24,7 @@ public DTProveedor(String nickname, String nombre, String apellido, String email
 }
 
 public DTProveedor(Proveedor pro) {
-	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento(),pro.getContrasenia());
+	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento(),pro.getContraseña());
 	setDescripcionGeneral(pro.getDescripcionGeneral());
 	setURL(pro.getURL());
 	setActividades(new ArrayList<DTActividadTuristica>());

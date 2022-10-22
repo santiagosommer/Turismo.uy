@@ -2,11 +2,7 @@ package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 import ServidorCentral.Logica.Excepciones.*;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
@@ -15,7 +11,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
 
 
 
@@ -44,10 +39,58 @@ public class ControladorTuristica implements ITuristica {
 		
 	}
 	
+	public void reset() {
+		Departamentos = new HashMap<String,Departamento>();
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();	
+		Categorias = new HashMap<String, Categoria>();
+		actividadSeleccionada = null;
+		salidaSeleccionada = null;
+		departamentoSeleccionado = null;
+		categoriaSeleccionada = null;
+	}
 	
 	//operaciones
 	
 	//nuevas:
+	
+	@Override
+	public Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat){
+		Set<DTActividadTuristica> res = new HashSet<DTActividadTuristica>();
+		if (depto == null || cat == null || (depto.contentEquals("Departamento") && cat.contentEquals("Categoria"))) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				res.add(new DTActividadTuristica(ActividadesTuristicas.get(key)));
+			}
+			return res;
+		}
+		if (cat.contentEquals("Categoria")) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				ActividadTuristica act = ActividadesTuristicas.get(key);
+				if (depto.contentEquals(act.getInfoDepartamento().getNombre()) && act.getEstado() == EstadoActividad.Confirmada) {
+					res.add(new DTActividadTuristica(act));
+				}
+			}
+			return res;
+		}
+		if (depto.contentEquals("Departamento")) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				ActividadTuristica act = ActividadesTuristicas.get(key);
+				if (act.tieneCat(cat) && act.getEstado() == EstadoActividad.Confirmada) {
+					res.add(new DTActividadTuristica(act));
+				}
+			}
+			return res;
+		}
+		
+		for (String key : ActividadesTuristicas.keySet()) {
+			ActividadTuristica act = ActividadesTuristicas.get(key);
+			if (act.tieneCat(cat) && depto.contentEquals(act.getInfoDepartamento().getNombre()) && act.getEstado() == EstadoActividad.Confirmada) {
+				res.add(new DTActividadTuristica(act));
+			}
+		}
+		
+		return res;
+		
+	}
 	
 	@Override
 	public Boolean existeInscripcion(String salida, String nombreTurista) {
@@ -61,9 +104,6 @@ public class ControladorTuristica implements ITuristica {
 		 }
 		return false;
 	}
-	
-	
-
 	
 	public void crearCategoria(String nombre) throws CategoriaRepetidaException {
 		
@@ -207,7 +247,7 @@ public class ControladorTuristica implements ITuristica {
 			
 		for (Inscripcion inscripcion : inscripciones) {
 			
-			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(),inscripcion.getTurista().getContrasenia(), inscripcion.getTurista().getNacionalidad());
+			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(),inscripcion.getTurista().getContraseña(), inscripcion.getTurista().getNacionalidad());
 			inscripcionesDT.add(new DTInscripcion(inscripcion.getFecha(), inscripcion.getCantidadTuristas(), inscripcion.getCosto(), turistaAutor, getDTSalidaTuristica()));
 		}
 		return inscripcionesDT;
@@ -252,8 +292,6 @@ public class ControladorTuristica implements ITuristica {
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarActividad(actividad);
 		ActividadTuristica activ = actividadSeleccionada;
 		if (activ == null) {
@@ -319,6 +357,7 @@ public class ControladorTuristica implements ITuristica {
 	}
 	
 	public Set<String> listarActividadesDeDepartamento(String departamento){
+		//(Confirmadas)
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, Departamento> departamentos = crTuristica.Departamentos;
@@ -332,7 +371,10 @@ public class ControladorTuristica implements ITuristica {
 			
 			for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
 			    nombreActividad = entry.getKey();
-			    lista.add(nombreActividad);
+			    if(entry.getValue().getEstado() == EstadoActividad.Confirmada) { //nuevo
+			    	lista.add(nombreActividad);
+			    }
+			    
 			}
 			return lista;
 			
@@ -386,7 +428,6 @@ public class ControladorTuristica implements ITuristica {
 
 	@Override
 	public Boolean existeSalida(String salida) {
-		// TODO Auto-generated method stub
 		
 		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
 		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
@@ -405,13 +446,11 @@ public class ControladorTuristica implements ITuristica {
 
 	@Override
 	public ActividadTuristica getActividadSeleccionada() {
-		// TODO Auto-generated method stub
 		return actividadSeleccionada;
 	}
 
 	@Override
 	public SalidaTuristica getSalidaSeleccionada() {
-		// TODO Auto-generated method stub
 		return salidaSeleccionada;
 	}
 
@@ -426,7 +465,35 @@ public class ControladorTuristica implements ITuristica {
 	}
 
 
-	
+	@Override
+	public Set<String> listarActividadesAgregadas() {
+		Set<String> lista = new HashSet<String>();
+		
+		Map<String, ActividadTuristica> actividades = ActividadesTuristicas;
+		for (Map.Entry<String, ActividadTuristica> entry : actividades.entrySet()) {
+		   if (entry.getValue().getEstado() == EstadoActividad.Agregada) {
+			   lista.add(entry.getKey());
+			   
+		   }
+		}
+		return lista;
+	}
+
+
+	@Override
+	public void AceptarActividad(String actividad) {
+		ActividadTuristica act = ActividadesTuristicas.get(actividad);
+		act.setEstado(EstadoActividad.Confirmada);
+		
+	}
+
+
+	@Override
+	public void RechazarActividad(String actividad) {
+		ActividadTuristica act = ActividadesTuristicas.get(actividad);
+		act.setEstado(EstadoActividad.Rechazada);
+		
+	}
 	
 	
 	

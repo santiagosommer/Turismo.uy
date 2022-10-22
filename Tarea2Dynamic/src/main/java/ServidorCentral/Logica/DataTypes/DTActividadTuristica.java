@@ -5,16 +5,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
-
-
 public class DTActividadTuristica {
-	
-	
-	
 	private String Nombre;
 	private String Descripcion;
 	private int Duracion;
@@ -25,10 +19,6 @@ public class DTActividadTuristica {
 	private String Proveedor;
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
-	private ArrayList<DTCategoria> InfoCategorias;
-	private EstadoActividad Estado;
-	
-	
 	
 	public DTActividadTuristica(ActividadTuristica at) {
 		setNombre(at.getNombre());
@@ -40,7 +30,6 @@ public class DTActividadTuristica {
 		setInfoDepartamento(new DTDepartamento(at.getInfoDepartamento()));
 		setSalidas(new ArrayList<DTSalidaTuristica>());
 		setProveedor(at.getProveedor().getNombre() + " " + at.getProveedor().getApellido());
-		setEstado(EstadoActividad.Agregada);
 		
 		Map<String,SalidaTuristica> map = at.getSalidas();
 		
@@ -57,13 +46,6 @@ public class DTActividadTuristica {
 			DTPaquete auxIPa = new DTPaquete(entry.getValue());
 			this.InfoPaquetes.add(auxIPa);
 		}
-		this.InfoCategorias = new ArrayList<DTCategoria>();
-		Map<String,Categoria> categorias = at.getCategorias();
-		for(Map.Entry<String, Categoria> entry : categorias.entrySet()) {
-			DTCategoria auxIPa = new DTCategoria(entry.getValue());
-			this.InfoCategorias.add(auxIPa);
-		}
-		
 		
 	}
 	public String getNombre() {
@@ -125,14 +107,6 @@ public class DTActividadTuristica {
 	}
 	public void setFechaAlta(LocalDate fechaAlta) {
 		FechaAlta = fechaAlta;
-	}
-	
-	public EstadoActividad getEstado() {
-		return Estado;
-	}
-
-	public void setEstado(EstadoActividad estado) {
-		Estado = estado;
 	}
 	
 }

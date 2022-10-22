@@ -43,3 +43,22 @@
 .nombre{
     font-weight: bold;
 }
+
+.button{
+
+    background: #6558F5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+
+}
+
+
+.button:hover{
+    cursor:pointer;
+    background: #5046c0;
+}

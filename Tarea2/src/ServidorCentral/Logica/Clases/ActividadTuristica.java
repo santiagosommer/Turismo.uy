@@ -135,6 +135,13 @@ public class ActividadTuristica {
 	public void setEstado(EstadoActividad estado) {
 		Estado = estado;
 	}
+
+	public boolean tieneCat(String cat) {
+		for (String key : Categorias.keySet()) {
+			return key.contentEquals(cat);
+		}
+		return false;
+	}
 	
 	
 	
