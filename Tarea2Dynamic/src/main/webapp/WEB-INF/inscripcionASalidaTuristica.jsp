@@ -13,10 +13,11 @@
 
     
         <div class="container">
+         <form class="form-register" action="AltaTurista" method="post">
             <div class="h1">
                 <h2>Inscribirse a Salida Turistica</h2>
             </div>
-
+       <% String Error =  (String) request.getAttribute("error"); %>
 
         <div></div>    
             
@@ -69,6 +70,7 @@
 
 
             </div>
+            </form>
 
         </div>
 

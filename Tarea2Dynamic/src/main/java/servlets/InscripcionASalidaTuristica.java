@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -45,6 +46,7 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     	int cantCupos = ct.getDTSalidaTuristica().getCuposDisponibles();
     	
     	if (cantTuristas > cantCupos) {
+    		request.setAttribute("error", "CuposInsuficientes");
     		return false;
     	}
     	
@@ -55,15 +57,12 @@ public class InscripcionASalidaTuristica extends HttpServlet {
           	  String nickTurista = turista.getNickname();
           	  cu.seleccionarTurista(nickTurista);
           	  if (ct.existeInscripcion(nomSal, nickTurista)) {
+          		request.setAttribute("error", "ExisteInscripcion"); 
           		  return false;
           	  }
             }
     	}
-    	
-    	
-    	
-    	
-    	
+    
     	
     	return true;
     }
@@ -87,6 +86,8 @@ public class InscripcionASalidaTuristica extends HttpServlet {
         		request.getRequestDispatcher("/WEB-INF/InscripcionASalidaTuristica.jsp").forward(request, response);
         		return;
         	}
+    		
+    		
     		
     		
     		RequestDispatcher dispatcher = request.getRequestDispatcher(
