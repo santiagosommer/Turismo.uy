@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,14 +40,8 @@ public class AltaSalida extends HttpServlet {
     
     protected boolean checkFormulario(HttpServletRequest request) {
     	
-    	String departamento = request.getParameter("departamento");
-    	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
-    	String fecha = request.getParameter("fecha");
-    	String hora = request.getParameter("hora");
-    	String lugar = request.getParameter("lugar");
-    	String cuposMax = request.getParameter("cuposMax");
-    	
+    
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	if (ct.existeSalida(nombre)) {
@@ -71,7 +67,16 @@ public class AltaSalida extends HttpServlet {
     		return;
     	}
     	
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	
+    	Set<String> deps = ct.listarDepartamentos();
+    	request.setAttribute("listarDepartamentos", deps);
+    	
     	String departamento = request.getParameter("departamento");
+    	
+    	Set<String> acts = ct.listarActividadesDeDepartamento(departamento);
+    	request.setAttribute("listarActividades", acts);
+    	
     	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
     	LocalDateTime date = LocalDateTime.parse("fechaYhora");
@@ -80,7 +85,7 @@ public class AltaSalida extends HttpServlet {
     	
     	int cuposMax = Integer.parseInt(cuposMaxS);
     	
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	
     	
     	try {
     		LocalDate fecha = date.toLocalDate();
@@ -96,10 +101,10 @@ public class AltaSalida extends HttpServlet {
     	ct.seleccionarSalida(nombre);
 		request.getSession().setAttribute("usuario_dt", ct.getDTSalidaTuristica());
 		
-    	
     	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 
 	}
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

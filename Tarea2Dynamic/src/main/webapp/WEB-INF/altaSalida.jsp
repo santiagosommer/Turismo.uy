@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@page import="java.util.Set" %>
 <%@page import="ServidorCentral.Logica.DataTypes.EstadoError"%>
 
 <!DOCTYPE html>
@@ -29,20 +29,39 @@
 	        <% } %>
             
         </div>
+		
         <div class="formulario ">
             <div class="container2">
                 <div class="departamentoycategorias">
 
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
+                        
+                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listaDepartamentos");
+                        %>
+                         
                         <div class="s1">  <select class ="controls" name="departamento" id="cars">
-                            <option value="volvo">Rocha</option>
+                        
+                        <%for (String dep : departamentos){ %>
+                        
+                            <option value="<%=dep%>">"<%=dep%>"</option>
+                            
+						<%}%>
 
                           </select></div>
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
+                        
+                        <% Set<String> actividades = (Set<String>) request.getAttribute("listaActividades");
+                        %>
+                        
                         <div class="s2">  <select name="actividades" class ="controls" id="cars">
-                            <option value="degusta">Degusta</option>
+                        
+                        <%for (String act : actividades){ %>
+                        
+                            <option value="<%=act%>">"<%=act%>"</option>
+                            
+						<%}%>
 
-                          </select> </div>
+                          </select></div>
 
 
 
@@ -81,5 +100,4 @@
 
 
     <script src="./../js/mantenerSesion.js"></script>
-</body>
-</html>
+</body></html>
