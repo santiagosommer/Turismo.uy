@@ -34,8 +34,8 @@
                 <div class="tab">
                 <% //https://stackoverflow.com/questions/36304847/to-pass-a-parameter-form-one-jsp-page-to-another-using-onclick
                 //forma1   %>
-               	  <a href="/Tarea2Dynamic/InscripcionASalidaTuristica?param=general"> <button class="tablinks" onclick="openCity(event, 'General')">  General </button> </a>
-              	  <a href="/Tarea2Dynamic/InscripcionASalidaTuristica?param=paquete"> <button class="tablinks" onclick="openCity(event, 'Paquete')">Paquete </button> </a>       
+               	  <a href="#?param=general"> <button class="tablinks" onclick="openCity(event, 'General')">  General </button> </a>
+              	  <a href="#?param=paquete"> <button class="tablinks" onclick="openCity(event, 'Paquete')">Paquete </button> </a>       
                 </div>
                   <div id="General" class="tabcontent">
 						<%  float costo = 0;
@@ -46,7 +46,6 @@
 									int cantidadt =  Integer.parseInt(cant);
 									costo = costo* cantidadt;
 								}
-						
 							}%>
 						
                     <p><b>Costo:</b> $<%= costo %> </p>
@@ -61,12 +60,10 @@
 
                     <p> <b> Costo:</b> $0.00</p>
 
-
-
                   </div>
                   <div class="botones">
-                    <button type="button" id="inscribirButton">Inscribirse</button>
-                    <button type="button" id="cancelarButton">Cancelar</button>
+                  	<input type="button" class="button" id="inscribirButton" value="Inscribirse">
+                    <button type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Dynamic/Home';">Cancelar</button>
                 </div>
 
 

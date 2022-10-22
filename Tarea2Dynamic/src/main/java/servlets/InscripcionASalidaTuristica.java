@@ -33,9 +33,41 @@ public class InscripcionASalidaTuristica extends HttpServlet {
         // TODO Auto-generated constructor stub
        
     }
-
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected boolean checkFormulario(HttpServletRequest request) {
+    	
+    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	String nomSal = request.getParameter("nombreSalida");
+    	String Cant = request.getParameter("cantidad-turistas");
+    	int cantTuristas = Integer.parseInt(Cant);
+    	ct.seleccionarSalida(nomSal);
+    	int cantCupos = ct.getDTSalidaTuristica().getCuposDisponibles();
+    	
+    	if (cantTuristas > cantCupos) {
+    		return false;
+    	}
+    	
+    	//ya existe inscripcion turista
+    	if (request.getSession().getAttribute("usuario_dt") != null) {
+            if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+          	  DTTurista turista = (DTTurista) request.getSession().getAttribute("usuario_dt");
+          	  String nickTurista = turista.getNickname();
+          	  cu.seleccionarTurista(nickTurista);
+          	  if (ct.existeInscripcion(nomSal, nickTurista)) {
+          		  return false;
+          	  }
+            }
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	return true;
+    }
+   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
@@ -43,8 +75,19 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     	
     	LocalDate now = LocalDate.now();
     	String nomSal = request.getParameter("nombreSalida"); 
- 
+    	
     	if ( nomSal!=null) {
+    		
+    		if (request.getParameter("cantidad-turistas")==null) {
+        		request.getRequestDispatcher("/WEB-INF/InscripcionASalidaTuristica.jsp").forward(request, response);
+        		return;
+        	}
+        	
+    		if (!checkFormulario(request)) {
+        		request.getRequestDispatcher("/WEB-INF/InscripcionASalidaTuristica.jsp").forward(request, response);
+        		return;
+        	}
+    		
     		
     		RequestDispatcher dispatcher = request.getRequestDispatcher(
       	          "/WEB-INF/inscripcionASalidaTuristica.jsp"); 
@@ -64,30 +107,31 @@ public class InscripcionASalidaTuristica extends HttpServlet {
             	  DTTurista turista = (DTTurista) request.getSession().getAttribute("usuario_dt");
             	  nickTuri = turista.getNickname();
             	  cu.seleccionarTurista(nickTuri);
-            	  
-            	  
               }
         	}
         	
-        	if(cantidadTuristas <= cupos) {
-          	   String tipo = request.getParameter("param");
+        	
+        	
+          	  String tipo = request.getParameter("param");
               	 //caso general
-               if (tipo.equals("general") && nomSal!= null ) {
-              	try {
-      				cu.crearInscripcion(nickTuri, nomSal, cantidadTuristas, costo, now);
+               if (tipo.equals("general") )
+                 try {
+      			   cu.crearInscripcion(nickTuri, nomSal, cantidadTuristas, costo, now);
       			 } catch (YaExisteInscripcionTuristaSalida e) {
       				// TODO Auto-generated catch block
       				e.printStackTrace();
       			}
         
+               
+               
           	   }
               }
 
     	}
 		   
-   	   }
+   	   
 
-    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

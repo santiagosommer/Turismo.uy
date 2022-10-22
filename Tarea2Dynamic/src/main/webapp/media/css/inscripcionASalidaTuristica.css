@@ -57,6 +57,12 @@
     font-size: 16px;
 }
 
+.botones input:hover{
+  background: #5046c0;
+  
+  cursor:pointer;
+}
+
 .botones button:hover{
   background: #5046c0;
   
@@ -70,6 +76,23 @@
 }
 
 button{
+    
+    width: 45%;
+    background: #6558F5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+    /* min-width: 100px; */
+
+}
+
+
+#inscribirButton {
     
     width: 45%;
     background: #6558F5;

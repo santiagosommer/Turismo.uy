@@ -49,6 +49,22 @@ public class ControladorTuristica implements ITuristica {
 	
 	//nuevas:
 	
+	@Override
+	public Boolean existeInscripcion(String salida, String nombreTurista) {
+		seleccionarSalida(salida);
+		ArrayList<Inscripcion> inscripciones = salidaSeleccionada.getInscripcionesAsociadas();
+		for (int i=0;i<inscripciones.size();i++) {
+			if (inscripciones.get(i).getTurista().getNickname() == nombreTurista) {
+			  return true;
+		  }
+		      
+		 }
+		return false;
+	}
+	
+	
+
+	
 	public void crearCategoria(String nombre) throws CategoriaRepetidaException {
 		
 		if (existeCategoria(nombre)){
@@ -393,6 +409,9 @@ public class ControladorTuristica implements ITuristica {
 	public void setCategoriaSeleccionada(Categoria categoriaSeleccionada) {
 		this.categoriaSeleccionada = categoriaSeleccionada;
 	}
+
+
+	
 	
 	
 	
