@@ -10,19 +10,19 @@ import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
-import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Excepciones.CategoriaRepetidaException;
-import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.awt.event.ActionEvent;
 
 public class AltaDeCategoria extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private ITuristica controlTur;
 

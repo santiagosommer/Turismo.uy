@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
-import ServidorCentral.Logica.Controladores.*;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -15,8 +14,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JInternalFrame;
-import java.awt.BorderLayout;
 
 public class Principal {
 

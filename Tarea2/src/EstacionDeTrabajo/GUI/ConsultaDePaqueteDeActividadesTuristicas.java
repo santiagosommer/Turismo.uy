@@ -1,17 +1,11 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.EventQueue;
-
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
-import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
@@ -22,24 +16,22 @@ import java.awt.Insets;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.undo.CannotUndoException;
-import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
 public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IPaquete cu;
 	private DefaultComboBoxModel<String> l1;
 	private DefaultComboBoxModel<String> l2;
 	private JComboBox<String> listaActividades;
 	private JComboBox<String> listaPaquetes;
-	private JComboBox listaCategorias;
+	private JComboBox<String> listaCategorias;
 	/**
 	 * Create the frame.
 	 */
@@ -142,7 +134,7 @@ public class ConsultaDePaqueteDeActividadesTuristicas extends JInternalFrame {
 		gbc_lblNewLabel_1.gridy = 3;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		listaCategorias = new JComboBox();
+		listaCategorias = new JComboBox<String>();
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;

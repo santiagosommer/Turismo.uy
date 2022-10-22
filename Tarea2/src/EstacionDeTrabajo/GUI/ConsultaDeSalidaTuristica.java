@@ -1,52 +1,32 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.EventQueue;
-
-import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 
 import javax.swing.JInternalFrame;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.ComboBoxModel;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.ActionEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JToggleButton;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.JList;
-import javax.swing.JSlider;
-import javax.swing.JPanel;
-import java.awt.Font;
-import javax.swing.JScrollBar;
-import javax.swing.JSeparator;
-import javax.swing.JScrollPane;
-import java.awt.Color;
-import java.awt.GridLayout;
 
 public class ConsultaDeSalidaTuristica extends JInternalFrame {
 	
 	
-  private JComboBox<String> comboBoxDepartamentos;
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private JComboBox<String> comboBoxDepartamentos;
   private JComboBox<String> comboActividades;
   private JComboBox<String> comboSalidas;
   private JButton btnInfo;

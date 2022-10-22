@@ -22,14 +22,16 @@ import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
 import javax.swing.UIManager;
 
 public class ConsultaDeUsuario extends JInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IUsuario cu;
 	private ITuristica ct;
 	private JFrame principalFrame;

@@ -5,15 +5,17 @@ import javax.swing.JInternalFrame;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 
 public class InfoActividad extends JInternalFrame{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public InfoActividad(DTActividadTuristica acti) {
 		setMaximizable(true);
 		setResizable(true);

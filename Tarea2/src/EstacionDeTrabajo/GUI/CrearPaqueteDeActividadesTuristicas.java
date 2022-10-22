@@ -5,7 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
-import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import java.awt.GridBagLayout;
@@ -19,12 +18,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 
 public class CrearPaqueteDeActividadesTuristicas extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textFieldNombre;
 	private JTextArea descripcionTextArea;
 	private JTextField textFieldValidez;

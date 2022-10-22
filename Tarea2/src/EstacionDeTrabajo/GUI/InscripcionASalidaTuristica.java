@@ -1,7 +1,5 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,16 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import java.awt.Font;
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.SalidaTuristica;
-import ServidorCentral.Logica.Controladores.ControladorTuristica;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -34,16 +23,17 @@ import ServidorCentral.Logica.Interfaces.IUsuario;
 //import excepciones.UsuarioRepetidoException;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
 public class InscripcionASalidaTuristica extends JInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ActividadTuristica actividad;
 	private IUsuario controladorUsuario;
   	private JComboBox<String> comboBoxDepartamentos;
@@ -236,7 +226,7 @@ public class InscripcionASalidaTuristica extends JInternalFrame {
 	    panel.add(lblNewLabel_14, gbc_lblNewLabel_14);
 	    
 	    CantTuristas = new JSpinner();
-	    CantTuristas.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+	    CantTuristas.setModel(new SpinnerNumberModel((1), (1), null, (1)));
 	    GridBagConstraints gbc_CantTuristas = new GridBagConstraints();
 	    gbc_CantTuristas.fill = GridBagConstraints.HORIZONTAL;
 	    gbc_CantTuristas.insets = new Insets(0, 0, 5, 5);

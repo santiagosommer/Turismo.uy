@@ -2,34 +2,21 @@ package EstacionDeTrabajo.GUI;
 
 import javax.swing.JInternalFrame;
 
-import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
-
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import java.awt.SystemColor;
-import java.time.LocalDate;
-
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JScrollPane;
 
 public class InfoPaquete extends JInternalFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static void main(String[] args, DTPaquete dt) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

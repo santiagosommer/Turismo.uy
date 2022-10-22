@@ -1,7 +1,5 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -22,6 +20,11 @@ import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 
 public class AltaDeProveedor extends JInternalFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private IUsuario cu;
 

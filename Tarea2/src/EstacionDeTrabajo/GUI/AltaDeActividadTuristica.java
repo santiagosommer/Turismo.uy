@@ -1,9 +1,5 @@
 package EstacionDeTrabajo.GUI;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -14,20 +10,14 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 
-import ServidorCentral.Logica.Controladores.ControladorTuristica;
-import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
-import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
-import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -39,6 +29,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JList;
 
 public class AltaDeActividadTuristica extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IUsuario iUsu;
 	private ITuristica iTur;
 	private JTextField NombreField;
@@ -48,16 +42,16 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 	private JTextField CiudadField;
 	private JButton AceptarButton;
 	private JButton CancelarButton;
-	private JComboBox DepartamentoBox;
+	private JComboBox<String> DepartamentoBox;
 	private JLabel lblDepartamento;
 	private JLabel lblProveedor;
-	private JComboBox ProveedorBox;
+	private JComboBox<String> ProveedorBox;
 	private JLabel lblNewLabel;
-	private JList listaCategorias;
+	private JList<String> listaCategorias;
 	private DefaultListModel<String> listModel;
 
 	public AltaDeActividadTuristica(ITuristica interf, IUsuario interfU) {
-		listModel =new DefaultListModel();
+		listModel =new DefaultListModel<String>();
 		
 		
 		
@@ -161,16 +155,14 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		gbc_CiudadField.gridx = 2;
 		gbc_CiudadField.gridy = 5;
 		getContentPane().add(CiudadField, gbc_CiudadField);
-		JInternalFrame monturaFrame = this;
-				
-						lblDepartamento = new JLabel("Departamento");
+		lblDepartamento = new JLabel("Departamento");
 						GridBagConstraints gbc_lblDepartamento = new GridBagConstraints();
 						gbc_lblDepartamento.insets = new Insets(0, 0, 5, 5);
 						gbc_lblDepartamento.gridx = 1;
 						gbc_lblDepartamento.gridy = 6;
 						getContentPane().add(lblDepartamento, gbc_lblDepartamento);
 		
-				DepartamentoBox = new JComboBox();
+				DepartamentoBox = new JComboBox<String>();
 				GridBagConstraints gbc_DepartamentoBox = new GridBagConstraints();
 				gbc_DepartamentoBox.gridwidth = 2;
 				gbc_DepartamentoBox.insets = new Insets(0, 0, 5, 5);
@@ -186,7 +178,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 						gbc_lblProveedor.gridy = 7;
 						getContentPane().add(lblProveedor, gbc_lblProveedor);
 		
-				ProveedorBox = new JComboBox();
+				ProveedorBox = new JComboBox<String>();
 				GridBagConstraints gbc_ProveedorBox = new GridBagConstraints();
 				gbc_ProveedorBox.gridwidth = 2;
 				gbc_ProveedorBox.insets = new Insets(0, 0, 5, 5);
@@ -202,7 +194,7 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 				gbc_lblNewLabel.gridy = 8;
 				getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 				
-				listaCategorias = new JList(listModel);
+				listaCategorias = new JList<String>(listModel);
 				GridBagConstraints gbc_list = new GridBagConstraints();
 				gbc_list.gridwidth = 2;
 				gbc_list.insets = new Insets(0, 0, 5, 5);

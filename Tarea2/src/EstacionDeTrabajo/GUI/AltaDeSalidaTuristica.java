@@ -1,17 +1,11 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.EventQueue;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.Vector;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,22 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-
-import ServidorCentral.Logica.Clases.SalidaTuristica;
-import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
-import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
-
-import java.awt.Component;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -42,6 +24,11 @@ import java.awt.Insets;
 
 public class AltaDeSalidaTuristica extends JInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ITuristica controlTur;
 	
 	private JLabel lblElijaDepartamento;
@@ -288,7 +275,6 @@ public class AltaDeSalidaTuristica extends JInternalFrame {
 	
 	protected void AltaSalidaActionPerformed(ActionEvent e) {
 		
-		String depSeleccionadoComboBox = (String)comboBoxDepartamentos.getSelectedItem();
 		String actSeleccionadaComboBox = (String)comboBoxActividades.getSelectedItem();
 		String nombreSalida = textFieldNombre.getText();
 		String dia = (String)comboBoxDia.getSelectedItem();

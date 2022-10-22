@@ -1,9 +1,7 @@
 package EstacionDeTrabajo.GUI;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.Identity;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
@@ -12,11 +10,8 @@ import javax.swing.JInternalFrame;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.IconUIResource;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
@@ -25,6 +20,10 @@ import java.awt.Insets;
 
 public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IPaquete controlPaquete;
 	private JLabel lblPaquetes;
 	private JComboBox<String> comboBoxPaquetes;
@@ -199,7 +198,6 @@ public class AgregarActividadTuristicaAPaquete extends JInternalFrame {
 	
 	protected void AgregarActividadTuristicaAPaquetePerformed(ActionEvent e) {
 		String paqueteSelecBox =  (String)comboBoxPaquetes.getSelectedItem();
-		String depSelecBox = (String)comboBoxDepartamentos.getSelectedItem();
 		String actividadSelecBox = (String)comboBoxActividadesFueraDePaquete.getSelectedItem();
 		
 		if (checkFormulario()) {
@@ -269,7 +267,6 @@ public void cargarDep() {
 	
 	public void cargarAct() {
 		Fabrica fabricaU = Fabrica.getInstance();
-		ITuristica ctrT = fabricaU.getControladorTuristica();
 		IPaquete ctrP = fabricaU.getControladorPaquete();
 			String dep = (String)comboBoxDepartamentos.getSelectedItem();
 			Iterator<String> iterator = ctrP.listarActividadesAAgregar(dep).iterator(); 

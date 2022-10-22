@@ -8,52 +8,34 @@ import javax.swing.JInternalFrame;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import java.awt.GridLayout;
-import java.awt.Label;
-import javax.swing.JPanel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.List;
-import java.awt.PopupMenu;
-
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ComboBoxModel;
-
-import java.awt.Component;
-import java.awt.Dimension;
-
 import javax.swing.JLabel;
-import java.awt.Color;
-import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyVetoException;
-import java.beans.PropertyChangeEvent;
-import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.JTextField;
 
 public class ConsultaDeActividadTuristica extends JInternalFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private ITuristica interfazTuristica;
 	
 	private JComboBox<Object> comboDepartamentos;
 	private JComboBox<Object> comboActividades;
 	private JComboBox<String> comboSalidas;
 	private JComboBox<String> comboPaquetes;
-	private JComboBox comboCategorias;
+	private JComboBox<String> comboCategorias;
 	
 	private JLabel lblActividades;
 	
@@ -422,7 +404,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 		gbc_lblNewLabel_1.gridy = 15;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		comboCategorias = new JComboBox();
+		comboCategorias = new JComboBox<String>();
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
