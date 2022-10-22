@@ -69,7 +69,7 @@ public class AltaActividad extends HttpServlet {
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
-			ct.crearActividadTuristica(nombre, descripcion, duracion, costo, ciudad, departamento, categorias); //actualizar logica
+			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.valueOf(costo), ciudad, departamento, categorias); //actualizar logica
 		} catch (NombreActividadRepetidoException e) {
 			e.printStackTrace();
 		}
