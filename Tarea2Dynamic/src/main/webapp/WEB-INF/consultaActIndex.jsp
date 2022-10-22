@@ -67,7 +67,7 @@
 	                           <%= s.getNombre() %>
 	                        </div>
 	                        <%= s.getDescripcion() %>
-	                        <a href="./consultaActividad1.html" class="links selected">Leer mas.</a>
+	                        <a href="/Tarea2Dynamic/ConsultaActividadIndividual?paramAct=<%= s.getNombre()%>" class="links selected">Leer mas.</a>
 	                    </div>
 	                </div>
                 <% } %>

@@ -2,6 +2,10 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,12 +65,18 @@ public class AltaActividad extends HttpServlet {
     	String ciudad = request.getParameter("ciudad");
         String departamento = request.getParameter("departamento");
 		DTUsuario prov = request.getSession().getAtributte("usuario_dt");
-        Set<String> categorias = request.getParameter("categorias"); 
+
+		String[] str = request.getParameterValues("categorias");
+		Set<String> cats = new HashSet<String>(); 
+
+		for(String s : str) {
+			cats.add(s);
+		}
     	
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
-			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.parseFloat(costo), LocalDate.now(), ciudad, departamento, prov.getNickname(), request.getParameter("categorias"));
+			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.parseFloat(costo), LocalDate.now(), ciudad, departamento, prov.getNickname(), cats);
 		} catch (NombreActividadRepetidoException e) {
 			e.printStackTrace();
 		}
