@@ -8,8 +8,8 @@ public abstract class Usuario {
 	private String Nombre;
 	private String Apellido;
 	private String Email;
-	private String Contrasenia;
 	private LocalDate FechaNacimiento;
+	private String Contrasenia;
 	
 
 
@@ -83,14 +83,14 @@ public String toString() {
 
 
 
-public String getContrasenia() {
+public String getContraseña() {
 	return Contrasenia;
 }
 
 
 
 
-public void setContrasenia(String contraseña) {
+public void setContraseña(String contraseña) {
 	Contrasenia = contraseña;
 }
 

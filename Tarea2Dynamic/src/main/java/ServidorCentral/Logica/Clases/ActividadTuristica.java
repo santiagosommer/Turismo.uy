@@ -5,12 +5,11 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-enum EstadoActividad{
-	   Agregada,Confirmada, Rechazada;
-	}
+import ServidorCentral.Logica.DataTypes.EstadoActividad;
 
 
 public class ActividadTuristica {
+
 	private String Nombre;
 	private String Descripcion;
 	private int Duracion;
@@ -136,6 +135,14 @@ public class ActividadTuristica {
 	public void setEstado(EstadoActividad estado) {
 		Estado = estado;
 	}
+	
+	public boolean tieneCat(String cat) {
+		for (String key : Categorias.keySet()) {
+			return key.contentEquals(cat);
+		}
+		return false;
+	}
+	
 	
 	
 }

@@ -53,6 +53,58 @@ public class ControladorTuristica implements ITuristica {
 	
 	//nuevas:
 	
+	@Override
+	public Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat){
+		Set<DTActividadTuristica> res = new HashSet<DTActividadTuristica>();
+		if (depto == null || cat == null || (depto.contentEquals("Departamento") && cat.contentEquals("Categoria"))) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				res.add(new DTActividadTuristica(ActividadesTuristicas.get(key)));
+			}
+			return res;
+		}
+		if (cat.contentEquals("Categoria")) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				ActividadTuristica act = ActividadesTuristicas.get(key);
+				if (depto.contentEquals(act.getInfoDepartamento().getNombre()) && act.getEstado() == EstadoActividad.Confirmada) {
+					res.add(new DTActividadTuristica(act));
+				}
+			}
+			return res;
+		}
+		if (depto.contentEquals("Departamento")) {
+			for (String key : ActividadesTuristicas.keySet()) {
+				ActividadTuristica act = ActividadesTuristicas.get(key);
+				if (act.tieneCat(cat) && act.getEstado() == EstadoActividad.Confirmada) {
+					res.add(new DTActividadTuristica(act));
+				}
+			}
+			return res;
+		}
+		
+		for (String key : ActividadesTuristicas.keySet()) {
+			ActividadTuristica act = ActividadesTuristicas.get(key);
+			if (act.tieneCat(cat) && depto.contentEquals(act.getInfoDepartamento().getNombre()) && act.getEstado() == EstadoActividad.Confirmada) {
+				res.add(new DTActividadTuristica(act));
+			}
+		}
+		
+		return res;
+		
+	}
+	
+	@Override
+	public Boolean existeInscripcion(String salida, String nombreTurista) {
+		seleccionarSalida(salida);
+		ArrayList<Inscripcion> inscripciones = salidaSeleccionada.getInscripcionesAsociadas();
+		for (int i=0;i<inscripciones.size();i++) {
+			if (inscripciones.get(i).getTurista().getNickname() == nombreTurista) {
+			  return true;
+		  }
+		      
+		 }
+		return false;
+	}
+	
 	public void crearCategoria(String nombre) throws CategoriaRepetidaException {
 		
 		if (existeCategoria(nombre)){

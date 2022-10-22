@@ -46,6 +46,13 @@ public class ControladorUsuario implements IUsuario {
 		return instancia;
 	}
 
+	public void reset() {
+		setTuristas(new HashMap<String, Turista>());
+		setProveedores(new HashMap<String, Proveedor>());
+		proveedorSeleccionado = null;
+		turistaSeleccionado = null;
+	}
+	
 	@Override
 	public Boolean esTurista(String nickname) {
 		return Turistas.containsKey(nickname);
@@ -72,14 +79,14 @@ public class ControladorUsuario implements IUsuario {
     		if (existeUsuario(nick_or_email)) { // nick_or_email es nickname
     			if (esTurista(nick_or_email)) { // nick_or_email es de un turista
     				seleccionarTurista(nick_or_email);
-    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
+    				if (turistaSeleccionado.getContraseña().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else { // nick_or_email es de un proveedor
     				seleccionarProveedor(nick_or_email);
-    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
+    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
@@ -90,14 +97,14 @@ public class ControladorUsuario implements IUsuario {
     			String nickname = getNickname(nick_or_email);
     			if (esTurista(nickname)) {
     				seleccionarTurista(nickname);
-    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
+    				if (turistaSeleccionado.getContraseña().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else {
     				seleccionarProveedor(nickname);
-    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
+    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
@@ -229,8 +236,8 @@ public class ControladorUsuario implements IUsuario {
 		return false;
 	}
 
-	@Override
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,String contrasenia,
+	
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña,
 			String descripcionGeneral, String url) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -238,12 +245,12 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento,contrasenia, descripcionGeneral, url);
+		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento,contraseña, descripcionGeneral, url);
 		Proveedores.put(nickname, p);
 	}
 
 	@Override
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,String contrasenia,
+	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña,
 			String nacionalidad) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -251,7 +258,7 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento, contrasenia,nacionalidad);
+		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento,contraseña, nacionalidad);
 		Turistas.put(nickname, t);
 	}
 
@@ -277,7 +284,6 @@ public class ControladorUsuario implements IUsuario {
 		Turistas.forEach((k, v) -> res.add(k));
 		return res;
 	}
-
 	
 	//nueva
 	public Set<DTUsuario> getDTSUsuarios() {
@@ -298,4 +304,5 @@ public class ControladorUsuario implements IUsuario {
 		
 		return dts;
 	}
+
 }

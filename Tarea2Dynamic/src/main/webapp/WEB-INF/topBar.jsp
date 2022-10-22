@@ -8,7 +8,7 @@
         <img src="media/icons/bus.svg" class="bus-icon">
         <div class="top-bar-links">
             <a href="/Tarea2Dynamic/Home" class="links selected">Principal</a>
-            <a href="#" class="links">Actividades</a>
+            <a href="/Tarea2Dynamic/ConsultaActividadesIndex" class="links">Actividades</a>
             <a href="#" class="links">Paquetes</a>
         </div>
     </div>

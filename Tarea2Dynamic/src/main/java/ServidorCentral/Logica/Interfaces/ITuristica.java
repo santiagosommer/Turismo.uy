@@ -37,9 +37,14 @@ public interface ITuristica {
 	public abstract Set<String> listarSalidasActividad(String actividad);
 	public abstract Boolean existeActividad(String actividad);
 	public abstract Boolean existeSalida(String salida);
-	public abstract Boolean existeInscripcion(String salida, String nombreTurista); //nueva, agregar en el otro
 	public abstract Boolean existeDepartamento(String departamento);
 	public abstract void crearDepartamento(String nombre,String descripcion, String URL);
+	public abstract Boolean existeInscripcion(String salida, String nombreTurista);
+	public abstract Set<String> listarActividadesAgregadas();
+	public abstract void AceptarActividad(String actividad);
+	public abstract void RechazarActividad(String actividad);
+	public abstract Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat);
+	
 	
 
 }
