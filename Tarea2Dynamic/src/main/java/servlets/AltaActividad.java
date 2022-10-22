@@ -32,12 +32,7 @@ public class AltaActividad extends HttpServlet {
     protected boolean checkFormulario(HttpServletRequest request) {
     	
     	String nombre = request.getParameter("nombre");
-    	String descripcion = request.getParameter("descripcion");
-        String duracion = request.getParameter("duracion");
-        String costo = request.getParameter("costo");
-        String ciudad = request.getParameter("ciudad");
-
-
+    
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	if (ct.existeActividad(nombre)) {
@@ -69,7 +64,7 @@ public class AltaActividad extends HttpServlet {
     	String costo = (String) request.getParameter("costo");
     	String ciudad = request.getParameter("ciudad");
         String departamento = request.getParameter("departamento");
-        //String categorias = request.getParameter("categorias"); 
+        String categorias = request.getParameter("categorias"); 
     	
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
