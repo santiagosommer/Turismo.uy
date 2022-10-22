@@ -44,7 +44,6 @@ class FabricaTest {
 	@Test
 	void testGetControladorTuristica() {
 		Fabrica fab = Fabrica.getInstance();
-		IPaquete turisticaIPaquete = null;
 		ITuristica turistica = fab.getControladorTuristica();
 		assertNotNull(turistica);
 	}

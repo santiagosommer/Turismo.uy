@@ -11,15 +11,15 @@ public class DTTurista extends DTUsuario {
 	private String Nacionalidad ;
 	private ArrayList<DTInscripcion> Inscripciones;
 	
-   public DTTurista(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento, String nacionalidad) {
-	   super(nickname,nombre,apellido,email,fechaNacimiento);
+   public DTTurista(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento,String contra, String nacionalidad) {
+	   super(nickname,nombre,apellido,email,fechaNacimiento,contra);
 	   Nacionalidad = nacionalidad;
 	   Inscripciones = new ArrayList<DTInscripcion>();
        
    }
    
    public DTTurista(Turista turi) {
-	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento());
+	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento(),turi.getContraseña());
 	   setNacionalidad(turi.getNacionalidad());
 	   
 	   Inscripciones = new ArrayList<DTInscripcion>();

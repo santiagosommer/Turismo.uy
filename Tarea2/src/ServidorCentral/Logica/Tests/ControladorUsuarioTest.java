@@ -7,14 +7,20 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ServidorCentral.Logica.Controladores.ControladorPaquete;
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
 import ServidorCentral.Logica.Controladores.ControladorUsuario;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTInscripcion;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.DataTypes.EstadoError;
+import ServidorCentral.Logica.DataTypes.EstadoSesion;
+import ServidorCentral.Logica.Excepciones.CategoriaRepetidaException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
@@ -22,10 +28,28 @@ import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
+import ServidorCentral.Logica.Interfaces.CargaDeDatos;
 import ServidorCentral.Logica.Interfaces.IUsuario;
 
 class ControladorUsuarioTest {
 
+	private static IUsuario ctrU;
+	
+	
+	@BeforeAll
+	static void setUpBeforeClass() {
+		Fabrica fabrica = Fabrica.getInstance();
+		ctrU = fabrica.getControladorUsuario();
+	}
+	
+	@BeforeEach
+	void setUp() {
+		ControladorPaquete.getInstancia().reset();
+		ControladorTuristica.getInstancia().reset();
+ 		ControladorUsuario.getInstancia().reset();
+	}
+	
+	
 	@Test
 	void testGetInstancia() {
 		ControladorUsuario cu = ControladorUsuario.getInstancia();
@@ -44,10 +68,10 @@ class ControladorUsuarioTest {
 		assertThrows(UsuarioNoExisteException.class, () -> {cu.listarUsuarios();});
 		
 		try {
-			cu.altaProveedor("nicoP", "", "", "1", null, "", "");
-			cu.altaProveedor("nicoP2", "", "", "2", null, "", "");
-			cu.altaTurista("nicoT", "", "", "3", null, "");
-			cu.altaTurista("nicoT2", "", "", "4", null, "");
+			cu.altaProveedor("nicoP", "", "", "1", null,"", "", "");
+			cu.altaProveedor("nicoP2", "", "", "2", null,"", "", "");
+			cu.altaTurista("nicoT", "", "", "3", null,"", "");
+			cu.altaTurista("nicoT2", "", "", "4", null,"", "");
 			
 		} catch (UsuarioRepetidoException e) {
 			// TODO Auto-generated catch block
@@ -115,16 +139,23 @@ class ControladorUsuarioTest {
 		ControladorTuristica ct = ControladorTuristica.getInstancia();
 		
 		try { // crear Proveedor
-			cu.altaProveedor("nickProveedorCrearInscripcion", "", "", "emailCrearInsicripcionP", LocalDate.of(0, 1, 2), "", "");
+			cu.altaProveedor("nickProveedorCrearInscripcion", "", "", "emailCrearInsicripcionP", LocalDate.of(0, 1, 2),"", "", "");
 		} catch (UsuarioRepetidoException e2) {
 			e2.printStackTrace();
 		}
 		
 		// crear Departamento
 		ct.crearDepartamento("XdLand", "", "");
-		
+		try {
+			ct.crearCategoria("catTestCU");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("catTestCU");
 		try { // crear Actividad Turistica
-			ct.crearActividadTuristica("nombreActividad", null, 0, 0, null, null, "XdLand", "nickProveedorCrearInscripcion");
+			ct.crearActividadTuristica("nombreActividad", null, 0, 0, null, null, "XdLand", "nickProveedorCrearInscripcion",categorias);
 		} catch (NombreActividadRepetidoException e1) {
 			e1.printStackTrace();
 		}
@@ -141,7 +172,7 @@ class ControladorUsuarioTest {
 		}
 		
 		try {	//crearTusita
-			cu.altaTurista("nombreTurista", "", "", "emailCrearInsicripcionT", LocalDate.of(0, 1, 2), "");
+			cu.altaTurista("nombreTurista", "", "", "emailCrearInsicripcionT", LocalDate.of(0, 1, 2),"", "");
 			
 		} catch (UsuarioRepetidoException e) {
 			e.printStackTrace();
@@ -174,7 +205,7 @@ class ControladorUsuarioTest {
 		IUsuario cu = fa.getControladorUsuario();
 		
 		try {
-			cu.altaProveedor("nicoPNick", "nicoPNombre", "nicoPApellido", "NicoPEmail", LocalDate.of(1, 2, 3), "NicoPDescripcion", "NicoPURL");
+			cu.altaProveedor("nicoPNick", "nicoPNombre", "nicoPApellido", "NicoPEmail", LocalDate.of(1, 2, 3),"contra", "NicoPDescripcion", "NicoPURL");
 			cu.seleccionarProveedor("nicoPNick");
 			DTProveedor dtp = cu.getDTProveedor();
 			
@@ -183,6 +214,7 @@ class ControladorUsuarioTest {
 			assertEquals(dtp.getApellido(), "nicoPApellido");
 			assertEquals(dtp.getEmail(), "NicoPEmail");
 			assertEquals(dtp.getFechaNacimiento(),LocalDate.of(1, 2, 3));
+			assertEquals(dtp.getContra(),"contra");
 			assertEquals(dtp.getDescripcionGeneral(),"NicoPDescripcion");
 			assertEquals(dtp.getURL(),"NicoPURL");
 			
@@ -190,8 +222,8 @@ class ControladorUsuarioTest {
 			e.printStackTrace();
 		}
 		
-		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaProveedor("nicoPNick", "nicoNombre2", "nicoApellido2", "NicoPEmail2", LocalDate.of(0, 1, 2), "nicoNacionalidad2", "xd");});
-		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaProveedor("nicoPNick2", "nicoNombre2", "nicoApellido2", "NicoPEmail", LocalDate.of(0, 1, 2), "nicoNacionalidad2", "xd");});
+		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaProveedor("nicoPNick", "nicoNombre2", "nicoApellido2", "NicoPEmail2", LocalDate.of(0, 1, 2),"contra", "nicoNacionalidad2", "xd");});
+		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaProveedor("nicoPNick2", "nicoNombre2", "nicoApellido2", "NicoPEmail", LocalDate.of(0, 1, 2),"contra", "nicoNacionalidad2", "xd");});
 		
 	}
 
@@ -201,7 +233,7 @@ class ControladorUsuarioTest {
 		IUsuario cu = fa.getControladorUsuario();
 		
 		try {
-			cu.altaTurista("nicoNick", "nicoNombre", "nicoApellido", "nicoEmail", LocalDate.of(0, 1, 2), "nicoNacionalidad");
+			cu.altaTurista("nicoNick", "nicoNombre", "nicoApellido", "nicoEmail", LocalDate.of(0, 1, 2),"contra", "nicoNacionalidad");
 			cu.seleccionarTurista("nicoNick");
 			DTTurista dtt = cu.getDTTurista();
 			
@@ -217,9 +249,33 @@ class ControladorUsuarioTest {
 		} catch (UsuarioRepetidoException e) {
 			e.printStackTrace();
 		}
-		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaTurista("nicoNick", "nicoNombre2", "nicoApellido2", "nicoEmail2", LocalDate.of(0, 1, 2), "nicoNacionalidad2");});
-		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaTurista("nicoNick2", "nicoNombre2", "nicoApellido2", "nicoEmail", LocalDate.of(0, 1, 2), "nicoNacionalidad2");});
+		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaTurista("nicoNick", "nicoNombre2", "nicoApellido2", "nicoEmail2", LocalDate.of(0, 1, 2),"contra", "nicoNacionalidad2");});
+		assertThrows(UsuarioRepetidoException.class, () -> {cu.altaTurista("nicoNick2", "nicoNombre2", "nicoApellido2", "nicoEmail", LocalDate.of(0, 1, 2),"contra", "nicoNacionalidad2");});
 		
+	}
+	
+	@Test
+	void testIniciarSesion() {
+		try {
+			CargaDeDatos cd = CargaDeDatos.getInstancia();
+			cd.setYaCargo(false);
+			cd.cargarDatos();
+		} catch (UsuarioRepetidoException e) {
+			e.printStackTrace();
+		}
+		assertEquals(EstadoError.EXITO_TURISTA,ctrU.iniciarSesion("isabelita","r5t6y7u8"));
+		assertEquals(EstadoError.EXITO_TURISTA,ctrU.iniciarSesion("isabelita@thecrown.co.uk","r5t6y7u8"));
+		assertEquals(EstadoError.ERROR_NICK_OR_EMAIL,ctrU.iniciarSesion("mal","r5t6y7u8"));
+		assertEquals(EstadoError.ERROR_CONTRA,ctrU.iniciarSesion("isabelita@thecrown.co.uk","mal"));
+		assertEquals(EstadoError.ERROR_CONTRA,ctrU.iniciarSesion("isabelita","mal"));
+		assertEquals(EstadoError.EXITO_PROVEEDOR,ctrU.iniciarSesion("washington","asdfg654"));
+		assertEquals(EstadoError.EXITO_PROVEEDOR,ctrU.iniciarSesion("washington@turismorocha.gub.uy","asdfg654"));
+		assertEquals(EstadoError.ERROR_NICK_OR_EMAIL,ctrU.iniciarSesion("mal","asdfg654"));
+		assertEquals(EstadoError.ERROR_CONTRA,ctrU.iniciarSesion("washington","mal"));
+		assertEquals(EstadoError.ERROR_CONTRA,ctrU.iniciarSesion("washington@turismorocha.gub.uy","mal"));
+		EstadoSesion estado = EstadoSesion.LOGIN_PROVEEDOR;
+		estado = EstadoSesion.LOGIN_TURISTA;
+		assertEquals(EstadoSesion.LOGIN_TURISTA,estado);
 	}
 
 }

@@ -2,25 +2,24 @@ package ServidorCentral.Logica.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import EstacionDeTrabajo.GUI.CrearPaqueteDeActividadesTuristicas;
-import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
+import ServidorCentral.Logica.Controladores.ControladorPaquete;
+import ServidorCentral.Logica.Controladores.ControladorTuristica;
+import ServidorCentral.Logica.Controladores.ControladorUsuario;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
+import ServidorCentral.Logica.Excepciones.CategoriaRepetidaException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
-import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
+import ServidorCentral.Logica.Interfaces.CargaDeDatos;
 import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
@@ -30,17 +29,21 @@ class ControladorPaqueteTest {
 	private static IPaquete crPaq;
 	private static IUsuario crUsuario;
 	private static ITuristica crTuri;
+	
+	
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() {
 		Fabrica fabrica = Fabrica.getInstance();
 		crPaq = fabrica.getControladorPaquete();
 		crTuri = fabrica.getControladorTuristica();
 		crUsuario = fabrica.getControladorUsuario();
-		
-		
-		
-			
-		
+	}
+	
+	@BeforeEach
+	void setUp() {
+		ControladorPaquete.getInstancia().reset();
+		ControladorTuristica.getInstancia().reset();
+ 		ControladorUsuario.getInstancia().reset();
 	}
 
 	@Test
@@ -82,35 +85,23 @@ class ControladorPaqueteTest {
 		try {
 			
 			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, fechaAlt);
-//			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, 5, fechaAlt);
 		
 					
 		} catch (NombrePaqueteRepetidoException e) {
 			e.printStackTrace();
 		}	
 		
-		assertThrows(NombrePaqueteRepetidoException.class, () -> {crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, 5, fechaAlt);;});
+		assertThrows(NombrePaqueteRepetidoException.class, () -> {crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, 5, fechaAlt);});
 	}
-	
-	
-
-//	@Test
-//	void testListarPaquetes() {
-//		
-//		
-//		fail("Not yet implemented");
-//		
-//	}
 
 	@Test
 	void testListarActividadesAAgregar() {
 		
 		crTuri.crearDepartamento("Montevideo", "descripcion", "montevideo.com.uy");
-		LocalDate date = LocalDate.of(1992, 3, 5);
+		
 		try {
-			crUsuario.altaProveedor("prove", "juan", "pedro", "email", date, "algo", "www.juan.org");
+			crUsuario.altaProveedor("prove", "juan", "pedro", "email", LocalDate.of(1992, 3, 5), "contra", "algo", "www.juan.org");
 		} catch (UsuarioRepetidoException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		
@@ -118,23 +109,29 @@ class ControladorPaqueteTest {
 		String nombrePaque = "paq4";
 		String descripcion = "Esto es una descripcion";
 		int periodoValidez = 5;
-		
 		int Descuento = 20;
 		LocalDate fechaAlt = LocalDate.now();
+		
 		try {
 			crPaq.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, fechaAlt);
 		} catch (NombrePaqueteRepetidoException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		
 		try {
+			crTuri.crearCategoria("categoria1");
+		} catch (CategoriaRepetidaException e1) {
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria1");
+		
+		try {
 			crTuri.crearActividadTuristica(nombrePaque, descripcion, 
 					periodoValidez, Descuento, fechaAlt, descripcion,
-					"Montevideo", "prove");
+					"Montevideo", "prove", categorias);
 		} catch (NombreActividadRepetidoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -146,9 +143,6 @@ class ControladorPaqueteTest {
 			boolOk = true;
 		}
 		assertTrue(boolOk);
-		
-		
-		
 	
 	}
 
@@ -161,7 +155,7 @@ class ControladorPaqueteTest {
 		
 		LocalDate date = LocalDate.of(1992, 3, 5);
 		try {
-			crUsuario.altaProveedor("prov", "juan", "pedro", "rodr", date, "descri", "www.juan.org");
+			crUsuario.altaProveedor("prov", "juan", "pedro", "rodr", date, "contra", "descri", "www.juan.org");
 		} catch (UsuarioRepetidoException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
@@ -180,12 +174,19 @@ class ControladorPaqueteTest {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+		try {
+			crTuri.crearCategoria("categoria2");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria2");
 		
 		try {
 			crTuri.crearActividadTuristica(nombrePaque, descripcion, 
 					periodoValidez, Descuento, fechaAlt, descripcion,
-					"Maldonado", "prov");
+					"Maldonado", "prov",categorias);
 		} catch (NombreActividadRepetidoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -220,4 +221,23 @@ class ControladorPaqueteTest {
 		
 	}
 
+	
+	@Test
+	void testListarCategoriasPaquete() {
+		try {
+			CargaDeDatos cd = CargaDeDatos.getInstancia();
+			cd.setYaCargo(false);
+			cd.cargarDatos();
+		} catch (UsuarioRepetidoException e) {
+			e.printStackTrace();
+		}
+		Set<String> generado = crPaq.listarCategoriasPaquete("Disfrutar Rocha");
+		
+		Set<String> correcto = new HashSet<String>();
+		correcto.add("Cultura y Patrimonio");
+		correcto.add("Gastronomia");
+		
+		assertEquals(generado,correcto);
+	
+	}
 }

@@ -46,6 +46,13 @@ public class ControladorUsuario implements IUsuario {
 		return instancia;
 	}
 
+	public void reset() {
+		setTuristas(new HashMap<String, Turista>());
+		setProveedores(new HashMap<String, Proveedor>());
+		proveedorSeleccionado = null;
+		turistaSeleccionado = null;
+	}
+	
 	@Override
 	public Boolean esTurista(String nickname) {
 		return Turistas.containsKey(nickname);

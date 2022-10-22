@@ -39,6 +39,15 @@ public class ControladorTuristica implements ITuristica {
 		
 	}
 	
+	public void reset() {
+		Departamentos = new HashMap<String,Departamento>();
+		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();	
+		Categorias = new HashMap<String, Categoria>();
+		actividadSeleccionada = null;
+		salidaSeleccionada = null;
+		departamentoSeleccionado = null;
+		categoriaSeleccionada = null;
+	}
 	
 	//operaciones
 	
@@ -186,7 +195,7 @@ public class ControladorTuristica implements ITuristica {
 			
 		for (Inscripcion inscripcion : inscripciones) {
 			
-			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(), inscripcion.getTurista().getNacionalidad());
+			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(),inscripcion.getTurista().getContraseña(), inscripcion.getTurista().getNacionalidad());
 			inscripcionesDT.add(new DTInscripcion(inscripcion.getFecha(), inscripcion.getCantidadTuristas(), inscripcion.getCosto(), turistaAutor, getDTSalidaTuristica()));
 		}
 		return inscripcionesDT;
@@ -231,8 +240,6 @@ public class ControladorTuristica implements ITuristica {
 	
 	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
-		ControladorTuristica crTuristica = ControladorTuristica.getInstancia();
-		Map<String, ActividadTuristica> actividades = crTuristica.ActividadesTuristicas;
 		seleccionarActividad(actividad);
 		ActividadTuristica activ = actividadSeleccionada;
 		if (activ == null) {

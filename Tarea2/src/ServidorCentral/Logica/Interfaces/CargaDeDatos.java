@@ -40,6 +40,10 @@ public class CargaDeDatos {
 				
 	}
 	
+	public void setYaCargo(Boolean bool) {
+		this.yaCargo = bool;
+	}
+	
 	public Boolean cargarDatos() throws UsuarioRepetidoException {
 		if (yaCargo)
 			return false;

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -19,7 +18,6 @@ import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.Clases.Turista;
-import ServidorCentral.Logica.Clases.Usuario;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -30,6 +28,7 @@ class UsuarioTest {
 	static String apellido;
 	static String email;
 	static LocalDate fechaNacimiento;
+	static String contra;
 	
 	static Turista robertoTurista;
 	static String nacionalidad;
@@ -47,16 +46,17 @@ class UsuarioTest {
 		apellido = "Carlos";                        
 		email = "millondeamigos@gmail.com";         
 		fechaNacimiento = LocalDate.of(1997,7,6);
+		contra = "contra";
 		
 		//Turista
 		nacionalidad = "uruguaya";
 		inscripciones = new ArrayList<Inscripcion>();
-		robertoTurista = new Turista(nickname, nombre, apellido, email, fechaNacimiento, nacionalidad);
+		robertoTurista = new Turista(nickname, nombre, apellido, email, fechaNacimiento, contra, nacionalidad);
 		
 		//Proveedor
 		DescripcionGeneral = "Me llamo Roberto Carlos.";
 		URL = "robertocarlos.com";
-		robertoProveedor = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, DescripcionGeneral, URL);
+		robertoProveedor = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento, contra, DescripcionGeneral, URL);
 		ActividadesTuristicas = new HashMap<String, ActividadTuristica>();
 	}
 

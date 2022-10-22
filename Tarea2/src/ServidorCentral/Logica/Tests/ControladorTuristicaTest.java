@@ -3,7 +3,6 @@ package ServidorCentral.Logica.Tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.security.cert.TrustAnchor;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -11,18 +10,12 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.function.Try;
-
-import EstacionDeTrabajo.GUI.AltaDeProveedor;
-import EstacionDeTrabajo.GUI.CargaDeDatos;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-
+import ServidorCentral.Logica.Excepciones.CategoriaRepetidaException;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Controladores.ControladorTuristica;
-import ServidorCentral.Logica.Controladores.ControladorUsuario;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
@@ -51,21 +44,6 @@ class ControladorTuristicaTest {
 		assertEquals(ct,ctr);
 	}
 
-	/*@Test
-	void testSeleccionarActividad() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testSeleccionarSalida() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testSeleccionarDepartamento() {
-		//fail("Not yet implemented");
-	}*/
-
 	@Test
 	void testGetDTDepartamento() {
 		
@@ -85,23 +63,22 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testGetDTActividadTuristica() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetDTSalidaTuristica() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
 	void testCrearActividadTuristicaOk() throws UsuarioRepetidoException {
 			
 		crTuri.crearDepartamento("Rocha", "mediano", "www.rch.com");
-		crUsu.altaProveedor("washi", "Washington", "Gomez", "WG.com", LocalDate.of(1989, 10, 1), "alto", "www.w.com");
+		crUsu.altaProveedor("washi", "Washington", "Gomez", "WG.com", LocalDate.of(1989, 10, 1),"contra", "alto", "www.w.com");
 		
 		try {
-			crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi");
+			crTuri.crearCategoria("categoria3");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria3");
+		
+		try {
+			crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi", categorias);
 			
 			crTuri.seleccionarActividad("Degusta");
 			DTActividadTuristica act = crTuri.getDTActividadTuristica();
@@ -122,7 +99,7 @@ class ControladorTuristicaTest {
 			
 		}
 		
-		assertThrows(NombreActividadRepetidoException.class, () -> {crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi");});
+		assertThrows(NombreActividadRepetidoException.class, () -> {crTuri.crearActividadTuristica("Degusta", "Festival gastronomico de productos locales en Rocha", 3, (float)800, LocalDate.of(2022, 7, 20), "Rocha", "Rocha", "washi",categorias);});
 
 	}
 
@@ -160,13 +137,23 @@ class ControladorTuristicaTest {
 		
 		crTuri.crearDepartamento("Montevideo", "pequenio", "www.mvd.com");
 		try {
-			crUsu.altaProveedor("Pepecho", "Pepe", "Diaz", "peped.com", LocalDate.of(2000, 10, 1), "alto", "ww.com");
+			crUsu.altaProveedor("Pepecho", "Pepe", "Diaz", "peped.com", LocalDate.of(2000, 10, 1),"contra", "alto", "ww.com");
 		} catch (UsuarioRepetidoException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		
 		try {
-			crTuri.crearActividadTuristica("playa", "pasar el dia", 30, (float) 500, LocalDate.of(2022, 8, 28), "pocitos", "Montevideo", "Pepecho");
+			crTuri.crearCategoria("categoria4");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria4");
+		
+		try {
+			crTuri.crearActividadTuristica("playa", "pasar el dia", 30, (float) 500, LocalDate.of(2022, 8, 28), "pocitos", "Montevideo", "Pepecho", categorias);
 		} catch (NombreActividadRepetidoException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -219,8 +206,16 @@ class ControladorTuristicaTest {
 	@Test
 	void testDatosSalidasVigentesOk() throws UsuarioRepetidoException, NombreActividadRepetidoException, NombreSalidaRepetidoException, NoHayActividadConEseNombreException {
 		
-		crUsu.altaProveedor("Lola", "Lorena", "Paz", "lp.com", LocalDate.of(1999, 10, 1), "rubia", "www.l.com");
-		crTuri.crearActividadTuristica("shopping", "con gift card", 15, (float) 1000, LocalDate.of(2022, 8, 28), "punta carretas", "Montevideo", "Lola");
+		crUsu.altaProveedor("Lola", "Lorena", "Paz", "lp.com", LocalDate.of(1999, 10, 1),"contra", "rubia", "www.l.com");
+		try {
+			crTuri.crearCategoria("categoria5");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria5");
+		crTuri.crearActividadTuristica("shopping", "con gift card", 15, (float) 1000, LocalDate.of(2022, 8, 28), "punta carretas", "Montevideo", "Lola", categorias);
 		LocalDate fechaS = LocalDate.of(2022,10, 12);
 		LocalTime horaS = LocalTime.of(10, 40);
 		String lugar = "puerta shopping";
@@ -256,18 +251,28 @@ class ControladorTuristicaTest {
 		
 		crTuri.crearDepartamento("Salto", "mediano", "www.sto.com");
 		
-		crUsu.altaProveedor("Pipi", "Paula", "Lopez", "lopez.com", LocalDate.of(2000, 10, 1), "alta", "www.com");
+		crUsu.altaProveedor("Pipi", "Paula", "Lopez", "lopez.com", LocalDate.of(2000, 10, 1),"contra", "alta", "www.com");
 		
-		crTuri.crearActividadTuristica("paseo", "largo", 30, (float)600, LocalDate.of(2022, 8, 25), "pocitos", "Salto", "Pipi");
-		crTuri.crearActividadTuristica("paseo2", "corto", 10, (float)100, LocalDate.of(2022, 8, 26), "prado", "Salto", "Pipi");
+		try {
+			crTuri.crearCategoria("categoria6");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria6");
 		
+		crTuri.crearActividadTuristica("paseo", "largo", 30, (float)600, LocalDate.of(2022, 8, 25), "pocitos", "Salto", "Pipi", categorias);
+		crTuri.crearActividadTuristica("paseo2", "corto", 10, (float)100, LocalDate.of(2022, 8, 26), "prado", "Salto", "Pipi", categorias);
+		crTuri.AceptarActividad("paseo");
+		crTuri.AceptarActividad("paseo2");
 		Set<String> actividadesDep = crTuri.listarActividadesDeDepartamento("Salto");
 		Set<String> actividadesDepOk = new HashSet<String>();
 		
 		actividadesDepOk.add("paseo");
 		actividadesDepOk.add("paseo2");
 		
-		assertEquals(actividadesDep, actividadesDepOk);
+		assertEquals(actividadesDepOk, actividadesDep);
 		
 	}
 
@@ -275,8 +280,18 @@ class ControladorTuristicaTest {
 	void testListarSalidasActividadOk() throws UsuarioRepetidoException, NombreActividadRepetidoException {
 		
 		crTuri.crearDepartamento("Cerro Largo", "mediano", "www.cl.com");
-		crUsu.altaProveedor("Lolo", "Lorenzo", "Lopez", "llopez.com", LocalDate.of(2005, 11, 12), "alto", "www.lolo.com");
-		crTuri.crearActividadTuristica("restoran", "amplio", 50, (float)300, LocalDate.of(2022, 8, 2), "pocitos", "Cerro Largo", "Lolo");
+		crUsu.altaProveedor("Lolo", "Lorenzo", "Lopez", "llopez.com", LocalDate.of(2005, 11, 12),"contra", "alto", "www.lolo.com");
+		
+		try {
+			crTuri.crearCategoria("categoria7");
+		} catch (CategoriaRepetidaException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Set<String> categorias = new HashSet<String>();
+		categorias.add("categoria7");
+		
+		crTuri.crearActividadTuristica("restoran", "amplio", 50, (float)300, LocalDate.of(2022, 8, 2), "pocitos", "Cerro Largo", "Lolo", categorias);
 		
 		DTInfoSalida info = new DTInfoSalida(LocalDate.of(2022, 10, 25), LocalTime.of(12, 30), "parada");
 		try {
@@ -299,33 +314,42 @@ class ControladorTuristicaTest {
 	}
 
 	@Test
-	void testExisteActividad() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testExisteDepartamento() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testCrearDepartamento() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testExisteSalida() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetActividadSeleccionada() {
-		//fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetSalidaSeleccionada() {
-		//fail("Not yet implemented");
+	void testListarCategoriasActividad() {
+		
+		crTuri.crearDepartamento("Rocha", "La Organización de Gestión del Destino (OGD) Rocha es un ámbito de articulación público – privada en el sector turístico que integran la Corporación Rochense de Turismo y la Intendencia de Rocha a través de su Dirección de Turismo." , "www.turismorocha.gub.uy");
+		
+		
+		try {
+			crUsu.altaProveedor("washington","Washington","Rocha","washington@turismorocha.gub.uy",LocalDate.of(1970,9,14),"asdfg654","Hola! me llamo Washington y soy el encargado del portal de turismo del departamento de Rocha - Uruguay","http://turismorocha.gub.uy/");
+		} catch (UsuarioRepetidoException e2) {
+			e2.printStackTrace();
+		}
+		
+		try {
+			crTuri.crearCategoria("Cultura y Patrimonio");
+			crTuri.crearCategoria("Gastronomia");
+		} catch (CategoriaRepetidaException e1) {
+			e1.printStackTrace();
+		}
+		String C3 ="Cultura y Patrimonio";
+		String C4 ="Gastronomia";
+		Set<String> A2 = new HashSet<String>();
+		A2.add(C3);
+		A2.add(C4);
+		try {
+			crTuri.crearActividadTuristica("Teatro con Sabores","En el mes aniversario del Club Deportivo Unión de Rocha te invitamos a una merienda deliciosa.",3,500,LocalDate.of(2022,7,21),"Rocha","Rocha","washington",A2);
+		} catch (NombreActividadRepetidoException e) {
+			e.printStackTrace();
+		}
+		crTuri.AceptarActividad("Teatro con Sabores");
+ 		Set<String> generado = crTuri.listarCategoriasActividad("Teatro con Sabores");
+		
+		Set<String> correcto = new HashSet<String>();
+		correcto.add("Cultura y Patrimonio");
+		correcto.add("Gastronomia");
+		
+		assertEquals(correcto,generado);
+ 		
 	}
 
 }

@@ -2,9 +2,6 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.util.Map;
 
-import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Paquete;
-
 public class DTCategoria {
 	private String Nombre;
 	private Map<String, DTActividadTuristica> ActividadesTuristicas;

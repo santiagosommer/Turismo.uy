@@ -7,7 +7,6 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 import java.awt.GridBagConstraints;

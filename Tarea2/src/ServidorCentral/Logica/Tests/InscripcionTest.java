@@ -29,7 +29,7 @@ class InscripcionTest {
 		Fecha = LocalDate.of(2001, 1, 1);
 		CantidadTuristas = 5;
 		Costo = 2000;
-		turista = new Turista("robertito2", "Roberto", "Carlos", "millondeamigos@email.com", LocalDate.of(1969, 1, 1), "chilena");
+		turista = new Turista("robertito2", "Roberto", "Carlos", "millondeamigos@email.com", LocalDate.of(1969, 1, 1),"contra", "chilena");
 		
 		SalidaAsociada = new SalidaTuristica("Salida al Recital", CantidadTuristas, Fecha, new DTInfoSalida(LocalDate.of(2022, 8, 29), LocalTime.of(21,0), "Teatro Candombe"));
 		pepitoInscripcion = new Inscripcion(Fecha, CantidadTuristas, Costo, SalidaAsociada, turista);

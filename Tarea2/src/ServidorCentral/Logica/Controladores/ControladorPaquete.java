@@ -3,7 +3,6 @@ package ServidorCentral.Logica.Controladores;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,9 +35,14 @@ public class ControladorPaquete implements IPaquete {
 				
 	}
 	
+	public void reset() {
+		setPaquetes(new HashMap<String,Paquete>());
+		PaqueteSeleccionado = null;
+	}
 	
 	
-public Set<String> listarCategoriasPaquete(String paquete){
+	
+	public Set<String> listarCategoriasPaquete(String paquete){
 		
 		Set<String> lista = new HashSet<String>();
 		
@@ -104,7 +108,6 @@ public Set<String> listarCategoriasPaquete(String paquete){
 		Set<String> lista = new HashSet<String>();
 		if (actividadesDepto!= null && !actividadesDepto.isEmpty()) {
 			
-			Map<String, Paquete> paquetes = Paquetes;
 			Map<String, ActividadTuristica> actividadesDePauete = PaqueteSeleccionado.getActividadesTuristicas();
 			
 		
