@@ -29,7 +29,7 @@ public interface ITuristica {
 	public abstract DTActividadTuristica getDTActividadTuristica();
 	public abstract DTSalidaTuristica getDTSalidaTuristica();
 	public abstract DTDepartamento getDTDepartamento();
-	public abstract void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedor, Set<String> categorias) throws NombreActividadRepetidoException;
+	public abstract void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick, Set<String> categorias) throws NombreActividadRepetidoException;
 	public abstract Set<String> listarDepartamentos();
 	public abstract Set<String> listarActividadesDeDepartamento(String departemento);
 	public abstract Set<DTSalidaTuristica> datosSalidasVigentes(String actividad);

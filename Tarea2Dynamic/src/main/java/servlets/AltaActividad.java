@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ServidorCentral.Logica.DataTypes.DTUsuario;
 import ServidorCentral.Logica.DataTypes.EstadoError;
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
@@ -48,28 +49,24 @@ public class AltaActividad extends HttpServlet {
 			throws ServletException, IOException {
     	request.setAttribute("estado_error", null);
     	
-    	if (request.getParameter("nombre")==null) {
+    	if (request.getParameter("nombre")==null || !checkFormulario(request)) {
     		request.getRequestDispatcher("/WEB-INF/altaActividad.jsp").forward(request, response);
     		return;
     	}
-    	
-    	if (!checkFormulario(request)) {
-    		request.getRequestDispatcher("/WEB-INF/altaActividad.jsp").forward(request, response);
-    		return;
-    	}
-    	
+ 	
     	String nombre = request.getParameter("nombre");
     	String descripcion = request.getParameter("descripcion");
     	String duracion = (String) request.getParameter("duracion");
     	String costo = (String) request.getParameter("costo");
     	String ciudad = request.getParameter("ciudad");
         String departamento = request.getParameter("departamento");
-        String categorias = request.getParameter("categorias"); 
+		DTUsuario prov = request.getSession().getAtributte("usuario_dt");
+        Set<String> categorias = request.getParameter("categorias"); 
     	
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
-			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.valueOf(costo), ciudad, departamento, categorias); //actualizar logica
+			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.parseFloat(costo), LocalDate.now(), ciudad, departamento, prov.getNickname(), request.getParameter("categorias"));
 		} catch (NombreActividadRepetidoException e) {
 			e.printStackTrace();
 		}
