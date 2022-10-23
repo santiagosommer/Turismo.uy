@@ -8,6 +8,16 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <style><%@include file="./../media/css/altaSalida.css"%></style>
     <title>Alta Salida</title>
+    
+    <script>
+    	var boton = document.getElementById('boton');
+    	boton.onclick = myfunction;
+    	function myfunction() {
+    		location.href='AltaSalida';
+      		var dep = this.getAttribute('data-name');
+    	}
+	
+   	</script>
 </head>
 <body>
     
@@ -46,6 +56,10 @@
                             <option value="<%=dep%>">"<%=dep%>"</option>
                             
 						<%}%>
+						
+						<form name="formulario" action="AltaSalida.java" method="get">
+							<input class="boton" data-name="dep" type="submit" onclick="myfunction()" value="Click">
+						 </form>
 
                           </select></div>
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
