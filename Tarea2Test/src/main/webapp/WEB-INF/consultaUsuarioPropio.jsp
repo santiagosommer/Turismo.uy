@@ -179,7 +179,7 @@
                 
                 <%   
                 ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
-                if ((DTProveedor)request.getSession().getAttribute("usuario_dt") != null) {
+                if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
                    DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
                    act = p.getActividades();
 
@@ -194,7 +194,7 @@
 						
                             <h3> <%= act.get(i).getNombre() %> </h3>
                             <p>Estado: <%= act.get(i).getEstado() %></p>
-                            <p><a href="./consultaActividad1.html" class="links">Leer más.</a></p>
+                            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= act.get(i).getNombre() %>" class="links">Leer más.</a></p>
                         </div>
                     </div>
                     <hr>     
