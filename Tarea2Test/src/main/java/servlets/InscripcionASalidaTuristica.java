@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTTurista;
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -52,6 +50,12 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	   String turi = ((DTTurista) request.getSession().getAttribute("usuario_dt")).getNickname();
 	   
 	   DTSalidaTuristica salida = (DTSalidaTuristica)request.getSession().getAttribute("dtsalida");
+	   
+	   if (cant<=0) {
+		   request.setAttribute("error", "Negativo");
+		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
+		   return;
+	   }
 	   
 	   if (cant > salida.getCuposDisponibles()) {
 		   request.setAttribute("error", "CuposInsuficientes");

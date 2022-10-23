@@ -19,24 +19,24 @@
             <div class="h1">
                 <h2>Inscribirse a Salida Turistica</h2>
             </div>
-
+<% String Error =  (String) request.getAttribute("error"); %>
+<% if (Error!= null){ %>
 	<div class="error-frame">
        
-       <% String Error =  (String) request.getAttribute("error");
-       
-       %>
-       <% 
-       if (Error!= null){ %>
-       
+       <% if (Error.equals("Negativo")) {%>
+       		Ingresar cantidad mayor a 0.
+       <%} %>
     	<% if (Error.equals("CuposInsuficientes")){ %>
  			No hay suficientes cupos.
  		<% } 
  		  if (Error.equals("ExisteInscripcion")){ %>
  			Ya existe una inscripcion.
- 		<%}} %>
+ 		<%} %>
  		
        
 	</div>
+	
+	<% } %>
 
        <form class="form-register" method="get"> 
             
@@ -58,7 +58,7 @@
 
                   <div class="botones">
                   <input type="submit" class="button" id="inscribirButton" value="Inscribirse"> 
-                  <button type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Test/Home';">Cancelar</button>
+                  <button class="button" type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Test/Home';" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
                 </div>
 
 
