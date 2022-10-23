@@ -42,7 +42,7 @@
             	
             	 <div class="container-consulta">
                     <div class="img-container">
-                        <img src="https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small" height="200">
+                        <img src="media/icons/avatar.svg" height="200">
                     </div>
                     <h3> <%= item.getNombre()%></h3>
                     <h5> <%= nick%> / <%= item.getEmail()%></h5>

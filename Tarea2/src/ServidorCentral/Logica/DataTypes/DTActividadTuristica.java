@@ -2,9 +2,12 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
@@ -19,6 +22,8 @@ public class DTActividadTuristica {
 	private String Proveedor;
 	private ArrayList<DTPaquete> InfoPaquetes;
 	private String Ciudad;
+	private EstadoActividad estado;
+	private Set<String> categorias;
 	
 	public DTActividadTuristica(ActividadTuristica at) {
 		setNombre(at.getNombre());
@@ -30,6 +35,14 @@ public class DTActividadTuristica {
 		setInfoDepartamento(new DTDepartamento(at.getInfoDepartamento()));
 		setSalidas(new ArrayList<DTSalidaTuristica>());
 		setProveedor(at.getProveedor().getNombre() + " " + at.getProveedor().getApellido());
+		setEstado(at.getEstado());
+		setCategorias(new HashSet<String>());
+		
+		Map<String,Categoria> cat = at.getCategorias();
+		
+		for(Map.Entry<String,Categoria> entry : cat.entrySet()) {
+			getCategorias().add(entry.getKey());
+		}	
 		
 		Map<String,SalidaTuristica> map = at.getSalidas();
 		
@@ -107,6 +120,18 @@ public class DTActividadTuristica {
 	}
 	public void setFechaAlta(LocalDate fechaAlta) {
 		FechaAlta = fechaAlta;
+	}
+	public EstadoActividad getEstado() {
+		return estado;
+	}
+	public void setEstado(EstadoActividad estado) {
+		this.estado = estado;
+	}
+	public Set<String> getCategorias(){
+		return categorias;
+	}
+	public void setCategorias(Set<String> categorias) {
+		this.categorias = categorias;
 	}
 	
 }

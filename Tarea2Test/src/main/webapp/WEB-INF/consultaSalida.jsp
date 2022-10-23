@@ -50,7 +50,7 @@
            String cupos = "";
            String lugar = "";
            String nombre = "";
-           if (request.getSession().getAttribute("salida_dt") != null) {
+           if ((DTSalidaTuristica) request.getSession().getAttribute("salida_dt") != null) {
         	   DTSalidaTuristica s = (DTSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
         	   nombre = s.getNombre();
         	   fecha = s.getInfoSalida().getFecha().toString();
@@ -60,7 +60,7 @@
            }%>
             <div class="container-consulta">
                 <div class="img-container">
-                    <img src = "https://s3.amazonaws.com/turismorocha/operadores/1/med/bahia-resto-053888900-1458674720.JPG" class="imagenSalidaDegusta">
+                    <img src = "media/icons/avatar.svg" class="imagenSalidaDegusta">
                 </div>
                 <h3> <%= nombre %> </h3>
                 
@@ -85,9 +85,9 @@
                 </div>                
             </div>
         </div>
+        <script>window.onload=openTab(event, 'Perfil');</script>
 </div>
 
     <script src="./../js/consultaDeUsuario.js"></script>
-    <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>

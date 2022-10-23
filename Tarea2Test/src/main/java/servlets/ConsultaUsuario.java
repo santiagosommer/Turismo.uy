@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTProveedor;
-import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTUsuario;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Fabrica.Fabrica;

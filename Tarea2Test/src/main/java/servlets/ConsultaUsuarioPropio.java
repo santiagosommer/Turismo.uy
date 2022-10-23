@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTUsuario;
-
 /**
  * Servlet implementation class ConsultaUsuarioPropio
  */
@@ -28,7 +26,6 @@ public class ConsultaUsuarioPropio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	
-    	DTUsuario usr = (DTUsuario) request.getSession().getAttribute("usuario_dt");
     	//request.setAttribute("dt", usr); //
     	request.getRequestDispatcher("/WEB-INF/consultaUsuarioPropio.jsp").forward(request, response);
     	

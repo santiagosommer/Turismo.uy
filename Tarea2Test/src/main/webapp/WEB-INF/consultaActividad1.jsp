@@ -8,7 +8,7 @@
      <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import=" java.util.ArrayList"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.DTActividadTuristica"%>
+    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Actividad</title>
      <script >
@@ -51,9 +51,10 @@
      	float costo = 1;
      	String ciudad = "";
      	String fechaAlta = "";
-     	//ver categorias
+     	Set<String> cate = null;
      	String descripcion = "";
      	//agregar paquetes
+     	ArrayList<DTPaquete> paque = new ArrayList<DTPaquete>();
      	ArrayList<DTSalidaTuristica> Salidas = new ArrayList<DTSalidaTuristica>();
          if (request.getSession().getAttribute("act_dt") != null) {
      		DTActividadTuristica act = (DTActividadTuristica) request.getSession().getAttribute("act_dt");
@@ -64,12 +65,14 @@
      		fechaAlta = act.getFechaAlta().toString();
      		descripcion = act.getDescripcion();
      		Salidas = act.getSalidas();
+     		cate = act.getCategorias();
+     		paque = act.getInfoPaquetes();
      	  }
      %>
         <div class="Consultas">
           <div class="container-consulta">
             <div class="img-container">
-              <img src="https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg" height="200">
+              <img src="media/icons/avatar.svg" height="200">
             </div>
             <h3><%= nombre %></h3>
           </div>
@@ -93,11 +96,16 @@
           
           <div class="tab-contents">
             <div id="Info" class="tabcontent">
-              <p><b>Duración:</b> <%= duracion %>p>
+              <p><b>Duración:</b> <%= duracion %></p>
               <p><b>Costo:</b> $<%= costo %></p>
               <p><b>Ciudad:</b> <%= ciudad %></p>
               <p><b>Fecha Alta:</b> <%= fechaAlta %></p>
-              <p><b>Categoría:</b> Gastronomia </p> <% //ver %>
+              <p><b>Categoría/s:</b> 
+			  <% if(cate != null)for(String s : cate){ %>
+					(<%= s %>)
+			  <% } %>
+			  
+			  </p> <% //ver %>
               <p><b>Descripcion:</b> <%= descripcion %></p>
             </div>
             <div id="Salidas" class="tabcontent">
@@ -106,7 +114,7 @@
                      %>
               <div class="Salida">
                 <div class="imagenSalida">
-                  <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg" height="200">
+                  <img src = "media/icons/avatar.svg" height="200">
                 </div>
                 <div class="Salida-text">
                   <h3><%=  Salidas.get(i).getNombre() %></h3>
@@ -114,26 +122,29 @@
                 </div>
               </div>
               <hr>
-         
+         <%} %>
               
             </div>
             
-            <%} %>
             <div id="Paquetes" class="tabcontent">
+            <% for (int i=0; i< paque.size();i++) { %>
+            
               <div class="Paquete">
                 <div class="imagenPaquete">
-                  <img src = "https://sites.google.com/site/areasprotegidasenuruguay/_/rsrc/1411660757953/algunas-de-las-areas-ingresadas-por-el-snap/laguna-de-rocha/Mapa_Rocha_BLOG.jpg?height=280&width=400">
+                  <img src = "media/icons/avatar.svg">
                 </div>
                 <div class="Paquete-text">
-                  <h3>Disfrutar Rocha</h3>
-                  <p><a href="./ConsultaPaquete.html" class="links">Leer mas.</a></p>
+                  <h3><%=  paque.get(i).getNombre() %></h3>
+                  <p><a href="/Tarea2Test/ConsultaPaquete?paramS=<%=paque.get(i).getNombre()%>" class="links">Leer mas.</a></p>
                 </div>
               </div>
+              
+              <%} %>
             </div>
           </div>
         </div>
       </div>
+      <script>window.onload=openTab(event, 'Info');</script>
       <script src="./../js/consultaDeUsuario.js"></script>
-     <script src="./../js/mantenerSesion.js"></script>
 </body>
 </html>

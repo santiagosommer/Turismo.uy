@@ -74,13 +74,13 @@
             desc =  p.getDescripcionGeneral();
             url = p.getURL();
             apellido = p.getApellido();
-             act = p.getActividades();
+            act = p.getActividades();
              
          
         }
 %>	
                 <div class="img-container">
-                    <img src="https://c.wallhere.com/photos/55/39/safe_house_cia_agent_tobin_frost_denzel_washington-584127.jpg!d" height="200">
+                    <img src="media/icons/avatar.svg" height="200">
                 </div>
                 <h3>  <%= nombre%> </h3>
                 <h5> <%= nickName %> / <%= email%></h5>
@@ -116,7 +116,7 @@
                      %>
                     <div class="Actividad">
                         <div class="imagenActividad">
-                            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg">
+                            <img src = "media/icons/avatar.svg">
                         </div>
                         <div class="Actividad-text">
                             <h3><%= act.get(i).getNombre() %></h3>
