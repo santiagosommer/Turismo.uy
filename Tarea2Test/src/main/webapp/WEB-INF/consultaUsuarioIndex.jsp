@@ -21,11 +21,7 @@
         <div class="content">
             <div class="filtros">
                 <div class="filtro">
-                        <select name="TipoUsuario" class="Categoria">
-                            <option>Usuario</option>
-                            <option>Turista</option>
-                            <option>Proveedor</option>
-                        </select>
+                       <% //borrado %>
                 </div>
             </div>
             <div class="Consultas">
