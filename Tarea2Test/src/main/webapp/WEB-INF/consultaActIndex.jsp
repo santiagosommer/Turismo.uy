@@ -60,7 +60,7 @@
             	<%for (DTActividadTuristica s : acts) {%>
 	                 <div class="conjuntoConsulta">
 	                    <div class="imagen">
-	                        <img src="https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg" height="200">
+	                        <img src="media/icons/avatar.svg" height="200">
 	                    </div>
 	                    <div class="descripcion">
 	                        <div class="nombre">
@@ -70,6 +70,7 @@
 	                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= s.getNombre()%>" class="links selected">Leer mas.</a>
 	                    </div>
 	                </div>
+	                <hr>
                 <% } %>
                 
             </div>

@@ -77,7 +77,7 @@
     
             <div class="container-consulta">
                 <div class="img-container">
-                    <img src="https://pbs.twimg.com/media/EOHAP9zWoAsnkiM?format=jpg&name=small" height="200">
+                    <img src="media/icons/avatar.svg" height="200">
                 </div>
                 <h3> <%= nombre %> 	 <%=apellido  %> </h3>
                 <h5> <%= nickName %> / <%= email %> </h5>
@@ -111,7 +111,7 @@
                 
                     <div class="Salida">
 						 <div class="imagenSalida">
-                            <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
+                            <img src = "media/icons/avatar.svg">
                         </div>
                         <div class="Salida-text">
                             <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
@@ -128,6 +128,5 @@
     </div>
 
   
-    <script src="./../media/js/mantenerSesion.js"></script>
 </body>
 </html>

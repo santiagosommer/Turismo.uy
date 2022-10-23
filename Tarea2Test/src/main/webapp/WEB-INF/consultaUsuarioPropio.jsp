@@ -56,9 +56,9 @@
          String desc ="";
          String url = "";
          String apellido = "";
-         if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+         if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
         	 
-        	   if (request.getSession().getAttribute("usuario_dt") != null) {
+        	   if ((DTTurista) request.getSession().getAttribute("usuario_dt") != null) {
         		   DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
  		             nombre = t.getNombre();
  		             nickName = t.getNickname();
@@ -71,9 +71,9 @@
         
        
         	   
-        	   if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+        	   if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
               	 
-            	   if (request.getSession().getAttribute("usuario_dt") != null) {
+            	   if ((DTProveedor)request.getSession().getAttribute("usuario_dt") != null) {
             		           DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
             		           nombre = p.getNombre();
             		           nickName = p.getNickname();
@@ -87,7 +87,7 @@
             	
     
                 <div class="img-container">
-                    <img id="img-perfil" src="" height="200">
+                    <img id="imagen_perfil" src="media/icons/avatar.svg" height="200">
                 </div>
                 <h3 id="title-nombre"> <%= nombre %>	</h3>
                 <h5 id="title-nickname-email"> <%= nickName %> / <%= email %>  </h5>
@@ -99,9 +99,9 @@
                     </div>
                 </div>
                 
-                <%    if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                <%    if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
                  	 
-             	   if (request.getSession().getAttribute("usuario_dt") != null) {
+             	   if ((DTProveedor)request.getSession().getAttribute("usuario_dt") != null) {
                 %>
                 <div class="tab" id="Actividades-tab-container">
                     <div class="tablinks" id="Actividades-tab" onclick="openTab(event, 'Actividades')">
@@ -111,8 +111,8 @@
                 
                 <% }} %>
                 <% 
-                  if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
-                	  if (request.getSession().getAttribute("usuario_dt") != null) {
+                  if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+                	  if ((DTTurista)request.getSession().getAttribute("usuario_dt") != null) {
                 	  
                 	  %>
                   
@@ -132,7 +132,7 @@
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
                 
-                <%	   if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                <%	   if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
                 	  DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
             		           nombre = p.getNombre();
             		           nickName = p.getNickname();
@@ -153,7 +153,7 @@
                     
                 <%} %>
                 	
-                 <% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+                 <% if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
                 	 DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
    		             nombre = t.getNombre();
    		             nickName = t.getNickname();
@@ -179,8 +179,8 @@
                 
                 <%   
                 ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
-                if (request.getSession().getAttribute("prov_dt") != null) {
-                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
+                if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
                    act = p.getActividades();
 
                 for (int i=0; i < act.size();i++) {
@@ -188,13 +188,13 @@
                      %>
                     <div class="Actividad">
                         <div class="imagenActividad">
-                            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg">
+                            <img src = "media/icons/avatar.svg">
                         </div>
                         <div class="Actividad-text">
 						
                             <h3> <%= act.get(i).getNombre() %> </h3>
                             <p>Estado: <%= act.get(i).getEstado() %></p>
-                            <p><a href="./consultaActividad1.html" class="links">Leer más.</a></p>
+                            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= act.get(i).getNombre() %>" class="links">Leer más.</a></p>
                         </div>
                     </div>
                     <hr>     
@@ -205,7 +205,7 @@
                 <div id="Salidas" class="tabcontent">
                 
                 <%ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
-                if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+                if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
 					 DTTurista t = (DTTurista) request.getSession().getAttribute("usuario_dt");
 					 InscSal = t.getInscripciones();
 					 for (int i=0; i< InscSal.size();i++) {
@@ -217,7 +217,7 @@
                     
                 
                         <div class="imagenSalida">
-                            <img src = "https://city.woow.com.uy/media/catalog/product/cache/dcf64a24127a43d9ce9fe76e3e5f8061/n/u/nueva2_3_1.jpg">
+                            <img src = "media/icons/avatar.svg">
                         </div>
                         <div class="Salida-text">
                             <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
@@ -249,9 +249,9 @@
             </div>
         </div>
     </div>
+    <script>window.onload=openTab(event, 'Perfil');</script>
 
     <script src="./../js/consultaDeUsuario.js"></script>
-    <script src="./../js/mantenerSesion.js"></script>
     <script src="./../js/consultaUsuarioPropio.js"></script>
 </body>
 </html>

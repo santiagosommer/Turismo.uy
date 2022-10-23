@@ -188,7 +188,7 @@ public class CargaDeDatos {
 			//interfazTuristica.AceptarActividad(C5);
 			interfazTuristica.crearActividadTuristica("Colonia Premium Tour","Visita lugares exclusivos y relevantes",4,2600,LocalDate.of(2022, 9, 3),"Colonia del Sacramento","Colonia","meche",A8);
 			interfazTuristica.RechazarActividad("Colonia Premium Tour");
-			interfazTuristica.crearActividadTuristica("Deportesnáuticos sin uso de motor","kitsurf - windsurf - kayakismo - canotaje en Rocha",3,1200,LocalDate.of(2022, 9, 5),"Rocha","Rocha","washington",A9);
+			interfazTuristica.crearActividadTuristica("Deportes náuticos sin uso de motor","kitsurf - windsurf - kayakismo - canotaje en Rocha",3,1200,LocalDate.of(2022, 9, 5),"Rocha","Rocha","washington",A9);
 			//interfazTuristica.AceptarActividad(C5);
 			interfazTuristica.crearActividadTuristica("Descubre Rivera","Rivera es un departamento de extraordinaria riqueza natural patrimonial y cultural con una ubicación geográfica privilegiada",2,650,LocalDate.of(2022, 9, 16),"Rivera","Rivera","eldiez",A10);
 			interfazTuristica.RechazarActividad("Descubre Rivera");

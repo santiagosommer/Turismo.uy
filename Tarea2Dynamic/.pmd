@@ -6,6 +6,18 @@
     <includePatterns/>
     <rules>
         <rule>
+            <name>AbstractClassWithoutAbstractMethod</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AccessorClassGeneration</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AccessorMethodGeneration</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>ApexAssertionsShouldIncludeMessage</name>
             <ruleset>Best Practices</ruleset>
         </rule>
@@ -22,319 +34,15 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
+            <name>ArrayIsStoredDirectly</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>AvoidGlobalModifier</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
             <name>AvoidLogicInTrigger</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>DebugsShouldUseLoggingLevel</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>UnusedLocalVariable</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>ClassNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>IfElseStmtsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>IfStmtsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>FieldDeclarationsShouldBeAtStart</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>FieldNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>ForLoopsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>FormalParameterNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>LocalVariableNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>MethodNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>OneDeclarationPerLine</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>PropertyNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>VariableNamingConventions</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>WhileLoopsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidDeeplyNestedIfStmts</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>CyclomaticComplexity</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>CognitiveComplexity</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveClassLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveParameterList</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessivePublicCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NcssConstructorCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NcssMethodCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NcssTypeCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>StdCyclomaticComplexity</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>TooManyFields</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ApexDoc</name>
-            <ruleset>Documentation</ruleset>
-        </rule>
-        <rule>
-            <name>ApexCSRF</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidDirectAccessTriggerMap</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidHardcodingId</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidNonExistentAnnotations</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyCatchBlock</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyIfStmt</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyStatementBlock</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyTryOrFinallyBlock</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyWhileStmt</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>InaccessibleAuraEnabledGetter</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>MethodWithSameNameAsEnclosingClass</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>OverrideBothEqualsAndHashcode</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>TestMethodsMustBeInTestClasses</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidDebugStatements</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidDmlStatementsInLoops</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidSoqlInLoops</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidSoslInLoops</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>EagerlyLoadedDescribeSObjectResult</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>OperationWithLimitsInLoop</name>
-            <ruleset>Performance</ruleset>
-        </rule>
-        <rule>
-            <name>ApexBadCrypto</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexCRUDViolation</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexDangerousMethods</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexInsecureEndpoint</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexOpenRedirect</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexSharingViolations</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexSOQLInjection</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexSuggestUsingNamedCred</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexXSSFromEscapeFalse</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>ApexXSSFromURLParam</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidWithStatement</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>ConsistentReturn</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>GlobalVariable</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>ScopeForInVariable</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>UseBaseWithParseInt</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>AssignmentInOperand</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>ForLoopsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>IfElseStmtsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>IfStmtsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>NoElseReturn</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>UnnecessaryBlock</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>UnnecessaryParentheses</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>UnreachableCode</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>WhileLoopsMustUseBraces</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidTrailingComma</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EqualComparison</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>InnaccurateNumericLiteral</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>AbstractClassWithoutAbstractMethod</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>AccessorClassGeneration</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>AccessorMethodGeneration</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>ArrayIsStoredDirectly</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -366,7 +74,15 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
+            <name>AvoidWithStatement</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>CheckResultSet</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ConsistentReturn</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -374,7 +90,15 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
+            <name>DebugsShouldUseLoggingLevel</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>DefaultLabelNotLastInSwitchStmt</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>DontNestJsfInJstlIteration</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -387,6 +111,10 @@
         </rule>
         <rule>
             <name>ForLoopVariableCount</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>GlobalVariable</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -446,7 +174,15 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
-            <name>OneDeclarationPerLine</name>
+            <name>NoClassAttribute</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>NoHtmlComments</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>NoJspForward</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -478,6 +214,10 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
+            <name>ScopeForInVariable</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>SimplifiableTestAssertion</name>
             <ruleset>Best Practices</ruleset>
         </rule>
@@ -487,6 +227,10 @@
         </rule>
         <rule>
             <name>SystemPrintln</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>TomKytesDespair</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -503,6 +247,10 @@
         </rule>
         <rule>
             <name>UnusedLocalVariable</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedMacroParameter</name>
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
@@ -530,6 +278,10 @@
             <ruleset>Best Practices</ruleset>
         </rule>
         <rule>
+            <name>UseBaseWithParseInt</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
             <name>UseCollectionIsEmpty</name>
             <ruleset>Best Practices</ruleset>
         </rule>
@@ -551,6 +303,10 @@
         </rule>
         <rule>
             <name>AbstractNaming</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AssignmentInOperand</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -578,6 +334,10 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
+            <name>AvoidTabCharacter</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
             <name>AvoidUsingNativeCode</name>
             <ruleset>Code Style</ruleset>
         </rule>
@@ -591,6 +351,10 @@
         </rule>
         <rule>
             <name>ClassNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>CodeFormat</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -618,7 +382,7 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
-            <name>EmptyMethodInAbstractClassShouldBeAbstract</name>
+            <name>DuplicateJspImports</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -626,7 +390,15 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
+            <name>EmptyMethodInAbstractClassShouldBeAbstract</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
             <name>ExtendsObject</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>FieldDeclarationsShouldBeAtStart</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -639,6 +411,10 @@
         </rule>
         <rule>
             <name>FinalParameterInAbstractMethod</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopNaming</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -667,6 +443,10 @@
         </rule>
         <rule>
             <name>IfStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>LineLength</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -710,11 +490,19 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
+            <name>MisplacedPragma</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>NoElseReturn</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
             <name>NoPackage</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
-            <name>UseUnderscoresInNumericLiterals</name>
+            <name>OneDeclarationPerLine</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -727,6 +515,10 @@
         </rule>
         <rule>
             <name>PrematureDeclaration</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>PropertyNamingConventions</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -762,6 +554,10 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
+            <name>UnnecessaryBlock</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
             <name>UnnecessaryCast</name>
             <ruleset>Code Style</ruleset>
         </rule>
@@ -786,11 +582,23 @@
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
+            <name>UnnecessaryParentheses</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
             <name>UnnecessaryReturn</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
             <name>UnnecessarySemicolon</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnreachableCode</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UseConcatOnce</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -807,6 +615,10 @@
         </rule>
         <rule>
             <name>UseShortArrayInitializer</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UseUnderscoresInNumericLiterals</name>
             <ruleset>Code Style</ruleset>
         </rule>
         <rule>
@@ -854,15 +666,15 @@
             <ruleset>Design</ruleset>
         </rule>
         <rule>
+            <name>CognitiveComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
             <name>CollapsibleIfStatements</name>
             <ruleset>Design</ruleset>
         </rule>
         <rule>
             <name>CouplingBetweenObjects</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>CognitiveComplexity</name>
             <ruleset>Design</ruleset>
         </rule>
         <rule>
@@ -894,11 +706,31 @@
             <ruleset>Design</ruleset>
         </rule>
         <rule>
+            <name>ExcessiveObjectLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePackageBodyLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePackageSpecificationLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
             <name>ExcessiveParameterList</name>
             <ruleset>Design</ruleset>
         </rule>
         <rule>
             <name>ExcessivePublicCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveTemplateLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveTypeLength</name>
             <ruleset>Design</ruleset>
         </rule>
         <rule>
@@ -930,6 +762,10 @@
             <ruleset>Design</ruleset>
         </rule>
         <rule>
+            <name>MutableStaticState</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
             <name>NcssConstructorCount</name>
             <ruleset>Design</ruleset>
         </rule>
@@ -942,7 +778,35 @@
             <ruleset>Design</ruleset>
         </rule>
         <rule>
+            <name>NcssObjectCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
             <name>NcssTypeCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineJavaScript</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineScript</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineStyleInformation</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineStyles</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoLongScripts</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoScriptlets</name>
             <ruleset>Design</ruleset>
         </rule>
         <rule>
@@ -1006,8 +870,8 @@
             <ruleset>Design</ruleset>
         </rule>
         <rule>
-            <name>MutableStaticState</name>
-            <ruleset>Design</ruleset>
+            <name>ApexDoc</name>
+            <ruleset>Documentation</ruleset>
         </rule>
         <rule>
             <name>CommentContent</name>
@@ -1030,7 +894,7 @@
             <ruleset>Documentation</ruleset>
         </rule>
         <rule>
-            <name>AssignmentInOperand</name>
+            <name>ApexCSRF</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1066,6 +930,10 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>AvoidDirectAccessTriggerMap</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>AvoidDuplicateLiterals</name>
             <ruleset>Error Prone</ruleset>
         </rule>
@@ -1082,6 +950,10 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>AvoidHardcodingId</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>AvoidInstanceofChecksInCatchClause</name>
             <ruleset>Error Prone</ruleset>
         </rule>
@@ -1095,6 +967,14 @@
         </rule>
         <rule>
             <name>AvoidMultipleUnaryOperators</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidNonExistentAnnotations</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidTrailingComma</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1206,6 +1086,10 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>EmptyForeachStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>EmptyIfStmt</name>
             <ruleset>Error Prone</ruleset>
         </rule>
@@ -1234,7 +1118,15 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>EmptyTryOrFinallyBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>EmptyWhileStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EqualComparison</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1270,11 +1162,27 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>InaccessibleAuraEnabledGetter</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>InnaccurateNumericLiteral</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>InstantiationToGetClass</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>InvalidDependencyTypes</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>InvalidLogMessageFormat</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>JspEncoding</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1310,6 +1218,10 @@
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
+            <name>MistypedCDATASection</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
             <name>MoreThanOneLogger</name>
             <ruleset>Error Prone</ruleset>
         </rule>
@@ -1327,6 +1239,10 @@
         </rule>
         <rule>
             <name>OverrideBothEqualsAndHashcode</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ProjectVersionAsDependencyVersion</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1383,6 +1299,22 @@
         </rule>
         <rule>
             <name>TestClassWithoutTestCases</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TestMethodsMustBeInTestClasses</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_DATEWithoutDateFormat</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_DATE_TO_CHAR</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_TIMESTAMPWithoutDateFormat</name>
             <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
@@ -1482,7 +1414,19 @@
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
+            <name>AvoidAxisNavigation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
             <name>AvoidCalendarDateCreation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDebugStatements</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDmlStatementsInLoops</name>
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
@@ -1491,6 +1435,14 @@
         </rule>
         <rule>
             <name>AvoidInstantiatingObjectsInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidSoqlInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidSoslInLoops</name>
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
@@ -1518,6 +1470,10 @@
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
+            <name>EagerlyLoadedDescribeSObjectResult</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
             <name>InefficientEmptyStringCheck</name>
             <ruleset>Performance</ruleset>
         </rule>
@@ -1538,6 +1494,10 @@
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
+            <name>OperationWithLimitsInLoop</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
             <name>OptimizableToArrayCall</name>
             <ruleset>Performance</ruleset>
         </rule>
@@ -1546,11 +1506,11 @@
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
-            <name>SimplifyStartsWith</name>
+            <name>ShortInstantiation</name>
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
-            <name>ShortInstantiation</name>
+            <name>SimplifyStartsWith</name>
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
@@ -1598,7 +1558,51 @@
             <ruleset>Performance</ruleset>
         </rule>
         <rule>
+            <name>ApexBadCrypto</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexCRUDViolation</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexDangerousMethods</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexInsecureEndpoint</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexOpenRedirect</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSharingViolations</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSOQLInjection</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSuggestUsingNamedCred</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexXSSFromEscapeFalse</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexXSSFromURLParam</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
             <name>HardCodedCryptoKey</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>IframeMissingSrcAttribute</name>
             <ruleset>Security</ruleset>
         </rule>
         <rule>
@@ -1606,144 +1610,8 @@
             <ruleset>Security</ruleset>
         </rule>
         <rule>
-            <name>DontNestJsfInJstlIteration</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>NoClassAttribute</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>NoHtmlComments</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>NoJspForward</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>DuplicateJspImports</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>NoInlineScript</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NoInlineStyleInformation</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NoLongScripts</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NoScriptlets</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>JspEncoding</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>IframeMissingSrcAttribute</name>
-            <ruleset>Security</ruleset>
-        </rule>
-        <rule>
             <name>NoUnsanitizedJSPExpression</name>
             <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>TomKytesDespair</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidTabCharacter</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>CodeFormat</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>MisplacedPragma</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>ForLoopNaming</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>LineLength</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>CyclomaticComplexity</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveMethodLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveObjectLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessivePackageBodyLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessivePackageSpecificationLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveParameterList</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveTypeLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NcssMethodCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NcssObjectCount</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NPathComplexity</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>TooManyFields</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>TooManyMethods</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>TO_DATE_TO_CHAR</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>TO_DATEWithoutDateFormat</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>TO_TIMESTAMPWithoutDateFormat</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>InvalidDependencyTypes</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>ProjectVersionAsDependencyVersion</name>
-            <ruleset>Error Prone</ruleset>
         </rule>
         <rule>
             <name>VfCsrf</name>
@@ -1756,54 +1624,6 @@
         <rule>
             <name>VfUnescapeEl</name>
             <ruleset>Security</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidReassigningParameters</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>UnusedMacroParameter</name>
-            <ruleset>Best Practices</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidDeeplyNestedIfStmts</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>CollapsibleIfStatements</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>ExcessiveTemplateLength</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NoInlineJavaScript</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>NoInlineStyles</name>
-            <ruleset>Design</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyForeachStmt</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>EmptyIfStmt</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>MistypedCDATASection</name>
-            <ruleset>Error Prone</ruleset>
-        </rule>
-        <rule>
-            <name>UseConcatOnce</name>
-            <ruleset>Code Style</ruleset>
-        </rule>
-        <rule>
-            <name>AvoidAxisNavigation</name>
-            <ruleset>Performance</ruleset>
         </rule>
     </rules>
     <includeDerivedFiles>false</includeDerivedFiles>
