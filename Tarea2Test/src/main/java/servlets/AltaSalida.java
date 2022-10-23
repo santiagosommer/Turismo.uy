@@ -77,6 +77,8 @@ public class AltaSalida extends HttpServlet {
     	Set<String> acts = ct.listarActividadesDeDepartamento(departamento);
     	request.setAttribute("listarActividades", acts);
     	
+    	request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
+    	
     	String actividad = request.getParameter("actividad");
     	String nombre = request.getParameter("nombre");
     	LocalDateTime date = LocalDateTime.parse("fechaYhora");
