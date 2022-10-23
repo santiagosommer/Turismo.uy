@@ -101,7 +101,7 @@ public class AltaSalida extends HttpServlet {
     	ct.seleccionarSalida(nombre);
 		request.getSession().setAttribute("usuario_dt", ct.getDTSalidaTuristica());
 		
-    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
 
 	}
 

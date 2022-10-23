@@ -85,7 +85,7 @@ public class AltaActividad extends HttpServlet {
     	ct.seleccionarActividad(nombre);
 		request.getSession().setAttribute("usuario_dt", ct.getDTActividadTuristica());
 		
-    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);		
+    	request.getRequestDispatcher("/WEB-INF/altaActividad.jsp").forward(request, response);
 	}
 
 	/**
