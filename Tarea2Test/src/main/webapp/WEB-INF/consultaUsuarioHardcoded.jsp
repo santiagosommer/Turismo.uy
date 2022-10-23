@@ -7,6 +7,7 @@
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    
        <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");
@@ -74,18 +75,15 @@
             nacionalidad = t.getNacionalidad();
             InscSal = t.getInscripciones();
 		 
-        if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+            if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
        	 
-       	   if ((DTTurista) request.getSession().getAttribute("usuario_dt") != null) {
-       		 DTTurista turi = (DTTurista) request.getSession().getAttribute("usuario_dt");
-       		 if (nickName.equals(turi.getNickname())){
-       			 esPropio = true;
-       		 }
-       		 
-       		 
-       	   }
-       		   
-       	  }
+       	      if ((DTTurista) request.getSession().getAttribute("usuario_dt") != null) {
+       		    DTTurista turi = (DTTurista) request.getSession().getAttribute("usuario_dt");
+       		    if (nickName.equals(turi.getNickname())){
+       			  esPropio = true;
+       		    }
+       	       }
+       	     }
         }
         
         
@@ -134,21 +132,21 @@
                  <% for (int i=0; i< InscSal.size();i++) {
                     
                      %>
-                    <div class="Salida">
-						 <div class="imagenSalida">
-                            <img src = "media/icons/avatar.svg">
-                        </div>
-                        <div class="Salida-text">
-                            <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
-                            <%if(esPropio){ %>
+                      <div class="Salida">
+						  <div class="imagenSalida">
+                             <img src = "media/icons/avatar.svg">
+                          </div>
+                          <div class="Salida-text">
+                             <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
+                             <%if(esPropio){ %>
                            	 	<p> Fecha Inscripcion:<%= InscSal.get(i).getFecha().toString() %> </p>
                            	 	<p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
                             	<p> Costo: <%= InscSal.get(i).getCosto() %> </p>	
-                            <%} %>
+                             <%} %>
                             <p><a href="/Tarea2Test/ConsultaSalida?paramS=<%=InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
                             
-                        </div>
-                    </div>
+                          </div>
+                      </div>
                     
                     <%} %>
                     <script>window.onload=openTab(event, 'Perfil');</script>

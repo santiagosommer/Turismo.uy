@@ -38,7 +38,7 @@
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
-                    <a id="dropdown-1" href="/Tarea2Test/ConsultaUsuarioPropio">Ver Perfil</a>
+                    <a id="dropdown-1" href="/Tarea2Test/ConsultaProveedor?paramP=<%= prov.getNickname()%>">Ver Perfil</a>
                     <a id="dropdown-2" href="/Tarea2Test/CerrarSesion">Cerrar Sesion</a>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 	            <div class="dropdown">
 	                <img src="media/icons/avatar.svg" class="avatar icon">
 	                <div class="dropdown-content">
-	                    <a id="dropdown-1" href="/Tarea2Test/ConsultaUsuarioPropio">Ver Perfil</a>
+	                    <a id="dropdown-1" href="/Tarea2Test/ConsultaTurista?paramT=<%= turista.getNickname()%>">Ver Perfil</a>
 	                    <a id="dropdown-2" href="/Tarea2Test/CerrarSesion">Cerrar Sesion</a>
 	                </div>
 	            </div>
