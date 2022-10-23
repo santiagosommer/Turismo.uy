@@ -61,8 +61,9 @@
          String nacionalidad = "";
          String apellido = "";
          
+         boolean esPropio = false;
          ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
-       
+         
         if (request.getSession().getAttribute("turi_dt") != null) {
            DTTurista t = (DTTurista) request.getSession().getAttribute("turi_dt") ;
             nombre = t.getNombre();
@@ -72,7 +73,22 @@
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
             InscSal = t.getInscripciones();
-		 }
+		 
+        if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
+       	 
+       	   if ((DTTurista) request.getSession().getAttribute("usuario_dt") != null) {
+       		 DTTurista turi = (DTTurista) request.getSession().getAttribute("usuario_dt");
+       		 if (nickName.equals(turi.getNickname())){
+       			 esPropio = true;
+       		 }
+       		 
+       		 
+       	   }
+       		   
+       	  }
+        }
+        
+        
          %>	
     
             <div class="container-consulta">
@@ -93,8 +109,18 @@
                         Salidas
                     </div>
                 </div>
+                <%if (esPropio){ %>
+                  <div class="tab" id="Paquetes-tab-container">
+                    <div class="tablinks" id="Paquetes-tab" onclick="openTab(event, 'Paquetes')">
+                        Paquetes
+                    </div>
+                </div>
+                <%} %>
             </div>
             <div class="tab-contents">
+           		 <div id="Paquetes" class="tabcontent">
+             
+                </div>
                 <div id="Perfil" class="tabcontent">
                     <p><b>Nickname:</b>  <%= nickName %> </p>
                     <p><b>Nombre:</b> <%= nombre %> </p>
@@ -108,14 +134,19 @@
                  <% for (int i=0; i< InscSal.size();i++) {
                     
                      %>
-                
                     <div class="Salida">
 						 <div class="imagenSalida">
                             <img src = "media/icons/avatar.svg">
                         </div>
                         <div class="Salida-text">
                             <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
+                            <%if(esPropio){ %>
+                           	 	<p> Fecha Inscripcion:<%= InscSal.get(i).getFecha().toString() %> </p>
+                           	 	<p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
+                            	<p> Costo: <%= InscSal.get(i).getCosto() %> </p>	
+                            <%} %>
                             <p><a href="/Tarea2Test/ConsultaSalida?paramS=<%=InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
+                            
                         </div>
                     </div>
                     

@@ -62,7 +62,7 @@
          String url = "";
          String apellido = "";
        
-         
+         boolean esPropio = false;
          ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
         if (request.getSession().getAttribute("prov_dt") != null) {
            DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
@@ -76,7 +76,16 @@
             apellido = p.getApellido();
             act = p.getActividades();
              
+            if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+              	 
+            	   if ((DTProveedor) request.getSession().getAttribute("usuario_dt") != null) {
+            		   DTProveedor prov = (DTProveedor) request.getSession().getAttribute("usuario_dt");
+            		 if (nickName.equals(prov.getNickname())){
+            			 esPropio = true;
+            		 }
          
+       	 }
+            }
         }
 %>	
                 <div class="img-container">
@@ -107,6 +116,38 @@
                     <p><b>Descripcion:</b> <%= desc %> </p>
                     <p><b>URL:</b>  <%= url %> </p>
                 </div>
+                
+                <%if (esPropio){ %>
+                 <div id="Actividades" class="tabcontent">
+                
+                <%   
+                ArrayList<DTActividadTuristica> actividades = new ArrayList<DTActividadTuristica>();
+                if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
+                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
+                   actividades = p.getActividades();
+
+                for (int i=0; i < actividades.size();i++) {
+                    
+                     %>
+                    <div class="Actividad">
+                        <div class="imagenActividad">
+                            <img src = "media/icons/avatar.svg">
+                        </div>
+                        <div class="Actividad-text">
+						
+                            <h3> <%= actividades.get(i).getNombre() %> </h3>
+                            <p>Estado: <%= actividades.get(i).getEstado() %></p>
+                            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= actividades.get(i).getNombre() %>" class="links">Leer más.</a></p>
+                        </div>
+                    </div>
+                    <hr>     
+                    
+      <%     }  } %>        
+                    
+                </div>
+                
+                
+                <%} else {%>
                 <div id="Actividades" class="tabcontent">
                 
                 <% for (int i=0; i< act.size();i++) {
@@ -125,7 +166,8 @@
                     </div>
                     <hr>
 
-                    <% }} %>
+                    <% }} }%>
+                    
 
                 <script>window.onload=openTab(event, 'Perfil');</script>
                    
