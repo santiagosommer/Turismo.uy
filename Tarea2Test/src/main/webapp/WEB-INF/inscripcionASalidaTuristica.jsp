@@ -23,7 +23,9 @@
 <% if (Error!= null){ %>
 	<div class="error-frame">
        
-       
+       <% if (Error.equals("Negativo")) {%>
+       		Ingresar cantidad mayor a 0.
+       <%} %>
     	<% if (Error.equals("CuposInsuficientes")){ %>
  			No hay suficientes cupos.
  		<% } 
