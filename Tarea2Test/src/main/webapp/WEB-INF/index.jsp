@@ -23,7 +23,7 @@
                 </div>
                 <div class="recommendation-item">
                     <img src="media/icons/wind-surfing.svg" class="recommendation-icon">
-                    <h3>Revisa las nuevas e innovadoras <a href="#">actividades</a> que tenemos para ti!</h3>
+                    <h3>Revisa las nuevas e innovadoras <a href="/Tarea2Test/ConsultaActividadesIndex">actividades</a> que tenemos para ti!</h3>
                 </div>
                 <div class="recommendation-item">
                     <img src="media/icons/money.svg" class="recommendation-icon">
