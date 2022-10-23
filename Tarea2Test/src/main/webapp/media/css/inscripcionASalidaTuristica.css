@@ -184,3 +184,17 @@ button{
 #cancelarButton{
   background: white; color: black; border: 2px solid #968EF8;
 }
+
+.error-frame{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background: #FFB3B3;
+    border: solid 2px;
+    border-color: #FF0000;
+
+    padding: 25px;
+    
+    text-align:center;
+}
