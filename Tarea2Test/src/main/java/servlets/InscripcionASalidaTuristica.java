@@ -34,139 +34,42 @@ public class InscripcionASalidaTuristica extends HttpServlet {
        
     }
     
-    protected boolean checkFormulario(HttpServletRequest request) {
-    	
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
-    	String nomSal = request.getParameter("nombreSalida");
-    	String Cant = request.getParameter("cantidad-turistas");
-    	
-    	int cantTuristas = Integer.parseInt(Cant);
-    	if(nomSal!= null)
-    		ct.seleccionarSalida(nomSal);
-    	int cantCupos = ct.getDTSalidaTuristica().getCuposDisponibles();
-    	
-    	if (cantTuristas > cantCupos) {
-    		request.setAttribute("error", "CuposInsuficientes");
-    		return false;
-    	}
-    	
-    	//ya existe inscripcion turista
-    	if (request.getSession().getAttribute("usuario_dt") != null) {
-            if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
-          	  DTTurista turista = (DTTurista) request.getSession().getAttribute("usuario_dt");
-          	  cu.seleccionarTurista(turista.getNickname());
-          	  if (ct.existeInscripcion(nomSal, turista.getNickname())) {
-          		request.setAttribute("error", "ExisteInscripcion");
-          		  return false;
-          		  //agregar lo que retorna
-          	  }
-            }
-    	}
-
-    	return true;
-    }
+    
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();    	
-    	LocalDate now = LocalDate.now();
-    	String nomSal = request.getParameter("nombreSalida"); 
-    	if (nomSal != null) {
-    		ct.seleccionarSalida(nomSal);
-    		request.getSession().setAttribute("dtsalida",ct.getDTSalidaTuristica());
-    		int cantidadTuristas = 0;
-    		if(request.getParameter("cantidad-turistas")!=null)
-    			cantidadTuristas = Integer.parseInt(request.getParameter("cantidad-turistas"));
-    		
-    		String nickTuri = "";
-        	if (request.getSession().getAttribute("usuario_dt") != null) {
-              if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
-            	  DTTurista turista = (DTTurista) request.getSession().getAttribute("usuario_dt");
-            	  nickTuri = turista.getNickname();
-            	  cu.seleccionarTurista(nickTuri);
-              }
-              
-    
-              String tipo = request.getParameter("param");
-              if (tipo!= null)	 {
-              if (tipo.equals("general") ) {
-            	  if (checkFormulario(request))
-                     try {
-       			      cu.crearInscripcion(nickTuri, nomSal, cantidadTuristas, ct.getDTSalidaTuristica().getActividadTuristicaAsoc().getCostoTurista(), now); //ver si hay que pasar costo total o por turista
-       			      } catch (YaExisteInscripcionTuristaSalida e) {
-       				// TODO Auto-generated catch block
-       				  e.printStackTrace();
-       			}}
-              
-              
-              
-        	}}
-        	
-        	
-        	
-        	
-    			
-    	}			
-    	
-    	
-    	
-    	
-    	
-    	RequestDispatcher dispatcher = request.getRequestDispatcher(
-    	          "/WEB-INF/inscripcionASalidaTuristica.jsp"); 
-    	        dispatcher.forward(request, response); 
-    	        
-    	   
-    	
-    	//if ( nomSal!=null) {
-    		//if (request.getParameter("cantidad-turistas")==null) {
-        		//request.getRequestDispatcher("/WEB-INF/InscripcionASalidaTuristica.jsp").forward(request, response);
-        		//return;
-        	//}
-        	
-    	//	if (!checkFormulario(request)) {
-        	//	request.getRequestDispatcher("/WEB-INF/InscripcionASalidaTuristica.jsp").forward(request, response);
-        		//return;
-        //	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    		
-        		
-    	
-      	        
-      	//     String Cant = request.getParameter("cantidad-turistas");
-      	  // if (Cant!=null) {
-    		//ct.seleccionarSalida(nomSal);
-    		//int cupos = ct.getDTSalidaTuristica().getCuposDisponibles();
-    		//float costo = ct.getDTSalidaTuristica().getActividadTuristicaAsoc().getCostoTurista();
-    		//request.getSession().setAttribute("costo",costo );
-    		//String nickTuri = "";
-        	//if (request.getSession().getAttribute("usuario_dt") != null) {
-              //if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
-            	//  DTTurista turista = (DTTurista) request.getSession().getAttribute("usuario_dt");
-            	  //nickTuri = turista.getNickname();
-            	  //cu.seleccionarTurista(nickTuri);
-            //  }
-        	//}
-        	
-        	     //   dispatcher.forward(request, response); //ver donde va
-      	  // }
-      	   
-      	   
-              }
-
-    	
-		   
+	   ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+	   
+	   if (request.getParameter("cantidad-turistas")==null) {
+		   ct.seleccionarSalida(request.getParameter("nombreSalida"));
+		   request.getSession().setAttribute("dtsalida",ct.getDTSalidaTuristica());
+		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
+		   return;
+	   }
+	   Integer cant = Integer.parseInt(request.getParameter("cantidad-turistas"));
+	   
+	   IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+	   
+	   String turi = ((DTTurista) request.getSession().getAttribute("usuario_dt")).getNickname();
+	   
+	   DTSalidaTuristica salida = (DTSalidaTuristica)request.getSession().getAttribute("dtsalida");
+	   
+	   if (cant > salida.getCuposDisponibles()) {
+		   request.setAttribute("error", "CuposInsuficientes");
+		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
+		   return;
+	   }
+	   
+	   try {
+		   cu.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), LocalDate.now());
+		   request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		   return;
+	   } catch (YaExisteInscripcionTuristaSalida e1) {
+		   request.setAttribute("error", "ExisteInscripcion");
+		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
+		   return;
+	   }
+	    	
+   }
    	   
 
     

@@ -38,83 +38,35 @@
        
 	</div>
 
-       <form class="form-register" > 
+       <form class="form-register" method="get"> 
             
             <div class="CantidadTuristas">
               <div class="input-container">
                     <div class="input-outer">
                         <img src="media/icons/avatar.svg" class="icon">
-                        <% 
-                      // String valor ="";
-                    //    if (request.getParameter("cantidad-turistas")!=null) {                    
-                        //	 valor = request.getParameter("cantidad-turistas");
-                        //} //para evitar lo de null
-                        	                   
-                        %>
                         
-                        <input type="text"  id="id-input" class="input-style" placeholder="Cantidad Turistas" name="cantidad-turistas" required value= <%= request.getParameter("cantidad-turistas")%> >
+                        <input type="text"  id="id-input" class="input-style" placeholder="Cantidad Turistas" name="cantidad-turistas" required >
                     </div>
                  </div>
             </div>     
            
 
-            <div class="tabs">
-                <div class="tab">
-               
-    			 <a href="#?param=general"> <button class="tablinks" onclick="openCity(event, 'General')">  General </button> </a>
-              	  <a href="#?param=paquete"> <button class="tablinks" onclick="openCity(event, 'Paquete')"> Paquete </button> </a>       
-                </div>
-                  <div id="General" class="tabcontent"> 
-                  <% 		
-                  		ArrayList<DTPaquete> paquetesComprados = new ArrayList<DTPaquete>();
-                  			float costo = 0;
-                 			 int cantidadt = 0;
-							if (request.getSession().getAttribute("dtsalida")!= null) {
-								DTSalidaTuristica salida = (DTSalidaTuristica) request.getSession().getAttribute("dtsalida");
-								costo = salida.getActividadTuristicaAsoc().getCostoTurista();
-								if (request.getParameter("cantidad-turistas")!=null	) {
-									String cant = request.getParameter("cantidad-turistas");	
-									cantidadt =  Integer.parseInt(cant);
-									
-								}
-								
-								costo = costo * cantidadt;
-								
-							} %>
+                  
 						
-                    <p><b>Costo:</b>  $<%= costo %> </p>
-                  </div>
+                   <p><b>Costo:</b>  $$ </p>
+                  
 
-                  <div id="Paquete" class="tabcontent">
-                    <select name="paquetes" class ="controls" id="Paquete">
-                     <option value="gastronomia"> Paquetes Disponibles </option>
-                        <%for (DTPaquete p : paquetesComprados) {%>
-		            			 <option value="gastronomia">  
-		                    	<%= p.getNombre()  %>
-		                    	</option>
-	                   		<% } %>
-                       
-							
-                      </select>
-                    <p> <b> Descuento:  </b> 0.00%</p>
-
-                    <p> <b> Costo:</b> $0.00</p>
-
-                  </div>
                   <div class="botones">
                   <input type="submit" class="button" id="inscribirButton" value="Inscribirse"> 
-                  <button type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Dynamic/Home';">Cancelar</button>
+                  <button type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Test/Home';">Cancelar</button>
                 </div>
 
 
 
-            </div>
             
             </form>
 
         </div>
 
-    <script src="media/js/mantenerSesion.js"></script>
-    <script src="media/js/inscripcionASalidaTuristica.js"></script>
 </body>
 </html>
