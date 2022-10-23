@@ -1,3 +1,5 @@
 /.metadata/
 /bin/
 /servlet-api.jar
+/.classpath
+/.directory
