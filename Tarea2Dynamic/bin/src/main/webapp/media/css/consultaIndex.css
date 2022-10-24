@@ -1,0 +1,64 @@
+.filtros{
+
+    display: grid;
+    height: 650px;
+    grid-template-columns: auto;
+    padding: 50px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.Consultas{
+    width: 1200px;
+    border: solid 2px grey;
+    border-radius: 10px;
+    padding: 20px;
+
+    box-shadow: -5px 10px 10px 0 lightgray;
+}
+
+.conjuntoConsulta{
+
+    display: grid;
+    height: 250px;
+    grid-template-columns: auto auto;
+    padding: 50px;
+}
+
+
+.descripcion{
+    width: 600px;
+}
+
+.filtro select{
+    padding: 15px;
+    font-family: 'Morrison', sans-serif;
+    font-size: 16px;
+}
+
+.nombre{
+    font-weight: bold;
+}
+
+.button{
+
+    background: #6558F5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+
+}
+
+
+.button:hover{
+    cursor:pointer;
+    background: #5046c0;
+}
