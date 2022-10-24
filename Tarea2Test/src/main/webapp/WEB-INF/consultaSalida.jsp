@@ -60,7 +60,7 @@
            }%>
             <div class="container-consulta">
                 <div class="img-container">
-                    <img src = "media/icons/avatar.svg" class="imagenSalidaDegusta">
+                    <img src = "media/icons/avatar.svg" class="imagenSalidaDegusta" height="200">
                 </div>
                 <h3> <%= nombre %> </h3>
                 

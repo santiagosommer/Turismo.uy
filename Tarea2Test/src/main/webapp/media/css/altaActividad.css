@@ -167,6 +167,18 @@ img{
   }
 
   
+.error-frame{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
 
+    background: #FFB3B3;
+    border: solid 2px;
+    border-color: #FF0000;
+
+    padding: 25px;
+    
+    text-align:center;
+}
     
 

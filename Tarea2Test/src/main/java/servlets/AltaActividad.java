@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,13 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTUsuario;
+import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.EstadoError;
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
 
 /**
  * Servlet implementation class AltaActividad
@@ -36,13 +33,25 @@ public class AltaActividad extends HttpServlet {
     
     protected boolean checkFormulario(HttpServletRequest request) {
     	
-    	String nombre = request.getParameter("nombre");
+    	String nombre = request.getParameter("nombre_alta_actividad");
+    	Integer duracion = Integer.parseInt(request.getParameter("duracion"));
+    	float costo = Float.parseFloat(request.getParameter("costo"));
     
     	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	if (ct.existeActividad(nombre)) {
     		// nombre repetido
-    		request.setAttribute("estado_error", EstadoError.ERROR_ACTIVIDAD);
+    		request.setAttribute("estado_error", EstadoError.ERROR_NICK_OR_EMAIL);
+    		return false;
+    	}
+    	if (duracion<1) {
+    		// duracion negativa o 0
+    		request.setAttribute("estado_error", EstadoError.ERROR_CONTRA);
+    		return false;
+    	}
+    	if (!(costo>0)) {
+    		// costo negativo o 0
+    		request.setAttribute("estado_error", EstadoError.ERROR_EMAIL);
     		return false;
     	}
 
@@ -52,40 +61,41 @@ public class AltaActividad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	request.setAttribute("estado_error", null);
-    	
-    	if (request.getParameter("nombre")==null || !checkFormulario(request)) {
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	request.setAttribute("depas_act", ct.listarDepartamentos());
+		request.setAttribute("cat_act", ct.listarCategorias());
+    	if (request.getParameter("nombre_alta_actividad")==null || !checkFormulario(request)) {
     		request.getRequestDispatcher("/WEB-INF/altaActividad.jsp").forward(request, response);
     		return;
     	}
- 	
-    	String nombre = request.getParameter("nombre");
+    	
+    	String nombre = request.getParameter("nombre_alta_actividad");
     	String descripcion = request.getParameter("descripcion");
-    	String duracion = (String) request.getParameter("duracion");
-    	String costo = (String) request.getParameter("costo");
+    	Integer duracion = Integer.parseInt(request.getParameter("duracion"));
+    	float costo = Float.parseFloat(request.getParameter("costo"));
     	String ciudad = request.getParameter("ciudad");
         String departamento = request.getParameter("departamento");
-		DTUsuario prov = request.getSession().getAtributte("usuario_dt");
 
 		String[] str = request.getParameterValues("categorias");
 		Set<String> cats = new HashSet<String>(); 
 
+		String prov = ((DTProveedor) request.getSession().getAttribute("usuario_dt")).getNickname();
+		
 		for(String s : str) {
 			cats.add(s);
 		}
     	
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
     	
     	try {
-			ct.crearActividadTuristica(nombre, descripcion, Integer.parseInt(duracion), Float.parseFloat(costo), LocalDate.now(), ciudad, departamento, prov.getNickname(), cats);
-		} catch (NombreActividadRepetidoException e) {
+			ct.crearActividadTuristica(nombre, descripcion, duracion, costo, LocalDate.now(), ciudad, departamento, prov, cats);
+//			ct.AceptarActividad(nombre);
+			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+    	} catch (NombreActividadRepetidoException e) {
 			e.printStackTrace();
 		}
     	
-    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_Actividad);
-    	ct.seleccionarActividad(nombre);
-		request.getSession().setAttribute("usuario_dt", ct.getDTActividadTuristica());
+    
 		
-    	request.getRequestDispatcher("/WEB-INF/altaActividad.jsp").forward(request, response);
 	}
 
 	/**
