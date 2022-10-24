@@ -2,6 +2,8 @@ package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 import ServidorCentral.Logica.Excepciones.*;
+import ServidorCentral.Logica.Fabrica.Fabrica;
+
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
@@ -10,6 +12,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import ServidorCentral.Logica.Interfaces.IPaquete;
 import ServidorCentral.Logica.Interfaces.ITuristica;
 
 
@@ -51,7 +54,11 @@ public class ControladorTuristica implements ITuristica {
 	
 	//operaciones
 	
+	
 	//nuevas:
+	
+	
+	
 	
 	@Override
 	public Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat){
@@ -492,6 +499,23 @@ public class ControladorTuristica implements ITuristica {
 	public void RechazarActividad(String actividad) {
 		ActividadTuristica act = ActividadesTuristicas.get(actividad);
 		act.setEstado(EstadoActividad.Rechazada);
+		
+	}
+
+	@Override
+	public Set<DTPaquete> listarPaquetesCategoria(String cat) {
+		
+		Set<DTPaquete> lista = new HashSet<DTPaquete>();
+		if (cat!=null) {
+			Categoria categoria = Categorias.get(cat);
+			for (Map.Entry<String, Paquete> entry : categoria.getPaquetes().entrySet()) {
+				   lista.add(new DTPaquete(entry.getValue()));
+			}
+			return lista;
+		} else {
+			return Fabrica.getInstance().getControladorPaquete().infoPaquetes();
+					
+		}
 		
 	}
 	
