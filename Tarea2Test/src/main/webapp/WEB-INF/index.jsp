@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="ServidorCentral.Logica.DataTypes.EstadoSesion"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +18,12 @@
         </div>
         <div style="display:flex; flex: 1 0 1; width: 100%; justify-content: space-between;">
             <div class="recommendations">
-                <div class="recommendation-item">
-                    <img src="media/icons/avatar.svg" class="recommendation-icon">
-                    <h3><a href="/Tarea2Test/AltaUsuario">Registra</a> una cuenta o <a href="/Tarea2Test/IniciarSesion">entra con una cuenta</a> ya existente </h3>
-                </div>
+            	<%if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.NO_LOGIN){ %>
+            		<div class="recommendation-item">
+                    	<img src="media/icons/avatar.svg" class="recommendation-icon">
+                    	<h3><a href="/Tarea2Test/AltaUsuario">Registra</a> una cuenta o <a href="/Tarea2Test/IniciarSesion">entra con una cuenta</a> ya existente </h3>
+                	</div>
+            	<%} %>
                 <div class="recommendation-item">
                     <img src="media/icons/wind-surfing.svg" class="recommendation-icon">
                     <h3>Revisa las nuevas e innovadoras <a href="/Tarea2Test/ConsultaActividadesIndex">actividades</a> que tenemos para ti!</h3>
