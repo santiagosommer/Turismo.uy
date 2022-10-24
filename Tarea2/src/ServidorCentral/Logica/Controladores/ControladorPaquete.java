@@ -199,6 +199,15 @@ public class ControladorPaquete implements IPaquete {
 		// TODO Auto-generated method stub
 		
 	}	
-
+	@Override
+	public Set<DTPaquete> infoPaquetes() {
+		
+		Set<DTPaquete> lista = new HashSet<DTPaquete>();
+		for (Map.Entry<String, Paquete> entry : Paquetes.entrySet()) {
+			   lista.add(new DTPaquete(entry.getValue()));
+			
+		}
+		return lista;
+	}	
 	
 }

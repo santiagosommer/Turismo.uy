@@ -9,7 +9,7 @@
         <div class="top-bar-links">
             <a href="/Tarea2Test/Home" class="links">Principal</a>
             <a href="/Tarea2Test/ConsultaActividadesIndex" class="links">Actividades</a>
-            <a href="#" class="links">Paquetes</a>
+            <a href="/Tarea2Test/ConsultaPaqueteIndex" class="links">Paquetes</a>
         </div>
     </div>
     <div class="top-bar-right">

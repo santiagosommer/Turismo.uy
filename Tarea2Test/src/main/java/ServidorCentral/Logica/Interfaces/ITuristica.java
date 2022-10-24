@@ -1,10 +1,12 @@
 package ServidorCentral.Logica.Interfaces;
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
+import ServidorCentral.Logica.DataTypes.DTPaquete;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
+import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
@@ -44,6 +46,7 @@ public interface ITuristica {
 	public abstract void AceptarActividad(String actividad);
 	public abstract void RechazarActividad(String actividad);
 	public abstract Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat);
+	public abstract Set<DTPaquete> listarPaquetesCategoria(String cat);
 	
 	
 
