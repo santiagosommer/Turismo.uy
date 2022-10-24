@@ -123,7 +123,7 @@
                 <%   
                 ArrayList<DTActividadTuristica> actividades = new ArrayList<DTActividadTuristica>();
                 if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
-                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("usuario_dt");
+                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
                    actividades = p.getActividades();
 
                 for (int i=0; i < actividades.size();i++) {
