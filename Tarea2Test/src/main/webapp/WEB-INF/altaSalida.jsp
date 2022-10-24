@@ -46,7 +46,7 @@
 
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         
-                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listaDepartamentos");
+                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listarDepartamentos");
                         %>
                          
                         <div class="s1">  <select class ="controls" name="departamento" id="cars">
@@ -64,7 +64,7 @@
                           </select></div>
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         
-                        <% Set<String> actividades = (Set<String>) request.getAttribute("listaActividades");
+                        <% Set<String> actividades = (Set<String>) request.getAttribute("listarActividades");
                         %>
                         
                         <div class="s2">  <select name="actividades" class ="controls" id="cars">
