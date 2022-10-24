@@ -29,5 +29,6 @@ public interface IPaquete {
 	public abstract void AgregarActividadPaquete(String paqueteSelecBox, String actividadSelecBox);
 	
 	public abstract Set<String> listarActividadesPaquete();
+	public abstract Set<DTPaquete> infoPaquetes();
 
 }

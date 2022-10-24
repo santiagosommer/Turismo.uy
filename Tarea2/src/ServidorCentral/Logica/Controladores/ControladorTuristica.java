@@ -2,6 +2,8 @@ package ServidorCentral.Logica.Controladores;
 import ServidorCentral.Logica.Clases.*;
 import ServidorCentral.Logica.DataTypes.*;
 import ServidorCentral.Logica.Excepciones.*;
+import ServidorCentral.Logica.Fabrica.Fabrica;
+
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
@@ -495,7 +497,22 @@ public class ControladorTuristica implements ITuristica {
 		
 	}
 	
-	
+	@Override
+	public Set<DTPaquete> listarPaquetesCategoria(String cat) {
+		
+		Set<DTPaquete> lista = new HashSet<DTPaquete>();
+		if (cat!=null) {
+			Categoria categoria = Categorias.get(cat);
+			for (Map.Entry<String, Paquete> entry : categoria.getPaquetes().entrySet()) {
+				   lista.add(new DTPaquete(entry.getValue()));
+			}
+			return lista;
+		} else {
+			return Fabrica.getInstance().getControladorPaquete().infoPaquetes();
+					
+		}
+		
+	}
 	
 }
 
