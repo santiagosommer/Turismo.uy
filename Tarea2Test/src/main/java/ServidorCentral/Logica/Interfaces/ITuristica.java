@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
-import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
