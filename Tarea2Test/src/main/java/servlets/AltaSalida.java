@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -16,13 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.DTInfoSalida;
 import ServidorCentral.Logica.DataTypes.EstadoError;
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
 import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
-import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
 
 /**
  * Servlet implementation class AltaSalida
@@ -54,8 +50,22 @@ public class AltaSalida extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, NoHayActividadConEseNombreException {
+			throws ServletException, IOException {
     	request.setAttribute("estado_error", null);
+    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	
+    	Set<String> deps = ct.listarDepartamentos();
+    	request.setAttribute("listarDepartamentos", deps);
+    	
+    	if (request.getParameter("depa")==null && request.getParameter("nombre")==null) {
+    		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
+    		return;
+    	}
+    	
+    	String departamento = request.getParameter("depa");
+    	
+    	Set<String> acts = ct.listarActividadesDeDepartamento(departamento);
+    	request.setAttribute("listarActividades", acts);
     	
     	if (request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -67,43 +77,27 @@ public class AltaSalida extends HttpServlet {
     		return;
     	}
     	
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
-    	
-    	Set<String> deps = ct.listarDepartamentos();
-    	request.setAttribute("listarDepartamentos", deps);
-    	
-    	String departamento = request.getParameter("departamento");
-    	
-    	Set<String> acts = ct.listarActividadesDeDepartamento(departamento);
-    	request.setAttribute("listarActividades", acts);
-    	
-    	request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
-    	
-    	String actividad = request.getParameter("actividad");
+    	String actividad = request.getParameter("actividades");
     	String nombre = request.getParameter("nombre");
-    	LocalDateTime date = LocalDateTime.parse("fechaYhora");
-    	String lugar = request.getParameter("lugar");
-    	String cuposMaxS = request.getParameter("cuposMax");
+    	LocalDateTime date = LocalDateTime.parse(request.getParameter("dateNHour"));
+    	String lugar = request.getParameter("lugarsalida");
     	
-    	int cuposMax = Integer.parseInt(cuposMaxS);
+    	Integer cuposMax = Integer.parseInt(request.getParameter("maxcupos"));
     	
     	
     	
     	try {
     		LocalDate fecha = date.toLocalDate();
-    		LocalTime hora = date.toLocalTime();
+            LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
     		DTInfoSalida info = new DTInfoSalida(fecha,hora,lugar);
 			ct.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
-		} catch (NombreSalidaRepetidoException e) {
+		} catch (NombreSalidaRepetidoException | NoHayActividadConEseNombreException e) {
 			e.printStackTrace();
 		}
     	
-    	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_PROVEEDOR);
-    	ct.seleccionarSalida(nombre);
-		request.getSession().setAttribute("usuario_dt", ct.getDTSalidaTuristica());
 		
-    	request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 
 	}
 
@@ -113,12 +107,8 @@ public class AltaSalida extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
 			processRequest(request,response);
-		} catch (ServletException | IOException | NoHayActividadConEseNombreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**
@@ -126,12 +116,8 @@ public class AltaSalida extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
 			processRequest(request,response);
-		} catch (ServletException | IOException | NoHayActividadConEseNombreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 }

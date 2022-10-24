@@ -9,15 +9,6 @@
     <style><%@include file="./../media/css/altaSalida.css"%></style>
     <title>Alta Salida</title>
     
-    <script>
-    	var boton = document.getElementById('boton');
-    	boton.onclick = myfunction;
-    	function myfunction() {
-    		location.href='AltaSalida';
-      		var dep = this.getAttribute('data-name');
-    	}
-	
-   	</script>
 </head>
 <body>
     
@@ -41,37 +32,39 @@
         </div>
 		
         <div class="formulario ">
+        <form action="AltaSalida" method="get">
             <div class="container2">
                 <div class="departamentoycategorias">
 
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         
-                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listaDepartamentos");
+                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listarDepartamentos");
                         %>
                          
                         <div class="s1">  <select class ="controls" name="departamento" id="cars">
                         
-                        <%for (String dep : departamentos){ %>
+                        <%if (departamentos!=null)for (String dep : departamentos){ %>
                         
-                            <option value="<%=dep%>">"<%=dep%>"</option>
+                            <option value="<%=dep%>"><%=dep%></option>
                             
 						<%}%>
-						
-						<form name="formulario" action="AltaSalida.java" method="get">
-							<input class="boton" data-name="dep" type="submit" onclick="myfunction()" value="Click">
-						 </form>
+					
 
                           </select></div>
+                          
+                        <button type="button" onclick="window.location.href = '/Tarea2Test/AltaSalida?depa='+document.getElementById('cars').value" class="boton" id="extraButton" style="background: white; color: black; border: 2px solid #968EF8;">Select</button>
+						
+						 
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         
-                        <% Set<String> actividades = (Set<String>) request.getAttribute("listaActividades");
+                        <% Set<String> actividades = (Set<String>) request.getAttribute("listarActividades");
                         %>
                         
-                        <div class="s2">  <select name="actividades" class ="controls" id="cars">
+                        <div class="s2">  <select name="actividades" class ="controls" id="cars" required>
                         
-                        <%for (String act : actividades){ %>
+                        <%if (actividades!=null) for (String act : actividades){ %>
                         
-                            <option value="<%=act%>">"<%=act%>"</option>
+                            <option value="<%=act%>"><%=act%></option>
                             
 						<%}%>
 
@@ -99,19 +92,17 @@
                 </div>
                 <div class="c6">
                     <img src="media/icons/image.svg" class="iconop"  >
-                    <input class ="controls" type="file" name="img" id="img" placeholder="Seleccionar imagen" required>
+                    <input class ="controls" type="file" name="img" id="img" placeholder="Seleccionar imagen" >
                 </div>
                 <div class="c7">
                     <input class="boton" type="submit" value="Confirmar">
-                    <input class="boton2" type="submit" value="Cancelar">
+                    <button type="button" class="button" onclick="window.location.href='/Tarea2Test/Home';" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
                 </div>
               </div>
-
+		</form>
         </div>
 
 
     </div>
 
-
-    <script src="./../js/mantenerSesion.js"></script>
 </body></html>
