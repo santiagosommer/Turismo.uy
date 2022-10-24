@@ -52,7 +52,7 @@
 
                           </select></div>
                           
-                        <button type="button" onclick="window.location.href = '/Tarea2Test/AltaSalida?depa='+document.getElementById('cars').value" class="boton" id="extraButton" style="background: white; color: black; border: 2px solid #968EF8;">Select</button>
+                        <button type="button" class="boton2" onclick="window.location.href = '/Tarea2Test/AltaSalida?depa='+document.getElementById('cars').value" id="extraButton">Select</button>
 						
 						 
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="c7">
                     <input class="boton" type="submit" value="Confirmar">
-                    <button type="button" class="button" onclick="window.location.href='/Tarea2Test/Home';" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                    <button type="button" class="boton2" onclick="window.location.href='/Tarea2Test/Home';" id="cancelButton">Cancelar</button>
                 </div>
               </div>
 		</form>
