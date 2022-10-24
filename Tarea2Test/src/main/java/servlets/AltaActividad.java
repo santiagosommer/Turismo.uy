@@ -88,7 +88,7 @@ public class AltaActividad extends HttpServlet {
     	
     	try {
 			ct.crearActividadTuristica(nombre, descripcion, duracion, costo, LocalDate.now(), ciudad, departamento, prov, cats);
-			ct.AceptarActividad(nombre);
+//			ct.AceptarActividad(nombre);
 			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     	} catch (NombreActividadRepetidoException e) {
 			e.printStackTrace();
