@@ -7,7 +7,7 @@
 	<div class="top-bar-left">
         <img src="media/icons/bus.svg" class="bus-icon">
         <div class="top-bar-links">
-            <a href="/Tarea2Test/Home" class="links selected">Principal</a>
+            <a href="/Tarea2Test/Home" class="links">Principal</a>
             <a href="/Tarea2Test/ConsultaActividadesIndex" class="links">Actividades</a>
             <a href="#" class="links">Paquetes</a>
         </div>
