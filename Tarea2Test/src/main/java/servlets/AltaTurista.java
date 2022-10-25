@@ -47,7 +47,7 @@ public class AltaTurista extends HttpServlet {
     		request.setAttribute("estado_error", EstadoError.ERROR_EMAIL);
     		return false;
     	}
-    	if (confirmPasword == password) {
+    	if (!confirmPasword.equals(password)) {
     		// contraseñas distintas
     		request.setAttribute("estado_error", EstadoError.ERROR_CONTRA);
     		return false;
