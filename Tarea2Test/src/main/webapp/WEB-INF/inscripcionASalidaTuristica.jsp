@@ -9,6 +9,17 @@
     <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
     <title>Inscripcion Salida</title>
+    
+    <script>
+    
+    document.addEventListener("keyup", function() {
+    	  var input = document.getElementById("id-input").value;
+    	  var costo = document.getElementById("costo-oculto").textContent;
+    	  document.getElementById("costo").innerHTML = "<b>Costo:</b> $" + costo * input;
+    	});
+    
+    </script>
+    
 </head>
 <body>
     
@@ -37,7 +48,10 @@
 	</div>
 	
 	<% } %>
-
+	
+		<% Float costo = ((DTSalidaTuristica) request.getSession().getAttribute("dtsalida")).getActividadTuristicaAsoc().getCostoTurista() ;%>
+	
+		
        <form class="form-register" method="get"> 
             
             <div class="CantidadTuristas">
@@ -45,7 +59,7 @@
                     <div class="input-outer">
                         <img src="media/icons/avatar.svg" class="icon">
                         
-                        <input type="text"  id="id-input" class="input-style" placeholder="Cantidad Turistas" name="cantidad-turistas" required >
+                        <input type="number" min="1" id="id-input" class="input-style" placeholder="Cantidad Turistas" name="cantidad-turistas" required >
                     </div>
                  </div>
             </div>     
@@ -53,7 +67,7 @@
 
                   
 						
-                   <p><b>Costo:</b>  $$ </p>
+                   <p id="costo"><b>Costo:</b> $<%= costo %> </p>
                   
 
                   <div class="botones">
@@ -65,6 +79,9 @@
 
             
             </form>
+            
+            
+            <div id="costo-oculto" style="font-size: 0;"> <%= costo %></div>
 
         </div>
 
