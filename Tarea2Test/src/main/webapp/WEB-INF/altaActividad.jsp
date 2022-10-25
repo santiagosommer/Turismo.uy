@@ -19,11 +19,6 @@
         </div>
         <div class="texto">
             <h2>Agregar Actividad Turistica</h2>
-        </div>
-        
-        <div class="formulario">
-        	<form class="formulario" action="AltaActividad" method="get">
-            <div class="container2">
             
             <% EstadoError Error =  (EstadoError) request.getAttribute("estado_error"); %>
 		<% if (Error!= null){ %>
@@ -43,6 +38,13 @@
 			</div>
 			
 		<% } %>
+            
+        </div>
+        
+        <div class="formulario">
+        	<form class="formulario" action="AltaActividad" method="get">
+            <div class="container2">
+		
                 <div class="departamentoycategorias">
 
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
@@ -74,12 +76,12 @@
                 </div>
                 <div class="c4">
                     <img src="media/icons/clock.svg" class="iconop" >
-                    <input type="text" name="duracion" class ="controls"  placeholder="Duracion hh" required>
+                    <input type="number" min="1" name="duracion" class ="controls"  placeholder="Duracion hh" required>
                 </div>
                 <div class="c5">
                     <div class="Costo ">
                         <img src="media/icons/money2.svg" class="iconop" >
-                        <input type="text" name="costo"  placeholder="Costo" class ="controls" required>
+                        <input type="number" min="0.01" step="0.01" name="costo"  placeholder="Costo" class ="controls" required>
                     </div>
                 </div>
                 <div class="c6">

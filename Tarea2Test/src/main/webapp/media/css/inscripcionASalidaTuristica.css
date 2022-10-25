@@ -16,7 +16,10 @@
   .CantidadTuristas { grid-area: CantidadTuristas;
  }
   
-  .botones { grid-area: botones;
+  .botones { 
+  	margin-left: auto;
+  	margin-right: auto;
+  	grid-area: botones;
     text-align: center;
   
 }
@@ -197,4 +200,10 @@ button{
     padding: 25px;
     
     text-align:center;
+    color: #293845;
+    margin: auto;
+}
+
+p{
+	text-align:center;
 }

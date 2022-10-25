@@ -52,7 +52,7 @@
 
                           </select></div>
                           
-                        <button type="button" class="boton2" onclick="window.location.href = '/Tarea2Test/AltaSalida?depa='+document.getElementById('cars').value" id="extraButton">Select</button>
+                        <button type="button" class="boton" onclick="window.location.href = '/Tarea2Test/AltaSalida?depa='+document.getElementById('cars').value" id="extraButton">Select</button>
 						
 						 
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="c5">
                     <div class="Costo"> <img src="media/icons/cuposMax.svg" class="iconop" >
-                        <input type="text" name="maxcupos"  placeholder="Cupos maximos" class ="controls" required>
+                        <input type="number" min="1" name="maxcupos"  placeholder="Cupos maximos" class ="controls" required>
                     </div>
                 </div>
                 <div class="c6">
