@@ -1,21 +1,11 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Set;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
-import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IPaquete;
-import ServidorCentral.Logica.Interfaces.ITuristica;
 
 /**
  * Servlet implementation class ComprarPaquete

@@ -46,7 +46,7 @@
             
                 <div class="conjuntoConsulta">
                     <div class="imagen">
-                        <img src="media/icons/avatar.svg">
+                        <img src="media/icons/avatar.svg" height="200">
                     </div>
                     <div class="descripcion">
                         <div class="nombre">

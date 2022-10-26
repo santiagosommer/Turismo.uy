@@ -56,7 +56,7 @@
   <div class="Consultas">
     <div class="container-consulta">
       <div class="img-container">
-        <img src="media/icons/avatar.svg">
+        <img src="media/icons/avatar.svg" height="200">
       </div>
       <h3><%= nombre %></h3>
       <button id="botonComprarPaquete" onclick="location.href='/Tarea2Test/ComprarPaquete'">Comprar Paquete </button>
@@ -92,7 +92,7 @@
       
         <div class="Actividad">
           <div class="imagenSalida">
-            <img src = "media/icons/avatar.svg">
+            <img src = "media/icons/avatar.svg" height="200">
           </div>
           <div class="Salida-text">
             <h3><%= a.getNombre() %></h3>
