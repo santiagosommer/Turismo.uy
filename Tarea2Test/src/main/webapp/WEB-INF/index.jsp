@@ -30,7 +30,7 @@
                 </div>
                 <div class="recommendation-item">
                     <img src="media/icons/money.svg" class="recommendation-icon">
-                    <h3>Los mejores <a href="#">paquetes</a> de actividades para tu mayor ahorro!</h3>
+                    <h3>Los mejores <a href="/Tarea2Test/ConsultaPaqueteIndex">paquetes</a> de actividades para tu mayor ahorro!</h3>
                 </div>
             </div>
         </div>
