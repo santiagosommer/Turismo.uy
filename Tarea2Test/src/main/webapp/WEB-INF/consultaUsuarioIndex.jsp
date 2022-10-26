@@ -7,6 +7,7 @@
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%! @SuppressWarnings("unchecked") %>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <title>Consulta Usuario</title>
 </head>
@@ -28,8 +29,7 @@
             
             
              <% 
-       
-       
+          
         if (request.getAttribute("Usuarios") != null) {
             Set<DTUsuario> s = (Set<DTUsuario>) request.getAttribute("Usuarios") ;
             for (DTUsuario item: s) {

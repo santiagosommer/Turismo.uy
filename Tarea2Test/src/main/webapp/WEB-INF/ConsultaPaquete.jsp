@@ -9,6 +9,7 @@
      <%@page import="java.util.Set"%>
     <%@page import=" java.util.ArrayList"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%! @SuppressWarnings("unchecked") %>
     <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");

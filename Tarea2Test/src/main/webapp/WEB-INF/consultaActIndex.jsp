@@ -7,6 +7,7 @@
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%! @SuppressWarnings("unchecked") %>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
     <title>Consulta Actividades</title>
 </head>
