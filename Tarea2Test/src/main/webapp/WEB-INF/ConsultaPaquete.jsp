@@ -59,7 +59,7 @@
         <img src="media/icons/avatar.svg">
       </div>
       <h3><%= nombre %></h3>
-      <button id="botonComprarPaquete" onclick="location.href='compraPaquete.html'">Comprar Paquete </button>
+      <button id="botonComprarPaquete" onclick="location.href='/Tarea2Test/ComprarPaquete'">Comprar Paquete </button>
     </div>
     <div class="top-bar-links">
       <div class="tab">

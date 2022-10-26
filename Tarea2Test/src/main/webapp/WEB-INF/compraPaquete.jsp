@@ -24,11 +24,11 @@
                 </div>
            <div class="conteiner2"></div>
                 <div class="info">
-                    <center><b>Costo:</b>  $0.00 </center>
+                    <b>Costo:</b>  $0.00 
                     <hr>
-                    <center><b>Cantidad de Turistas:</b>  00 </center>
+                    <b>Cantidad de Turistas:</b>  00 
                     <hr>
-                    <center><b>Vencimiento</b>  00/00/00 </center>
+                    <b>Vencimiento</b>  00/00/00 
                 </div>
             </div>
                     <div class="botones">
