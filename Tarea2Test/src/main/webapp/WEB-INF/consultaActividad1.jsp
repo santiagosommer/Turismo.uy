@@ -135,7 +135,7 @@
                 </div>
                 <div class="Paquete-text">
                   <h3><%=  paque.get(i).getNombre() %></h3>
-                  <p><a href="/Tarea2Test/ConsultaPaquete?paramS=<%=paque.get(i).getNombre()%>" class="links">Leer mas.</a></p>
+                  <p><a href="/Tarea2Test/ConsultaPaquete?paramPaq=<%=paque.get(i).getNombre()%>" class="links">Leer mas.</a></p>
                 </div>
               </div>
               

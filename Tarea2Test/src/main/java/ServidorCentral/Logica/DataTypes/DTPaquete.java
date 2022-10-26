@@ -2,7 +2,10 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
+import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Paquete;
 
 
@@ -31,6 +34,9 @@ public class DTPaquete {
 	 setDescripcion(pa.getDescripcion());
 	 setPeriodoValidez(pa.getPeriodoValidez());
 	 setDescuento(pa.getDescuento());
+	 FechaAlta = pa.getFechaAlta();
+	 ActividadesTuristicas = new ArrayList<DTActividadTuristica>();
+	
 }
 
 

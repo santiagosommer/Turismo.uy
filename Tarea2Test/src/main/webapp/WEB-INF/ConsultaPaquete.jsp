@@ -50,15 +50,13 @@
 	
 		DTPaquete paq = (DTPaquete) request.getSession().getAttribute("paq_dt");
 		String  nombre = paq.getNombre();
-	
-		
 		%>
 
 <div class="content">
   <div class="Consultas">
     <div class="container-consulta">
       <div class="img-container">
-        <img src="https://sites.google.com/site/areasprotegidasenuruguay/_/rsrc/1411660757953/algunas-de-las-areas-ingresadas-por-el-snap/laguna-de-rocha/Mapa_Rocha_BLOG.jpg?height=280&width=400" height="200">
+        <img src="media/icons/avatar.svg">
       </div>
       <h3><%= nombre %></h3>
       <button id="botonComprarPaquete" onclick="location.href='compraPaquete.html'">Comprar Paquete </button>
@@ -88,28 +86,33 @@
         <p><b>Descripcion:</b> <%= paq.getDescripcion() %></p>
       </div>
       <div id="Actividades" class="tabcontent">
-      <% ArrayList<DTActividadTuristica> act = paq.getActividadesTuristicas();
-      for (DTActividadTuristica a: act){  %>
+      <% ArrayList<DTActividadTuristica> act = (ArrayList<DTActividadTuristica>) request.getSession().getAttribute("ActPaq");
+      if (act!= null){
+      	for (DTActividadTuristica a: act){  %>
       
         <div class="Actividad">
           <div class="imagenSalida">
-            <img src = "https://s3.amazonaws.com/turismorocha/eventos/2569/cover/degusta-048968300-1659558891.jpg">
+            <img src = "media/icons/avatar.svg">
           </div>
           <div class="Salida-text">
             <h3><%= a.getNombre() %></h3>
             <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= a.getNombre()%>" class="links">Leer mas.</a></p>
           </div>
         </div>
+        <%}%> 
         
       </div>
       
       <div id="Categorias" class="tabcontent">
-      <%
-        Set<String> cats =  a.getCategorias();
-            for (String categ : cats){%>
-      	  
-        <p><b> categ </b></p>
-        <% }}%>
+      
+      	<% ArrayList<String> p = new ArrayList<String>();
+      	for (DTActividadTuristica a: act){ 
+      		Set<String> cats =  a.getCategorias();
+            for (String categ : cats){  
+            	if (!p.contains(categ)) {
+            		p.add(categ); %> 
+      	       <p><b> <%= categ %> </b></p>
+        <% } }}}%>
       </div>
     </div>
   </div>

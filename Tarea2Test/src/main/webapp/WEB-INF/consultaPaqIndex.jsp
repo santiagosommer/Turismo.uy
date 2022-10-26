@@ -26,8 +26,10 @@
             <h1 style="text-align: center;">Consultar paquetes</h1>
         </div>
         <div class="content">
-
+        
+  
             <div class="filtros">
+            <form class="filtros" action="ConsultaPaqueteIndex" method="get">
                 <div class="filtro">
                     <select name="Categorias" class="Categorias">
                     <option value="Categorias">Categorias</option>
@@ -37,6 +39,7 @@
                     </select>
                     <input type="submit" class="button" id="consultaPaquete" value="Consultar">
                 </div>
+                </form>
             </div>
             <div class="Consultas">
             <%for (DTPaquete p : paqs) {%>

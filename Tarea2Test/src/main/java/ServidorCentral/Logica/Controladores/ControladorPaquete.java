@@ -143,9 +143,7 @@ public class ControladorPaquete implements IPaquete {
 	public DTPaquete getDtPaquete() {
 		// TODO Auto-generated method stub
 		if (PaqueteSeleccionado!= null) {
-			return new DTPaquete(PaqueteSeleccionado.getNombre(),PaqueteSeleccionado.getDescripcion(),
-					PaqueteSeleccionado.getPeriodoValidez(),PaqueteSeleccionado.getDescuento(),
-					PaqueteSeleccionado.getFechaAlta());
+			return new DTPaquete(PaqueteSeleccionado);
 
 		}
 		else {

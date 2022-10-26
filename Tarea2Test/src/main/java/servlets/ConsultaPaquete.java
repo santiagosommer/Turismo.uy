@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTPaquete;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.IPaquete;
+import ServidorCentral.Logica.Interfaces.ITuristica;
 
 /**
  * Servlet implementation class ConsultaPaquete
@@ -32,11 +36,23 @@ public class ConsultaPaquete extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	Fabrica fab = Fabrica.getInstance();
     	IPaquete paqs = fab.getControladorPaquete();
+    	ITuristica ctrTur = fab.getControladorTuristica();
     	String nomPaq = request.getParameter("paramPaq"); 
+    	ArrayList<DTActividadTuristica> actividades = new ArrayList<DTActividadTuristica>();
+    	
     	 if (nomPaq != null) {
     		 paqs.seleccionarPaquete(nomPaq);
+    		Set<String> acts = paqs.listarActividadesPaquete();
+    		for (String act: acts) {
+    			ctrTur.seleccionarActividad(act);
+    			DTActividadTuristica agregar = ctrTur.getDTActividadTuristica();
+    			actividades.add(agregar);
+    			
+    		}
+    		 
     		 DTPaquete paq = paqs.getDtPaquete();
     		 request.getSession().setAttribute("paq_dt", paq);
+    		 request.getSession().setAttribute("ActPaq", actividades);
     		 RequestDispatcher dispatcher = request.getRequestDispatcher(
          	          "/WEB-INF/ConsultaPaquete.jsp"); 
          	        dispatcher.forward(request, response);
