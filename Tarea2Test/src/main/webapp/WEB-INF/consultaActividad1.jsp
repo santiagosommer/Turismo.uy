@@ -102,7 +102,7 @@
               <p><b>Fecha Alta:</b> <%= fechaAlta %></p>
               <p><b>Categoría/s:</b> 
 			  <% if(cate != null)for(String s : cate){ %>
-					(<%= s %>)
+					<%= s %>
 			  <% } %>
 			  
 			  </p> <% //ver %>

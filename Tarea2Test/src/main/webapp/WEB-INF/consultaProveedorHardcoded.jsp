@@ -111,7 +111,7 @@
                     <p><b>Nickname:</b> <%= nickName%></p>
                     <p><b>Nombre: </b> <%= nombre%></p>
                     <p><b>Apellido: </b> <%= apellido%></p>
-                    <p><b>E-mail:</b> email </p>
+                    <p><b>E-mail:</b> <%= email %></p>
                     <p><b>Fecha de Nacimiento:</b> <%= fechaN %></p>
                     <p><b>Descripcion:</b> <%= desc %> </p>
                     <p><b>URL:</b>  <%= url %> </p>
