@@ -7,7 +7,6 @@
     <%@page import="java.util.Set"%>
     <%@page import="java.util.HashSet"%>
     <%@page import="ServidorCentral.Logica.DataTypes.*"%>
-    <%! @SuppressWarnings("unchecked") %>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
     <title>Consulta Paquetes</title>
 </head>

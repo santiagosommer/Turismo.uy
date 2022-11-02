@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Set"%>
 <%@page import="ServidorCentral.Logica.DataTypes.EstadoError"%>
-<%! @SuppressWarnings("unchecked") %>
 
 <!DOCTYPE html>
 <html lang="en">
