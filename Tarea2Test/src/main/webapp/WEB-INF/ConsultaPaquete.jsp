@@ -45,7 +45,7 @@
     <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
 
 
-<% 
+		<% 
 
 	
 		DTPaquete paq = (DTPaquete) request.getSession().getAttribute("paq_dt");
@@ -117,7 +117,7 @@
     </div>
   </div>
 </div>
-
+	<script>window.onload=openTab(event, 'Perfil');</script>
     <script src="./../js/consultaDeUsuario.js"></script>
     <script src="./../js/mantenerSesion.js"></script>
 </body>
