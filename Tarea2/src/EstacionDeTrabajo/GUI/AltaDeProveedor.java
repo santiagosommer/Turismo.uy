@@ -331,7 +331,7 @@ public class AltaDeProveedor extends JInternalFrame {
 		String contraseña = this.textFieldContraseña.getText();
 		String confirmacionContraseña = this.textFieldConfirmacionContraseña.getText();
 
-		if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
+		if (contraseña.isEmpty() || confirmacionContraseña.isEmpty() || nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
