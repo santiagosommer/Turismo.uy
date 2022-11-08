@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ServidorCentral.Logica.DataTypes.EstadoSesion;
+import ServidorCentral.Logica.Excepciones.SalidaExpirada;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.CargaDeDatos;
 
@@ -31,6 +32,7 @@ public class Home extends HttpServlet {
     /**
 	 * carga los datos de prueba 
 	 * @param request 
+     * @throws SalidaExpirada 
 	 */
     
     private static void cargarDatos() {
@@ -40,6 +42,9 @@ public class Home extends HttpServlet {
     	try {
 			carga.cargarDatos();
 		} catch (UsuarioRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SalidaExpirada e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -63,7 +68,7 @@ public class Home extends HttpServlet {
 	}
 
 	private void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SalidaExpirada {
 		cargarDatos();
 		initSession(request);
 		
@@ -75,14 +80,24 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException | IOException | SalidaExpirada e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (ServletException | IOException | SalidaExpirada e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

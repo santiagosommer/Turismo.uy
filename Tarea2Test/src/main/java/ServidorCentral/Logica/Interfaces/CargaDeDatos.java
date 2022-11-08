@@ -11,6 +11,7 @@ import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
 import ServidorCentral.Logica.Excepciones.NombreActividadRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombrePaqueteRepetidoException;
 import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
+import ServidorCentral.Logica.Excepciones.SalidaExpirada;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
@@ -44,7 +45,7 @@ public class CargaDeDatos {
 		this.yaCargo = bool;
 	}
 	
-	public Boolean cargarDatos() throws UsuarioRepetidoException {
+	public Boolean cargarDatos() throws UsuarioRepetidoException, SalidaExpirada {
 		if (yaCargo)
 			return false;
 		else {
@@ -219,6 +220,10 @@ public class CargaDeDatos {
 				/*22*/interfazUsuario.crearInscripcion("mastropiero", "Almuerzo en el Real 1" , 4, (float) 2720, LocalDate.of(2022, 10, 12));
 				
 			} catch (YaExisteInscripcionTuristaSalida e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (SalidaExpirada e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

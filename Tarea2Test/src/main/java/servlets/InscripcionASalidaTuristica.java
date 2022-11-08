@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import ServidorCentral.Logica.DataTypes.DTTurista;
+import ServidorCentral.Logica.Excepciones.SalidaExpirada;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 import ServidorCentral.Logica.Interfaces.ITuristica;
@@ -34,7 +35,7 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     
     
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SalidaExpirada {
 	   ITuristica ct = Fabrica.getInstance().getControladorTuristica();
 	   
 	   if (request.getParameter("cantidad-turistas")==null) {
@@ -63,6 +64,12 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 		   return;
 	   }
 	   
+		if(salida.getInfoSalida().getFecha().isBefore(LocalDate.now())) {
+		   request.setAttribute("error", "SalidaExpirada");
+		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
+		   return;
+	   }
+	   
 	   try {
 		   cu.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), LocalDate.now());
 		   request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
@@ -82,7 +89,12 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException | IOException | SalidaExpirada e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -90,7 +102,12 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException | IOException | SalidaExpirada e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

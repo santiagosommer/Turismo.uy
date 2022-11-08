@@ -2,6 +2,7 @@ package ServidorCentral.Logica.Controladores;
 
 import ServidorCentral.Logica.Interfaces.ITuristica;
 import ServidorCentral.Logica.Interfaces.IUsuario;
+import ServidorCentral.Logica.Excepciones.SalidaExpirada;
 import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
@@ -173,7 +174,7 @@ public class ControladorUsuario implements IUsuario {
 
 	@Override
 
-	public void crearInscripcion(String nicknameTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida {
+	public void crearInscripcion(String nicknameTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida, SalidaExpirada {
 		// TODO Auto-generated method stub
 		
 		Fabrica fabrica = Fabrica.getInstance();
@@ -200,9 +201,18 @@ public class ControladorUsuario implements IUsuario {
 		if (tieneInsc) {
 
 			throw new YaExisteInscripcionTuristaSalida(
-					"El turista ya tiene una inscripcion a la salida de nombre" + sal.getNombre());
+					"El turista ya tiene una inscripcion a la salida de nombre " + sal.getNombre());
 
 		} else {
+			
+			//LocalDate now = LocalDate.now(); 
+			if(sal.getInfoSalida().getFecha().isBefore(fechaAlta)) {
+				throw new SalidaExpirada(
+						"La salida de nombre " + sal.getNombre() + " ya expiro" );
+
+			} else {
+				
+			}
 
 		
 		  if (sal.getCuposDisponibles()>= cantidadTuristas) {
