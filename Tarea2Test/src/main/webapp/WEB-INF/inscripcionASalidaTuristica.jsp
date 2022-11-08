@@ -43,11 +43,13 @@
  		  if (Error.equals("ExisteInscripcion")){ %>
  			Ya existe una inscripcion.
  		<%} %>
+ 		 <% if (Error.equals("SalidaExpirada")){ %>
+ 			La Salida expiro.
+ 		<%} %>
  		
        
 	</div>
-	
-	<% } %>
+	<%} %>
 	
 		<% Float costo = ((DTSalidaTuristica) request.getSession().getAttribute("dtsalida")).getActividadTuristicaAsoc().getCostoTurista() ;%>
 	
@@ -81,7 +83,7 @@
             </form>
             
             
-            <div id="costo-oculto" style="font-size: 0;"> <%= costo %></div>
+            <div id="costo-oculto" style="font-size: 0;"> <%=costo%></div>
 
         </div>
 
