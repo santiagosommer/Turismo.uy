@@ -14,7 +14,7 @@ public class SalidaTuristica {
 	 private int CuposDisponibles;
 	 private ActividadTuristica ActividadTuristicaAsociada;
 	 private ArrayList<Inscripcion> InscripcionesAsociadas;
-
+	 private int VisitasSalida;
 	 
 	 public  SalidaTuristica (String nombre,int cantidadMaxTuristas,LocalDate fechaAltaSalida,DTInfoSalida infoSalida) {
 		 setNombre(nombre);
@@ -22,6 +22,7 @@ public class SalidaTuristica {
 		 setFechaAlta(fechaAltaSalida);
 		 setInfoSalida(infoSalida);
 		 setCuposDisponibles(cantidadMaxTuristas);
+		 setVisitasSalida(0);
 	 }	 
 	 
 	 public String getNombre() {
@@ -70,4 +71,12 @@ public class SalidaTuristica {
 	 public void setActividadTuristicaAsociada(ActividadTuristica actividadTuristicaAsociada) {
 		 ActividadTuristicaAsociada = actividadTuristicaAsociada;
 	 }
+
+	public int getVisitasSalida() {
+		return VisitasSalida;
+	}
+
+	public void setVisitasSalida(int visitasSalida) {
+		VisitasSalida = visitasSalida;
+	}
 }
