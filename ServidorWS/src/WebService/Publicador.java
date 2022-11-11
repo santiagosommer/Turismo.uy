@@ -1,4 +1,4 @@
-package servidor;
+package WebService;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -339,15 +339,3 @@ public class Publicador {
 //	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
