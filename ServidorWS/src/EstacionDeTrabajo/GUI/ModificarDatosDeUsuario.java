@@ -1,0 +1,40 @@
+package EstacionDeTrabajo.GUI;
+
+import java.awt.EventQueue;
+import ServidorCentral.Logica.Interfaces.IUsuario;
+
+import javax.swing.JInternalFrame;
+
+public class ModificarDatosDeUsuario extends JInternalFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args,IUsuario ctrl) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ModificarDatosDeUsuario frame = new ModificarDatosDeUsuario(ctrl);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ModificarDatosDeUsuario(IUsuario ctrl) {
+		setBounds(100, 100, 450, 300);
+		
+
+	}
+
+}
