@@ -9,11 +9,13 @@ public class Turista extends Usuario{
 	
 	 private String Nacionalidad ;
 	 private ArrayList<Inscripcion> Inscripciones;  
+	 private ArrayList<ActividadTuristica> ActividadesFavoritas;
 	 
 	public Turista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento,String contrasenia, String nacionalidad) {
 		super(nickname, nombre, apellido, email, fechaNacimiento, contrasenia);
 		setNacionalidad(nacionalidad);
 		setInscripciones(new ArrayList<Inscripcion>());
+		setActividadesFavoritas(new ArrayList<ActividadTuristica>() );
 		
 	}
 
@@ -35,6 +37,13 @@ public class Turista extends Usuario{
  
 	public void agregarInscripcion(Inscripcion i) {
 		Inscripciones.add(i);
+	}
+	public ArrayList<ActividadTuristica> getActividadesFavoritas() {
+		return ActividadesFavoritas;
+	}
+
+	public void setActividadesFavoritas(ArrayList<ActividadTuristica> actividadesFavoritas) {
+		ActividadesFavoritas = actividadesFavoritas;
 	}
 	
 	

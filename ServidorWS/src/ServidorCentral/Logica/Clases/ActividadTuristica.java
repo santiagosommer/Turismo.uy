@@ -22,6 +22,8 @@ public class ActividadTuristica {
 	private String NombreCiudad;
 	private Map<String, Categoria> Categorias;
 	private EstadoActividad Estado;
+	private int VisitasActividad; //nuevo
+	private String URLVideo;
 
 	public ActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta,
 			Departamento infoDepartamento, String ciudad, Proveedor proveedor,Map<String, Categoria> categorias) {
@@ -37,7 +39,8 @@ public class ActividadTuristica {
 		setCiudad(ciudad);
 		setCategorias(categorias);
 		Estado = EstadoActividad.Agregada;
-		
+		//agregar url
+		VisitasActividad = 0;
 	}
 
 	public String getNombre() {
@@ -141,6 +144,22 @@ public class ActividadTuristica {
 			return key.contentEquals(cat);
 		}
 		return false;
+	}
+
+	public int getVisitasActividad() {
+		return VisitasActividad;
+	}
+
+	public void setVisitasActividad(int visitasActividad) {
+		VisitasActividad = visitasActividad;
+	}
+
+	public String getURLVideo() {
+		return URLVideo;
+	}
+
+	public void setURLVideo(String uRLVideo) {
+		URLVideo = uRLVideo;
 	}
 	
 	

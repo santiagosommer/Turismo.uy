@@ -10,6 +10,7 @@ public abstract class Usuario {
 	private String Email;
 	private LocalDate FechaNacimiento;
 	private String Contrasenia;
+	ArrayList<Usuario> Seguidores;
 	
 
 
@@ -20,6 +21,7 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
 	Contrasenia = contrasenia;
+	Seguidores = new ArrayList<Usuario>();
 
 }
 
