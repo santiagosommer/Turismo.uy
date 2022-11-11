@@ -1,15 +1,17 @@
 package ServidorCentral.Logica.Clases;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class Usuario {
-
+	
 	private String Nickname;
 	private String Nombre;
 	private String Apellido;
 	private String Email;
 	private LocalDate FechaNacimiento;
 	private String Contrasenia;
+	ArrayList<Usuario> Seguidores;
 	
 
 
@@ -20,6 +22,7 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
 	Contrasenia = contrasenia;
+	Seguidores = new ArrayList<Usuario>();
 
 }
 
