@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Clases;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class Usuario {
 
@@ -10,6 +11,7 @@ public abstract class Usuario {
 	private String Email;
 	private LocalDate FechaNacimiento;
 	private String Contrasenia;
+	ArrayList<Usuario> Seguidores;
 	
 
 
@@ -20,6 +22,7 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 	setEmail(email);
 	setFechaNacimiento(fechaNacimiento);
 	Contrasenia = contrasenia;
+	Seguidores = new ArrayList<Usuario>();
 
 }
 
@@ -94,4 +97,13 @@ public void setContraseña(String contraseña) {
 	Contrasenia = contraseña;
 }
 
+
+public ArrayList<Usuario> getSeguidores(){
+	return Seguidores;
+}
+
+
+public void setSeguidores(ArrayList<Usuario> seguidores ) {
+	Seguidores = seguidores;
+}
 }
