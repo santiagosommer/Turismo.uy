@@ -1,6 +1,7 @@
 package ServidorCentral.Logica.Clases;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class Usuario {
 
@@ -96,4 +97,13 @@ public void setContraseña(String contraseña) {
 	Contrasenia = contraseña;
 }
 
+
+public ArrayList<Usuario> getSeguidores(){
+	return Seguidores;
+}
+
+
+public void setSeguidores(ArrayList<Usuario> seguidores ) {
+	Seguidores = seguidores;
+}
 }
