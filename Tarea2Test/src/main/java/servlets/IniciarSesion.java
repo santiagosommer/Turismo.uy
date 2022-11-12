@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.EstadoError;
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
+import webservice.EstadoError;
+import webservice.EstadoSesion;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class IniciarSesion
@@ -40,20 +40,20 @@ public class IniciarSesion extends HttpServlet {
     		request.getRequestDispatcher("/WEB-INF/inicioDeSesion.jsp").forward(request, response);
     		return;
     	}
-    	
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
-    	
-    	EstadoError nuevoEstado = cu.iniciarSesion(nick_or_email,passw);
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        
+        EstadoError nuevoEstado = port.iniciarSesion(nick_or_email, passw);
     	
     	request.setAttribute("estado_error", nuevoEstado);
     	
     	if (nuevoEstado == EstadoError.EXITO_PROVEEDOR || nuevoEstado == EstadoError.EXITO_TURISTA) {
     		if(nuevoEstado == EstadoError.EXITO_PROVEEDOR) {
     			request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_PROVEEDOR);
-    			request.getSession().setAttribute("usuario_dt", cu.getDTProveedor());
+    			request.getSession().setAttribute("usuario_dt", port.getDTProveedor());
     		}else {
     			request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
-    			request.getSession().setAttribute("usuario_dt", cu.getDTTurista());
+    			request.getSession().setAttribute("usuario_dt", port.getDTTurista());
     		}
     		
     		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);

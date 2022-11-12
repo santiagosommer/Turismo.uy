@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
-import ServidorCentral.Logica.DataTypes.DTPaquete;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IPaquete;
-import ServidorCentral.Logica.Interfaces.ITuristica;
+import webservice.DtActividadTuristica;
+import webservice.DtPaquete;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaPaquete
@@ -33,23 +32,22 @@ public class ConsultaPaquete extends HttpServlet {
 
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	Fabrica fab = Fabrica.getInstance();
-    	IPaquete paqs = fab.getControladorPaquete();
-    	ITuristica ctrTur = fab.getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	String nomPaq = request.getParameter("paramPaq"); 
-    	ArrayList<DTActividadTuristica> actividades = new ArrayList<DTActividadTuristica>();
+    	ArrayList<DtActividadTuristica> actividades = new ArrayList<DtActividadTuristica>();
     	
     	 if (nomPaq != null) {
-    		 paqs.seleccionarPaquete(nomPaq);
-    		Set<String> acts = paqs.listarActividadesPaquete();
+    		 port.seleccionarPaquete(nomPaq);
+    		Set<String> acts = (Set<String>) port.listarActividadesPaquete();
     		for (String act: acts) {
-    			ctrTur.seleccionarActividad(act);
-    			DTActividadTuristica agregar = ctrTur.getDTActividadTuristica();
+    			port.seleccionarActividad(act);
+    			DtActividadTuristica agregar = port.getDTActividadTuristica();
     			actividades.add(agregar);
     			
     		}
     		 
-    		 DTPaquete paq = paqs.getDtPaquete();
+    		 DtPaquete paq = port.getDtPaquete();
     		 request.getSession().setAttribute("paq_dt", paq);
     		 request.getSession().setAttribute("ActPaq", actividades);
     		 request.getRequestDispatcher("/WEB-INF/ConsultaPaquete.jsp").forward(request, response); 

@@ -6,7 +6,7 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
     <title>Consulta Actividades</title>
 </head>
@@ -24,7 +24,7 @@
         <%
         Set<String> deptos = (Set<String>) request.getAttribute("departamentos");
         Set<String> cats = (Set<String>) request.getAttribute("categorias");
-        Set<DTActividadTuristica> acts = (Set<DTActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
+        Set<DtActividadTuristica> acts = (Set<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
         %>
         <div class="content">
 
@@ -57,7 +57,7 @@
             </div>
             <div class="Consultas">
             
-            	<%for (DTActividadTuristica s : acts) {%>
+            	<%for (DtActividadTuristica s : acts) {%>
 	                 <div class="conjuntoConsulta">
 	                    <div class="imagen">
 	                        <img src="media/icons/avatar.svg" height="200">

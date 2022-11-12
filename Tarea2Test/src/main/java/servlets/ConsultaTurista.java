@@ -8,11 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ServidorCentral.Logica.DataTypes.DTTurista;
-import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
+import webservice.DtTurista;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaTurista
@@ -33,15 +31,15 @@ public class ConsultaTurista extends HttpServlet {
     
     private void processRequest(
   	      HttpServletRequest request, HttpServletResponse response) 
-  	      throws ServletException, IOException, UsuarioNoExisteException {
+  	      throws ServletException, IOException{
     	
-    	
-      	Fabrica fab = Fabrica.getInstance();
-      	IUsuario ctrlUsr = fab.getControladorUsuario();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        
         String IDTuri = request.getParameter("paramT");
         if (IDTuri != null) {
-        	ctrlUsr.seleccionarTurista(IDTuri);
-        	DTTurista turi = ctrlUsr.getDTTurista(); 
+        	port.seleccionarTurista(IDTuri);
+        	DtTurista turi = port.getDTTurista(); 
         	request.getSession().setAttribute("turi_dt", turi);
             request.setAttribute("InfoTurista", turi); //?
             RequestDispatcher dispatcher3 = request.getRequestDispatcher(
@@ -55,18 +53,7 @@ public class ConsultaTurista extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -74,18 +61,7 @@ public class ConsultaTurista extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

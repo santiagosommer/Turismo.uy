@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.DataTypes.DTTurista;
-import ServidorCentral.Logica.Excepciones.SalidaExpirada;
-import ServidorCentral.Logica.Excepciones.YaExisteInscripcionTuristaSalida;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
+import webservice.Publicador;
+import webservice.PublicadorService;
+import webservice.YaExisteInscripcionTuristaSalida_Exception;
+import webservice.DtSalidaTuristica;
+import webservice.DtUsuario;
+
 
 /**
  * Servlet implementation class InscripcionASalidaTuristica
@@ -35,22 +34,22 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     
     
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, SalidaExpirada {
-	   ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+			throws ServletException, IOException {
+	   
+	   PublicadorService service = new PublicadorService();
+       Publicador port = service.getPublicadorPort();
 	   
 	   if (request.getParameter("cantidad-turistas")==null) {
-		   ct.seleccionarSalida(request.getParameter("nombreSalida"));
-		   request.getSession().setAttribute("dtsalida",ct.getDTSalidaTuristica());
+		   port.seleccionarSalida(request.getParameter("nombreSalida"));
+		   request.getSession().setAttribute("dtsalida",port.getDTSalidaTuristica());
 		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
 		   return;
 	   }
 	   Integer cant = Integer.parseInt(request.getParameter("cantidad-turistas"));
 	   
-	   IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+	   String turi = ((DtUsuario) request.getSession().getAttribute("usuario_dt")).getNickname();
 	   
-	   String turi = ((DTTurista) request.getSession().getAttribute("usuario_dt")).getNickname();
-	   
-	   DTSalidaTuristica salida = (DTSalidaTuristica)request.getSession().getAttribute("dtsalida");
+	   DtSalidaTuristica salida = (DtSalidaTuristica)request.getSession().getAttribute("dtsalida");
 	   
 	   if (cant<=0) {
 		   request.setAttribute("error", "Negativo");
@@ -71,10 +70,10 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	   }
 	   
 	   try {
-		   cu.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), LocalDate.now());
+		   port.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), webservice.LocalDate.now());
 		   request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 		   return;
-	   } catch (YaExisteInscripcionTuristaSalida e1) {
+	   } catch (YaExisteInscripcionTuristaSalida_Exception e1) {
 		   request.setAttribute("error", "ExisteInscripcion");
 		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
 		   return;
@@ -89,12 +88,7 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request,response);
-		} catch (ServletException | IOException | SalidaExpirada e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -102,12 +96,7 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request,response);
-		} catch (ServletException | IOException | SalidaExpirada e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

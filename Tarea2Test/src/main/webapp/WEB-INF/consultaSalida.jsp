@@ -6,7 +6,8 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.DtSalidaTuristica"%>
+    <%@page import="webservice.EstadoSesion"%>
     <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");
@@ -50,8 +51,8 @@
            String cupos = "";
            String lugar = "";
            String nombre = "";
-           if ((DTSalidaTuristica) request.getSession().getAttribute("salida_dt") != null) {
-        	   DTSalidaTuristica s = (DTSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
+           if ((DtSalidaTuristica) request.getSession().getAttribute("salida_dt") != null) {
+        	   DtSalidaTuristica s = (DtSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
         	   nombre = s.getNombre();
         	   fecha = s.getInfoSalida().getFecha().toString();
         	   hora = s.getInfoSalida().getHora().toString();

@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTInfoSalida;
-import ServidorCentral.Logica.DataTypes.EstadoError;
-import ServidorCentral.Logica.Excepciones.NoHayActividadConEseNombreException;
-import ServidorCentral.Logica.Excepciones.NombreSalidaRepetidoException;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
+import webservice.DtInfoSalida;
+import webservice.EstadoError;
+import webservice.NoHayActividadConEseNombreException_Exception;
+import webservice.NombreSalidaRepetidoException_Exception;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class AltaSalida
@@ -38,9 +38,10 @@ public class AltaSalida extends HttpServlet {
     	
     	String nombre = request.getParameter("nombre");
     
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	
-    	if (ct.existeSalida(nombre)) {
+    	if (port.existeSalida(nombre)) {
     		// nombre repetido
     		request.setAttribute("estado_error", EstadoError.ERROR_SALIDA);
     		return false;
@@ -52,9 +53,10 @@ public class AltaSalida extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
     	request.setAttribute("estado_error", null);
-    	ITuristica ct = Fabrica.getInstance().getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	
-    	Set<String> deps = ct.listarDepartamentos();
+    	Set<String> deps = (Set<String>) port.listarDepartamentos();
     	request.setAttribute("listarDepartamentos", deps);
     	
     	if (request.getParameter("depa")==null && request.getParameter("nombre")==null) {
@@ -64,7 +66,7 @@ public class AltaSalida extends HttpServlet {
     	
     	String departamento = request.getParameter("depa");
     	
-    	Set<String> acts = ct.listarActividadesDeDepartamento(departamento);
+    	Set<String> acts = (Set<String>) port.listarActividadesDeDepartamento(departamento);
     	request.setAttribute("listarActividades", acts);
     	
     	if (request.getParameter("nombre")==null) {
@@ -90,9 +92,12 @@ public class AltaSalida extends HttpServlet {
     		LocalDate fecha = date.toLocalDate();
             LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
-    		DTInfoSalida info = new DTInfoSalida(fecha,hora,lugar);
-			ct.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
-		} catch (NombreSalidaRepetidoException | NoHayActividadConEseNombreException e) {
+    		DtInfoSalida info = new DtInfoSalida();
+    		info.setFecha(fecha);
+    		info.setHora(hora);
+    		info.setLugar(lugar);
+			port.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
+		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}
     	

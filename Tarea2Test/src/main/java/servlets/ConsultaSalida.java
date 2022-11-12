@@ -8,10 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
+import webservice.DtSalidaTuristica;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaSalida
@@ -33,13 +32,13 @@ public class ConsultaSalida extends HttpServlet {
     	      HttpServletRequest request, HttpServletResponse response) 
     	      throws ServletException, IOException {
       	
-      	
-          Fabrica fab = Fabrica.getInstance();
-          ITuristica ctrlAct = fab.getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
+        
           String IDSalida = request.getParameter("paramS");
           if (IDSalida != null) {
-          	ctrlAct.seleccionarSalida(IDSalida);
-          	DTSalidaTuristica sal = ctrlAct.getDTSalidaTuristica();
+        	  port.seleccionarSalida(IDSalida);
+          	DtSalidaTuristica sal = port.getDTSalidaTuristica();
           	request.getSession().setAttribute("salida_dt", sal);
               //request.setAttribute("InfoTurista", turi); //?
               RequestDispatcher dispatcher = request.getRequestDispatcher(

@@ -8,7 +8,7 @@
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
      <%@page import="java.util.Set"%>
     <%@page import=" java.util.ArrayList"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
     <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");
@@ -48,7 +48,7 @@
 		<% 
 
 	
-		DTPaquete paq = (DTPaquete) request.getSession().getAttribute("paq_dt");
+		DtPaquete paq = (DtPaquete) request.getSession().getAttribute("paq_dt");
 		String  nombre = paq.getNombre();
 		%>
 
@@ -86,9 +86,9 @@
         <p><b>Descripcion:</b> <%= paq.getDescripcion() %></p>
       </div>
       <div id="Actividades" class="tabcontent">
-      <% ArrayList<DTActividadTuristica> act = (ArrayList<DTActividadTuristica>) request.getSession().getAttribute("ActPaq");
+      <% ArrayList<DtActividadTuristica> act = (ArrayList<DtActividadTuristica>) request.getSession().getAttribute("ActPaq");
       if (act!= null){
-      	for (DTActividadTuristica a: act){  %>
+      	for (DtActividadTuristica a: act){  %>
       
         <div class="Actividad">
           <div class="imagenSalida">
@@ -106,8 +106,8 @@
       <div id="Categorias" class="tabcontent">
       
       	<% ArrayList<String> p = new ArrayList<String>();
-      	for (DTActividadTuristica a: act){ 
-      		Set<String> cats =  a.getCategorias();
+      	for (DtActividadTuristica a: act){ 
+      		Set<String> cats = (Set<String>) a.getCategorias();
             for (String categ : cats){  
             	if (!p.contains(categ)) {
             		p.add(categ); %> 

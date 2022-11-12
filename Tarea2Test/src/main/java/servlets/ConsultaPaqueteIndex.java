@@ -6,9 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaPaqueteIndex
@@ -28,10 +27,11 @@ public class ConsultaPaqueteIndex extends HttpServlet {
     
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	ITuristica itur = Fabrica.getInstance().getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	String cat = request.getParameter("Categoria");
-    	request.setAttribute("categorias", itur.listarCategorias());
-    	request.setAttribute("lista_paquetes_a_mostrar", itur.listarPaquetesCategoria(cat));
+    	request.setAttribute("categorias", port.listarCategorias());
+    	request.setAttribute("lista_paquetes_a_mostrar", port.listarPaquetesCategoria(cat));
     	
     	request.getRequestDispatcher("/WEB-INF/consultaPaqIndex.jsp").forward(request, response);
     	

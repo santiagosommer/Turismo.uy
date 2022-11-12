@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.DTProveedor;
-import ServidorCentral.Logica.Excepciones.UsuarioNoExisteException;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
+import webservice.DtProveedor;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaProveedor
@@ -31,15 +30,14 @@ public class ConsultaProveedor extends HttpServlet {
     
     private void processRequest(
   	      HttpServletRequest request, HttpServletResponse response) 
-  	      throws ServletException, IOException, UsuarioNoExisteException {
-  	
-  	Fabrica fab = Fabrica.getInstance();
-  	IUsuario ctrlUsr = fab.getControladorUsuario();
+  	      throws ServletException, IOException{
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
   //Consulta Proveedor
     String ID = request.getParameter("paramP");
     if (ID != null) {
-    	ctrlUsr.seleccionarProveedor(ID);
-    	DTProveedor prov = ctrlUsr.getDTProveedor();
+    	port.seleccionarProveedor(ID);
+    	DtProveedor prov = port.getDTProveedor();
         request.setAttribute("InfoProveedor", prov);
         request.getSession().setAttribute("prov_dt", prov);
         RequestDispatcher dispatcher2 = request.getRequestDispatcher(
@@ -58,18 +56,7 @@ public class ConsultaProveedor extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -77,18 +64,7 @@ public class ConsultaProveedor extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
 			processRequest(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

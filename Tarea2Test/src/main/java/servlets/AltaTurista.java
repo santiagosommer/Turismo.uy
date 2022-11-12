@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.DataTypes.EstadoError;
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
-import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.IUsuario;
+import webservice.EstadoError;
+import webservice.EstadoSesion;
+import webservice.Publicador;
+import webservice.PublicadorService;
+import webservice.UsuarioRepetidoException_Exception;
+
 
 /**
  * Servlet implementation class AltaTurista
@@ -35,14 +36,15 @@ public class AltaTurista extends HttpServlet {
     	String password = request.getParameter("password");
     	String confirmPasword = request.getParameter("confirmPasword");
     	
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	
-    	if (cu.existeUsuario(nickname)) {
+    	if (port.existeUsuario(nickname)) {
     		// nickname repetido
     		request.setAttribute("estado_error", EstadoError.ERROR_NICK_OR_EMAIL);
     		return false;
     	}
-    	if (cu.existeUsuarioEmail(email)) {
+    	if (port.existeUsuarioEmail(email)) {
     		// email repetido
     		request.setAttribute("estado_error", EstadoError.ERROR_EMAIL);
     		return false;
@@ -80,17 +82,18 @@ public class AltaTurista extends HttpServlet {
     	String password = request.getParameter("password");
     	String nacionalidad = request.getParameter("nacionalidad");
     	
-    	IUsuario cu = Fabrica.getInstance().getControladorUsuario();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	
     	try {
-			cu.altaTurista(nickname, nombre, apellido, email, date, password, nacionalidad);
-		} catch (UsuarioRepetidoException e) {
+    		port.altaTurista(nickname, nombre, apellido, email, date, password, nacionalidad);
+		} catch (UsuarioRepetidoException_Exception e) {
 			e.printStackTrace();
 		}
     	
     	request.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_TURISTA);
-    	cu.seleccionarTurista(nickname);
-		request.getSession().setAttribute("usuario_dt", cu.getDTTurista());
+    	port.seleccionarTurista(nickname);
+		request.getSession().setAttribute("usuario_dt", port.getDTTurista());
 		
     	request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     	

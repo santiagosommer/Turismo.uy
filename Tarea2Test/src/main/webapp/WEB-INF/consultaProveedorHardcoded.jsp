@@ -36,7 +36,7 @@
     </script>
     <style> <%@include file="./../media/css/consultaUsuarioIndex.css"%> </style>
    
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
      <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
      
@@ -63,9 +63,9 @@
          String apellido = "";
        
          boolean esPropio = false;
-         ArrayList<DTActividadTuristica> act = new ArrayList<DTActividadTuristica>();
+         ArrayList<DtActividadTuristica> act = new ArrayList<DtActividadTuristica>();
         if (request.getSession().getAttribute("prov_dt") != null) {
-           DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
+           DtProveedor p = (DtProveedor) request.getSession().getAttribute("prov_dt");
      
             nombre = p.getNombre();
             nickName = p.getNickname();
@@ -74,12 +74,12 @@
             desc =  p.getDescripcionGeneral();
             url = p.getURL();
             apellido = p.getApellido();
-            act = p.getActividades();
+            act = (ArrayList<DtActividadTuristica>) p.getActividades();
              
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
               	 
-            	   if ((DTProveedor) request.getSession().getAttribute("usuario_dt") != null) {
-            		   DTProveedor prov = (DTProveedor) request.getSession().getAttribute("usuario_dt");
+            	   if ((DtProveedor) request.getSession().getAttribute("usuario_dt") != null) {
+            		   DtProveedor prov = (DtProveedor) request.getSession().getAttribute("usuario_dt");
             		 if (nickName.equals(prov.getNickname())){
             			 esPropio = true;
             		 }
@@ -121,10 +121,10 @@
                  <div id="Actividades" class="tabcontent">
                 
                 <%   
-                ArrayList<DTActividadTuristica> actividades = new ArrayList<DTActividadTuristica>();
+                ArrayList<DtActividadTuristica> actividades = new ArrayList<DtActividadTuristica>();
                 if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
-                   DTProveedor p = (DTProveedor) request.getSession().getAttribute("prov_dt");
-                   actividades = p.getActividades();
+                   DtProveedor p = (DtProveedor) request.getSession().getAttribute("prov_dt");
+                   actividades = (ArrayList<DtActividadTuristica>) p.getActividades();
 
                 for (int i=0; i < actividades.size();i++) {
                     
@@ -152,7 +152,7 @@
                 
                 <% for (int i=0; i< act.size();i++) {
                 	
-                	if (act.get(i).getEstado() == EstadoActividad.Confirmada) {
+                	if (act.get(i).getEstado() == EstadoActividad.CONFIRMADA) {
                     
                      %>
                     <div class="Actividad">

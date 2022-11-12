@@ -8,10 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ServidorCentral.Logica.DataTypes.EstadoSesion;
-import ServidorCentral.Logica.Excepciones.SalidaExpirada;
-import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
-import ServidorCentral.Logica.Interfaces.CargaDeDatos;
+import webservice.EstadoSesion;
 
 
 /**
@@ -35,21 +32,21 @@ public class Home extends HttpServlet {
      * @throws SalidaExpirada 
 	 */
     
-    private static void cargarDatos() {
-    	
-    	CargaDeDatos carga = CargaDeDatos.getInstancia();
-    	
-    	try {
-			carga.cargarDatos();
-		} catch (UsuarioRepetidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SalidaExpirada e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    }
+//    private static void cargarDatos() {
+//    	
+//    	CargaDeDatos carga = CargaDeDatos.getInstancia();
+//    	
+//    	try {
+//			carga.cargarDatos();
+//		} catch (UsuarioRepetidoException_Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SalidaExpirada e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	
+//    }
     
     /**
 	 * inicializa la sesión si no estaba creada 
@@ -68,8 +65,8 @@ public class Home extends HttpServlet {
 	}
 
 	private void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, SalidaExpirada {
-		cargarDatos();
+			throws ServletException, IOException {
+//		cargarDatos();
 		initSession(request);
 		
 		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
@@ -80,24 +77,14 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
 			processRequest(request,response);
-		} catch (ServletException | IOException | SalidaExpirada e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
 			processRequest(request, response);
-		} catch (ServletException | IOException | SalidaExpirada e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

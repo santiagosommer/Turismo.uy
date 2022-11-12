@@ -6,7 +6,10 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.SetDTUsuario"%>
+    <%@page import="webservice.DtUsuario"%>
+    <%@page import="webservice.DtTurista"%>
+    <%@page import="webservice.DtProveedor"%>
     <style><%@include file="./../media/css/consultaUsuarioIndex.css"%></style>
     <title>Consulta Usuario</title>
 </head>
@@ -30,8 +33,8 @@
              <% 
           
         if (request.getAttribute("Usuarios") != null) {
-            Set<DTUsuario> s = (Set<DTUsuario>) request.getAttribute("Usuarios") ;
-            for (DTUsuario item: s) {
+            Set<DtUsuario> s = (Set<DtUsuario>) request.getAttribute("Usuarios") ;
+            for (DtUsuario item: s) {
             	String nick = item.getNickname();
             	%>	
             	
@@ -41,14 +44,14 @@
                     </div>
                     <h3> <%= item.getNombre()%></h3>
                     <h5> <%= nick%> / <%= item.getEmail()%></h5>
-                    <%   if (item instanceof DTProveedor) {
+                    <%   if (item instanceof DtProveedor) {
                     	%>
                     	<p><a href="/Tarea2Test/ConsultaProveedor?paramP=<%=nick%>" class="links">Leer mas.</a></p>
                     	
                     <%	}
                     	%>
                     	
-                    	 <%   if (item instanceof DTTurista) {
+                    	 <%   if (item instanceof DtTurista) {
                     	%>
                     	<p><a href="/Tarea2Test/ConsultaTurista?paramT=<%=nick%>" class="links">Leer mas.</a></p>
                     	

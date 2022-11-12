@@ -1,0 +1,89 @@
+.filtros{
+   
+    display: grid;
+    height: 650px;
+    grid-template-columns: auto;   
+    padding: 50px;
+}
+
+.content{
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+
+.filtro select{
+    padding: 15px;
+}
+
+img {
+   
+    width: auto;
+     max-height: 100%;
+     object-fit: contain;
+ }
+
+ .container {  display: grid;
+    grid-template-columns: 0.3fr 2.1fr 0.6fr;
+    grid-template-rows: 1.4fr 1.5fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". Salida ."
+      ". infoSal ."
+      ". . .";
+  }
+  
+  .Salida {  display: grid;
+    grid-template-columns: 1.1fr 0.9fr 1fr;
+    grid-template-rows: 1.2fr 1.4fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "imagen nombreSal nombreSal"
+      "imagen inscribirse inscribirse"
+      ". . .";
+    grid-area: Salida;
+  }
+  
+  .imagen { grid-area: imagen;
+    height: 300px;   }
+
+    h2 {
+        text-align: center;
+         }   
+  
+  .nombreSal { grid-area: nombreSal; }
+  
+  .inscribirse { grid-area: inscribirse;
+    text-align: center }
+  
+  .infoSal { grid-area: infoSal;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 20px; }
+  
+    .boton{
+      min-width: 45%;
+        
+        background: #6558F5;
+        border: none;
+        padding: 12px;
+        color: white;
+        margin: 16px 0;
+        font-family: 'Morrison', sans-serif;
+        font-size: 16px;
+        margin: auto;
+        text-align: center ;
+        border-radius: 4px;
+    }
+
+
+  button:hover{
+    background: #5046c0;
+    cursor:pointer;
+
+  }

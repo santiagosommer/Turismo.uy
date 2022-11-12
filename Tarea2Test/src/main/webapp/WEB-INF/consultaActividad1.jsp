@@ -8,7 +8,7 @@
      <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
     <%@page import=" java.util.ArrayList"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Actividad</title>
      <script >
@@ -54,19 +54,19 @@
      	Set<String> cate = null;
      	String descripcion = "";
      	//agregar paquetes
-     	ArrayList<DTPaquete> paque = new ArrayList<DTPaquete>();
-     	ArrayList<DTSalidaTuristica> Salidas = new ArrayList<DTSalidaTuristica>();
+     	ArrayList<DtPaquete> paque = new ArrayList<DtPaquete>();
+     	ArrayList<DtSalidaTuristica> Salidas = new ArrayList<DtSalidaTuristica>();
          if (request.getSession().getAttribute("act_dt") != null) {
-     		DTActividadTuristica act = (DTActividadTuristica) request.getSession().getAttribute("act_dt");
+     		DtActividadTuristica act = (DtActividadTuristica) request.getSession().getAttribute("act_dt");
      		nombre = act.getNombre();
      		duracion = act.getDuracion();
      		costo = act.getCostoTurista();
      		ciudad = act.getCiudad();
      		fechaAlta = act.getFechaAlta().toString();
      		descripcion = act.getDescripcion();
-     		Salidas = act.getSalidas();
-     		cate = act.getCategorias();
-     		paque = act.getInfoPaquetes();
+     		Salidas = (ArrayList<DtSalidaTuristica>) act.getSalidas();
+     		cate = (Set<String>) act.getCategorias();
+     		paque = (ArrayList<DtPaquete>) act.getInfoPaquetes();
      	  }
      %>
         <div class="Consultas">

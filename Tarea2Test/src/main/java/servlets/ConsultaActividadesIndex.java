@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ServidorCentral.Logica.Fabrica.Fabrica;
-import ServidorCentral.Logica.Interfaces.ITuristica;
+import webservice.Publicador;
+import webservice.PublicadorService;
 
 /**
  * Servlet implementation class ConsultaActividadesIndex
@@ -30,14 +30,14 @@ public class ConsultaActividadesIndex extends HttpServlet {
     	String dep = request.getParameter("Departamento");
     	String cat = request.getParameter("Categoria");
     	
-    	Fabrica fa = Fabrica.getInstance();
-    	ITuristica itur = fa.getControladorTuristica();
+    	PublicadorService service = new PublicadorService();
+        Publicador port = service.getPublicadorPort();
     	
-    	request.setAttribute("departamentos", itur.listarDepartamentos());
+    	request.setAttribute("departamentos", port.listarDepartamentos());
     	
-    	request.setAttribute("categorias", itur.listarCategorias());
+    	request.setAttribute("categorias", port.listarCategorias());
     	
-    	request.setAttribute("lista_actividades_a_mostrar", itur.listarActividadesDeptoYCate(dep, cat));
+    	request.setAttribute("lista_actividades_a_mostrar", port.listarActividadesDeptoYCate(dep, cat));
     	
 		request.getRequestDispatcher("/WEB-INF/consultaActIndex.jsp").forward(request, response);
 		

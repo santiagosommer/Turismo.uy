@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="ServidorCentral.Logica.DataTypes.EstadoSesion"%>
-<%@page import="ServidorCentral.Logica.DataTypes.DTTurista"%>
-<%@page import="ServidorCentral.Logica.DataTypes.DTProveedor"%>
+<%@page import="webservice.EstadoSesion"%>
+<%@page import="webservice.DtTurista"%>
+<%@page import="webservice.DtProveedor"%>
 
 <div class="top-bar">
 	<div class="top-bar-left">
@@ -31,7 +31,7 @@
 		</div>
 		
 		<div style="display:flex; align-items: center; gap: 5px;">
-		<% DTProveedor prov =(DTProveedor) request.getSession().getAttribute("usuario_dt"); %>
+		<% DtProveedor prov =(DtProveedor) request.getSession().getAttribute("usuario_dt"); %>
 		<% if (prov!= null){ %>
             <h3 id="user-name"><%= prov.getNombre() %></h3>
             <%} %> 
@@ -49,7 +49,7 @@
 			<% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
 			
 			<div style="display:flex; align-items: center; gap: 5px;">
-			<% DTTurista turista =(DTTurista) request.getSession().getAttribute("usuario_dt"); 
+			<% DtTurista turista =(DtTurista) request.getSession().getAttribute("usuario_dt"); 
 			if (turista!= null){%>
 			
 			 <h3 id="user-name"><%= turista.getNombre() %></h3>

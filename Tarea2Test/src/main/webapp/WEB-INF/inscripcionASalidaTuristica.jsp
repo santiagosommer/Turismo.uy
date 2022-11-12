@@ -5,7 +5,7 @@
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <style><%@include file="./../media/css/inscripcionASalidaTuristica.css"%></style>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.DtSalidaTuristica"%>
     <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
     <title>Inscripcion Salida</title>
@@ -51,7 +51,7 @@
 	</div>
 	<%} %>
 	
-		<% Float costo = ((DTSalidaTuristica) request.getSession().getAttribute("dtsalida")).getActividadTuristicaAsoc().getCostoTurista() ;%>
+		<% Float costo = ((DtSalidaTuristica) request.getSession().getAttribute("dtsalida")).getActividadTuristicaAsoc().getCostoTurista() ;%>
 	
 		
        <form class="form-register" method="get"> 

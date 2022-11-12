@@ -6,7 +6,7 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <%@page import="java.util.Set"%>
     <%@page import="java.util.HashSet"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
     <title>Consulta Paquetes</title>
 </head>
@@ -16,8 +16,8 @@
     
      <%
         Set<String> cats = (Set<String>) request.getAttribute("categorias");
-     	Set<DTPaquete> paqs = new HashSet<DTPaquete>();
-         paqs = (Set<DTPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
+     	Set<DtPaquete> paqs = new HashSet<DtPaquete>();
+         paqs = (Set<DtPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
         %>
     
     <div style="display: flex; flex-direction: column;">
@@ -42,7 +42,7 @@
                 </form>
             </div>
             <div class="Consultas">
-            <%for (DTPaquete p : paqs) {%>
+            <%for (DtPaquete p : paqs) {%>
             
                 <div class="conjuntoConsulta">
                     <div class="imagen">

@@ -6,7 +6,7 @@
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
     <%@page import="java.util.Set"%>
     <%@page import="java.util.Iterator"%>
-    <%@page import="ServidorCentral.Logica.DataTypes.*"%>
+    <%@page import="webservice.*"%>
     
        <script >
        let i, tabcontent, tablinks;
@@ -63,22 +63,22 @@
          String apellido = "";
          
          boolean esPropio = false;
-         ArrayList<DTInscripcion> InscSal = new ArrayList<DTInscripcion>();
+         ArrayList<DtInscripcion> InscSal = new ArrayList<DtInscripcion>();
          
         if (request.getSession().getAttribute("turi_dt") != null) {
-           DTTurista t = (DTTurista) request.getSession().getAttribute("turi_dt") ;
+           DtTurista t = (DtTurista) request.getSession().getAttribute("turi_dt") ;
             nombre = t.getNombre();
             nickName = t.getNickname();
             apellido = t.getApellido();
             email = t.getEmail();
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
-            InscSal = t.getInscripciones();
+            InscSal = (ArrayList<DtInscripcion>) t.getInscripciones();
 		 
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
        	 
-       	      if ((DTTurista) request.getSession().getAttribute("usuario_dt") != null) {
-       		    DTTurista turi = (DTTurista) request.getSession().getAttribute("usuario_dt");
+       	      if ((DtTurista) request.getSession().getAttribute("usuario_dt") != null) {
+       		    DtTurista turi = (DtTurista) request.getSession().getAttribute("usuario_dt");
        		    if (nickName.equals(turi.getNickname())){
        			  esPropio = true;
        		    }
