@@ -27,8 +27,6 @@ public Usuario(String nickname,String nombre,String apellido,String email,LocalD
 }
 
 
-
-
 public String getNickname() {
 	return Nickname;
 }
@@ -95,6 +93,14 @@ public String getContraseña() {
 
 public void setContraseña(String contraseña) {
 	Contrasenia = contraseña;
+}
+
+public ArrayList<Usuario> getSeguidores() {
+	return Seguidores;
+}
+
+public void setSeguidores(ArrayList<Usuario> seguidores) {
+	Seguidores = seguidores;
 }
 
 }

@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import ServidorCentral.Logica.Clases.Turista;
+import ServidorCentral.Logica.Clases.Usuario;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTUsuario;
@@ -28,6 +29,10 @@ public class ControladorUsuario implements IUsuario {
 	private Map<String, Proveedor> Proveedores;
 	private Proveedor proveedorSeleccionado;
 	private Turista turistaSeleccionado;
+	private Usuario usuarioSeleccionado1;
+	private Usuario usuarioSeleccionado2;
+	private Usuario seleccionarUsuario2;
+	
 
 	private static ControladorUsuario instancia = null;
 
@@ -128,6 +133,26 @@ public class ControladorUsuario implements IUsuario {
 	public void seleccionarProveedor(String Proveedor) {
 		proveedorSeleccionado = Proveedores.get(Proveedor);
 
+	}
+	
+	@Override
+	public void seleccionarUsuario1(String usuario) {
+		if (esTurista(usuario)) {
+			usuarioSeleccionado1 = Turistas.get(usuario);
+		} else {
+			seleccionarProveedor(usuario);
+			usuarioSeleccionado1 = Proveedores.get(usuario);
+		}
+	}
+	
+	@Override
+	public void seleccionarUsuario2(String usuario) {
+		if (esTurista(usuario)) {
+			usuarioSeleccionado2 = Turistas.get(usuario);
+		} else {
+			seleccionarProveedor(usuario);
+			usuarioSeleccionado2 = Proveedores.get(usuario);
+		}
 	}
 
 	@Override
@@ -304,5 +329,22 @@ public class ControladorUsuario implements IUsuario {
 		
 		return dts;
 	}
+	
+	public void seguirUsuario(String seguidor, String seguido) {	
+		seleccionarUsuario1(seguidor);
+		seleccionarUsuario2(seguido);
+		ArrayList<Usuario> seguidoresDeSeguido = seleccionarUsuario2.getSeguidores();
+		seguidoresDeSeguido.add(usuarioSeleccionado1);
+		seleccionarUsuario2.setSeguidores(seguidoresDeSeguido);	
+	}
+	
+	public void dejarDeSeguirUsuario(String seguidor, String seguido) {
+		seleccionarUsuario1(seguidor);
+		seleccionarUsuario2(seguido);
+		ArrayList<Usuario> seguidoresDeSeguido = seleccionarUsuario2.getSeguidores();
+		seguidoresDeSeguido.remove(usuarioSeleccionado1);
+		seleccionarUsuario2.setSeguidores(seguidoresDeSeguido);
+	}
+	
 
 }
