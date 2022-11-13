@@ -46,6 +46,8 @@ public interface ITuristica {
 	public abstract void RechazarActividad(String actividad);
 	public abstract Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat);
 	public abstract Set<DTPaquete> listarPaquetesCategoria(String cat);
+	public abstract void finalizarActividadTuristica(String nombreActividad);
+	
 	
 	
 

@@ -41,6 +41,14 @@ public class ControladorTuristica implements ITuristica {
 		
 	}
 	
+	public  void finalizarActividadTuristica(String nombreActividad) {
+		ActividadTuristica act =  ActividadesTuristicas.get(nombreActividad);
+		act.setEstado(EstadoActividad.Finalizada);
+		ActividadesTuristicas.remove(nombreActividad);
+		ActividadesTuristicas.put(nombreActividad, act);
+		
+	}
+	
 	public void reset() {
 		Departamentos = new HashMap<String,Departamento>();
 		ActividadesTuristicas = new HashMap<String,ActividadTuristica>();	

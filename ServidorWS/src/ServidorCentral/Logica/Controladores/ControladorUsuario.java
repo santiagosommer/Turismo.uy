@@ -17,7 +17,9 @@ import ServidorCentral.Logica.Clases.Turista;
 import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTUsuario;
+import ServidorCentral.Logica.DataTypes.EstadoActividad;
 import ServidorCentral.Logica.DataTypes.EstadoError;
+import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
@@ -53,6 +55,26 @@ public class ControladorUsuario implements IUsuario {
 		turistaSeleccionado = null;
 	}
 	
+	
+		//nuevas:
+		@Override
+	public void finalizarActividadTuristicaProveedor(String nombreActividad) {
+      if (proveedorSeleccionado!=null) {
+		ITuristica ituri = Fabrica.getInstance().getControladorTuristica();
+		if (ituri.existeActividad(nombreActividad) ) {
+		  ituri.seleccionarActividad(nombreActividad);
+		  ActividadTuristica act = ituri.getActividadSeleccionada();
+		  if (act.getPaquetes() == null || act.getPaquetes().isEmpty()) {
+			  act.setEstado(EstadoActividad.Finalizada);
+			  proveedorSeleccionado.getActividadesTuristicas().remove(nombreActividad);
+			  proveedorSeleccionado.getActividadesTuristicas().put(nombreActividad, act);
+			  ituri.finalizarActividadTuristica(nombreActividad);
+		  }
+		  
+		}
+				
+	  } 
+	}
 	@Override
 	public Boolean esTurista(String nickname) {
 		return Turistas.containsKey(nickname);

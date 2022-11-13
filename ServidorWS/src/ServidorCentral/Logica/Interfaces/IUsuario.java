@@ -31,4 +31,6 @@ public interface IUsuario {
 	public abstract String getNickname(String email);
 	public abstract EstadoError iniciarSesion(String nick_or_email, String passw);
 	public abstract Set<DTUsuario> getDTSUsuarios();
+	//nueva
+	public abstract void finalizarActividadTuristicaProveedor(String nombreActividad);
 }

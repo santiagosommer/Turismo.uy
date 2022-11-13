@@ -46,6 +46,10 @@
     <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
     <div class="content">
      <%  
+        Boolean finalizable = false;
+        if (request.getSession().getAttribute("finalizable") != null){
+        	finalizable = (Boolean) request.getSession().getAttribute("finalizable");
+        } 
      	String nombre = "";
      	int duracion = 0;
      	float costo = 1;
@@ -56,6 +60,7 @@
      	//agregar paquetes
      	ArrayList<DtPaquete> paque = new ArrayList<DtPaquete>();
      	ArrayList<DtSalidaTuristica> Salidas = new ArrayList<DtSalidaTuristica>();
+        
          if (request.getSession().getAttribute("act_dt") != null) {
      		DtActividadTuristica act = (DtActividadTuristica) request.getSession().getAttribute("act_dt");
      		nombre = act.getNombre();
@@ -65,9 +70,10 @@
      		fechaAlta = act.getFechaAlta().toString();
      		descripcion = act.getDescripcion();
      		Salidas = (ArrayList<DtSalidaTuristica>) act.getSalidas();
-     		cate = (Set<String>) act.getCategorias();
+     	    cate = (Set<String>) act.getCategorias();
      		paque = (ArrayList<DtPaquete>) act.getInfoPaquetes();
-     	  }
+     		
+         }	
      %>
         <div class="Consultas">
           <div class="container-consulta">
@@ -75,6 +81,11 @@
               <img src="media/icons/avatar.svg" height="200">
             </div>
             <h3><%= nombre %></h3>
+            <% if (finalizable) { //ver css %>
+            <form>
+               <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> 
+             </form>
+            <%} %>
           </div>
           <div class="top-bar-links">
             <div class="tab">
@@ -96,11 +107,11 @@
           
           <div class="tab-contents">
             <div id="Info" class="tabcontent">
-              <p><b>Duración:</b> <%= duracion %></p>
+              <p><b>Duraciï¿½n:</b> <%= duracion %></p>
               <p><b>Costo:</b> $<%= costo %></p>
               <p><b>Ciudad:</b> <%= ciudad %></p>
               <p><b>Fecha Alta:</b> <%= fechaAlta %></p>
-              <p><b>Categoría/s:</b> 
+              <p><b>Categorï¿½a/s:</b> 
 			  <% if(cate != null)for(String s : cate){ %>
 					<%= s %>
 			  <% } %>
