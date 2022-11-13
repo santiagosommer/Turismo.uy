@@ -64,6 +64,7 @@
          
          boolean esPropio = false;
          ArrayList<DtInscripcion> InscSal = new ArrayList<DtInscripcion>();
+         ArrayList<DtUsuario> seg = new ArrayList<DtUsuario>();
          
         if (request.getSession().getAttribute("turi_dt") != null) {
            DtTurista t = (DtTurista) request.getSession().getAttribute("turi_dt") ;
@@ -74,6 +75,7 @@
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
             InscSal = (ArrayList<DtInscripcion>) t.getInscripciones();
+          //  seg = t.getSeguidores();
 		 
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
        	 
@@ -103,10 +105,16 @@
                     </div>
                 </div>
                 <div class="tab">
+                    <div class="tablinks" id="Seguidores-tab" onclick="openTab(event, 'Seguidores')">
+                        Seguidores
+                    </div>
+                </div>
+                <div class="tab">
                     <div class="tablinks" id="Salidas-tab" onclick="openTab(event, 'Salidas')">
                         Salidas
                     </div>
                 </div>
+                
                 <%if (esPropio){ %>
                   <div class="tab" id="Paquetes-tab-container">
                     <div class="tablinks" id="Paquetes-tab" onclick="openTab(event, 'Paquetes')">
@@ -126,6 +134,25 @@
                     <p><b>E-mail:</b>  <%= email %> </p>
                     <p><b>Fecha de Nacimiento:</b>  <%= fechaN %> </p>
                     <p><b>Nacionalidad:</b> <%= nacionalidad %> </p>
+                </div>
+                <div id="Seguidores">
+               <% for (int j = 0; j < seg.size(); j++){  %>  
+                     <div class="Salida">
+						  <div class="imagenSalida">
+                             <img src = "media/icons/avatar.svg">
+                          </div>
+                          <div class="Salida-text">
+                             <% DtTurista tur = (DtTurista) seg.get(j);
+                              DtProveedor prov = (DtProveedor) seg.get(j);
+                              if (tur!= null) { //mostrar nickname %>
+                                 <%= tur.getNickname() %>
+                              <%}  if (prov!=null) {%>
+                                 <%= prov.getNickname() %>
+                              <%} %>
+                          </div>
+                     </div>   
+               <%} %>        
+                
                 </div>
                 <div id="Salidas" class="tabcontent">
                 
@@ -147,6 +174,8 @@
                             
                           </div>
                       </div>
+                      
+                      
                     
                     <%} %>
                     <script>window.onload=openTab(event, 'Perfil');</script>

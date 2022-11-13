@@ -61,7 +61,8 @@
          String desc ="";
          String url = "";
          String apellido = "";
-       
+         
+         ArrayList<DtUsuario> seg = new ArrayList<DtUsuario>();
          boolean esPropio = false;
          ArrayList<DtActividadTuristica> act = new ArrayList<DtActividadTuristica>();
         if (request.getSession().getAttribute("prov_dt") != null) {
@@ -75,6 +76,7 @@
             url = p.getURL();
             apellido = p.getApellido();
             act = (ArrayList<DtActividadTuristica>) p.getActividades();
+            //seg = p.getSeguidores();
              
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
               	 
@@ -100,6 +102,13 @@
                         Perfil
                     </div>
                 </div>
+                
+                <div class="tab">
+                    <div class="tablinks" id="Seguidores-tab" onclick="openTab(event, 'Seguidores')">
+                        Seguidores
+                    </div>
+                </div>
+                
                 <div class="tab">
                     <div class="tablinks" id="Actividades-tab" onclick="openTab(event, 'Actividades')">
                         Actividades
@@ -115,6 +124,26 @@
                     <p><b>Fecha de Nacimiento:</b> <%= fechaN %></p>
                     <p><b>Descripcion:</b> <%= desc %> </p>
                     <p><b>URL:</b>  <%= url %> </p>
+                </div>
+                
+                  <div id="Seguidores">
+               <% for (int j = 0; j < seg.size(); j++){  %>  
+                     <div class="Salida">
+						  <div class="imagenSalida">
+                             <img src = "media/icons/avatar.svg">
+                          </div>
+                          <div class="Salida-text">
+                             <% DtTurista tur = (DtTurista) seg.get(j);
+                              DtProveedor prov = (DtProveedor) seg.get(j);
+                              if (tur!= null) { //mostrar nickname %>
+                                 <%= tur.getNickname() %>
+                              <%}  if (prov!=null) {%>
+                                 <%= prov.getNickname() %>
+                              <%} %>
+                          </div>
+                     </div>   
+               <%} %>        
+                
                 </div>
                 
                 <%if (esPropio){ %>
