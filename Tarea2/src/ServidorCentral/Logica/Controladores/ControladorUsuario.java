@@ -19,6 +19,7 @@ import ServidorCentral.Logica.DataTypes.DTProveedor;
 import ServidorCentral.Logica.DataTypes.DTTurista;
 import ServidorCentral.Logica.DataTypes.DTUsuario;
 import ServidorCentral.Logica.DataTypes.EstadoError;
+import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Proveedor;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
@@ -341,10 +342,42 @@ public class ControladorUsuario implements IUsuario {
 	public void dejarDeSeguirUsuario(String seguidor, String seguido) {
 		seleccionarUsuario1(seguidor);
 		seleccionarUsuario2(seguido);
-		ArrayList<Usuario> seguidoresDeSeguido = seleccionarUsuario2.getSeguidores();
+		ArrayList<Usuario> seguidoresDeSeguido = usuarioSeleccionado2.getSeguidores();
 		seguidoresDeSeguido.remove(usuarioSeleccionado1);
 		seleccionarUsuario2.setSeguidores(seguidoresDeSeguido);
 	}
+	
+	public boolean esSeguidor(String seguidor, String seguido) {
+		seleccionarUsuario1(seguidor);
+		seleccionarUsuario2(seguido);
+		ArrayList<Usuario> seguidoresDeSeguido = usuarioSeleccionado2.getSeguidores();
+		
+		return seguidoresDeSeguido.contains(seguidor);	
+	}
+	
+	public void marcarActividadFavorita(String nick, String actividad) {
+		seleccionarTurista(nick);
+		ArrayList<ActividadTuristica> actividadesFav = turistaSeleccionado.getActividadesFavoritas();
+		Fabrica fabrica = Fabrica.getInstance();
+		ITuristica ctrl = fabrica.getControladorTuristica();
+		ctrl.seleccionarActividad(actividad);
+		actividadesFav.add(ctrl.getActividadSeleccionada());
+		turistaSeleccionado.setActividadesFavoritas(actividadesFav);
+	}
+	
+	public void desmarcarActividadFavorita(String nick, String actividad) {
+		seleccionarTurista(nick);
+		ArrayList<ActividadTuristica> actividadesFav = turistaSeleccionado.getActividadesFavoritas();
+		Fabrica fabrica = Fabrica.getInstance();
+		ITuristica ctrl = fabrica.getControladorTuristica();
+		ctrl.seleccionarActividad(actividad);
+		actividadesFav.remove(ctrl.getActividadSeleccionada());
+		turistaSeleccionado.setActividadesFavoritas(actividadesFav);
+	}
+	
+	
+	
+	
 	
 
 }

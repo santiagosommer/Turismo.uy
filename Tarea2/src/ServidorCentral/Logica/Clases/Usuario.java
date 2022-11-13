@@ -103,4 +103,6 @@ public void setSeguidores(ArrayList<Usuario> seguidores) {
 	Seguidores = seguidores;
 }
 
+
+
 }

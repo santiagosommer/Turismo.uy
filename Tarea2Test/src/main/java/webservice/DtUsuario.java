@@ -1,6 +1,9 @@
 
 package webservice;
 
+import java.util.ArrayList;
+
+import ServidorCentral.Logica.DataTypes.DTUsuario;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
@@ -52,6 +55,7 @@ public abstract class DtUsuario {
     protected LocalDate fechaNacimiento;
     protected String nickname;
     protected String nombre;
+    protected ArrayList<DtUsuario> Seguidores;
 
     /**
      * Obtiene el valor de la propiedad apellido.
@@ -196,5 +200,28 @@ public abstract class DtUsuario {
     public void setNombre(String value) {
         this.nombre = value;
     }
+    
+    /**
+     * Obtiene el valor de la propiedad nombre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ArrayList<DtUsuario>}
+     *     
+     */
+    public ArrayList<DtUsuario> getSeguidores() {
+		return Seguidores;
+	}
+    /**
+     * Define el valor de la propiedad seguidores.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ArrayList<DtUsuario> }
+     *     
+     */
+	public void setSeguidores(ArrayList<DtUsuario> seg) {
+		this.Seguidores = seg;
+	}
 
 }

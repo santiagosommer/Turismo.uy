@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webservice.DtUsuario;
 import webservice.Publicador;
 import webservice.PublicadorService;
 import webservice.SetDTUsuario;
@@ -28,13 +29,17 @@ public class ConsultaUsuario extends HttpServlet {
     }
 
     
-    private void processRequest(
-    	      HttpServletRequest request, HttpServletResponse response) 
-    	      throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
     	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-    	
+        
+       // port.seleccionarSalida(request.getParameter("nombreSalida"));
+        String seguido = request.getParameter("nombreUsuario");
+        String seguidor = ((DtUsuario) request.getSession().getAttribute("usuario_dt")).getNickname();
+        
+        port.seguirUsuario(seguido,seguidor);
+        
     	SetDTUsuario usrs = port.getDTSUsuarios();
     	request.setAttribute("Usuarios", usrs);
     	 RequestDispatcher dispatcher = request.getRequestDispatcher(
@@ -43,7 +48,7 @@ public class ConsultaUsuario extends HttpServlet {
 
     	        
     	        
-    	    }
+   }
     
     
     

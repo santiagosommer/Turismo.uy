@@ -63,11 +63,13 @@
          String apellido = "";
          
          boolean esPropio = false;
+         boolean esSeguidor = false;
          ArrayList<DtInscripcion> InscSal = new ArrayList<DtInscripcion>();
          ArrayList<DtUsuario> seg = new ArrayList<DtUsuario>();
          
         if (request.getSession().getAttribute("turi_dt") != null) {
            DtTurista t = (DtTurista) request.getSession().getAttribute("turi_dt") ;
+           DtUsuario u = (DtUsuario) request.getSession().getAttribute("usuario_dt") ;
             nombre = t.getNombre();
             nickName = t.getNickname();
             apellido = t.getApellido();
@@ -75,7 +77,7 @@
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
             InscSal = (ArrayList<DtInscripcion>) t.getInscripciones();
-          //  seg = t.getSeguidores();
+          	seg = (ArrayList<DtUsuario>) u.getSeguidores();
 		 
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
        	 
@@ -84,11 +86,13 @@
        		    if (nickName.equals(turi.getNickname())){
        			  esPropio = true;
        		    }
-       	       }
+       		    
+       		    if (seg.contains(nickName)){
+       		    	esSeguidor = true;
+       		    }
+       	      }
        	     }
-        }
-        
-        
+        }   
          %>	
     
             <div class="container-consulta">
@@ -97,6 +101,15 @@
                 </div>
                 <h3> <%= nombre %> 	 <%=apellido  %> </h3>
                 <h5> <%= nickName %> / <%= email %> </h5>
+                
+               <%  if (esSeguidor){ %>   
+                <a href = "/Tarea2Test/DejarDeSeguirUsuario"> <button id="botonDejarSeguirUsuario">Dejar de seguir</button>
+               </a> 
+               <%} else { %>
+                <b href = "/Tarea2Test/SeguirUsuario"> <button id="SeguirUsuario">Seguir</button>
+             </b> 
+            <% } %>
+             
             </div>
             <div class="top-bar-links">
                 <div class="tab">

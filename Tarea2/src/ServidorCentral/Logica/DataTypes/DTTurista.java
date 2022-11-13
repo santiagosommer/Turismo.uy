@@ -10,12 +10,14 @@ import ServidorCentral.Logica.Clases.Turista;
 public class DTTurista extends DTUsuario {
 	private String Nacionalidad ;
 	private ArrayList<DTInscripcion> Inscripciones;
+
 	
    public DTTurista(String nickname, String nombre, String apellido, String email,LocalDate fechaNacimiento,String contra, String nacionalidad) {
 	   super(nickname,nombre,apellido,email,fechaNacimiento,contra);
 	   Nacionalidad = nacionalidad;
 	   Inscripciones = new ArrayList<DTInscripcion>();
-       
+	  
+      
    }
    
    public DTTurista(Turista turi) {
@@ -49,6 +51,8 @@ public class DTTurista extends DTUsuario {
 	public void setInscripciones(ArrayList<DTInscripcion> inscripciones) {
 		Inscripciones = inscripciones;
 	}
+	
+	
 	
 	
 }

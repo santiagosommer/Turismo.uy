@@ -31,8 +31,11 @@ public interface IUsuario {
 	public abstract String getNickname(String email);
 	public abstract EstadoError iniciarSesion(String nick_or_email, String passw);
 	public abstract Set<DTUsuario> getDTSUsuarios();
-	void seleccionarUsuario1(String usuario);
-	void seleccionarUsuario2(String usuario);
-	public void seguirUsuario(String seguidor, String seguido);
-	public void dejarDeSeguirUsuario(String seguidor, String seguido);
+	public abstract void seleccionarUsuario1(String usuario);
+	public abstract void seleccionarUsuario2(String usuario);
+	public abstract void seguirUsuario(String seguidor, String seguido);
+	public abstract void dejarDeSeguirUsuario(String seguidor, String seguido);
+	public abstract boolean esSeguidor(String seguidor, String seguido);
+	public abstract void marcarActividadFavorita(String nick, String actividad);
+	public abstract void desmarcarActividadFavorita(String nick, String actividad);
 }
