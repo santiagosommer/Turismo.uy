@@ -234,8 +234,19 @@ public class Publicador {
 	public SetDTPaquete listarPaquetesCategoria(String cat){
     	return new SetDTPaquete(iTuristica.listarPaquetesCategoria(cat));
 	}
+    //Nueva
+    @WebMethod
+    public  void finalizarActividadTuristica(String nombreActividad) {
+    	 iTuristica.finalizarActividadTuristica(nombreActividad);
+    }
+    
     
     //----------IUsuario------------------------------------------
+    //Nueva
+    @WebMethod
+    public void finalizarActividadTuristicaProveedor(String nombreActividad) {
+    	iUsuario.finalizarActividadTuristicaProveedor(nombreActividad);
+    }
     
     @WebMethod
     public Boolean esTurista(String nickname){
