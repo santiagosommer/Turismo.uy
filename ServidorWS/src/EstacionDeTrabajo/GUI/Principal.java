@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
-import WebService.Publicador;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import javax.swing.JFrame;
