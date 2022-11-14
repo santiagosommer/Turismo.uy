@@ -22,8 +22,6 @@ public class DTInfoSalida {
 		e.printStackTrace();
 	}
 	 Hora.setHour(hora.getHour());
-	 Hora.setMinute(hora.getMinute());
-	 Hora.setSecond(hora.getSecond());
 	 setLugar(lugar);
  }
  
