@@ -6,6 +6,10 @@ public class SetString {
 	
 	private Set<String> dato;
 	
+	public SetString(){
+		;
+	}
+	
 	public SetString(Set<String> set) {
 		dato = set;
 	}
