@@ -21,7 +21,9 @@ public class DTInfoSalida {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	 Hora.setHour(hora.getHour());
+	 Fecha.setHour(hora.getHour());
+	 Fecha.setMinute(hora.getMinute());
+	 Fecha.setSecond(hora.getSecond());
 	 setLugar(lugar);
  }
  
