@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 
 import ServidorCentral.Logica.Excepciones.UsuarioRepetidoException;
 import ServidorCentral.Logica.Interfaces.*;
+import WebService.Publicador;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import javax.swing.JFrame;
@@ -44,6 +45,8 @@ public class Principal {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				Publicador p = new Publicador();
+		        p.publicar();
 				try {
 					Principal window = new Principal();
 					window.frmServidorcentral.setVisible(true);
