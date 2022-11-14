@@ -22,7 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="actividadesTuristicas" type="{http://WebService/}dtActividadTuristica" maxOccurs="unbounded" minOccurs="0"/>
  *         <element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="descuento" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="fechaAlta" type="{http://WebService/}localDate" minOccurs="0"/>
+ *         <element name="fechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="periodoValidez" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
@@ -48,7 +48,7 @@ public class DtPaquete {
     protected List<DtActividadTuristica> actividadesTuristicas;
     protected String descripcion;
     protected int descuento;
-    protected LocalDate fechaAlta;
+    protected Object fechaAlta;
     protected String nombre;
     protected int periodoValidez;
 
@@ -128,10 +128,10 @@ public class DtPaquete {
      * 
      * @return
      *     possible object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public LocalDate getFechaAlta() {
+    public Object getFechaAlta() {
         return fechaAlta;
     }
 
@@ -140,10 +140,10 @@ public class DtPaquete {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public void setFechaAlta(LocalDate value) {
+    public void setFechaAlta(Object value) {
         this.fechaAlta = value;
     }
 

@@ -28,10 +28,5 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "localDate")
 public class LocalDate {
 
-	public static java.time.LocalDate now() {
-		// TODO Auto-generated method stub
-		return java.time.LocalDate.now();
-	}
-
 
 }

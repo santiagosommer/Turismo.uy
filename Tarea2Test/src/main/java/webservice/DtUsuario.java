@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="contra" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="fechaNacimiento" type="{http://WebService/}localDate" minOccurs="0"/>
+ *         <element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         <element name="nickname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
@@ -49,7 +49,7 @@ public abstract class DtUsuario {
     protected String apellido;
     protected String contra;
     protected String email;
-    protected LocalDate fechaNacimiento;
+    protected Object fechaNacimiento;
     protected String nickname;
     protected String nombre;
 
@@ -130,10 +130,10 @@ public abstract class DtUsuario {
      * 
      * @return
      *     possible object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public LocalDate getFechaNacimiento() {
+    public Object getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -142,10 +142,10 @@ public abstract class DtUsuario {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public void setFechaNacimiento(LocalDate value) {
+    public void setFechaNacimiento(Object value) {
         this.fechaNacimiento = value;
     }
 

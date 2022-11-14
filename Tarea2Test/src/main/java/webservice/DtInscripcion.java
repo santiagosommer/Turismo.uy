@@ -19,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="autor" type="{http://WebService/}dtTurista" minOccurs="0"/>
  *         <element name="cantidadTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         <element name="fecha" type="{http://WebService/}localDate" minOccurs="0"/>
+ *         <element name="fecha" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         <element name="salidaAsociada" type="{http://WebService/}dtSalidaTuristica" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -42,7 +42,7 @@ public class DtInscripcion {
     protected DtTurista autor;
     protected int cantidadTuristas;
     protected float costo;
-    protected LocalDate fecha;
+    protected Object fecha;
     protected DtSalidaTuristica salidaAsociada;
 
     /**
@@ -106,10 +106,10 @@ public class DtInscripcion {
      * 
      * @return
      *     possible object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public LocalDate getFecha() {
+    public Object getFecha() {
         return fecha;
     }
 
@@ -118,10 +118,10 @@ public class DtInscripcion {
      * 
      * @param value
      *     allowed object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public void setFecha(LocalDate value) {
+    public void setFecha(Object value) {
         this.fecha = value;
     }
 

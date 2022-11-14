@@ -1,9 +1,6 @@
 
 package webservice;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -19,8 +16,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="fecha" type="{http://WebService/}localDate" minOccurs="0"/>
- *         <element name="hora" type="{http://WebService/}localTime" minOccurs="0"/>
+ *         <element name="fecha" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="hora" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         <element name="lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -38,8 +35,8 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class DtInfoSalida {
 
-    protected LocalDate fecha;
-    protected LocalTime hora;
+    protected Object fecha;
+    protected Object hora;
     protected String lugar;
 
     /**
@@ -47,23 +44,23 @@ public class DtInfoSalida {
      * 
      * @return
      *     possible object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public LocalDate getFecha() {
+    public Object getFecha() {
         return fecha;
     }
 
     /**
      * Define el valor de la propiedad fecha.
      * 
-     * @param fecha2
+     * @param value
      *     allowed object is
-     *     {@link LocalDate }
+     *     {@link Object }
      *     
      */
-    public void setFecha(LocalDate fecha2) {
-        this.fecha = fecha2;
+    public void setFecha(Object value) {
+        this.fecha = value;
     }
 
     /**
@@ -71,23 +68,23 @@ public class DtInfoSalida {
      * 
      * @return
      *     possible object is
-     *     {@link LocalTime }
+     *     {@link Object }
      *     
      */
-    public LocalTime getHora() {
+    public Object getHora() {
         return hora;
     }
 
     /**
      * Define el valor de la propiedad hora.
      * 
-     * @param hora2
+     * @param value
      *     allowed object is
-     *     {@link LocalTime }
+     *     {@link Object }
      *     
      */
-    public void setHora(LocalTime hora2) {
-        this.hora = hora2;
+    public void setHora(Object value) {
+        this.hora = value;
     }
 
     /**

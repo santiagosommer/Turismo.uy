@@ -131,16 +131,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LocalDate }
-     * 
-     * @return
-     *     the new instance of {@link LocalDate }
-     */
-    public LocalDate createLocalDate() {
-        return new LocalDate();
-    }
-
-    /**
      * Create an instance of {@link DtDepartamento }
      * 
      * @return
@@ -181,16 +171,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LocalTime }
-     * 
-     * @return
-     *     the new instance of {@link LocalTime }
-     */
-    public LocalTime createLocalTime() {
-        return new LocalTime();
-    }
-
-    /**
      * Create an instance of {@link DtInscripcion }
      * 
      * @return
@@ -211,6 +191,16 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SetString }
+     * 
+     * @return
+     *     the new instance of {@link SetString }
+     */
+    public SetString createSetString() {
+        return new SetString();
+    }
+
+    /**
      * Create an instance of {@link SetDTPaquete }
      * 
      * @return
@@ -221,13 +211,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetString }
+     * Create an instance of {@link LocalDate }
      * 
      * @return
-     *     the new instance of {@link SetString }
+     *     the new instance of {@link LocalDate }
      */
-    public SetString createSetString() {
-        return new SetString();
+    public LocalDate createLocalDate() {
+        return new LocalDate();
     }
 
     /**
