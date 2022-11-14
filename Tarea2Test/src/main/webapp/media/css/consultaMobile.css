@@ -1,0 +1,31 @@
+@media(max-width: 576px){
+    .card-text{
+        font-size: 0.8rem;
+    }
+}
+
+.card-text{
+    text-align: justify;
+}
+
+.btn{
+    color:aliceblue;
+    background-color: #dd3ed5;
+    border-color: #dd3ed5;
+}
+
+.dropb{
+    margin-bottom: 15px;
+    margin-right: 25px;
+}
+
+.nav-tabs .nav-item .nav-link {
+    margin-top: 10px;
+    background-color: white;
+    color: #000000;
+  }
+
+.salidas{
+    /* afecta a las 3 tabs de consulta actividad */
+    margin-top: 15px;
+}

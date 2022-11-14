@@ -51,39 +51,41 @@
     
     <div class="dropdown">
     	<form class="filtros" action="ConsultaActividadesIndex" method="get">
-        	<button class="dropb btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            	Departamentos
-        	</button>
-        	<ul class="dropdown-menu">
-          	<li><a class="dropdown-item" href="#">Action</a></li>
-          	<li><a class="dropdown-item" href="#">Another action</a></li>
-          	<li><a class="dropdown-item" href="#">Something else here</a></li>
-        	</ul>
-          
-        	<button class="dropb btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Categorias
-        	</button>
-        	<ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-            	<li><a class="dropdown-item" href="#">Another action</a></li>
-            	<li><a class="dropdown-item" href="#">Something else here</a></li>
-        	</ul>
+        	<select class="form-select" aria-label="Departamentos">
+                <option value="Departamento">Departamentos</option>
+                <%for (String s : deptos) {%>
+	            			<option value="<%= s %>">
+	                    	<%= s %>
+	                    	</option>
+                    	<% } %>
+              </select>
+              
+              <select class="form-select" aria-label="Departamentos">
+                <option value="Categoria">Categoria</option>
+                           <%for (String s : cats) {%>
+		            			<option value="<%= s %>">
+		                    	<%= s %>
+		                    	</option>
+	                   		<% } %>
+              </select>     
         </form>
     </div>
 
+		<%for (DtActividadTuristica s : acts) {%>
         <div class="row text-center animate__animated animate__bounceInUp">
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title">Card Title 1</h5>
-                        <img src="./../media/download.jpg" class="img-fluid" alt="Responsive image">
-                        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex dolor vel reiciendis quas id mollitia adipisci ipsa non, necessitatibus totam?</p>
-                        <a href="#" class="btn btn-info">Go somewhere</a>
+                        <h5 class="card-title"> <%= s.getNombre() %> </h5>
+                        <img src="media/icons/avatar.svg" class="img-fluid" alt="Responsive image">
+                        <p class="card-text"> <%= s.getDescripcion() %> </p>
+                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= s.getNombre()%>" class="btn btn-info">Leer mas.</a>
                     </div>
                 </div>
             </div>          
              
-        </div>      
+        </div>
+        <% } %>      
 </div>
 
 
