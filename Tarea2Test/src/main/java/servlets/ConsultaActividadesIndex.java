@@ -32,7 +32,7 @@ public class ConsultaActividadesIndex extends HttpServlet {
     	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-    	
+        
     	request.setAttribute("departamentos", port.listarDepartamentos());
     	
     	request.setAttribute("categorias", port.listarCategorias());

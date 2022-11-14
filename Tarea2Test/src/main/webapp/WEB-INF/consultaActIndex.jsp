@@ -4,7 +4,12 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
-    <%@page import="java.util.Set"%>
+    <%@page import="java.util.Set"
+			import="java.util.ArrayList"
+    
+    
+    %>
+    <%@page import="java.util.Iterator"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="webservice.*"%>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
@@ -22,7 +27,7 @@
         </div>
         
         <%
-        Set<String> deptos = (Set<String>) request.getAttribute("departamentos");
+        ArrayList<String> deptos = (ArrayList<String>) request.getAttribute("departamentos");
         Set<String> cats = (Set<String>) request.getAttribute("categorias");
         Set<DtActividadTuristica> acts = (Set<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
         %>
