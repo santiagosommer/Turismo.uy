@@ -29,12 +29,12 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns webservice.ArrayList
+     *     returns webservice.SetString
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/listarCategoriasPaqueteRequest", output = "http://WebService/Publicador/listarCategoriasPaqueteResponse")
-    public ArrayList listarCategoriasPaquete(
+    public SetString listarCategoriasPaquete(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -47,6 +47,33 @@ public interface Publicador {
     public void seleccionarPaquete(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @throws NombrePaqueteRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/crearPaqueteRequest", output = "http://WebService/Publicador/crearPaqueteResponse", fault = {
+        @FaultAction(className = NombrePaqueteRepetidoException_Exception.class, value = "http://WebService/Publicador/crearPaquete/Fault/NombrePaqueteRepetidoException")
+    })
+    public void crearPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        int arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        int arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        LocalDate arg4)
+        throws NombrePaqueteRepetidoException_Exception
+    ;
 
     /**
      * 
@@ -64,6 +91,29 @@ public interface Publicador {
     /**
      * 
      * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarPaquetesRequest", output = "http://WebService/Publicador/listarPaquetesResponse")
+    public SetString listarPaquetes();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarActividadesAAgregarRequest", output = "http://WebService/Publicador/listarActividadesAAgregarResponse")
+    public SetString listarActividadesAAgregar(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
      *     returns webservice.DtPaquete
      */
     @WebMethod
@@ -73,13 +123,26 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg0
+     * @param arg1
+     */
+    @WebMethod(operationName = "AgregarActividadPaquete")
+    @Action(input = "http://WebService/Publicador/AgregarActividadPaqueteRequest", output = "http://WebService/Publicador/AgregarActividadPaqueteResponse")
+    public void agregarActividadPaquete(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
      * @return
-     *     returns webservice.ArrayList
+     *     returns webservice.SetString
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/listarActividadesPaqueteRequest", output = "http://WebService/Publicador/listarActividadesPaqueteResponse")
-    public ArrayList listarActividadesPaquete();
+    public SetString listarActividadesPaquete();
 
     /**
      * 
@@ -93,14 +156,59 @@ public interface Publicador {
 
     /**
      * 
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarCategoriasRequest", output = "http://WebService/Publicador/listarCategoriasResponse")
+    public SetString listarCategorias();
+
+    /**
+     * 
      * @param arg0
      * @return
-     *     returns webservice.ArrayList
+     *     returns webservice.SetString
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/listarCategoriasActividadRequest", output = "http://WebService/Publicador/listarCategoriasActividadResponse")
-    public ArrayList listarCategoriasActividad(
+    public SetString listarCategoriasActividad(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @throws CategoriaRepetidaException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/crearCategoriaRequest", output = "http://WebService/Publicador/crearCategoriaResponse", fault = {
+        @FaultAction(className = CategoriaRepetidaException_Exception.class, value = "http://WebService/Publicador/crearCategoria/Fault/CategoriaRepetidaException")
+    })
+    public void crearCategoria(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
+        throws CategoriaRepetidaException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/seleccionarActividadRequest", output = "http://WebService/Publicador/seleccionarActividadResponse")
+    public void seleccionarActividad(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/seleccionarSalidaRequest", output = "http://WebService/Publicador/seleccionarSalidaResponse")
+    public void seleccionarSalida(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -117,12 +225,94 @@ public interface Publicador {
     /**
      * 
      * @return
+     *     returns webservice.DtActividadTuristica
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/getDTActividadTuristicaRequest", output = "http://WebService/Publicador/getDTActividadTuristicaResponse")
+    public DtActividadTuristica getDTActividadTuristica();
+
+    /**
+     * 
+     * @return
+     *     returns webservice.DtSalidaTuristica
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/getDTSalidaTuristicaRequest", output = "http://WebService/Publicador/getDTSalidaTuristicaResponse")
+    public DtSalidaTuristica getDTSalidaTuristica();
+
+    /**
+     * 
+     * @return
      *     returns webservice.DtDepartamento
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/getDTDepartamentoRequest", output = "http://WebService/Publicador/getDTDepartamentoResponse")
     public DtDepartamento getDTDepartamento();
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @param arg5
+     * @param arg6
+     * @param arg7
+     * @param arg8
+     * @throws NombreActividadRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/crearActividadTuristicaRequest", output = "http://WebService/Publicador/crearActividadTuristicaResponse", fault = {
+        @FaultAction(className = NombreActividadRepetidoException_Exception.class, value = "http://WebService/Publicador/crearActividadTuristica/Fault/NombreActividadRepetidoException")
+    })
+    public void crearActividadTuristica(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        int arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        float arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        LocalDate arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        String arg6,
+        @WebParam(name = "arg7", partName = "arg7")
+        String arg7,
+        @WebParam(name = "arg8", partName = "arg8")
+        SetString arg8)
+        throws NombreActividadRepetidoException_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarDepartamentosRequest", output = "http://WebService/Publicador/listarDepartamentosResponse")
+    public SetString listarDepartamentos();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarActividadesDeDepartamentoRequest", output = "http://WebService/Publicador/listarActividadesDeDepartamentoResponse")
+    public SetString listarActividadesDeDepartamento(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
     /**
      * 
@@ -140,13 +330,68 @@ public interface Publicador {
     /**
      * 
      * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @throws NoHayActividadConEseNombreException_Exception
+     * @throws NombreSalidaRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/crearSalidaTuristicaRequest", output = "http://WebService/Publicador/crearSalidaTuristicaResponse", fault = {
+        @FaultAction(className = NombreSalidaRepetidoException_Exception.class, value = "http://WebService/Publicador/crearSalidaTuristica/Fault/NombreSalidaRepetidoException"),
+        @FaultAction(className = NoHayActividadConEseNombreException_Exception.class, value = "http://WebService/Publicador/crearSalidaTuristica/Fault/NoHayActividadConEseNombreException")
+    })
+    public void crearSalidaTuristica(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        int arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        LocalDate arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        DtInfoSalida arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4)
+        throws NoHayActividadConEseNombreException_Exception, NombreSalidaRepetidoException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
      * @return
-     *     returns webservice.ArrayList
+     *     returns webservice.SetString
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/listarSalidasActividadRequest", output = "http://WebService/Publicador/listarSalidasActividadResponse")
-    public ArrayList listarSalidasActividad(
+    public SetString listarSalidasActividad(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/existeActividadRequest", output = "http://WebService/Publicador/existeActividadResponse")
+    public boolean existeActividad(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/existeSalidaRequest", output = "http://WebService/Publicador/existeSalidaResponse")
+    public boolean existeSalida(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -194,6 +439,16 @@ public interface Publicador {
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1);
+
+    /**
+     * 
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarActividadesAgregadasRequest", output = "http://WebService/Publicador/listarActividadesAgregadasResponse")
+    public SetString listarActividadesAgregadas();
 
     /**
      * 
@@ -272,6 +527,126 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/esTuristaRequest", output = "http://WebService/Publicador/esTuristaResponse")
+    public boolean esTurista(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/seleccionarTuristaRequest", output = "http://WebService/Publicador/seleccionarTuristaResponse")
+    public void seleccionarTurista(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/seleccionarProveedorRequest", output = "http://WebService/Publicador/seleccionarProveedorResponse")
+    public void seleccionarProveedor(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @return
+     *     returns webservice.SetString
+     * @throws UsuarioNoExisteException_Exception
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarUsuariosRequest", output = "http://WebService/Publicador/listarUsuariosResponse", fault = {
+        @FaultAction(className = UsuarioNoExisteException_Exception.class, value = "http://WebService/Publicador/listarUsuarios/Fault/UsuarioNoExisteException")
+    })
+    public SetString listarUsuarios()
+        throws UsuarioNoExisteException_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns webservice.SetString
+     * @throws UsuarioNoExisteException_Exception
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarProveedoresRequest", output = "http://WebService/Publicador/listarProveedoresResponse", fault = {
+        @FaultAction(className = UsuarioNoExisteException_Exception.class, value = "http://WebService/Publicador/listarProveedores/Fault/UsuarioNoExisteException")
+    })
+    public SetString listarProveedores()
+        throws UsuarioNoExisteException_Exception
+    ;
+
+    /**
+     * 
+     * @return
+     *     returns webservice.SetString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/listarTuristasRequest", output = "http://WebService/Publicador/listarTuristasResponse")
+    public SetString listarTuristas();
+
+    /**
+     * 
+     * @return
+     *     returns webservice.DtTurista
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/getDTTuristaRequest", output = "http://WebService/Publicador/getDTTuristaResponse")
+    public DtTurista getDTTurista();
+
+    /**
+     * 
+     * @return
+     *     returns webservice.DtProveedor
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://WebService/Publicador/getDTProveedorRequest", output = "http://WebService/Publicador/getDTProveedorResponse")
+    public DtProveedor getDTProveedor();
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @throws YaExisteInscripcionTuristaSalida_Exception
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/crearInscripcionRequest", output = "http://WebService/Publicador/crearInscripcionResponse", fault = {
+        @FaultAction(className = YaExisteInscripcionTuristaSalida_Exception.class, value = "http://WebService/Publicador/crearInscripcion/Fault/YaExisteInscripcionTuristaSalida")
+    })
+    public void crearInscripcion(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        int arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        float arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        LocalDate arg4)
+        throws YaExisteInscripcionTuristaSalida_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
     @Action(input = "http://WebService/Publicador/existeUsuarioRequest", output = "http://WebService/Publicador/existeUsuarioResponse")
     public boolean existeUsuario(
         @WebParam(name = "arg0", partName = "arg0")
@@ -289,67 +664,6 @@ public interface Publicador {
     public boolean existeUsuarioEmail(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @param arg1
-     * @return
-     *     returns webservice.EstadoError
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/iniciarSesionRequest", output = "http://WebService/Publicador/iniciarSesionResponse")
-    public EstadoError iniciarSesion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.SetDTUsuario
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getDTSUsuariosRequest", output = "http://WebService/Publicador/getDTSUsuariosResponse")
-    public SetDTUsuario getDTSUsuarios();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/seleccionarProveedorRequest", output = "http://WebService/Publicador/seleccionarProveedorResponse")
-    public void seleccionarProveedor(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.DtProveedor
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getDTProveedorRequest", output = "http://WebService/Publicador/getDTProveedorResponse")
-    public DtProveedor getDTProveedor();
-
-    /**
-     * 
-     * @return
-     *     returns webservice.ArrayList
-     * @throws UsuarioNoExisteException_Exception
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarUsuariosRequest", output = "http://WebService/Publicador/listarUsuariosResponse", fault = {
-        @FaultAction(className = UsuarioNoExisteException_Exception.class, value = "http://WebService/Publicador/listarUsuarios/Fault/UsuarioNoExisteException")
-    })
-    public ArrayList listarUsuarios()
-        throws UsuarioNoExisteException_Exception
-    ;
 
     /**
      * 
@@ -389,140 +703,6 @@ public interface Publicador {
 
     /**
      * 
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarActividadesAgregadasRequest", output = "http://WebService/Publicador/listarActividadesAgregadasResponse")
-    public ArrayList listarActividadesAgregadas();
-
-    /**
-     * 
-     * @param arg0
-     * @throws CategoriaRepetidaException_Exception
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/crearCategoriaRequest", output = "http://WebService/Publicador/crearCategoriaResponse", fault = {
-        @FaultAction(className = CategoriaRepetidaException_Exception.class, value = "http://WebService/Publicador/crearCategoria/Fault/CategoriaRepetidaException")
-    })
-    public void crearCategoria(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0)
-        throws CategoriaRepetidaException_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/existeActividadRequest", output = "http://WebService/Publicador/existeActividadResponse")
-    public boolean existeActividad(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/seleccionarActividadRequest", output = "http://WebService/Publicador/seleccionarActividadResponse")
-    public void seleccionarActividad(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.DtActividadTuristica
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getDTActividadTuristicaRequest", output = "http://WebService/Publicador/getDTActividadTuristicaResponse")
-    public DtActividadTuristica getDTActividadTuristica();
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/seleccionarSalidaRequest", output = "http://WebService/Publicador/seleccionarSalidaResponse")
-    public void seleccionarSalida(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.DtSalidaTuristica
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getDTSalidaTuristicaRequest", output = "http://WebService/Publicador/getDTSalidaTuristicaResponse")
-    public DtSalidaTuristica getDTSalidaTuristica();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/esTuristaRequest", output = "http://WebService/Publicador/esTuristaResponse")
-    public boolean esTurista(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/seleccionarTuristaRequest", output = "http://WebService/Publicador/seleccionarTuristaResponse")
-    public void seleccionarTurista(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.DtTurista
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getDTTuristaRequest", output = "http://WebService/Publicador/getDTTuristaResponse")
-    public DtTurista getDTTurista();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/getNicknameRequest", output = "http://WebService/Publicador/getNicknameResponse")
-    public String getNickname(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarDepartamentosRequest", output = "http://WebService/Publicador/listarDepartamentosResponse")
-    public ArrayList listarDepartamentos();
-
-    /**
-     * 
      * @param arg0
      * @param arg1
      * @param arg2
@@ -557,55 +737,13 @@ public interface Publicador {
     /**
      * 
      * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
-     * @param arg4
-     * @throws NoHayActividadConEseNombreException_Exception
-     * @throws NombreSalidaRepetidoException_Exception
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/crearSalidaTuristicaRequest", output = "http://WebService/Publicador/crearSalidaTuristicaResponse", fault = {
-        @FaultAction(className = NombreSalidaRepetidoException_Exception.class, value = "http://WebService/Publicador/crearSalidaTuristica/Fault/NombreSalidaRepetidoException"),
-        @FaultAction(className = NoHayActividadConEseNombreException_Exception.class, value = "http://WebService/Publicador/crearSalidaTuristica/Fault/NoHayActividadConEseNombreException")
-    })
-    public void crearSalidaTuristica(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        int arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        LocalDate arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        DtInfoSalida arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        String arg4)
-        throws NoHayActividadConEseNombreException_Exception, NombreSalidaRepetidoException_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
      * @return
-     *     returns boolean
+     *     returns java.lang.String
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/existeSalidaRequest", output = "http://WebService/Publicador/existeSalidaResponse")
-    public boolean existeSalida(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarActividadesDeDepartamentoRequest", output = "http://WebService/Publicador/listarActividadesDeDepartamentoResponse")
-    public ArrayList listarActividadesDeDepartamento(
+    @Action(input = "http://WebService/Publicador/getNicknameRequest", output = "http://WebService/Publicador/getNicknameResponse")
+    public String getNickname(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -613,138 +751,13 @@ public interface Publicador {
      * 
      * @param arg0
      * @param arg1
-     * @param arg2
-     * @param arg3
-     * @param arg4
-     * @param arg5
-     * @param arg6
-     * @param arg7
-     * @param arg8
-     * @throws NombreActividadRepetidoException_Exception
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/crearActividadTuristicaRequest", output = "http://WebService/Publicador/crearActividadTuristicaResponse", fault = {
-        @FaultAction(className = NombreActividadRepetidoException_Exception.class, value = "http://WebService/Publicador/crearActividadTuristica/Fault/NombreActividadRepetidoException")
-    })
-    public void crearActividadTuristica(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        int arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        float arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        String arg5,
-        @WebParam(name = "arg6", partName = "arg6")
-        String arg6,
-        @WebParam(name = "arg7", partName = "arg7")
-        String arg7,
-        @WebParam(name = "arg8", partName = "arg8")
-        ArrayList arg8)
-        throws NombreActividadRepetidoException_Exception
-    ;
-
-    /**
-     * 
      * @return
-     *     returns webservice.ArrayList
-     * @throws UsuarioNoExisteException_Exception
+     *     returns webservice.EstadoError
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarProveedoresRequest", output = "http://WebService/Publicador/listarProveedoresResponse", fault = {
-        @FaultAction(className = UsuarioNoExisteException_Exception.class, value = "http://WebService/Publicador/listarProveedores/Fault/UsuarioNoExisteException")
-    })
-    public ArrayList listarProveedores()
-        throws UsuarioNoExisteException_Exception
-    ;
-
-    /**
-     * 
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarCategoriasRequest", output = "http://WebService/Publicador/listarCategoriasResponse")
-    public ArrayList listarCategorias();
-
-    /**
-     * 
-     * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
-     * @param arg4
-     * @throws YaExisteInscripcionTuristaSalida_Exception
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/crearInscripcionRequest", output = "http://WebService/Publicador/crearInscripcionResponse", fault = {
-        @FaultAction(className = YaExisteInscripcionTuristaSalida_Exception.class, value = "http://WebService/Publicador/crearInscripcion/Fault/YaExisteInscripcionTuristaSalida")
-    })
-    public void crearInscripcion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        int arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        float arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4)
-        throws YaExisteInscripcionTuristaSalida_Exception
-    ;
-
-    /**
-     * 
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarTuristasRequest", output = "http://WebService/Publicador/listarTuristasResponse")
-    public ArrayList listarTuristas();
-
-    /**
-     * 
-     * @param arg0
-     * @param arg1
-     * @param arg2
-     * @param arg3
-     * @param arg4
-     * @throws NombrePaqueteRepetidoException_Exception
-     */
-    @WebMethod
-    @Action(input = "http://WebService/Publicador/crearPaqueteRequest", output = "http://WebService/Publicador/crearPaqueteResponse", fault = {
-        @FaultAction(className = NombrePaqueteRepetidoException_Exception.class, value = "http://WebService/Publicador/crearPaquete/Fault/NombrePaqueteRepetidoException")
-    })
-    public void crearPaquete(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        int arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        int arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4)
-        throws NombrePaqueteRepetidoException_Exception
-    ;
-
-    /**
-     * 
-     * @param arg0
-     * @param arg1
-     */
-    @WebMethod(operationName = "AgregarActividadPaquete")
-    @Action(input = "http://WebService/Publicador/AgregarActividadPaqueteRequest", output = "http://WebService/Publicador/AgregarActividadPaqueteResponse")
-    public void agregarActividadPaquete(
+    @Action(input = "http://WebService/Publicador/iniciarSesionRequest", output = "http://WebService/Publicador/iniciarSesionResponse")
+    public EstadoError iniciarSesion(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
@@ -753,24 +766,11 @@ public interface Publicador {
     /**
      * 
      * @return
-     *     returns webservice.ArrayList
+     *     returns webservice.SetDTUsuario
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarPaquetesRequest", output = "http://WebService/Publicador/listarPaquetesResponse")
-    public ArrayList listarPaquetes();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns webservice.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://WebService/Publicador/listarActividadesAAgregarRequest", output = "http://WebService/Publicador/listarActividadesAAgregarResponse")
-    public ArrayList listarActividadesAAgregar(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+    @Action(input = "http://WebService/Publicador/getDTSUsuariosRequest", output = "http://WebService/Publicador/getDTSUsuariosResponse")
+    public SetDTUsuario getDTSUsuarios();
 
 }
