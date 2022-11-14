@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webservice.DtUsuario;
 import webservice.EstadoError;
 import webservice.EstadoSesion;
 import webservice.Publicador;
@@ -35,6 +36,11 @@ public class DejarDeSeguirUsuario extends HttpServlet {
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
     	
+        String seguido = request.getParameter("nombreUsuario");
+        String seguidor = ((DtUsuario) request.getSession().getAttribute("usuario_dt")).getNickname();
+        
+        port.dejarDeSeguirUsuario(seguido,seguidor);
+        
     	request.getRequestDispatcher("/WEB-INF/dejarDeSeguirUsuario.jsp").forward(request, response);
 		
 	}

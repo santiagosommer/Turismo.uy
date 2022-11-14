@@ -1,6 +1,9 @@
 
 package webservice;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
@@ -570,11 +573,11 @@ public interface Publicador {
      * @param arg1
      * @param arg2
      * @param arg3
-     * @param arg4
+     * @param localDate
      * @param arg5
      * @param arg6
      * @param arg7
-     * @param arg8
+     * @param cats
      * @throws NombreActividadRepetidoException_Exception
      */
     @WebMethod
@@ -591,7 +594,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         float arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4,
+        LocalDate localDate,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -599,7 +602,7 @@ public interface Publicador {
         @WebParam(name = "arg7", partName = "arg7")
         String arg7,
         @WebParam(name = "arg8", partName = "arg8")
-        SetString arg8)
+        Set<String> cats)
         throws NombreActividadRepetidoException_Exception
     ;
 
@@ -752,5 +755,31 @@ public interface Publicador {
     public void seleccionarProveedor(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
+
+    /**
+     * 
+     * @param arg0
+     *  @param arg1
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/seguirUsuarioRequest", output = "http://WebService/Publicador/seguirUsuarioResponse")
+	public void seguirUsuario(
+			@WebParam(name = "arg0", partName = "arg0")
+			String arg0,
+			@WebParam(name = "arg1", partName = "arg1")
+			String arg1);
+    
+    /**
+     * 
+     * @param arg0
+     *  @param arg1
+     */
+    @WebMethod
+    @Action(input = "http://WebService/Publicador/dejarDeSeguirUsuarioRequest", output = "http://WebService/Publicador/dejarDeSeguirUsuarioResponse")
+	public void dejarDeSeguirUsuario(
+			@WebParam(name = "arg0", partName = "arg0")
+			String arg0,
+			@WebParam(name = "arg1", partName = "arg1")
+			String arg1);
 
 }
