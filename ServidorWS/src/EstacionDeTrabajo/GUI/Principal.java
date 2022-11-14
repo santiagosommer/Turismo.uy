@@ -43,8 +43,6 @@ public class Principal {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		Publicador p = new Publicador();
-        p.publicar();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
