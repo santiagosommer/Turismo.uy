@@ -2,6 +2,10 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 //import java.util.Calendar;
 
 public abstract class DTUsuario {
@@ -10,7 +14,7 @@ public abstract class DTUsuario {
 	private String Nombre;
 	private String Apellido;
 	private String Email;
-	private LocalDate FechaNacimiento;
+	private XMLGregorianCalendar FechaNacimiento;
 	private String contra;
 	
 	public DTUsuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento,String contra) {
@@ -18,7 +22,12 @@ public abstract class DTUsuario {
 		setNombre(nombre);
 		setApellido(apellido);
 		setEmail(email);
-		setFechaNacimiento(fechaNacimiento);
+		try {
+			setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimiento.toString()));
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setContra(contra);
 		
 	}
@@ -46,10 +55,10 @@ public abstract class DTUsuario {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public LocalDate getFechaNacimiento() {
+	public XMLGregorianCalendar getFechaNacimiento() {
 		return FechaNacimiento;
 	}
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+	public void setFechaNacimiento(XMLGregorianCalendar fechaNacimiento) {
 		FechaNacimiento = fechaNacimiento;
 	}
 	public String getContra() {

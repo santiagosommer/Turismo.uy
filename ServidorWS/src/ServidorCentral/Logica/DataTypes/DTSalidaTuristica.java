@@ -3,12 +3,16 @@ package ServidorCentral.Logica.DataTypes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 
 public class DTSalidaTuristica {
  private String Nombre;
  private int CantidadMaxTuristas;
- private LocalDate FechaAlta;
+ private XMLGregorianCalendar FechaAlta;
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
  private DTActividadTuristica ActividadTuristicaAsoc;
@@ -18,7 +22,12 @@ public class DTSalidaTuristica {
 		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
 	 setNombre(nombre);
 	 setCantidadMaxTuristas(cantidadMaxTuristas);
-	 setFechaAlta(fechaAltaSalida);
+	 try {
+		setFechaAlta(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaAltaSalida.toString()));
+	} catch (DatatypeConfigurationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	 setInfoSalida(infoSalida);
 	 setCuposDisponibles(cuposDisponibles); 
 	 setActividadTuristicaAsoc(actividadTuristicaAsoc);
@@ -29,7 +38,12 @@ public class DTSalidaTuristica {
  public DTSalidaTuristica(SalidaTuristica sal) {
 	 Nombre = sal.getNombre();
 	 CantidadMaxTuristas = sal.getCantidadMaxTuristas();
-	 FechaAlta = sal.getFechaAlta();
+	 try {
+		FechaAlta = DatatypeFactory.newInstance().newXMLGregorianCalendar(sal.getFechaAlta().toString());
+	} catch (DatatypeConfigurationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	 InfoSalida = sal.getInfoSalida();
 	 CuposDisponibles = sal.getCuposDisponibles();
  }
@@ -45,10 +59,10 @@ public int getCantidadMaxTuristas() {
 public void setCantidadMaxTuristas(int cantidadMaxTuristas) {
 	CantidadMaxTuristas = cantidadMaxTuristas;
 }
-public LocalDate getFechaAlta() {
+public XMLGregorianCalendar getFechaAlta() {
 	return FechaAlta;
 }
-public void setFechaAlta(LocalDate fechaAltaSalida) {
+public void setFechaAlta(XMLGregorianCalendar fechaAltaSalida) {
 	FechaAlta = fechaAltaSalida;
 }
 public DTInfoSalida getInfoSalida() {

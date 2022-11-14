@@ -3,6 +3,10 @@ package ServidorCentral.Logica.DataTypes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import ServidorCentral.Logica.Clases.Paquete;
 
 
@@ -12,7 +16,7 @@ public class DTPaquete {
   private String Descripcion;
   private int PeriodoValidez;
   private int Descuento;
-  private LocalDate FechaAlta;
+  private XMLGregorianCalendar FechaAlta;
   private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
  public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta) {
@@ -21,7 +25,12 @@ public class DTPaquete {
 	 setPeriodoValidez(periodoValidez);
 	 setDescuento(descuento);
 	 setActividadesTuristicas(new ArrayList<DTActividadTuristica>());	
-	 setFechaAlta(fechaAlta);
+	 try {
+		setFechaAlta(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaAlta.toString()));
+	} catch (DatatypeConfigurationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
  }
   
@@ -67,12 +76,12 @@ public String getNombre() {
 }
 
 
-public LocalDate getFechaAlta() {
+public XMLGregorianCalendar getFechaAlta() {
 	return FechaAlta;
 }
 
 
-public void setFechaAlta(LocalDate fechaAlta) {
+public void setFechaAlta(XMLGregorianCalendar fechaAlta) {
 	FechaAlta = fechaAlta;
 }
 }

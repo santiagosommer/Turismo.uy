@@ -1,10 +1,15 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import ServidorCentral.Logica.Clases.Inscripcion;
 
 public class DTInscripcion {
-	private LocalDate Fecha;
+	private XMLGregorianCalendar Fecha;
 	private int CantidadTuristas;
 	private float Costo;
 	private DTTurista Autor;
@@ -12,7 +17,12 @@ public class DTInscripcion {
 	
 	
 	public DTInscripcion(LocalDate fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
-		Fecha = fecha;
+		try {
+			setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha.toString()));
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
 		Autor = autor;
@@ -20,7 +30,12 @@ public class DTInscripcion {
 	}
 	
 	public DTInscripcion(Inscripcion ins) {
-		setFecha(ins.getFecha());
+		try {
+			setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(ins.getFecha().toString()));
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setCantidadTuristas(ins.getCantidadTuristas());
 		setCosto(ins.getCosto());
 		setSalidaAsociada(new DTSalidaTuristica(ins.getSalidaAsociada()));
@@ -55,11 +70,11 @@ public class DTInscripcion {
 		Autor = autor;
 	}
 
-	public LocalDate getFecha() {
+	public XMLGregorianCalendar getFecha() {
 		return Fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(XMLGregorianCalendar fecha) {
 		Fecha = fecha;
 	}
 	

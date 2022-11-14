@@ -349,7 +349,7 @@ public class ControladorTuristica implements ITuristica {
 			for (Map.Entry<String, SalidaTuristica> entry : salidas.entrySet()) {
 				salida = entry.getValue();
 				DTInfoSalida info = salida.getInfoSalida();
-				LocalDate fechaSalida = info.getFecha();
+				LocalDate fechaSalida = LocalDate.parse(info.getFecha().toXMLFormat());
 				LocalDate fechaActual = LocalDate.now();
 				if (fechaSalida.compareTo(fechaActual) > 0) {
 					DTSalidaTuristica dtSalida = new DTSalidaTuristica(salida.getNombre(),salida.getCantidadMaxTuristas(), salida.getFechaAlta(), info, salida.getCuposDisponibles(),null);		//cambiar a actividad asociada?
