@@ -1,6 +1,9 @@
 
 package webservice;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
@@ -54,13 +57,13 @@ public class DtInfoSalida {
     /**
      * Define el valor de la propiedad fecha.
      * 
-     * @param value
+     * @param fecha2
      *     allowed object is
      *     {@link LocalDate }
      *     
      */
-    public void setFecha(LocalDate value) {
-        this.fecha = value;
+    public void setFecha(LocalDate fecha2) {
+        this.fecha = fecha2;
     }
 
     /**
@@ -78,13 +81,13 @@ public class DtInfoSalida {
     /**
      * Define el valor de la propiedad hora.
      * 
-     * @param value
+     * @param hora2
      *     allowed object is
      *     {@link LocalTime }
      *     
      */
-    public void setHora(LocalTime value) {
-        this.hora = value;
+    public void setHora(LocalTime hora2) {
+        this.hora = hora2;
     }
 
     /**

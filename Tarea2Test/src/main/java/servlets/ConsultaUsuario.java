@@ -33,13 +33,7 @@ public class ConsultaUsuario extends HttpServlet {
     	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-        
-       // port.seleccionarSalida(request.getParameter("nombreSalida"));
-        String seguido = request.getParameter("nombreUsuario");
-        String seguidor = ((DtUsuario) request.getSession().getAttribute("usuario_dt")).getNickname();
-        
-        port.seguirUsuario(seguido,seguidor);
-        
+       
     	SetDTUsuario usrs = port.getDTSUsuarios();
     	request.setAttribute("Usuarios", usrs);
     	 RequestDispatcher dispatcher = request.getRequestDispatcher(

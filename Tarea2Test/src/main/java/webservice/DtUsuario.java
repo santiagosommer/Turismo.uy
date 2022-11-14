@@ -3,7 +3,7 @@ package webservice;
 
 import java.util.ArrayList;
 
-import ServidorCentral.Logica.DataTypes.DTUsuario;
+//import ServidorCentral.Logica.DataTypes.DTUsuario;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
