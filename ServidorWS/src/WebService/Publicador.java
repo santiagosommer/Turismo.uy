@@ -1,6 +1,9 @@
 package WebService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
@@ -24,7 +27,6 @@ import WebService.DTAux.SetDTActividadTuristica;
 import WebService.DTAux.SetDTPaquete;
 import WebService.DTAux.SetDTSalidaTuristica;
 import WebService.DTAux.SetDTUsuario;
-import WebService.DTAux.SetString;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
@@ -59,8 +61,16 @@ public class Publicador {
     //----------IPaquetes------------------------------------------
     
     @WebMethod
-    public SetString listarCategoriasPaquete(String paquete){
-    	return new SetString(iPaquete.listarCategoriasPaquete(paquete));
+    public ArrayList<String> listarCategoriasPaquete(String paquete){
+    	Set<String> set = iPaquete.listarCategoriasPaquete(paquete);
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
     }
     
     @WebMethod
@@ -79,13 +89,29 @@ public class Publicador {
 	}
 
     @WebMethod
-	public SetString listarPaquetes(){
-		return new SetString(iPaquete.listarPaquetes());
+	public ArrayList<String> listarPaquetes(){
+		Set<String> set = iPaquete.listarPaquetes();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
 
     @WebMethod
-	public SetString listarActividadesAAgregar(String departamento){
-		return new SetString(iPaquete.listarActividadesAAgregar(departamento));
+	public ArrayList<String> listarActividadesAAgregar(String departamento){
+		Set<String> set = iPaquete.listarActividadesAAgregar(departamento);
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
 
     @WebMethod
@@ -99,8 +125,16 @@ public class Publicador {
     }
 	
     @WebMethod
-	public SetString listarActividadesPaquete(){
-    	return new SetString(iPaquete.listarActividadesPaquete());
+	public ArrayList<String> listarActividadesPaquete(){
+		Set<String> set = iPaquete.listarActividadesPaquete();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
     }
 	
     @WebMethod
@@ -111,13 +145,29 @@ public class Publicador {
     //----------ITuristica------------------------------------------
     
     @WebMethod
-    public SetString listarCategorias(){
-    	return new SetString(iTuristica.listarCategorias());
+    public ArrayList<String> listarCategorias(){
+		Set<String> set = iTuristica.listarCategorias();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
     }
     
     @WebMethod
-	public SetString listarCategoriasActividad(String actividad){
-    	return new SetString(iTuristica.listarCategoriasActividad(actividad));
+	public ArrayList<String> listarCategoriasActividad(String actividad){
+		Set<String> set = iTuristica.listarCategoriasActividad(actividad);
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
@@ -156,18 +206,40 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick, SetString categorias) throws NombreActividadRepetidoException{
-    	iTuristica.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, ciudad, departamento, proveedorNick, categorias.getDato());
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick, ArrayList<String> categorias) throws NombreActividadRepetidoException{
+    	Set<String> set  = new HashSet<String>();
+		// apply for loop
+		for(String ele : categorias){
+			set.add(ele);
+		}
+    	
+    	iTuristica.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, ciudad, departamento, proveedorNick, set);
 	}
     
     @WebMethod
-	public SetString listarDepartamentos(){
-    	return new SetString(iTuristica.listarDepartamentos());
+	public ArrayList<String> listarDepartamentos(){
+    	Set<String> set = iTuristica.listarDepartamentos();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
-	public SetString listarActividadesDeDepartamento(String departemento){
-    	return new SetString(iTuristica.listarActividadesDeDepartamento(departemento));
+	public ArrayList<String> listarActividadesDeDepartamento(String departemento){
+		Set<String> set = iTuristica.listarActividadesDeDepartamento(departemento);
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
@@ -181,8 +253,16 @@ public class Publicador {
 	}
     
     @WebMethod
-	public SetString listarSalidasActividad(String actividad){
-    	return new SetString(iTuristica.listarSalidasActividad(actividad));
+	public ArrayList<String> listarSalidasActividad(String actividad){
+		Set<String> set = iTuristica.listarSalidasActividad(actividad);
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
@@ -211,8 +291,16 @@ public class Publicador {
 	}
     
     @WebMethod
-	public SetString listarActividadesAgregadas(){
-    	return new SetString(iTuristica.listarActividadesAgregadas());
+	public ArrayList<String> listarActividadesAgregadas(){
+		Set<String> set = iTuristica.listarActividadesAgregadas();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
@@ -264,18 +352,42 @@ public class Publicador {
 	}
     
     @WebMethod
-	public SetString listarUsuarios() throws UsuarioNoExisteException{
-    	return new SetString(iUsuario.listarUsuarios());
+	public ArrayList<String> listarUsuarios() throws UsuarioNoExisteException{
+		Set<String> set = iUsuario.listarUsuarios();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	} 
     
     @WebMethod
-	public SetString listarProveedores() throws UsuarioNoExisteException{
-    	return new SetString(iUsuario.listarProveedores());
+	public ArrayList<String> listarProveedores() throws UsuarioNoExisteException{
+		Set<String> set = iUsuario.listarProveedores();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
-	public SetString listarTuristas(){
-    	return new SetString(iUsuario.listarTuristas());
+	public ArrayList<String> listarTuristas(){
+		Set<String> set = iUsuario.listarTuristas();
+    	
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (String e: set) {
+            items.add(e);
+        }
+        
+    	return items;
 	}
     
     @WebMethod
