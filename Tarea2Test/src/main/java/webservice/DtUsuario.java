@@ -1,12 +1,6 @@
 
 package webservice;
 
-import java.util.ArrayList;
-
-<<<<<<< HEAD
-=======
-//import ServidorCentral.Logica.DataTypes.DTUsuario;
->>>>>>> branch 'main' of https://gitlab.fing.edu.uy/tprog/tpgr25.git
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
