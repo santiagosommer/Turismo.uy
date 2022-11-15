@@ -13,6 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import webservice.EstadoError;
 import webservice.NoHayActividadConEseNombreException_Exception;
 import webservice.NombreSalidaRepetidoException_Exception;
@@ -90,7 +94,26 @@ public class AltaSalida extends HttpServlet {
     		LocalDate actual = LocalDate.now();
     		String dateString = date.toString()+":00";
     		String actualString = actual.toString()+":00";
-			port.crearSalidaTuristica(nombre, cuposMax , actualString, dateString, lugar, actividad);
+    		String iso = date.toString();
+    		if (date.getSecond() == 0 && date.getNano() == 0) {
+    		    iso += ":00"; // necessary hack because the second part is not optional in XML
+    		}
+    		XMLGregorianCalendar xml = null;
+			try {
+				xml = DatatypeFactory.newInstance().newXMLGregorianCalendar(iso);
+			} catch (DatatypeConfigurationException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+    		
+    		XMLGregorianCalendar xmlGregorianCalendar = null;
+			try {
+				xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(actual.toString());
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			port.crearSalidaTuristica(nombre, cuposMax , xmlGregorianCalendar, xml, lugar, actividad);
 		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}

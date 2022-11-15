@@ -54,8 +54,7 @@
            if ((DtSalidaTuristica) request.getSession().getAttribute("salida_dt") != null) {
         	   DtSalidaTuristica s = (DtSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
         	   nombre = s.getNombre();
-        	   fecha = s.getInfoSalida().getFecha().toString();
-        	   hora = (String) s.getInfoSalida().getHora();
+        	   fecha = s.getInfoSalida().getFecha().toGregorianCalendar().getTime().toString();
         	   lugar = s.getInfoSalida().getLugar();
         	   cupos = String.valueOf(s.getCuposDisponibles());
            }%>
@@ -79,8 +78,7 @@
             </div>
             <div class="tab-contents">
                 <div id="Perfil" class="tabcontent">
-                    <p><b>Fecha:</b> <%= fecha  %></p>
-                    <p><b>Hora:</b> <%= hora  %> </p>
+                    <p><b>Fecha y Hora:</b> <%= fecha  %></p>
                     <p><b>Cupos Disponibles:</b> <%= cupos  %></p>
                     <p><b>Lugar:</b>  <%= lugar %></p>
                 </div>                
