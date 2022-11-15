@@ -292,9 +292,10 @@ public class AltaDeActividadTuristica extends JInternalFrame {
 		String descripcion = this.DescripcionField.getText();
 		String duracion = this.DuracionField.getText();
 		String costoTurista = this.CostoTuristaField.getText();
-		String ciudad = CiudadField.getText();
+		String ciudad = this.CiudadField.getText();
+		List<String> selectedCategorias = this.listaCategorias.getSelectedValuesList();
 
-		if (nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
+		if (selectedCategorias.isEmpty() ||  nombre.isEmpty() || descripcion.isEmpty() || duracion.isEmpty() || costoTurista.isEmpty()
 				|| ciudad.isEmpty() || this.DepartamentoBox.getSelectedIndex() == -1
 				|| this.ProveedorBox.getSelectedIndex() == -1) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar actividad",
