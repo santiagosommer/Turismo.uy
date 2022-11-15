@@ -33,10 +33,10 @@ public class ConsultaPaqueteIndex extends HttpServlet {
     	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-    	String cat = request.getParameter("Categoria");
+    	String cat = request.getParameter("Categorias");
     	request.setAttribute("categorias", port.listarCategorias().getDato());
     	if (cat == null)
-        	request.setAttribute("lista_paquetes_a_mostrar", new ArrayList<DtPaquete>());
+        	request.setAttribute("lista_paquetes_a_mostrar", port.listarPaquetesCategoria("").getDato());
     	else
     		request.setAttribute("lista_paquetes_a_mostrar", port.listarPaquetesCategoria(cat).getDato());
     	

@@ -6,8 +6,11 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-//import java.util.Calendar;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
+//import java.util.Calendar;
+@XmlAccessorType(XmlAccessType.FIELD)
 public abstract class DTUsuario {
 
 	private String Nickname;

@@ -8,7 +8,9 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import ServidorCentral.Logica.Clases.SalidaTuristica;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTSalidaTuristica {
  private String Nombre;
  private int CantidadMaxTuristas;

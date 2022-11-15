@@ -509,7 +509,7 @@ public class ControladorTuristica implements ITuristica {
 	public Set<DTPaquete> listarPaquetesCategoria(String cat) {
 		
 		Set<DTPaquete> lista = new HashSet<DTPaquete>();
-		if (cat!=null) {
+		if (cat!=null && !cat.contentEquals("") && !cat.contentEquals("Categorias")) {
 			Categoria categoria = Categorias.get(cat);
 			for (Map.Entry<String, Paquete> entry : categoria.getPaquetes().entrySet()) {
 				   lista.add(new DTPaquete(entry.getValue()));

@@ -14,7 +14,9 @@ import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Categoria;
 import ServidorCentral.Logica.Clases.Paquete;
 import ServidorCentral.Logica.Clases.SalidaTuristica;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTActividadTuristica {
 	private String Nombre;
 	private String Descripcion;

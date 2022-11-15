@@ -8,9 +8,11 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import ServidorCentral.Logica.Clases.Paquete;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTPaquete {
   private String Nombre;
   private String Descripcion;
