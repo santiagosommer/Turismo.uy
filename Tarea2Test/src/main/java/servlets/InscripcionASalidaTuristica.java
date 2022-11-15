@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 
 import webservice.Publicador;
 import webservice.PublicadorService;
@@ -34,7 +36,7 @@ public class InscripcionASalidaTuristica extends HttpServlet {
     
     
    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, DatatypeConfigurationException {
 	   
 	   PublicadorService service = new PublicadorService();
        Publicador port = service.getPublicadorPort();
@@ -63,14 +65,19 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 		   return;
 	   }
 	   
-		if(salida.getInfoSalida().getFecha().isBefore(LocalDate.now())) {
+	   LocalDate localDate1 = LocalDate.of(
+			   salida.getInfoSalida().getFecha().getYear(), 
+			   salida.getInfoSalida().getFecha().getMonth(), 
+			   salida.getInfoSalida().getFecha().getDay());
+		if(localDate1.isBefore(LocalDate.now())) {
 		   request.setAttribute("error", "SalidaExpirada");
 		   request.getRequestDispatcher("/WEB-INF/inscripcionASalidaTuristica.jsp").forward(request, response);
 		   return;
 	   }
 	   
 	   try {
-		   port.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), webservice.LocalDate.now());
+		   
+		   port.crearInscripcion(turi, salida.getNombre(), cant, salida.getActividadTuristicaAsoc().getCostoTurista(), DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()));
 		   request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 		   return;
 	   } catch (YaExisteInscripcionTuristaSalida_Exception e1) {
@@ -88,7 +95,18 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			processRequest(request,response);
+			try {
+				processRequest(request,response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	/**
@@ -96,7 +114,18 @@ public class InscripcionASalidaTuristica extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-			processRequest(request,response);
+			try {
+				processRequest(request,response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DatatypeConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }
