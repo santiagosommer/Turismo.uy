@@ -191,16 +191,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetString }
-     * 
-     * @return
-     *     the new instance of {@link SetString }
-     */
-    public SetString createSetString() {
-        return new SetString();
-    }
-
-    /**
      * Create an instance of {@link SetDTPaquete }
      * 
      * @return
@@ -208,6 +198,16 @@ public class ObjectFactory {
      */
     public SetDTPaquete createSetDTPaquete() {
         return new SetDTPaquete();
+    }
+
+    /**
+     * Create an instance of {@link SetString }
+     * 
+     * @return
+     *     the new instance of {@link SetString }
+     */
+    public SetString createSetString() {
+        return new SetString();
     }
 
     /**
