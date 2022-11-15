@@ -4,6 +4,7 @@ package servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,8 +55,7 @@ public class AltaSalida extends HttpServlet {
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         
-    	Set<String> deps = new HashSet<>(port.listarDepartamentos().getDato());
-    	request.setAttribute("listarDepartamentos", deps);
+    	request.setAttribute("listarDepartamentos", port.listarDepartamentos().getDato());
     	
     	if (request.getParameter("depa")==null && request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -63,10 +63,10 @@ public class AltaSalida extends HttpServlet {
     	}
     	
     	String departamento = request.getParameter("depa");
-    	Set<String> acts = new HashSet<String>();
-    	if (departamento != null)
-	    	acts = new HashSet<>(port.listarActividadesDeDepartamento(departamento).getDato());
-	    request.setAttribute("listarActividades", acts);
+    	if (departamento == null)
+    		request.setAttribute("listarActividades", new ArrayList<String>());
+    	else
+    		request.setAttribute("listarActividades", port.listarActividadesDeDepartamento(departamento).getDato());
     	
     	if (request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -82,7 +82,6 @@ public class AltaSalida extends HttpServlet {
     	String nombre = request.getParameter("nombre");
     	LocalDateTime date = LocalDateTime.parse(request.getParameter("dateNHour"));
     	String lugar = request.getParameter("lugarsalida");
-    	
     	Integer cuposMax = Integer.parseInt(request.getParameter("maxcupos"));
     	
     	

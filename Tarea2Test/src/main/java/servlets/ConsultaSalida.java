@@ -28,9 +28,7 @@ public class ConsultaSalida extends HttpServlet {
     
     
     
-    private void processRequest(
-    	      HttpServletRequest request, HttpServletResponse response) 
-    	      throws ServletException, IOException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
@@ -41,8 +39,7 @@ public class ConsultaSalida extends HttpServlet {
           	DtSalidaTuristica sal = port.getDTSalidaTuristica();
           	request.getSession().setAttribute("salida_dt", sal);
               //request.setAttribute("InfoTurista", turi); //?
-              RequestDispatcher dispatcher = request.getRequestDispatcher(
-        	          "/WEB-INF/consultaSalida.jsp"); 
+              RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/consultaSalida.jsp"); 
         	        dispatcher.forward(request, response);
           }
       }

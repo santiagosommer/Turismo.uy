@@ -1,11 +1,15 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import webservice.DtPaquete;
 import webservice.Publicador;
 import webservice.PublicadorService;
 
@@ -30,8 +34,11 @@ public class ConsultaPaqueteIndex extends HttpServlet {
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
     	String cat = request.getParameter("Categoria");
-    	request.setAttribute("categorias", port.listarCategorias());
-    	request.setAttribute("lista_paquetes_a_mostrar", port.listarPaquetesCategoria(cat));
+    	request.setAttribute("categorias", port.listarCategorias().getDato());
+    	if (cat == null)
+        	request.setAttribute("lista_paquetes_a_mostrar", new ArrayList<DtPaquete>());
+    	else
+    		request.setAttribute("lista_paquetes_a_mostrar", port.listarPaquetesCategoria(cat).getDato());
     	
     	request.getRequestDispatcher("/WEB-INF/consultaPaqIndex.jsp").forward(request, response);
     	

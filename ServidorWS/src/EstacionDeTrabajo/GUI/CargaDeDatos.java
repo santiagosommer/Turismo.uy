@@ -132,11 +132,11 @@ public class CargaDeDatos {
 			interfazTuristica.AceptarActividad("Almuerzo en Valle del Lunarejo");
 			interfazTuristica.crearActividadTuristica("Cabalgata en Valle del Lunarejo", "Cabalgata por el área protegida. Varios recorridos para elegir.",2,150,LocalDate.of(2022,8,1),"Tranqueras","Rivera","eldiez",A6);
 			interfazTuristica.AceptarActividad("Cabalgata en Valle del Lunarejo");
-			interfazTuristica.crearActividadTuristica("Bus turístico Colonia","Recorrida por los principales atractivos de la ciudad",3,600,LocalDate.of(2022, 9, 1),"Colonia del Sacramento","Colonia","meche",A7);
+			interfazTuristica.crearActividadTuristica("Bus turistico Colonia","Recorrida por los principales atractivos de la ciudad",3,600,LocalDate.of(2022, 9, 1),"Colonia del Sacramento","Colonia","meche",A7);
 			//interfazTuristica.AceptarActividad(C5);
 			interfazTuristica.crearActividadTuristica("Colonia Premium Tour","Visita lugares exclusivos y relevantes",4,2600,LocalDate.of(2022, 9, 3),"Colonia del Sacramento","Colonia","meche",A8);
 			interfazTuristica.RechazarActividad("Colonia Premium Tour");
-			interfazTuristica.crearActividadTuristica("Deportes náuticos sin uso de motor","kitsurf - windsurf - kayakismo - canotaje en Rocha",3,1200,LocalDate.of(2022, 9, 5),"Rocha","Rocha","washington",A9);
+			interfazTuristica.crearActividadTuristica("Deportes nauticos sin uso de motor","kitsurf - windsurf - kayakismo - canotaje en Rocha",3,1200,LocalDate.of(2022, 9, 5),"Rocha","Rocha","washington",A9);
 			//interfazTuristica.AceptarActividad(C5);
 			interfazTuristica.crearActividadTuristica("Descubre Rivera","Rivera es un departamento de extraordinaria riqueza natural patrimonial y cultural con una ubicación geográfica privilegiada",2,650,LocalDate.of(2022, 9, 16),"Rivera","Rivera","eldiez",A10);
 			interfazTuristica.RechazarActividad("Descubre Rivera");
@@ -226,7 +226,6 @@ public class CargaDeDatos {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return true;
 		}
 	}
