@@ -4,6 +4,7 @@ import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -40,8 +41,8 @@ public class AltaDeTurista extends JInternalFrame {
 	JComboBox<Integer> comboBoxDia;
 	JComboBox<Integer> comboBoxMes;
 	JComboBox<Integer> comboBoxAño;
-	private JTextField textFieldContraseña;
-	private JTextField textFieldConfirmacionContraseña;
+	private JPasswordField textFieldContraseña;
+	private JPasswordField textFieldConfirmacionContraseña;
 
 	public AltaDeTurista(IUsuario controlUsr) {
 		setResizable(true);
@@ -221,7 +222,7 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_lblNewLabel.gridy = 8;
 		getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		textFieldContraseña = new JTextField();
+		textFieldContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -239,7 +240,7 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_lblNewLabel_1.gridy = 9;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		textFieldConfirmacionContraseña = new JTextField();
+		textFieldConfirmacionContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);

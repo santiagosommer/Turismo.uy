@@ -4,6 +4,7 @@ import javax.swing.JInternalFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
@@ -37,8 +38,8 @@ public class AltaDeProveedor extends JInternalFrame {
 	JComboBox<Integer> comboBoxDia;
 	JComboBox<Integer> comboBoxMes;
 	JComboBox<Integer> comboBoxAño;
-	private JTextField textFieldContraseña;
-	private JTextField textFieldConfirmacionContraseña;
+	private JPasswordField passwordFieldContraseña;
+	private JPasswordField passwordFieldConfirmacionContraseña;
 	
 
 	public AltaDeProveedor(IUsuario controlUsr) {
@@ -236,15 +237,15 @@ public class AltaDeProveedor extends JInternalFrame {
 		gbc_lblNewLabel.gridy = 9;
 		getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		textFieldContraseña = new JTextField();
+		passwordFieldContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 9;
-		getContentPane().add(textFieldContraseña, gbc_textField);
-		textFieldContraseña.setColumns(10);
+		getContentPane().add(passwordFieldContraseña, gbc_textField);
+		passwordFieldContraseña.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmación contraseña:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -253,15 +254,15 @@ public class AltaDeProveedor extends JInternalFrame {
 		gbc_lblNewLabel_1.gridy = 10;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		textFieldConfirmacionContraseña = new JTextField();
+		passwordFieldConfirmacionContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 2;
 		gbc_textField_1.gridy = 10;
-		getContentPane().add(textFieldConfirmacionContraseña, gbc_textField_1);
-		textFieldConfirmacionContraseña.setColumns(10);
+		getContentPane().add(passwordFieldConfirmacionContraseña, gbc_textField_1);
+		passwordFieldConfirmacionContraseña.setColumns(10);
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAceptar.gridx = 2;
@@ -290,7 +291,7 @@ public class AltaDeProveedor extends JInternalFrame {
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldDescripcion.getText();
 		String linkWeb = this.textFieldLinkWeb.getText();
-		String contraseña = this.textFieldContraseña.getText();
+		String contraseña = this.passwordFieldContraseña.getText();
 
 		if (checkFormulario()) {
 			try {
@@ -328,8 +329,8 @@ public class AltaDeProveedor extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldDescripcion.getText();
-		String contraseña = this.textFieldContraseña.getText();
-		String confirmacionContraseña = this.textFieldConfirmacionContraseña.getText();
+		String contraseña = this.passwordFieldContraseña.getText();
+		String confirmacionContraseña = this.passwordFieldConfirmacionContraseña.getText();
 
 		if (contraseña.isEmpty() || confirmacionContraseña.isEmpty() || nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
@@ -353,8 +354,8 @@ public class AltaDeProveedor extends JInternalFrame {
 		textFieldEmail.setText("");
 		textFieldDescripcion.setText("");
 		textFieldLinkWeb.setText("");
-		textFieldContraseña.setText("");
-		textFieldConfirmacionContraseña.setText("");
+		passwordFieldContraseña.setText("");
+		passwordFieldConfirmacionContraseña.setText("");
 	}
 
 }
