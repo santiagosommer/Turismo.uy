@@ -2,7 +2,9 @@ package servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
 import webservice.DtProveedor;
@@ -62,7 +65,7 @@ public class AltaActividad extends HttpServlet {
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, DatatypeConfigurationException {
     	request.setAttribute("estado_error", null);
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
@@ -75,28 +78,29 @@ public class AltaActividad extends HttpServlet {
     	
     	String nombre = request.getParameter("nombre_alta_actividad");
     	String descripcion = request.getParameter("descripcion");
-    	Integer duracion = Integer.parseInt(request.getParameter("duracion"));
+    	int duracion = Integer.parseInt(request.getParameter("duracion"));
     	float costo = Float.parseFloat(request.getParameter("costo"));
     	String ciudad = request.getParameter("ciudad");
-        String departamento = request.getParameter("departamento");
+    	 String departamento = request.getParameter("departamento");
 
-		String[] str = request.getParameterValues("categorias");
-		Set<String> cats = new HashSet<String>(); 
+ 		String[] str = request.getParameterValues("categorias");
+ 		Set<String> cats = new HashSet<String>(); 
 
-		String prov = ((DtProveedor) request.getSession().getAttribute("usuario_dt")).getNickname();
-		
-		for(String s : str) {
-			cats.add(s);
-		}
-    	
-    	
-    	try {
-    		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, cats);
-//			ct.AceptarActividad(nombre);
-			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
-    	} catch (NombreActividadRepetidoException_Exception e) {
-			e.printStackTrace();
-		}
+ 		String prov = ((DtProveedor) request.getSession().getAttribute("usuario_dt")).getNickname();
+ 		
+ 		for(String s : str) {
+ 			cats.add(s);
+ 		}
+     	
+     	
+     	try {
+     		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, cats);
+// 			ct.AceptarActividad(nombre);
+ 			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+     	} catch (NombreActividadRepetidoException_Exception e) {
+ 			e.printStackTrace();
+ 		}
+
     	
     
 		
@@ -107,7 +111,18 @@ public class AltaActividad extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -115,7 +130,18 @@ public class AltaActividad extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		processRequest(request,response);
+		try {
+			processRequest(request,response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -75,7 +75,7 @@
             desc =  p.getDescripcionGeneral();
             url = p.getURL();
             apellido = p.getApellido();
-            act = (ArrayList<DtActividadTuristica>) p.getActividades();
+            act = (ArrayList<DtActividadTuristica>) p.getInfoActividades();
             //seg = p.getSeguidores();
              
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
@@ -153,7 +153,7 @@
                 ArrayList<DtActividadTuristica> actividades = new ArrayList<DtActividadTuristica>();
                 if ((EstadoSesion)request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) {
                    DtProveedor p = (DtProveedor) request.getSession().getAttribute("prov_dt");
-                   actividades = (ArrayList<DtActividadTuristica>) p.getActividades();
+                   actividades = (ArrayList<DtActividadTuristica>) p.getInfoActividades();
 
                 for (int i=0; i < actividades.size();i++) {
                     

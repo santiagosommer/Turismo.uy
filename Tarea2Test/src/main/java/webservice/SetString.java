@@ -67,5 +67,8 @@ public class SetString {
         }
         return this.dato;
     }
+    
+   
+    
 
 }
