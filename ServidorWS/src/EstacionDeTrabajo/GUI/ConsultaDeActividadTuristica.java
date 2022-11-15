@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.GridBagLayout;
@@ -437,7 +438,7 @@ public class ConsultaDeActividadTuristica extends JInternalFrame {
 					lblCiudadContent.setText(actividadElegida.getCiudad());
 					lblDuracionContent.setText(String.valueOf(actividadElegida.getDuracion()));
 					lblCostoPorTuristaContent.setText("$"+String.valueOf(actividadElegida.getCostoTurista()));
-					lblFechaDeAltaContent.setText(actividadElegida.getFechaAlta().toString());
+					lblFechaDeAltaContent.setText(new SimpleDateFormat("MM/dd/yyyy").format(actividadElegida.getFechaAlta().getTime()));
 					lblDepartamentoContent.setText(actividadElegida.getInfoDepartamento().getNombre());
 					
 					comboSalidas.removeAllItems();

@@ -6,6 +6,8 @@ import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JScrollPane;
 
 public class InfoActividad extends JInternalFrame{
@@ -86,7 +88,7 @@ public class InfoActividad extends JInternalFrame{
 		
 		JLabel lblFechaDeAlta_1 = new JLabel("Fecha de alta:");
 		getContentPane().add(lblFechaDeAlta_1);
-		lblFechaDeAlta_1.setText(acti.getFechaAlta().toString());
+		lblFechaDeAlta_1.setText(new SimpleDateFormat("MM/dd/yyyy").format(acti.getFechaAlta().getTime()));
 		
 		
 		

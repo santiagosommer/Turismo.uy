@@ -23,6 +23,7 @@ import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
@@ -338,7 +339,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			textFieldNombre.setText(dtt.getNombre());
 			textFieldApellido.setText(dtt.getApellido());
 			textFieldEmail.setText(dtt.getEmail());
-			textFieldFecha.setText(dtt.getFechaNacimiento().toString());
+			textFieldFecha.setText(new SimpleDateFormat("MM/dd/yyyy").format(dtt.getFechaNacimiento().getTime()));
 		
 			textFieldDescripcionNacionalidad.setText(dtt.getNacionalidad());
 			textFieldDescripcionNacionalidad.setVisible(true);
@@ -374,7 +375,7 @@ public class ConsultaDeUsuario extends JInternalFrame {
 			textFieldNombre.setText(dtp.getNombre());
 			textFieldApellido.setText(dtp.getApellido());
 			textFieldEmail.setText(dtp.getEmail());
-			textFieldFecha.setText(dtp.getFechaNacimiento().toString());
+			textFieldFecha.setText( new SimpleDateFormat("MM/dd/yyyy").format(dtp.getFechaNacimiento().getTime()));
 			textFieldDescripcionNacionalidad.setText(dtp.getDescripcionGeneral());
 			textFieldDescripcionNacionalidad.setVisible(true);
 			lblDescripcionNacionalidad.setText("Descripcion");

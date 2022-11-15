@@ -39,6 +39,8 @@
     <%@page import="webservice.*"%>
      <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
+     <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.util.Date"%>
      
     <title>Consulta Proveedor</title>
 </head>
@@ -71,7 +73,8 @@
             nombre = p.getNombre();
             nickName = p.getNickname();
             email = p.getEmail();
-            fechaN = p.getFechaNacimiento().toString();
+            fechaN = new SimpleDateFormat("MM/dd/yyyy").format(p.getFechaNacimiento().toGregorianCalendar().getTime());
+            
             desc =  p.getDescripcionGeneral();
             url = p.getURL();
             apellido = p.getApellido();

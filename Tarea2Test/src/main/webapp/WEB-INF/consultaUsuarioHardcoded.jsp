@@ -41,6 +41,8 @@
     
     <%@page import=" java.util.ArrayList"%>
      <%@page import= "java.util.Iterator"%>
+     <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.util.Date"%>
     
     
     <title>Consulta Usuario</title>
@@ -74,7 +76,9 @@
             nickName = t.getNickname();
             apellido = t.getApellido();
             email = t.getEmail();
-            fechaN = t.getFechaNacimiento().toString();
+            Date date = t.getFechaNacimiento().toGregorianCalendar().getTime();
+     	   SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
+     	  fechaN = formatter.format(date); 
             nacionalidad = t.getNacionalidad();
             InscSal = (ArrayList<DtInscripcion>) t.getInscripciones();
          // seg = (ArrayList<DtUsuario>) u.getSeguidores();
@@ -179,7 +183,7 @@
                           <div class="Salida-text">
                              <h3><%= InscSal.get(i).getSalidaAsociada().getNombre() %></h3>
                              <%if(esPropio){ %>
-                           	 	<p> Fecha Inscripcion:<%= InscSal.get(i).getFecha().toString() %> </p>
+                           	 	<p> Fecha Inscripcion:<%= new SimpleDateFormat("MM/dd/yyyy").format(InscSal.get(i).getFecha().toGregorianCalendar().getTime()) %> </p>
                            	 	<p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
                             	<p> Costo: <%= InscSal.get(i).getCosto() %> </p>	
                              <%} %>

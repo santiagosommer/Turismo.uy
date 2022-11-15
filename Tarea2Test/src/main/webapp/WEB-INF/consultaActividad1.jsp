@@ -9,6 +9,8 @@
     <%@page import="java.util.Iterator"%>
     <%@page import=" java.util.ArrayList"%>
     <%@page import="webservice.*"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.util.Date"%>
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <title>Consulta Actividad</title>
      <script >
@@ -67,7 +69,10 @@
      		duracion = act.getDuracion();
      		costo = act.getCostoTurista();
      		ciudad = act.getCiudad();
-     		fechaAlta = act.getFechaAlta().toGregorianCalendar().getTime().toString();
+     		Date date = act.getFechaAlta().toGregorianCalendar().getTime();
+      	   SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
+      	 fechaAlta = formatter.format(date);
+     		
      		descripcion = act.getDescripcion();
      		Salidas = (ArrayList<DtSalidaTuristica>) act.getInfoSalidas();
      	    cate = (ArrayList<String>) act.getCategorias();
@@ -107,11 +112,11 @@
           
           <div class="tab-contents">
             <div id="Info" class="tabcontent">
-              <p><b>Duraci�n:</b> <%= duracion %></p>
+              <p><b>Duracion:</b> <%= duracion %></p>
               <p><b>Costo:</b> $<%= costo %></p>
               <p><b>Ciudad:</b> <%= ciudad %></p>
               <p><b>Fecha Alta:</b> <%= fechaAlta %></p>
-              <p><b>Categor�a/s:</b> 
+              <p><b>Categoria/s:</b> 
 			  <% if(cate != null) for (int i = 0; i < cate.size(); i++){ %>
 					<%= cate.get(i) %>
 			  <% } %>

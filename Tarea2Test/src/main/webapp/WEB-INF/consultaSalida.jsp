@@ -8,6 +8,8 @@
     <style><%@include file="./../media/css/consultaUsuario.css"%></style>
     <%@page import="webservice.DtSalidaTuristica"%>
     <%@page import="webservice.EstadoSesion"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.util.Date"%>
     <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");
@@ -54,7 +56,9 @@
            if ((DtSalidaTuristica) request.getSession().getAttribute("salida_dt") != null) {
         	   DtSalidaTuristica s = (DtSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
         	   nombre = s.getNombre();
-        	   fecha = s.getInfoSalida().getFecha().toGregorianCalendar().getTime().toString();
+        	   Date date = s.getInfoSalida().getFecha().toGregorianCalendar().getTime();
+        	   SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");  
+        	   fecha = formatter.format(date); 
         	   lugar = s.getInfoSalida().getLugar();
         	   cupos = String.valueOf(s.getCuposDisponibles());
            }%>

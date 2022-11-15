@@ -4,6 +4,8 @@ import javax.swing.JInternalFrame;
 
 import ServidorCentral.Logica.DataTypes.DTSalidaTuristica;
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JLabel;
 import java.awt.EventQueue;
 
@@ -56,14 +58,14 @@ public class InfoSalida extends JInternalFrame{
 		
 		JLabel lblFechaDeAlta_1 = new JLabel("Fecha de Alta Content");
 		getContentPane().add(lblFechaDeAlta_1);
-		lblFechaDeAlta_1.setText(salida.getFechaAlta().toString());
+		lblFechaDeAlta_1.setText(new SimpleDateFormat("MM/dd/yyyy").format(salida.getFechaAlta().getTime()));
 		
 		JLabel lblFechaDeSalida = new JLabel("Fecha de Salida: ");
 		getContentPane().add(lblFechaDeSalida);
 		
 		JLabel lblFechaDeSalida_1 = new JLabel("Fecha de Salida Content");
 		getContentPane().add(lblFechaDeSalida_1);
-		lblFechaDeSalida_1.setText(salida.getInfoSalida().getFecha().toString());
+		lblFechaDeSalida_1.setText(new SimpleDateFormat("MM/dd/yyyy").format(salida.getInfoSalida().getFecha().getTime()));
 		
 		JLabel lblCuposDisponibles = new JLabel("Cupos Disponibles:");
 		getContentPane().add(lblCuposDisponibles);

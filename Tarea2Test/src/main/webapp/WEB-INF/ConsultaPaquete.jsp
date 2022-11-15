@@ -9,6 +9,8 @@
      <%@page import="java.util.Set"%>
     <%@page import=" java.util.ArrayList"%>
     <%@page import="webservice.*"%>
+    <%@page import="java.text.SimpleDateFormat"%>
+    <%@page import="java.util.Date"%>
     <script >
        let i, tabcontent, tablinks;
        tabcontent = document.getElementsByClassName("tabcontent");
@@ -82,7 +84,7 @@
       <div id="Perfil" class="tabcontent">
         <p><b>Validez:</b> <%= paq.getPeriodoValidez() %> dias</p>
         <p><b>Descuento:</b> <%= paq.getDescuento()  %> % </p>
-        <p><b>Fecha Alta:</b> <%= paq.getFechaAlta() %></p>
+        <p><b>Fecha Alta:</b> <%= new SimpleDateFormat("MM/dd/yyyy").format(paq.getFechaAlta().toGregorianCalendar().getTime()) %></p>
         <p><b>Descripcion:</b> <%= paq.getDescripcion() %></p>
       </div>
       <div id="Actividades" class="tabcontent">
