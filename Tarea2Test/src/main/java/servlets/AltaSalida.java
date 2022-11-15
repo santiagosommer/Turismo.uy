@@ -88,7 +88,9 @@ public class AltaSalida extends HttpServlet {
     	
     	try {
     		LocalDate actual = LocalDate.now();
-			port.crearSalidaTuristica(nombre, cuposMax , actual.toString(), date.toString(), lugar, actividad);
+    		String dateString = date.toString()+":00";
+    		String actualString = actual.toString()+":00";
+			port.crearSalidaTuristica(nombre, cuposMax , actualString, dateString, lugar, actividad);
 		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}

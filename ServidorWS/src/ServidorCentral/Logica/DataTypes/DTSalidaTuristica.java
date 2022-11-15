@@ -2,10 +2,8 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import ServidorCentral.Logica.Clases.SalidaTuristica;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -14,7 +12,7 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 public class DTSalidaTuristica {
  private String Nombre;
  private int CantidadMaxTuristas;
- private XMLGregorianCalendar FechaAlta;
+ private Calendar FechaAlta;
  private DTInfoSalida InfoSalida;
  private int CuposDisponibles;
  private DTActividadTuristica ActividadTuristicaAsoc;
@@ -24,12 +22,8 @@ public class DTSalidaTuristica {
 		 int cuposDisponibles,DTActividadTuristica actividadTuristicaAsoc) {
 	 setNombre(nombre);
 	 setCantidadMaxTuristas(cantidadMaxTuristas);
-	 try {
-		setFechaAlta(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaAltaSalida.toString()));
-	} catch (DatatypeConfigurationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	 LocalDate in = fechaAltaSalida;
+	 setFechaAlta(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 	 setInfoSalida(infoSalida);
 	 setCuposDisponibles(cuposDisponibles); 
 	 setActividadTuristicaAsoc(actividadTuristicaAsoc);
@@ -40,12 +34,8 @@ public class DTSalidaTuristica {
  public DTSalidaTuristica(SalidaTuristica sal) {
 	 Nombre = sal.getNombre();
 	 CantidadMaxTuristas = sal.getCantidadMaxTuristas();
-	 try {
-		FechaAlta = DatatypeFactory.newInstance().newXMLGregorianCalendar(sal.getFechaAlta().toString());
-	} catch (DatatypeConfigurationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	 LocalDate in = sal.getFechaAlta();
+	 setFechaAlta(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 	 InfoSalida = sal.getInfoSalida();
 	 CuposDisponibles = sal.getCuposDisponibles();
  }
@@ -61,10 +51,10 @@ public int getCantidadMaxTuristas() {
 public void setCantidadMaxTuristas(int cantidadMaxTuristas) {
 	CantidadMaxTuristas = cantidadMaxTuristas;
 }
-public XMLGregorianCalendar getFechaAlta() {
+public Calendar getFechaAlta() {
 	return FechaAlta;
 }
-public void setFechaAlta(XMLGregorianCalendar fechaAltaSalida) {
+public void setFechaAlta(Calendar fechaAltaSalida) {
 	FechaAlta = fechaAltaSalida;
 }
 public DTInfoSalida getInfoSalida() {

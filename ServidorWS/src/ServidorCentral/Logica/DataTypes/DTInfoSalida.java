@@ -3,46 +3,37 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DTInfoSalida {
- private XMLGregorianCalendar Fecha;
- private XMLGregorianCalendar Hora;
+ private Calendar Fecha;
+ private Calendar Hora;
  private String Lugar;
  
  public DTInfoSalida(LocalDate fecha, LocalTime hora, String lugar) {
 	 LocalDate in = fecha;
-	 try {
-		setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(in.toString()));
-	} catch (DatatypeConfigurationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	 Fecha.setHour(hora.getHour());
-	 Fecha.setMinute(hora.getMinute());
-	 Fecha.setSecond(hora.getSecond());
+	setFecha(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth(),hora.getHour(),hora.getMinute()));
+	
 	 setLugar(lugar);
  }
  
-public XMLGregorianCalendar getFecha() {
+public Calendar getFecha() {
 	return Fecha;
 }
 
-public void setFecha(XMLGregorianCalendar fecha) {
+public void setFecha(Calendar fecha) {
 	Fecha = fecha;
 }
 
-public XMLGregorianCalendar getHora() {
+public Calendar getHora() {
 	return Hora;
 }
 
-public void setHora(XMLGregorianCalendar hora) {
+public void setHora(Calendar hora) {
 	Hora = hora;
 }
 

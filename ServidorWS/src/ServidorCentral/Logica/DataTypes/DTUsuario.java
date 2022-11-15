@@ -1,10 +1,8 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -17,7 +15,7 @@ public abstract class DTUsuario {
 	private String Nombre;
 	private String Apellido;
 	private String Email;
-	private XMLGregorianCalendar FechaNacimiento;
+	private Calendar FechaNacimiento;
 	private String contra;
 	
 	public DTUsuario(String nickname,String nombre,String apellido,String email,LocalDate fechaNacimiento,String contra) {
@@ -25,12 +23,8 @@ public abstract class DTUsuario {
 		setNombre(nombre);
 		setApellido(apellido);
 		setEmail(email);
-		try {
-			setFechaNacimiento(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaNacimiento.toString()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		LocalDate in = fechaNacimiento;
+		setFechaNacimiento(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 		setContra(contra);
 		
 	}
@@ -58,10 +52,10 @@ public abstract class DTUsuario {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public XMLGregorianCalendar getFechaNacimiento() {
+	public Calendar getFechaNacimiento() {
 		return FechaNacimiento;
 	}
-	public void setFechaNacimiento(XMLGregorianCalendar fechaNacimiento) {
+	public void setFechaNacimiento(Calendar fechaNacimiento) {
 		FechaNacimiento = fechaNacimiento;
 	}
 	public String getContra() {

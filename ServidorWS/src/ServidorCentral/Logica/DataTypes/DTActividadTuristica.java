@@ -2,13 +2,11 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Categoria;
@@ -22,7 +20,7 @@ public class DTActividadTuristica {
 	private String Descripcion;
 	private int Duracion;
 	private float CostoTurista;
-	private XMLGregorianCalendar FechaAlta;
+	private Calendar FechaAlta;
 	private DTDepartamento InfoDepartamento;
 	private ArrayList<DTSalidaTuristica> InfoSalidas;
 	private String Proveedor;
@@ -37,12 +35,7 @@ public class DTActividadTuristica {
 		setDuracion(at.getDuracion());
 		setCostoTurista(at.getCostoTurista());
 		LocalDate in = at.getFechaAlta();
-		try {
-			setFechaAlta(DatatypeFactory.newInstance().newXMLGregorianCalendar(in.toString()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		setFechaAlta(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 		setCiudad(at.getCiudad());
 		setInfoDepartamento(new DTDepartamento(at.getInfoDepartamento()));
 		setSalidas(new ArrayList<DTSalidaTuristica>());
@@ -127,10 +120,10 @@ public class DTActividadTuristica {
 	public void setCiudad(String ciudad) {
 		Ciudad = ciudad;
 	}
-	public XMLGregorianCalendar getFechaAlta() {
+	public Calendar getFechaAlta() {
 		return FechaAlta;
 	}
-	public void setFechaAlta(XMLGregorianCalendar xmlGregorianCalendar) {
+	public void setFechaAlta(Calendar xmlGregorianCalendar) {
 		FechaAlta = xmlGregorianCalendar;
 	}
 	public EstadoActividad getEstado() {

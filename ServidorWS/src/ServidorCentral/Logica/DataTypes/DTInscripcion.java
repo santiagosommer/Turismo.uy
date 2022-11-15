@@ -1,17 +1,15 @@
 package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import ServidorCentral.Logica.Clases.Inscripcion;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DTInscripcion {
-	private XMLGregorianCalendar Fecha;
+	private Calendar Fecha;
 	private int CantidadTuristas;
 	private float Costo;
 	private DTTurista Autor;
@@ -19,12 +17,8 @@ public class DTInscripcion {
 	
 	
 	public DTInscripcion(LocalDate fecha, int cantidadTuristas, float costo, DTTurista autor,DTSalidaTuristica salidaAsociada) {
-		try {
-			setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha.toString()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		LocalDate in = fecha;
+		setFecha(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 		CantidadTuristas = cantidadTuristas ;
 		Costo = costo;
 		Autor = autor;
@@ -32,12 +26,8 @@ public class DTInscripcion {
 	}
 	
 	public DTInscripcion(Inscripcion ins) {
-		try {
-			setFecha(DatatypeFactory.newInstance().newXMLGregorianCalendar(ins.getFecha().toString()));
-		} catch (DatatypeConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		LocalDate in = ins.getFecha();
+		setFecha(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 		setCantidadTuristas(ins.getCantidadTuristas());
 		setCosto(ins.getCosto());
 		setSalidaAsociada(new DTSalidaTuristica(ins.getSalidaAsociada()));
@@ -72,11 +62,11 @@ public class DTInscripcion {
 		Autor = autor;
 	}
 
-	public XMLGregorianCalendar getFecha() {
+	public Calendar getFecha() {
 		return Fecha;
 	}
 
-	public void setFecha(XMLGregorianCalendar fecha) {
+	public void setFecha(Calendar fecha) {
 		Fecha = fecha;
 	}
 	
