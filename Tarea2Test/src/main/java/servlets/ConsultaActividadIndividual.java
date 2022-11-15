@@ -15,6 +15,7 @@ import webservice.EstadoActividad;
 import webservice.EstadoSesion;
 import webservice.Publicador;
 import webservice.PublicadorService;
+import webservice.SetDTSalidaTuristica;
 
 
 /**
@@ -48,11 +49,12 @@ public class ConsultaActividadIndividual extends HttpServlet {
       			if ((DtProveedor) request.getSession().getAttribute("usuario_dt") != null) {
       				
           		   DtProveedor prov = (DtProveedor) request.getSession().getAttribute("usuario_dt");
-          		   String nomProv = prov.getNombre() + " " + prov.getApellido(); //tambien se puede modificar que la actividad sea propia si se guarda el nickName del proveedor 
+          		  String nomProv = prov.getNombre() + " " + prov.getApellido(); //tambien se puede modificar que la actividad sea propia si se guarda el nickName del proveedor 
           		   
-          		 if (nomProv.equals(actividad.getProveedor()) && actividad.getInfoPaquetes().isEmpty() && actividad.getEstado() == EstadoActividad.CONFIRMADA ){
+          		 if ( nomProv.equals(actividad.getProveedor()) && actividad.getInfoPaquetes().isEmpty() && actividad.getEstado() == EstadoActividad.CONFIRMADA ){
           			 port.seleccionarProveedor(prov.getNickname());
-          			 if (port.datosSalidasVigentes(actividad.getNombre()) == null) { //por que no funciona empty?
+          			 SetDTSalidaTuristica dts = port.datosSalidasVigentes(actividad.getNombre());
+          			 if ( dts.getDato().isEmpty()) { 
           				 request.getSession().setAttribute("finalizable", true);
           			 }
           			 
@@ -60,7 +62,7 @@ public class ConsultaActividadIndividual extends HttpServlet {
           		 }
       		}
         
-      	  }
+      	 }
     		 DtActividadTuristica act = port.getDTActividadTuristica();
     		 request.getSession().setAttribute("act_dt", act);
     		 RequestDispatcher dispatcher = request.getRequestDispatcher(
@@ -70,8 +72,7 @@ public class ConsultaActividadIndividual extends HttpServlet {
     	
     	 
     	 if (finalizable) {
-    		 
-    		// port.finalizarActividadProveedor() (esta en el otro proyecto)
+    		 port.finalizarActividadTuristicaProveedor(nomAct);
     	 }
 		
     }
