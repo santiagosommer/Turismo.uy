@@ -27,9 +27,9 @@
         </div>
         
         <%
-        Set<String> deptos = (Set<String>) request.getAttribute("departamentos");
-        Set<String> cats = (Set<String>) request.getAttribute("categorias");
-        Set<DtActividadTuristica> acts = (Set<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
+        ArrayList<String> deptos = (ArrayList<String>) request.getAttribute("departamentos");
+        ArrayList<String> cats = (ArrayList<String>) request.getAttribute("categorias");                                                       
+        ArrayList<DtActividadTuristica> acts = (ArrayList<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
         %>
         <div class="content">
 
@@ -38,9 +38,9 @@
                 <div class="filtro">
                     <select name="Departamento" class="Departamento">
                         <option value="Departamento">Departamento</option>
-                        <%for (String s : deptos) {%>
-	            			<option value="<%= s %>">
-	                    	<%= s %>
+                        <%for (int i = 0; i < deptos.size(); i++){%>
+	            			<option value="<%= deptos.get(i) %>">
+	                    	<%= deptos.get(i) %>
 	                    	</option>
                     	<% } %>
                     </select>
@@ -48,9 +48,9 @@
                 <div class="filtro">
                       <select name="Categoria" class="Categoria">
                           <option value="Categoria">Categoria</option>
-                           <%for (String s : cats) {%>
-		            			<option value="<%= s %>">
-		                    	<%= s %>
+                           <%for (int i = 0; i < cats.size(); i++) {%>
+		            			<option value="<%= cats.get(i) %>">
+		                    	<%= cats.get(i) %>
 		                    	</option>
 	                   		<% } %>
                       </select>
@@ -62,17 +62,17 @@
             </div>
             <div class="Consultas">
             
-            	<%for (DtActividadTuristica s : acts) {%>
+            	<%for (int i = 0; i < acts.size(); i++) {%>
 	                 <div class="conjuntoConsulta">
 	                    <div class="imagen">
 	                        <img src="media/icons/avatar.svg" height="200">
 	                    </div>
 	                    <div class="descripcion">
 	                        <div class="nombre">
-	                           <%= s.getNombre() %>
+	                           <%= acts.get(i).getNombre() %>
 	                        </div>
-	                        <%= s.getDescripcion() %>
-	                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= s.getNombre()%>" class="links selected">Leer mas.</a>
+	                        <%= acts.get(i).getDescripcion() %>
+	                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre()%>" class="links selected">Leer mas.</a>
 	                    </div>
 	                </div>
 	                <hr>

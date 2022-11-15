@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/head.jsp"></jsp:include>
-    <%@page import="java.util.Set"%>
+    <%@page import="java.util.ArrayList"%>
     <%@page import="java.util.HashSet"%>
     <%@page import="webservice.*"%>
     <style><%@include file="./../media/css/consultaIndex.css"%></style>
@@ -15,9 +15,9 @@
     <jsp:include page="/WEB-INF/topBar.jsp"></jsp:include>
     
      <%
-        Set<String> cats = (Set<String>) request.getAttribute("categorias");
-     	Set<DtPaquete> paqs = new HashSet<DtPaquete>();
-         paqs = (Set<DtPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
+     ArrayList<String> cats = (ArrayList<String>) request.getAttribute("categorias");
+     ArrayList<DtPaquete> paqs = new ArrayList<DtPaquete>();
+         paqs = (ArrayList<DtPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
         %>
     
     <div style="display: flex; flex-direction: column;">
@@ -33,8 +33,8 @@
                 <div class="filtro">
                     <select name="Categorias" class="Categorias">
                     <option value="Categorias">Categorias</option>
-                     <%for (String c : cats) {%>
-                        <option value= <%= c %>> <%= c %></option>
+                     <%for (int i=0; i< cats.size();i++) {%>
+                        <option value="<%= cats.get(i) %>"><%= cats.get(i) %></option>
                         <% } %>
                     </select>
                     <input type="submit" class="button" id="consultaPaquete" value="Consultar">
@@ -42,7 +42,7 @@
                 </form>
             </div>
             <div class="Consultas">
-            <%for (DtPaquete p : paqs) {%>
+            <%for (int i=0; i< paqs.size();i++)  {%>
             
                 <div class="conjuntoConsulta">
                     <div class="imagen">
@@ -50,10 +50,10 @@
                     </div>
                     <div class="descripcion">
                         <div class="nombre">
-                            <%= p.getNombre() %>
+                            <%= paqs.get(i).getNombre() %>
                         </div>
-                        <%= p.getDescripcion() %>
-                        <a href="/Tarea2Test/ConsultaPaquete?paramPaq=<%= p.getNombre()%>" class="links selected">Leer mas.</a>
+                        <%= paqs.get(i).getDescripcion() %>
+                        <a href="/Tarea2Test/ConsultaPaquete?paramPaq=<%= paqs.get(i).getNombre()%>" class="links selected">Leer mas.</a>
                     </div>
                 </div>
                 <hr>

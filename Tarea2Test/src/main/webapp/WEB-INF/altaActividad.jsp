@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.Set"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="webservice.EstadoError"%>
 
 <!DOCTYPE html>
@@ -50,18 +50,19 @@
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         <div class="s1">  
                         	<select class ="controls" name="departamento" id="depas">
-	                        	<% Set<String> departamentos = (Set<String>) request.getAttribute("depas_act"); %>
-	                        	<%	for (String depto : departamentos) { %>
-	                        	    <option value="<%= depto %>"><%= depto %></option>
+	                        	<% ArrayList<String> departamentos = (ArrayList<String>) request.getAttribute("depas_act"); %>
+	                        	<%	for (int i = 0; i < departamentos.size(); i++) { %>
+	                        	    <option value="<%= departamentos.get(i) %>"><%= departamentos.get(i) %></option>
 	                        	<% } %>
+	                   
                           	</select>
                         </div>
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         <div class="s2">  
                         	<select name="categorias" class ="controls" id="categ" required multiple>
-                        		<% Set<String> categorias = (Set<String>) request.getAttribute("cat_act"); %>
-                        		<%	for (String cat : categorias) { %>
-                        	    	<option value="<%= cat %>"><%= cat %></option>
+                        		<% ArrayList<String> categorias = (ArrayList<String>) request.getAttribute("cat_act"); %>
+                        		<%	for (int i = 0; i < categorias.size(); i++) { %>
+                        	    	<option value="<%= categorias.get(i) %>"><%= categorias.get(i) %></option>
                         		<% } %>
                           	</select>
                         </div>
