@@ -47,12 +47,12 @@
                 <p class="text-white-50 mb-5">Por favor, ingrese sus datos.</p>
   
                 <div class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                  <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email-or-nickname-content" required/>
                   <label class="form-label" for="typeEmailX">Nick o Email</label>
                 </div>
   
                 <div class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                  <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password-content" required/>
                   <label class="form-label" for="typePasswordX">Contraseña</label>
                 </div>
   

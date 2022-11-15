@@ -50,10 +50,9 @@ public class Home extends HttpServlet {
 
 	private void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		cargarDatos();
 		initSession(request);
 		
-		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/iniciarSesionMobile.jsp").forward(request, response);
 		
 	}
 
