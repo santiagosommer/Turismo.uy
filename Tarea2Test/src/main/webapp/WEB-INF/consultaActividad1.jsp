@@ -86,7 +86,7 @@
               <img src="media/icons/avatar.svg" height="200">
             </div>
             <h3><%= nombre %></h3>
-            <% if (finalizable) { //ver css %>
+            <% if (finalizable && request.getSession().getAttribute("finalizada") == null) { //ver css %>
             <form>
              <a href = " /Tarea2Test/ConsultaActividadIndividual?paramAct=<%=nombre%>">   <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> </a>
              </form>

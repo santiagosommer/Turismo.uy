@@ -80,6 +80,7 @@ public class ConsultaActividadIndividual extends HttpServlet {
     		 DtActividadTuristica act = port.getDTActividadTuristica();
     		 port.finalizarActividadTuristicaProveedor(act.getNombre());
     		 request.getSession().setAttribute("act_dt", act);
+    		 request.getSession().setAttribute("finalizada", true);
     		 RequestDispatcher dispatcher = request.getRequestDispatcher(
          	          "/WEB-INF/consultaActividad1.jsp"); 
          	        dispatcher.forward(request, response);
