@@ -3,10 +3,10 @@ package WebService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
@@ -75,11 +75,9 @@ public class Publicador {
 	}
 
     @WebMethod
-	public void crearPaquete(String nombrePaque, String descripcion, int periodoValidez,int Descuento, XMLGregorianCalendar fechaAlta) throws NombrePaqueteRepetidoException{
-		LocalDate localDate = LocalDate.of(
-				fechaAlta.getYear(), 
-				fechaAlta.getMonth(), 
-				fechaAlta.getDay());
+	public void crearPaquete(String nombrePaque, String descripcion, int periodoValidez,int Descuento, Calendar fechaAlta) throws NombrePaqueteRepetidoException{
+    	Date input = fechaAlta.getTime();
+    	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
     	iPaquete.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, localDate);
 	}
@@ -167,11 +165,9 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, XMLGregorianCalendar fechaAlta, String ciudad, String departamento,String proveedorNick, SetString categorias) throws NombreActividadRepetidoException{
-    	LocalDate localDate = LocalDate.of(
-    			fechaAlta.getYear(), 
-    			fechaAlta.getMonth(), 
-    			fechaAlta.getDay());
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, Calendar fechaAlta, String ciudad, String departamento,String proveedorNick, SetString categorias) throws NombreActividadRepetidoException{
+    	Date input = fechaAlta.getTime();
+    	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
     	
     	iTuristica.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, localDate, ciudad, departamento, proveedorNick, categorias.getDato());
@@ -193,9 +189,18 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, String fechaAlta, String fechaInfo,String lugarInfo, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
-    	LocalDate localDate = LocalDate.parse(fechaInfo);
-    	LocalDateTime date = LocalDateTime.parse(fechaInfo);
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, Calendar fechaAlta, Calendar fechaInfo, String lugarInfo, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
+    	Date input = fechaAlta.getTime();
+        LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        TimeZone tz = fechaInfo.getTimeZone();
+
+        // Getting zone id
+        ZoneId zoneId = tz.toZoneId();
+
+        // conversion
+        LocalDateTime date = LocalDateTime.ofInstant(fechaInfo.toInstant(), zoneId);
+    	
     	LocalDate fecha = date.toLocalDate();
         LocalTime hora = date.toLocalTime();
 
@@ -312,11 +317,9 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, XMLGregorianCalendar fechaAlta) throws YaExisteInscripcionTuristaSalida{
-    	LocalDate localDate = LocalDate.of(
-    			fechaAlta.getYear(), 
-    			fechaAlta.getMonth(), 
-    			fechaAlta.getDay());
+	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, Calendar fechaAlta) throws YaExisteInscripcionTuristaSalida{
+    	Date input = fechaAlta.getTime();
+    	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
     	iUsuario.crearInscripcion(nombreTurista, nombreSalida, cantidadTuristas, costo, localDate);
 	}
@@ -332,21 +335,17 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, XMLGregorianCalendar fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException{
-    	LocalDate localDate = LocalDate.of(
-    			fechaNacimiento.getYear(), 
-    			fechaNacimiento.getMonth(), 
-    			fechaNacimiento.getDay());
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException{
+    	Date input = fechaNacimiento.getTime();
+    	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
     	iUsuario.altaProveedor(nickname, nombre, apellido, email, localDate, contraseña, descripcionGeneral, url);
 	}
     
     @WebMethod
-	public void altaTurista(String nickname, String nombre, String apellido, String email, XMLGregorianCalendar fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException{
-    	LocalDate localDate = LocalDate.of(
-    			fechaNacimiento.getYear(), 
-    			fechaNacimiento.getMonth(), 
-    			fechaNacimiento.getDay());
+	public void altaTurista(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException{
+    	Date input = fechaNacimiento.getTime();
+    	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
     	iUsuario.altaTurista(nickname, nombre, apellido, email, localDate, contraseña, nacionalidad);
 	}
