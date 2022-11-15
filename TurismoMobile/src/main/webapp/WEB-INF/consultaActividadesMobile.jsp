@@ -72,10 +72,11 @@
 		                    	<%= cats.get(i) %>
 		                    	</option>
 	                   		<% } %>
-              </select>     
+              </select>   
+              
+              <button class="btn btn-outline-light btn-lg px-5" id="consultaActividad" type="submit" value="Consultar">Consultar</button>
         </form>
     </div>
-    
     
 
 		<%for (int i = 0; i < acts.size(); i++) {%>
