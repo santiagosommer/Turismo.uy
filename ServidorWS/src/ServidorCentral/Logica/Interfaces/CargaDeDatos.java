@@ -179,7 +179,9 @@ public class CargaDeDatos {
 				interfazTuristica.crearSalidaTuristica("Tour Colonia del Sacramento 30-10", 10, LocalDate.of(2022,9,7), new DTInfoSalida(LocalDate.of(2022,10,30), LocalTime.of(10,0), "Encuentro en la base del Faro"), "Tour por Colonia del Sacramento");
 				interfazTuristica.crearSalidaTuristica("Cabalgata Extrema", 4, LocalDate.of(2022,9,15), new DTInfoSalida(LocalDate.of(2022,10,30), LocalTime.of(16,0), "Posada Del Lunarejo"), "Cabalgata en Valle del Lunarejo");
 				interfazTuristica.crearSalidaTuristica("Almuerzo en el Real 1", 10, LocalDate.of(2022,10,10), new DTInfoSalida(LocalDate.of(2022,10,30), LocalTime.of(12,0), "Restaurante de la Plaza de Toros"), "Almuerzo en el Real de San Carlos");
-			
+				interfazTuristica.crearSalidaTuristica("Degusta Diciembre", 20, LocalDate.of(2022,11,7), new DTInfoSalida(LocalDate.of(2022,12,2), LocalTime.of(17,0), "Sociedad Agropecuaria de Rocha"), "Degusta");
+				interfazTuristica.crearSalidaTuristica("Teatro con Sabores 4", 20, LocalDate.of(2022,11,7), new DTInfoSalida(LocalDate.of(2022,12,3), LocalTime.of(18,0), "Club Deportivo Unión"), "Teatro con Sabores");
+				
 			} catch (NombreSalidaRepetidoException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -203,6 +205,10 @@ public class CargaDeDatos {
 				interfazUsuario.crearInscripcion("bobesponja","Teatro con Sabores 2", 2, (float) 1000 , LocalDate.of(2022, 8, 20));
 				interfazUsuario.crearInscripcion("anibal","Teatro con Sabores 2", 1, (float) 500 , LocalDate.of(2022, 8, 21));
 				interfazUsuario.crearInscripcion("tony", "Degusta Setiembre" , 11, (float) 8800 , LocalDate.of(2022, 8, 21));
+				/*16*/interfazUsuario.crearInscripcion("lachiqui", "Almuerzo 1" , 5, (float) 4000 , LocalDate.of(2022, 9, 3));
+				/*18*/interfazUsuario.crearInscripcion("waston", "Almuerzo 2" , 1, (float) 800 , LocalDate.of(2022, 9, 5));
+				/*20*/interfazUsuario.crearInscripcion("elelvis", "Almuerzo en el Real 1" , 2, (float) 1600 , LocalDate.of(2022, 10, 2));
+				/*22*/interfazUsuario.crearInscripcion("mastropiero", "Almuerzo en el Real 1" , 4, (float) 3200, LocalDate.of(2022, 10, 12));
 				
 				//inscripcion paquete
 				/*11*/interfazUsuario.crearInscripcion("lachiqui", "Degusta Noviembre" , 2, (float) 1280 , LocalDate.of(2022, 10, 3));
@@ -210,13 +216,10 @@ public class CargaDeDatos {
 				/*13*/interfazUsuario.crearInscripcion("elelvis", "Degusta Setiembre" , 5, (float) 3200 , LocalDate.of(2022, 9, 2));
 				/*14*/interfazUsuario.crearInscripcion("elelvis", "Teatro con Sabores 1" , 5, (float) 2000 , LocalDate.of(2022, 9, 2));
 				/*15*/interfazUsuario.crearInscripcion("lachiqui", "Tour Colonia del Sacramento 11-09" , 5, (float) 1700 , LocalDate.of(2022, 9, 3));
-				/*16*/interfazUsuario.crearInscripcion("lachiqui", "Almuerzo 1" , 5, (float) 3400 , LocalDate.of(2022, 9, 3));
-				/*17*/interfazUsuario.crearInscripcion("waston", "Tour Colonia del Sacramento 18-09" , 1, (float) 340 , LocalDate.of(2022, 9, 5));
-				/*18*/interfazUsuario.crearInscripcion("waston", "Almuerzo 2" , 1, (float) 680 , LocalDate.of(2022, 9, 5));
-				/*19*/interfazUsuario.crearInscripcion("elelvis", "Tour Colonia del Sacramento 30-10" , 2, (float) 680 , LocalDate.of(2022, 10, 2));
-				/*20*/interfazUsuario.crearInscripcion("elelvis", "Almuerzo en el Real 1" , 2, (float) 1360 , LocalDate.of(2022, 10, 2));
+				/*17*/interfazUsuario.crearInscripcion("waston", "Tour Colonia del Sacramento 18-09" , 1, (float) 340 , LocalDate.of(2022, 9, 5));		
+				/*19*/interfazUsuario.crearInscripcion("elelvis", "Tour Colonia del Sacramento 30-10" , 2, (float) 680 , LocalDate.of(2022, 10, 2));	
 				/*21*/interfazUsuario.crearInscripcion("mastropiero", "Tour Colonia del Sacramento 30-10" , 1360, (float) 0 , LocalDate.of(2022, 10, 12));
-				/*22*/interfazUsuario.crearInscripcion("mastropiero", "Almuerzo en el Real 1" , 4, (float) 2720, LocalDate.of(2022, 10, 12));
+				
 				
 			} catch (YaExisteInscripcionTuristaSalida e) {
 				// TODO Auto-generated catch block
@@ -228,6 +231,7 @@ public class CargaDeDatos {
 				interfazPaquetes.crearPaquete("Disfrutar Rocha", "Actividades para hacer en familia y disfrutar arte y gastronomia", 60, 20, LocalDate.of(2022, 8, 10));
 				interfazPaquetes.crearPaquete("Un dia en Colonia", "Paseos por el casco historico y se puede terminar con Almuerzo en la Plaza de Toros", 45, 15, LocalDate.of(2022, 8, 1));
 				interfazPaquetes.crearPaquete("Valle Del Lunarejo", "Visite un área protegida con un paisaje natural hermoso", 60, 15, LocalDate.of(2022, 9, 15));
+				interfazPaquetes.crearPaquete("Rocha De Fiesta", "Para cerrar el año a lo grande en nuestro departamento más oceánico", 45, 30, LocalDate.of(2022, 11, 7));
 				
 				interfazPaquetes.AgregarActividadPaquete("Disfrutar Rocha", "Degusta");
 				interfazPaquetes.AgregarActividadPaquete("Disfrutar Rocha", "Teatro con Sabores");
@@ -235,6 +239,7 @@ public class CargaDeDatos {
 				interfazPaquetes.AgregarActividadPaquete("Un dia en Colonia", "Almuerzo en el Real de San Carlos");
 				interfazPaquetes.AgregarActividadPaquete("Valle Del Lunarejo","Almuerzo en Valle del Lunarejo");
 				interfazPaquetes.AgregarActividadPaquete("Valle Del Lunarejo","Cabalgata en Valle del Lunarejo");
+				interfazPaquetes.AgregarActividadPaquete("Rocha De Fiesta", "Degusta");
 			} catch (NombrePaqueteRepetidoException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
