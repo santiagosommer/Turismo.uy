@@ -1,6 +1,7 @@
 
 package webservice;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
@@ -377,7 +378,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         String arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
+        XMLGregorianCalendar arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -546,7 +547,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         String arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
+        XMLGregorianCalendar arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -576,9 +577,9 @@ public interface Publicador {
         @WebParam(name = "arg1", partName = "arg1")
         int arg1,
         @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
+        XMLGregorianCalendar arg2,
         @WebParam(name = "arg3", partName = "arg3")
-        String arg3,
+        XMLGregorianCalendar arg3,
         @WebParam(name = "arg4", partName = "arg4")
         String arg4,
         @WebParam(name = "arg5", partName = "arg5")
@@ -639,7 +640,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         float arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
+        XMLGregorianCalendar arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -699,7 +700,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         float arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4)
+        XMLGregorianCalendar arg4)
         throws YaExisteInscripcionTuristaSalida_Exception
     ;
 
@@ -736,7 +737,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         int arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4)
+        XMLGregorianCalendar arg4)
         throws NombrePaqueteRepetidoException_Exception
     ;
 
