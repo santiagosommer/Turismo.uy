@@ -67,9 +67,9 @@
      		duracion = act.getDuracion();
      		costo = act.getCostoTurista();
      		ciudad = act.getCiudad();
-     		fechaAlta = act.getFechaAlta().toString();
+     		fechaAlta = act.getFechaAlta().toGregorianCalendar().getTime().toString();
      		descripcion = act.getDescripcion();
-     		Salidas = (ArrayList<DtSalidaTuristica>) act.getSalidas();
+     		Salidas = (ArrayList<DtSalidaTuristica>) act.getInfoSalidas();
      	    cate = (ArrayList<String>) act.getCategorias();
      		paque = (ArrayList<DtPaquete>) act.getInfoPaquetes();
      		

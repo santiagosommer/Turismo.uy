@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import webservice.EstadoError;
 import webservice.EstadoSesion;
@@ -84,9 +87,17 @@ public class AltaTurista extends HttpServlet {
     	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
+        
+        XMLGregorianCalendar xmlGregorianCalendar = null;
+		try {
+			xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(date.toString());
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	try {
-    		port.altaTurista(nickname, nombre, apellido, email, date, password, nacionalidad);
+    		port.altaTurista(nickname, nombre, apellido, email, xmlGregorianCalendar, password, nacionalidad);
 		} catch (UsuarioRepetidoException_Exception e) {
 			e.printStackTrace();
 		}

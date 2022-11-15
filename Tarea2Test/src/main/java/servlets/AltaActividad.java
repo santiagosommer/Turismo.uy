@@ -10,12 +10,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeFactory;
 
 import webservice.DtProveedor;
 import webservice.EstadoError;
 import webservice.NombreActividadRepetidoException_Exception;
 import webservice.Publicador;
 import webservice.PublicadorService;
+import webservice.SetString;
 
 /**
  * Servlet implementation class AltaActividad
@@ -89,7 +91,7 @@ public class AltaActividad extends HttpServlet {
     	
     	
     	try {
-    		port.crearActividadTuristica(nombre, descripcion, duracion, costo, LocalDate.now(), ciudad, departamento, prov, cats);
+    		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, cats);
 //			ct.AceptarActividad(nombre);
 			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     	} catch (NombreActividadRepetidoException_Exception e) {
