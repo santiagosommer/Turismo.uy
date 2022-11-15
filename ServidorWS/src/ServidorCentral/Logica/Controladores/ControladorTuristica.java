@@ -66,7 +66,7 @@ public class ControladorTuristica implements ITuristica {
 	@Override
 	public Set<DTActividadTuristica> listarActividadesDeptoYCate(String depto,String cat){
 		Set<DTActividadTuristica> res = new HashSet<DTActividadTuristica>();
-		if (depto == null || cat == null || (depto.contentEquals("Departamento") && cat.contentEquals("Categoria"))) {
+		if (depto.contentEquals("") || cat.contentEquals("") || (depto.contentEquals("Departamento") && cat.contentEquals("Categoria"))) {
 			for (String key : ActividadesTuristicas.keySet()) {
 				res.add(new DTActividadTuristica(ActividadesTuristicas.get(key)));
 			}

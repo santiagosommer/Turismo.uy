@@ -1,12 +1,16 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import webservice.DtActividadTuristica;
 import webservice.Publicador;
 import webservice.PublicadorService;
 
@@ -30,14 +34,23 @@ public class ConsultaActividadesIndex extends HttpServlet {
     	String dep = request.getParameter("Departamento");
     	String cat = request.getParameter("Categoria");
     	
+    	if (dep == null) dep = "";
+    	if (cat == null) cat = "";
+    	
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         
-    	request.setAttribute("departamentos", port.listarDepartamentos());
+        Set<String> setDepa = new HashSet<>(port.listarDepartamentos().getDato());
+        
+        Set<String> setCate = new HashSet<>(port.listarCategorias().getDato());
+        
+    	request.setAttribute("departamentos", setDepa);
     	
-    	request.setAttribute("categorias", port.listarCategorias());
+    	request.setAttribute("categorias", setCate);
     	
-    	request.setAttribute("lista_actividades_a_mostrar", port.listarActividadesDeptoYCate(dep, cat));
+    	Set<DtActividadTuristica> setAct = new HashSet<>(port.listarActividadesDeptoYCate(dep, cat).getDato());
+    	
+    	request.setAttribute("lista_actividades_a_mostrar", setAct);
     	
 		request.getRequestDispatcher("/WEB-INF/consultaActIndex.jsp").forward(request, response);
 		

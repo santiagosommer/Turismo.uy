@@ -27,7 +27,7 @@
         </div>
         
         <%
-        ArrayList<String> deptos = (ArrayList<String>) request.getAttribute("departamentos");
+        Set<String> deptos = (Set<String>) request.getAttribute("departamentos");
         Set<String> cats = (Set<String>) request.getAttribute("categorias");
         Set<DtActividadTuristica> acts = (Set<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
         %>
