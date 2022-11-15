@@ -1,9 +1,11 @@
 
 package webservice;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -17,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="Fecha" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="Fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="CantidadTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="Costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         <element name="Autor" type="{http://WebService/}dtTurista" minOccurs="0"/>
@@ -41,7 +43,8 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DtInscripcion {
 
     @XmlElement(name = "Fecha")
-    protected Object fecha;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fecha;
     @XmlElement(name = "CantidadTuristas")
     protected int cantidadTuristas;
     @XmlElement(name = "Costo")
@@ -56,10 +59,10 @@ public class DtInscripcion {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFecha() {
+    public XMLGregorianCalendar getFecha() {
         return fecha;
     }
 
@@ -68,10 +71,10 @@ public class DtInscripcion {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFecha(Object value) {
+    public void setFecha(XMLGregorianCalendar value) {
         this.fecha = value;
     }
 

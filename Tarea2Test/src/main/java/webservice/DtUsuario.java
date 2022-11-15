@@ -1,9 +1,11 @@
 
 package webservice;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -22,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="FechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="FechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="contra" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -56,7 +58,8 @@ public abstract class DtUsuario {
     @XmlElement(name = "Email")
     protected String email;
     @XmlElement(name = "FechaNacimiento")
-    protected Object fechaNacimiento;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaNacimiento;
     protected String contra;
 
     /**
@@ -160,10 +163,10 @@ public abstract class DtUsuario {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFechaNacimiento() {
+    public XMLGregorianCalendar getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -172,10 +175,10 @@ public abstract class DtUsuario {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaNacimiento(Object value) {
+    public void setFechaNacimiento(XMLGregorianCalendar value) {
         this.fechaNacimiento = value;
     }
 

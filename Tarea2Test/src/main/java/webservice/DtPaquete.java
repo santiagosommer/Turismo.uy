@@ -3,9 +3,11 @@ package webservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -23,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="Descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="PeriodoValidez" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="Descuento" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="ActividadesTuristicas" type="{http://WebService/}dtActividadTuristica" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -53,7 +55,8 @@ public class DtPaquete {
     @XmlElement(name = "Descuento")
     protected int descuento;
     @XmlElement(name = "FechaAlta")
-    protected Object fechaAlta;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaAlta;
     @XmlElement(name = "ActividadesTuristicas", nillable = true)
     protected List<DtActividadTuristica> actividadesTuristicas;
 
@@ -142,10 +145,10 @@ public class DtPaquete {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFechaAlta() {
+    public XMLGregorianCalendar getFechaAlta() {
         return fechaAlta;
     }
 
@@ -154,10 +157,10 @@ public class DtPaquete {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaAlta(Object value) {
+    public void setFechaAlta(XMLGregorianCalendar value) {
         this.fechaAlta = value;
     }
 

@@ -1,9 +1,11 @@
 
 package webservice;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -17,8 +19,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="Fecha" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="Hora" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="Fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="Hora" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="Lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -37,9 +39,11 @@ import jakarta.xml.bind.annotation.XmlType;
 public class DtInfoSalida {
 
     @XmlElement(name = "Fecha")
-    protected Object fecha;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fecha;
     @XmlElement(name = "Hora")
-    protected Object hora;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar hora;
     @XmlElement(name = "Lugar")
     protected String lugar;
 
@@ -48,10 +52,10 @@ public class DtInfoSalida {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFecha() {
+    public XMLGregorianCalendar getFecha() {
         return fecha;
     }
 
@@ -60,10 +64,10 @@ public class DtInfoSalida {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFecha(Object value) {
+    public void setFecha(XMLGregorianCalendar value) {
         this.fecha = value;
     }
 
@@ -72,10 +76,10 @@ public class DtInfoSalida {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getHora() {
+    public XMLGregorianCalendar getHora() {
         return hora;
     }
 
@@ -84,10 +88,10 @@ public class DtInfoSalida {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setHora(Object value) {
+    public void setHora(XMLGregorianCalendar value) {
         this.hora = value;
     }
 

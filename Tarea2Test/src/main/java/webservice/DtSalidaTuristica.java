@@ -3,9 +3,11 @@ package webservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -21,7 +23,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="CantidadMaxTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         <element name="InfoSalida" type="{http://WebService/}dtInfoSalida" minOccurs="0"/>
  *         <element name="CuposDisponibles" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="ActividadTuristicaAsoc" type="{http://WebService/}dtActividadTuristica" minOccurs="0"/>
@@ -51,7 +53,8 @@ public class DtSalidaTuristica {
     @XmlElement(name = "CantidadMaxTuristas")
     protected int cantidadMaxTuristas;
     @XmlElement(name = "FechaAlta")
-    protected Object fechaAlta;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaAlta;
     @XmlElement(name = "InfoSalida")
     protected DtInfoSalida infoSalida;
     @XmlElement(name = "CuposDisponibles")
@@ -106,10 +109,10 @@ public class DtSalidaTuristica {
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFechaAlta() {
+    public XMLGregorianCalendar getFechaAlta() {
         return fechaAlta;
     }
 
@@ -118,10 +121,10 @@ public class DtSalidaTuristica {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaAlta(Object value) {
+    public void setFechaAlta(XMLGregorianCalendar value) {
         this.fechaAlta = value;
     }
 
