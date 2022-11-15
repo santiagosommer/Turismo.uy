@@ -77,7 +77,7 @@
             fechaN = t.getFechaNacimiento().toString();
             nacionalidad = t.getNacionalidad();
             InscSal = (ArrayList<DtInscripcion>) t.getInscripciones();
-          	seg = (ArrayList<DtUsuario>) u.getSeguidores();
+         // seg = (ArrayList<DtUsuario>) u.getSeguidores();
 		 
             if ((EstadoSesion) request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) {
        	 

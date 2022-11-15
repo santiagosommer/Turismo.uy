@@ -50,7 +50,7 @@
      	float costo = 1;
      	String ciudad = "";
      	String fechaAlta = "";
-     	Set<String> cate = null;
+     	ArrayList<String> cate = null;
      	String descripcion = "";
      	//agregar paquetes
      	ArrayList<DtPaquete> paque = new ArrayList<DtPaquete>();
@@ -65,7 +65,7 @@
      		fechaAlta = act.getFechaAlta().toString();
      		descripcion = act.getDescripcion();
      		Salidas = (ArrayList<DtSalidaTuristica>) act.getSalidas();
-     	    cate = (Set<String>) act.getCategorias();
+     	    cate = (ArrayList<String>) act.getCategorias();
      		paque = (ArrayList<DtPaquete>) act.getInfoPaquetes();
      		
          }	
@@ -100,8 +100,8 @@
                         <b>Fecha alta: </b><%= fechaAlta %>
                         <br>
                         <b>Categorias: </b>
-                        <% if(cate != null)for(String s : cate){ %>
-							<%= s %>
+                        <% if(cate != null) for (int i = 0; i < cate.size(); i++){ %>
+							<%= cate.get(i) %>
 			  			<% } %>
 			  			</p>
                         </div>

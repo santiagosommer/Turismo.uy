@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <jsp:include page="/WEB-INF/headMobile.jsp"></jsp:include>
-    <%@page import="java.util.Set"%>
+    <%@page import="java.util.ArrayList"%>
     <%@page import="java.util.Iterator"%>
     <%@page import="webservice.*"%>
     <title>Consulta Actividades Mobile</title>
@@ -44,27 +44,27 @@
 <div class="container my-3">
 
 <%
-        Set<String> deptos = (Set<String>) request.getAttribute("departamentos");
-        Set<String> cats = (Set<String>) request.getAttribute("categorias");
-        Set<DtActividadTuristica> acts = (Set<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
-%>
+        ArrayList<String> deptos = (ArrayList<String>) request.getAttribute("departamentos");
+        ArrayList<String> cats = (ArrayList<String>) request.getAttribute("categorias");                                                       
+        ArrayList<DtActividadTuristica> acts = (ArrayList<DtActividadTuristica>) request.getAttribute("lista_actividades_a_mostrar");
+        %>
     
     <div class="dropdown">
     	<form class="filtros" action="ConsultaActividadesIndex" method="get">
         	<select class="form-select" aria-label="Departamentos">
                 <option value="Departamento">Departamentos</option>
-                <%for (String s : deptos) {%>
-	            			<option value="<%= s %>">
-	                    	<%= s %>
+                <%for (int i = 0; i < deptos.size(); i++){%>
+	            			<option value="<%= deptos.get(i) %>">
+	                    	<%= deptos.get(i) %>
 	                    	</option>
                     	<% } %>
               </select>
               
               <select class="form-select" aria-label="Departamentos">
                 <option value="Categoria">Categoria</option>
-                           <%for (String s : cats) {%>
-		            			<option value="<%= s %>">
-		                    	<%= s %>
+                           <%for (int i = 0; i < cats.size(); i++) {%>
+		            			<option value="<%= cats.get(i) %>">
+		                    	<%= cats.get(i) %>
 		                    	</option>
 	                   		<% } %>
               </select>     

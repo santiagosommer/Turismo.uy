@@ -107,11 +107,11 @@
       
       	<% ArrayList<String> p = new ArrayList<String>();
       	for (DtActividadTuristica a: act){ 
-      		Set<String> cats = (Set<String>) a.getCategorias();
-            for (String categ : cats){  
-            	if (!p.contains(categ)) {
-            		p.add(categ); %> 
-      	       <p><b> <%= categ %> </b></p>
+      		ArrayList<String> cats = (ArrayList<String>) a.getCategorias();
+            for (int i=0; i< cats.size();i++){  
+            	if (!p.contains(cats.get(i))) {
+            		p.add(cats.get(i)); %> 
+      	       <p><b> <%= cats.get(i) %> </b></p>
         <% } }}}%>
       </div>
     </div>
