@@ -5,9 +5,11 @@ import ServidorCentral.Logica.Excepciones.*;
 import ServidorCentral.Logica.Fabrica.Fabrica;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -349,7 +351,8 @@ public class ControladorTuristica implements ITuristica {
 			for (Map.Entry<String, SalidaTuristica> entry : salidas.entrySet()) {
 				salida = entry.getValue();
 				DTInfoSalida info = salida.getInfoSalida();
-				LocalDate fechaSalida = LocalDate.parse(info.getFecha().toXMLFormat());
+				Date input = info.getFecha().getTime();
+				LocalDate fechaSalida = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				LocalDate fechaActual = LocalDate.now();
 				if (fechaSalida.compareTo(fechaActual) > 0) {
 					DTSalidaTuristica dtSalida = new DTSalidaTuristica(salida.getNombre(),salida.getCantidadMaxTuristas(), salida.getFechaAlta(), info, salida.getCuposDisponibles(),null);		//cambiar a actividad asociada?
@@ -509,7 +512,7 @@ public class ControladorTuristica implements ITuristica {
 	public Set<DTPaquete> listarPaquetesCategoria(String cat) {
 		
 		Set<DTPaquete> lista = new HashSet<DTPaquete>();
-		if (cat!=null) {
+		if (cat!=null && !cat.contentEquals("") && !cat.contentEquals("Categorias")) {
 			Categoria categoria = Categorias.get(cat);
 			for (Map.Entry<String, Paquete> entry : categoria.getPaquetes().entrySet()) {
 				   lista.add(new DTPaquete(entry.getValue()));

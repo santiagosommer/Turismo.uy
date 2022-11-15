@@ -6,7 +6,9 @@ import java.util.Map;
 
 import ServidorCentral.Logica.Clases.ActividadTuristica;
 import ServidorCentral.Logica.Clases.Proveedor;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTProveedor extends DTUsuario {
  
 private String DescripcionGeneral;

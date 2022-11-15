@@ -35,7 +35,7 @@ public class ConsultaUsuario extends HttpServlet {
         Publicador port = service.getPublicadorPort();
        
     	SetDTUsuario usrs = port.getDTSUsuarios();
-    	request.setAttribute("Usuarios", usrs);
+    	request.setAttribute("Usuarios", usrs.getDato());
     	 RequestDispatcher dispatcher = request.getRequestDispatcher(
     	          "/WEB-INF/consultaUsuarioIndex.jsp");
     	        dispatcher.forward(request, response);

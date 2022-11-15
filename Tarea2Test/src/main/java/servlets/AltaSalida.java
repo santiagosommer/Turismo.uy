@@ -4,7 +4,7 @@ package servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
-import webservice.DtInfoSalida;
 import webservice.EstadoError;
 import webservice.NoHayActividadConEseNombreException_Exception;
 import webservice.NombreSalidaRepetidoException_Exception;
@@ -59,8 +55,7 @@ public class AltaSalida extends HttpServlet {
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         
-    	Set<String> deps = new HashSet<>(port.listarDepartamentos().getDato());
-    	request.setAttribute("listarDepartamentos", deps);
+    	request.setAttribute("listarDepartamentos", port.listarDepartamentos().getDato());
     	
     	if (request.getParameter("depa")==null && request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -68,9 +63,10 @@ public class AltaSalida extends HttpServlet {
     	}
     	
     	String departamento = request.getParameter("depa");
-    	
-    	Set<String> acts = new HashSet<>(port.listarActividadesDeDepartamento(departamento).getDato());
-    	request.setAttribute("listarActividades", acts);
+    	if (departamento == null)
+    		request.setAttribute("listarActividades", new ArrayList<String>());
+    	else
+    		request.setAttribute("listarActividades", port.listarActividadesDeDepartamento(departamento).getDato());
     	
     	if (request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -86,20 +82,15 @@ public class AltaSalida extends HttpServlet {
     	String nombre = request.getParameter("nombre");
     	LocalDateTime date = LocalDateTime.parse(request.getParameter("dateNHour"));
     	String lugar = request.getParameter("lugarsalida");
-    	
     	Integer cuposMax = Integer.parseInt(request.getParameter("maxcupos"));
     	
     	
     	
     	try {
-    		LocalDate fecha = date.toLocalDate();
-            LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
-    		XMLGregorianCalendar actualGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(actual.toString());
-    		XMLGregorianCalendar infoGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha.toString());
-    		infoGrego.setHour(hora.getHour());
-    		infoGrego.setMinute(hora.getMinute());
-			port.crearSalidaTuristica(nombre, cuposMax , actualGrego, infoGrego, lugar, actividad);
+    		String dateString = date.toString()+":00";
+    		String actualString = actual.toString()+":00";
+			port.crearSalidaTuristica(nombre, cuposMax , actualString, dateString, lugar, actividad);
 		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}

@@ -3,9 +3,11 @@ package webservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -19,12 +21,12 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="actividadesTuristicas" type="{http://WebService/}dtActividadTuristica" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="descuento" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="fechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="periodoValidez" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="PeriodoValidez" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="Descuento" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="ActividadesTuristicas" type="{http://WebService/}dtActividadTuristica" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -35,22 +37,132 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtPaquete", propOrder = {
-    "actividadesTuristicas",
+    "nombre",
     "descripcion",
+    "periodoValidez",
     "descuento",
     "fechaAlta",
-    "nombre",
-    "periodoValidez"
+    "actividadesTuristicas"
 })
 public class DtPaquete {
 
-    @XmlElement(nillable = true)
-    protected List<DtActividadTuristica> actividadesTuristicas;
-    protected String descripcion;
-    protected int descuento;
-    protected Object fechaAlta;
+    @XmlElement(name = "Nombre")
     protected String nombre;
+    @XmlElement(name = "Descripcion")
+    protected String descripcion;
+    @XmlElement(name = "PeriodoValidez")
     protected int periodoValidez;
+    @XmlElement(name = "Descuento")
+    protected int descuento;
+    @XmlElement(name = "FechaAlta")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaAlta;
+    @XmlElement(name = "ActividadesTuristicas", nillable = true)
+    protected List<DtActividadTuristica> actividadesTuristicas;
+
+    /**
+     * Obtiene el valor de la propiedad nombre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Define el valor de la propiedad nombre.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombre(String value) {
+        this.nombre = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descripcion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Define el valor de la propiedad descripcion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescripcion(String value) {
+        this.descripcion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad periodoValidez.
+     * 
+     */
+    public int getPeriodoValidez() {
+        return periodoValidez;
+    }
+
+    /**
+     * Define el valor de la propiedad periodoValidez.
+     * 
+     */
+    public void setPeriodoValidez(int value) {
+        this.periodoValidez = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descuento.
+     * 
+     */
+    public int getDescuento() {
+        return descuento;
+    }
+
+    /**
+     * Define el valor de la propiedad descuento.
+     * 
+     */
+    public void setDescuento(int value) {
+        this.descuento = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad fechaAlta.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getFechaAlta() {
+        return fechaAlta;
+    }
+
+    /**
+     * Define el valor de la propiedad fechaAlta.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setFechaAlta(XMLGregorianCalendar value) {
+        this.fechaAlta = value;
+    }
 
     /**
      * Gets the value of the actividadesTuristicas property.
@@ -81,110 +193,6 @@ public class DtPaquete {
             actividadesTuristicas = new ArrayList<>();
         }
         return this.actividadesTuristicas;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad descripcion.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Define el valor de la propiedad descripcion.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescripcion(String value) {
-        this.descripcion = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad descuento.
-     * 
-     */
-    public int getDescuento() {
-        return descuento;
-    }
-
-    /**
-     * Define el valor de la propiedad descuento.
-     * 
-     */
-    public void setDescuento(int value) {
-        this.descuento = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad fechaAlta.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Object }
-     *     
-     */
-    public Object getFechaAlta() {
-        return fechaAlta;
-    }
-
-    /**
-     * Define el valor de la propiedad fechaAlta.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Object }
-     *     
-     */
-    public void setFechaAlta(Object value) {
-        this.fechaAlta = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad periodoValidez.
-     * 
-     */
-    public int getPeriodoValidez() {
-        return periodoValidez;
-    }
-
-    /**
-     * Define el valor de la propiedad periodoValidez.
-     * 
-     */
-    public void setPeriodoValidez(int value) {
-        this.periodoValidez = value;
     }
 
 }

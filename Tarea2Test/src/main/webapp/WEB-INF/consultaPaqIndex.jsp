@@ -16,8 +16,7 @@
     
      <%
      ArrayList<String> cats = (ArrayList<String>) request.getAttribute("categorias");
-     ArrayList<DtPaquete> paqs = new ArrayList<DtPaquete>();
-         paqs = (ArrayList<DtPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
+     ArrayList<DtPaquete> paqs = (ArrayList<DtPaquete>) request.getAttribute("lista_paquetes_a_mostrar");
         %>
     
     <div style="display: flex; flex-direction: column;">

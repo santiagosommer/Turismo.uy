@@ -40,17 +40,11 @@ public class ConsultaActividadesIndex extends HttpServlet {
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
         
-        Set<String> setDepa = new HashSet<>(port.listarDepartamentos().getDato());
-        
-        Set<String> setCate = new HashSet<>(port.listarCategorias().getDato());
-        
-    	request.setAttribute("departamentos", setDepa);
+    	request.setAttribute("departamentos", port.listarDepartamentos().getDato());
     	
-    	request.setAttribute("categorias", setCate);
+    	request.setAttribute("categorias", port.listarCategorias().getDato());
     	
-    	Set<DtActividadTuristica> setAct = new HashSet<>(port.listarActividadesDeptoYCate(dep, cat).getDato());
-    	
-    	request.setAttribute("lista_actividades_a_mostrar", setAct);
+    	request.setAttribute("lista_actividades_a_mostrar", port.listarActividadesDeptoYCate(dep, cat).getDato());
     	
 		request.getRequestDispatcher("/WEB-INF/consultaActIndex.jsp").forward(request, response);
 		

@@ -1,7 +1,9 @@
 package ServidorCentral.Logica.DataTypes;
 
 import ServidorCentral.Logica.Clases.Departamento;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTDepartamento {
 	
 	private String Nombre;

@@ -55,7 +55,7 @@
         	   DtSalidaTuristica s = (DtSalidaTuristica) request.getSession().getAttribute("salida_dt") ;
         	   nombre = s.getNombre();
         	   fecha = s.getInfoSalida().getFecha().toString();
-        	   hora = s.getInfoSalida().getHora().toString();
+        	   hora = (String) s.getInfoSalida().getHora();
         	   lugar = s.getInfoSalida().getLugar();
         	   cupos = String.valueOf(s.getCuposDisponibles());
            }%>

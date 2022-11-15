@@ -3,9 +3,11 @@ package webservice;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -19,13 +21,13 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="actividadTuristicaAsoc" type="{http://WebService/}dtActividadTuristica" minOccurs="0"/>
- *         <element name="cantidadMaxTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="cuposDisponibles" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="fechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="infoSalida" type="{http://WebService/}dtInfoSalida" minOccurs="0"/>
- *         <element name="inscripciones" type="{http://WebService/}dtInscripcion" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="CantidadMaxTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="InfoSalida" type="{http://WebService/}dtInfoSalida" minOccurs="0"/>
+ *         <element name="CuposDisponibles" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="ActividadTuristicaAsoc" type="{http://WebService/}dtActividadTuristica" minOccurs="0"/>
+ *         <element name="inscripcionesAsoc" type="{http://WebService/}dtInscripcion" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -36,47 +38,54 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtSalidaTuristica", propOrder = {
-    "actividadTuristicaAsoc",
+    "nombre",
     "cantidadMaxTuristas",
-    "cuposDisponibles",
     "fechaAlta",
     "infoSalida",
-    "inscripciones",
-    "nombre"
+    "cuposDisponibles",
+    "actividadTuristicaAsoc",
+    "inscripcionesAsoc"
 })
 public class DtSalidaTuristica {
 
-    protected DtActividadTuristica actividadTuristicaAsoc;
-    protected int cantidadMaxTuristas;
-    protected int cuposDisponibles;
-    protected Object fechaAlta;
-    protected DtInfoSalida infoSalida;
-    @XmlElement(nillable = true)
-    protected List<DtInscripcion> inscripciones;
+    @XmlElement(name = "Nombre")
     protected String nombre;
+    @XmlElement(name = "CantidadMaxTuristas")
+    protected int cantidadMaxTuristas;
+    @XmlElement(name = "FechaAlta")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fechaAlta;
+    @XmlElement(name = "InfoSalida")
+    protected DtInfoSalida infoSalida;
+    @XmlElement(name = "CuposDisponibles")
+    protected int cuposDisponibles;
+    @XmlElement(name = "ActividadTuristicaAsoc")
+    protected DtActividadTuristica actividadTuristicaAsoc;
+    @XmlElement(nillable = true)
+    protected List<DtInscripcion> inscripcionesAsoc;
 
     /**
-     * Obtiene el valor de la propiedad actividadTuristicaAsoc.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
-     *     {@link DtActividadTuristica }
+     *     {@link String }
      *     
      */
-    public DtActividadTuristica getActividadTuristicaAsoc() {
-        return actividadTuristicaAsoc;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * Define el valor de la propiedad actividadTuristicaAsoc.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
-     *     {@link DtActividadTuristica }
+     *     {@link String }
      *     
      */
-    public void setActividadTuristicaAsoc(DtActividadTuristica value) {
-        this.actividadTuristicaAsoc = value;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**
@@ -96,30 +105,14 @@ public class DtSalidaTuristica {
     }
 
     /**
-     * Obtiene el valor de la propiedad cuposDisponibles.
-     * 
-     */
-    public int getCuposDisponibles() {
-        return cuposDisponibles;
-    }
-
-    /**
-     * Define el valor de la propiedad cuposDisponibles.
-     * 
-     */
-    public void setCuposDisponibles(int value) {
-        this.cuposDisponibles = value;
-    }
-
-    /**
      * Obtiene el valor de la propiedad fechaAlta.
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Object getFechaAlta() {
+    public XMLGregorianCalendar getFechaAlta() {
         return fechaAlta;
     }
 
@@ -128,10 +121,10 @@ public class DtSalidaTuristica {
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setFechaAlta(Object value) {
+    public void setFechaAlta(XMLGregorianCalendar value) {
         this.fechaAlta = value;
     }
 
@@ -160,18 +153,58 @@ public class DtSalidaTuristica {
     }
 
     /**
-     * Gets the value of the inscripciones property.
+     * Obtiene el valor de la propiedad cuposDisponibles.
+     * 
+     */
+    public int getCuposDisponibles() {
+        return cuposDisponibles;
+    }
+
+    /**
+     * Define el valor de la propiedad cuposDisponibles.
+     * 
+     */
+    public void setCuposDisponibles(int value) {
+        this.cuposDisponibles = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad actividadTuristicaAsoc.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DtActividadTuristica }
+     *     
+     */
+    public DtActividadTuristica getActividadTuristicaAsoc() {
+        return actividadTuristicaAsoc;
+    }
+
+    /**
+     * Define el valor de la propiedad actividadTuristicaAsoc.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DtActividadTuristica }
+     *     
+     */
+    public void setActividadTuristicaAsoc(DtActividadTuristica value) {
+        this.actividadTuristicaAsoc = value;
+    }
+
+    /**
+     * Gets the value of the inscripcionesAsoc property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the inscripciones property.
+     * This is why there is not a {@code set} method for the inscripcionesAsoc property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getInscripciones().add(newItem);
+     *    getInscripcionesAsoc().add(newItem);
      * </pre>
      * 
      * 
@@ -181,37 +214,13 @@ public class DtSalidaTuristica {
      * 
      * 
      * @return
-     *     The value of the inscripciones property.
+     *     The value of the inscripcionesAsoc property.
      */
-    public List<DtInscripcion> getInscripciones() {
-        if (inscripciones == null) {
-            inscripciones = new ArrayList<>();
+    public List<DtInscripcion> getInscripcionesAsoc() {
+        if (inscripcionesAsoc == null) {
+            inscripcionesAsoc = new ArrayList<>();
         }
-        return this.inscripciones;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
+        return this.inscripcionesAsoc;
     }
 
 }

@@ -2,6 +2,9 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.util.Map;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTCategoria {
 	private String Nombre;
 	private Map<String, DTActividadTuristica> ActividadesTuristicas;

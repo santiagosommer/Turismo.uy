@@ -141,16 +141,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtPaquete }
-     * 
-     * @return
-     *     the new instance of {@link DtPaquete }
-     */
-    public DtPaquete createDtPaquete() {
-        return new DtPaquete();
-    }
-
-    /**
      * Create an instance of {@link DtSalidaTuristica }
      * 
      * @return
@@ -191,13 +181,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SetString }
+     * Create an instance of {@link DtPaquete }
      * 
      * @return
-     *     the new instance of {@link SetString }
+     *     the new instance of {@link DtPaquete }
      */
-    public SetString createSetString() {
-        return new SetString();
+    public DtPaquete createDtPaquete() {
+        return new DtPaquete();
     }
 
     /**
@@ -208,6 +198,16 @@ public class ObjectFactory {
      */
     public SetDTPaquete createSetDTPaquete() {
         return new SetDTPaquete();
+    }
+
+    /**
+     * Create an instance of {@link SetString }
+     * 
+     * @return
+     *     the new instance of {@link SetString }
+     */
+    public SetString createSetString() {
+        return new SetString();
     }
 
     /**

@@ -2,21 +2,21 @@ package ServidorCentral.Logica.DataTypes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import ServidorCentral.Logica.Clases.Paquete;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
 
-
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTPaquete {
   private String Nombre;
   private String Descripcion;
   private int PeriodoValidez;
   private int Descuento;
-  private XMLGregorianCalendar FechaAlta;
+  private Calendar FechaAlta;
   private ArrayList<DTActividadTuristica> ActividadesTuristicas; 
   
  public DTPaquete(String nombre,String descripcion,int periodoValidez,int descuento,LocalDate fechaAlta) {
@@ -25,12 +25,8 @@ public class DTPaquete {
 	 setPeriodoValidez(periodoValidez);
 	 setDescuento(descuento);
 	 setActividadesTuristicas(new ArrayList<DTActividadTuristica>());	
-	 try {
-		setFechaAlta(DatatypeFactory.newInstance().newXMLGregorianCalendar(fechaAlta.toString()));
-	} catch (DatatypeConfigurationException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	 LocalDate in = fechaAlta;
+	 setFechaAlta(new GregorianCalendar(in.getYear(),in.getMonthValue(),in.getDayOfMonth()));
 	
  }
   
@@ -76,12 +72,12 @@ public String getNombre() {
 }
 
 
-public XMLGregorianCalendar getFechaAlta() {
+public Calendar getFechaAlta() {
 	return FechaAlta;
 }
 
 
-public void setFechaAlta(XMLGregorianCalendar fechaAlta) {
+public void setFechaAlta(Calendar fechaAlta) {
 	FechaAlta = fechaAlta;
 }
 }

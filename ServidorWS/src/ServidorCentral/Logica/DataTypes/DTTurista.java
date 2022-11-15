@@ -6,7 +6,9 @@ import java.util.Iterator;
 
 import ServidorCentral.Logica.Clases.Inscripcion;
 import ServidorCentral.Logica.Clases.Turista;
-
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTTurista extends DTUsuario {
 	private String Nacionalidad ;
 	private ArrayList<DTInscripcion> Inscripciones;

@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -39,7 +40,7 @@ public class ConsultaPaquete extends HttpServlet {
     	
     	 if (nomPaq != null) {
     		 port.seleccionarPaquete(nomPaq);
-    		Set<String> acts = (Set<String>) port.listarActividadesPaquete();
+    		List<String> acts = port.listarActividadesPaquete().getDato();
     		for (String act: acts) {
     			port.seleccionarActividad(act);
     			DtActividadTuristica agregar = port.getDTActividadTuristica();

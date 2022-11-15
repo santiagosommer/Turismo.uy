@@ -1,8 +1,11 @@
 
 package webservice;
 
+import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
 
 
@@ -16,11 +19,11 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="autor" type="{http://WebService/}dtTurista" minOccurs="0"/>
- *         <element name="cantidadTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         <element name="costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         <element name="fecha" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="salidaAsociada" type="{http://WebService/}dtSalidaTuristica" minOccurs="0"/>
+ *         <element name="Fecha" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         <element name="CantidadTuristas" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="Costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         <element name="Autor" type="{http://WebService/}dtTurista" minOccurs="0"/>
+ *         <element name="SalidaAsociada" type="{http://WebService/}dtSalidaTuristica" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -31,42 +34,48 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtInscripcion", propOrder = {
-    "autor",
+    "fecha",
     "cantidadTuristas",
     "costo",
-    "fecha",
+    "autor",
     "salidaAsociada"
 })
 public class DtInscripcion {
 
-    protected DtTurista autor;
+    @XmlElement(name = "Fecha")
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar fecha;
+    @XmlElement(name = "CantidadTuristas")
     protected int cantidadTuristas;
+    @XmlElement(name = "Costo")
     protected float costo;
-    protected Object fecha;
+    @XmlElement(name = "Autor")
+    protected DtTurista autor;
+    @XmlElement(name = "SalidaAsociada")
     protected DtSalidaTuristica salidaAsociada;
 
     /**
-     * Obtiene el valor de la propiedad autor.
+     * Obtiene el valor de la propiedad fecha.
      * 
      * @return
      *     possible object is
-     *     {@link DtTurista }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public DtTurista getAutor() {
-        return autor;
+    public XMLGregorianCalendar getFecha() {
+        return fecha;
     }
 
     /**
-     * Define el valor de la propiedad autor.
+     * Define el valor de la propiedad fecha.
      * 
      * @param value
      *     allowed object is
-     *     {@link DtTurista }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setAutor(DtTurista value) {
-        this.autor = value;
+    public void setFecha(XMLGregorianCalendar value) {
+        this.fecha = value;
     }
 
     /**
@@ -102,27 +111,27 @@ public class DtInscripcion {
     }
 
     /**
-     * Obtiene el valor de la propiedad fecha.
+     * Obtiene el valor de la propiedad autor.
      * 
      * @return
      *     possible object is
-     *     {@link Object }
+     *     {@link DtTurista }
      *     
      */
-    public Object getFecha() {
-        return fecha;
+    public DtTurista getAutor() {
+        return autor;
     }
 
     /**
-     * Define el valor de la propiedad fecha.
+     * Define el valor de la propiedad autor.
      * 
      * @param value
      *     allowed object is
-     *     {@link Object }
+     *     {@link DtTurista }
      *     
      */
-    public void setFecha(Object value) {
-        this.fecha = value;
+    public void setAutor(DtTurista value) {
+        this.autor = value;
     }
 
     /**
