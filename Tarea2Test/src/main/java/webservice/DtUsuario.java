@@ -3,6 +3,7 @@ package webservice;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -17,12 +18,12 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Nickname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="FechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
  *         <element name="contra" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="nickname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -33,12 +34,12 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtUsuario", propOrder = {
+    "nickname",
+    "nombre",
     "apellido",
-    "contra",
     "email",
     "fechaNacimiento",
-    "nickname",
-    "nombre"
+    "contra"
 })
 @XmlSeeAlso({
     DtTurista.class,
@@ -46,12 +47,65 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public abstract class DtUsuario {
 
-    protected String apellido;
-    protected String contra;
-    protected String email;
-    protected Object fechaNacimiento;
+    @XmlElement(name = "Nickname")
     protected String nickname;
+    @XmlElement(name = "Nombre")
     protected String nombre;
+    @XmlElement(name = "Apellido")
+    protected String apellido;
+    @XmlElement(name = "Email")
+    protected String email;
+    @XmlElement(name = "FechaNacimiento")
+    protected Object fechaNacimiento;
+    protected String contra;
+
+    /**
+     * Obtiene el valor de la propiedad nickname.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNickname() {
+        return nickname;
+    }
+
+    /**
+     * Define el valor de la propiedad nickname.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNickname(String value) {
+        this.nickname = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad nombre.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Define el valor de la propiedad nombre.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNombre(String value) {
+        this.nombre = value;
+    }
 
     /**
      * Obtiene el valor de la propiedad apellido.
@@ -75,30 +129,6 @@ public abstract class DtUsuario {
      */
     public void setApellido(String value) {
         this.apellido = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad contra.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getContra() {
-        return contra;
-    }
-
-    /**
-     * Define el valor de la propiedad contra.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setContra(String value) {
-        this.contra = value;
     }
 
     /**
@@ -150,51 +180,27 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Obtiene el valor de la propiedad nickname.
+     * Obtiene el valor de la propiedad contra.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNickname() {
-        return nickname;
+    public String getContra() {
+        return contra;
     }
 
     /**
-     * Define el valor de la propiedad nickname.
+     * Define el valor de la propiedad contra.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNickname(String value) {
-        this.nickname = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
+    public void setContra(String value) {
+        this.contra = value;
     }
 
 }

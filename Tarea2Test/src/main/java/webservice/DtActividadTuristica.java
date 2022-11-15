@@ -20,18 +20,18 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="costoTurista" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         <element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="duracion" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Duracion" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="CostoTurista" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         <element name="FechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
+ *         <element name="InfoDepartamento" type="{http://WebService/}dtDepartamento" minOccurs="0"/>
+ *         <element name="InfoSalidas" type="{http://WebService/}dtSalidaTuristica" maxOccurs="unbounded" minOccurs="0"/>
+ *         <element name="Proveedor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="InfoPaquetes" type="{http://WebService/}dtPaquete" maxOccurs="unbounded" minOccurs="0"/>
+ *         <element name="Ciudad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="estado" type="{http://WebService/}estadoActividad" minOccurs="0"/>
- *         <element name="fechaAlta" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/>
- *         <element name="infoDepartamento" type="{http://WebService/}dtDepartamento" minOccurs="0"/>
- *         <element name="infoPaquetes" type="{http://WebService/}dtPaquete" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="proveedor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="salidas" type="{http://WebService/}dtSalidaTuristica" maxOccurs="unbounded" minOccurs="0"/>
+ *         <element name="categorias" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -42,107 +42,68 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtActividadTuristica", propOrder = {
-    "categorias",
-    "ciudad",
-    "costoTurista",
+    "nombre",
     "descripcion",
     "duracion",
-    "estado",
+    "costoTurista",
     "fechaAlta",
     "infoDepartamento",
-    "infoPaquetes",
-    "nombre",
+    "infoSalidas",
     "proveedor",
-    "salidas"
+    "infoPaquetes",
+    "ciudad",
+    "estado",
+    "categorias"
 })
 public class DtActividadTuristica {
 
-    @XmlElement(nillable = true)
-    protected List<String> categorias;
-    protected String ciudad;
-    protected float costoTurista;
+    @XmlElement(name = "Nombre")
+    protected String nombre;
+    @XmlElement(name = "Descripcion")
     protected String descripcion;
+    @XmlElement(name = "Duracion")
     protected int duracion;
+    @XmlElement(name = "CostoTurista")
+    protected float costoTurista;
+    @XmlElement(name = "FechaAlta")
+    protected Object fechaAlta;
+    @XmlElement(name = "InfoDepartamento")
+    protected DtDepartamento infoDepartamento;
+    @XmlElement(name = "InfoSalidas", nillable = true)
+    protected List<DtSalidaTuristica> infoSalidas;
+    @XmlElement(name = "Proveedor")
+    protected String proveedor;
+    @XmlElement(name = "InfoPaquetes", nillable = true)
+    protected List<DtPaquete> infoPaquetes;
+    @XmlElement(name = "Ciudad")
+    protected String ciudad;
     @XmlSchemaType(name = "string")
     protected EstadoActividad estado;
-    protected Object fechaAlta;
-    protected DtDepartamento infoDepartamento;
     @XmlElement(nillable = true)
-    protected List<DtPaquete> infoPaquetes;
-    protected String nombre;
-    protected String proveedor;
-    @XmlElement(nillable = true)
-    protected List<DtSalidaTuristica> salidas;
+    protected List<String> categorias;
 
     /**
-     * Gets the value of the categorias property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the categorias property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCategorias().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     * @return
-     *     The value of the categorias property.
-     */
-    public List<String> getCategorias() {
-        if (categorias == null) {
-            categorias = new ArrayList<>();
-        }
-        return this.categorias;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad ciudad.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCiudad() {
-        return ciudad;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * Define el valor de la propiedad ciudad.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCiudad(String value) {
-        this.ciudad = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad costoTurista.
-     * 
-     */
-    public float getCostoTurista() {
-        return costoTurista;
-    }
-
-    /**
-     * Define el valor de la propiedad costoTurista.
-     * 
-     */
-    public void setCostoTurista(float value) {
-        this.costoTurista = value;
+    public void setNombre(String value) {
+        this.nombre = value;
     }
 
     /**
@@ -186,27 +147,19 @@ public class DtActividadTuristica {
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Obtiene el valor de la propiedad costoTurista.
      * 
-     * @return
-     *     possible object is
-     *     {@link EstadoActividad }
-     *     
      */
-    public EstadoActividad getEstado() {
-        return estado;
+    public float getCostoTurista() {
+        return costoTurista;
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Define el valor de la propiedad costoTurista.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link EstadoActividad }
-     *     
      */
-    public void setEstado(EstadoActividad value) {
-        this.estado = value;
+    public void setCostoTurista(float value) {
+        this.costoTurista = value;
     }
 
     /**
@@ -258,6 +211,61 @@ public class DtActividadTuristica {
     }
 
     /**
+     * Gets the value of the infoSalidas property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the infoSalidas property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getInfoSalidas().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DtSalidaTuristica }
+     * 
+     * 
+     * @return
+     *     The value of the infoSalidas property.
+     */
+    public List<DtSalidaTuristica> getInfoSalidas() {
+        if (infoSalidas == null) {
+            infoSalidas = new ArrayList<>();
+        }
+        return this.infoSalidas;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad proveedor.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    /**
+     * Define el valor de la propiedad proveedor.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProveedor(String value) {
+        this.proveedor = value;
+    }
+
+    /**
      * Gets the value of the infoPaquetes property.
      * 
      * <p>
@@ -289,82 +297,82 @@ public class DtActividadTuristica {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Obtiene el valor de la propiedad ciudad.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNombre() {
-        return nombre;
+    public String getCiudad() {
+        return ciudad;
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Define el valor de la propiedad ciudad.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNombre(String value) {
-        this.nombre = value;
+    public void setCiudad(String value) {
+        this.ciudad = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad proveedor.
+     * Obtiene el valor de la propiedad estado.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link EstadoActividad }
      *     
      */
-    public String getProveedor() {
-        return proveedor;
+    public EstadoActividad getEstado() {
+        return estado;
     }
 
     /**
-     * Define el valor de la propiedad proveedor.
+     * Define el valor de la propiedad estado.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link EstadoActividad }
      *     
      */
-    public void setProveedor(String value) {
-        this.proveedor = value;
+    public void setEstado(EstadoActividad value) {
+        this.estado = value;
     }
 
     /**
-     * Gets the value of the salidas property.
+     * Gets the value of the categorias property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a {@code set} method for the salidas property.
+     * This is why there is not a {@code set} method for the categorias property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getSalidas().add(newItem);
+     *    getCategorias().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link DtSalidaTuristica }
+     * {@link String }
      * 
      * 
      * @return
-     *     The value of the salidas property.
+     *     The value of the categorias property.
      */
-    public List<DtSalidaTuristica> getSalidas() {
-        if (salidas == null) {
-            salidas = new ArrayList<>();
+    public List<String> getCategorias() {
+        if (categorias == null) {
+            categorias = new ArrayList<>();
         }
-        return this.salidas;
+        return this.categorias;
     }
 
 }

@@ -17,8 +17,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="URL" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -30,40 +30,18 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtDepartamento", propOrder = {
-    "descripcion",
     "nombre",
+    "descripcion",
     "url"
 })
 public class DtDepartamento {
 
-    protected String descripcion;
+    @XmlElement(name = "Nombre")
     protected String nombre;
+    @XmlElement(name = "Descripcion")
+    protected String descripcion;
     @XmlElement(name = "URL")
     protected String url;
-
-    /**
-     * Obtiene el valor de la propiedad descripcion.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    /**
-     * Define el valor de la propiedad descripcion.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescripcion(String value) {
-        this.descripcion = value;
-    }
 
     /**
      * Obtiene el valor de la propiedad nombre.
@@ -87,6 +65,30 @@ public class DtDepartamento {
      */
     public void setNombre(String value) {
         this.nombre = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descripcion.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Define el valor de la propiedad descripcion.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescripcion(String value) {
+        this.descripcion = value;
     }
 
     /**

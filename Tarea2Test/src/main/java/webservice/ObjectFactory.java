@@ -141,16 +141,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtPaquete }
-     * 
-     * @return
-     *     the new instance of {@link DtPaquete }
-     */
-    public DtPaquete createDtPaquete() {
-        return new DtPaquete();
-    }
-
-    /**
      * Create an instance of {@link DtSalidaTuristica }
      * 
      * @return
@@ -188,6 +178,16 @@ public class ObjectFactory {
      */
     public DtTurista createDtTurista() {
         return new DtTurista();
+    }
+
+    /**
+     * Create an instance of {@link DtPaquete }
+     * 
+     * @return
+     *     the new instance of {@link DtPaquete }
+     */
+    public DtPaquete createDtPaquete() {
+        return new DtPaquete();
     }
 
     /**

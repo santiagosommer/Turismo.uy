@@ -19,8 +19,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <extension base="{http://WebService/}dtUsuario">
  *       <sequence>
- *         <element name="inscripciones" type="{http://WebService/}dtInscripcion" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="nacionalidad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Nacionalidad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="Inscripciones" type="{http://WebService/}dtInscripcion" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </extension>
  *   </complexContent>
@@ -31,16 +31,41 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "dtTurista", propOrder = {
-    "inscripciones",
-    "nacionalidad"
+    "nacionalidad",
+    "inscripciones"
 })
 public class DtTurista
     extends DtUsuario
 {
 
-    @XmlElement(nillable = true)
-    protected List<DtInscripcion> inscripciones;
+    @XmlElement(name = "Nacionalidad")
     protected String nacionalidad;
+    @XmlElement(name = "Inscripciones", nillable = true)
+    protected List<DtInscripcion> inscripciones;
+
+    /**
+     * Obtiene el valor de la propiedad nacionalidad.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    /**
+     * Define el valor de la propiedad nacionalidad.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNacionalidad(String value) {
+        this.nacionalidad = value;
+    }
 
     /**
      * Gets the value of the inscripciones property.
@@ -71,30 +96,6 @@ public class DtTurista
             inscripciones = new ArrayList<>();
         }
         return this.inscripciones;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad nacionalidad.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    /**
-     * Define el valor de la propiedad nacionalidad.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNacionalidad(String value) {
-        this.nacionalidad = value;
     }
 
 }
