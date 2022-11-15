@@ -88,7 +88,7 @@
             <h3><%= nombre %></h3>
             <% if (finalizable) { //ver css %>
             <form>
-               <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> 
+             <a href = " /Tarea2Test/ConsultaActividadIndividual?paramAct=<%=nombre%>">   <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> </a>
              </form>
             <%} %>
           </div>

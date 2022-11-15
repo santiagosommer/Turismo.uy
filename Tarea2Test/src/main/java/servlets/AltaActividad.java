@@ -97,12 +97,13 @@ public class AltaActividad extends HttpServlet {
      	
      	try {
      		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, nuevo);
-// 			ct.AceptarActividad(nombre);
+     		
  			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
      	} catch (NombreActividadRepetidoException_Exception e) {
  			e.printStackTrace();
  		}
-
+     	
+     
     	
     
 		

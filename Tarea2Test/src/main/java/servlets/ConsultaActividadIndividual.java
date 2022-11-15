@@ -71,11 +71,24 @@ public class ConsultaActividadIndividual extends HttpServlet {
     	 }
     	
     	 
+    	 if (request.getSession().getAttribute("finalizable") != null){
+         	finalizable = (Boolean) request.getSession().getAttribute("finalizable");
+         } 
+    	
     	 if (finalizable) {
-    		 port.finalizarActividadTuristicaProveedor(nomAct);
+    		 
+    		 DtActividadTuristica act = port.getDTActividadTuristica();
+    		 port.finalizarActividadTuristicaProveedor(act.getNombre());
+    		 request.getSession().setAttribute("act_dt", act);
+    		 RequestDispatcher dispatcher = request.getRequestDispatcher(
+         	          "/WEB-INF/consultaActividad1.jsp"); 
+         	        dispatcher.forward(request, response);
+         	        return;
+    	 } 
+    	 
     	 }
 		
-    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
