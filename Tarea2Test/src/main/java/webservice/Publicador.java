@@ -71,7 +71,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         int arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4)
+        String arg4)
         throws NombrePaqueteRepetidoException_Exception
     ;
 
@@ -279,7 +279,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         float arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4,
+        String arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -334,6 +334,7 @@ public interface Publicador {
      * @param arg2
      * @param arg3
      * @param arg4
+     * @param arg5
      * @throws NoHayActividadConEseNombreException_Exception
      * @throws NombreSalidaRepetidoException_Exception
      */
@@ -348,11 +349,13 @@ public interface Publicador {
         @WebParam(name = "arg1", partName = "arg1")
         int arg1,
         @WebParam(name = "arg2", partName = "arg2")
-        LocalDate arg2,
+        String arg2,
         @WebParam(name = "arg3", partName = "arg3")
-        DtInfoSalida arg3,
+        String arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4)
+        String arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5)
         throws NoHayActividadConEseNombreException_Exception, NombreSalidaRepetidoException_Exception
     ;
 
@@ -635,7 +638,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         float arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4)
+        String arg4)
         throws YaExisteInscripcionTuristaSalida_Exception
     ;
 
@@ -691,7 +694,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         String arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4,
+        String arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
@@ -726,7 +729,7 @@ public interface Publicador {
         @WebParam(name = "arg3", partName = "arg3")
         String arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        LocalDate arg4,
+        String arg4,
         @WebParam(name = "arg5", partName = "arg5")
         String arg5,
         @WebParam(name = "arg6", partName = "arg6")
