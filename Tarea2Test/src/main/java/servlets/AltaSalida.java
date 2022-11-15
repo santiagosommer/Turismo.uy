@@ -4,7 +4,6 @@ package servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
-import webservice.DtInfoSalida;
 import webservice.EstadoError;
 import webservice.NoHayActividadConEseNombreException_Exception;
 import webservice.NombreSalidaRepetidoException_Exception;
@@ -68,9 +63,10 @@ public class AltaSalida extends HttpServlet {
     	}
     	
     	String departamento = request.getParameter("depa");
-    	
-    	Set<String> acts = new HashSet<>(port.listarActividadesDeDepartamento(departamento).getDato());
-    	request.setAttribute("listarActividades", acts);
+    	Set<String> acts = new HashSet<String>();
+    	if (departamento != null)
+	    	acts = new HashSet<>(port.listarActividadesDeDepartamento(departamento).getDato());
+	    request.setAttribute("listarActividades", acts);
     	
     	if (request.getParameter("nombre")==null) {
     		request.getRequestDispatcher("/WEB-INF/altaSalida.jsp").forward(request, response);
@@ -92,14 +88,8 @@ public class AltaSalida extends HttpServlet {
     	
     	
     	try {
-    		LocalDate fecha = date.toLocalDate();
-            LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
-    		XMLGregorianCalendar actualGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(actual.toString());
-    		XMLGregorianCalendar infoGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha.toString());
-    		infoGrego.setHour(hora.getHour());
-    		infoGrego.setMinute(hora.getMinute());
-			port.crearSalidaTuristica(nombre, cuposMax , actualGrego, infoGrego, lugar, actividad);
+			port.crearSalidaTuristica(nombre, cuposMax , actual.toString(), date.toString(), lugar, actividad);
 		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}

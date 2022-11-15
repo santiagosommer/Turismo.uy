@@ -1,8 +1,11 @@
 package WebService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
@@ -190,17 +193,13 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, XMLGregorianCalendar fechaAlta, XMLGregorianCalendar fechaInfo,String lugarInfo, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
-    	LocalDate localDate = LocalDate.of(
-    			fechaAlta.getYear(), 
-    			fechaAlta.getMonth(), 
-    			fechaAlta.getDay());
-    	LocalDate localDate2 = LocalDate.of(
-    			fechaInfo.getYear(), 
-    			fechaInfo.getMonth(), 
-    			fechaInfo.getDay());
-    	LocalTime localTime = LocalTime.of(fechaInfo.getHour(), fechaInfo.getMinute());
-    	DTInfoSalida dtInfo = new DTInfoSalida(localDate2, localTime, lugarInfo);
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, String fechaAlta, String fechaInfo,String lugarInfo, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
+    	LocalDate localDate = LocalDate.parse(fechaInfo);
+    	LocalDateTime date = LocalDateTime.parse(fechaInfo);
+    	LocalDate fecha = date.toLocalDate();
+        LocalTime hora = date.toLocalTime();
+
+	    DTInfoSalida dtInfo = new DTInfoSalida(fecha, hora, lugarInfo);
     	iTuristica.crearSalidaTuristica(nombre, cantMaxTuristas, localDate, dtInfo, actividad);
 	}
     
