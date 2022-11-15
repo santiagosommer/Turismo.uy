@@ -71,15 +71,15 @@
         </form>
     </div>
 
-		<%for (DtActividadTuristica s : acts) {%>
+		<%for (int i = 0; i < acts.size(); i++) {%>
         <div class="row text-center animate__animated animate__bounceInUp">
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h5 class="card-title"> <%= s.getNombre() %> </h5>
+                        <h5 class="card-title"> <%= acts.get(i).getNombre() %> </h5>
                         <img src="media/icons/avatar.svg" class="img-fluid" alt="Responsive image">
-                        <p class="card-text"> <%= s.getDescripcion() %> </p>
-                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= s.getNombre()%>" class="btn btn-info">Leer mas.</a>
+                        <p class="card-text"> <%= acts.get(i).getDescripcion() %> </p>
+                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre()%>" class="btn btn-info">Leer mas.</a>
                     </div>
                 </div>
             </div>          
