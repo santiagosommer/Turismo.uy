@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="webservice.EstadoError"%>
+<%@page import="webservice.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,9 @@
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         <div class="s1">  
                         	<select class ="controls" name="departamento" id="depas">
-	                        	<% ArrayList<String> departamentos = (ArrayList<String>) request.getAttribute("depas_act"); %>
+	                        	<% SetString departamentosdt = (SetString) request.getAttribute("depas_act");
+	                        	List<String> departamentos = departamentosdt.getDato();
+	                        	%>
 	                        	<%	for (int i = 0; i < departamentos.size(); i++) { %>
 	                        	    <option value="<%= departamentos.get(i) %>"><%= departamentos.get(i) %></option>
 	                        	<% } %>
@@ -60,7 +64,9 @@
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         <div class="s2">  
                         	<select name="categorias" class ="controls" id="categ" required multiple>
-                        		<% ArrayList<String> categorias = (ArrayList<String>) request.getAttribute("cat_act"); %>
+                        	
+                        		<% SetString categoriasdt = (SetString) request.getAttribute("cat_act");
+                        		List<String> categorias = categoriasdt.getDato(); %>
                         		<%	for (int i = 0; i < categorias.size(); i++) { %>
                         	    	<option value="<%= categorias.get(i) %>"><%= categorias.get(i) %></option>
                         		<% } %>

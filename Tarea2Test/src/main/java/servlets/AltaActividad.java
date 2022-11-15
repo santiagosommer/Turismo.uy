@@ -84,17 +84,19 @@ public class AltaActividad extends HttpServlet {
     	 String departamento = request.getParameter("departamento");
 
  		String[] str = request.getParameterValues("categorias");
- 		Set<String> cats = new HashSet<String>(); 
+ 		SetString nuevo = new SetString();
+ 		//ArrayList<String> cats = new ArrayList<String>(); 
 
  		String prov = ((DtProveedor) request.getSession().getAttribute("usuario_dt")).getNickname();
  		
  		for(String s : str) {
- 			cats.add(s);
+ 			nuevo.getDato().add(s);
+ 			//cats.add(s);
  		}
      	
      	
      	try {
-     		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, cats);
+     		port.crearActividadTuristica(nombre, descripcion, duracion, costo, DatatypeFactory.newInstance().newXMLGregorianCalendar(LocalDate.now().toString()), ciudad, departamento, prov, nuevo);
 // 			ct.AceptarActividad(nombre);
  			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
      	} catch (NombreActividadRepetidoException_Exception e) {
