@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import webservice.DtInfoSalida;
 import webservice.EstadoError;
@@ -55,8 +58,8 @@ public class AltaSalida extends HttpServlet {
     	request.setAttribute("estado_error", null);
     	PublicadorService service = new PublicadorService();
         Publicador port = service.getPublicadorPort();
-    	
-    	Set<String> deps = (Set<String>) port.listarDepartamentos();
+        
+    	Set<String> deps = new HashSet<>(port.listarDepartamentos().getDato());
     	request.setAttribute("listarDepartamentos", deps);
     	
     	if (request.getParameter("depa")==null && request.getParameter("nombre")==null) {
@@ -66,7 +69,7 @@ public class AltaSalida extends HttpServlet {
     	
     	String departamento = request.getParameter("depa");
     	
-    	Set<String> acts = (Set<String>) port.listarActividadesDeDepartamento(departamento);
+    	Set<String> acts = new HashSet<>(port.listarActividadesDeDepartamento(departamento).getDato());
     	request.setAttribute("listarActividades", acts);
     	
     	if (request.getParameter("nombre")==null) {
@@ -92,11 +95,11 @@ public class AltaSalida extends HttpServlet {
     		LocalDate fecha = date.toLocalDate();
             LocalTime hora = date.toLocalTime();
     		LocalDate actual = LocalDate.now();
-    		DtInfoSalida info = new DtInfoSalida();
-    		info.setFecha(fecha);
-    		info.setHora(hora);
-    		info.setLugar(lugar);
-			port.crearSalidaTuristica(nombre, cuposMax , actual, info, actividad);
+    		XMLGregorianCalendar actualGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(actual.toString());
+    		XMLGregorianCalendar infoGrego = DatatypeFactory.newInstance().newXMLGregorianCalendar(fecha.toString());
+    		infoGrego.setHour(hora.getHour());
+    		infoGrego.setMinute(hora.getMinute());
+			port.crearSalidaTuristica(nombre, cuposMax , actualGrego, infoGrego, lugar, actividad);
 		} catch (NombreSalidaRepetidoException_Exception | NoHayActividadConEseNombreException_Exception e) {
 			e.printStackTrace();
 		}

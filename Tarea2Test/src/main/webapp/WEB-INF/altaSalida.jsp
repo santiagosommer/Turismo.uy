@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.Set" %>
+<%@page import="java.util.ArrayList" %>
 <%@page import="webservice.EstadoError"%>
 
 <!DOCTYPE html>
@@ -38,14 +38,14 @@
 
                         <div class="img1"> <img src="media/icons/location2.svg" class="iconop" ></div>
                         
-                        <% Set<String> departamentos = (Set<String>) request.getAttribute("listarDepartamentos");
+                        <% ArrayList<String> departamentos = (ArrayList<String>) request.getAttribute("listarDepartamentos");
                         %>
                          
                         <div class="s1">  <select class ="controls" name="departamento" id="cars">
                         
-                        <%if (departamentos!=null)for (String dep : departamentos){ %>
+                        <%if (departamentos!=null) for (int i = 0; i < departamentos.size(); i++){ %>
                         
-                            <option value="<%=dep%>"><%=dep%></option>
+                            <option value="<%=departamentos.get(i)%>"><%=departamentos.get(i)%></option>
                             
 						<%}%>
 					
@@ -57,14 +57,14 @@
 						 
                         <div class="img2"> <img src="media/icons/tag.svg" class="iconop" > </div>
                         
-                        <% Set<String> actividades = (Set<String>) request.getAttribute("listarActividades");
+                        <% ArrayList<String> actividades = (ArrayList<String>) request.getAttribute("listarActividades");
                         %>
                         
                         <div class="s2">  <select name="actividades" class ="controls" id="cars" required>
                         
-                        <%if (actividades!=null) for (String act : actividades){ %>
+                        <%if (actividades!=null) for (int i = 0; i < actividades.size(); i++){ %>
                         
-                            <option value="<%=act%>"><%=act%></option>
+                            <option value="<%=actividades.get(i)%>"><%=actividades.get(i)%></option>
                             
 						<%}%>
 

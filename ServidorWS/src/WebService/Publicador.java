@@ -1,6 +1,9 @@
 package WebService;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
 import ServidorCentral.Logica.DataTypes.DTDepartamento;
@@ -69,8 +72,13 @@ public class Publicador {
 	}
 
     @WebMethod
-	public void crearPaquete(String nombrePaque, String descripcion, int periodoValidez,int Descuento, LocalDate fechaAlta) throws NombrePaqueteRepetidoException{
-		iPaquete.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, fechaAlta);
+	public void crearPaquete(String nombrePaque, String descripcion, int periodoValidez,int Descuento, XMLGregorianCalendar fechaAlta) throws NombrePaqueteRepetidoException{
+		LocalDate localDate = LocalDate.of(
+				fechaAlta.getYear(), 
+				fechaAlta.getMonth(), 
+				fechaAlta.getDay());
+    	
+    	iPaquete.crearPaquete(nombrePaque, descripcion, periodoValidez, Descuento, localDate);
 	}
 	
     @WebMethod
@@ -156,8 +164,14 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, LocalDate fechaAlta, String ciudad, String departamento,String proveedorNick, SetString categorias) throws NombreActividadRepetidoException{
-    	iTuristica.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, fechaAlta, ciudad, departamento, proveedorNick, categorias.getDato());
+	public void crearActividadTuristica(String nombre, String descripcion, int duracion, float costoTurista, XMLGregorianCalendar fechaAlta, String ciudad, String departamento,String proveedorNick, SetString categorias) throws NombreActividadRepetidoException{
+    	LocalDate localDate = LocalDate.of(
+    			fechaAlta.getYear(), 
+    			fechaAlta.getMonth(), 
+    			fechaAlta.getDay());
+    	
+    	
+    	iTuristica.crearActividadTuristica(nombre, descripcion, duracion, costoTurista, localDate, ciudad, departamento, proveedorNick, categorias.getDato());
 	}
     
     @WebMethod
@@ -176,8 +190,18 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, LocalDate fechaAlta, DTInfoSalida infoSalida, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
-    	iTuristica.crearSalidaTuristica(nombre, cantMaxTuristas, fechaAlta, infoSalida, actividad);
+	public void crearSalidaTuristica(String nombre,int cantMaxTuristas, XMLGregorianCalendar fechaAlta, XMLGregorianCalendar fechaInfo,String lugarInfo, String actividad) throws NombreSalidaRepetidoException, NoHayActividadConEseNombreException{
+    	LocalDate localDate = LocalDate.of(
+    			fechaAlta.getYear(), 
+    			fechaAlta.getMonth(), 
+    			fechaAlta.getDay());
+    	LocalDate localDate2 = LocalDate.of(
+    			fechaInfo.getYear(), 
+    			fechaInfo.getMonth(), 
+    			fechaInfo.getDay());
+    	LocalTime localTime = LocalTime.of(fechaInfo.getHour(), fechaInfo.getMinute());
+    	DTInfoSalida dtInfo = new DTInfoSalida(localDate2, localTime, lugarInfo);
+    	iTuristica.crearSalidaTuristica(nombre, cantMaxTuristas, localDate, dtInfo, actividad);
 	}
     
     @WebMethod
@@ -289,8 +313,13 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, LocalDate fechaAlta) throws YaExisteInscripcionTuristaSalida{
-    	iUsuario.crearInscripcion(nombreTurista, nombreSalida, cantidadTuristas, costo, fechaAlta);
+	public void crearInscripcion(String nombreTurista,String nombreSalida, int cantidadTuristas,Float costo, XMLGregorianCalendar fechaAlta) throws YaExisteInscripcionTuristaSalida{
+    	LocalDate localDate = LocalDate.of(
+    			fechaAlta.getYear(), 
+    			fechaAlta.getMonth(), 
+    			fechaAlta.getDay());
+    	
+    	iUsuario.crearInscripcion(nombreTurista, nombreSalida, cantidadTuristas, costo, localDate);
 	}
     
     @WebMethod
@@ -304,13 +333,23 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException{
-    	iUsuario.altaProveedor(nickname, nombre, apellido, email, fechaNacimiento, contraseña, descripcionGeneral, url);
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, XMLGregorianCalendar fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException{
+    	LocalDate localDate = LocalDate.of(
+    			fechaNacimiento.getYear(), 
+    			fechaNacimiento.getMonth(), 
+    			fechaNacimiento.getDay());
+    	
+    	iUsuario.altaProveedor(nickname, nombre, apellido, email, localDate, contraseña, descripcionGeneral, url);
 	}
     
     @WebMethod
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException{
-    	iUsuario.altaTurista(nickname, nombre, apellido, email, fechaNacimiento, contraseña, nacionalidad);
+	public void altaTurista(String nickname, String nombre, String apellido, String email, XMLGregorianCalendar fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException{
+    	LocalDate localDate = LocalDate.of(
+    			fechaNacimiento.getYear(), 
+    			fechaNacimiento.getMonth(), 
+    			fechaNacimiento.getDay());
+    	
+    	iUsuario.altaTurista(nickname, nombre, apellido, email, localDate, contraseña, nacionalidad);
 	}
     
     @WebMethod
