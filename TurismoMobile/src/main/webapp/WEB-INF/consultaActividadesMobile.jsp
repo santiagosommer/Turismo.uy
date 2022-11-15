@@ -80,7 +80,7 @@
     
 
 		<%for (int i = 0; i < acts.size(); i++) {%>
-        <div class="row text-center animate__animated animate__bounceInUp">
+        <div class="row text-center justify-content-center animate__animated animate__bounceInUp">
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-3">
                 <div class="card shadow">
                     <div class="card-body">
