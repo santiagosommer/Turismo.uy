@@ -82,7 +82,7 @@
                       <div class="salidas tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><p class="card-text">
                         <b>Fecha y Hora: </b><%= fecha  %>
                         <br>
-                        <b>Cupos Disponibles:: </b> <%= cupos  %>
+                        <b>Cupos Disponibles: </b> <%= cupos  %>
                         <br>
                         <b>Lugar: </b><%= lugar %>                      
                         </div>
