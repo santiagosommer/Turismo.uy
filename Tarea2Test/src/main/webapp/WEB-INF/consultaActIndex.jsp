@@ -63,7 +63,9 @@
             <div class="Consultas">
             
             	<%for (int i = 0; i < acts.size(); i++) {%>
+            	 <% if (acts.get(i).getEstado() == EstadoActividad.CONFIRMADA) {%>
 	                 <div class="conjuntoConsulta">
+	                
 	                    <div class="imagen">
 	                        <img src="media/icons/avatar.svg" height="200">
 	                    </div>
@@ -76,7 +78,7 @@
 	                    </div>
 	                </div>
 	                <hr>
-                <% } %>
+                <% } } %>
                 
             </div>
         </div>
