@@ -1,11 +1,15 @@
 package WebService;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import java.util.TimeZone;
 
 import ServidorCentral.Logica.DataTypes.DTActividadTuristica;
@@ -54,9 +58,21 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar(){
-         endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    	
+    	Properties defaultProps = new Properties();
+    	
+    	try (FileInputStream in = new FileInputStream("/home/vagrant/git/tpgr25/ServidorWS/src/ServidorCentral/classes/META-INF/turismouy.properties")) {
+    		defaultProps.load(in);
+    	} catch (FileNotFoundException e) {
+    		e.printStackTrace();
+    	} catch (IOException e) {
+			e.printStackTrace();
+		}    	
+        endpoint = Endpoint.publish("http://" + defaultProps.getProperty("maquina") + ":" + defaultProps.getProperty("puerto") +"/publicador", this);
     }
 
+    //endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
             return endpoint;
