@@ -1,5 +1,6 @@
 package WebService;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -57,21 +58,10 @@ public class Publicador {
     public Publicador(){}
 
     @WebMethod(exclude = true)
-    public void publicar(){
-    	
-    	Properties defaultProps = new Properties();
-    	
-    	try (FileInputStream in = new FileInputStream("/home/vagrant/git/tpgr25/ServidorWS/src/ServidorCentral/classes/META-INF/turismouy.properties")) {
-    		defaultProps.load(in);
-    	} catch (FileNotFoundException e) {
-    		e.printStackTrace();
-    	} catch (IOException e) {
-			e.printStackTrace();
-		}    	
-        endpoint = Endpoint.publish("http://" + defaultProps.getProperty("maquina") + ":" + defaultProps.getProperty("puerto") +"/publicador", this);
-    }
+    public void publicar(){    	
 
-    //endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    }
     
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
