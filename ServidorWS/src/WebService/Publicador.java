@@ -60,8 +60,20 @@ public class Publicador {
     @WebMethod(exclude = true)
     public void publicar(){    	
 
-    endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    //endpoint = Endpoint.publish("http://localhost:9129/publicador", this);
+    	
+    	Properties defaultProps = new Properties();
+    	
+    	try (FileInputStream in = new FileInputStream(System.getProperty("user.home") + File.separator + "git/tpgr25/turismouy.properties")) {
+    		defaultProps.load(in);
+    	} catch (FileNotFoundException e) {
+    		e.printStackTrace();
+    	} catch (IOException e) {
+			e.printStackTrace();
+		}    	
+        endpoint = Endpoint.publish("http://" + defaultProps.getProperty("maquina") + ":" + defaultProps.getProperty("puerto") +"/publicador", this);
     }
+
     
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
