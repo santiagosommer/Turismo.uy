@@ -37,9 +37,9 @@ public class AltaDeProveedor extends JInternalFrame {
 	private JTextField textFieldLinkWeb;
 	JComboBox<Integer> comboBoxDia;
 	JComboBox<Integer> comboBoxMes;
-	JComboBox<Integer> comboBoxAnio;
-	private JPasswordField passwordFieldContrasenia;
-	private JPasswordField passwordFieldConfirmacionContrasenia;
+	JComboBox<Integer> comboBoxAño;
+	private JPasswordField passwordFieldContraseña;
+	private JPasswordField passwordFieldConfirmacionContraseña;
 	
 
 	public AltaDeProveedor(IUsuario controlUsr) {
@@ -139,7 +139,7 @@ public class AltaDeProveedor extends JInternalFrame {
 		gbc_lblMes.gridy = 5;
 		getContentPane().add(lblMes, gbc_lblMes);
 
-		JLabel lblAnio = new JLabel("Anio");
+		JLabel lblAnio = new JLabel("Año");
 		GridBagConstraints gbc_lblAnio = new GridBagConstraints();
 		gbc_lblAnio.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAnio.gridx = 4;
@@ -175,15 +175,15 @@ public class AltaDeProveedor extends JInternalFrame {
 			comboBoxMes.addItem(i);
 		}
 
-		comboBoxAnio = new JComboBox<Integer>();
-		GridBagConstraints gbc_comboBoxAnio = new GridBagConstraints();
-		gbc_comboBoxAnio.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxAnio.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxAnio.gridx = 4;
-		gbc_comboBoxAnio.gridy = 6;
-		getContentPane().add(comboBoxAnio, gbc_comboBoxAnio);
+		comboBoxAño = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxAño = new GridBagConstraints();
+		gbc_comboBoxAño.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxAño.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxAño.gridx = 4;
+		gbc_comboBoxAño.gridy = 6;
+		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
 		for (int i = 1900; i <= 2030; i++) {
-			comboBoxAnio.addItem(i);
+			comboBoxAño.addItem(i);
 		}
 
 		JLabel lblDescripcion = new JLabel("Descripcion");
@@ -230,39 +230,39 @@ public class AltaDeProveedor extends JInternalFrame {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("Contrasenia:");
+		JLabel lblNewLabel = new JLabel("Contraseña:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 9;
 		getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		passwordFieldContrasenia = new JPasswordField();
+		passwordFieldContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 9;
-		getContentPane().add(passwordFieldContrasenia, gbc_textField);
-		passwordFieldContrasenia.setColumns(10);
+		getContentPane().add(passwordFieldContraseña, gbc_textField);
+		passwordFieldContraseña.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Confirmación contrasenia:");
+		JLabel lblNewLabel_1 = new JLabel("Confirmación contraseña:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 1;
 		gbc_lblNewLabel_1.gridy = 10;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		passwordFieldConfirmacionContrasenia = new JPasswordField();
+		passwordFieldConfirmacionContraseña = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 2;
 		gbc_textField_1.gridy = 10;
-		getContentPane().add(passwordFieldConfirmacionContrasenia, gbc_textField_1);
-		passwordFieldConfirmacionContrasenia.setColumns(10);
+		getContentPane().add(passwordFieldConfirmacionContraseña, gbc_textField_1);
+		passwordFieldConfirmacionContraseña.setColumns(10);
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAceptar.gridx = 2;
@@ -291,16 +291,16 @@ public class AltaDeProveedor extends JInternalFrame {
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldDescripcion.getText();
 		String linkWeb = this.textFieldLinkWeb.getText();
-		String contrasenia = this.passwordFieldContrasenia.getText();
+		String contraseña = this.passwordFieldContraseña.getText();
 
 		if (checkFormulario()) {
 			try {
 				int dia = (int) comboBoxDia.getSelectedItem();
 				int mes = (int) comboBoxMes.getSelectedItem();
-				int anio = (int) comboBoxAnio.getSelectedItem();
+				int anio = (int) comboBoxAño.getSelectedItem();
 				try {
 					LocalDate date = LocalDate.of(anio, mes, dia);
-					cu.altaProveedor(nickname, nombre, apellido, email, date,contrasenia, nacionalidad, linkWeb);
+					cu.altaProveedor(nickname, nombre, apellido, email, date,contraseña, nacionalidad, linkWeb);
 
 					// Muestro éxito de la operación
 					JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario",
@@ -329,17 +329,17 @@ public class AltaDeProveedor extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldDescripcion.getText();
-		String contrasenia = this.passwordFieldContrasenia.getText();
-		String confirmacionContrasenia = this.passwordFieldConfirmacionContrasenia.getText();
+		String contraseña = this.passwordFieldContraseña.getText();
+		String confirmacionContraseña = this.passwordFieldConfirmacionContraseña.getText();
 
-		if (contrasenia.isEmpty() || confirmacionContrasenia.isEmpty() || nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
+		if (contraseña.isEmpty() || confirmacionContraseña.isEmpty() || nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty()) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		
-		if (!contrasenia.equals(confirmacionContrasenia)) {
-			JOptionPane.showMessageDialog(this, "No coinciden los campos Contrasenia y Confirmacion de Contrasenia", "Registrar Usuario",
+		if (!contraseña.equals(confirmacionContraseña)) {
+			JOptionPane.showMessageDialog(this, "No coinciden los campos Contraseña y Confirmacion de Contraseña", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -354,8 +354,8 @@ public class AltaDeProveedor extends JInternalFrame {
 		textFieldEmail.setText("");
 		textFieldDescripcion.setText("");
 		textFieldLinkWeb.setText("");
-		passwordFieldContrasenia.setText("");
-		passwordFieldConfirmacionContrasenia.setText("");
+		passwordFieldContraseña.setText("");
+		passwordFieldConfirmacionContraseña.setText("");
 	}
 
 }

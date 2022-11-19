@@ -259,7 +259,7 @@ public class ControladorTuristica implements ITuristica {
 			
 		for (Inscripcion inscripcion : inscripciones) {
 			
-			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(),inscripcion.getTurista().getContrasenia(), inscripcion.getTurista().getNacionalidad());
+			DTTurista turistaAutor = new DTTurista(inscripcion.getTurista().getNickname(), inscripcion.getTurista().getNombre(), inscripcion.getTurista().getApellido(), inscripcion.getTurista().getEmail(), inscripcion.getTurista().getFechaNacimiento(),inscripcion.getTurista().getContraseña(), inscripcion.getTurista().getNacionalidad());
 			inscripcionesDT.add(new DTInscripcion(inscripcion.getFecha(), inscripcion.getCantidadTuristas(), inscripcion.getCosto(), turistaAutor, getDTSalidaTuristica()));
 		}
 		return inscripcionesDT;
