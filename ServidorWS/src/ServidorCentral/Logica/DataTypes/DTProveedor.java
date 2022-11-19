@@ -26,7 +26,7 @@ public DTProveedor(String nickname, String nombre, String apellido, String email
 }
 
 public DTProveedor(Proveedor pro) {
-	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento(),pro.getContraseña());
+	super(pro.getNickname(),pro.getNombre(),pro.getApellido(),pro.getEmail(),pro.getFechaNacimiento(),pro.getContrasenia());
 	setDescripcionGeneral(pro.getDescripcionGeneral());
 	setURL(pro.getURL());
 	setActividades(new ArrayList<DTActividadTuristica>());

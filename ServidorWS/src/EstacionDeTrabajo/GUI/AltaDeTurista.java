@@ -40,9 +40,9 @@ public class AltaDeTurista extends JInternalFrame {
 	private JTextField textFieldNacionalidad;
 	JComboBox<Integer> comboBoxDia;
 	JComboBox<Integer> comboBoxMes;
-	JComboBox<Integer> comboBoxAño;
-	private JPasswordField textFieldContraseña;
-	private JPasswordField textFieldConfirmacionContraseña;
+	JComboBox<Integer> comboBoxAnio;
+	private JPasswordField textFieldContrasenia;
+	private JPasswordField textFieldConfirmacionContrasenia;
 
 	public AltaDeTurista(IUsuario controlUsr) {
 		setResizable(true);
@@ -141,7 +141,7 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_lblMes.gridy = 5;
 		getContentPane().add(lblMes, gbc_lblMes);
 
-		JLabel lblAnio = new JLabel("Año");
+		JLabel lblAnio = new JLabel("Anio");
 		GridBagConstraints gbc_lblAnio = new GridBagConstraints();
 		gbc_lblAnio.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAnio.gridx = 4;
@@ -177,15 +177,15 @@ public class AltaDeTurista extends JInternalFrame {
 			comboBoxMes.addItem(i);
 		}
 
-		comboBoxAño = new JComboBox<Integer>();
-		GridBagConstraints gbc_comboBoxAño = new GridBagConstraints();
-		gbc_comboBoxAño.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxAño.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxAño.gridx = 4;
-		gbc_comboBoxAño.gridy = 6;
-		getContentPane().add(comboBoxAño, gbc_comboBoxAño);
+		comboBoxAnio = new JComboBox<Integer>();
+		GridBagConstraints gbc_comboBoxAnio = new GridBagConstraints();
+		gbc_comboBoxAnio.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxAnio.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxAnio.gridx = 4;
+		gbc_comboBoxAnio.gridy = 6;
+		getContentPane().add(comboBoxAnio, gbc_comboBoxAnio);
 		for (int i = 1900; i <= 2030; i++) {
-			comboBoxAño.addItem(i);
+			comboBoxAnio.addItem(i);
 		}
 
 		JLabel lblNacionalidad = new JLabel("Nacionalidad");
@@ -215,24 +215,24 @@ public class AltaDeTurista extends JInternalFrame {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("Contraseña:");
+		JLabel lblNewLabel = new JLabel("Contrasenia:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 8;
 		getContentPane().add(lblNewLabel, gbc_lblNewLabel);
 		
-		textFieldContraseña = new JPasswordField();
+		textFieldContrasenia = new JPasswordField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 8;
-		getContentPane().add(textFieldContraseña, gbc_textField);
-		textFieldContraseña.setColumns(10);
+		getContentPane().add(textFieldContrasenia, gbc_textField);
+		textFieldContrasenia.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Confirmacion Contraseña");
+		JLabel lblNewLabel_1 = new JLabel("Confirmacion Contrasenia");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -240,15 +240,15 @@ public class AltaDeTurista extends JInternalFrame {
 		gbc_lblNewLabel_1.gridy = 9;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		textFieldConfirmacionContraseña = new JPasswordField();
+		textFieldConfirmacionContrasenia = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 2;
 		gbc_textField_1.gridy = 9;
-		getContentPane().add(textFieldConfirmacionContraseña, gbc_textField_1);
-		textFieldConfirmacionContraseña.setColumns(10);
+		getContentPane().add(textFieldConfirmacionContrasenia, gbc_textField_1);
+		textFieldConfirmacionContrasenia.setColumns(10);
 		GridBagConstraints gbc_btnAceptar = new GridBagConstraints();
 		gbc_btnAceptar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAceptar.gridx = 2;
@@ -276,15 +276,15 @@ public class AltaDeTurista extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldNacionalidad.getText();
-		String contraseña = this.textFieldContraseña.getText(); 
+		String contrasenia = this.textFieldContrasenia.getText(); 
 		if (checkFormulario()) {
 			try {
 				int dia = (int) comboBoxDia.getSelectedItem();
 				int mes = (int) comboBoxMes.getSelectedItem();
-				int anio = (int) comboBoxAño.getSelectedItem();
+				int anio = (int) comboBoxAnio.getSelectedItem();
 				try {
 					LocalDate date = LocalDate.of(anio, mes, dia);
-					cu.altaTurista(nickname, nombre, apellido, email, date,  contraseña, nacionalidad);
+					cu.altaTurista(nickname, nombre, apellido, email, date,  contrasenia, nacionalidad);
 
 					// Muestro éxito de la operación
 					JOptionPane.showMessageDialog(this, "El Usuario se ha creado con éxito", "Registrar Usuario",
@@ -313,17 +313,17 @@ public class AltaDeTurista extends JInternalFrame {
 		String apellido = this.textFieldApellido.getText();
 		String email = this.textFieldEmail.getText();
 		String nacionalidad = this.textFieldNacionalidad.getText();
-		String contraseña = this.textFieldContraseña.getText();
-		String confirmacionContraseña = this.textFieldConfirmacionContraseña.getText();
+		String contrasenia = this.textFieldContrasenia.getText();
+		String confirmacionContrasenia = this.textFieldConfirmacionContrasenia.getText();
 
-		if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty() || contraseña.isEmpty() || confirmacionContraseña.isEmpty() ) {
+		if (nickname.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || nacionalidad.isEmpty() || contrasenia.isEmpty() || confirmacionContrasenia.isEmpty() ) {
 			JOptionPane.showMessageDialog(this, "No puede haber campos vacíos", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		
-		if (!contraseña.equals(confirmacionContraseña)) {
-			JOptionPane.showMessageDialog(this, "No coinciden los campos Contraseña y Confirmacion de Contraseña", "Registrar Usuario",
+		if (!contrasenia.equals(confirmacionContrasenia)) {
+			JOptionPane.showMessageDialog(this, "No coinciden los campos Contrasenia y Confirmacion de Contrasenia", "Registrar Usuario",
 					JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -338,8 +338,8 @@ public class AltaDeTurista extends JInternalFrame {
 		textFieldNickName.setText("");
 		textFieldNacionalidad.setText("");
 		textFieldEmail.setText("");
-		textFieldContraseña.setText("");
-		textFieldConfirmacionContraseña.setText("");
+		textFieldContrasenia.setText("");
+		textFieldConfirmacionContrasenia.setText("");
 	}
 
 }

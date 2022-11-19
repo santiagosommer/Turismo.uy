@@ -86,15 +86,15 @@ public String toString() {
 
 
 
-public String getContraseña() {
+public String getContrasenia() {
 	return Contrasenia;
 }
 
 
 
 
-public void setContraseña(String contraseña) {
-	Contrasenia = contraseña;
+public void setContrasenia(String contrasenia) {
+	Contrasenia = contrasenia;
 }
 
 

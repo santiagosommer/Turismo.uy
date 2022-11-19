@@ -101,14 +101,14 @@ public class ControladorUsuario implements IUsuario {
     		if (existeUsuario(nick_or_email)) { // nick_or_email es nickname
     			if (esTurista(nick_or_email)) { // nick_or_email es de un turista
     				seleccionarTurista(nick_or_email);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else { // nick_or_email es de un proveedor
     				seleccionarProveedor(nick_or_email);
-    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
+    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
@@ -119,14 +119,14 @@ public class ControladorUsuario implements IUsuario {
     			String nickname = getNickname(nick_or_email);
     			if (esTurista(nickname)) {
     				seleccionarTurista(nickname);
-    				if (turistaSeleccionado.getContraseña().equals(passw)) {
+    				if (turistaSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_TURISTA;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
     				}
     			}else {
     				seleccionarProveedor(nickname);
-    				if (proveedorSeleccionado.getContraseña().equals(passw)) {
+    				if (proveedorSeleccionado.getContrasenia().equals(passw)) {
     					nuevoEstado = EstadoError.EXITO_PROVEEDOR;
     				}else {
     					nuevoEstado = EstadoError.ERROR_CONTRA;
@@ -259,7 +259,7 @@ public class ControladorUsuario implements IUsuario {
 	}
 
 	
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña,
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contrasenia,
 			String descripcionGeneral, String url) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -267,12 +267,12 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento,contraseña, descripcionGeneral, url);
+		Proveedor p = new Proveedor(nickname, nombre, apellido, email, fechaNacimiento,contrasenia, descripcionGeneral, url);
 		Proveedores.put(nickname, p);
 	}
 
 	@Override
-	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contraseña,
+	public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String contrasenia,
 			String nacionalidad) throws UsuarioRepetidoException {
 		if (existeUsuario(nickname)) {
 			throw new UsuarioRepetidoException("El nickname " + nickname + " ya esta registrado");
@@ -280,7 +280,7 @@ public class ControladorUsuario implements IUsuario {
 		if (existeUsuarioEmail(email)) {
 			throw new UsuarioRepetidoException("El email " + email + " ya esta registrado");
 		}
-		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento,contraseña, nacionalidad);
+		Turista t = new Turista(nickname, nombre, apellido, email, fechaNacimiento,contrasenia, nacionalidad);
 		Turistas.put(nickname, t);
 	}
 

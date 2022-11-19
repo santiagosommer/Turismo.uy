@@ -21,7 +21,7 @@ public class DTTurista extends DTUsuario {
    }
    
    public DTTurista(Turista turi) {
-	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento(),turi.getContraseña());
+	   super(turi.getNickname(),turi.getNombre(),turi.getApellido(),turi.getEmail(),turi.getFechaNacimiento(),turi.getContrasenia());
 	   setNacionalidad(turi.getNacionalidad());
 	   
 	   Inscripciones = new ArrayList<DTInscripcion>();
