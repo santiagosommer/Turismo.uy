@@ -353,19 +353,19 @@ public class Publicador {
 	}
     
     @WebMethod
-	public void altaProveedor(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contrasenia, String descripcionGeneral, String url) throws UsuarioRepetidoException{
+	public void altaProveedor(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contraseña, String descripcionGeneral, String url) throws UsuarioRepetidoException{
     	Date input = fechaNacimiento.getTime();
     	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
-    	iUsuario.altaProveedor(nickname, nombre, apellido, email, localDate, contrasenia, descripcionGeneral, url);
+    	iUsuario.altaProveedor(nickname, nombre, apellido, email, localDate, contraseña, descripcionGeneral, url);
 	}
     
     @WebMethod
-	public void altaTurista(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contrasenia, String nacionalidad) throws UsuarioRepetidoException{
+	public void altaTurista(String nickname, String nombre, String apellido, String email, Calendar fechaNacimiento, String contraseña, String nacionalidad) throws UsuarioRepetidoException{
     	Date input = fechaNacimiento.getTime();
     	LocalDate localDate = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     	
-    	iUsuario.altaTurista(nickname, nombre, apellido, email, localDate, contrasenia, nacionalidad);
+    	iUsuario.altaTurista(nickname, nombre, apellido, email, localDate, contraseña, nacionalidad);
 	}
     
     @WebMethod
