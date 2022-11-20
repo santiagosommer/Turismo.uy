@@ -1,8 +1,14 @@
 
 package webservice;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
+
 import javax.xml.namespace.QName;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.WebEndpoint;
@@ -27,10 +33,19 @@ public class PublicadorService
     private final static QName PUBLICADORSERVICE_QNAME = new QName("http://WebService/", "PublicadorService");
 
     static {
+    	Properties defaultProps = new Properties();
+    	
+    	try (FileInputStream in = new FileInputStream(System.getProperty("user.home") + File.separator + "git/tpgr25/turismouy.properties")) {
+    		defaultProps.load(in);
+    	} catch (FileNotFoundException e) {
+    		e.printStackTrace();
+    	} catch (IOException e) {
+			e.printStackTrace();
+		}
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:9129/publicador?wsdl");
+            url = new URL("http://" + defaultProps.getProperty("maquina") + ":" + defaultProps.getProperty("puerto") +"/publicador");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
