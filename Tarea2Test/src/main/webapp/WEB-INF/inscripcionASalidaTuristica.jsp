@@ -74,7 +74,7 @@
 
                   <div class="botones">
                   <input type="submit" class="button" id="inscribirButton" value="Inscribirse"> 
-                  <button class="button" type="button" id="cancelarButton" onclick="window.location.href='/Tarea2Test/Home';" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                  <button class="button" type="button" id="cancelarButton" onclick="window.location.href='/web/Home';" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
                 </div>
 
 

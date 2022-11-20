@@ -21,16 +21,16 @@
             	<%if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.NO_LOGIN){ %>
             		<div class="recommendation-item">
                     	<img src="media/icons/avatar.svg" class="recommendation-icon">
-                    	<h3><a href="/Tarea2Test/AltaUsuario">Registra</a> una cuenta o <a href="/TurismoMobile/IniciarSesion">entra con una cuenta</a> ya existente </h3>
+                    	<h3><a href="/Tarea2Test/AltaUsuario">Registra</a> una cuenta o <a href="/movil/IniciarSesion">entra con una cuenta</a> ya existente </h3>
                 	</div>
             	<%} %>
                 <div class="recommendation-item">
                     <img src="media/icons/wind-surfing.svg" class="recommendation-icon">
-                    <h3>Revisa las nuevas e innovadoras <a href="/TurismoMobile/ConsultaActividadesIndex">actividades</a> que tenemos para ti!</h3>
+                    <h3>Revisa las nuevas e innovadoras <a href="/movil/ConsultaActividadesIndex">actividades</a> que tenemos para ti!</h3>
                 </div>
                 <div class="recommendation-item">
                     <img src="media/icons/money.svg" class="recommendation-icon">
-                    <h3>Los mejores <a href="/TurismoMobile/ConsultaPaqueteIndex">paquetes</a> de actividades para tu mayor ahorro!</h3>
+                    <h3>Los mejores <a href="/movil/ConsultaPaqueteIndex">paquetes</a> de actividades para tu mayor ahorro!</h3>
                 </div>
             </div>
         </div>

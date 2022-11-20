@@ -44,6 +44,6 @@
         <version>3.2.3</version>
       </plugin>
     </plugins>
-    <finalName>${project.artifactId}</finalName>
+    <finalName>movil</finalName>
   </build>
 </project>

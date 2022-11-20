@@ -52,7 +52,7 @@
                             <%= paqs.get(i).getNombre() %>
                         </div>
                         <%= paqs.get(i).getDescripcion() %>
-                        <a href="/Tarea2Test/ConsultaPaquete?paramPaq=<%= paqs.get(i).getNombre()%>" class="links selected">Leer mas.</a>
+                        <a href="/web/ConsultaPaquete?paramPaq=<%= paqs.get(i).getNombre()%>" class="links selected">Leer mas.</a>
                     </div>
                 </div>
                 <hr>

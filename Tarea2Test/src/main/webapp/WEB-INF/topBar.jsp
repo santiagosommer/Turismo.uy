@@ -7,9 +7,9 @@
 	<div class="top-bar-left">
         <img src="media/icons/bus.svg" class="bus-icon">
         <div class="top-bar-links">
-            <a href="/Tarea2Test/Home" class="links">Principal</a>
-            <a href="/Tarea2Test/ConsultaActividadesIndex" class="links">Actividades</a>
-            <a href="/Tarea2Test/ConsultaPaqueteIndex" class="links">Paquetes</a>
+            <a href="/web/Home" class="links">Principal</a>
+            <a href="/web/ConsultaActividadesIndex" class="links">Actividades</a>
+            <a href="/web/ConsultaPaqueteIndex" class="links">Paquetes</a>
         </div>
     </div>
     <div class="top-bar-right">
@@ -18,15 +18,15 @@
             <input type="text" id="search-bar-input" class="search-bar-input" size="30" placeholder="Actividades, Paquetes, etc..." name="search-bar-content">
             <a href="#"><img src="media/icons/zoom.svg" class="icon"></a>
         </div>
-        <a href="/Tarea2Test/ConsultaUsuario"><img src="media/icons/group.svg" class="larger-icon"></a>
+        <a href="/web/ConsultaUsuario"><img src="media/icons/group.svg" class="larger-icon"></a>
 		
 		<% if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_PROVEEDOR) { %>
 		
 		<div id="menu-proveedor" class="dropdown">
             <h5 class="menu-proveedor-dropdown">Menu Proveedor</h5>
             <div class="dropdown-content">
-                <a href="/Tarea2Test/AltaActividad">Alta de Actividad Turistica</a>
-                <a href="/Tarea2Test/AltaSalida">Alta de Salida Turistica</a>
+                <a href="/web/AltaActividad">Alta de Actividad Turistica</a>
+                <a href="/web/AltaSalida">Alta de Salida Turistica</a>
             </div>
 		</div>
 		
@@ -38,8 +38,8 @@
             <div class="dropdown">
                 <img src="media/icons/avatar.svg" class="avatar icon">
                 <div class="dropdown-content">
-                    <a id="dropdown-1" href="/Tarea2Test/ConsultaProveedor?paramP=<%= prov.getNickname()%>">Ver Perfil</a>
-                    <a id="dropdown-2" href="/Tarea2Test/CerrarSesion">Cerrar Sesion</a>
+                    <a id="dropdown-1" href="/web/ConsultaProveedor?paramP=<%= prov.getNickname()%>">Ver Perfil</a>
+                    <a id="dropdown-2" href="/web/CerrarSesion">Cerrar Sesion</a>
                 </div>
             </div>
         </div>
@@ -58,8 +58,8 @@
 	            <div class="dropdown">
 	                <img src="media/icons/avatar.svg" class="avatar icon">
 	                <div class="dropdown-content">
-	                    <a id="dropdown-1" href="/Tarea2Test/ConsultaTurista?paramT=<%= turista.getNickname()%>">Ver Perfil</a>
-	                    <a id="dropdown-2" href="/Tarea2Test/CerrarSesion">Cerrar Sesion</a>
+	                    <a id="dropdown-1" href="/web/ConsultaTurista?paramT=<%= turista.getNickname()%>">Ver Perfil</a>
+	                    <a id="dropdown-2" href="/web/CerrarSesion">Cerrar Sesion</a>
 	                </div>
 	            </div>
 	        </div>
@@ -71,8 +71,8 @@
 	            <div class="dropdown">
 	                <img src="media/icons/avatar.svg" class="avatar icon">
 	                <div class="dropdown-content">
-	                    <a id="dropdown-1" href="/Tarea2Test/IniciarSesion">Iniciar Sesion</a>
-	                    <a id="dropdown-2" href="/Tarea2Test/AltaUsuario">Registrarse</a>
+	                    <a id="dropdown-1" href="/web/IniciarSesion">Iniciar Sesion</a>
+	                    <a id="dropdown-2" href="/web/AltaUsuario">Registrarse</a>
 	                </div>
 	            </div>
 	        </div>

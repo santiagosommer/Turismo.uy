@@ -107,10 +107,10 @@
                 <h5> <%= nickName %> / <%= email %> </h5>
                 
                <%  if (esSeguidor){ %>   
-                <a href = "/Tarea2Test/DejarDeSeguirUsuario"> <button id="botonDejarSeguirUsuario">Dejar de seguir</button>
+                <a href = "/web/DejarDeSeguirUsuario"> <button id="botonDejarSeguirUsuario">Dejar de seguir</button>
                </a> 
                <%} else { %>
-                <b href = "/Tarea2Test/SeguirUsuario"> <button id="SeguirUsuario">Seguir</button>
+                <b href = "/web/SeguirUsuario"> <button id="SeguirUsuario">Seguir</button>
              </b> 
             <% } %>
              
@@ -187,7 +187,7 @@
                            	 	<p>Cantidad Turistas: <%= InscSal.get(i).getCantidadTuristas() %> </p>
                             	<p> Costo: <%= InscSal.get(i).getCosto() %> </p>	
                              <%} %>
-                            <p><a href="/Tarea2Test/ConsultaSalida?paramS=<%=InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
+                            <p><a href="/web/ConsultaSalida?paramS=<%=InscSal.get(i).getSalidaAsociada().getNombre()%>" class="links">Leer mas.</a></p>
                             
                           </div>
                       </div>

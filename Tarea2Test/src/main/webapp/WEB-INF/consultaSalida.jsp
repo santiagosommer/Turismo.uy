@@ -69,7 +69,7 @@
                 <h3> <%= nombre %> </h3>
                 
                 <%        if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_TURISTA) { %>
-             <a href = "/Tarea2Test/InscripcionASalidaTuristica?nombreSalida=<%=nombre%>"> <button id="botonInscripcionSalida">Inscribirse</button>
+             <a href = "/web/InscripcionASalidaTuristica?nombreSalida=<%=nombre%>"> <button id="botonInscripcionSalida">Inscribirse</button>
              </a>   
              <%} %>
             </div>

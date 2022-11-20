@@ -19,22 +19,22 @@
 
         <div class="altaUsuario">
         	<figure>
-            	<a href="/Tarea2Test/AltaTurista">                
+            	<a href="/web/AltaTurista">                
             		<img src="media/icons/plane.svg" alt="" class="img-altaUsuario">                                        
             	</a>
             	<figcaption>
-                	<a style="text-decoration:none;color:black;" href="/Tarea2Test/AltaTurista">  
+                	<a style="text-decoration:none;color:black;" href="/web/AltaTurista">  
                 		Turista
                 	</a>
                 </figcaption>  
             </figure>
             
             <figure>            
-            	<a href="/Tarea2Test/AltaProveedor">            
+            	<a href="/web/AltaProveedor">            
                 	<img src="media/icons/ticket.svg" alt="" class="img-altaUsuario">
                 </a>     
                 <figcaption>
-                	<a style="text-decoration:none;color:black;" href="/Tarea2Test/AltaProveedor">  
+                	<a style="text-decoration:none;color:black;" href="/web/AltaProveedor">  
                 		Proveedor
                 	</a>
                 </figcaption>               

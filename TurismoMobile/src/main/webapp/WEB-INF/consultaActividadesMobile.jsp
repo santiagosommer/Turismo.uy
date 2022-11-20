@@ -27,17 +27,17 @@
 <div class="container my-3">
 <nav class="navbar navbar-expand-lg bg-* shadow-lg rounded animate__animated animate__fadeInDown">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/TurismoMobile/Home">Turismo.uy</a>
+    <a class="navbar-brand" href="/movil/Home">Turismo.uy</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
         <li class="nav-item">
-          <a class="nav-link" href="/TurismoMobile/ConsultaActividadesIndex">Actividades Turisticas</a>
+          <a class="nav-link" href="/movil/ConsultaActividadesIndex">Actividades Turisticas</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/TurismoMobile/IniciarSesion">Salir</a>
+            <a class="nav-link" href="/movil/IniciarSesion">Salir</a>
           </li>               
       </ul>      
     </div>
@@ -87,7 +87,7 @@
                         <h5 class="card-title"> <%= acts.get(i).getNombre() %> </h5>
                         <img src="media/icons/avatar.svg" class="img-fluid" alt="Responsive image">
                         <p class="card-text"> <%= acts.get(i).getDescripcion() %> </p>
-                        <a href="/TurismoMobile/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre() %>" class="btn btn-info">Leer mas.</a>
+                        <a href="/movil/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre() %>" class="btn btn-info">Leer mas.</a>
                     </div>
                 </div>
             </div>          

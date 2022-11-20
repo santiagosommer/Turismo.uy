@@ -61,7 +61,7 @@
         <img src="media/icons/avatar.svg" height="200">
       </div>
       <h3><%= nombre %></h3>
-      <button id="botonComprarPaquete" onclick="location.href='/Tarea2Test/ComprarPaquete'">Comprar Paquete </button>
+      <button id="botonComprarPaquete" onclick="location.href='/web/ComprarPaquete'">Comprar Paquete </button>
     </div>
     <div class="top-bar-links">
       <div class="tab">
@@ -98,7 +98,7 @@
           </div>
           <div class="Salida-text">
             <h3><%= a.getNombre() %></h3>
-            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= a.getNombre()%>" class="links">Leer mas.</a></p>
+            <p><a href="/web/ConsultaActividadIndividual?paramAct=<%= a.getNombre()%>" class="links">Leer mas.</a></p>
           </div>
         </div>
         <%}%> 

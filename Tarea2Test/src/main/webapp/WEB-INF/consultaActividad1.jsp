@@ -88,7 +88,7 @@
             <h3><%= nombre %></h3>
             <% if (finalizable && request.getSession().getAttribute("finalizada") == null) { //ver css %>
             <form>
-             <a href = " /Tarea2Test/ConsultaActividadIndividual?paramAct=<%=nombre%>">   <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> </a>
+             <a href = " /web/ConsultaActividadIndividual?paramAct=<%=nombre%>">   <input type="submit" class="button" id="FinalizarButton" value="Finalizar"> </a>
              </form>
             <%} %>
           </div>
@@ -134,7 +134,7 @@
                 </div>
                 <div class="Salida-text">
                   <h3><%=  Salidas.get(i).getNombre() %></h3>
-                  <p><a href="/Tarea2Test/ConsultaSalida?paramS=<%=Salidas.get(i).getNombre()%>" class="links">Leer mas.</a></p>
+                  <p><a href="/web/ConsultaSalida?paramS=<%=Salidas.get(i).getNombre()%>" class="links">Leer mas.</a></p>
                 </div>
               </div>
               <hr>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="Paquete-text">
                   <h3><%=  paque.get(i).getNombre() %></h3>
-                  <p><a href="/Tarea2Test/ConsultaPaquete?paramPaq=<%=paque.get(i).getNombre()%>" class="links">Leer mas.</a></p>
+                  <p><a href="/web/ConsultaPaquete?paramPaq=<%=paque.get(i).getNombre()%>" class="links">Leer mas.</a></p>
                 </div>
               </div>
               

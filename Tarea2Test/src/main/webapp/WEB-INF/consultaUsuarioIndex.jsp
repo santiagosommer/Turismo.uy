@@ -46,14 +46,14 @@
                     <h5> <%= nick%> / <%= s.get(i).getEmail()%></h5>
                     <%   if (s.get(i) instanceof DtProveedor) {
                     	%>
-                    	<p><a href="/Tarea2Test/ConsultaProveedor?paramP=<%=nick%>" class="links">Leer mas.</a></p>
+                    	<p><a href="/web/ConsultaProveedor?paramP=<%=nick%>" class="links">Leer mas.</a></p>
                     	
                     <%	}
                     	%>
                     	
                     	 <%   if (s.get(i) instanceof DtTurista) {
                     	%>
-                    	<p><a href="/Tarea2Test/ConsultaTurista?paramT=<%=nick%>" class="links">Leer mas.</a></p>
+                    	<p><a href="/web/ConsultaTurista?paramT=<%=nick%>" class="links">Leer mas.</a></p>
                     	
                     
                      <%	}

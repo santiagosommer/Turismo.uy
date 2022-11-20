@@ -42,7 +42,7 @@
                     </div>
                     <div style="display:flex; justify-content:space-between;">
                         <input type="submit" class="button" id="iniciarButton" value="Iniciar Sesion">
-                  	    <button type="button" class="button" onclick="window.location.href='/Tarea2Test/Home';" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
+                  	    <button type="button" class="button" onclick="window.location.href='/web/Home';" id="cancelButton" style="background: white; color: black; border: 2px solid #968EF8;">Cancelar</button>
                     </div>
                 </div>
             </form>

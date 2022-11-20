@@ -74,7 +74,7 @@
 	                           <%= acts.get(i).getNombre() %>
 	                        </div>
 	                        <%= acts.get(i).getDescripcion() %>
-	                        <a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre()%>" class="links selected">Leer mas.</a>
+	                        <a href="/web/ConsultaActividadIndividual?paramAct=<%= acts.get(i).getNombre()%>" class="links selected">Leer mas.</a>
 	                    </div>
 	                </div>
 	                <hr>

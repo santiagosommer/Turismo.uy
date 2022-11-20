@@ -169,7 +169,7 @@
 						
                             <h3> <%= actividades.get(i).getNombre() %> </h3>
                             <p>Estado: <%= actividades.get(i).getEstado() %></p>
-                            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%= actividades.get(i).getNombre() %>" class="links">Leer más.</a></p>
+                            <p><a href="/web/ConsultaActividadIndividual?paramAct=<%= actividades.get(i).getNombre() %>" class="links">Leer más.</a></p>
                         </div>
                     </div>
                     <hr>     
@@ -193,7 +193,7 @@
                         </div>
                         <div class="Actividad-text">
                             <h3><%= act.get(i).getNombre() %></h3>
-                            <p><a href="/Tarea2Test/ConsultaActividadIndividual?paramAct=<%=act.get(i).getNombre() %>" class="links">Leer mas.</a></p>
+                            <p><a href="/web/ConsultaActividadIndividual?paramAct=<%=act.get(i).getNombre() %>" class="links">Leer mas.</a></p>
                         </div>
                     </div>
                     <hr>

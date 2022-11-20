@@ -103,7 +103,7 @@
                 </div>
                 <div class="c8">
                     <input class="boton" type="submit" value="Confirmar">
-                    <button type="button" class="boton2" onclick="window.location.href='/Tarea2Test/Home';" id="cancelButton">Cancelar</button>
+                    <button type="button" class="boton2" onclick="window.location.href='/web/Home';" id="cancelButton">Cancelar</button>
                 </div>
               </div>
               </form>
