@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import webservice.DtUsuario;
 import webservice.Publicador;
 import webservice.PublicadorService;
 import webservice.SetDTUsuario;
