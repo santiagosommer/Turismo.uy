@@ -45,7 +45,7 @@ public class PublicadorService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://" + defaultProps.getProperty("maquina") + ":" + defaultProps.getProperty("puerto") +"/publicador");
+            url = new URL("http://" + defaultProps.getProperty("maquinaWeb") + ":" + defaultProps.getProperty("puerto") +"/publicador");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
