@@ -64,7 +64,7 @@ public class Publicador {
     	
     	Properties defaultProps = new Properties();
     	
-    	try (FileInputStream in = new FileInputStream(System.getProperty("user.home") + File.separator + "git/tpgr25/turismouy.properties")) {
+    	try (FileInputStream in = new FileInputStream(System.getProperty("user.home")+ "/turismouy.properties")) {
     		defaultProps.load(in);
     	} catch (FileNotFoundException e) {
     		e.printStackTrace();
