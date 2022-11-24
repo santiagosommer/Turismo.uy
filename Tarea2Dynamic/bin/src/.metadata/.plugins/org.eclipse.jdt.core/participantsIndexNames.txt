@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\CaroH\OneDrive\Documentos\fing\tpgr25\Tarea2Dynamic\src\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\397629408.index
-\main\java
